@@ -1,6 +1,6 @@
 {{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 
-<cinq-marquee id="{{ block.id }}" class="{{ html_classes( 'block', 'overflow-hidden', block.color_scheme == 'dark' ? 'text-blanc bg-bleu' : '', block.radius == 'top' ? 'relative z-2 rounded-t-[1.5625rem] -mt-6.25 lg:rounded-t-[3.125rem] lg:-mt-12.5', block.radius == 'bottom' ? 'relative z-2 rounded-b-[1.5625rem] -mb-6.25 lg:rounded-b-[3.125rem] lg:-mb-12.5', block.radius == 'y' ? 'relative z-2 rounded-t-[1.5625rem] rounded-b-[1.5625rem] -my-6.25 lg:rounded-t-[3.125rem] lg:rounded-b-[3.125rem] lg:-my-12.5' ) }}">
+<cinq-marquee id="{{ block.id }}" class="{{ html_classes( 'block', 'overflow-hidden', block.color_scheme == 'dark' ? 'text-off-white bg-blue' : '', block.radius == 'top' ? 'relative z-2 rounded-t-[1.5625rem] -mt-6.25 lg:rounded-t-[3.125rem] lg:-mt-12.5', block.radius == 'bottom' ? 'relative z-2 rounded-b-[1.5625rem] -mb-6.25 lg:rounded-b-[3.125rem] lg:-mb-12.5', block.radius == 'y' ? 'relative z-2 rounded-t-[1.5625rem] rounded-b-[1.5625rem] -my-6.25 lg:rounded-t-[3.125rem] lg:rounded-b-[3.125rem] lg:-my-12.5' ) }}">
 	<div class="flex whitespace-nowrap" aria-label="{{ block.content.title | trim | e }}" role="status">
 		{%-  for i in (0..2) -%}
 			<p class="h1 inline-block animate-marquee [animation-play-state:paused] [text-box:text]" aria-hidden="true">{{- block.content.title | trim -}}&nbsp;</p>
