@@ -10,18 +10,10 @@
 	--color-white: #ffffff;
 
 	--color-bleu: #1A2C4C;
-	--color-bleu-profond: #102345;
-	--color-bleu-sombre: #08152C;
 	--color-vert: #98FFA5;
 	--color-beige: #F0F3EC;
 	--color-blanc: #F7F7F6;
 	--color-rouge: #FF0000;
-
-	--background-image-gradient-bleu: linear-gradient(
-		225deg,
-		var(--color-bleu-profond) 0%,
-		var(--color-bleu-sombre) 100%
-	);
 
 	/* Typographies */
 	/* This line resets all typography variables */
