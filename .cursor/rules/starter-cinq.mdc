@@ -46,7 +46,7 @@ acf-json/           Sync JSON ACF (si présent)
 - Pas de logique métier dans les `*.php` racine : ils chargent le contexte et rendent un Twig.
 - Nouvelle classe PHP : respecter PSR-4 et le rangement par fichier de core WP, et reprendre le docblock d'en-tête existant (`@package`, `@author CINQ <contact@agencecinq.com> (https://agencecinq.com)`). Faire passer phpcs.
 - Nouveau bloc ACF : créer le layout dans `includes/Plugins/ACF/IncludeFields/Layouts/`, le template Twig correspondant dans `views/blocks/`, et le cas échéant le composant TS dans `src/scripts/components/`.
-- Nouveau token de design (couleur, typo, radius) : le déclarer dans `@theme` de `src/stylesheets/theme.css`, jamais en dur dans les classes utilitaires.
+- Nouveau token de design (couleur, typo, radius) : le déclarer dans `@theme` de `src/stylesheets/theme.css`, jamais en dur dans les classes utilitaires. Suffixe du token **en anglais** (voir `design-tokens`).
 - Nouvelle icône : ajouter le SVG dans `src/icons/`, puis `pnpm build` pour régénérer `public/sprite.svg`. L'utiliser via `views/svg/use.html.twig`.
 - Images responsive : composant `views/components/image.html.twig` (srcset, WebP, lazy). Images statiques : `assets('src/img/...')`.
 - Cache Twig en prod : vider `vendor/timber/timber/cache/*` après modif d'un `.twig` si `WP_DEBUG` est à false.
@@ -69,7 +69,7 @@ DO :
 
 - Suivre les WordPress Coding Standards et faire passer phpcs.
 - Coder et commenter en anglais.
-- Déclarer les tokens de design dans `@theme` de `theme.css`.
+- Déclarer les tokens de design dans `@theme` de `theme.css` (noms en anglais, voir `design-tokens`).
 - Passer les chaînes utilisateur par les fonctions i18n.
 - Commits en anglais avec gitmoji (voir la règle `git-commits`).
 
@@ -77,6 +77,7 @@ DONT :
 
 - Pas de logique métier dans les `*.php` racine.
 - Pas de valeurs de design en dur dans les classes utilitaires.
+- Pas de backgrounds décoratifs preset (dégradés, fills de section) dans les templates du starter.
 - Ne pas modifier l'identité agence lors d'un renommage.
 - Pas d'emoji ni de tiret cadratin dans les contenus rédigés.
 
@@ -93,3 +94,4 @@ Règles dédiées existantes :
 - `init-nouveau-projet` : procédure d'initialisation d'un nouveau projet à partir du thème.
 - `remontee-vers-starter` : procédure pour faire remonter une brique d'un projet vers le starter (flux inverse de l'init).
 - `git-commits` : messages de commit en anglais avec gitmoji.
+- `design-tokens` : tokens `@theme` en anglais, pas de valeurs en dur ni de backgrounds preset dans le starter.
