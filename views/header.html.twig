@@ -1,7 +1,7 @@
 {#
  # Header
  #
- # @package WPCinquanteEtUn
+ # @package CollectiveLaCabane
  #}
 
 <header
@@ -44,7 +44,7 @@
 						attributes: {
 							'aria-controls': 'menu-drawer'
 						},
-						title: __('Menu', 'wp-cinquante-et-un'),
+						title: __('Menu', 'collective-la-cabane'),
 						classes: ['group/drawer-button'],
 						mode: 'dark',
 						fill: 'text-off-white',
@@ -56,7 +56,7 @@
 		</cinq-drawer-button>
 
 		{%- if nav_menus.main.get_items -%}
-			<nav aria-label="{{ __('Main navigation', 'wp-cinquante-et-un') }}" class="hidden lg:block">
+			<nav aria-label="{{ __('Main navigation', 'collective-la-cabane') }}" class="hidden lg:block">
 				<ul
 					itemscope
 					class="text-button-m border-off-white/40 -mx-5 flex rounded-full border px-7.5"
@@ -111,7 +111,7 @@
 		<img
 			class="block h-6 w-auto lg:h-13"
 			src="{{ asset('src/img/svg/logo.svg') }}"
-			alt="{{ __("WPCinquanteEtUn's logo", 'wp-cinquante-et-un') }}"
+			alt="{{ __("Collective La Cabane's logo", 'collective-la-cabane') }}"
 			width="177"
 			height="52"
 			loading="lazy"
@@ -134,10 +134,6 @@
 			)
 		-}}
 
-		{%- if get_language_selector() -%}
-			<div class="hidden lg:block">
-				{{- include('components/language-selector.html.twig') -}}
-			</div>
 		{%- endif -%}
 	</div>
 </header>
@@ -146,7 +142,7 @@
 	with {
 		id: 'menu-drawer',
 		classes: [],
-		aria_label: __('Menu', 'wp-cinquante-et-un')
+		aria_label: __('Menu', 'collective-la-cabane')
 	}
 %}
 	{% block content %}
