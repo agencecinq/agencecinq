@@ -8,7 +8,7 @@
 	role="banner"
 	class="{{
 	html_classes(
-		'text-beige container flex items-center gap-2.5 pt-5.25 pb-5 md:gap-5 lg:pt-8.5 lg:pb-4.5',
+		'text-off-white container flex items-center gap-2.5 pt-5.25 pb-5 md:gap-5 lg:pt-8.5 lg:pb-4.5',
 		'[reading-flow:flex-visual]',
 		classes|default([])|join(' ')
 	)
@@ -47,7 +47,7 @@
 						title: __('Menu', 'wp-cinquante-et-un'),
 						classes: ['group/drawer-button'],
 						mode: 'dark',
-						fill: 'text-blanc',
+						fill: 'text-off-white',
 						animate: false
 					},
 					with_context: false
@@ -59,7 +59,7 @@
 			<nav aria-label="{{ __('Main navigation', 'wp-cinquante-et-un') }}" class="hidden lg:block">
 				<ul
 					itemscope
-					class="text-button-m border-beige/40 -mx-5 flex rounded-full border px-7.5"
+					class="text-button-m border-off-white/40 -mx-5 flex rounded-full border px-7.5"
 					itemtype="http://schema.org/SiteNavigationElement"
 				>
 					{% for item in nav_menus.main.get_items() %}
@@ -70,10 +70,10 @@
 								class="{{
 								html_classes(
 									item.current or ( 'current-menu-parent' in item.classes ) or ( 'current-page-ancestor' in item.classes )
-										? 'text-vert'
+										? 'text-green'
 										: '',
 									item.classes|default([])|join(' '),
-									'hover:text-vert group-focus-within:text-vert group-hover:text-vert block px-5 py-5.75'
+									'hover:text-green group-focus-within:text-green group-hover:text-green block px-5 py-5.75'
 								)
 								}}"
 								{{ item.children|length ? 'aria-haspopup="true"' }}
@@ -150,7 +150,7 @@
 	}
 %}
 	{% block content %}
-		<cinq-mobile-menu class="text-bleu max-w-182 mx-auto relative block h-full p-5">
+		<cinq-mobile-menu class="text-blue max-w-182 mx-auto relative block h-full p-5">
 			{{-
 				include(
 					'components/mobile-menu.html.twig',
