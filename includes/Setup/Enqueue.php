@@ -47,9 +47,14 @@ class Enqueue implements Service {
 	public function enqueue_styles(): void {
 		$deps = array();
 
-		// Google Fonts.
-		wp_register_style( 'google-fonts-montserrat', '//fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap', array(), null );
-		$deps[] = 'google-fonts-montserrat';
+		// Google Fonts: body (Atkinson Hyperlegible) + headings (Shantell Sans).
+		wp_register_style(
+			'google-fonts',
+			'//fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Shantell+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap',
+			array(),
+			null
+		);
+		$deps[] = 'google-fonts';
 
 		// register theme-style-css.
 		$filename = Vite::asset( 'src/stylesheets/styles.css' );
