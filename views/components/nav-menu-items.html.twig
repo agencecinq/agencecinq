@@ -35,7 +35,7 @@
 	<div
 		class="{{
 		html_classes(
-			'bg-beige text-bleu rounded-25 pointer-events-none invisible absolute inset-x-0 top-full z-10 mx-auto grid max-w-330 grid-cols-4 gap-5 p-10 opacity-0 transition-opacity duration-200 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 before:absolute before:inset-x-0 before:bottom-full before:z-1 before:h-5 before:w-full'
+			'bg-off-white text-blue rounded-25 pointer-events-none invisible absolute inset-x-0 top-full z-10 mx-auto grid max-w-330 grid-cols-4 gap-5 p-10 opacity-0 transition-opacity duration-200 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 before:absolute before:inset-x-0 before:bottom-full before:z-1 before:h-5 before:w-full'
 		)
 		}}"
 	>
@@ -117,7 +117,7 @@
 					html_classes(
 						'rounded-15',
 						'relative aspect-297/380 break-inside-avoid overflow-hidden text-center before:absolute before:inset-0 before:z-2 before:size-full',
-						mode == 'dark' ? 'text-beige before:bg-bleu/30' : 'text-bleu'
+						mode == 'dark' ? 'text-off-white before:bg-blue/30' : 'text-blue'
 					)
 					}}"
 				>
@@ -130,7 +130,7 @@
 									</p>
 								{%- endif -%}
 								{%- if push.title -%}
-									<p class="h4 text-vert">
+									<p class="h4 text-green">
 										{{- push.title -}}
 									</p>
 								{%- endif -%}
@@ -146,7 +146,7 @@
 										mode: mode,
 										icon: 'bullet',
 										animate: true,
-										fill: mode == 'dark' ? 'text-vert' : 'text-blanc'
+										fill: mode == 'dark' ? 'text-green' : 'text-off-white'
 									}),
 								with_context: false
 							)
@@ -170,7 +170,7 @@
 		{%- if url -%}
 			<div class="col-span-4">
 				<a
-					class="text-bleu/80 text-button-xs uppercase underline"
+					class="text-blue/80 text-button-xs uppercase underline"
 					href="{{ url }}"
 					class="text-button-m"
 				>
