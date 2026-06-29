@@ -1,0 +1,135 @@
+{#
+ # Components: Button
+ #
+ # @param string title The button text.
+ # @param string url The URL the link points to. Can be empty if the button is not a link. If the url is given, the button will be rendered as a a tag instead of a button tag.
+ # @param string target The target attribute for the link, either '_self' or '_blank'. Only applicable if url is provided.
+ # @param string variant Variant of the button, either 'primary', 'secondary' or 'tertiary'.
+ # @param bool disabled
+ # @param bool icon Whether the button includes a bullet.
+ # @param string fill Color of the icon, either 'text-vert', 'text-bleu' or 'text-blanc'.
+ # @param string mode Color mode of the button, either 'light' or 'dark'.
+ # @param attributes Additional HTML attributes for the button element, passed as an associative array (e.g. { 'data-toggle': 'modal', 'aria-label': 'Open modal' }).
+ # @param array classes Additional CSS classes to apply to the button, passed as an array (e.g. [ 'my-custom-class', 'another-class' ]).
+ #}
+
+{%- set variant = variant | default( 'primary' ) -%}
+{%- set mode = mode | default( 'light' ) -%}
+{%- set fill = fill | default( 'text-vert' ) -%}
+{%- set disabled = disabled | default( false ) -%}
+{%- set icon = icon | default( '' ) -%}
+
+{# Variables configurations #}
+{%- set is_primary_or_secondary = variant in ['primary', 'secondary'] -%}
+{%- set is_tertiary = variant == 'tertiary' -%}
+{%- set is_quaternary = variant == 'quaternary' -%}
+{%- set animate = animate is defined ? animate : true -%}
+
+{%- set config = {
+	primary: {
+		icon_size_class: 'size-6.75',
+		icon_margin_class: 'ml-6.75' ~ ( animate ? ' group-focus/button:-translate-x-6.75 group-hover/button:-translate-x-6.75' : '' ),
+		icon_translate_class: animate ? '-translate-x-6.75' : '',
+		title_leading_class: 'leading-[calc(27/14)] lg:leading-[calc(27/15)]',
+		title_padding_class: animate ? 'px-2.5' : 'pl-2.5',
+	},
+	secondary: {
+		icon_size_class: 'size-4.5',
+		icon_margin_class: 'ml-4.5' ~ ( animate ? ' group-focus/button:-translate-x-4.5 group-hover/button:-translate-x-4.5' : '' ),
+		icon_translate_class: animate ? '-translate-x-4.5' : '',
+		title_leading_class: 'leading-[calc(18/13)]',
+		title_padding_class: icon ? 'px-2.5' : 'px-0',
+	},
+	tertiary: {
+		icon_size_class: 'size-[2.4375rem] lg:size-12.5',
+		icon_margin_class: 'mr-[2.4375rem] lg:mr-12.5' ~ ( animate ? ' group-focus/button:translate-x-[2.4375rem] lg:group-focus/button:translate-x-12.5 group-hover/button:translate-x-[2.4375rem] lg:group-hover/button:translate-x-12.5' : '' ),
+		icon_translate_class: animate ? 'translate-x-[2.4375rem] lg:translate-x-12.5' : '',
+		title_leading_class: 'leading-[calc(39/14)] lg:leading-[calc(50/15)]',
+		title_padding_class: 'px-3 lg:px-3.75'
+	},
+	quaternary: {
+		icon_size_class: 'size-2.5',
+		icon_margin_class: '',
+		icon_translate_class: '',
+		title_leading_class: 'underline leading-[calc(18/12)]',
+		title_padding_class: ''
+	}
+} -%}
+{%- set variant_config = config[variant] ?? {} -%}
+
+
+{# Classes CSS #}
+{%- set base_classes = [
+	classes | default( [] ) | join( ' ' ),
+	'button',
+	'button--' ~ variant,
+	'button--' ~ mode,
+	icon ? 'button--icon' : null,
+	icon ? 'button--fill-' ~ fill | replace({ 'text-': '' }) : null,
+	disabled ? null : 'group/button overflow-hidden',
+	url ? 'inline-block align-middle' : '',
+] -%}
+
+{%- if icon_html is defined -%}
+	{% set icon_html = icon_html %}
+{%- elseif icon is defined and icon is not empty -%}
+	{%- set icon_html -%}
+		{{- include( 'svg/use.html.twig', { classes: [ variant_config.icon_size_class ], icon: icon } ) -}}
+	{%- endset -%}
+{%- endif -%}
+
+{%- if title -%}
+	<{{ url ? 'a' : 'button' }}
+		{{ url ? "href=\"#{url}\"" : "type=\"#{ type | default( 'button' ) }\"" }}
+		{{ url and target ? "target=\"#{target}\"" : '' }}
+		{{ url and target == '_blank' ? 'rel="noopener noreferrer"' : '' }}
+		class="{{ html_classes( base_classes | join( ' ' ) ) }}"
+		{{ disabled ? 'disabled' }}
+		{{ attributes ? attributes | map( ( value, key ) => value == '' ? key : "#{key}=\"#{value}\"" ) | join( ' ' ) | raw }}
+	>
+		{%- if icon_html is not empty -%}
+			{%- set wrapper_classes = [
+				'relative inline-flex items-center',
+				disabled ? '' : ( animate ? 'transition-transform duration-700 ease-out' : '' ),
+				is_primary_or_secondary ? 'gap-2.5' : ( is_quaternary ? 'gap-0.75' : 'gap-3.75' ),
+				variant_config.icon_margin_class,
+			] %}
+			<span class="{{ html_classes(wrapper_classes | join( ' ' ) ) }}">
+				{# Initial icon (or from right for tertiary) #}
+				{% set initial_icon_classes = [
+					not is_quaternary ? 'absolute' : '',
+					is_primary_or_secondary ? 'right-full' : 'left-full',
+					is_tertiary ? 'text-bleu bg-vert rounded-full' : ( is_quaternary ? '' : fill ),
+					is_quaternary ? '' : '',
+					disabled or is_quaternary ? '' : 'opacity-100' ~ ( animate ? ' group-hover/button:opacity-0 group-focus/button:opacity-0 transition-opacity duration-500 ease-in' : '' )
+				] %}
+				<span class="{{ html_classes( initial_icon_classes | join( ' ' ) ) }}">
+					{{- icon_html -}}
+				</span>
+
+				{# Title #}
+				<span class="{{ html_classes( variant_config.title_padding_class, variant_config.title_leading_class ) }}">
+					{{- title -}}
+				</span>
+
+				{# Hover icon (or from left for tertiary) #}
+				{% if not disabled and not is_quaternary and animate %}
+					{% set hover_icon_classes = [
+						'absolute',
+						is_primary_or_secondary ? 'left-full' : 'right-full',
+						is_tertiary ? 'bg-vert rounded-full' : fill,
+						'opacity-0 group-hover/button:opacity-100 group-focus/button:opacity-100 transition-opacity duration-500 ease-in'
+					] %}
+					<span class="{{ html_classes(hover_icon_classes | join(' ')) }}">
+						{{- icon_html -}}
+					</span>
+				{% endif %}
+			</span>
+		{% else %}
+			{# Button without icon #}
+			<span class="{{ html_classes( 'block', variant_config.title_padding_class, variant_config.title_leading_class ) }}">
+				{{- title -}}
+			</span>
+		{% endif %}
+	</{{ url ? 'a' : 'button' }}>
+{%- endif -%}

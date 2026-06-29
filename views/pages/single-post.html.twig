@@ -1,0 +1,155 @@
+{#
+ # Single post
+ #
+ # @package WPCinquanteEtUn
+ #}
+
+{% extends 'index.html.twig' %}
+
+{%- block content -%}
+	<main id="content" role="main">
+		<div
+			class="text-blanc rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 bg-[linear-gradient(225deg,#102345_0%,#08152C_100%)] lg:-mb-12.5"
+		>
+			{%- block header -%}
+				{{- include('header.html.twig', { classes: [ 'relative z-10' ] } ) -}}
+			{%- endblock -%}
+
+			<div class="container grid grid-cols-12 gap-x-2.5 gap-y-15 pt-5 pb-20 lg:gap-5 lg:pt-12.5">
+				<div class="col-span-full lg:order-1">
+					{{- yoast_breadcrumb() -}}
+				</div>
+				<div class="col-span-full space-y-7.5 lg:order-2 lg:col-span-6">
+					<h1 class="h2 text-vert" itemprop="headline">{{- post.title -}}</h1>
+
+					{% if post.meta('general').subtitle %}
+						<p class="h5">
+							{{- post.meta('general').subtitle -}}
+						</p>
+					{% endif %}
+
+					{% if post.table_of_contents is defined and (post.table_of_contents|length) > 0 %}
+						<nav class="space-y-2.5" aria-label="{{ __('Table of contents', 'wp-cinquante-et-un') }}">
+							<h2 class="text-vert h-on-title uppercase">
+								{{- __('Table of contents', 'wp-cinquante-et-un') -}}
+							</h2>
+							<ol class="text-button-xs space-y-2" role="list">
+								{% for item in post.table_of_contents %}
+									<li class="space-y-2">
+										<a class="inline-block uppercase underline" href="#{{ item.anchor }}">
+											{{- item.title -}}
+										</a>
+										{%- if item.children is defined and (item.children|length) > 0 -%}
+											<ol class="space-y-1.5 border-l pl-4" role="list">
+												{%- for child in item.children -%}
+													<li>
+														<a class="uppercase underline" href="#{{ child.anchor }}">
+															{{- child.title -}}
+														</a>
+													</li>
+												{%- endfor -%}
+											</ol>
+										{%- endif -%}
+									</li>
+								{%- endfor -%}
+							</ol>
+						</nav>
+					{%- endif -%}
+				</div>
+
+				<footer class="col-span-full flex-col lg:flex-row flex gap-y-2.5 gap-x-22.5 lg:order-4">
+					<nav class="flex gap-2.5" aria-label="{{ __('Share this post', 'wp-cinquante-et-un') }}">
+						<p>
+							{{- __('Share this post', 'wp-cinquante-et-un') -}}
+						</p>
+						<ul class="flex gap-2.5" role="list">
+							{%- for social in shares -%}
+								<li>
+									<a
+										href="{{- social.link -}}{{- post.link -}}"
+										target="_blank"
+										class="flex size-6 items-center justify-center"
+										rel="noopener noreferrer"
+										aria-label="{{ social.name }}"
+									>
+										{{-
+											include(
+												'svg/use.html.twig',
+												{
+													icon: social.id,
+													classes: ['size-6']
+												}
+											)
+										-}}
+									</a>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</nav>
+
+					<p>
+						<time datetime="{{ post.date('c') }}" itemprop="datePublished">
+							{{- __('Published on: %s', 'wp-cinquante-et-un')|format(post.date) -}}
+						</time>
+					</p>
+				</footer>
+
+				<div
+					class="{{
+					html_classes(
+						'col-span-full lg:relative lg:order-3 lg:col-span-6 lg:mx-18.75'
+					)
+					}}"
+				>
+					<div class="rounded-25 aspect-square overflow-hidden">
+						{{-
+							include(
+								'components/image.html.twig',
+								{
+									image: post.thumbnail,
+									classes: ['size-full object-cover object-center'],
+									attributes: {
+										itemprop: 'image'
+									}
+								}
+							)
+						-}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <div class="container grid grid-cols-12 gap-2.5 lg:gap-5 pb-20 pt-32.5">
+            <div class="col-span-full space-y-12.5 lg:col-span-6 lg:col-start-4">
+				<div class="wysiwyg">
+                {{- post.content -}}
+				</div>
+
+				{%- if post.meta('general').learn_more.title or post.meta('general').learn_more.text -%}
+					<div class="bg-vert space-y-5 rounded-15 py-7.5 px-6.25">
+						<h3 class="text-m">
+							{{- post.meta('general').learn_more.title -}}
+						</h3>
+						<p class="h5">
+							{{- post.meta('general').learn_more.text -}}
+						</p>
+					</div>
+				{%- endif -%}
+            </div>
+        </div>
+
+		{{- 
+			include(
+				'components/collection-posts.html.twig', 
+				{ 
+					classes: [ 'bg-blanc', 'py-20', 'lg:py-37.5' ], 
+					posts: post.related_posts(),
+					content: {
+						title: __('Our latest news', 'wp-cinquante-et-un'),
+						overline: __('Discover more', 'wp-cinquante-et-un'),
+					}
+				}
+			) 
+		-}}
+	</main>
+{%- endblock -%}

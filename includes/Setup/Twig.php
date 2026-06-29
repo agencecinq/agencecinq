@@ -12,12 +12,12 @@ namespace WPCinquanteEtUn\Setup;
 use Twig\Extra\Html\{ HtmlExtension };
 use Twig\Extra\Intl\{ IntlExtension };
 use Twig\{ TwigFunction };
-use WPCinquanteEtUn\Vite;
+use WPCinquanteEtUn\{ Service, Vite };
 
 /**
  * Twig
  */
-class Twig {
+class Twig implements Service {
 
 	/**
 	 * Constructor
@@ -130,7 +130,7 @@ class Twig {
 		$twig->addFunction(
 			new TwigFunction(
 				'yoast_breadcrumb',
-				function ( $before = '<div class="breadcrumb">', $after = '</div>', $display = false ) {
+				function ( $before = '<div class="text-mention-large">', $after = '</div>', $display = false ) {
 					return function_exists( 'yoast_breadcrumb' ) ? yoast_breadcrumb( $before, $after, $display ) : '';
 				}
 			)
@@ -141,9 +141,7 @@ class Twig {
 			$twig->addFunction(
 				new TwigFunction(
 					'pll__',
-					function ( $string ) {
-						return pll__( $string );
-					}
+					fn( $text ) => pll__( $text )
 				)
 			);
 		}
@@ -159,7 +157,7 @@ class Twig {
 			);
 		}
 
-		// https://developer.wordpress.org/reference/functions/get_search_form/
+		// @see https://developer.wordpress.org/reference/functions/get_search_form/
 		$twig->addFunction(
 			new TwigFunction(
 				'get_search_form',
@@ -169,12 +167,23 @@ class Twig {
 			)
 		);
 
-		// https://developer.wordpress.org/reference/functions/get_search_query/
+		// @see https://developer.wordpress.org/reference/functions/get_search_query/
 		$twig->addFunction(
 			new TwigFunction(
 				'get_search_query',
 				function () {
 					return get_search_query();
+				}
+			)
+		);
+
+		$twig->addFunction(
+			new TwigFunction(
+				'get_language_selector',
+				function () {
+					if ( function_exists( 'cinq_custom_language_selector' ) ) {
+						return cinq_custom_language_selector();
+					}
 				}
 			)
 		);

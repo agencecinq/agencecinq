@@ -1,0 +1,76 @@
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+<div id="{{ block.id }}" class="{{ html_classes( block.color_scheme == 'dark' ? 'bg-bleu' : '', block.radius == 'top' ? 'relative z-2 rounded-t-[1.5625rem] -mt-6.25 lg:rounded-t-[3.125rem] lg:-mt-12.5', block.radius == 'bottom' ? 'relative z-2 rounded-b-[1.5625rem] -mb-6.25 lg:rounded-b-[3.125rem] lg:-mb-12.5', block.radius == 'y' ? 'relative z-2 rounded-t-[1.5625rem] rounded-b-[1.5625rem] -my-6.25 lg:rounded-t-[3.125rem] lg:rounded-b-[3.125rem] lg:-my-12.5', ) }}">
+	{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+	<div class="{{ html_classes( 'grid grid-cols-6 gap-5 container' ) }}">
+		{%- for item in block.content.items -%}
+			<div class="{{ html_classes( 'col-span-full', item.column_span | default( 'lg:col-span-2' ), item.row_span | default( 'row-span-1' ) ) }}">
+				<article class="{{ html_classes( item.background_color | default( 'bg-blanc' ), item.text_color | default( 'text-bleu' ), 'size-full', 'rounded-25 px-5 py-7.5', ( item.image or item.video ) and ( item.column_span == 'lg:col-span-2' or item.column_span == 'lg:col-span-3' or item.column_span == 'lg:col-span-6' ) ? 'overflow-hidden relative' : '', ( item.image or item.video ) and ( item.column_span == 'lg:col-span-2' or item.column_span == 'lg:col-span-3' or item.column_span == 'lg:col-span-6' ) and item.object_fit == 'object-cover' ? 'after:absolute after:inset-0 after:z-2 after:size-full after:bg-bleu/30' : '', item.column_span == 'lg:col-span-4' ? 'flex flex-col lg:flex-row gap-5', item.row_span == 'lg:row-span-2' ? 'aspect-382/633 lg:aspect-auto' : '' ) }}">
+
+					<div class="{{ html_classes( 'h-full flex flex-col gap-7.5', ( item.image or item.video ) and ( item.column_span == 'lg:col-span-2' or item.column_span == 'lg:col-span-3' or item.column_span == 'lg:col-span-6' ) ? 'relative z-3' : '', item.column_span == 'lg:col-span-3' ? 'lg:gap-y-15' : '' ) }}">
+
+						{%- if item.title or item.text -%}
+							<div class="space-y-5">
+								{%- if item.title -%}
+									<h3 class="h4">
+										{{- item.title -}}
+									</h3>
+								{%- endif -%}
+
+								{%- if item.text -%}
+									<p class="h5">
+										{{- item.text -}}
+									</p>
+								{%- endif -%}
+							</div>
+						{%- endif -%}
+
+						<footer class="{{ html_classes( item.row_span == 'lg:row-span-2' and not item.logo ? 'justify-center lg:justify-between' : 'justify-between', 'mt-auto flex gap-5 items-center' ) }}">
+							{{-
+								include(
+									'components/button.html.twig',
+									item.link | default( {} ) | merge({
+										icon: 'bullet',
+										mode: item.text_color == 'text-blanc' ? 'dark' : 'light',
+										fill: item.fill_color | default( 'text-vert' )
+									}),
+									with_context = false
+								)
+							-}}
+
+							{{- include( 'components/image.html.twig', { image: item.logo, classes: [ 'block w-auto h-14.5 object-contain object-right' ] } ) -}}
+
+						</footer>
+					</div>
+
+					{%- if item.column_span == 'lg:col-span-2' or item.column_span == 'lg:col-span-3' or item.column_span == 'lg:col-span-6' -%}
+						{%- set classes -%}
+						absolute inset-0 z-1
+						{{ item.object_fit | default( 'object-cover' ) }}
+						object-center
+						{{ item.object_fit == 'object-contain' and item.row_span == 'lg:row-span-2' ? 'w-46.5 max-w-full h-auto m-auto' : 'size-full' }}
+						{%- endset -%}
+						{% if item.video %}
+							<video src="{{ item.video.url }}" {{ item.image ? 'poster="' ~ get_image( item.image ).src ~'"' : '' }} autoplay muted loop playsinline class="{{ html_classes( classes ) }}"></video>
+						{% else %}
+							{{- include( 'components/image.html.twig', { image: item.image, classes: [ classes ] } ) -}}
+						{% endif %}
+					{%- endif -%}
+
+					{%- if ( item.image or item.video ) and item.column_span == 'lg:col-span-4' -%}
+						<div class="h-auto w-full lg:w-[calc(calc(100%/2)---spacing(2.5))] shrink-0">
+							{% if item.video %}
+								<video src="{{ item.video.url }}" {{ item.image ? 'poster="' ~ get_image( item.image ).src ~'"' : '' }} autoplay muted loop playsinline class="object-contain object-center size-full"></video>
+							{% else %}
+								{{- include( 'components/image.html.twig', { image: item.image, classes: [
+								'object-contain object-center',
+								'size-full'
+							] } ) -}}
+							{% endif %}
+						</div>
+					{%- endif -%}
+				</article>
+			</div>
+		{%- endfor -%}
+	</div>
+</div>

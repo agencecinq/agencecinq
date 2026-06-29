@@ -1,0 +1,13 @@
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+{%- if post.children | length > 0 -%}
+	<div id="{{ block.id }}">
+		<div class="container grid grid-cols-3 gap-5">
+			{%- for child in post.children({ post_type: post.post_type }) -%}
+				<div class="{{ html_classes( 'col-span-full', loop.first ? 'lg:col-span-2' : 'lg:col-span-1' ) }}">
+					{{- include( 'components/tease-page.html.twig', { post: child } ) -}}
+				</div>
+			{%- endfor -%}
+		</div>
+	</div>
+{%- endif -%}

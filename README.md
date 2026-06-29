@@ -1,14 +1,40 @@
-# WP CINQ
+# WP CINQ – WordPress Starter Theme
 
-**WP CINQ** is a WordPress starter theme built with Timber and Twig, designed to provide a solid foundation for developing custom WordPress themes with a focus on performance, flexibility, accessibility, and modern development practices.
+**WP CINQ** is the agency's WordPress starter theme, built on Timber/Twig, Vite, Tailwind CSS v4 and TypeScript. It is the single source of truth for new client projects: every new project starts from this starter, never from a copy of the previous project.
 
-## Features
+It ships a generic, reusable foundation (block library, components, helpers, tooling) free of any client-specific content, so each project begins clean.
 
-- **Timber & Twig Integration**: Leverages the power of Timber and Twig for clean and efficient templating.
-- **Modern Development Tools**: Includes tools like Composer, npm/Yarn, and Vite for streamlined development workflows.
-- **Accessibility Focused**: Built with accessibility best practices in mind to ensure a better experience for all users.
-- **Performance Optimized**: Designed to be lightweight and fast, ensuring optimal performance out of the box.
-- **Customizable**: Easily extendable and customizable to fit the needs of your project.
+## Key features
+
+- **Timber & Twig**: clean, reusable template components.
+- **Modern tooling**: Composer, pnpm, Vite, TypeScript, PHP CodeSniffer (WPCS) and a GitHub release workflow.
+- **Tailwind CSS v4**: design tokens declared in `@theme` (`src/stylesheets/theme.css`), no `tailwind.config.js`.
+- **Accessibility**: semantic HTML, clear structure, ARIA best practices where relevant.
+- **Performance**: optimized images (WebP, lazy‑loading), SVG sprite, minified assets in production.
+- **Extensibility**: class‑based PHP in `includes/`, Twig components in `views/`, front‑end sources in `src/`.
+
+## Workflows (AI-assisted)
+
+This repository carries Cursor rules in `.cursor/rules/` that document conventions and automate the two key flows. They are the operational reference for the team:
+
+- **`starter-cinq`** (always on): stack, conventions, coding standards (WPCS), language rules, and the living DO/DONT list. This is the base of truth and is meant to evolve over time.
+- **`init-nouveau-projet`**: step-by-step procedure to turn this starter into a new client project (detect and replace identifiers, reset tokens, fonts, icons and assets). Use it when starting a new project.
+- **`remontee-vers-starter`**: the reverse flow. When something built on a project is reusable, this procedure brings it back into the starter (re-neutralize identifiers, strip client content, version bump).
+
+To add a new DO/DONT or a task-specific rule, follow the "Faire évoluer ces règles" section of `starter-cinq`.
+
+## Getting started from the starter
+
+When creating a new project from this starter, follow the `init-nouveau-projet` rule, then:
+
+```bash
+composer install
+pnpm install
+pnpm build      # also generates public/sprite.svg from src/icons/
+pnpm dev        # local dev server
+```
+
+Replace the placeholder assets (`screenshot.png`, `src/img/svg/logo.svg`) and the example palette in `src/stylesheets/theme.css` with the project's own.
 
 ### SVG sprite support
 
@@ -17,15 +43,15 @@ Includes built-in support for SVG sprites, allowing you to easily manage and use
 The theme provide a Twig component located at `views/svg/use.html.twig` to facilitate the use of SVG icons from the sprite. You can include an icon in your templates like this:
 
 ```twig
-{{ 
-	include( 
-		'svg/use.html.twig', 
+{{
+	include(
+		'svg/use.html.twig',
 		{
-			icon: 'icon-name', 
-			title: 'Icon Title', 
-			classes: [ 'custom-class' ],
-		} 
-	) 
+			icon: 'icon-name',
+			title: 'Icon Title',
+			classes: ['custom-class']
+		}
+	)
 }}
 ```
 
@@ -42,38 +68,40 @@ The sprite itself is included in the theme's `index.html.twig` file to ensure it
 The theme includes a custom Twig component for rendering responsive images with WebP support. This component automatically generates the necessary `srcset` and `sizes` attributes for optimal image loading across different devices and screen sizes.
 
 You can use the image component in your Twig templates like this:
+
 ```twig
-{{ 
-	include( 
-		'components/image.html.twig', 
+{{
+	include(
+		'components/image.html.twig',
 		{
-			image: post.thumbnail, 
-			alt: post.title, 
-			sizes: '(max-width: 600px) 100vw, 600px', 
-			classes: [ 'custom-image-class' ],
-		} 
-	) 
+			image: post.thumbnail,
+			alt: post.title,
+			sizes: '(max-width: 600px) 100vw, 600px',
+			classes: ['custom-image-class']
+		}
+	)
 }}
 ```
 
 It will be rendered as:
+
 ```html
 <picture>
-	<source 
-		type="image/webp" 
-		srcset="image-300.webp 300w, image-600.webp 600w, image-900.webp 900w" 
+	<source
+		type="image/webp"
+		srcset="image-300.webp 300w, image-600.webp 600w, image-900.webp 900w"
 		sizes="(max-width: 600px) 100vw, 600px"
-	>
-	<img 
-		class="custom-image-class" 
+	/>
+	<img
+		class="custom-image-class"
 		width="600"
 		height="400"
-		loading="lazy" 
-		src="image-600.jpg" 
-		alt="Post Title" 
-		srcset="image-300.jpg 300w, image-600.jpg 600w, image-900.jpg 900w" 
+		loading="lazy"
+		src="image-600.jpg"
+		alt="Post Title"
+		srcset="image-300.jpg 300w, image-600.jpg 600w, image-900.jpg 900w"
 		sizes="(max-width: 600px) 100vw, 600px"
-	>	
+	/>
 </picture>
 ```
 
@@ -90,7 +118,7 @@ It's useful for images that don't require responsive handling or WebP conversion
 Example of usage in a Twig template:
 
 ```twig
-<img src="{{ assets('src/img/logo.png') }}" alt="Logo" width="200" height="100">
+<img src="{{ assets('src/img/logo.png') }}" alt="Logo" width="200" height="100" />
 ```
 
 ## Structure
@@ -99,21 +127,45 @@ The project structure is organized as follows:
 
 ```
 wp-cinquante-et-un/
-├── acf-json/            # ACF field group JSON files
-├── includes/            # PHP classes and functions
+├── .cursor/rules/       # Cursor rules (conventions + init/back-port workflows)
+├── .github/workflows/   # CI: release on tag v*
+├── includes/            # PHP classes (PSR-4, namespace WPCinquanteEtUn)
+├── languages/           # i18n (.pot template; translations generated per project)
 ├── src/                 # Source files for assets
-│   ├── stylesheets/     # CSS files
-│   ├── scripts/         # JavaScript files
-│   ├── icons/           # SVG icons for sprite
+│   ├── stylesheets/     # CSS (theme.css = @theme tokens, styles.css = imports)
+│   ├── scripts/         # TypeScript components (mounted via piecesjs)
+│   ├── icons/           # SVG icons compiled into public/sprite.svg
 │   ├── img/             # Static images
 |   └── fonts/           # Font files
-├── views/               # Twig templates
-├── public/              # Compiled assets and theme files
+├── views/               # Twig templates (pages/, blocks/, components/, svg/)
+├── public/              # Compiled assets (sprite.svg, etc.)
+├── deploy.sh            # Production build + dev-files purge (used by CI)
 ├── .env.sample          # Sample environment variables file
 ├── composer.json        # PHP dependencies
 ├── package.json         # JavaScript dependencies
+├── phpcs.xml            # PHP CodeSniffer configuration (WPCS)
 └── vite.config.js       # Vite configuration
 ```
+
+### PHP CodeSniffer (phpcs.xml)
+
+The `phpcs.xml` file configures **PHP CodeSniffer** (PHPCS) for the theme. It defines the coding style and quality rules applied to the PHP code.
+
+In this theme, the configuration is based on the **WordPress Coding Standards**: indentation, naming, internationalization (text domain `wp-cinquante-et-un`), and more. The `node_modules/`, `vendor/`, and `dist/` directories are excluded from the analysis.
+
+To run the code analysis (after installing PHPCS, e.g. via Composer or globally):
+
+```bash
+./vendor/bin/phpcs
+```
+
+Or if PHPCS is installed globally:
+
+```bash
+phpcs
+```
+
+This keeps the theme's PHP code aligned with WordPress standards and project conventions.
 
 ### PHP Classes
 
@@ -135,34 +187,18 @@ Don't forget to install and activate the required WordPress plugins, such as ACF
 
 ### JavaScript Dependencies
 
-Use Yarn or npm to install the required JavaScript dependencies:
-
-Using Yarn:
+Use pnpm to install the required JavaScript dependencies:
 
 ```bash
-yarn install
-```		
-
-Using npm:
-
-```bash
-npm install
+pnpm install
 ```
 
 ### Development Server
 
 To start the development server with Vite, run:
 
-Using Yarn:
-
 ```bash
-yarn dev
-```
-
-Using npm:
-
-```bash
-npm run dev
+pnpm dev
 ```
 
 It will start a local development server and provide a URL to access your site.
@@ -171,17 +207,9 @@ It will start a local development server and provide a URL to access your site.
 
 To build the assets for production, run:
 
-Using Yarn:
-
 ```bash
-yarn build
+pnpm build
 ```
-
-Using npm:
-
-```bash
-npm run build
-```	
 
 ### Twig Cache
 
@@ -193,14 +221,10 @@ To clear the cache, simply delete the contents of the `cache` folder or run the 
 rm -rf vendor/timber/timber/cache/*
 ```
 
-### Dump
-
-A dump of the database is loacated at the root of the project named `dump.sql`. You can import it into your local development database to get started quickly with example pages and ACF fields.
-
 ### Troubleshooting
 
 - If you encounter issues with Twig templates not updating, ensure you have cleared the cache as described above.
-- Make sure all dependencies are installed correctly by running `composer install` and `yarn install` or `npm install`.
+- Make sure all dependencies are installed correctly by running `composer install` and `pnpm install`.
 - Check your local environment variables in the `.env` file to ensure they are set up correctly.
 
 ## Resources
@@ -219,4 +243,3 @@ Contributions are welcome! If you find a bug or have a feature request, please o
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-

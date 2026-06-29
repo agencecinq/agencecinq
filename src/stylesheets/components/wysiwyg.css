@@ -9,7 +9,200 @@
 		@apply mb-0;
 	}
 
+	.wysiwyg p {
+		@apply text-body-small-mobile lg:text-body-small-desktop;
+
+		margin-bottom: 1em;
+	}
+
 	.wysiwyg p:empty {
 		@apply hidden;
+	}
+
+	.wysiwyg h1 {
+		@apply text-h2-mobile lg:text-h2-desktop;
+
+		margin-top: 0;
+		margin-bottom: 1.25rem;
+	}
+
+	.wysiwyg h2 {
+		@apply text-h3-mobile lg:text-h3-desktop;
+
+		margin-top: 3.75rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.wysiwyg h3 {
+		@apply text-h4-mobile lg:text-h4-desktop;
+
+		margin-top: 1.25rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.wysiwyg h4 {
+		@apply text-h5-mobile lg:text-h5-desktop;
+
+		margin-top: 1.25rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.wysiwyg h5,
+	.wysiwyg h6 {
+		@apply text-body-small-mobile lg:text-body-small-desktop font-semibold;
+
+		margin-top: 1rem;
+		margin-bottom: 0.5rem;
+	}
+
+	/* Inline */
+	.wysiwyg a {
+		@apply underline underline-offset-2;
+	}
+
+	.wysiwyg strong,
+	.wysiwyg b {
+		@apply font-bold;
+	}
+
+	.wysiwyg em,
+	.wysiwyg i {
+		@apply italic;
+	}
+
+	.wysiwyg mark {
+		@apply bg-vert/20 px-0.5;
+	}
+
+	.wysiwyg code {
+		@apply rounded-5 bg-bleu/10 px-1.5 py-0.5 font-mono text-body-small-mobile lg:text-body-small-desktop;
+	}
+
+	.wysiwyg sub,
+	.wysiwyg sup {
+		@apply text-[0.75em] leading-none;
+	}
+
+	.wysiwyg sup {
+		vertical-align: super;
+	}
+
+	.wysiwyg sub {
+		vertical-align: sub;
+	}
+
+	.wysiwyg s,
+	.wysiwyg del {
+		@apply line-through opacity-80;
+	}
+
+	/* Blockquote */
+	.wysiwyg blockquote {
+		@apply border-l-4 border-vert pl-5 text-body-small-mobile lg:text-body-small-desktop italic text-bleu/90;
+
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.wysiwyg blockquote p:last-child {
+		margin-bottom: 0;
+	}
+
+	.wysiwyg blockquote cite {
+		@apply mt-2 block not-italic text-mention-large text-bleu/70;
+	}
+
+	/* Lists */
+	.wysiwyg ul,
+	.wysiwyg ol {
+		@apply text-body-small-mobile lg:text-body-small-desktop;
+
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		padding-left: 1.5rem;
+	}
+
+	.wysiwyg ul {
+		list-style-type: disc;
+	}
+
+	.wysiwyg ol {
+		list-style-type: decimal;
+	}
+
+	.wysiwyg li {
+		margin-bottom: 0.375rem;
+	}
+
+	.wysiwyg li:last-child {
+		margin-bottom: 0;
+	}
+
+	.wysiwyg ul ul,
+	.wysiwyg ol ol,
+	.wysiwyg ul ol,
+	.wysiwyg ol ul {
+		margin-top: 0.375rem;
+		margin-bottom: 0;
+	}
+
+	/* Horizontal rule */
+	.wysiwyg hr {
+		@apply my-6 border-0 border-t border-bleu/25;
+	}
+
+	/* Pre / code block */
+	.wysiwyg pre {
+		@apply overflow-x-auto rounded-10 border border-bleu/25 bg-bleu/5 p-5 text-body-small-mobile lg:text-body-small-desktop;
+
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.wysiwyg pre code {
+		@apply bg-transparent p-0;
+	}
+
+	/* Table */
+	.wysiwyg table {
+		@apply w-full border-collapse text-body-small-mobile lg:text-body-small-desktop;
+
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.wysiwyg th,
+	.wysiwyg td {
+		@apply border border-bleu/25 px-4 py-3 text-left;
+	}
+
+	.wysiwyg th {
+		@apply bg-bleu/10 font-semibold;
+	}
+
+	.wysiwyg tr:hover td {
+		@apply bg-bleu/5;
+	}
+
+	/* Figure */
+	.wysiwyg figure {
+		@apply my-6;
+	}
+
+	.wysiwyg figure img, .wysiwyg p img {
+		@apply max-w-full rounded-10 align-middle;
+
+		margin-top: 0!important;
+		margin-left: auto!important;
+		margin-right: auto!important;
+		margin-bottom: 0!important;
+	}
+
+	.wysiwyg p:has(> img) {
+		@apply my-25;
+	}
+
+	.wysiwyg figcaption {
+		@apply mt-2 text-mention-large text-bleu/70;
 	}
 }

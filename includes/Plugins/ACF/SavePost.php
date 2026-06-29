@@ -9,29 +9,36 @@
 
 namespace WPCinquanteEtUn\Plugins\ACF;
 
+use WPCinquanteEtUn\Service;
+
 /**
  * SavePost Class
+ *
+ * Extension point hooked on acf/save_post. Add per-project logic here
+ * (post-processing of fields after a save). Empty by default.
  */
-class SavePost {
+class SavePost implements Service {
+
 	/**
 	 * Runs initialization tasks.
 	 *
 	 * @return void
 	 */
-	public function run() {
-		add_filter( 'acf/save_post', array( $this, 'save_post' ), 10, 1 );
+	public function run(): void {
+		add_filter( 'acf/save_post', array( $this, 'save_post' ), 20, 1 );
 	}
-
 
 	/**
 	 * Handles the saving of a post using its ID.
 	 *
-	 * This method is triggered when a post is saved. It receives the post ID,
-	 * which can be either an integer or a string, and performs necessary actions
-	 * related to saving the post.
-	 *
 	 * @param int|string $post_id The ID of the post being saved.
+	 * @return void
 	 */
-	public function save_post( int|string $post_id ) {
+	public function save_post( int|string $post_id ): void {
+		if ( ! is_numeric( $post_id ) || (int) $post_id <= 0 ) {
+			return;
+		}
+
+		// Add project-specific post-save logic here.
 	}
 }

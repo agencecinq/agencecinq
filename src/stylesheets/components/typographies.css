@@ -1,5 +1,59 @@
 @layer components {
+	.h0 {
+		@apply text-h0-mobile lg:text-h0-desktop;
+	}
+
 	.h1 {
 		@apply text-h1-mobile lg:text-h1-desktop;
+	}
+
+	.h2 {
+		@apply text-h2-mobile lg:text-h2-desktop;
+	}
+
+	.h3 {
+		@apply text-h3-mobile lg:text-h3-desktop;
+	}
+
+	.h4 {
+		@apply text-h4-mobile lg:text-h4-desktop;
+	}
+
+	.h5 {
+		@apply text-h5-mobile lg:text-h5-desktop;
+	}
+
+	.h-on-title {
+		@apply text-on-title-mobile lg:text-on-title-desktop;
+	}
+
+	.text-l {
+		@apply text-body-large-mobile lg:text-body-large-desktop;
+
+		letter-spacing: -0.01em;/* Body/Large */
+	}
+
+	.text-m {
+		@apply text-body-medium-mobile lg:text-body-medium-desktop;
+	}
+
+	.text-s {
+		@apply text-body-small-mobile lg:text-body-small-desktop;
+	}
+
+	.text-mention {
+		@apply text-mention-large;
+	}
+
+	.text-button-m {
+		@apply text-button-medium-mobile lg:text-button-medium-desktop;
+	}
+
+	.text-button-s {
+		@apply text-button-small-desktop;
+	}
+
+	.text-button-xs {
+		@apply text-button-very-small-desktop;
 	}
 }

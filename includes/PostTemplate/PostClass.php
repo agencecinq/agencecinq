@@ -12,6 +12,8 @@
 
 namespace WPCinquanteEtUn\PostTemplate;
 
+use WPCinquanteEtUn\Service;
+
 /**
  * PostClass
  *
@@ -20,7 +22,7 @@ namespace WPCinquanteEtUn\PostTemplate;
  * @package WPCinquanteEtUn
  * @subpackage WPCinquanteEtUn/PostTemplate
  */
-class PostClass {
+class PostClass implements Service {
 
 	/**
 	 * Run default hooks and actions for WordPress
@@ -35,13 +37,13 @@ class PostClass {
 	/**
 	 * Filters the list of CSS class names for the current post.
 	 *
-	 * @param string[] $classes  An array of post class names.
-	 * @param string[] $class  An array of additional class names added to the post.
-	 * @param int      $post_id  The post ID.
+	 * @param string[] $classes             An array of post class names.
+	 * @param string[] $additional_classes  An array of additional class names added to the post.
+	 * @param int      $post_id             The post ID.
 	 *
 	 * @return array
 	 */
-	public function post_classes( array $classes, array $class, int $post_id ): array {
+	public function post_classes( array $classes, array $additional_classes, int $post_id ): array {
 		return $classes;
 	}
 }

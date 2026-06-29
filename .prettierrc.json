@@ -1,0 +1,6 @@
+{
+	"plugins": [
+		"@zackad/prettier-plugin-twig",
+		"prettier-plugin-tailwindcss"
+	]
+}

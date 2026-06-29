@@ -5,52 +5,54 @@
  # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  #}
 <!DOCTYPE html>
-<html
-	itemscope
-	itemtype="http://schema.org/WebPage"
-	{{ html_class( 'no-js no-touch antialiased' ) }}
-	{{ site.language_attributes }}
->
+
+<html itemscope itemtype="http://schema.org/WebPage" {{ html_class( 'no-js no-touch antialiased' ) }} {{ site.language_attributes }}>
 	<head>
-		<meta charset="{{ site.charset }}" />
-		<link rel="profile" href="http://gmpg.org/xfn/11" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		{{ function('wp_head') }}
+		<meta charset="{{ site.charset }}"/>
+		<link rel="profile" href="http://gmpg.org/xfn/11"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		{{ function( 'wp_head' ) }}
 	</head>
 
-	<body>
-		{{- function('wp_body_open') -}}
+	<body {{ body_class( 'text-bleu bg-beige antialiased' ) }}>
+		{{- function( 'wp_body_open ') -}}
 
-		<div {{ body_class( '' ) }}>
-			{%- block header -%}
-				{{- include('header.html.twig') -}}
+
+		{%- block content -%}
+		<main id="content" role="main">
+
+			<div class="bg-[linear-gradient(225deg,#102345_0%,#08152C_100%)] text-blanc rounded-b-25 lg:rounded-b-50 -mb-6.25 lg:-mb-12.5 relative z-3">
+				{%- block header -%}
+				<div class="relative">
+					{{- include( 'header.html.twig', { classes: [ 'relative z-10' ] } ) -}}
+				</div>
 			{%- endblock -%}
 
-			{%- block content -%}
-				<main id="content" role="main">
-					<h1>{{- post.title -}}</h1>
+			<div class="container space-y-5 lg:space-y-20 pb-20 pt-5 lg:pt-12.5">
+				{{ yoast_breadcrumb() }}
+				<h1 class="h2 text-vert">{{- post.title -}}</h1>
+			</div>
+		</div>
+
+		{%- if post.content -%}
+			<div class="container grid grid-cols-12 gap-5 pb-20 pt-26.25 lg:pt-32.5">
+				<div class="col-span-full lg:col-span-6 lg:col-start-4 wysiwyg">
 					{{- post.content -}}
-					{{-
-						include(
-							'blocks/blocks.html.twig',
-							{
-								blocks: post.meta('blocks')
-							}
-						)
-					-}}
-				</main>
-			{%- endblock -%}
+				</div>
+			</div>
+		{%- endif -%}
 
-			{%- block footer -%}
-				{{- include('footer.html.twig') -}}
-			{%- endblock -%}
-		</div>
+		{{-
+					include(
+						'blocks/blocks.html.twig',
+						{
+							blocks: post.meta('blocks')
+						}
+					)
+				-}}
+	</main>
+{%- endblock -%}
 
-		{{- function('wp_footer') -}}
-
-		<div id="svg-sprite" style="display: none;">
-			{{- include('public/sprite.svg', ignore_missing: true) -}}
-		</div>
-	</body>
-</html>
+{%- block footer -%}
+{{- include('footer.html.twig') -}}{%- endblock -%}{{- function( 'wp_footer' ) -}}<div id="svg-sprite" style="display: none;">{{- include('public/sprite.svg', ignore_missing: true) -}}</div></body></html>

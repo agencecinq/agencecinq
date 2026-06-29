@@ -1,0 +1,50 @@
+{#  
+ # Components: Tease Page
+ #
+ # @param {object} post The post object containing page details. Required.
+ #}
+
+<article class="text-beige rounded-15 after:bg-bleu/30 relative flex h-95.5 w-full flex-col justify-end overflow-hidden px-5 py-6.5 lg:py-10 after:absolute after:inset-0 after:z-2 after:size-full lg:h-120 lg:px-7.5">
+	{{-
+		include(
+			'components/media.html.twig',
+			{
+				media: post.meta('media').media,
+				classes: 'absolute inset-0 z-1 size-full object-cover object-center'
+			}
+		)
+	-}}
+	<div class="relative z-3 mt-auto flex flex-col space-y-5">
+		<h3 class="h4 max-w-91.75 text-balance">
+			{{- post.meta('general').headline | default(post.title) -}}
+		</h3>
+
+		<div class="flex items-center justify-between gap-5">
+			{%- set excerpt =
+				post.excerpt({
+					chars: 57,
+					read_more: '',
+					force: true
+				})
+			-%}
+			{%- if excerpt|trim -%}
+				<p class="text-s max-w-91.75" itemprop="description">
+					{{- excerpt -}}
+				</p>
+			{%- endif -%}
+
+			<a href="{{ post.link }}" class="text-bleu bg-vert ml-auto flex size-12.5 shrink-0 items-center gap-2.5 rounded-full" aria-label="{{ __('View %s', 'wp-cinquante-et-un')|format(post.title) }}">
+				{{-
+					include(
+						'svg/use.html.twig',
+						{
+							classes: ['size-12.5'],
+							icon: 'arrow-right'
+						},
+						with_context: false
+					)
+				-}}
+			</a>
+		</div>
+	</div>
+</article>

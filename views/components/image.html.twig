@@ -15,7 +15,7 @@
 
 {%- if image -%}
 	{% set image = get_image( image ) %}
-	{% set size = 'image/gif' == image.post_mime_type ? 'full' : size | default( 'large' ) %}
+	{% set size = 'image/gif' == image.post_mime_type ? 'full' : ( size | default( 'large' ) ) %}
 	{% set width = 'image/svg+xml' == image.post_mime_type ? image.width : ( image.sizes[size].width ? image.sizes[size].width : image.width ) -%}
 	{% set height = 'image/svg+xml' == image.post_mime_type ? image.height : ( image.sizes[size].height ? image.sizes[size].height : image.height ) -%}
 
@@ -36,7 +36,7 @@
 		{%- endif -%}
 
 		<img
-			class="{{ html_classes( '', classes | default( [] ) | join( ' ' ) ) }}"
+			class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}"
 			loading="{{ loading | default( 'lazy' ) }}"
 			src="{{ image.src( size ) | e }}"
 			alt="{{ alt | default( image.alt ? image.alt : image.title ) | e }}"

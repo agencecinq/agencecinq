@@ -14,7 +14,7 @@ use Timber\Timber;
  *
  * @package WPCinquanteEtUn
  */
-class GeneralTemplate {
+class GeneralTemplate implements Service {
 
 	/**
 	 * Runs initialization tasks.

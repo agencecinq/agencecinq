@@ -1,7 +1,7 @@
 {
-	"name": "@agencecin/wp-cinquante-et-un",
-	"version": "0.0.0",
-	"description": "CINQ starter WordPress theme",
+	"name": "@agencecinq/wp-cinquante-et-un",
+	"version": "1.0.0",
+	"description": "WP CINQ starter WordPress theme",
 	"type": "module",
 	"homepage": "https://github.com/agencecinq/wp-cinquante-et-un/blob/master/README.md",
 	"bugs": {
@@ -19,18 +19,25 @@
 		"build": "vite build"
 	},
 	"devDependencies": {
-		"@tailwindcss/postcss": "^4.1.13",
-		"@tailwindcss/vite": "^4.1.13",
-		"@zackad/prettier-plugin-twig": "^0.16.0",
-		"laravel-vite-plugin": "^2.0.1",
-		"postcss": "^8.5.4",
-		"prettier": "^3.6.2",
-		"prettier-plugin-tailwindcss": "^0.6.14",
-		"vite": "^7.1.7",
+		"@tailwindcss/postcss": "^4.3.1",
+		"@tailwindcss/vite": "^4.3.1",
+		"@zackad/prettier-plugin-twig": "^0.17.0",
+		"laravel-vite-plugin": "^3.1.0",
+		"postcss": "^8.5.15",
+		"prettier": "^3.8.4",
+		"prettier-plugin-tailwindcss": "^0.8.0",
+		"vite": "^8.0.16",
 		"vite-plugin-compression": "^0.5.1",
-		"vite-svg-sprite-wrapper": "^1.4.1"
+		"vite-svg-sprite-wrapper": "^1.5.0"
 	},
 	"dependencies": {
-		"tailwindcss": "^4.1.13"
+		"@19h47/accordion": "^8.0.0",
+		"@agencecinq/drawer": "^5.0.1",
+		"@agencecinq/modal": "^2.0.1",
+		"@agencecinq/utils": "^5.0.1",
+		"@splidejs/splide": "^4.1.4",
+		"gsap": "^3.15.0",
+		"piecesjs": "^0.5.5",
+		"tailwindcss": "^4.3.1"
 	}
 }

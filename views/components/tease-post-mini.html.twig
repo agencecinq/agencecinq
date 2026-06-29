@@ -1,0 +1,46 @@
+{#
+ # Components: Tease Post Mini
+ #
+ # Schema.org: BlogPosting (headline, image, description, url, datePublished, dateModified, author).
+ # A11y: Single main link per card (Discover) with aria-label; heading h2; image alt from thumbnail.
+ #
+ # @todo This is a static component, it should be dynamic and receive data as props
+ #}
+<article itemscope itemtype="https://schema.org/BlogPosting" class="{{ html_classes( 'bg-beige min-h-50 text-bleu flex overflow-hidden rounded-10', classes|default([]) | join(' ') ) }}">
+
+	<div class="bg-bleu/30 self-stretch w-29.75 max-w-full">
+		{{- include( 'components/image.html.twig', { image: post.thumbnail, classes: [ 'size-full object-cover object-center' ], attributes: { itemprop: 'image' } } ) -}}
+	</div>
+
+	<div class="space-y-3 flex flex-col flex-1 min-h-0">
+		<div class="text-m my-auto h-full flex flex-col gap-y-1.5 px-5 py-4.25">
+
+			{%- if post.categories | length > 0 -%}
+				<div class="flex flex-wrap gap-0.75">
+					{%- for category in post.categories -%}
+						{{- include( 'components/tag.html.twig', { title: category.name, attributes: { itemprop: 'articleSection' } } ) -}}
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+
+			<h2 itemprop="headline" class="font-bold">
+				{{- post.title -}}
+			</h2>
+
+			{%- set excerpt = post.excerpt( { chars: 67, read_more: '' } ) -%}
+			{%- if excerpt | trim -%}
+				<p itemprop="description" class="text-mention-large">
+					{{- excerpt -}}
+				</p>
+			{%- endif -%}
+
+			<a href="{{ post.link }}" itemprop="url" class="text-button-xs mt-auto uppercase underline" aria-label="{{ __( 'Discover: %s', 'wp-cinquante-et-un' ) | format( post.title ) }}">
+				{{- __( 'Discover', 'wp-cinquante-et-un' ) -}}
+			</a>
+		</div>
+	</div>
+
+	<meta itemprop="datePublished" content="{{ post.date( 'c' ) }}">
+	<meta itemprop="dateModified" content="{{ post.modified( 'c' ) }}">
+	<meta itemprop="author" content="{{ post.author.name | default( 'WPCinquanteEtUn' ) | e( 'html_attr' ) }}">
+</article>

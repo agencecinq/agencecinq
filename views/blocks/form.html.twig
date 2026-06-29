@@ -1,0 +1,16 @@
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<div id="{{ block.id }}" class="container grid-cols-12 block-form grid lg:gap-5">
+	<div class="col-span-full lg:col-span-10 lg:col-start-2">
+
+		{{- ('[contact-form-7 id="' ~ block.content.form ~ '" title="' ~ title ~ '"]')|shortcodes -}}
+	</div>
+</div>

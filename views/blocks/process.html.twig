@@ -1,0 +1,133 @@
+{#
+ # Process block
+ # Title, subtitle, optional text, then numbered steps (image, title, text, badge).
+ # @package WPCinquanteEtUn
+ #}
+
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<section id="{{ block.id }}" class="container space-y-15 lg:space-y-20">
+	{%- if block.content.title or block.content.subtitle or block.content.text -%}
+		<div class="grid grid-cols-4 gap-x-2.5 gap-y-7.5 lg:grid-cols-12 lg:gap-x-5">
+			{%- if block.content.title -%}
+				<div class="col-span-full space-y-5 lg:col-span-5">
+					{%- if block.content.title -%}
+						<h2 class="h3">{{- block.content.title -}}</h2>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+
+			{%- if block.content.subtitle -%}
+				<div class="col-span-full space-y-5 lg:col-span-6 lg:col-start-1">
+					{%- if block.content.subtitle -%}
+						<p class="h5">
+							{{- block.content.subtitle -}}
+						</p>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+
+			{%- if block.content.text -%}
+				<div class="col-span-full space-y-5 lg:col-span-6 lg:col-start-7 lg:mx-[3.46875rem]">
+					<div class="text-l">
+						{{- block.content.text|raw -}}
+					</div>
+				</div>
+			{%- endif -%}
+		</div>
+	{%- endif -%}
+
+	{%- if (block.steps|default([])|length) > 0 -%}
+		<div class="grid grid-cols-1 gap-x-5 gap-y-15 lg:grid-cols-12">
+			{%- for step in block.steps -%}
+				<article class="col-span-full lg:col-span-4">
+					<span
+						class="bg-vert relative z-2 mx-auto -mb-[1.78125rem] flex size-14.25 items-center justify-center rounded-full font-semibold lg:-mb-[2.34375rem] lg:size-18.75"
+						aria-hidden="true"
+					>
+						{{- loop.index -}}
+					</span>
+
+					<div class="relative z-1 flex flex-col gap-y-5 lg:gap-y-7.5">
+						<div
+							class="bg-bleu/30 rounded-15 relative aspect-382/429 overflow-hidden lg:aspect-427/480"
+						>
+							{{-
+								include(
+									'components/image.html.twig',
+									{
+										image: step.image,
+										classes: ['size-full object-cover'],
+										width: 400,
+										height: 300
+									},
+									with_context: false
+								)
+							-}}
+						</div>
+
+						{%- if step.link.url or step.logos or step.title or step.text -%}
+							<div class="space-y-5 lg:space-y-10">
+								{%- if step.logos or step.title or step.text -%}
+									<div class="space-y-5">
+										{%- if step.title or step.text -%}
+											<div class="space-y-2.5">
+												{%- if step.title -%}
+													<h3 class="h4">{{- step.title -}}</h3>
+												{%- endif -%}
+												{%- if step.text -%}
+													<p class="text-s">
+														{{- step.text -}}
+													</p>
+												{%- endif -%}
+											</div>
+										{%- endif -%}
+
+										{%- if step.logos -%}
+											<div class="flex flex-wrap gap-7.5">
+												{%- for logo in step.logos -%}
+													{{-
+														include(
+															'components/image.html.twig',
+															{
+																image: logo,
+																classes: [
+																	'block w-auto h-10.5 max-w-full w-full object-contain object-center'
+																]
+															},
+															with_context: false
+														)
+													-}}
+												{%- endfor -%}
+											</div>
+										{%- endif -%}
+									</div>
+								{%- endif -%}
+
+								{{
+									include(
+										'components/button.html.twig',
+										{
+											title: step.link.title,
+											url: step.link.url,
+											icon: 'bullet'
+										},
+										with_context: false
+									)
+								}}
+							</div>
+						{%- endif -%}
+					</div>
+				</article>
+			{%- endfor -%}
+		</div>
+	{%- endif -%}
+</section>

@@ -1,3 +1,139 @@
 @layer components {
-	.button {}
+	.button {
+		border-radius: calc(infinity * 1px);
+		text-align: center;
+	}
+
+	.button[disabled] {
+		cursor: not-allowed;
+	}
+
+	/* Variants */
+	.button--primary {
+		@apply text-button-medium-mobile lg:text-button-medium-desktop;
+		
+		padding-inline: calc(var(--spacing) * 3.5); /* 14px */
+		padding-block: calc(var(--spacing) * 2.5); /* 10px */
+		border-style: var(--tw-border-style);
+		border-width: 1px;
+	}
+
+	@media (width >= 64rem /* 1024px */) {
+		.button--primary {
+			padding-block: 0.90625rem; /* 14.5px */
+		}
+	}
+
+	.button--primary.button--icon {
+		padding-left: calc(var(--spacing) * 3.5); /* 14px */
+		padding-right: calc(var(--spacing) * 1.75); /* 7px */
+	}
+
+	.button--secondary {
+		@apply text-button-small-desktop uppercase transition-colors duration-500 ease-in;
+
+		padding-inline: calc(var(--spacing) * 3); /* 12px */
+		padding-block: calc(var(--spacing) * 1.5); /* 6px */
+	}
+
+	@media (width >= 64rem /* 1024px */) {
+		.button--secondary {
+			padding-block: calc(var(--spacing) * 2.5); /* 10px */
+			padding-inline: calc(var(--spacing) * 5); /* 20px */
+		}
+	}
+
+	.button--secondary.button--icon {
+		padding-left: calc(var(--spacing) * 5); /* 20px */
+		padding-right: calc(var(--spacing) * 2.5); /* 10px */
+	}
+
+	.button--secondary.button--icon svg {
+		@apply transition-colors duration-500 ease-in-out;
+	}
+
+	.button--tertiary {
+		@apply bg-blanc text-bleu text-button-medium-mobile lg:text-button-medium-desktop;
+
+		padding: calc(var(--spacing) * 1.25); /* 5px */
+	}
+
+	@media (width >= 64rem /* 1024px */) {
+		.button--tertiary {
+			padding-inline: calc(var(--spacing) * 2.25); /* 9px */
+			padding-block: calc(var(--spacing) * 1.75); /* 7px */
+		}
+	}
+
+	.button--tertiary[disabled] {
+		@apply bg-bleu/14! text-bleu! border-bleu/14!;
+	}
+
+	.button--quaternary {
+		@apply text-button-very-small-desktop bg-vert;
+
+		text-transform: uppercase;
+
+		padding-block: calc(var(--spacing) * 1); /* 3px */
+		padding-inline: calc(var(--spacing) * 1.75); /* 7px */
+	}
+
+	.button--quaternary.button--icon {
+		padding-right: calc(var(--spacing) * 1.75); /* 7px */
+		padding-left: calc(var(--spacing) * 1.25); /* 5px */
+	}
+
+	/* Color Modes */
+	.button--light.button--primary {
+		@apply text-bleu border-bleu;
+	}
+
+	.button--light.button--secondary {
+		@apply bg-bleu text-blanc;
+	}
+
+	.button--light.button--secondary:not([disabled]):hover,
+	.button--light.button--secondary:not([disabled]):focus {
+		@apply bg-blanc text-bleu;
+	}
+
+	.button--light.button--secondary:not([disabled]):hover.button--icon svg,
+	.button--light.button--secondary:not([disabled]):focus.button--icon svg {
+		@apply text-bleu;
+	}
+
+	.button--light.button--secondary.button--icon svg {
+		@apply text-blanc;
+	}
+
+	.button--light[disabled] {
+		@apply bg-blanc/14! text-blanc! border-blanc/14!;
+		backdrop-filter: blur(10px);
+	}
+
+	.button--dark.button--primary {
+		@apply text-blanc border-blanc;
+	}
+
+	.button--dark.button--secondary {
+		@apply bg-blanc text-bleu;
+	}
+
+	.button--dark.button--secondary:not([disabled]):hover,
+	.button--dark.button--secondary:not([disabled]):focus {
+		@apply bg-bleu text-blanc;
+	}
+
+	.button--dark.button--secondary:not([disabled]):hover.button--icon svg,
+	.button--dark.button--secondary:not([disabled]):focus.button--icon svg {
+		@apply text-blanc;
+	}
+
+	.button--dark.button--secondary.button--icon svg {
+		@apply text-bleu;
+	}
+
+	.button--dark[disabled] {
+		@apply bg-bleu/14! text-bleu! border-bleu/14!;
+	}
 }

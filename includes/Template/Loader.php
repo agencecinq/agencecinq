@@ -12,13 +12,15 @@
 
 namespace WPCinquanteEtUn\Template;
 
+use WPCinquanteEtUn\Service;
+
 /**
  * Handles loading and redirecting template-related functionality.
  *
  * @package WordPress
  * @subpackage WPCinquanteEtUn
  */
-class Loader {
+class Loader implements Service {
 
 	/**
 	 * Runs initialization tasks.

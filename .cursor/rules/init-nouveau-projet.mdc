@@ -1,0 +1,100 @@
+---
+description: Procédure d'initialisation d'un nouveau projet WordPress à partir du thème CINQ. À déclencher quand on démarre un nouveau site, qu'on renomme le thème, ou qu'on repart d'une copie d'un projet précédent à nettoyer.
+alwaysApply: false
+---
+
+# Initialiser un nouveau projet à partir du thème CINQ
+
+But : transformer ce dépôt (le starter ou une copie du dernier projet) en un thème propre au nom du nouveau client, sans laisser traîner d'identifiants, de tokens, de SVG, de polices ou de PHP d'un projet précédent. C'est le point faible des copies manuelles : le renommage est presque toujours incomplet. Cette procédure liste exactement quoi faire et quoi vérifier.
+
+Travaille étape par étape et coche chaque étape avant de passer à la suivante. À la fin, lance la checklist de vérification.
+
+## Étape 0 : détecter les identifiants ACTUELS
+
+Ne devine pas. Lis-les dans le dépôt courant et note-les comme chaînes à remplacer :
+
+- **Nom d'affichage** : en-tête `Theme Name` dans `style.css`.
+- **Slug / text domain** : en-tête `Text Domain` dans `style.css` (ex actuel : `nexiode`). C'est aussi le nom du `.pot` dans `languages/` et, en principe, le nom du dossier du thème.
+- **Namespace PHP** : clé `autoload.psr-4` dans `composer.json` (ex actuel : `Nexiode\`).
+- **Package npm** : clé `name` dans `package.json` (ex actuel : `@agencecinq/nexiode`).
+- **Package Composer** : clé `name` dans `composer.json`. Attention : sur les copies, elle est souvent restée sur un ancien projet (ex constaté : `agencecinq/wp-cinquante-et-un`). Vérifie sa vraie valeur, ne suppose pas qu'elle suit le nom du projet.
+
+Demande à l'utilisateur le nom du nouveau projet, puis dérive les nouvelles valeurs :
+
+- Nom d'affichage : tel quel (ex : `Bellitalia`).
+- Slug / text domain : kebab-case minuscule (ex : `bellitalia`).
+- Namespace PHP : PascalCase (ex : `Bellitalia`).
+- Package npm : `@agencecinq/<slug>`.
+- Package Composer : `agencecinq/<slug>`.
+
+## Étape 1 : remplacer les identifiants
+
+Fais un remplacement global, en traitant chaque identifiant détecté à l'étape 0 vers sa nouvelle valeur. Couvre tout le dépôt SAUF `node_modules/`, `vendor/`, `dist/`, `.git/` et les fichiers de lock.
+
+Endroits où ces chaînes vivent : `style.css` (en-têtes), `composer.json` (`name` + `autoload.psr-4`), `package.json` (`name`, `homepage`, `repository`, `bugs`), tous les `*.php` de `includes/` et de la racine (déclarations `namespace`, docblocks `@package`/`@subpackage`, littéraux de text domain dans `__()`, `_e()`, etc.), les `*.twig` (docblocks `@package`), `README.md`, `deploy.sh`, `.github/workflows/`.
+
+Points de vigilance :
+
+- Le text domain est résolu dynamiquement via `get_theme_text_domain()` (il lit `Text Domain` de `style.css`), mais les littéraux comme `'nexiode'` dans les appels `__()` sont en dur : ils doivent matcher l'en-tête, donc se remplacent en même temps.
+- NE PAS toucher à l'identité agence : `CINQ`, `contact@agencecinq.com`, `https://agencecinq.com`, lignes `@author CINQ ...`, `Author` / `Author URI`.
+- Si la valeur Composer de l'étape 0 était un vieux nom orphelin (autre projet), corrige-la aussi vers `agencecinq/<slug>`.
+
+## Étape 2 : renommer les fichiers et le dossier
+
+- `languages/<ancien-slug>.pot` -> `languages/<slug>.pot`.
+- Fichiers de langue compilés type `languages/<ancien-slug>-fr_FR.mo` -> `<slug>-fr_FR.mo` si présents.
+- Le dossier du thème lui-même -> `<slug>` (dans `wp-content/themes/`).
+- Remets `style.css` `Version` à `1.0.0` (ou la convention en vigueur) pour le nouveau projet.
+
+## Étape 3 : réinitialiser les tokens Tailwind
+
+Dans `src/stylesheets/theme.css`, le bloc `@theme` contient des lignes de reset (`--color-*: initial;`, `--text-*: initial;`, `--radius-*: initial;`) : garde-les, elles servent à repartir propre.
+
+- **Couleurs** : supprime les couleurs du projet précédent (ex : `--color-bleu-nexiode`, `--color-vert-nexiode`, etc.) et déclare la palette du nouveau client. Garde `--color-black` / `--color-white`.
+- **Typographies et radius** : conserve l'échelle générique si elle convient, ajuste les valeurs selon la maquette. Ne laisse pas de token qui référence une identité de l'ancien projet.
+- Tout token utilisé dans les `.twig`/`.ts` doit exister dans `@theme`.
+
+## Étape 4 : polices
+
+Aligne les trois sources, c'est un point qui dérive souvent sur les copies :
+
+1. Les fichiers dans `src/fonts/` (ex : un seul `.woff2` peut subsister d'un ancien projet).
+2. Les `@font-face` dans `src/stylesheets/base/font-face.css`.
+3. La variable `--default-font-family` dans `theme.css`.
+
+Vérifie que la famille déclarée en `@font-face`, le fichier réellement présent, et `--default-font-family` désignent bien la MÊME police. (Cas observé à éviter : `--default-font-family` réglé sur `Montserrat` alors que seul `ft-kunst-grotesk-regular.woff2` est présent et déclaré.)
+
+## Étape 5 : SVG et assets
+
+- `src/icons/` : garde les icônes UI génériques (flèches, chevrons, +/-, recherche, bars/times, enveloppe, globe) et les réseaux sociaux réellement utilisés. Supprime les icônes métier du projet précédent (ex pour nexiode : `controleur-wizard`, `detection-anomalies`, `eclairage-*`, `gestion-*`, `mise-en-valeur`, `pilotage-lumiere`). Ajoute les icônes du nouveau projet.
+- `public/` : supprime tout logo ou SVG nominatif d'un ancien client (ex constaté : `public/logo-agora-makers.svg`).
+- `src/img/` : supprime les images statiques de l'ancien projet, ajoute celles du nouveau.
+- `screenshot.png` : à remplacer par le visuel du nouveau thème (ou neutre).
+- Régénère le sprite : `pnpm build` recompile `src/icons/*.svg` vers `public/sprite.svg`.
+
+## Étape 6 : nettoyer le PHP, les blocs et les CPT
+
+Le PHP se nettoie au fur et à mesure, mais retire d'emblée ce qui est clairement spécifique au projet précédent et inutile au nouveau :
+
+- Blocs ACF non utilisés : supprime le trio cohérent (layout dans `includes/Plugins/ACF/IncludeFields/Layouts/`, template `views/blocks/`, composant `src/scripts/components/` s'il existe).
+- CPT / taxonomies non pertinents : `includes/Post/`, `includes/Taxonomy/`, et les routeurs racine associés (`single-<cpt>.php`, `archive-<cpt>.php`, `taxonomy-<tax>.php`).
+- `acf-json/` : repars d'une base propre si le projet précédent y a laissé ses groupes.
+- Strings Polylang, champs ThemeFields, etc. : adapte au nouveau projet.
+
+## Étape 7 : config locale, dépendances, build
+
+- Crée `.env` à partir de `.env.sample` et règle `APP_URL` sur l'URL locale.
+- `composer install` puis `pnpm install`.
+- `pnpm dev` pour développer, `pnpm build` pour vérifier le build prod.
+- Lance phpcs (`composer` / config `phpcs.xml`) et corrige les avertissements introduits.
+
+## Checklist de vérification finale
+
+Avant de considérer l'init terminée, vérifie qu'il ne reste AUCUNE trace de l'ancien projet :
+
+1. Recherche globale (hors `vendor`, `node_modules`, `dist`, `.git`, locks) de l'ancien slug, de l'ancien namespace, de l'ancien nom d'affichage et de l'ancien package npm : zéro résultat attendu.
+2. Recherche d'éventuels noms d'anciens clients (logos, icônes métier, packages Composer orphelins) : zéro résultat.
+3. `composer.json` `name` et `autoload.psr-4` cohérents avec le nouveau slug/namespace.
+4. `style.css`, `package.json` et le `.pot` portent bien le nouveau nom ; identité agence intacte.
+5. Police : `@font-face`, fichier présent et `--default-font-family` désignent la même famille.
+6. `pnpm build` passe et régénère `public/sprite.svg` ; phpcs ne remonte pas de nouvelle erreur.

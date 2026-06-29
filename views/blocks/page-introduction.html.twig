@@ -1,0 +1,75 @@
+{#
+ # Blocks: Page Introduction
+ # Intro section with breadcrumbs, title, text and optional link (left) + media (right).
+ #}
+
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<section
+	id="{{ block.id }}"
+	class="{{
+	html_classes(
+		'text-beige [background:linear-gradient(225deg,#102345_0%,#08152C_100%)]',
+		block.radius != 'none' ? 'relative z-5',
+		block.radius == 'top' ? 'rounded-t-25 lg:rounded-t-50 -mt-6.25 lg:-mt-12.5',
+		block.radius == 'bottom' ? 'rounded-b-25 lg:rounded-b-50 -mb-6.25 lg:-mb-12.5',
+		block.radius == 'y'
+			? 'rounded-t-25 rounded-b-25 lg:rounded-t-50 lg:rounded-b-50 -my-6.25 lg:-my-12.5'
+	)
+	}}"
+>
+	<div class="container grid grid-cols-12 gap-x-2.5 gap-y-15 lg:gap-x-5">
+		{%- if block.content.breadcrumb or block.content.title or block.content.text or block.content.breadcrumb -%}
+			<div class="col-span-full space-y-7.5 lg:col-span-6">
+				{%- if block.content.breadcrumb or block.content.title -%}
+					<div class="space-y-5">
+						{%- if block.content.breadcrumb -%}
+							{{- yoast_breadcrumb() -}}
+						{%- endif -%}
+
+						{%- if block.content.title -%}
+							<h1 class="h2 text-vert">{{- block.content.title -}}</h1>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
+
+				{%- if block.content.text -%}
+					<div class="text-l">
+						{{- block.content.text -}}
+					</div>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+
+		<div
+			class="{{
+			html_classes(
+				'col-span-full lg:relative lg:col-span-6 lg:mx-18.75',
+				block.content.breadcrumb or block.content.title or block.content.text or block.content.breadcrumb
+					? ''
+					: 'lg:col-start-7'
+			)
+			}}"
+		>
+			<div class="rounded-25 aspect-square overflow-hidden">
+				{{-
+					include(
+						'components/media.html.twig',
+						{
+							media: block.media,
+							classes: 'size-full object-cover object-center'
+						}
+					)
+				-}}
+			</div>
+		</div>
+	</div>
+</section>

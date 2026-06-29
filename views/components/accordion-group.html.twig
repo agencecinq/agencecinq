@@ -1,0 +1,67 @@
+{#  
+ # Components: Accordion Group
+ #
+ # @param classes (array) - The classes to apply to the accordion group.
+ # @param accordions (array) - The accordions to display.
+ #
+ # @example
+ # {{- include('components/accordion-group.html.twig', { classes: [ 'bg-beige rounded-20 px-3.5 py-7.5 lg:px-12.75 lg:py-9.25' ], accordions: block.content.accordions }) -}}
+ #}
+
+{% if (accordions|length) > 1 %}
+	<cinq-accordion-group
+		class="{{
+		html_classes(
+			classes|default([])|join(' '),
+			'divide-bleu/25 block space-y-3.75 divide-y lg:space-y-6.25'
+		)
+		}}"
+	>
+		{%- for accordion in accordions -%}
+			{% set id = (accordion.header|sanitize) ~ '-' ~ loop.index0 %}
+			<div
+				data-accordion-open="false"
+				data-accordion-deselect="true"
+				class="js-accordion-panel pb-3.75 last:pb-0 lg:pb-6.25"
+			>
+				<button
+					type="button"
+					class="js-accordion-header group text-m flex w-full items-center justify-between gap-2.5 text-left"
+					aria-expanded="false"
+					aria-controls="{{ id }}-body"
+					id="{{ id }}-{{ loop.index }}-header"
+				>
+					{{- accordion.header -}}
+
+					<span
+						class="text-bleu bg-vert flex size-6.25 shrink-0 items-center justify-center rounded-full"
+					>
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									classes: [
+										'size-6.25 block group-aria-expanded:rotate-180 transition-transform duration-300 ease-out'
+									],
+									icon: 'chevron-down'
+								},
+								with_context: false
+							)
+						-}}
+					</span>
+				</button>
+
+				<div
+					class="text-button-m transition-[max-height] duration-300 ease-out"
+					id="{{ id }}-body"
+					role="region"
+					aria-labelledby="{{ id }}-header"
+				>
+					<div class="js-accordion-inner text-s space-y-3 pt-2.5">
+						{{ accordion.content }}
+					</div>
+				</div>
+			</div>
+		{%- endfor -%}
+	</cinq-accordion-group>
+{% endif %}

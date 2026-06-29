@@ -7,76 +7,163 @@
  # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  #}
 
-<footer role="contentinfo">
-	<a href="{{ site.link }}" aria-label="{{ site.name }}">
-		<img src="{{ asset( 'src/img/svg/logo.svg' ) }}" alt="{{ __( "CINQ's logo", 'wp-cinquante-et-un' ) }}" width="79" height="16" loading="lazy">
-		<span class="sr-only">{{- site.name -}}</span>
-	</a>
+{%- set link = theme.contact.link | default({}) -%}
+{%- set url = link.url | default('') -%}
+{%- set domaine = fn( 'get_query_var', 'domaine' ) | default( '' ) | sanitize -%}
 
-	{%- if socials -%}
-		<ul>
-			{%- for social in socials -%}
-				<li>
-					<a
-						href="{{ social.url }}"
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label="{{ social.title }}"
-					>
-						{{-
-							include(
-								'svg/use.html.twig',
-								{
-									icon: social.id
-								}
-							)
-						-}}
-						<span class="sr-only">{{- social.title -}}</span>
-					</a>
-				</li>
-			{%- endfor -%}
-		</ul>
-	{%- endif -%}
+{%- if url -%}
+	<div class="lg:aspect-1440/953 flex items-center relative pt-20 lg:pt-0 pb-38.25 lg:pb-8.75 z-1 after:absolute after:inset-0 after:z-2 after:bg-bleu/30">
 
-	{%- if nav_menus.footer.get_items -%}
-		<ul
-			itemscope
-			class="text-cta inline-flex gap-4 lg:gap-8"
-			itemtype="http://schema.org/SiteNavigationElement"
-		>
-			{%- for item in nav_menus.main.get_items() -%}
-				<li>
-					<a
-						href="{{ item.url }}"
-						itemprop="url"
-						class="flex items-center gap-2"
-						{{ item.is_target_blank or item.is_external ? 'target="' ~ item.target ~ '" rel="noopener noreferer"' }}
-					>
-						{{- item.title -}}
-					</a>
-				</li>
-			{%- endfor -%}
-		</ul>
-	{%- endif -%}
+		<div class="container grid gap-2.5 lg:gap-5 grid-cols-12 relative z-3">
 
-	{%- if nav_menus.legals.get_items -%}
-		<ul
-			itemscope
-			class="text-cta inline-flex gap-4 lg:gap-8"
-			itemtype="http://schema.org/SiteNavigationElement"
-		>
-			{%- for item in nav_menus.main.get_items() -%}
-				<li>
-					<a
-						href="{{ item.url }}"
-						itemprop="url"
-						class="flex items-center gap-2"
-						{{ item.is_target_blank or item.is_external ? 'target="' ~ item.target ~ '" rel="noopener noreferer"' }}
-					>
-						{{- item.title -}}
-					</a>
-				</li>
-			{%- endfor -%}
-		</ul>
-	{%- endif -%}
+			<form class="col-span-full lg:col-span-8 lg:col-start-3 text-center space-y-10 lg:space-y-20" method="get" action="{{ url | esc_html }}">
+
+				<div class="space-y-10 text-beige">
+					<img class="mx-auto" src="{{ asset( 'src/img/svg/logo.svg' ) }}" alt="{{ __( "WPCinquanteEtUn's logo", 'wp-cinquante-et-un' ) }}" width="168" height="42" loading="lazy">
+
+					{%- if theme.footer.push.title -%}
+						<h2 class="h3">{{- theme.footer.push.title -}}</h2>
+					{%- endif -%}
+
+					{%- if theme.footer.push.choices -%}
+						<ul class="flex items-center justify-center gap-5 flex-wrap">
+							{%- for item in theme.footer.push.choices | split( '\n' ) -%}
+								{%- set value = item | sanitize -%}
+								<li>
+									<label class="text-button-s text-l text-beige bg-blanc/14 [backdrop-filter:blur(10px)] px-5 py-[0.90625rem] rounded-full inline-block uppercase focus-within:outline focus-within:outline-offset-2 focus-within:outline-[-webkit-focus-ring-color]">
+										<input type="radio" name="domaine" value="{{ value }}" class="peer sr-only" {% if domaine and value == domaine %} checked="checked" {% endif %}/>
+										<span class="before:size-5 before:transition-colors before:shrink-0 before:ease-in before:duration-300 peer-checked:before:border-vert peer-checked:before:bg-vert before:border before:border-beige before:rounded-full flex gap-1.5 items-center">{{- item -}}</span>
+									</label>
+								</li>
+							{%- endfor -%}
+						</ul>
+					{%- endif -%}
+				</div>
+
+				{{- include(
+					'components/button.html.twig',
+					{
+						title: __( 'Contact Us', 'wp-cinquante-et-un' ),
+						variant: 'tertiary',
+						icon: 'arrow-right',
+						attributes: { type: 'submit' },
+						type: 'submit'
+					},
+					with_context = false
+				) -}}
+
+			</form>
+		</div>
+
+		{{- include( 'components/image.html.twig', { image: theme.footer.push.image, classes: [ "object-cover object-center z-1 size-full absolute inset-0" ] } ) -}}
+	</div>
+{%- endif -%}
+
+<footer role="contentinfo" class="[background:linear-gradient(225deg,#102345_0%,#08152C_100%)] relative z-2 -mt-13.25 lg:-mt-8.75 rounded-t-[1.5625rem] lg:rounded-t-[2.1875rem] space-y-11.75 pt-20 lg:pt-19 pb-10 lg:pb-13.5 text-beige">
+	<div class="container space-y-15 lg:space-y-11.75">
+		<div class="grid-col-1 lg:grid-cols-12 gap-y-15 gap-x-5 lg:gap-y-5 grid">
+
+			{%- if theme.footer.newsletter.form -%}
+				<div class="col-span-full lg:col-span-4 lg:mr-20 space-y-7.5 lg:space-y-6.5">
+					{%- if theme.footer.newsletter.title or theme.footer.newsletter.subtitle -%}
+						<div class="space-y-1.5 text-center lg:text-left">
+							{%- if theme.footer.newsletter.title -%}
+								<h2 class="h4 text-vert">
+									{{- theme.footer.newsletter.title -}}
+								</h2>
+							{%- endif -%}
+							{%- if theme.footer.newsletter.subtitle -%}
+								<p class="text-s">{{- theme.footer.newsletter.subtitle -}}</p>
+							{%- endif -%}
+						</div>
+					{%- endif -%}
+					{{- include( 'components/form-newsletter.html.twig' ) -}}
+				</div>
+			{%- endif -%}
+
+			<div class="col-span-full lg:col-span-8 lg:col-start-5">
+				{%- if nav_menus.footer.get_items -%}
+					<cinq-accordion-group itemscope class="lg:grid lg:grid-cols-4 lg:gap-5 divide-y space-y-6 divide-beige/25 lg:divide-y-0" itemtype="http://schema.org/SiteNavigationElement" data-accordion-enable-on="mobile">
+						{%- for item in nav_menus.footer.get_items() -%}
+							{% if item.children -%}
+								<div data-accordion-open="false" data-accordion-deselect="true" class="{{ html_classes( 'js-accordion-panel pb-6 last:pb-0 lg:col-span-1', item.children ? 'lg:space-y-5' : '' ) }}">
+									<button type="button" class="js-accordion-header lg:cursor-auto flex w-full items-center justify-between group gap-2.5 text-l" aria-expanded="false" aria-controls="{{ item.id }}-body" id="{{ item.id }}-header">
+										{{- item.title -}}
+
+										<span class="size-7.5 flex lg:hidden relative items-center text-bleu justify-center rounded-full bg-beige shrink-0">
+											{{-
+													include(
+														'svg/use.html.twig',
+														{
+															classes: [ 'size-7.5 inset-0 absolute m-auto block group-aria-expanded:opacity-0 opacity-100 transition-opacity duration-300 ease-out' ],
+															icon: 'plus'
+														},
+														with_context = false
+													)
+												-}}
+											{{-
+												include(
+													'svg/use.html.twig',
+													{
+														classes: [ 'size-7.5 inset-0 absolute m-auto block group-aria-expanded:opacity-100 opacity-0 transition-opacity duration-300 ease-out' ],
+														icon: 'minus'
+													},
+													with_context = false
+												)
+											-}}
+										</span>
+									</button>
+									<div class="text-button-m transition-[max-height] duration-300 ease-out" id="{{ item.id }}-body" role="region" aria-labelledby="{{ item.id }}-header">
+										<ul class="space-y-3 js-accordion-inner pt-3 lg:pt-0">
+											{%- for child in item.children -%}
+												<li>
+													<a href="{{ child.url }}" itemprop="url" class="text-button-xs hover:underline" {{ child.is_target_blank or child.is_external ? 'target="' ~ child.target ~ '" rel="noopener noreferer"' }}>
+														{{- child.title -}}
+													</a>
+												</li>
+											{%- endfor -%}
+										</ul>
+									</div>
+								</div>
+							{%- else -%}
+								<div class="pb-6 last:pb-0 lg:col-span-1">
+									<a href="{{ item.url }}" itemprop="url" class="text-l" {{ item.is_target_blank or item.is_external ? 'target="' ~ item.target ~ '" rel="noopener noreferer"' }}>
+										{{- item.title -}}
+									</a>
+								</div>
+							{%- endif -%}
+						{%- endfor -%}
+					</cinq-accordion-group>
+				{%- endif -%}
+			</div>
+		</div>
+
+		<div class="flex flex-col lg:flex-row gap-y-19.5 gap-x-5 lg:gap-5 item lg:items-end">
+			{%- if socials -%}
+				<ul class="gap-5 lg:grow justify-center lg:justify-start lg:basis-0 flex">
+					{%- for social in socials -%}
+						<li>
+							<a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.title }}" class="rounded-full flex items-center justify-center text-bleu bg-vert size-10">
+								{{- include( 'svg/use.html.twig', { icon: social.id, classes: [ 'size-7.5' ], } ) -}}
+								<span class="sr-only">{{ social.title }}</span>
+							</a>
+						</li>
+					{%- endfor -%}
+				</ul>
+			{%- endif -%}
+
+
+			{%- if nav_menus.legals.get_items -%}
+				<ul itemscope class="flex flex-wrap justify-center lg:grow lg:basis-0 lg:justify-end gap-x-9 gap-y-4.5 lg:gap-11.5 text-button-xs" itemtype="http://schema.org/SiteNavigationElement">
+					{%- for item in nav_menus.legals.get_items() -%}
+						<li>
+							<a href="{{ item.url }}" itemprop="url" class="flex items-center uppercase underline gap-2" {{ item.is_target_blank or item.is_external ? 'target="' ~ item.target ~ '" rel="noopener noreferer"' }}>
+								{{- item.title -}}
+							</a>
+						</li>
+					{%- endfor -%}
+				</ul>
+			{%- endif -%}
+		</div>
+	</div>
 </footer>

@@ -1,0 +1,10 @@
+{#
+ # Components: Tag
+ #}
+
+<button type="button" class="text-mention-large items-center flex gap-0.75 bg-vert text-bleu rounded-5 py-0.5 px-1.5" {{ attributes ? attributes | map( ( value, key ) => value == '' ? key : "#{key}=\"#{value}\"" ) | join( ' ' ) | raw }}>
+	{% if icon %}
+		{{- include( 'svg/use.html.twig', { classes: [ 'size-2.5 shrink-0' ], icon: icon }, with_context = false ) -}}
+	{% endif %}
+	{{- title -}}
+</button>

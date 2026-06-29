@@ -12,6 +12,8 @@
 
 namespace WPCinquanteEtUn\PostTemplate;
 
+use WPCinquanteEtUn\Service;
+
 /**
  * BodyClass
  *
@@ -20,7 +22,7 @@ namespace WPCinquanteEtUn\PostTemplate;
  * @package WPCinquanteEtUn
  * @subpackage WPCinquanteEtUn/PostTemplate
  */
-class BodyClass {
+class BodyClass implements Service {
 
 	/**
 	 * Run default hooks and actions for WordPress
@@ -39,12 +41,12 @@ class BodyClass {
 	 * it is finished processing, or all of the classes will be cleared and
 	 * could seriously impact the visual state of a user’s site.
 	 *
-	 * @param string[] $classes An array of body class names.
-	 * @param string[] $class   An array of additional class names added to the body.
+	 * @param string[] $classes             An array of body class names.
+	 * @param string[] $additional_classes An array of additional class names added to the body.
 	 *
-	 * @return $classes array
+	 * @return array
 	 */
-	public function body_classes( array $classes, array $class ): array {
+	public function body_classes( array $classes, array $additional_classes ): array {
 		return $classes;
 	}
 }

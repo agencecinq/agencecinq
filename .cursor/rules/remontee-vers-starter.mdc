@@ -1,0 +1,74 @@
+---
+description: Procédure pour faire remonter une brique d'un projet vers le starter CINQ (flux inverse de l'init). À déclencher quand quelque chose créé sur un projet doit devenir réutilisable et rejoindre le starter (généraliser un bloc, une convention, une évolution d'outillage).
+alwaysApply: false
+---
+
+# Remonter une brique vers le starter
+
+But : faire évoluer le starter au fil des projets. Le starter (`wp-cinquante-et-un` / namespace `WPCinquanteEtUn` / nom `WP CINQ`) est la base de vérité ; chaque projet en est une copie renommée. Remonter une brique consiste à la sortir du projet, la re-neutraliser (inverser les identifiants du projet vers ceux du starter, retirer le contenu client), puis l'ajouter au repo starter.
+
+C'est le flux inverse de `init-nouveau-projet`. Déclenche cette procédure quand l'équipe estime qu'un élément créé sur un projet a sa place dans le starter.
+
+Priorités actuelles de remontée : les **conventions/règles** et la **config/outillage**. Les blocs, composants et helpers sont aussi éligibles mais à généraliser avec prudence (ils sont souvent plus liés au projet).
+
+## Pré-requis
+
+- Avoir accès aux deux dépôts en même temps : le projet source et le starter.
+- Travailler sur une branche dédiée du starter (ex : `feat/remontee-<nom-brique>`), jamais directement sur `main`.
+
+## Procédure générale
+
+### Étape 0 : détecter les identifiants des deux côtés
+
+- Projet source : slug / text domain, namespace PHP, nom d'affichage, objet JS global, préfixe de fonctions (cf. `init-nouveau-projet` étape 0).
+- Starter : slug `wp-cinquante-et-un`, text domain `wp-cinquante-et-un`, namespace `WPCinquanteEtUn`, nom `WP CINQ`, objet JS global `cinq`, préfixe de fonctions `cinq_`.
+
+### Étape 1 : isoler la brique et vérifier qu'elle est générique
+
+- Lister TOUS les fichiers qui la composent (voir « Par type » plus bas).
+- Vérifier l'absence de contenu client en dur (textes, images, logos, valeurs) et de dépendance à un CPT, un bloc, un champ ou un token propre au projet. Si elle en dépend, généraliser d'abord.
+
+### Étape 2 : copier dans le starter et re-neutraliser
+
+- Copier les fichiers dans le starter aux mêmes emplacements.
+- Inverser les identifiants : namespace projet vers `WPCinquanteEtUn`, text domain projet vers `wp-cinquante-et-un`, objet/préfixe JS projet vers `cinq`/`cinq_`, tokens couleur projet vers des tokens neutres.
+- Retirer tout reliquat client et le remplacer par des valeurs neutres ou d'exemple.
+
+### Étape 3 : câbler dans le starter
+
+- Selon le type : enregistrer le service dans `includes/Init.php`, ajouter le layout dans `BlocksFields` (`use` + tableau `$layouts`), ajouter le `load(...)` dans `src/scripts/app.js`, etc.
+
+### Étape 4 : vérifier et versionner
+
+- phpcs OK, `pnpm build` OK (régénère `public/sprite.svg`), `grep` confirmant zéro identifiant du projet source dans les fichiers remontés.
+- Bump de version (`style.css`, `package.json`, `composer.json`) et tag de release (`v*`, voir `.github/workflows/release.yml`).
+
+## Par type de brique
+
+### Conventions / règles (priorité)
+
+- Nouveau DO/DONT général : l'ajouter à la section DO/DONT de `starter-cinq.mdc`.
+- Pattern lié à une tâche ou un workflow : créer un fichier dédié dans `.cursor/rules/` et ajouter un pointeur dans `starter-cinq.mdc`.
+- Les `.cursor/rules/` vivent dans le repo et sont copiées à chaque projet : remonter une règle revient à l'éditer dans le starter. Pense à la rediffuser aux projets actifs si elle leur est utile tout de suite.
+
+### Config / outillage (priorité)
+
+- Build (`vite.config.js`), `phpcs.xml`, CI (`.github/workflows/`), dépendances (`package.json` / `composer.json`).
+- Reporter le changement à l'identique en retirant toute entrée propre au projet (ex : un asset client dans la liste d'`input` de Vite). Mettre à jour les fichiers de lock.
+
+### Blocs ACF
+
+- Trio cohérent : layout dans `includes/Plugins/ACF/IncludeFields/Layouts/`, template dans `views/blocks/`, composant dans `src/scripts/components/` si nécessaire.
+- Enregistrer le layout dans `BlocksFields` et le composant dans `app.js`. Neutraliser le contenu d'exemple.
+
+### Composants / helpers
+
+- Composant TS : `src/scripts/components/` + `load(...)` dans `app.js`.
+- Helper PHP : `includes/helpers.php`, préfixe `cinq_`, en anglais, conforme WPCS.
+- Composant Twig : `views/components/`.
+
+## Checklist finale
+
+1. `grep` : zéro identifiant du projet source dans les fichiers remontés.
+2. phpcs et `pnpm build` passent.
+3. Version bumpée et changement décrit dans le commit.

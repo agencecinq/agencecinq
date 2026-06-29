@@ -7,7 +7,7 @@
 		"19h47/wp-form-controls": "dev-master"
 	},
 	"name": "agencecinq/wp-cinquante-et-un",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Starter WordPress Theme by CINQ",
 	"type": "wordpress-theme",
 	"authors": [
@@ -51,5 +51,14 @@
 				}
 			}
 		}
-	]
+	],
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^3.3",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.2"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }

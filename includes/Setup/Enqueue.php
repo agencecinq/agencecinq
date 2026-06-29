@@ -9,7 +9,7 @@
 
 namespace WPCinquanteEtUn\Setup;
 
-use WPCinquanteEtUn\Vite;
+use WPCinquanteEtUn\{ Service, Vite };
 
 /**
  * Theme asset enqueue setup.
@@ -19,7 +19,7 @@ use WPCinquanteEtUn\Vite;
  * @package WPCinquanteEtUn
  * @subpackage WPCinquanteEtUn\Setup
  */
-class Enqueue {
+class Enqueue implements Service {
 
 	/**
 	 * Runs initialization tasks.
@@ -47,10 +47,14 @@ class Enqueue {
 	public function enqueue_styles(): void {
 		$deps = array();
 
-		// register theme-style-css
+		// Google Fonts.
+		wp_register_style( 'google-fonts-montserrat', '//fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap', array(), null );
+		$deps[] = 'google-fonts-montserrat';
+
+		// register theme-style-css.
 		$filename = Vite::asset( 'src/stylesheets/styles.css' );
 
-		// enqueue theme-style-css into our head
+		// enqueue theme-style-css into our head.
 		wp_enqueue_style( get_theme_text_domain() . '-main', $filename, $deps, null );
 		wp_enqueue_style( get_theme_text_domain() . '-style', get_stylesheet_uri(), array( get_theme_text_domain() . '-main' ), null );
 	}
@@ -65,11 +69,6 @@ class Enqueue {
 	 * @return void
 	 */
 	public function dequeue_styles(): void {
-		wp_dequeue_style( 'wp-block-library' );
-		wp_dequeue_style( 'wp-block-library-theme' );
-		wp_dequeue_style( 'wc-block-style' );
-		wp_dequeue_style( 'global-styles' );
-		wp_dequeue_style( 'classic-theme-styles' );
 	}
 
 	/**
@@ -82,7 +81,6 @@ class Enqueue {
 
 		wp_deregister_script( 'jquery' );
 		wp_deregister_script( 'wp-embed' );
-		wp_deregister_script( 'wp-i18n' );
 
 		$deps = array();
 
@@ -104,13 +102,16 @@ class Enqueue {
 		// Detect Safari browser. We add an is-safari class to the <html> tag when Safari is detected.
 		wp_add_inline_script( get_theme_text_domain() . '-feature', '/Safari/.test(navigator.userAgent)&&/Apple Computer/.test(navigator.vendor)&&(document.documentElement.className+=" is-safari");' );
 
+		$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+		$current_url = is_singular() ? get_permalink() : ( $request_uri ? esc_url_raw( home_url( $request_uri ) ) : home_url() );
+
 		$data = array(
 			'template_directory_uri' => get_template_directory_uri(),
 			'base_url'               => site_url(),
 			'home_url'               => home_url( '/' ),
 			'ajax_url'               => admin_url( 'admin-ajax.php' ),
 			'api_url'                => home_url( 'wp-json' ),
-			'current_url'            => ( is_singular() ? get_permalink() : ( isset( $_SERVER['REQUEST_URI'] ) ? home_url( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : home_url() ) ),
+			'current_url'            => $current_url,
 			'nonce'                  => wp_create_nonce( 'security' ),
 			'text_domain'            => get_theme_text_domain(),
 		);
@@ -118,7 +119,7 @@ class Enqueue {
 		// @TODO doesn't work with wp_enqueue_script_module so we use wp_add_inline_script attached to the feature script.
 		wp_add_inline_script(
 			get_theme_text_domain() . '-feature',
-			'var ' . get_theme_text_domain() . ' = ' . wp_json_encode(
+			'var cinq = ' . wp_json_encode(
 				$data
 			),
 			'before'

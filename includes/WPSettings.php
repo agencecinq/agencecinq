@@ -11,7 +11,7 @@ namespace WPCinquanteEtUn;
 /**
  * WP Settings
  */
-class WPSettings {
+class WPSettings implements Service {
 
 	/**
 	 * Runs initialization tasks.
@@ -21,6 +21,18 @@ class WPSettings {
 	public function run(): void {
 		add_action( 'after_setup_theme', array( $this, 'register_menus' ) );
 		add_action( 'after_setup_theme', array( $this, 'add_theme_supports' ) );
+		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 0 );
+	}
+
+	/**
+	 * Load theme text domain for translations.
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/load_theme_textdomain/
+	 *
+	 * @return void
+	 */
+	public function load_textdomain(): void {
+		load_theme_textdomain( 'wp-cinquante-et-un', get_template_directory() . '/languages' );
 	}
 
 	/**

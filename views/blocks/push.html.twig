@@ -1,0 +1,126 @@
+{#
+ # Blocks: Push
+ #}
+
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+{% set image_on_left = (block.image_position|default('right')) == 'left' %}
+<section id="{{ block.id }}" class="container grid grid-cols-12 gap-x-5 gap-y-10">
+	<div
+		class="{{
+		html_classes(
+			'col-span-full space-y-10',
+			image_on_left ? 'lg:order-1' : 'lg:order-2',
+			'lg:col-span-6 lg:mx-12.5'
+		)
+		}}"
+	>
+		{%- if block.content.title -%}
+			<h3 class="h3 lg:hidden">{{- block.content.title -}}</h3>
+		{%- endif -%}
+
+		<div class="{{ html_classes( 'rounded-25 overflow-hidden', block.object_fit == 'object-cover' ? 'aspect-square bg-bleu/30' : '' ) }}">
+			{{-
+				include(
+					'components/media.html.twig',
+					{
+						media: block.media,
+						classes: 'size-full object-center ' ~ block.object_fit
+					}
+				)
+			-}}
+		</div>
+	</div>
+
+	{%- if
+		block.content.title
+			or block.content.subtitle
+			or block.content.text
+			or (block.content.items|length)
+			or block.content.link.url -%}
+		<div
+			class="{{
+			html_classes(
+				'col-span-full space-y-7.5',
+				image_on_left ? 'lg:order-2' : 'lg:order-1',
+				'lg:col-span-6 lg:space-y-10'
+			)
+			}}"
+		>
+			{%- if block.content.title or block.content.subtitle or block.content.text -%}
+				<div class="space-y-2.5 lg:space-y-5">
+					{%- if block.content.title -%}
+						<h3 class="h3 hidden lg:block">{{- block.content.title -}}</h3>
+					{%- endif -%}
+					{%- if block.content.subtitle -%}
+						<p class="h5">
+							{{- block.content.subtitle -}}
+						</p>
+					{%- endif -%}
+
+					{%- if block.content.text -%}
+						<div class="wysiwyg">
+							{{- block.content.text -}}
+						</div>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+
+			{%- if block.content.items|length -%}
+				<ul class="space-y-7.5 lg:space-y-10" role="list">
+					{%- for item in block.content.items -%}
+						<li class="flex items-center gap-3.75 lg:gap-5">
+							<span
+								class="bg-vert flex size-22 lg:size-23 shrink-0 items-center justify-center rounded-full"
+							>
+								{{-
+									include(
+										'components/image.html.twig',
+										{
+											image: item.icon,
+											classes: ['size-12.5', 'object-center', 'object-contain']
+										}
+									)
+								-}}
+							</span>
+							{%- if item.title or item.text -%}
+								<div class="min-w-0 flex-1 space-y-2.5">
+									{%- if item.title -%}
+										<p class="text-l">
+											{{- item.title -}}
+										</p>
+									{%- endif -%}
+									{%- if item.text -%}
+										<p class="text-s">
+											{{- item.text -}}
+										</p>
+									{%- endif -%}
+								</div>
+							{%- endif -%}
+						</li>
+					{%- endfor -%}
+				</ul>
+			{%- endif -%}
+
+			{{-
+				include(
+					'components/button.html.twig',
+					block.content.link
+						|default({})
+						|merge({
+							icon: 'bullet'
+						}),
+					with_context: false
+				)
+			-}}
+		</div>
+	{%- endif -%}
+</section>

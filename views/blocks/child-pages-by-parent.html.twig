@@ -1,0 +1,98 @@
+{#  
+ # Blocks: Child Pages by Parent
+ #
+ # This block displays the child pages of a parent page.
+ #
+ # @param block array The block data. Must contain parent, children and current (the current child page, or first if current page is not in children).
+ #
+ # @package WPCinquanteEtUn
+ #}
+
+{%- if block.parent and block.current | length > 0 -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id
+			}
+		)
+	-}}
+	<section id="{{ block.id }}" class="overflow-hidden">
+		<cinq-child-pages-by-parent
+			class="container grid grid-cols-12 gap-x-2.5 gap-y-15 lg:gap-x-5 lg:gap-y-10"
+		>
+			<div class="relative z-2 col-span-full space-y-7.5 lg:col-span-5 lg:space-y-10">
+				<div class="space-y-3.75 lg:space-y-6.75">
+					<h2 class="h-on-title uppercase">{{- block.parent.title -}}</h2>
+
+					<ul
+						class="scrollbar-hidden justify-start-safe -mx-2.5 flex gap-3 overflow-x-auto px-2.5 lg:mx-0 lg:flex-wrap lg:px-0"
+						role="tablist"
+						aria-label="{{ __('Content sections: %s', 'wp-cinquante-et-un')|format(block.parent.title) }}"
+					>
+						{%- for child in block.children -%}
+							<li class="whitespace-nowrap" role="presentation">
+								{{-
+									include(
+										'components/chip.html.twig',
+										{
+											active: block.current.id == child.id,
+											title: child.title,
+											url: child.url,
+											classes: ['transition-opacity duration-300 ease-in'],
+											attributes: {
+												'id': child.id ~ '-tab-' ~ block.parent.id,
+												'role': 'tab',
+												'aria-selected': block.current.id == child.id ? 'true' : 'false',
+												'aria-controls': block.id ~ '-panel',
+												'data-id': child.id,
+												'data-dom': 'chip'
+											}
+										}
+									)
+								-}}
+							</li>
+						{%- endfor -%}
+					</ul>
+				</div>
+
+				{%- if block.content.text -%}
+					<p class="h3">
+						{{- block.content.text -}}
+					</p>
+				{%- endif -%}
+
+				{{-
+					include(
+						'components/button.html.twig',
+						{
+							title: __('All sectors', 'wp-cinquante-et-un'),
+							icon: 'bullet',
+							url: block.parent.link
+						},
+						with_context: false
+					)
+				-}}
+			</div>
+
+			<div
+				id="{{ block.id }}-panel"
+				class="lg:before:bg-beige relative col-span-full -mx-2.5 transition-opacity duration-300 ease-in lg:col-span-6 lg:col-start-7 lg:mx-0 lg:before:absolute lg:before:inset-y-0 lg:before:right-full lg:before:z-1 lg:before:w-screen"
+				role="tabpanel"
+				aria-labelledby="{{ block.current.id ~ '-tab-' ~ block.parent.id }}"
+				aria-live="polite"
+				data-dom="slideshow"
+			>
+				{{-
+					include(
+						'blocks/_child-pages-by-parent-slideshow.html.twig',
+						{
+							posts: block.current.children({ post_type: 'page', orderby: { 'menu_order': 'ASC', 'title': 'ASC' } })
+						},
+					)
+				-}}
+			</div>
+		</cinq-child-pages-by-parent>
+	</section>
+{%- endif -%}

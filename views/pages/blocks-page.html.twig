@@ -1,0 +1,33 @@
+{#
+ # Blocks page
+ #
+ # @package WPCinquanteEtUn
+ #}
+
+{% extends 'index.html.twig' %}
+
+{%- block content -%}
+	<main id="content" role="main">
+		{%- block header -%}
+			<div class="absolute top-0 z-10 inset-x-0">
+				{{-
+					include(
+						'header.html.twig',
+						{
+							classes: ['relative z-10']
+						}
+					)
+				-}}
+			</div>
+		{%- endblock -%}
+
+		{{-
+			include(
+				'blocks/blocks.html.twig',
+				{
+					blocks: post.meta('blocks')
+				}
+			)
+		-}}
+	</main>
+{%- endblock -%}

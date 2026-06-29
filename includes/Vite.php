@@ -15,12 +15,12 @@ use Exception;
  *
  * @package WPCinquanteEtUn
  */
-class Vite {
+class Vite implements Service {
 
 	/**
 	 * Flag to determine whether hot server is active.
 	 *
-	 * Calculated when Vite::run() is called.
+	 * Set when boot() is called.
 	 *
 	 * @var bool
 	 */
@@ -29,7 +29,7 @@ class Vite {
 	/**
 	 * The URI to the hot server.
 	 *
-	 * Calculated when Vite::run() is called.
+	 * Set when boot() is called.
 	 *
 	 * @var string
 	 */
@@ -45,7 +45,7 @@ class Vite {
 	/**
 	 * Manifest file contents.
 	 *
-	 * Initialised when Vite::run() is called.
+	 * Set when boot() is called.
 	 *
 	 * @var array
 	 */
@@ -53,34 +53,44 @@ class Vite {
 
 
 	/**
-	 * Run
+	 * Bootstrap Vite (satisfies Service contract). Delegates to static boot().
 	 *
-	 * @param  string|null $build_path
-	 * @param  bool        $output  Whether to output the Vite client.
-	 *
-	 * @return string|null
-	 * @throws Exception
+	 * @return void
 	 */
-	public static function run( ?string $build_path = null, bool $output = true ): ?string {
+	public function run(): void {
+		self::boot( null, true );
+	}
+
+
+	/**
+	 * Boot Vite (static entry point). Initializes state and optionally outputs the client script.
+	 *
+	 * @param  string|null $build_path Build path.
+	 * @param  bool        $output     Whether to output the Vite client.
+	 * @return string|null
+	 * @throws Exception Exception.
+	 */
+	public static function boot( ?string $build_path = null, bool $output = true ): ?string {
 		if ( is_admin() || wp_doing_ajax() || wp_is_json_request() ) {
 			return null;
 		}
 
 		static::$is_hot = file_exists( static::hot_file_path() );
 
-		// have we got a build path override?
+		// Have we got a build path override?
 		if ( $build_path ) {
 			static::$build_path = $build_path;
 		}
 
-		// are we running hot?
+		// Are we running hot?
 		if ( static::$is_hot ) {
+			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Safe usage.
 			static::$server = file_get_contents( static::hot_file_path() );
 			$client         = static::$server . '/@vite/client';
 
-			// if output
 			if ( $output ) {
-				printf( /** @lang text */ '<script type="module" src="%s"></script>', $client );
+				// phpcs:ignore 
+				printf( '<script type="module" src="%s"></script>', $client );
 			}
 
 			return $client;
@@ -90,10 +100,11 @@ class Vite {
 		$manifest_path = static::build_path() . '/.vite/manifest.json';
 
 		if ( ! file_exists( $manifest_path ) ) {
-			throw new Exception( __( 'No Vite Manifest exists. Should hot server be running?', 'wp-cinquante-et-un' ) );
+			throw new Exception( esc_html( __( 'No Vite Manifest exists. Should hot server be running?', 'wp-cinquante-et-un' ) ) );
 		}
 
-		// store our manifest contents.
+		// Store our manifest contents.
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Safe usage.
 		static::$manifest = json_decode( file_get_contents( $manifest_path ), true );
 
 		return null;
@@ -102,28 +113,30 @@ class Vite {
 	/**
 	 * Enqueue the script module
 	 *
-	 * @param string|null $build_path
+	 * @param string|null $build_path Build path.
 	 *
 	 * @return void
-	 * @throws Exception
+	 * @throws Exception Exception.
 	 */
 	public static function enqueue_script_module( ?string $build_path = null ): void {
 		// we only want to continue if we have a client.
-		if ( ! $client = self::run( $build_path, false ) ) {
+		$client = self::boot( $build_path, false );
+
+		if ( ! $client ) {
 			return;
 		}
 
-		// enqueue our client script
+		// Enqueue our client script.
 		wp_enqueue_script_module( 'vite-client', $client, array(), null );
 	}
 
 	/**
 	 * Return URI path to an asset.
 	 *
-	 * @param $asset
+	 * @param string $asset Asset path.
 	 *
 	 * @return string
-	 * @throws Exception
+	 * @throws Exception Exception.
 	 */
 	public static function asset( $asset ): string {
 		if ( static::$is_hot ) {
@@ -131,7 +144,8 @@ class Vite {
 		}
 
 		if ( ! array_key_exists( $asset, static::$manifest ) ) {
-			throw new Exception( printf( __( 'Unknown Vite build asset: %s', 'wp-cinquante-et-un' ), $asset ) );
+			/* translators: %s: asset path */
+			throw new Exception( esc_html( sprintf( __( 'Unknown Vite build asset: %s', 'wp-cinquante-et-un' ), $asset ) ) );
 		}
 
 		return implode( '/', array( get_stylesheet_directory_uri(), static::$build_path, static::$manifest[ $asset ]['file'] ) );
@@ -158,12 +172,12 @@ class Vite {
 	/**
 	 * Return URI path to an image.
 	 *
-	 * @param $img
+	 * @param string $img Image path.
 	 *
 	 * @return string|null
-	 * @throws Exception
+	 * @throws Exception Exception.
 	 */
-	public static function img( $img ): ?string {
+	public static function img( string $img ): ?string {
 
 		try {
 
@@ -177,7 +191,7 @@ class Vite {
 
 			// handle the exception here or log it if needed.
 			// you can also return a default image or null in case of an error.
-			return $e->getMessage(); // optionally, you can retrieve the error message
+			return $e->getMessage(); // Optionally, you can retrieve the error message.
 
 		}
 	}

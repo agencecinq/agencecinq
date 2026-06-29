@@ -1,0 +1,80 @@
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<div id="{{ block.id }}">
+	<div class="relative w-full overflow-hidden">
+		<div
+			class="text-beige after:bg-bleu/60 relative aspect-402/635 w-full text-center after:absolute after:inset-0 after:z-2 after:size-full lg:aspect-1440/800"
+		>
+			{%- if block.content.title or block.content.text or block.content.link.url -%}
+				<div
+					class="absolute inset-0 z-3 container flex flex-col items-center justify-center gap-20"
+				>
+					{%- if block.content.title or block.content.text -%}
+						<div class="grid grid-cols-12 gap-x-5 gap-y-15 lg:gap-y-20">
+							{%- if block.content.image or block.content.title -%}
+								<div class="col-span-full space-y-7.5 lg:col-span-10 lg:col-start-2 lg:space-y-2.5">
+									{%- if block.content.image -%}
+										<div class="h-12.75 w-full lg:h-17.75">
+											{{-
+												include(
+													'components/image.html.twig',
+													{
+														image: block.content.image,
+														classes: [
+															'block mx-auto max-w-full size-full object-contain object-center'
+														]
+													}
+												)
+											-}}
+										</div>
+									{%- endif -%}
+
+									{%- if block.content.title -%}
+										<p class="h1 text-vert">
+											{{- block.content.title -}}
+										</p>
+									{%- endif -%}
+								</div>
+							{%- endif -%}
+							{%- if block.content.text -%}
+								<p class="h5 col-span-full lg:col-span-8 lg:col-start-3">
+									{{- block.content.text -}}
+								</p>
+							{%- endif -%}
+						</div>
+					{%- endif -%}
+					{{-
+						include(
+							'components/button.html.twig',
+							block.content.link
+								|default({})
+								|merge({
+									mode: 'dark',
+									icon: 'bullet'
+								}),
+							with_context: false
+						)
+					-}}
+				</div>
+			{%- endif -%}
+
+			{{-
+				include(
+					'components/media.html.twig',
+					{
+						media: block.media,
+						classes: ['block relative z-1 size-full object-cover object-center']
+					}
+				)
+			-}}
+		</div>
+	</div>
+</div>

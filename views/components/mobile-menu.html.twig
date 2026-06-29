@@ -1,0 +1,222 @@
+{#
+ # Mobile menu content: main panel (nav list + pushes) and sub panels (back + title + list + pushes).
+ # Used inside the drawer. JS (cinq-mobile-menu) toggles [data-panel="main"] vs [data-panel="sub"].
+ #
+ # @param array items Main menu items (from nav_menus.main.get_items()).
+ #}
+
+{% macro push(push) %}
+	{% set mode = push.mode|default('dark') %}
+
+	<article
+		class="{{
+		html_classes(
+			'rounded-15 relative aspect-297/380 overflow-hidden text-center',
+			mode == 'dark'
+				? 'text-beige bg-bleu/30 before:bg-bleu/30 before:absolute before:inset-0 before:z-2 before:size-full'
+				: 'text-bleu'
+		)
+		}}"
+	>
+		<div class="relative z-3 flex size-full flex-col p-5">
+			{%- if push.overline or push.title -%}
+				<div class="space-y-1">
+					{%- if push.overline -%}
+						<p class="text-m">
+							{{- push.overline -}}
+						</p>
+					{%- endif -%}
+					{%- if push.title -%}
+						<p class="text-vert text-[1.25rem] leading-[1.1] font-semibold">
+							{{- push.title -}}
+						</p>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+			{{-
+				include(
+					'components/button.html.twig',
+					push.link
+						|default({})
+						|merge({
+							classes: ['mt-auto'],
+							mode: mode,
+							icon: 'bullet',
+							fill: mode == 'dark' ? 'text-vert' : 'text-blanc'
+						}),
+					with_context: false
+				)
+			-}}
+		</div>
+		{{-
+			include(
+				'components/image.html.twig',
+				{
+					image: push.image,
+					classes: ['absolute inset-0 z-1 size-full object-cover', layout == 'compact' ? 'z-1' : '']
+				},
+				with_context: false
+			)
+		-}}
+	</article>
+{% endmacro %}
+
+{% set main_items = items|default([]) %}
+{% set submenus_data = menus.main.submenu|default([]) %}
+{% set first_attached = submenus_data|filter(row => row.item)|first %}
+
+<div
+	data-dom="main"
+	data-panel="main"
+	class="relative flex min-h-full flex-col items-start gap-5 py-5"
+>
+	{%- if get_language_selector() -%}
+		{{- include('components/language-selector.html.twig') -}}
+	{%- endif -%}
+
+	{%- if main_items|length -%}
+		<nav
+			aria-label="{{ __('Mobile navigation', 'wp-cinquante-et-un') }}"
+			class="w-full flex-1 overflow-y-auto"
+		>
+			<ul class="text-button-m divide-bleu/25 divide-y">
+				{% for item in main_items %}
+					{%- set attached = submenus_data|filter(row => row.item == item.id)|first -%}
+					<li>
+						{% if (item.children|length) or attached %}
+							<button
+								type="button"
+								data-dom="open-sub"
+								data-open-sub="{{ item.id }}"
+								class="flex w-full items-center justify-between py-5 text-left"
+								aria-expanded="false"
+								aria-controls="mobile-sub-{{ item.id }}"
+							>
+								<span>{{- item.title -}}</span>
+								{{-
+									include(
+										'svg/use.html.twig',
+										{
+											classes: ['size-2.5 shrink-0'],
+											icon: 'chevron-right'
+										},
+										with_context: false
+									)
+								-}}
+							</button>
+						{% else %}
+							<a
+								class="block py-5"
+								href="{{ item.url }}"
+								{{
+								item.is_target_blank or item.is_external
+									? 'target="' ~ item.target ~ '" rel="noopener noreferer"'
+								}}
+							>
+								{{- item.title -}}
+							</a>
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		</nav>
+	{%- endif -%}
+
+	{%- if first_attached and (first_attached.pushes|length) -%}
+		<div class="-full grid grid-cols-1 gap-2.5 md:grid-cols-2">
+			{%- for push in first_attached.pushes -%}
+				{{- _self.push(push) -}}
+			{%- endfor -%}
+		</div>
+	{%- endif -%}
+</div>
+
+{# Sub panels: one per top-level item that has children #}
+{% for item in main_items %}
+	{%- set attached = submenus_data|filter(row => row.item == item.id)|first -%}
+	{%- if (item.children|length) or attached -%}
+		<div
+			data-dom="sub"
+			data-panel="sub"
+			data-sub-id="{{ item.id }}"
+			id="mobile-sub-{{ item.id }}"
+			class="rounded-15 bg-beige text-bleu absolute inset-x-0 top-0 flex min-h-full flex-col gap-5 p-5"
+			aria-hidden="true"
+			style="display: none;"
+		>
+			<div class="border-bleu/25 relative space-y-2.5 border-b pt-5.5 pb-6.25 text-center">
+				{{-
+					include(
+						'components/button.html.twig',
+						{
+							icon: 'chevron-left',
+							attributes: {
+								'data-dom': 'back-to-main',
+								'aria-label': __('Back to menu', 'wp-cinquante-et-un')
+							},
+							variant: 'quaternary',
+							title: __('Back', 'wp-cinquante-et-un'),
+							animate: false
+						},
+						with_context: false
+					)
+				-}}
+
+				<h2 class="h4">{{- item.title -}}</h2>
+			</div>
+
+			{%- if item.children|length -%}
+				<nav class="flex-1 overflow-y-auto" aria-label="{{ item.title }}">
+					{# {%- if attached and attached.title -%}
+																																																														<p class="text-m">{{- attached.title -}}</p>
+																																																													{%- endif -%} #}
+					<ul class="space-y-10">
+						{%- for child in item.children -%}
+							<li class="space-y-5">
+								{%- if child.url != '#' -%}
+									<a
+										href="{{ child.url }}"
+										class="text-l block"
+										{{
+										child.is_target_blank or child.is_external
+											? 'target="' ~ child.target ~ '" rel="noopener noreferer"'
+										}}
+									>
+										{{- child.title -}}
+									</a>
+								{%- else -%}
+									<span class="text-l block">{{- child.title -}}</span>
+								{% endif %}
+
+								{%- if child.children|length -%}
+									<ul class="text-button-m space-y-4">
+										{%- for grandchild in child.children -%}
+											<li>
+												<a
+													href="{{ grandchild.url }}"
+													{{
+													grandchild.is_target_blank or grandchild.is_external
+														? 'target="' ~ grandchild.target ~ '" rel="noopener noreferer"'
+													}}
+												>
+													{{ grandchild.title }}
+												</a>
+											</li>
+										{%- endfor -%}
+									</ul>
+								{%- endif -%}
+							</li>
+						{%- endfor -%}
+					</ul>
+				</nav>
+			{%- endif -%}
+			{%- if attached and (attached.pushes|length) -%}
+				<div class="mt-auto grid grid-cols-1 gap-2.5 md:grid-cols-2">
+					{%- for push in attached.pushes -%}
+						{{- _self.push(push) -}}
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+		</div>
+	{%- endif -%}
+{% endfor %}

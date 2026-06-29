@@ -1,0 +1,75 @@
+{#
+ # Block: Support
+ # Title + repeater items (title, text, link) in a light green section with rounded top.
+ #}
+
+{% set items = block.content.items|default([]) %}
+
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<section id="{{ block.id }}">
+	<div
+		class="{{
+		html_classes(
+			'bg-vert',
+			block.radius == 'top'
+				? 'relative z-2 -mt-6.25 rounded-t-[1.5625rem] lg:-mt-12.5 lg:rounded-t-[3.125rem]',
+			block.radius == 'bottom'
+				? 'relative z-2 -mb-6.25 rounded-b-[1.5625rem] lg:-mb-12.5 lg:rounded-b-[3.125rem]',
+			block.radius == 'y'
+				? 'relative z-2 -my-6.25 rounded-t-[1.5625rem] rounded-b-[1.5625rem] lg:-my-12.5 lg:rounded-t-[3.125rem] lg:rounded-b-[3.125rem]'
+		)
+		}}"
+	>
+		<div class="container space-y-10 py-12.5 lg:py-30">
+			{%- if block.content.title -%}
+				<h2 class="h2 text-center">{{- block.content.title -}}</h2>
+			{%- endif -%}
+
+			{%- if items|length -%}
+				<div class="grid grid-cols-1 gap-x-2.5 gap-y-10 md:grid-cols-3 lg:gap-x-5">
+					{%- for item in items -%}
+						<article
+							class="border-t-bleu/50 col-span-1 space-y-5 border-t pt-10 lg:space-y-10"
+						>
+							{%- if item.title or item.text -%}
+								<div class="space-y-2.5">
+									{%- if item.title -%}
+										<h3 class="h4">{{- item.title -}}</h3>
+									{%- endif -%}
+									{%- if item.text -%}
+										<div class="text-l flex-1">
+											{{- item.text|nl2br -}}
+										</div>
+									{%- endif -%}
+								</div>
+							{%- endif -%}
+
+							{{-
+								include(
+									'components/button.html.twig',
+									item.link
+										|default({})
+										|merge({
+											icon: 'bullet',
+											mode: 'light',
+											fill: 'text-blanc'
+										}),
+									with_context: false
+								)
+							-}}
+						</article>
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</section>

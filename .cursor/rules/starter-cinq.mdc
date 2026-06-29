@@ -1,0 +1,93 @@
+---
+description: Contexte et conventions du thème WordPress CINQ (Timber/Twig + Vite + Tailwind v4 + TypeScript). À garder en tête sur tout projet basé sur ce thème.
+alwaysApply: true
+---
+
+# Thème WordPress CINQ
+
+Ce dépôt est un thème WordPress de l'agence CINQ, basé sur le starter maison. Tout nouveau projet doit partir du starter de référence, jamais d'une simple copie du projet client précédent. Copier l'ancien projet traîne des identifiants, des tokens de design, des SVG, des polices et du PHP qui n'ont rien à voir avec le nouveau client, et oblige à un nettoyage manuel toujours incomplet (composer name jamais renommé, logos d'un autre client laissés dans `public/`, police déclarée qui ne correspond plus, etc.).
+
+Quand l'utilisateur démarre un nouveau projet, applique la règle `init-nouveau-projet` : elle détecte les identifiants du projet courant et liste exactement quoi remplacer et nettoyer.
+
+## Stack
+
+- **Templating** : Timber 2 + Twig. Les `*.php` à la racine (`front-page.php`, `home.php`, `page.php`, `single-post.php`, `category.php`, etc.) sont des routeurs WordPress qui chargent un contexte Timber et rendent un template de `views/pages/`. La présentation vit dans les `.twig`, pas dans le PHP.
+- **Build** : Vite (`pnpm dev` / `pnpm build`), plugin `laravel-vite-plugin`. Entrées : `src/stylesheets/styles.css` et `src/scripts/app.js`. Sortie dans `dist/` (gitignored).
+- **CSS** : Tailwind CSS v4, configuré en CSS pur (pas de `tailwind.config.js`). Tous les tokens sont déclarés dans le bloc `@theme` de `src/stylesheets/theme.css`.
+- **JS** : TypeScript. Composants dans `src/scripts/components/*.ts`, montés via `piecesjs`. L'objet global `cinq` (données du thème : `text_domain`, `ajax_url`, `nonce`, etc.) est injecté côté PHP dans `includes/Setup/Enqueue.php` et typé dans `src/scripts/.d.ts`. Libs courantes : GSAP, Splide, et les packages internes `@agencecinq/drawer`, `@agencecinq/modal`, `@agencecinq/utils`, `@19h47/accordion`.
+- **PHP** : POO, PSR-4, standards WordPress (phpcs + wpcs, voir `phpcs.xml`). Le namespace racine est mappé sur `includes/`. Les classes sont rangées comme les fichiers du core WordPress (le hook `after_setup_theme` vit dans `includes/Setup/`, etc.).
+- **Champs** : ACF. Les groupes sont définis en PHP dans `includes/Plugins/ACF/IncludeFields/` (et leurs `Layouts/` pour les blocs flexibles), pas seulement en JSON.
+- **CPT / taxonomies** : à créer dans `includes/Post/` et `includes/Taxonomy/` (le starter livre `Post/Page.php` ; les CPT et taxonomies spécifiques sont ajoutés par projet).
+- **i18n** : text domain unique, fichiers dans `languages/` (`.pot` source, `.po`/`.mo` par langue).
+- **Déploiement** : `deploy.sh` (build prod + purge des fichiers de dev), déclenché par le workflow `.github/workflows/release.yml` sur tag `v*`.
+- **Prérequis** : PHP 8.4, Composer, pnpm, Node 22.
+
+## Arborescence clé
+
+```
+includes/
+  Setup/            Bootstrap (Context, Enqueue, Twig, hooks core WP)
+  Post/  Taxonomy/  CPT et taxonomies
+  Plugins/ACF/      Définition des champs et des blocs (IncludeFields/Layouts)
+  Models/           Modèles Timber par contexte (Home, Page, SinglePost...)
+  Traits/ Template/ Helpers transverses
+src/stylesheets/    CSS source (theme.css = tokens @theme, styles.css = imports)
+src/scripts/        TypeScript (components/*.ts montés via piecesjs)
+src/icons/          SVG source -> compilés dans public/sprite.svg
+src/img/  src/fonts/ Images statiques et polices
+views/              Twig (pages/, blocks/, components/, svg/)
+languages/          Traductions liées au text domain
+acf-json/           Sync JSON ACF (si présent)
+*.php (racine)      Routeurs WordPress -> Timber::render(...)
+```
+
+## Conventions à respecter
+
+- Pas de logique métier dans les `*.php` racine : ils chargent le contexte et rendent un Twig.
+- Nouvelle classe PHP : respecter PSR-4 et le rangement par fichier de core WP, et reprendre le docblock d'en-tête existant (`@package`, `@author CINQ <contact@agencecinq.com> (https://agencecinq.com)`). Faire passer phpcs.
+- Nouveau bloc ACF : créer le layout dans `includes/Plugins/ACF/IncludeFields/Layouts/`, le template Twig correspondant dans `views/blocks/`, et le cas échéant le composant TS dans `src/scripts/components/`.
+- Nouveau token de design (couleur, typo, radius) : le déclarer dans `@theme` de `src/stylesheets/theme.css`, jamais en dur dans les classes utilitaires.
+- Nouvelle icône : ajouter le SVG dans `src/icons/`, puis `pnpm build` pour régénérer `public/sprite.svg`. L'utiliser via `views/svg/use.html.twig`.
+- Images responsive : composant `views/components/image.html.twig` (srcset, WebP, lazy). Images statiques : `assets('src/img/...')`.
+- Cache Twig en prod : vider `vendor/timber/timber/cache/*` après modif d'un `.twig` si `WP_DEBUG` est à false.
+
+## Standards de code et langue
+
+- **WordPress Coding Standards (WPCS)** : tout le PHP suit les standards WordPress. Référence : https://github.com/WordPress/wpcs-docs/tree/master. Ils sont vérifiés par phpcs via `phpcs.xml` ; aucun code ne doit introduire de nouvelle erreur phpcs.
+- **Langue du code** : le code et les commentaires (docblocks, commentaires inline, noms de variables, de fonctions et de classes) sont rédigés en anglais. Les chaînes destinées à l'utilisateur passent par les fonctions i18n (`__()`, `_e()`, etc.) avec le text domain du thème.
+- Ne pas confondre avec la langue de ces fichiers de règles, qui restent en français pour l'équipe.
+
+## Identité agence à ne jamais modifier
+
+Ces chaînes appartiennent à l'agence, pas au projet, et restent identiques partout : `CINQ`, `contact@agencecinq.com`, `https://agencecinq.com`, les lignes `@author CINQ ...`, l'`Author` et l'`Author URI` de `style.css`. Ne pas les remplacer lors d'un renommage de projet.
+
+## DO / DONT
+
+Liste vivante des règles courtes. Elle s'enrichit au fil des projets (voir la section suivante).
+
+DO :
+
+- Suivre les WordPress Coding Standards et faire passer phpcs.
+- Coder et commenter en anglais.
+- Déclarer les tokens de design dans `@theme` de `theme.css`.
+- Passer les chaînes utilisateur par les fonctions i18n.
+
+DONT :
+
+- Pas de logique métier dans les `*.php` racine.
+- Pas de valeurs de design en dur dans les classes utilitaires.
+- Ne pas modifier l'identité agence lors d'un renommage.
+- Pas d'emoji ni de tiret cadratin dans les contenus rédigés.
+
+## Faire évoluer ces règles
+
+Ce fichier est la base de vérité du thème et doit évoluer au fil des projets.
+
+- Quand Jérémy (ou un autre membre de l'équipe) demande d'ajouter un DO ou un DONT, mets ce fichier à jour : ajoute la règle dans la section DO / DONT si elle est générale et transverse, ou complète la section pertinente.
+- Si le DO ou le DONT concerne une tâche ou un workflow spécifique (ex : un type de bloc, une intégration, une procédure), ne surcharge pas ce fichier : crée un fichier de règle dédié dans `.cursor/rules/` (avec une `description` claire, et `globs` ou `alwaysApply` adaptés à la portée), puis ajoute ici un pointeur d'une ligne vers cette règle.
+- Garde ce fichier concis : les détails longs vivent dans des règles dédiées, ce fichier reste la vue d'ensemble.
+
+Règles dédiées existantes :
+
+- `init-nouveau-projet` : procédure d'initialisation d'un nouveau projet à partir du thème.
+- `remontee-vers-starter` : procédure pour faire remonter une brique d'un projet vers le starter (flux inverse de l'init).

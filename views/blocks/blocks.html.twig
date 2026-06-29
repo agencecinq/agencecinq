@@ -22,7 +22,7 @@
 					include(
 						"blocks/#{ block.acf_fc_layout | lower | replace( { '_' : '-' } ) }.html.twig",
 						{
-							props: block,
+							block: block,
 							loop: loop.index0,
 							classes: [ 'block-index-' ~ loop.index0 ]
 						},

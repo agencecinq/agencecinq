@@ -1,0 +1,14 @@
+{%- if media.video.file -%}
+	<video class="{{ classes | default('') | join(' ') }}" src="{{ media.video.file.url }}" poster="{{ media.video.poster ? media.video.poster.url : '' }}" autoplay muted loop playsinline></video>
+{%- endif -%}
+
+{%- if ( media.images[0] or media.images[1] ) and not media.video.file -%}
+	{{- include( 'components/image.html.twig', { image: media.images[0], classes: [
+		media.images[1] ? 'block lg:hidden' : 'block',
+		classes | default('') | join(' ')
+	] } ) -}}
+	{{- include( 'components/image.html.twig', { image: media.images[1], classes: [
+		media.images[0] ? 'hidden lg:block' : 'block',
+		classes | default('') | join(' ')
+	] } ) -}}
+{%- endif -%}

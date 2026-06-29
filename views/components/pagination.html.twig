@@ -1,0 +1,101 @@
+{#
+ # Components: Pagination
+ #
+ # @param {object} pagination
+ #}
+
+{%- if (pagination.pages|length) > 0 -%}
+	<nav role="navigation" class="{{ html_classes( 'text-l inline-flex items-center gap-7.5', classes|default([]) | join(' ') ) }}">
+		{% if pagination.prev %}
+			<a
+				href="{{ pagination.prev.link }}{{ anchor|default('') }}"
+				class="hover:border-vert hover:bg-vert flex size-12.5 lg:size-17 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out"
+				aria-label="{{ __('Previous', 'wp-cinquante-et-un') }}"
+			>
+				{{-
+					include(
+						'svg/use.html.twig',
+						{
+							icon: 'arrow-left',
+							classes: ['size-12.5 lg:size-17']
+						}
+					)
+				-}}
+			</a>
+		{% else %}
+			<span
+				class="flex size-12.5 lg:size-17 shrink-0 cursor-not-allowed items-center justify-center rounded-full border opacity-50"
+			>
+				{{-
+					include(
+						'svg/use.html.twig',
+						{
+							icon: 'arrow-left',
+							classes: ['size-12.5 lg:size-17']
+						}
+					)
+				-}}
+			</span>
+		{% endif %}
+
+		<ul class="flex flex-wrap justify-center">
+			{% for page in pagination.pages %}
+				<li>
+					{% if page.link %}
+						<a
+							href="{{ page.link }}{{ anchor|default('') }}"
+							class="{{ page.class }} hover:bg-vert flex size-10 lg:size-12.5 items-center justify-center rounded-full transition-colors duration-300 ease-out"
+						>
+							{{- page.title -}}
+						</a>
+					{% else %}
+						<span
+							class="{{
+							html_classes(
+								'flex size-10 lg:size-12.5 items-center justify-center rounded-full',
+								page.class,
+								'current' in ( page.class|split(' ') ) ? 'bg-vert' : ''
+							)
+							}}"
+							{{ 'current' in ( page.class|split(' ') ) ? 'aria-current="page"' : '' }}
+						>
+							{{- page.title -}}
+						</span>
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+
+		{% if pagination.next %}
+			<a
+				href="{{ pagination.next.link }}{{ anchor|default('') }}"
+				class="hover:bg-vert hover:border-vert flex size-12.5 lg:size-17 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out"
+				aria-label="{{ __('Next', 'wp-cinquante-et-un' ) }}"
+			>
+				{{-
+					include(
+						'svg/use.html.twig',
+						{
+							icon: 'arrow-right',
+							classes: ['size-12.5 lg:size-17']
+						}
+					)
+				-}}
+			</a>
+		{% else %}
+			<span
+				class="flex size-12.5 lg:size-17 shrink-0 cursor-not-allowed items-center justify-center rounded-full border opacity-50"
+			>
+				{{-
+					include(
+						'svg/use.html.twig',
+						{
+							icon: 'arrow-right',
+							classes: ['size-12.5 lg:size-17']
+						}
+					)
+				-}}
+			</span>
+		{% endif %}
+	</nav>
+{%- endif -%}

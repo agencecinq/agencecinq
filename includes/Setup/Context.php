@@ -9,8 +9,9 @@
 
 namespace WPCinquanteEtUn\Setup;
 
+use WPCinquanteEtUn\Service;
 use Timber\{Timber, Site };
-use WPCinquanteEtUn\Models\{ Category, Home };
+use WPCinquanteEtUn\Models\{ CategoryArchive, Page, Home, SinglePost };
 use WP_Post;
 
 /**
@@ -20,7 +21,7 @@ use WP_Post;
  *
  * @package WPCinquanteEtUn
  */
-class Context extends Site {
+class Context extends Site implements Service {
 
 	/**
 	 * Constructor
@@ -85,6 +86,9 @@ class Context extends Site {
 		$context['posts_url']          = get_permalink( get_option( 'page_for_posts' ) );
 		$context['home_url']           = home_url( '/' );
 
+		$context['theme'] = get_field( 'theme', 'option' );
+		$context['menus'] = get_field( 'menus', 'option' );
+
 		return $context;
 	}
 
@@ -101,11 +105,14 @@ class Context extends Site {
 	 */
 	public function add_post_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			'page' => function ( WP_Post $post ) {
+			'page' => function ( WP_Post $post ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Reserved for future use.
 				if ( is_home() ) {
 					return Home::class;
 				}
+
+				return Page::class;
 			},
+			'post' => SinglePost::class,
 		);
 
 		return array_merge( $classmap, $custom_classmap );
@@ -125,7 +132,7 @@ class Context extends Site {
 	 */
 	public function add_term_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			'category' => Category::class,
+			'category' => CategoryArchive::class,
 		);
 
 		return array_merge( $classmap, $custom_classmap );

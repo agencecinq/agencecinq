@@ -1,0 +1,22 @@
+<cinq-modal class="{{ html_classes( 'block', classes | default( [] ) | join( ' ' ) ) }}" id="{{ id }}">
+	<dialog role="dialog" class="scrollbar-hidden m-auto w-full max-w-[calc(100vw---spacing(5))] pt-[1.09375rem] lg:px-[1.09375rem] bg-transparent backdrop:bg-black/50 lg:w-114.75" aria-labelledby="">
+
+        <cinq-modal-button class="absolute w-fit top-0 z-2 left-0 lg:left-auto mx-auto lg:mx-0 right-0 block">
+            <button aria-controls="{{ id }}" type="button" class="size-8.75 flex  items-center justify-center rounded-full bg-vert">
+                {{-
+                    include(
+                        'svg/use.html.twig',
+                        {
+                            icon: 'times',
+                            classes: ['size-8.75 pointer-events-none']
+                        },
+                        with_context: false
+                    )
+                -}}
+            </button>
+		</cinq-modal-button>
+
+		<div class="p-7.5 bg-blanc relative z-1 rounded-15"> {% block content %}{% endblock %}
+			</div>
+		</dialog>
+	</cinq-modal>

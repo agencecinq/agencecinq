@@ -6,6 +6,7 @@
  *
  * @package WPCinquanteEtUn
  */
+
 return array(
 	array(
 		'id'          => 'facebook',

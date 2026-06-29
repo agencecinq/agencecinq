@@ -8,6 +8,7 @@ wpcs
 # Node.js #
 ###########
 node_modules
+.pnpm-debug.log
 
 # OS generated files #
 ######################

@@ -1,0 +1,20 @@
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+{{- 
+	include(
+		'components/collection-posts.html.twig', 
+		{ 
+			attributes: { id: block.id }, 
+			content: block.content | default({}) | merge({ link: { url: posts_url } }),
+			posts: get_posts( { post_type: 'post', cat: block.content.category, posts_per_page: 3 } ),
+		} 
+	) 
+-}}

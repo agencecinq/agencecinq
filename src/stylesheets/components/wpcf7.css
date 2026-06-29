@@ -1,0 +1,194 @@
+@layer components {
+	/* Layout */
+	.block-form .wpcf7 .wpcf7-form {
+		@apply grid grid-cols-2 gap-5;
+	}
+
+	.block-form .wpcf7 .wpcf7-form p {
+		@apply m-0;
+		grid-column: span 2 / span 2;
+	}
+
+	.block-form .wpcf7 .wpcf7-form p:first-of-type {
+		/* margin-bottom: 1rem; */
+		text-align: center;
+	}
+
+	.block-form .wpcf7 .wpcf7-form p:last-of-type {
+		text-align: center;
+		margin-top: 1rem;
+		position: relative;
+	}
+
+	@media (width >= 64rem /* 1024px */) {
+		.block-form .wpcf7 .wpcf7-form p:first-of-type,
+		.block-form .wpcf7 .wpcf7-form p:last-of-type,
+		.block-form .wpcf7 .wpcf7-form p:has(textarea),
+		.block-form .wpcf7 .wpcf7-form p:not(:has(input)):not(:has(textarea)):not(:has(select)),
+		.block-form .wpcf7 .wpcf7-form p:has(input[type="checkbox"]) {
+			grid-column: span 2 / span 2 !important;
+		}
+
+		.block-form .wpcf7 .wpcf7-form p {
+			grid-column: span 1 / span 1;
+		}
+	}
+
+	.block-form .wpcf7 .wpcf7-form .wpcf7-form-control-wrap {
+		@apply block;
+	}
+
+	/* Fields */
+	.block-form
+		.wpcf7
+		.wpcf7-form
+		:is(
+			input[type="text"],
+			input[type="email"],
+			input[type="tel"],
+			input[type="url"],
+			input[type="number"],
+			select
+		) {
+		@apply border-bleu/25 bg-blanc text-bleu placeholder:text-bleu/50 w-full rounded-full border;
+		@apply text-body-small-mobile lg:text-body-small-desktop px-5.25 py-3.5;
+		@apply focus:border-bleu/50 focus:ring-0 focus:outline-none;
+	}
+
+	.block-form .wpcf7 .wpcf7-form textarea {
+		@apply rounded-25 border-bleu/25 bg-blanc text-bleu placeholder:text-bleu/50 w-full border;
+		@apply text-body-small-mobile lg:text-body-small-desktop px-5.25 py-4;
+		@apply focus:border-bleu/50 focus:ring-0 focus:outline-none;
+		min-height: 10rem;
+		resize: none;
+	}
+
+	.block-form .wpcf7 .wpcf7-form select {
+		appearance: none;
+		background-image:
+			linear-gradient(45deg, transparent 50%, currentColor 50%),
+			linear-gradient(135deg, currentColor 50%, transparent 50%);
+		background-position:
+			calc(100% - 1.5rem) calc(50% - 0.15rem),
+			calc(100% - 1.25rem) calc(50% - 0.15rem);
+		background-size:
+			0.35rem 0.35rem,
+			0.35rem 0.35rem;
+		background-repeat: no-repeat;
+	}
+
+	/* Validation / messages */
+	.block-form .wpcf7 .wpcf7-not-valid-tip {
+		@apply text-mention-large text-bleu/70 mt-2;
+	}
+
+	.block-form .wpcf7 .wpcf7-response-output {
+		@apply rounded-15 border-bleu/25 bg-blanc/70 text-body-small-mobile lg:text-body-small-desktop text-bleu mt-5 border px-5 py-4;
+	}
+
+	.block-form .wpcf7 form.invalid .wpcf7-response-output {
+		@apply border-bleu/40;
+	}
+
+	.block-form .wpcf7 form.sent .wpcf7-response-output {
+		@apply border-vert/60;
+	}
+
+	/* Submit (same look as .button.button--primary.button--light) */
+	.block-form .wpcf7 .wpcf7-submit {
+		@apply text-bleu border-bleu relative inline-flex items-center justify-center border text-button-medium-mobile lg:text-button-medium-desktop;
+		border-radius: calc(infinity * 1px);
+		text-align: center;
+		padding-inline: calc(var(--spacing) * 3.5);
+		padding-block: calc(var(--spacing) * 2.5);
+	}
+
+	@media (width >= 64rem /* 1024px */) {
+		.block-form .wpcf7 .wpcf7-submit {
+			padding-block: 0.90625rem;
+		}
+	}
+
+	.block-form .wpcf7 .wpcf7-submit::before {
+		@apply bg-vert;
+		content: "";
+		position: absolute;
+		left: calc(var(--spacing) * 3);
+		top: 50%;
+		transform: translateY(-50%);
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: calc(infinity * 1px);
+	}
+
+	.block-form .wpcf7 .wpcf7-submit[disabled] {
+		@apply opacity-60;
+	}
+
+	.block-form .wpcf7 .wpcf7-spinner {
+		@apply absolute top-1/2 right-0 -translate-y-1/2;
+		margin: 0;
+	}
+
+	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item {
+		label {
+			@apply inline-flex items-start gap-2.5;
+		}
+
+		.wpcf7-list-item-label {
+			@apply text-mention-large text-bleu/70;
+		}
+
+		input[type="checkbox"] {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+			height: 0;
+			width: 0;
+		}
+
+		.wpcf7-list-item-label::before {
+			@apply h-3.75 border;
+
+			border-radius: 0.3125rem /* 5px */;
+			display: block;
+			content: "";
+			flex-shrink: 0;
+			width: calc(13.83 / 16 * 1rem);
+		}
+
+		input[type="checkbox"]:checked ~ .wpcf7-list-item-label::before {
+			@apply bg-current
+		}
+	}
+
+	.wpcf7 .wpcf7-form .wpcf7-list-item {
+		margin: 0!important;
+
+		input[type="checkbox"] {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+			height: 0;
+			width: 0;
+		}
+
+		.wpcf7-list-item-label {
+			@apply flex gap-2;
+		}
+
+		.wpcf7-list-item-label::before {
+			@apply h-3.75 border;
+
+			border-radius: 0.3125rem /* 5px */;
+			display: block;
+			content: "";
+			flex-shrink: 0;
+			width: calc(13.83 / 16 * 1rem);
+		}
+
+		input[type="checkbox"]:checked ~ .wpcf7-list-item-label::before {
+			@apply bg-current
+		}
+	}
+}

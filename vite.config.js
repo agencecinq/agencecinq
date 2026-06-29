@@ -12,12 +12,16 @@ export default defineConfig({
 		assetsDir: "src",
 	},
 	plugins: [
+		tailwindcss(),
 		laravel({
 			publicDirectory: "dist",
-			input: ["src/stylesheets/styles.css", "src/scripts/app.js"],
+			input: [
+				"src/stylesheets/styles.css",
+				"src/scripts/app.js",
+				"src/img/svg/logo.svg",
+			],
 			refresh: ["**/*.php", "**/*.twig"],
 		}),
-		tailwindcss(),
 		viteSvgSpriteWrapper({
 			icons: "src/icons/*.svg",
 			outputDir: "public",

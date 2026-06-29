@@ -1,0 +1,61 @@
+{%- if (posts|length) > 0 -%}
+	<cinq-slideshow class="block">
+		<div class="splide space-y-7.5 lg:space-y-10" data-dom="slider">
+			<div class="splide__track" style="overflow: visible!important;">
+				<div class="splide__list" style="height: auto!important;">
+					{%- for post in posts -%}
+						<div class="splide__slide w-3/4 min-w-3/4 lg:w-2/3 lg:min-w-2/3" data-dom="slide">
+							{{-
+								include(
+									'components/tease-page.html.twig',
+									{
+										post: post
+									}
+								)
+							-}}
+						</div>
+					{%- endfor -%}
+				</div>
+			</div>
+
+			{%- if (posts|length) > 1 -%}
+				<div class="splide__arrows mx-2.5 flex items-center justify-between gap-2.5 lg:mx-0 lg:gap-5">
+					<div class="flex items-center gap-4.5 font-semibold [font-variant-numeric:tabular-nums]">
+						<span data-dom="current">1</span><hr class="bg-bleu h-px w-18.75 border-0"/><span>{{- posts|length -}}</span>
+					</div>
+
+					<div class="mx-2.5 flex items-center justify-end gap-4.25 lg:mx-0">
+						<button type="button" class="border-bleu splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Previous', 'wp-cinquante-et-un') }}">
+							{{-
+								include(
+									'svg/use.html.twig',
+									{
+										icon: 'arrow-left',
+										classes: ['size-full', 'pointer-events-none']
+									},
+									with_context: false
+								)
+							-}}
+						</button>
+						<button type="button" class="border-bleu splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Next', 'wp-cinquante-et-un') }}">
+							{{-
+								include(
+									'svg/use.html.twig',
+									{
+										icon: 'arrow-right',
+										classes: ['size-full', 'pointer-events-none']
+									},
+									with_context: false
+								)
+							-}}
+						</button>
+					</div>
+				</div>
+			{%- endif -%}
+		</div>
+	</cinq-slideshow>
+{%- else -%}
+	<p class="h-on-title mx-2.5 uppercase lg:mx-0">
+		{{ message|default(__('No items found', 'wp-cinquante-et-un')) }}
+	</p>
+{%- endif -%}

@@ -1,0 +1,33 @@
+{#
+ # Blocks: Columns
+ # Two-column text layout.
+ #}
+
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<section id="{{ block.id }}" class="block-columns">
+	<div class="container grid grid-cols-12 gap-x-2.5 gap-y-7.5 lg:gap-x-5">
+		{%- if block.content.column_left -%}
+			<div class="col-span-full lg:col-span-6">
+				<div class="h5">
+					{{- block.content.column_left|raw -}}
+				</div>
+			</div>
+		{%- endif -%}
+		{%- if block.content.column_right -%}
+			<div class="col-span-full lg:col-span-6 lg:mx-12.5">
+				<div class="text-l">
+					{{- block.content.column_right|raw -}}
+				</div>
+			</div>
+		{%- endif -%}
+	</div>
+</section>

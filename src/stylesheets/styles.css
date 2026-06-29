@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@splidejs/splide/dist/css/splide-core.min.css";
 
 @import "./theme.css";
 
@@ -11,8 +12,8 @@
 @import "./utilities/scrollbar-hidden.css";
 
 /* Components */
-@import "./components/advancedform.css";
 @import "./components/button.css";
 @import "./components/typographies.css";
+@import "./components/wpcf7.css";
 @import "./components/wysiwyg.css";
 

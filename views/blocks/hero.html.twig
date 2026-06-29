@@ -1,0 +1,71 @@
+{#
+ # Blocks: Hero
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+<div id="{{ block.id }}" class="text-beige relative flex items-end after:absolute after:inset-0 after:z-2 after:size-full after:bg-bleu/30 lg:min-h-screen">
+	<div class="relative z-3 container grid grid-cols-4 items-end gap-x-2.5 gap-y-10 lg:grid-cols-12 lg:gap-x-5 lg:gap-y-15">
+		<div class="col-span-full md:col-span-3 mb-4 space-y-5 lg:col-span-5 lg:mb-20">
+			{%- if block.content.title -%}
+				<{{block.content.heading|default('h2')}} class="h2">
+					{{- block.content.title -}}
+				</{{block.content.heading|default('h2')}}>
+			{%- endif -%}
+
+			{{-
+				include(
+					'components/button.html.twig',
+					block.content.link | default( {} ) | merge( { icon: 'bullet', mode: 'dark' } ),
+					with_context = false
+				)
+			-}}
+		</div>
+
+		{%- if block.featured_posts.posts | length == 1 -%}
+			<div class="col-span-full ml-7.5 lg:col-span-4 lg:col-start-9 lg:ml-20">
+				{{- include('components/tease-post-mini.html.twig', { post: get_posts( { post_type: 'post', post__in: block.featured_posts.posts } )[0] }) -}}
+			</div>
+		{%- elseif block.featured_posts.posts | length > 1 and block.featured_posts.posts | length != 0 -%}
+			<cinq-slideshow class="block col-span-full ml-7.5 space-y-5 lg:col-span-4 lg:col-start-9 lg:ml-20">
+				<div class="splide overflow-hidden rounded-10" data-dom="slider">
+					<div class="splide__track" data-dom="track">
+						<div class="splide__list" style="height: auto!important;">
+							{%- for post in get_posts( { post_type: 'post', post__in: block.featured_posts.posts, orderby: 'post__in' } ) -%}
+								<div class="splide__slide w-full" data-dom="slide">
+									{{- include('components/tease-post-mini.html.twig', { classes: [ 'h-full lg:h-auto' ], post: post }) -}}
+								</div>
+							{%- endfor -%}
+						</div>
+					</div>
+				</div>
+
+				{%- if block.featured_posts.posts | length > 1 -%}
+					<div class="flex gap-1.5 justify-end" data-dom="controls">
+						{%- for post in block.featured_posts.posts -%}
+							<button type="button" class="size-1.5 bg-beige/50 rounded-full aria-current:bg-vert aria-current:w-4.5 transition-[background-color,width] duration-300 ease-power1-out"></button>
+						{%- endfor -%}
+					</div>
+				{%- endif -%}
+			</cinq-slideshow>
+		{%- endif -%}
+
+
+		{%- if block.footer.items -%}
+			<ul class="bg-blanc/16 border-blanc/16 scrollbar-hidden text-s col-span-full flex items-center-safe justify-center-safe overflow-x-auto rounded-full border p-4 [backdrop-filter:blur(10px)] lg:col-span-8 lg:col-start-3">
+				{%- for item in block.footer.items -%}
+					<li class="flex items-center gap-2 whitespace-nowrap after:ms-7.5 after:me-7.5 after:block after:size-1.5 after:shrink-0 after:rounded-full after:bg-vert after:content-[''] last:after:hidden lg:after:ms-10 lg:after:me-10">
+						{%- if item.image -%}
+							<div class="size-5.25 block shrink-0">
+								{{- include( 'components/image.html.twig', { classes: [ 'size-full block object-contain' ], image: item.image, width: 21, height: 21, loading: 'lazy' } ) -}}
+							</div>
+						{%- endif -%}
+						{{- item.title -}}
+					</li>
+				{%- endfor -%}
+			</ul>
+		{%- endif -%}
+	</div>
+
+	{{- include( 'components/media.html.twig', { media: block.media, classes: 'absolute inset-0 z-1 size-full object-cover object-center' } ) -}}
+</div>

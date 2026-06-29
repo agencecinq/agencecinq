@@ -1,25 +1,10 @@
 <?php
 /**
- * Bootstrap and load manager for the wp-cinquante-et-un theme's include files.
+ * Theme bootstrap: service registration and initialization.
  *
- * Centralizes the initialization process for the theme by locating,
- * validating and requiring files from the theme's includes directory.
- * This file acts as the single entry point for registering theme
- * functionality, instantiating core classes, and attaching actions
- * and filters required for the theme to operate correctly.
+ * Single entry point for instantiating theme classes and calling their run() method.
+ * Include early from functions.php so components are loaded before templates.
  *
- * Responsibilities:
- *  - Define and resolve include paths for the theme
- *  - Require or autoload core include files (setup, hooks, helpers, etc.)
- *  - Instantiate and register theme services or classes
- *  - Register theme support features, actions, and filters
- *  - Provide a clear load order and error handling for missing includes
- *
- * Usage:
- *  Include this file early (typically from functions.php) so that
- *  theme components are loaded before templates and front-end requests.
- *
- * @file
  * @package WPCinquanteEtUn
  */
 
@@ -28,7 +13,7 @@ namespace WPCinquanteEtUn;
 /**
  * Init
  *
- * Initializes all the classes in the theme.
+ * Registers and runs all theme services. Each service must implement the Service interface.
  *
  * @package WPCinquanteEtUn
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
@@ -36,56 +21,70 @@ namespace WPCinquanteEtUn;
 class Init {
 
 	/**
-	 * Store all the classes inside an array
+	 * Theme service classes by domain. Order can matter for dependency or hook priority.
 	 *
-	 *
-	 *
-	 * @return array Full list of classes
+	 * @return array<int, class-string<Service>>
 	 */
 	public static function get_services(): array {
 		return array(
+			// Admin.
 			Admin\Init::class,
 			Admin\Menu::class,
+			// Setup.
 			Setup\Enqueue::class,
 			Setup\Context::class,
+			Setup\Twig::class,
+			Setup\QueryVars::class,
+			// WordPress integration.
 			WPImageEditor::class,
 			WPSettings::class,
+			Post::class,
 			GeneralTemplate::class,
-			Setup\Twig::class,
+			// Post & template.
 			PostTemplate\BodyClass::class,
 			PostTemplate\PostClass::class,
 			Template\Loader::class,
 			Template\PostStates::class,
+			// Build & assets.
 			Vite::class,
-			Plugins\Polylang\RegisterStrings::class,
+			// ACF.
+			Plugins\ACF\Init::class,
 			Plugins\ACF\SavePost::class,
+			Plugins\ACF\FormatValue::class,
+			Plugins\ACF\IncludeFields\ArchivePostsFields::class,
+			Plugins\ACF\IncludeFields\BlocksFields::class,
+			Plugins\ACF\IncludeFields\ClonesFields::class,
+			Plugins\ACF\IncludeFields\PageParentOrChildFields::class,
+			Plugins\ACF\IncludeFields\ThemeFields::class,
+			Plugins\ACF\IncludeFields\PostFields::class,
+			Plugins\ContactForm7\FormTag::class,
+			// Yoast.
+			Plugins\WordpressSeo\AdminInit::class,
+			Post\Page::class,
 		);
 	}
 
-
 	/**
-	 * Loop through the classes, initialize them, and call the run() method if it exists
+	 * Instantiate each service and call run() when it implements Service.
 	 *
 	 * @return void
 	 */
 	public static function run_services(): void {
 		foreach ( self::get_services() as $class ) {
 			$service = self::instantiate( $class );
-
-			if ( method_exists( $service, 'run' ) ) {
+			if ( $service instanceof Service ) {
 				$service->run();
 			}
 		}
 	}
 
-
 	/**
-	 * Initialize the class
+	 * Create an instance of the given class.
 	 *
-	 * @param  string $class class name from the services array.
-	 * @return object
+	 * @param class-string $class_name Fully qualified class name.
+	 * @return object Instance of the class.
 	 */
-	private static function instantiate( string $class ): object {
-		return new $class();
+	private static function instantiate( string $class_name ): object {
+		return new $class_name();
 	}
 }

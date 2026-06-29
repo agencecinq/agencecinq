@@ -1,0 +1,67 @@
+{#
+ # Blocks: Team
+ #}
+
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<div id="{{ block.id }}">
+	<div class="container grid grid-cols-2 gap-x-2.5 gap-y-10 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-15">
+		{% for member in block.content.members %}
+			<div class="col-span-1 space-y-7.5 text-center">
+				<div class="bg-vert mx-auto aspect-square w-25 lg:w-50 max-w-full h-auto overflow-hidden rounded-full object-cover object-center">
+					{{-
+						include(
+							'components/image.html.twig',
+							{
+								image: member.image,
+								classes: 'size-full object-cover object-center'
+							}
+						)
+					-}}
+				</div>
+				{%- if member.name or member.position or member.linkedin -%}
+					<div class="space-y-5">
+						{%- if member.name or member.position -%}
+							<div class="space-y-2.5">
+                                {%- if member.name -%}
+                                    <h3 class="text-l">
+                                        {{- member.name -}}
+                                    </h3>
+                                {%- endif -%}
+
+                                {%- if member.position -%}
+								<p class="h-on-title">
+									{{- member.position -}}
+								</p>
+                                {%- endif -%}
+							</div>
+						{%- endif -%}
+
+						{%- if member.linkedin -%}
+							<a href="{{ member.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-beige max-auto bg-bleu mx-auto flex size-7.5 items-center justify-center rounded-full">
+								{{-
+									include(
+										'svg/use.html.twig',
+										{
+											icon: 'linkedin',
+											classes: ['size-4']
+										},
+										with_context: false
+									)
+								-}}
+							</a>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
+			</div>
+		{% endfor %}
+	</div>
+</div>

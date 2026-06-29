@@ -1,0 +1,245 @@
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<div id="{{ block.id }}" class="text-beige">
+	<div
+		class="relative py-20 after:absolute after:inset-0 after:z-2 after:size-full after:[background:linear-gradient(0deg,rgba(26,44,76,0.3),rgba(26,44,76,0.3))] lg:py-37.5"
+	>
+		{%- if block.content.overline or block.content.title or block.content.text -%}
+			<div
+				class="{{
+				html_classes(
+					'relative z-3 container grid grid-cols-12 items-end gap-5',
+					block.content.layout == 'column' ? '' : 'text-center lg:gap-y-7.5'
+				)
+				}}"
+			>
+				{%- if block.content.overline or block.content.title -%}
+					<div
+						class="{{
+						html_classes(
+							'col-span-full space-y-2.5 lg:space-y-7.5',
+							block.content.layout == 'column' ? 'lg:col-span-5' : 'lg:col-span-10 lg:col-start-2'
+						)
+						}}"
+					>
+						{%- if block.content.overline -%}
+							<p class="h-on-title">
+								{{- block.content.overline -}}
+							</p>
+						{%- endif -%}
+
+						{%- if block.content.title -%}
+							<h2
+								class="{{
+								html_classes(
+									block.content.layout == 'column' ? 'h3' : 'h1',
+									'text-vert'
+								)
+								}}"
+							>
+								{{- block.content.title -}}
+							</h2>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
+
+				{%- if block.content.text -%}
+					<div
+						class="{{
+						html_classes(
+							'col-span-full',
+							block.content.layout == 'column'
+								? 'lg:col-span-5 lg:col-start-8'
+								: 'lg:col-span-8 lg:col-start-3'
+						)
+						}}"
+					>
+						<p class="h5">
+							{{- block.content.text -}}
+						</p>
+					</div>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+
+		{%- if block.items.figures -%}
+			<div
+				class="{{
+				html_classes(
+					'relative z-3 mt-15 space-y-10 lg:container',
+					block.content.layout == 'column' ? 'lg:mt-25' : 'lg:mt-20'
+				)
+				}}"
+			>
+				{%- if block.items.label -%}
+					<p class="h-on-title text-center uppercase">
+						{{- block.items.label -}}
+					</p>
+				{%- endif -%}
+
+				<cinq-slideshow
+					class="lg:col-span-10 lg:col-start-2"
+					style="--gap: {{ (3.5 + ((block.items.figures|length) - 3) * 0.25)|round(
+						2
+					) }}; --slides-length: {{ block.items.figures|length }};"
+				>
+					<div class="splide" data-dom="slider">
+						<div class="splide__arrows mx-2.5 mb-5 flex items-center justify-end gap-3 lg:hidden">
+							<button
+								type="button"
+								class="border-beige splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50"
+								aria-label="{{ __('Previous', 'wp-cinquante-et-un') }}"
+							>
+								{{-
+									include(
+										'svg/use.html.twig',
+										{
+											icon: 'arrow-left',
+											classes: ['size-full', 'pointer-events-none']
+										},
+										with_context: false
+									)
+								-}}
+							</button>
+							<button
+								type="button"
+								class="border-beige splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50"
+								aria-label="{{ __('Next', 'wp-cinquante-et-un') }}"
+							>
+								{{-
+									include(
+										'svg/use.html.twig',
+										{
+											icon: 'arrow-right',
+											classes: ['size-full', 'pointer-events-none']
+										},
+										with_context: false
+									)
+								-}}
+							</button>
+						</div>
+						<div class="splide__track" data-dom="track">
+							<div class="splide__list">
+								{%- for figure in block.items.figures -%}
+									<div
+										class="splide__slide w-70.5 lg:w-[calc(calc(100%/var(--slides-length))---spacing(var(--gap)))]"
+										data-dom="slide"
+									>
+										<article
+											class="{{
+											html_classes(
+												'size-full max-w-full',
+												'bg-blanc/14',
+												'flex flex-col justify-end-safe',
+												'rounded-25 px-2.5 py-5 [backdrop-filter:blur(10px)]',
+												'gap-7.5',
+												(block.items.figures|length) == 4
+													? 'lg:gap-12.5'
+													: 'lg:gap-22',
+												'lg:px-5 lg:pt-12.5 lg:pb-7.5'
+											)
+											}}"
+										>
+											{%- if figure.overline -%}
+												<h3 class="text-l">{{- figure.overline -}}</h3>
+											{%- endif -%}
+
+											<div
+												class="{{
+												html_classes(
+													figure.overline
+														? ''
+														: 'pt-13.5 '
+															~ ((block.items.figures|length) == 3 ? 'lg:pt-29.5' : 'lg:pt-20'),
+													'flex grow flex-col gap-5'
+												)
+												}}"
+											>
+												<div
+													class="{{
+													html_classes(
+														'text-vert',
+														figure.content.overline ? '' : 'pt-7 lg:pt-9'
+													)
+													}}"
+												>
+													{%- if figure.content.overline -%}
+														<p class="h5 min-[1lh]">
+															{{- figure.content.overline -}}
+														</p>
+													{%- endif -%}
+
+													{%- if figure.content.value -%}
+														<p class="h0 flex items-baseline gap-2.5">
+															<span>{{- figure.content.value -}}</span>
+															{%- if figure.content.unit -%}
+																<span class="h3">{{- figure.content.unit -}}</span>
+															{%- endif -%}
+														</p>
+													{%- endif -%}
+
+													{%- if figure.content.description -%}
+														<p class="h5 lg:min-h-[2lh]">
+															{{- figure.content.description -}}
+														</p>
+													{%- endif -%}
+												</div>
+
+												{%- if figure.text -%}
+													<footer
+														class="border-beige/50 min-h-[4lh] border-t pt-5 lg:min-h-[3lh] lg:pt-7.5"
+													>
+														<p class="text-l">
+															{{- figure.text -}}
+														</p>
+													</footer>
+												{%- endif -%}
+											</div>
+										</article>
+									</div>
+								{%- endfor -%}
+							</div>
+						</div>
+					</div>
+				</cinq-slideshow>
+			</div>
+		{%- endif -%}
+
+		{%- if block.content.link.url -%}
+			<div
+				class="relative z-3 container mt-20 grid grid-cols-12 gap-2.5 text-center lg:mt-25 lg:gap-5"
+			>
+				<div class="col-span-12">
+					{{-
+						include(
+							'components/button.html.twig',
+							block.content.link|merge({
+								icon: 'bullet',
+								mode: 'dark'
+							}),
+							with_context: false
+						)
+					-}}
+				</div>
+			</div>
+		{%- endif -%}
+
+		{{-
+			include(
+				'components/media.html.twig',
+				{
+					media: block.media,
+					classes: 'absolute inset-0 z-1 size-full object-cover object-center'
+				}
+			)
+		-}}
+	</div>
+</div>

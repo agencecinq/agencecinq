@@ -11,7 +11,8 @@
 
 use Timber\{ Timber };
 
-$templates    = array( 'pages/category.html.twig' );
+$templates    = array( 'pages/archive-post.html.twig' );
 $data         = Timber::context();
+$data['post'] = $data['term'];
 
 Timber::render( $templates, $data );

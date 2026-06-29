@@ -1,0 +1,899 @@
+<div class="container py-10 lg:py-20">
+	<div class="overflow-x-auto">
+		<table class="bg-bleu/40 my-8 w-full border-collapse text-left">
+			<thead class="uppercase">
+				<tr>
+					<th class="p-4">Name</th>
+					<th class="p-4">Type</th>
+					<th class="p-4">Default</th>
+					<th class="p-4">Description</th>
+				</tr>
+			</thead>
+			<tbody class="divide-y">
+				<tr>
+					<td class="p-4">
+						<code>variant</code>
+					</td>
+					<td class="p-4">
+						<code>string</code>
+					</td>
+					<td class="p-4">
+						<code>'primary'</code>
+					</td>
+					<td class="p-4">
+						Variant of the button. Can be
+						<code>'primary'</code>,
+						<code>'secondary'</code>,
+						<code>
+							'tertiary'
+						</code>
+						or
+						<code>'quaternary'</code>.
+					</td>
+				</tr>
+				<tr>
+					<td class="p-4">
+						<code>disabled</code>
+					</td>
+					<td class="p-4">
+						<code>bool</code>
+					</td>
+					<td class="p-4">
+						<code>false</code>
+					</td>
+					<td class="p-4">Whether the button is disabled.</td>
+				</tr>
+				<tr>
+					<td class="p-4">
+						<code>icon</code>
+					</td>
+					<td class="p-4">
+						<code>string</code>
+					</td>
+					<td class="p-4">
+						<code>null</code>
+					</td>
+					<td class="p-4">The name of the icon to display.</td>
+				</tr>
+				<tr>
+					<td class="p-4">
+						<code>fill</code>
+					</td>
+					<td class="p-4">
+						<code>string</code>
+					</td>
+					<td class="p-4">
+						<code>null</code>
+					</td>
+					<td class="p-4">
+						Color of the icon. Can be
+						<code>'text-vert'</code>,
+						<code>
+							'text-bleu'
+						</code>
+						or
+						<code>'text-blanc'</code>.
+					</td>
+				</tr>
+				<tr>
+					<td class="p-4">
+						<code>mode</code>
+					</td>
+					<td class="p-4">
+						<code>string</code>
+					</td>
+					<td class="p-4">
+						<code>'light'</code>
+					</td>
+					<td class="p-4">
+						Color mode of the button. Can be
+						<code>'light'</code>
+						or
+						<code>'dark'</code>.
+					</td>
+				</tr>
+				<tr>
+					<td class="p-4">
+						<code>title</code>
+					</td>
+					<td class="p-4">
+						<code>string</code>
+					</td>
+					<td class="p-4"></td>
+					<td class="p-4">The button text.</td>
+				</tr>
+				<tr>
+					<td class="p-4">
+						<code>attributes</code>
+					</td>
+					<td class="p-4">
+						<code>array</code>
+					</td>
+					<td class="p-4">
+						<code>{}</code>
+					</td>
+					<td class="p-4">Additional HTML attributes for the button element.</td>
+				</tr>
+				<tr>
+					<td class="p-4">
+						<code>classes</code>
+					</td>
+					<td class="p-4">
+						<code>array</code>
+					</td>
+					<td class="p-4">
+						<code>[]</code>
+					</td>
+					<td class="p-4">Additional CSS classes for the button element.</td>
+				</tr>
+				<tr>
+					<td class="p-4">
+						<code>animate</code>
+					</td>
+					<td class="p-4">
+						<code>bool</code>
+					</td>
+					<td class="p-4">
+						<code>true</code>
+					</td>
+					<td class="p-4">
+						Whether to animate the icon on hover (only for icons with animation, like the 'bullet'
+												or 'arrow-right').
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="overflow-x-auto">
+		<table class="bg-bleu/40 my-8 w-full border-collapse text-left">
+			<thead class="uppercase">
+				<tr>
+					<th class="py-4">Variant</th>
+					<th class="py-4">Example</th>
+				</tr>
+			</thead>
+			<tbody class="divide-y">
+				<tr>
+					<td class="py-4">Primary</td>
+					<td class="flex flex-wrap gap-4 p-4">
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									icon: 'bullet'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									icon: 'bullet',
+									fill: 'text-blanc'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									icon: 'bullet',
+									fill: 'text-bleu'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									disabled: true
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									icon: 'bullet',
+									disabled: true
+								}
+							)
+						-}}
+					</td>
+				</tr>
+				<tr>
+					<td class="py-4">Primary (dark)</td>
+					<td class="flex flex-wrap gap-4 p-4">
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									mode: 'dark'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									icon: 'bullet',
+									mode: 'dark'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									icon: 'bullet',
+									mode: 'dark',
+									fill: 'text-blanc'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Menu',
+									icon: 'bars',
+									mode: 'dark',
+									fill: 'text-blanc',
+									animate: false
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Menu',
+									icon: 'bars',
+									mode: 'dark',
+									fill: 'text-blanc'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									icon: 'bullet',
+									mode: 'dark',
+									fill: 'text-bleu'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									mode: 'dark',
+									disabled: true
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									icon: 'bullet',
+									mode: 'dark',
+									disabled: true
+								}
+							)
+						-}}
+					</td>
+				</tr>
+				<tr>
+					<td class="py-4">Secondary</td>
+					<td class="flex flex-wrap gap-4 p-4">
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'secondary'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'secondary',
+									icon: 'bullet'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'secondary',
+									icon: 'bullet',
+									fill: 'text-blanc'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'secondary',
+									disabled: true
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'secondary',
+									icon: 'bullet',
+									disabled: true
+								}
+							)
+						-}}
+					</td>
+				</tr>
+				<tr>
+					<td class="py-4">Secondary (dark)</td>
+					<td class="flex flex-wrap gap-4 p-4">
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'secondary',
+									mode: 'dark'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'secondary',
+									icon: 'bullet',
+									mode: 'dark'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'secondary',
+									icon: 'bullet',
+									fill: 'text-blanc',
+									mode: 'dark'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'secondary',
+									disabled: true,
+									mode: 'dark'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'secondary',
+									icon: 'bullet',
+									disabled: true,
+									mode: 'dark'
+								}
+							)
+						-}}
+					</td>
+				</tr>
+				<tr>
+					<td class="py-4">Tertiary</td>
+					<td class="space-x-4 py-4">
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'tertiary'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'tertiary',
+									icon: 'arrow-right'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'tertiary',
+									disabled: true
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'tertiary',
+									icon: 'arrow-right',
+									disabled: true
+								}
+							)
+						-}}
+					</td>
+				</tr>
+				<tr>
+					<td class="py-4">Quaternary</td>
+					<td class="space-x-4 py-4">
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'quaternary'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'quaternary',
+									icon: 'chevron-left'
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'quaternary',
+									disabled: true
+								}
+							)
+						-}}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: 'Button',
+									variant: 'quaternary',
+									icon: 'chevron-left',
+									disabled: true
+								}
+							)
+						-}}
+					</td>
+				</tr>
+				<tr>
+					<td class="py-4">Icons</td>
+					<td class="flex flex-wrap gap-4 py-4">
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'arrow-right',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'bars',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'bullet',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'chevron-left',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'chevron-right',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'search',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'globe',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'envelope',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'plus',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'envelope',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'facebook',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'minus',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'bars',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'instagram',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'linkedin',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'chevron-down',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'arrow-right',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'plus',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'minus',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'search',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'times',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'vimeo',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'x',
+									classes: ['size-6']
+								}
+							)
+						-}}
+						{{-
+							include(
+								'svg/use.html.twig',
+								{
+									icon: 'youtube',
+									classes: ['size-6']
+								}
+							)
+						-}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="overflow-x-auto">
+		<table class="my-8 w-full border-collapse text-left">
+			<thead class="uppercase">
+				<tr>
+					<th class="py-4">Class</th>
+					<th class="py-4">Example</th>
+					<th class="py-4">Class</th>
+					<th class="py-4">Example</th>
+					<th class="py-4">Class</th>
+					<th class="py-4">Example</th>
+				</tr>
+			</thead>
+			<tbody class="divide-y">
+				{% set text_h = {
+					0: 'h0',
+					1: 'h1',
+					2: 'h2',
+					3: 'h3',
+					4: 'h4',
+					5: 'h5'
+				} %}
+				{% set text_h_desktop = {
+					0: 'text-h0-desktop',
+					1: 'text-h1-desktop',
+					2: 'text-h2-desktop',
+					3: 'text-h3-desktop',
+					4: 'text-h4-desktop',
+					5: 'text-h5-desktop'
+				} %}
+				{% set text_h_mobile = {
+					0: 'text-h0-mobile',
+					1: 'text-h1-mobile',
+					2: 'text-h2-mobile',
+					3: 'text-h3-mobile',
+					4: 'text-h4-mobile',
+					5: 'text-h5-mobile'
+				} %}
+				{% for i in 0..5 %}
+					<tr>
+						<td class="py-4">
+							<code class="font-mono">.h{{ i }}</code>
+						</td>
+						<td class="py-4">
+							<span class="{{ text_h[i] }}">Aa</span>
+						</td>
+						<td class="py-4">
+							<code class="font-mono">.text-h{{ i }}-desktop</code>
+						</td>
+						<td class="py-4">
+							<span class="{{ text_h_desktop[i] }}">Aa</span>
+						</td>
+						<td class="py-4">
+							<code class="font-mono">.text-h{{ i }}-mobile</code>
+						</td>
+						<td class="py-4">
+							<span class="{{ text_h_mobile[i] }}">Aa</span>
+						</td>
+					</tr>
+				{% endfor %}
+
+				<tr>
+					<td class="py-4">
+						<code class="font-mono">.h-on-title</code>
+					</td>
+					<td class="py-4">
+						<span class="h-on-title">Aa</span>
+					</td>
+					<td class="py-4">
+						<code class="font-mono">.text-on-title-desktop</code>
+					</td>
+					<td class="py-4">
+						<span class="text-on-title-desktop">Aa</span>
+					</td>
+					<td class="py-4">
+						<code class="font-mono">.text-on-title-desktop</code>
+					</td>
+					<td class="py-4">
+						<span class="text-on-title-mobile">Aa</span>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="py-4">
+						<code class="font-mono">.text-l</code>
+					</td>
+					<td class="py-4">
+						<span class="text-l">Aa</span>
+					</td>
+					<td class="py-4">
+						<code class="font-mono">.text-body-large-desktop</code>
+					</td>
+					<td class="py-4">
+						<span class="text-body-large-desktop">Aa</span>
+					</td>
+					<td class="py-4">
+						<code class="font-mono">.text-body-large-mobile</code>
+					</td>
+					<td class="py-4">
+						<span class="text-body-large-mobile">Aa</span>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="py-4">
+						<code class="font-mono">.text-m</code>
+					</td>
+					<td class="py-4">
+						<span class="text-m">Aa</span>
+					</td>
+					<td class="py-4">
+						<code class="font-mono">.text-body-medium-desktop</code>
+					</td>
+					<td class="py-4">
+						<span class="text-body-medium-desktop">Aa</span>
+					</td>
+					<td class="py-4">
+						<code class="font-mono">.text-body-medium-mobile</code>
+					</td>
+					<td class="py-4">
+						<span class="text-body-medium-mobile">Aa</span>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="py-4">
+						<code class="font-mono">.text-s</code>
+					</td>
+					<td class="py-4">
+						<span class="text-s">Aa</span>
+					</td>
+					<td class="py-4">
+						<code class="font-mono">.text-body-small-desktop</code>
+					</td>
+					<td class="py-4">
+						<span class="text-body-small-desktop">Aa</span>
+					</td>
+					<td class="py-4">
+						<code class="font-mono">.text-body-small-mobile</code>
+					</td>
+					<td class="py-4">
+						<span class="text-body-small-mobile">Aa</span>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="py-4">
+						<code class="font-mono">.text-mention-large</code>
+					</td>
+					<td class="py-4">
+						<span class="text-mention-large">Aa</span>
+					</td>
+					<td class="py-4">–––––––––––––</td>
+					<td class="py-4">––</td>
+					<td class="py-4">–––––––––––––</td>
+					<td class="py-4">––</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

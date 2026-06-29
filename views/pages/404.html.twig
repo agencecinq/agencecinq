@@ -8,9 +8,24 @@
 {% extends 'index.html.twig' %}
 
 {%- block content -%}
-	<main id="content">
-		<h1>{{- post.title -}}</h1>
-		<p>{{- post.content -}}</p>
-		<a href="{{ site.link }}">{{- __( 'Back to home page', 'wp-cinquante-et-un' ) -}}</a>
+	<main id="content" role="main">
+		<div class="text-blanc bg-bleu/30 relative after:absolute after:inset-0 after:z-2 after:size-full after:bg-bleu/30">
+			{%- block header -%}
+				{{- include( 'header.html.twig', { classes: [ 'relative z-10' ] } ) -}}
+			{%- endblock -%}
+
+			<div class="container relative z-3 pb-20 pt-5 space-y-10 lg:pt-31.5 lg:pb-46.25">
+				<div class="space-y-2.5">
+					<p>{{- __('404 Error', 'wp-cinquante-et-un') -}}</p>
+					<h1 class="h2 space-y-2.5">
+						<p class="">{{- post.title -}}</p>
+						<p class="h3">{{- post.content -}}</p>
+					</h1>
+				</div>
+				{{- include( 'components/button.html.twig', { icon: 'bullet', title: __('Back to home page', 'wp-cinquante-et-un'), url: site.link, variant: 'primary', mode: 'dark' } ) -}}
+			</div>
+
+			{{- include('components/image.html.twig', { image: theme.404.image, classes: [ 'absolute z-1 inset-0 size-full object-cover' ] } ) -}}
+		</div>
 	</main>
 {%- endblock -%}

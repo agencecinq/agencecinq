@@ -11,7 +11,7 @@ namespace WPCinquanteEtUn;
 /**
  * WP Image editor
  */
-class WPImageEditor {
+class WPImageEditor implements Service {
 
 	/**
 	 * Run default hooks and actions for WordPress
@@ -32,7 +32,7 @@ class WPImageEditor {
 	 *
 	 * @return int
 	 */
-	public function quality( int $quality, string $mime_type ): int {
+	public function quality( int $quality, string $mime_type ): int { // phpcs:ignore 
 		return 100;
 	}
 }

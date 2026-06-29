@@ -1,0 +1,79 @@
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<div
+	id="{{ block.id }}"
+	class="{{
+	html_classes(
+		'bg-vert py-15 lg:py-20',
+		block.radius != 'none' ? 'relative z-5',
+		block.radius == 'top' ? 'rounded-t-25 lg:rounded-t-50 -mt-6.25 lg:-mt-12.5',
+		block.radius == 'bottom' ? 'rounded-b-25 lg:rounded-b-50 -mb-6.25 lg:-mb-12.5',
+		block.radius == 'y'
+			? 'rounded-t-25 rounded-b-25 lg:rounded-t-50 lg:rounded-b-50 -my-6.25 lg:-my-12.5'
+	)
+	}}"
+>
+	<div class="container grid grid-cols-12 gap-x-5 gap-y-15">
+		<div class="col-span-full space-y-2.5 lg:col-span-5 lg:space-y-5">
+			<p class="h-on-title">
+				{{- block.content.overline -}}
+			</p>
+			<h2 class="h4">{{- block.content.title -}}</h2>
+			<p class="text-m">
+				{{- block.content.contact.title -}}
+			</p>
+			<div class="flex items-center gap-5">
+				{%- if block.content.contact.image -%}
+					<div
+						class="border-beige size-22 shrink-0 overflow-hidden rounded-full border-[0.375rem]"
+					>
+						{{-
+							include(
+								'components/image.html.twig',
+								{
+									image: block.content.contact.image,
+									classes: ['block size-full object-cover object-center']
+								}
+							)
+						-}}
+					</div>
+				{%- endif -%}
+				<p class="text-s py-2">
+					{{- block.content.contact.text -}}
+				</p>
+			</div>
+			{{-
+				include(
+					'components/button.html.twig',
+					{
+						variant: 'tertiary',
+						icon: 'arrow-right',
+						title: block.content.contact.link.title,
+						url: block.content.contact.link.url
+					},
+					with_context: false
+				)
+			-}}
+		</div>
+
+		<div class="col-span-full lg:col-span-7">
+			{{-
+				include(
+					'components/accordion-group.html.twig',
+					{
+						classes: ['bg-beige rounded-20 px-3.5 py-7.5 lg:px-12.75 lg:py-9.25'],
+						accordions: block.accordions
+					}
+				)
+			-}}
+		</div>
+	</div>
+</div>

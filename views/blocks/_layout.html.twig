@@ -1,0 +1,21 @@
+{%- if paddings.top != 0 or paddings.bottom != 0 and id -%}
+	<style>
+		#{{ id }} {
+			{%- if paddings.top != 0 -%}
+				padding-top: {{ paddings.top / 16 * 0.75 }}rem;
+			{%- endif -%}
+			{%- if paddings.bottom != 0 -%}
+				padding-bottom: {{ paddings.bottom / 16 * 0.75 }}rem;
+			{%- endif -%}
+
+			@media (min-width: 64rem) {
+				{%- if paddings.top != 0 -%}
+					padding-top: {{ paddings.top / 16 }}rem;
+				{%- endif -%}
+				{%- if paddings.bottom != 0 -%}
+					padding-bottom: {{ paddings.bottom / 16 }}rem;
+				{%- endif -%}
+			}
+		}
+	</style>
+{%- endif -%}

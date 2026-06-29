@@ -9,6 +9,8 @@
 
 namespace WPCinquanteEtUn\Admin;
 
+use WPCinquanteEtUn\Service;
+
 /**
  * Menu
  *
@@ -17,7 +19,7 @@ namespace WPCinquanteEtUn\Admin;
  * @package WordPress
  * @subpackage WPCinquanteEtUn/Admin
  */
-class Menu {
+class Menu implements Service {
 
 	/**
 	 * Runs initialization tasks.
@@ -52,7 +54,7 @@ class Menu {
 	public function add_socials_option_page() {
 		?>
 		<div class="wrap">
-			<h1><?php _e( 'Socials', 'wp-cinquante-et-un' ); ?></h1>
+			<h1><?php esc_html_e( 'Socials', 'wp-cinquante-et-un' ); ?></h1>
 			<form method="post" action="options.php">
 			<?php
 				settings_fields( 'socials' );

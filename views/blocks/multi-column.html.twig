@@ -1,0 +1,196 @@
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<section id="{{ block.id }}">
+	<div class="{{ html_classes( 'text-blanc py-20 [background:linear-gradient(225deg,#102345_0%,#08152C_100%)] lg:py-37.5', block.radius == 'top' ? 'rounded-t-25 lg:rounded-t-50 relative z-2 -mt-6.25 lg:-mt-12.5', block.radius == 'bottom' ? 'rounded-b-25 lg:rounded-b-50 relative z-2 -mb-6.25 lg:-mb-12.5', block.radius == 'y' ? 'rounded-t-25 rounded-b-25 lg:rounded-t-50 lg:rounded-b-50 relative z-2 -my-6.25 lg:-my-12.5' ) }}">
+		<div class="container grid grid-cols-4 gap-x-5 gap-y-15 lg:grid-cols-12 lg:gap-y-20">
+			{%- if block.content.title and (block.content.texts|length) > 0 -%}
+				<div class="col-span-full grid grid-cols-2 gap-x-5 gap-y-7.5">
+					<h2 class="{{ html_classes( 'col-span-full', block.content.text_alignment|default('text-left'), block.content.title_style|default('h2'), 'text-vert text-center' ) }}">
+						{{- block.content.title -}}
+					</h2>
+					{%- for text in block.content.texts -%}
+						{%- if text -%}
+							<div class="col-span-full lg:col-span-1">
+								<p class="h5">
+									{{- text -}}
+								</p>
+							</div>
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+
+			{%- if block.content.title and (block.content.texts|length) == 0 -%}
+				<div class="col-span-full">
+					<h2 class="{{ html_classes( block.content.text_alignment|default('text-left'), block.content.title_style|default('h2'), 'text-vert text-center' ) }}">
+						{{- block.content.title -}}
+					</h2>
+				</div>
+			{%- endif -%}
+
+			{%- for column in block.first_row.columns -%}
+				<div class="{{ html_classes( 'col-span-full', loop.length == 2 ? 'lg:col-span-6' ~ (loop.index == 2 ? ' lg:col-start-8' : ' lg:col-start-2') : loop.length == 3 ? 'lg:col-span-4' : '' ) }}">
+					<div class="{{ html_classes( 'rounded-15 lg:rounded-25 relative', column.image ? 'after:absolute after:inset-0 after:z-2 after:size-full after:[background:linear-gradient(0deg,rgba(26,44,76,0.3),rgba(26,44,76,0.3))]' : '' ) }}">
+						<div class="bg-bleu/30 rounded-15 lg:rounded-25 relative z-1 h-125 overflow-hidden">
+							{{-
+								include(
+									'components/image.html.twig',
+									{
+										image: column.image,
+										classes: ['block size-full object-cover object-center']
+									}
+								)
+							-}}
+						</div>
+
+						{%- for pin in column.pins -%}
+							<cinq-modal-button class="absolute top-[calc(var(--top)*1%)] left-[calc(var(--left)*1%)] z-3 block" style="--top: {{ pin.coordinates.top }}; --left: {{ pin.coordinates.left }};">
+								<button type="button" aria-controls="modal-pin-{{ loop.index0 }}-{{ block.id }}" class="after:bg-vert text-bleu before:bg-vert/20 flex size-14 items-center justify-center before:absolute before:inset-0 before:size-full before:animate-pulse before:rounded-full after:absolute after:inset-0 after:m-auto after:size-9 after:rounded-full lg:size-17.5">
+									{{-
+										include(
+											'svg/use.html.twig',
+											{
+												icon: 'plus',
+												classes: ['size-9', 'relative', 'z-2']
+											},
+											with_context: false
+										)
+									-}}
+								</button>
+							</cinq-modal-button>
+						{%- endfor -%}
+					</div>
+				</div>
+			{%- endfor -%}
+
+			{%- for column in block.second_row.columns -%}
+				<div class="{{ html_classes( 'text-beige col-span-full space-y-7.5 text-center lg:space-y-20', loop.length == 1 ? 'lg:col-start-5', loop.length == 2 ? 'lg:col-span-4' ~ (loop.first ? ' lg:col-start-2' : ' lg:col-start-8') : 'lg:col-span-4' ) }}">
+					{%- if column.image -%}
+						<div class="h-125">
+							{{-
+								include(
+									'components/image.html.twig',
+									{
+										image: column.image,
+										classes: ['block size-full object-contain object-bottom']
+									}
+								)
+							-}}
+						</div>
+					{%- endif -%}
+					<div class="{{ html_classes( 'mx-auto max-w-95.5 space-y-10 lg:max-w-none', loop.length == 1 ? '' : 'lg:px-5 lg:pb-13', loop.last ? '' : loop.length != 2 ? 'after:bg-beige relative after:absolute after:inset-x-0 after:top-full after:mx-auto after:h-px after:w-46.5 after:max-w-full after:translate-y-7.5 lg:after:inset-x-0 lg:after:inset-y-0 lg:after:left-full lg:after:h-full lg:after:w-px lg:after:translate-x-2.5 lg:after:translate-y-0' : '' ) }}">
+						{%- if column.title or column.subtitle or column.text -%}
+							<div class="5 space-y-2">
+								{%- if column.title or column.subtitle -%}
+									<div class="space-y-5">
+										{%- if column.title -%}
+											<h3 class="{{ html_classes( 'text-vert', column.title_style|default('h2') ) }}">
+												{{- column.title -}}
+											</h3>
+										{%- endif -%}
+
+										{%- if column.subtitle -%}
+											<p class="h4">
+												{{- column.subtitle -}}
+											</p>
+										{%- endif -%}
+									</div>
+								{%- endif -%}
+
+								{%- if column.text -%}
+									<p class="text-s">
+										{{- column.text -}}
+									</p>
+								{%- endif -%}
+							</div>
+						{%- endif -%}
+
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: column.link.title,
+									url: column.link.url,
+									icon: 'bullet',
+									mode: 'dark'
+								},
+								with_context: false
+							)
+						-}}
+					</div>
+				</div>
+
+				{%- if not loop.last and loop.length == 2 -%}
+					<div class="col-span-2 col-start-2 lg:col-start-6">
+						<hr class="bg-beige mx-auto h-px w-full border-0 lg:h-full lg:w-px"/>
+					</div>
+				{%- endif -%}
+			{%- endfor -%}
+		</div>
+
+		{%- for column in block.first_row.columns -%}
+			{%- for pin in column.pins -%}
+				{% embed 'components/modal.html.twig'
+					with {
+						id: 'modal-pin-' ~ loop.index0 ~ '-' ~ block.id
+					}
+				%}
+					{% block content %}
+						{%- if pin.title or pin.text or pin.subtitle or pin.images -%}
+							<div class="space-y-2.5">
+								{%- if pin.title or pin.text -%}
+									<div class="space-y-3">
+										{%- if pin.title -%}
+											<p class="text-l">
+												{{- pin.title -}}
+											</p>
+										{%- endif -%}
+										{%- if pin.text -%}
+											<p class="text-s">
+												{{- pin.text -}}
+											</p>
+										{%- endif -%}
+									</div>
+								{%- endif -%}
+
+								{%- if pin.subtitle -%}
+									<p class="text-m">
+										{{- pin.subtitle -}}
+									</p>
+								{%- endif -%}
+
+								{%- if pin.images -%}
+									<ul class="flex flex-wrap gap-2.5">
+										{%- for image in pin.images -%}
+											<li>
+												{{-
+													include(
+														'components/image.html.twig',
+														{
+															classes: [
+																'h-12.5 w-auto max-w-full object-contain object-center block'
+															],
+															image: image
+														}
+													)
+												-}}
+											</li>
+										{%- endfor -%}
+									</ul>
+								{%- endif -%}
+							</div>
+						{%- endif -%}
+					{% endblock %}
+				{% endembed %}
+			{%- endfor -%}
+		{%- endfor -%}
+	</div>
+</section>

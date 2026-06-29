@@ -1,0 +1,182 @@
+{#
+ # Renders menu items recursively (supports children and grandchildren).
+ #
+ # @param items MenuItem[]
+ # @param title The title of the parent item
+ # @param url The URL of the parent item
+ # @param id The ID of the parent item
+ #}
+
+{%- set fields = menus.main.submenu|default([])|filter(row => row.item == id)|first -%}
+
+{%- set length = fields.pushes|length -%}
+
+{%- set span = length == 1
+	? 'col-span-3'
+	: length == 2 ? 'col-span-2' : length == 3 ? 'col-span-1' : 'col-span-4'
+-%}
+
+{%- set columns = length == 1
+	? 'columns-3'
+	: length == 2 ? 'columns-2' : length == 3 ? 'columns-1' : 'columns-4'
+-%}
+
+{%- set start -%}
+	{%- if length == 1 -%}
+		lg:col-start-4
+	{%- elseif length == 2 -%}
+		lg:col-start-3
+	{%- elseif length == 3 -%}
+		lg:col-start-2
+	{%- endif -%}
+{%- endset -%}
+
+{%- if length > 0 or (items|length) > 0 -%}
+	<div
+		class="{{
+		html_classes(
+			'bg-beige text-bleu rounded-25 pointer-events-none invisible absolute inset-x-0 top-full z-10 mx-auto grid max-w-330 grid-cols-4 gap-5 p-10 opacity-0 transition-opacity duration-200 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 before:absolute before:inset-x-0 before:bottom-full before:z-1 before:h-5 before:w-full'
+		)
+		}}"
+	>
+		{%- if (items|length) > 0 -%}
+			<div class="{{ html_classes(span, columns, 'space-y-7.5') }}">
+				{%- for item in items -%}
+					<div class="break-inside-avoid space-y-5">
+						{%- if item.url == '#' -%}
+							<p class="text-l">
+								{{- item.title -}}
+							</p>
+						{%- else -%}
+							<a
+								href="{{ item.url }}"
+								itemprop="url"
+								class="text-l block w-fit hover:underline"
+								{{
+								item.is_target_blank or item.is_external
+									? 'target="' ~ item.target ~ '" rel="noopener noreferer"'
+								}}
+							>
+								{{- item.title -}}
+							</a>
+						{%- endif -%}
+
+						{%- if item.children|length -%}
+							<ul class="space-y-2">
+								{% for child in item.children %}
+									<li class="text-button-m">
+										{%- if child.url == '#' -%}
+											<p>
+												{{- child.title -}}
+											</p>
+										{%- else -%}
+											<a
+												href="{{ child.url }}"
+												itemprop="url"
+												class="hover:underline"
+												{{
+												item.is_target_blank or item.is_external
+													? 'target="' ~ item.target ~ '" rel="noopener noreferer"'
+												}}
+											>
+												{{- child.title -}}
+											</a>
+										{%- endif -%}
+
+										<ul class="">
+											{%- for grandchild in child.children -%}
+												<li>
+													<a
+														href="{{ grandchild.url }}"
+														itemprop="url"
+														class="hover:underline"
+														{{
+														item.is_target_blank or item.is_external
+															? 'target="' ~ item.target ~ '" rel="noopener noreferer"'
+														}}
+													>
+														{{- grandchild.title -}}
+													</a>
+												</li>
+											{%- endfor -%}
+										</ul>
+									</li>
+								{% endfor %}
+							</ul>
+						{%- endif -%}
+					</div>
+				{%- endfor -%}
+			</div>
+		{%- endif -%}
+
+		{%- for push in fields.pushes -%}
+			<div class="{{ html_classes(loop.first ? start : '', 'col-span-1') }}">
+				{% set mode = push.mode|default('dark') %}
+				<article
+					class="{{
+					html_classes(
+						'rounded-15',
+						'relative aspect-297/380 break-inside-avoid overflow-hidden text-center before:absolute before:inset-0 before:z-2 before:size-full',
+						mode == 'dark' ? 'text-beige before:bg-bleu/30' : 'text-bleu'
+					)
+					}}"
+				>
+					<div class="relative z-3 flex size-full flex-col p-7.5">
+						{%- if push.overline or push.title -%}
+							<div class="space-y-1.5">
+								{%- if push.overline -%}
+									<p class="text-m">
+										{{- push.overline -}}
+									</p>
+								{%- endif -%}
+								{%- if push.title -%}
+									<p class="h4 text-vert">
+										{{- push.title -}}
+									</p>
+								{%- endif -%}
+							</div>
+						{%- endif -%}
+						{{-
+							include(
+								'components/button.html.twig',
+								push.link
+									|default({})
+									|merge({
+										classes: ['mt-auto'],
+										mode: mode,
+										icon: 'bullet',
+										animate: true,
+										fill: mode == 'dark' ? 'text-vert' : 'text-blanc'
+									}),
+								with_context: false
+							)
+						-}}
+					</div>
+
+					{{-
+						include(
+							'components/image.html.twig',
+							{
+								image: push.image,
+								classes: ['absolute z-1 inset-0 size-full object-cover']
+							},
+							with_context: false
+						)
+					-}}
+				</article>
+			</div>
+		{%- endfor -%}
+
+		{%- if url -%}
+			<div class="col-span-4">
+				<a
+					class="text-bleu/80 text-button-xs uppercase underline"
+					href="{{ url }}"
+					class="text-button-m"
+				>
+					{{- fields.link_title|default(title) -}}
+				</a>
+			</div>
+		{%- endif -%}
+	</div>
+{%- endif -%}

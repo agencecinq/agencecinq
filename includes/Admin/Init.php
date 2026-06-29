@@ -11,16 +11,23 @@
 
 namespace WPCinquanteEtUn\Admin;
 
+use WPCinquanteEtUn\Service;
+
 /**
  * Init
  *
  * @package WordPress
  * @subpackage WPCinquanteEtUn/Admin
  */
-class Init {
+class Init implements Service {
 
 
-	public array $socials;
+	/**
+	 * Socials.
+	 *
+	 * @var array
+	 */
+	public array $socials = array();
 
 	/**
 	 * Runs initialization tasks.
@@ -30,9 +37,12 @@ class Init {
 	 * @return void
 	 */
 	public function run(): void {
-		add_action( 'admin_init', function() {
-			$this->socials = include get_template_directory() . '/includes/socials.php';
-		} );
+		add_action(
+			'admin_init',
+			function () {
+				$this->socials = include get_template_directory() . '/includes/socials.php';
+			}
+		);
 
 		add_action( 'admin_init', array( $this, 'add_settings_sections' ) );
 		add_action( 'admin_init', array( $this, 'add_settings_fields' ) );
@@ -159,7 +169,7 @@ class Init {
 				'name'        => $args['name'],
 				'value'       => $args['value'] ?? '0',
 				'description' => $args['description'] ?? '',
-				'attributes' => $args['value'] === '1' ? array( 'checked' => 'true' ) : array(),
+				'attributes'  => '1' === $args['value'] ? array( 'checked' => 'true' ) : array(),
 			)
 		);
 	}
@@ -186,7 +196,7 @@ class Init {
 	 *
 	 * @return array Sanitized settings array.
 	 */
-	public function sanitize( array | null $input ): array {
+	public function sanitize( array|null $input ): array {
 		if ( is_null( $input ) ) {
 			return array();
 		}

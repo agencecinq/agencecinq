@@ -1,0 +1,101 @@
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+<section id="{{ block.id }}" class="pt-5 pb-15 lg:pb-20">
+	<div
+		class="{{
+		html_classes(
+			'space-y-5 lg:space-y-10',
+			block.marquee
+				? ''
+				: ''
+		)
+		}}"
+	>
+		{%- if block.content.title -%}
+			<div class="container">
+				<h2 class="h-on-title uppercase">{{- block.content.title -}}</h2>
+			</div>
+		{%- endif -%}
+
+		{%- if block.content.gallery -%}
+			<div class="{{ html_classes( 'px-2.5 md:px-10 lg:px-15', block.marquee ? 'px-2.5 md:px-10' : 'lg:container' ) }}">
+			
+			
+				<div
+					class="{{
+					html_classes(
+						'-mx-2.5 md:-mx-10',
+						block.marquee ? 'lg:-mx-15' : 'lg:mx-0'
+					)
+					}}"
+				>
+					{% set cols = block.images_per_row|default(4) %}
+					{% if cols < 1 %}
+						{% set cols = 1 %}
+					{% endif %}
+					{% if cols > 12 %}
+						{% set cols = 12 %}
+					{% endif %}
+
+					{% if block.marquee %}
+						{% set width = 100 / cols %}
+						<div class="overflow-hidden" style="--item-w: {{ width }}vw;">
+							<div
+								class="animate-marquee flex whitespace-nowrap"
+								aria-label="{{ block.content.title|default('Gallery')|trim|e }}"
+								role="status"
+							>
+								{%- for i in 0..1 -%}
+									{%- for image in block.content.gallery -%}
+										<div
+											class="mr-5 flex-[0_0_7.0625rem] shrink-0 last:mr-0 lg:w-auto lg:flex-[0_0_var(--item-w)]"
+										>
+											{{-
+												include(
+													'components/image.html.twig',
+													{
+														image: image,
+														classes: [
+															'size-full max-w-full aspect-203/97 object-contain object-center'
+														]
+													}
+												)
+											-}}
+										</div>
+									{%- endfor -%}
+								{%- endfor -%}
+							</div>
+						</div>
+					{% else %}
+						<div
+							class="scrollbar-hidden flex gap-5 overflow-x-auto px-2.5 lg:grid lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))] lg:gap-19 lg:px-0"
+							style="--cols: {{ cols }};"
+						>
+							{%- for image in block.content.gallery -%}
+								<div class="col-span-1 w-28.25 shrink-0 lg:w-auto">
+									{{-
+										include(
+											'components/image.html.twig',
+											{
+												image: image,
+												classes: ['size-full max-w-full aspect-203/97 object-contain object-center']
+											}
+										)
+									-}}
+								</div>
+							{%- endfor -%}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		{%- endif -%}
+	</div>
+</section>

@@ -16,7 +16,7 @@
 
 use Timber\{ Timber };
 
-$templates = array( 'pages/home.html.twig' );
+$templates = array( 'pages/archive-post.html.twig' );
 $data      = Timber::context();
 
 Timber::render( $templates, $data );

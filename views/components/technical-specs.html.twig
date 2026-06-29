@@ -1,0 +1,100 @@
+{#
+ # Components: Technical specs (Caractéristiques techniques)
+ #
+ # @param array classes Optional CSS classes for the wrapper.
+ #}
+
+<section
+	class="{{ html_classes( 'py-20 lg:py-37.5', classes | default( [] ) | join( ' ' ) ) }}"
+	aria-labelledby="technical-specs-heading"
+>
+	<div class="container grid grid-cols-4 gap-x-2.5 gap-y-15 lg:grid-cols-12 lg:gap-x-5">
+		
+		<div class="col-span-full space-y-5 lg:col-span-5">
+			<h2 id="technical-specs-heading" class="h-on-title uppercase">
+				Technical characteristics
+			</h2>
+			<p class="h4 text-balance">
+				WixLi Classic is based on two parts: the active ZigBee antenna and the controller box.
+			</p>
+			<div class="space-y-2.5">
+				<h3 class="text-m">Normative rules</h3>
+				<ul class="text-s">
+					<li>EN301489</li>
+					<li>EN61000-4-5 (until 6kV)</li>
+					<li>EN61347-2-11:2001</li>
+					<li>EN300328</li>
+					<li>EN301489-1 &amp; EN301489-3</li>
+					<li>EN60950-1</li>
+					<li>EN62479</li>
+				</ul>
+			</div>
+			{{-
+				include(
+					'components/button.html.twig',
+					{
+						title: 'Download the technical sheet',
+						icon: 'bullet',
+						classes: [ 'mt-5' ]
+					}
+				)
+			-}}
+		</div>
+
+		<div class="col-span-full lg:col-span-7">
+			<div class="lg:space-y-7.5 bg-blanc space-y-3.75 divide-y divide-bleu/25 rounded-25 lg:rounded-20 py-7.5 lg:pt-11.75 lg:pb-6.25 px-3.75 lg:px-12.75">
+				<div class="pb-3.75 lg:pb-6.25 flex gap-2.5 lg:gap-5 flex-col lg:flex-row">
+					<h3 class="text-m min-w-46.5">Power supply</h3>
+					
+						<ul class="text-s list-disc space-y-1 pl-[1em]">
+							<li>Input AC 110-240 Vac nominal</li>
+							<li>Galvanic isolation 4kVrms min (primary/secondary)</li>
+							<li>Standby Power consumption < 1W</li>
+							<li>Class II (no earth)</li>
+						</ul>
+					
+				</div>
+
+				<div class="pb-3.75 lg:pb-6.25 flex gap-2.5 lg:gap-5 flex-col lg:flex-row">
+					<h3 class="text-m min-w-46.5">Communication</h3>
+					<div class="space-y-6">
+						<div class="text-s">
+							<p>Wireless mesh ZigBee:</p>
+							<ul class="list-disc pl-[1em]">
+								<li>Frequency band 2.4GHz (TX 8 dBm / sensibility RX -100dBm)</li>
+								<li>Radio range - until 250 meters (point to point)</li>
+							</ul>
+						</div>
+						<div class="text-s">
+							<p>Wireless LoRa:</p>
+							<ul class="list-disc pl-[1em]">
+								<li>Frequency band 868MHz (Tx 14dBm)</li>
+								<li>Radio range: until 10 km</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="pb-3.75 lg:pb-6.25 flex gap-2.5 lg:gap-5 flex-col lg:flex-row">
+					<h3 class="text-m min-w-46.5">Drivers / ballast control</h3>
+					<ul class="text-s list-disc pl-[1em]">
+						<li>DALI interface for dimming according to IEC62386</li>
+						<li>DALI driver ON/OFF (relay 5 Arms).</li>
+						<li>1-10V interface with automatic driver recognition</li>
+						<li>Electrical measurements P, U, I, kWh, power factor (cos Φ)</li>
+						<li>Load capacity until 6 drivers DALI with independant schedule activity</li>
+					</ul>
+				</div>
+
+				<p class="text-center">
+					<a
+						href="#"
+						class="text-button-xs uppercase underline"
+					>
+						Voir plus
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>

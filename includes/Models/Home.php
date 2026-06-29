@@ -4,32 +4,25 @@
  *
  * Custom model for home archive page.
  *
- * @package WPCinquanteEtUn
+ * @package WordPress
  * @subpackage WPCinquanteEtUn/Models
- * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
 namespace WPCinquanteEtUn\Models;
 
-use Timber\{ Post };
+use Timber\{ Post, Timber };
+use WPCinquanteEtUn\Traits\ArchivePost;
 
 /**
  * Class Home
  *
  * Represents the custom model for the home archive page.
+ * Extends Timber\Post and uses ArchivePostTrait for additional archive functionality.
+ *
+ * In order to use the post/classmap and because Timber is waiting for a Timber\Post, we extract logic for featured posts and recent posts in a trait.
  *
  * @package WPCinquanteEtUn\Models
  */
 class Home extends Post {
-
-	/**
-	 * Example method
-	 *
-	 * Will be available in Twig as {{ post.foo }}
-	 *
-	 * @return string
-	 */
-	public function foo() {
-		return 'foo';
-	}
+	use ArchivePost;
 }

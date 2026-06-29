@@ -1,0 +1,61 @@
+{#  
+ # Components: Collection Posts
+ #
+ # A collection of posts in a slideshow.
+ #
+ # @params {array} content Content array.
+ # @params {array} posts Posts array.
+ #}
+<section {{ attributes ? attributes | map( ( value, key ) => value == '' ? key : "#{key}=\"#{value}\"" ) | join( ' ' ) | raw }} class="{{ html_classes( classes | default([]) | join( ' ' ) ) }}">
+	{%- if content.overline or content.title -%}
+		<div class="container mb-10 grid grid-cols-12 gap-2.5 lg:mb-15 lg:gap-5">
+			<div class="col-span-12">
+				<div class="space-y-5 text-center">
+					{%- if content.overline -%}
+						<p class="h-on-title uppercase">
+							{{- content.overline -}}
+						</p>
+					{%- endif -%}
+
+					{%- if content.title -%}
+						<h2 class="h3">{{- content.title -}}</h2>
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	{%- endif -%}
+
+	<div class="lg:container lg:grid lg:grid-cols-12 lg:gap-5">
+		<cinq-slideshow class="block slideshow lg:col-span-10 lg:col-start-2 lg:mx-9.75">
+			<div class="splide" data-dom="slider" data-focus="center">
+				<div class="splide__track" data-dom="track">
+					<div class="splide__list">
+						{%- for post in posts -%}
+							<div class="splide__slide w-[calc(260*100%/402)] lg:w-[calc(calc(100%/3)-(--spacing(3.5)))]" data-dom="slide">
+								{{- include('components/tease-post.html.twig', { post: post }, with_context = false ) -}}
+							</div>
+						{%- endfor -%}
+					</div>
+				</div>
+			</div>
+		</cinq-slideshow>
+	</div>
+
+    {%- if link.url -%}
+        <div class="container mt-15 grid grid-cols-12 gap-2.5 text-center lg:mt-20 lg:gap-5">
+            <div class="col-span-12">
+                {{-
+                    include(
+                        'components/button.html.twig',
+                        {
+                            title: __('View all posts', 'wp-cinquante-et-un'),
+                            icon: 'bullet',
+                            url: link.url
+                        },
+                        with_context: false
+                    )
+                -}}
+            </div>
+        </div>
+    {%- endif -%}
+</section>

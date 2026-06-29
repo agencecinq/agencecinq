@@ -1,0 +1,83 @@
+{#
+ # Components: Tease Post
+ #
+ # Schema.org: BlogPosting (headline, image, description, url, datePublished, dateModified, author).
+ # A11y: Single main link per card (Discover) with aria-label; heading h3; categories region with aria-label; image alt from thumbnail.
+ #
+ # @todo This is a static component, it should be dynamic and receive data as props
+ #}
+<article itemscope itemtype="https://schema.org/BlogPosting">
+	<div class="space-y-3.75 lg:space-y-5">
+		<div class="bg-bleu/30 rounded-15 relative aspect-square overflow-hidden">
+			<a
+				href="{{- post.link -}}"
+				itemprop="url"
+				class="absolute inset-0 size-full z-2"
+				aria-label="{{ __('Discover: %s', 'wp-cinquante-et-un')|format(post.title) }}"
+				tabindex="-1"
+			>
+				<span class="sr-only">{{- __('Discover', 'wp-cinquante-et-un') -}}</span>
+			</a>
+			{{-
+				include(
+					'components/image.html.twig',
+					{
+						image: post.thumbnail,
+						classes: ['relative z-1 size-full object-cover object-center'],
+						attributes: {
+							itemprop: 'image'
+						}
+					}
+				)
+			-}}
+
+			{%- if (post.categories|length) > 0 -%}
+				<div
+					class="absolute inset-x-0 top-0 z-3 m-2.5 flex flex-wrap justify-end gap-2.5 lg:m-5"
+					role="region"
+					aria-label="Post categories"
+				>
+					{%- for category in post.categories -%}
+						{{-
+							include(
+								'components/tag.html.twig',
+								{
+									title: category.name
+								}
+							)
+						-}}
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+		</div>
+
+		<div class="space-y-5 lg:space-y-3.75">
+			<div class="space-y-2.5">
+				<h3 class="text-l lg:min-h-[2lh]" itemprop="headline">{{- post.title -}}</h3>
+				{%- set excerpt =
+					post.excerpt({
+						chars: 89,
+						read_more: ''
+					})
+				-%}
+				{%- if excerpt|trim -%}
+					<p class="text-s" itemprop="description">
+						{{- excerpt -}}
+					</p>
+				{%- endif -%}
+			</div>
+			<a
+				href="{{- post.link -}}"
+				itemprop="url"
+				class="text-button-s uppercase underline"
+				aria-label="{{ __('Discover: %s', 'wp-cinquante-et-un')|format(post.title) }}"
+			>
+				{{- __('Discover', 'wp-cinquante-et-un') -}}
+			</a>
+		</div>
+	</div>
+
+	<meta itemprop="datePublished" content="{{ post.date('c') }}" />
+	<meta itemprop="dateModified" content="{{ post.modified('c') }}" />
+	<meta itemprop="author" content="{{ post.author.name|default('WPCinquanteEtUn')|e('html_attr') }}" />
+</article>
