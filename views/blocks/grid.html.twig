@@ -1,11 +1,11 @@
 {{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 
-<div id="{{ block.id }}" class="{{ html_classes( block.color_scheme == 'dark' ? 'bg-bleu' : '', block.radius == 'top' ? 'relative z-2 rounded-t-[1.5625rem] -mt-6.25 lg:rounded-t-[3.125rem] lg:-mt-12.5', block.radius == 'bottom' ? 'relative z-2 rounded-b-[1.5625rem] -mb-6.25 lg:rounded-b-[3.125rem] lg:-mb-12.5', block.radius == 'y' ? 'relative z-2 rounded-t-[1.5625rem] rounded-b-[1.5625rem] -my-6.25 lg:rounded-t-[3.125rem] lg:rounded-b-[3.125rem] lg:-my-12.5', ) }}">
+<div id="{{ block.id }}" class="{{ html_classes( block.color_scheme == 'dark' ? 'bg-blue' : '', block.radius == 'top' ? 'relative z-2 rounded-t-[1.5625rem] -mt-6.25 lg:rounded-t-[3.125rem] lg:-mt-12.5', block.radius == 'bottom' ? 'relative z-2 rounded-b-[1.5625rem] -mb-6.25 lg:rounded-b-[3.125rem] lg:-mb-12.5', block.radius == 'y' ? 'relative z-2 rounded-t-[1.5625rem] rounded-b-[1.5625rem] -my-6.25 lg:rounded-t-[3.125rem] lg:rounded-b-[3.125rem] lg:-my-12.5', ) }}">
 	{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 	<div class="{{ html_classes( 'grid grid-cols-6 gap-5 container' ) }}">
 		{%- for item in block.content.items -%}
 			<div class="{{ html_classes( 'col-span-full', item.column_span | default( 'lg:col-span-2' ), item.row_span | default( 'row-span-1' ) ) }}">
-				<article class="{{ html_classes( item.background_color | default( 'bg-blanc' ), item.text_color | default( 'text-bleu' ), 'size-full', 'rounded-25 px-5 py-7.5', ( item.image or item.video ) and ( item.column_span == 'lg:col-span-2' or item.column_span == 'lg:col-span-3' or item.column_span == 'lg:col-span-6' ) ? 'overflow-hidden relative' : '', ( item.image or item.video ) and ( item.column_span == 'lg:col-span-2' or item.column_span == 'lg:col-span-3' or item.column_span == 'lg:col-span-6' ) and item.object_fit == 'object-cover' ? 'after:absolute after:inset-0 after:z-2 after:size-full after:bg-bleu/30' : '', item.column_span == 'lg:col-span-4' ? 'flex flex-col lg:flex-row gap-5', item.row_span == 'lg:row-span-2' ? 'aspect-382/633 lg:aspect-auto' : '' ) }}">
+				<article class="{{ html_classes( item.background_color | default( 'bg-off-white' ), item.text_color | default( 'text-blue' ), 'size-full', 'rounded-25 px-5 py-7.5', ( item.image or item.video ) and ( item.column_span == 'lg:col-span-2' or item.column_span == 'lg:col-span-3' or item.column_span == 'lg:col-span-6' ) ? 'overflow-hidden relative' : '', ( item.image or item.video ) and ( item.column_span == 'lg:col-span-2' or item.column_span == 'lg:col-span-3' or item.column_span == 'lg:col-span-6' ) and item.object_fit == 'object-cover' ? 'after:absolute after:inset-0 after:z-2 after:size-full after:bg-blue/30' : '', item.column_span == 'lg:col-span-4' ? 'flex flex-col lg:flex-row gap-5', item.row_span == 'lg:row-span-2' ? 'aspect-382/633 lg:aspect-auto' : '' ) }}">
 
 					<div class="{{ html_classes( 'h-full flex flex-col gap-7.5', ( item.image or item.video ) and ( item.column_span == 'lg:col-span-2' or item.column_span == 'lg:col-span-3' or item.column_span == 'lg:col-span-6' ) ? 'relative z-3' : '', item.column_span == 'lg:col-span-3' ? 'lg:gap-y-15' : '' ) }}">
 
@@ -31,8 +31,8 @@
 									'components/button.html.twig',
 									item.link | default( {} ) | merge({
 										icon: 'bullet',
-										mode: item.text_color == 'text-blanc' ? 'dark' : 'light',
-										fill: item.fill_color | default( 'text-vert' )
+										mode: item.text_color == 'text-off-white' ? 'dark' : 'light',
+										fill: item.fill_color | default( 'text-green' )
 									}),
 									with_context = false
 								)
