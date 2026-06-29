@@ -1,7 +1,7 @@
 {#
  # Page: Archive: Post
  #
- # @package WPCinquanteEtUn
+ # @package CollectiveLaCabane
  #}
 
 {% extends 'index.html.twig' %}
@@ -9,7 +9,7 @@
 {%- block content -%}
 	<main id="content" role="main">
 		<div
-			class="text-blanc rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 bg-[linear-gradient(225deg,#102345_0%,#08152C_100%)] lg:-mb-12.5"
+			class="bg-gradient-bleu text-blanc rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 lg:-mb-12.5"
 		>
 			{%- block header -%}
 				{{- include('header.html.twig', { classes: [ 'relative z-10' ] } ) -}}
@@ -30,7 +30,7 @@
 								include(
 									'components/chip.html.twig',
 									{
-										title: __('All posts', 'wp-cinquante-et-un'),
+										title: __('All posts', 'collective-la-cabane'),
 										url: posts_url,
 										active: category.term_id == post.category.term_id,
 										mode: 'dark'
@@ -91,7 +91,7 @@
 										<div class="space-y-5">
 											<h2 class="text-m">Inscrivez-vous<br />à notre newsletter</h2>
 											<p class="text-l">
-												Les actualités et conseils de WPCinquanteEtUn pour passer à l’éclairage intelligent.
+												{{- __( 'News and updates from Collective La Cabane.', 'collective-la-cabane' ) -}}
 											</p>
 										</div>
 										{{- include('components/form-newsletter.html.twig', { instance: loop.index + 1 } ) -}}
