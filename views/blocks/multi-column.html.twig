@@ -9,11 +9,11 @@
 -}}
 
 <section id="{{ block.id }}">
-	<div class="{{ html_classes( 'text-blanc py-20 lg:py-37.5', block.radius == 'top' ? 'rounded-t-25 lg:rounded-t-50 relative z-2 -mt-6.25 lg:-mt-12.5', block.radius == 'bottom' ? 'rounded-b-25 lg:rounded-b-50 relative z-2 -mb-6.25 lg:-mb-12.5', block.radius == 'y' ? 'rounded-t-25 rounded-b-25 lg:rounded-t-50 lg:rounded-b-50 relative z-2 -my-6.25 lg:-my-12.5' ) }}">
+	<div class="{{ html_classes( 'text-off-white py-20 lg:py-37.5', block.radius == 'top' ? 'rounded-t-25 lg:rounded-t-50 relative z-2 -mt-6.25 lg:-mt-12.5', block.radius == 'bottom' ? 'rounded-b-25 lg:rounded-b-50 relative z-2 -mb-6.25 lg:-mb-12.5', block.radius == 'y' ? 'rounded-t-25 rounded-b-25 lg:rounded-t-50 lg:rounded-b-50 relative z-2 -my-6.25 lg:-my-12.5' ) }}">
 		<div class="container grid grid-cols-4 gap-x-5 gap-y-15 lg:grid-cols-12 lg:gap-y-20">
 			{%- if block.content.title and (block.content.texts|length) > 0 -%}
 				<div class="col-span-full grid grid-cols-2 gap-x-5 gap-y-7.5">
-					<h2 class="{{ html_classes( 'col-span-full', block.content.text_alignment|default('text-left'), block.content.title_style|default('h2'), 'text-vert text-center' ) }}">
+					<h2 class="{{ html_classes( 'col-span-full', block.content.text_alignment|default('text-left'), block.content.title_style|default('h2'), 'text-green text-center' ) }}">
 						{{- block.content.title -}}
 					</h2>
 					{%- for text in block.content.texts -%}
@@ -30,7 +30,7 @@
 
 			{%- if block.content.title and (block.content.texts|length) == 0 -%}
 				<div class="col-span-full">
-					<h2 class="{{ html_classes( block.content.text_alignment|default('text-left'), block.content.title_style|default('h2'), 'text-vert text-center' ) }}">
+					<h2 class="{{ html_classes( block.content.text_alignment|default('text-left'), block.content.title_style|default('h2'), 'text-green text-center' ) }}">
 						{{- block.content.title -}}
 					</h2>
 				</div>
@@ -38,8 +38,8 @@
 
 			{%- for column in block.first_row.columns -%}
 				<div class="{{ html_classes( 'col-span-full', loop.length == 2 ? 'lg:col-span-6' ~ (loop.index == 2 ? ' lg:col-start-8' : ' lg:col-start-2') : loop.length == 3 ? 'lg:col-span-4' : '' ) }}">
-					<div class="{{ html_classes( 'rounded-15 lg:rounded-25 relative', column.image ? 'after:absolute after:inset-0 after:z-2 after:size-full after:bg-bleu/30' : '' ) }}">
-						<div class="bg-bleu/30 rounded-15 lg:rounded-25 relative z-1 h-125 overflow-hidden">
+					<div class="{{ html_classes( 'rounded-15 lg:rounded-25 relative', column.image ? 'after:absolute after:inset-0 after:z-2 after:size-full after:bg-blue/30' : '' ) }}">
+						<div class="bg-blue/30 rounded-15 lg:rounded-25 relative z-1 h-125 overflow-hidden">
 							{{-
 								include(
 									'components/image.html.twig',
@@ -53,7 +53,7 @@
 
 						{%- for pin in column.pins -%}
 							<cinq-modal-button class="absolute top-[calc(var(--top)*1%)] left-[calc(var(--left)*1%)] z-3 block" style="--top: {{ pin.coordinates.top }}; --left: {{ pin.coordinates.left }};">
-								<button type="button" aria-controls="modal-pin-{{ loop.index0 }}-{{ block.id }}" class="after:bg-vert text-bleu before:bg-vert/20 flex size-14 items-center justify-center before:absolute before:inset-0 before:size-full before:animate-pulse before:rounded-full after:absolute after:inset-0 after:m-auto after:size-9 after:rounded-full lg:size-17.5">
+								<button type="button" aria-controls="modal-pin-{{ loop.index0 }}-{{ block.id }}" class="after:bg-green text-blue before:bg-green/20 flex size-14 items-center justify-center before:absolute before:inset-0 before:size-full before:animate-pulse before:rounded-full after:absolute after:inset-0 after:m-auto after:size-9 after:rounded-full lg:size-17.5">
 									{{-
 										include(
 											'svg/use.html.twig',
@@ -72,7 +72,7 @@
 			{%- endfor -%}
 
 			{%- for column in block.second_row.columns -%}
-				<div class="{{ html_classes( 'text-beige col-span-full space-y-7.5 text-center lg:space-y-20', loop.length == 1 ? 'lg:col-start-5', loop.length == 2 ? 'lg:col-span-4' ~ (loop.first ? ' lg:col-start-2' : ' lg:col-start-8') : 'lg:col-span-4' ) }}">
+				<div class="{{ html_classes( 'text-off-white col-span-full space-y-7.5 text-center lg:space-y-20', loop.length == 1 ? 'lg:col-start-5', loop.length == 2 ? 'lg:col-span-4' ~ (loop.first ? ' lg:col-start-2' : ' lg:col-start-8') : 'lg:col-span-4' ) }}">
 					{%- if column.image -%}
 						<div class="h-125">
 							{{-
@@ -86,13 +86,13 @@
 							-}}
 						</div>
 					{%- endif -%}
-					<div class="{{ html_classes( 'mx-auto max-w-95.5 space-y-10 lg:max-w-none', loop.length == 1 ? '' : 'lg:px-5 lg:pb-13', loop.last ? '' : loop.length != 2 ? 'after:bg-beige relative after:absolute after:inset-x-0 after:top-full after:mx-auto after:h-px after:w-46.5 after:max-w-full after:translate-y-7.5 lg:after:inset-x-0 lg:after:inset-y-0 lg:after:left-full lg:after:h-full lg:after:w-px lg:after:translate-x-2.5 lg:after:translate-y-0' : '' ) }}">
+					<div class="{{ html_classes( 'mx-auto max-w-95.5 space-y-10 lg:max-w-none', loop.length == 1 ? '' : 'lg:px-5 lg:pb-13', loop.last ? '' : loop.length != 2 ? 'after:bg-off-white relative after:absolute after:inset-x-0 after:top-full after:mx-auto after:h-px after:w-46.5 after:max-w-full after:translate-y-7.5 lg:after:inset-x-0 lg:after:inset-y-0 lg:after:left-full lg:after:h-full lg:after:w-px lg:after:translate-x-2.5 lg:after:translate-y-0' : '' ) }}">
 						{%- if column.title or column.subtitle or column.text -%}
 							<div class="5 space-y-2">
 								{%- if column.title or column.subtitle -%}
 									<div class="space-y-5">
 										{%- if column.title -%}
-											<h3 class="{{ html_classes( 'text-vert', column.title_style|default('h2') ) }}">
+											<h3 class="{{ html_classes( 'text-green', column.title_style|default('h2') ) }}">
 												{{- column.title -}}
 											</h3>
 										{%- endif -%}
@@ -130,7 +130,7 @@
 
 				{%- if not loop.last and loop.length == 2 -%}
 					<div class="col-span-2 col-start-2 lg:col-start-6">
-						<hr class="bg-beige mx-auto h-px w-full border-0 lg:h-full lg:w-px"/>
+						<hr class="bg-off-white mx-auto h-px w-full border-0 lg:h-full lg:w-px"/>
 					</div>
 				{%- endif -%}
 			{%- endfor -%}
