@@ -9,7 +9,7 @@
 -}}
 
 
-<section id="{{ block.id }}" class="{{ html_classes( 'text-beige', block.radius != 'none' ? 'relative z-5', block.radius == 'top' ? '-mt-6.25 rounded-t-25 lg:-mt-12.5 lg:rounded-t-50', block.radius == 'bottom' ? '-mb-6.25 rounded-b-25 lg:-mb-12.5 lg:rounded-b-50', block.radius == 'y' ? '-my-6.25 rounded-t-25 rounded-b-25 lg:-my-12.5 lg:rounded-t-50 lg:rounded-b-50'  ) }}">
+<section id="{{ block.id }}" class="{{ html_classes( 'text-off-white', block.radius != 'none' ? 'relative z-5', block.radius == 'top' ? '-mt-6.25 rounded-t-25 lg:-mt-12.5 lg:rounded-t-50', block.radius == 'bottom' ? '-mb-6.25 rounded-b-25 lg:-mb-12.5 lg:rounded-b-50', block.radius == 'y' ? '-my-6.25 rounded-t-25 rounded-b-25 lg:-my-12.5 lg:rounded-t-50 lg:rounded-b-50'  ) }}">
     <div class="container grid grid-cols-4 lg:grid-cols-12 gap-2.5 lg:gap-x-5 gap-y-7.5">
 
         <div class="col-span-full space-y-5 lg:col-span-6">
@@ -17,7 +17,7 @@
                 {{- yoast_breadcrumb() -}}
             {%- endif -%}
 
-            <{{block.content.heading|default('h2')}} class="h2 text-vert">
+            <{{block.content.heading|default('h2')}} class="h2 text-green">
                 {{- block.content.title | default(post.title) -}}
             </{{block.content.heading|default('h2')}}>
 
@@ -57,7 +57,7 @@
         {%- if block.items -%}
             {%- for item in block.items -%}
                 <div class="col-span-full lg:col-span-3 lg:mt-22.5 text-l space-y-3.75 lg:space-y-6.25 border-t pt-3.75 lg:pt-6.25">
-                    <h3 class="text-vert">{{- item.title -}}</h3>
+                    <h3 class="text-green">{{- item.title -}}</h3>
                     <p>{{- item.text -}}</p>
                 </div>
             {%- endfor -%}
