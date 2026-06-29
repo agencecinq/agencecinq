@@ -13,8 +13,8 @@
 		html_classes(
 			'rounded-15 relative aspect-297/380 overflow-hidden text-center',
 			mode == 'dark'
-				? 'text-beige bg-bleu/30 before:bg-bleu/30 before:absolute before:inset-0 before:z-2 before:size-full'
-				: 'text-bleu'
+				? 'text-off-white bg-blue/30 before:bg-blue/30 before:absolute before:inset-0 before:z-2 before:size-full'
+				: 'text-blue'
 		)
 		}}"
 	>
@@ -27,7 +27,7 @@
 						</p>
 					{%- endif -%}
 					{%- if push.title -%}
-						<p class="text-vert text-[1.25rem] leading-[1.1] font-semibold">
+						<p class="text-green text-[1.25rem] leading-[1.1] font-semibold">
 							{{- push.title -}}
 						</p>
 					{%- endif -%}
@@ -42,7 +42,7 @@
 							classes: ['mt-auto'],
 							mode: mode,
 							icon: 'bullet',
-							fill: mode == 'dark' ? 'text-vert' : 'text-blanc'
+							fill: mode == 'dark' ? 'text-green' : 'text-off-white'
 						}),
 					with_context: false
 				)
@@ -79,7 +79,7 @@
 			aria-label="{{ __('Mobile navigation', 'wp-cinquante-et-un') }}"
 			class="w-full flex-1 overflow-y-auto"
 		>
-			<ul class="text-button-m divide-bleu/25 divide-y">
+			<ul class="text-button-m divide-blue/25 divide-y">
 				{% for item in main_items %}
 					{%- set attached = submenus_data|filter(row => row.item == item.id)|first -%}
 					<li>
@@ -140,11 +140,11 @@
 			data-panel="sub"
 			data-sub-id="{{ item.id }}"
 			id="mobile-sub-{{ item.id }}"
-			class="rounded-15 bg-beige text-bleu absolute inset-x-0 top-0 flex min-h-full flex-col gap-5 p-5"
+			class="rounded-15 bg-off-white text-blue absolute inset-x-0 top-0 flex min-h-full flex-col gap-5 p-5"
 			aria-hidden="true"
 			style="display: none;"
 		>
-			<div class="border-bleu/25 relative space-y-2.5 border-b pt-5.5 pb-6.25 text-center">
+			<div class="border-blue/25 relative space-y-2.5 border-b pt-5.5 pb-6.25 text-center">
 				{{-
 					include(
 						'components/button.html.twig',
