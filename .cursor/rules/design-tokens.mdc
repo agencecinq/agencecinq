@@ -30,7 +30,7 @@ All custom property **suffixes** in `@theme` must be in **English**, kebab-case:
 ```
 
 - The Tailwind class mirrors the token suffix: `--color-blue` → `text-blue`, `bg-blue`, `border-blue`.
-- Legacy French token names (`bleu`, `vert`, `beige`…) may still exist in a client project until a palette rename; **never add new French token names**.
+- Legacy French token names may still exist in old client databases (ACF class values); **never add new French token names**.
 - When initializing a new project, declare the client palette with English names from the start.
 
 ## No preset section backgrounds in the starter
