@@ -73,6 +73,7 @@ DO :
 - Passer les chaînes utilisateur par les fonctions i18n.
 - Commits en anglais avec gitmoji (voir la règle `git-commits`).
 - Encapsuler les gardes d'affichage dans les composants Twig inclus (voir `twig-components`).
+- Espacer les filtres Twig via Prettier : `twigFollowOfficialCodingStandards: false` (voir `twig-wpcs`).
 
 DONT :
 
@@ -98,3 +99,4 @@ Règles dédiées existantes :
 - `git-commits` : messages de commit en anglais avec gitmoji.
 - `design-tokens` : tokens `@theme` en anglais, pas de valeurs en dur ni de backgrounds preset dans le starter.
 - `twig-components` : gardes et nommage des params dans les composants Twig réutilisables.
+- `twig-wpcs` : espacement des filtres Twig compatible Prettier.
