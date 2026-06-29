@@ -4,7 +4,7 @@
  # @param {object} post The post object containing page details. Required.
  #}
 
-<article class="text-beige rounded-15 after:bg-bleu/30 relative flex h-95.5 w-full flex-col justify-end overflow-hidden px-5 py-6.5 lg:py-10 after:absolute after:inset-0 after:z-2 after:size-full lg:h-120 lg:px-7.5">
+<article class="text-off-white rounded-15 after:bg-blue/30 relative flex h-95.5 w-full flex-col justify-end overflow-hidden px-5 py-6.5 lg:py-10 after:absolute after:inset-0 after:z-2 after:size-full lg:h-120 lg:px-7.5">
 	{{-
 		include(
 			'components/media.html.twig',
@@ -33,7 +33,7 @@
 				</p>
 			{%- endif -%}
 
-			<a href="{{ post.link }}" class="text-bleu bg-vert ml-auto flex size-12.5 shrink-0 items-center gap-2.5 rounded-full" aria-label="{{ __('View %s', 'wp-cinquante-et-un')|format(post.title) }}">
+			<a href="{{ post.link }}" class="text-blue bg-green ml-auto flex size-12.5 shrink-0 items-center gap-2.5 rounded-full" aria-label="{{ __('View %s', 'wp-cinquante-et-un')|format(post.title) }}">
 				{{-
 					include(
 						'svg/use.html.twig',
