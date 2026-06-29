@@ -1,7 +1,7 @@
 {#
  # Single post
  #
- # @package WPCinquanteEtUn
+ # @package CollectiveLaCabane
  #}
 
 {% extends 'index.html.twig' %}
@@ -9,7 +9,7 @@
 {%- block content -%}
 	<main id="content" role="main">
 		<div
-			class="text-blanc rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 bg-[linear-gradient(225deg,#102345_0%,#08152C_100%)] lg:-mb-12.5"
+			class="bg-gradient-bleu text-blanc rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 lg:-mb-12.5"
 		>
 			{%- block header -%}
 				{{- include('header.html.twig', { classes: [ 'relative z-10' ] } ) -}}
@@ -29,9 +29,9 @@
 					{% endif %}
 
 					{% if post.table_of_contents is defined and (post.table_of_contents|length) > 0 %}
-						<nav class="space-y-2.5" aria-label="{{ __('Table of contents', 'wp-cinquante-et-un') }}">
+						<nav class="space-y-2.5" aria-label="{{ __('Table of contents', 'collective-la-cabane') }}">
 							<h2 class="text-vert h-on-title uppercase">
-								{{- __('Table of contents', 'wp-cinquante-et-un') -}}
+								{{- __('Table of contents', 'collective-la-cabane') -}}
 							</h2>
 							<ol class="text-button-xs space-y-2" role="list">
 								{% for item in post.table_of_contents %}
@@ -58,9 +58,9 @@
 				</div>
 
 				<footer class="col-span-full flex-col lg:flex-row flex gap-y-2.5 gap-x-22.5 lg:order-4">
-					<nav class="flex gap-2.5" aria-label="{{ __('Share this post', 'wp-cinquante-et-un') }}">
+					<nav class="flex gap-2.5" aria-label="{{ __('Share this post', 'collective-la-cabane') }}">
 						<p>
-							{{- __('Share this post', 'wp-cinquante-et-un') -}}
+							{{- __('Share this post', 'collective-la-cabane') -}}
 						</p>
 						<ul class="flex gap-2.5" role="list">
 							{%- for social in shares -%}
@@ -89,7 +89,7 @@
 
 					<p>
 						<time datetime="{{ post.date('c') }}" itemprop="datePublished">
-							{{- __('Published on: %s', 'wp-cinquante-et-un')|format(post.date) -}}
+							{{- __('Published on: %s', 'collective-la-cabane')|format(post.date) -}}
 						</time>
 					</p>
 				</footer>
@@ -145,8 +145,8 @@
 					classes: [ 'bg-blanc', 'py-20', 'lg:py-37.5' ], 
 					posts: post.related_posts(),
 					content: {
-						title: __('Our latest news', 'wp-cinquante-et-un'),
-						overline: __('Discover more', 'wp-cinquante-et-un'),
+						title: __('Our latest news', 'collective-la-cabane'),
+						overline: __('Discover more', 'collective-la-cabane'),
 					}
 				}
 			) 
