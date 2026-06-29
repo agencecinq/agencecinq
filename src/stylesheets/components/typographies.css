@@ -1,26 +1,26 @@
 @layer components {
 	.h0 {
-		@apply text-h0-mobile lg:text-h0-desktop;
+		@apply font-heading text-h0-mobile lg:text-h0-desktop;
 	}
 
 	.h1 {
-		@apply text-h1-mobile lg:text-h1-desktop;
+		@apply font-heading text-h1-mobile lg:text-h1-desktop;
 	}
 
 	.h2 {
-		@apply text-h2-mobile lg:text-h2-desktop;
+		@apply font-heading text-h2-mobile lg:text-h2-desktop;
 	}
 
 	.h3 {
-		@apply text-h3-mobile lg:text-h3-desktop;
+		@apply font-heading text-h3-mobile lg:text-h3-desktop;
 	}
 
 	.h4 {
-		@apply text-h4-mobile lg:text-h4-desktop;
+		@apply font-heading text-h4-mobile lg:text-h4-desktop;
 	}
 
 	.h5 {
-		@apply text-h5-mobile lg:text-h5-desktop;
+		@apply font-heading text-h5-mobile lg:text-h5-desktop;
 	}
 
 	.h-on-title {
