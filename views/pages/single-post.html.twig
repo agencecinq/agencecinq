@@ -20,7 +20,7 @@
 					{{- yoast_breadcrumb() -}}
 				</div>
 				<div class="col-span-full space-y-7.5 lg:order-2 lg:col-span-6">
-					<h1 class="h2 text-vert" itemprop="headline">{{- post.title -}}</h1>
+					<h1 class="h2 text-green" itemprop="headline">{{- post.title -}}</h1>
 
 					{% if post.meta('general').subtitle %}
 						<p class="h5">
@@ -30,7 +30,7 @@
 
 					{% if post.table_of_contents is defined and (post.table_of_contents|length) > 0 %}
 						<nav class="space-y-2.5" aria-label="{{ __('Table of contents', 'collective-la-cabane') }}">
-							<h2 class="text-vert h-on-title uppercase">
+							<h2 class="text-green h-on-title uppercase">
 								{{- __('Table of contents', 'collective-la-cabane') -}}
 							</h2>
 							<ol class="text-button-xs space-y-2" role="list">
@@ -126,7 +126,7 @@
 				</div>
 
 				{%- if post.meta('general').learn_more.title or post.meta('general').learn_more.text -%}
-					<div class="bg-vert space-y-5 rounded-15 py-7.5 px-6.25">
+					<div class="bg-green space-y-5 rounded-15 py-7.5 px-6.25">
 						<h3 class="text-m">
 							{{- post.meta('general').learn_more.title -}}
 						</h3>
@@ -142,7 +142,7 @@
 			include(
 				'components/collection-posts.html.twig', 
 				{ 
-					classes: [ 'bg-blanc', 'py-20', 'lg:py-37.5' ], 
+					classes: [ 'bg-off-white', 'py-20', 'lg:py-37.5' ], 
 					posts: post.related_posts(),
 					content: {
 						title: __('Our latest news', 'collective-la-cabane'),
