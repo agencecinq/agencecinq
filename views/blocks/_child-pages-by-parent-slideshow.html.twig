@@ -21,11 +21,11 @@
 			{%- if (posts|length) > 1 -%}
 				<div class="splide__arrows mx-2.5 flex items-center justify-between gap-2.5 lg:mx-0 lg:gap-5">
 					<div class="flex items-center gap-4.5 font-semibold [font-variant-numeric:tabular-nums]">
-						<span data-dom="current">1</span><hr class="bg-bleu h-px w-18.75 border-0"/><span>{{- posts|length -}}</span>
+						<span data-dom="current">1</span><hr class="bg-blue h-px w-18.75 border-0"/><span>{{- posts|length -}}</span>
 					</div>
 
 					<div class="mx-2.5 flex items-center justify-end gap-4.25 lg:mx-0">
-						<button type="button" class="border-bleu splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Previous', 'wp-cinquante-et-un') }}">
+						<button type="button" class="border-blue splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Previous', 'wp-cinquante-et-un') }}">
 							{{-
 								include(
 									'svg/use.html.twig',
@@ -37,7 +37,7 @@
 								)
 							-}}
 						</button>
-						<button type="button" class="border-bleu splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Next', 'wp-cinquante-et-un') }}">
+						<button type="button" class="border-blue splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Next', 'wp-cinquante-et-un') }}">
 							{{-
 								include(
 									'svg/use.html.twig',
