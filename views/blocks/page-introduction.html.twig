@@ -17,7 +17,7 @@
 	id="{{ block.id }}"
 	class="{{
 	html_classes(
-		'text-beige',
+		'text-off-white',
 		block.radius != 'none' ? 'relative z-5',
 		block.radius == 'top' ? 'rounded-t-25 lg:rounded-t-50 -mt-6.25 lg:-mt-12.5',
 		block.radius == 'bottom' ? 'rounded-b-25 lg:rounded-b-50 -mb-6.25 lg:-mb-12.5',
@@ -36,7 +36,7 @@
 						{%- endif -%}
 
 						{%- if block.content.title -%}
-							<h1 class="h2 text-vert">{{- block.content.title -}}</h1>
+							<h1 class="h2 text-green">{{- block.content.title -}}</h1>
 						{%- endif -%}
 					</div>
 				{%- endif -%}
