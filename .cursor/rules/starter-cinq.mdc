@@ -72,11 +72,13 @@ DO :
 - Déclarer les tokens de design dans `@theme` de `theme.css` (noms en anglais, voir `design-tokens`).
 - Passer les chaînes utilisateur par les fonctions i18n.
 - Commits en anglais avec gitmoji (voir la règle `git-commits`).
+- Encapsuler les gardes d'affichage dans les composants Twig inclus (voir `twig-components`).
 
 DONT :
 
 - Pas de logique métier dans les `*.php` racine.
 - Pas de valeurs de design en dur dans les classes utilitaires.
+- Pas de `{%- if items -%}` autour d'un `{% include %}` quand le composant peut tester ses props lui-même (voir `twig-components`).
 - Pas de backgrounds décoratifs preset (dégradés, fills de section) dans les templates du starter.
 - Ne pas modifier l'identité agence lors d'un renommage.
 - Pas d'emoji ni de tiret cadratin dans les contenus rédigés.
@@ -95,3 +97,4 @@ Règles dédiées existantes :
 - `remontee-vers-starter` : procédure pour faire remonter une brique d'un projet vers le starter (flux inverse de l'init).
 - `git-commits` : messages de commit en anglais avec gitmoji.
 - `design-tokens` : tokens `@theme` en anglais, pas de valeurs en dur ni de backgrounds preset dans le starter.
+- `twig-components` : gardes et nommage des params dans les composants Twig réutilisables.
