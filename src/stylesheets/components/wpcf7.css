@@ -50,15 +50,15 @@
 			input[type="number"],
 			select
 		) {
-		@apply border-bleu/25 bg-blanc text-bleu placeholder:text-bleu/50 w-full rounded-full border;
+		@apply border-blue/25 bg-off-white text-blue placeholder:text-blue/50 w-full rounded-full border;
 		@apply text-body-small-mobile lg:text-body-small-desktop px-5.25 py-3.5;
-		@apply focus:border-bleu/50 focus:ring-0 focus:outline-none;
+		@apply focus:border-blue/50 focus:ring-0 focus:outline-none;
 	}
 
 	.block-form .wpcf7 .wpcf7-form textarea {
-		@apply rounded-25 border-bleu/25 bg-blanc text-bleu placeholder:text-bleu/50 w-full border;
+		@apply rounded-25 border-blue/25 bg-off-white text-blue placeholder:text-blue/50 w-full border;
 		@apply text-body-small-mobile lg:text-body-small-desktop px-5.25 py-4;
-		@apply focus:border-bleu/50 focus:ring-0 focus:outline-none;
+		@apply focus:border-blue/50 focus:ring-0 focus:outline-none;
 		min-height: 10rem;
 		resize: none;
 	}
@@ -79,24 +79,24 @@
 
 	/* Validation / messages */
 	.block-form .wpcf7 .wpcf7-not-valid-tip {
-		@apply text-mention-large text-bleu/70 mt-2;
+		@apply text-mention-large text-blue/70 mt-2;
 	}
 
 	.block-form .wpcf7 .wpcf7-response-output {
-		@apply rounded-15 border-bleu/25 bg-blanc/70 text-body-small-mobile lg:text-body-small-desktop text-bleu mt-5 border px-5 py-4;
+		@apply rounded-15 border-blue/25 bg-off-white/70 text-body-small-mobile lg:text-body-small-desktop text-blue mt-5 border px-5 py-4;
 	}
 
 	.block-form .wpcf7 form.invalid .wpcf7-response-output {
-		@apply border-bleu/40;
+		@apply border-blue/40;
 	}
 
 	.block-form .wpcf7 form.sent .wpcf7-response-output {
-		@apply border-vert/60;
+		@apply border-green/60;
 	}
 
 	/* Submit (same look as .button.button--primary.button--light) */
 	.block-form .wpcf7 .wpcf7-submit {
-		@apply text-bleu border-bleu relative inline-flex items-center justify-center border text-button-medium-mobile lg:text-button-medium-desktop;
+		@apply text-blue border-blue relative inline-flex items-center justify-center border text-button-medium-mobile lg:text-button-medium-desktop;
 		border-radius: calc(infinity * 1px);
 		text-align: center;
 		padding-inline: calc(var(--spacing) * 3.5);
@@ -110,7 +110,7 @@
 	}
 
 	.block-form .wpcf7 .wpcf7-submit::before {
-		@apply bg-vert;
+		@apply bg-green;
 		content: "";
 		position: absolute;
 		left: calc(var(--spacing) * 3);
@@ -136,7 +136,7 @@
 		}
 
 		.wpcf7-list-item-label {
-			@apply text-mention-large text-bleu/70;
+			@apply text-mention-large text-blue/70;
 		}
 
 		input[type="checkbox"] {
