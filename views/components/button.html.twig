@@ -7,7 +7,7 @@
  # @param string variant Variant of the button, either 'primary', 'secondary' or 'tertiary'.
  # @param bool disabled
  # @param bool icon Whether the button includes a bullet.
- # @param string fill Color of the icon, either 'text-vert', 'text-bleu' or 'text-blanc'.
+ # @param string fill Color of the icon, either 'text-green', 'text-blue' or 'text-off-white'.
  # @param string mode Color mode of the button, either 'light' or 'dark'.
  # @param attributes Additional HTML attributes for the button element, passed as an associative array (e.g. { 'data-toggle': 'modal', 'aria-label': 'Open modal' }).
  # @param array classes Additional CSS classes to apply to the button, passed as an array (e.g. [ 'my-custom-class', 'another-class' ]).
@@ -15,7 +15,7 @@
 
 {%- set variant = variant | default( 'primary' ) -%}
 {%- set mode = mode | default( 'light' ) -%}
-{%- set fill = fill | default( 'text-vert' ) -%}
+{%- set fill = fill | default( 'text-green' ) -%}
 {%- set disabled = disabled | default( false ) -%}
 {%- set icon = icon | default( '' ) -%}
 
@@ -99,7 +99,7 @@
 				{% set initial_icon_classes = [
 					not is_quaternary ? 'absolute' : '',
 					is_primary_or_secondary ? 'right-full' : 'left-full',
-					is_tertiary ? 'text-bleu bg-vert rounded-full' : ( is_quaternary ? '' : fill ),
+					is_tertiary ? 'text-blue bg-green rounded-full' : ( is_quaternary ? '' : fill ),
 					is_quaternary ? '' : '',
 					disabled or is_quaternary ? '' : 'opacity-100' ~ ( animate ? ' group-hover/button:opacity-0 group-focus/button:opacity-0 transition-opacity duration-500 ease-in' : '' )
 				] %}
@@ -117,7 +117,7 @@
 					{% set hover_icon_classes = [
 						'absolute',
 						is_primary_or_secondary ? 'left-full' : 'right-full',
-						is_tertiary ? 'bg-vert rounded-full' : fill,
+						is_tertiary ? 'bg-green rounded-full' : fill,
 						'opacity-0 group-hover/button:opacity-100 group-focus/button:opacity-100 transition-opacity duration-500 ease-in'
 					] %}
 					<span class="{{ html_classes(hover_icon_classes | join(' ')) }}">
