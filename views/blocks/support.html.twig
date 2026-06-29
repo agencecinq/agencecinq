@@ -19,7 +19,7 @@
 	<div
 		class="{{
 		html_classes(
-			'bg-vert',
+			'bg-green',
 			block.radius == 'top'
 				? 'relative z-2 -mt-6.25 rounded-t-[1.5625rem] lg:-mt-12.5 lg:rounded-t-[3.125rem]',
 			block.radius == 'bottom'
@@ -38,7 +38,7 @@
 				<div class="grid grid-cols-1 gap-x-2.5 gap-y-10 md:grid-cols-3 lg:gap-x-5">
 					{%- for item in items -%}
 						<article
-							class="border-t-bleu/50 col-span-1 space-y-5 border-t pt-10 lg:space-y-10"
+							class="border-t-blue/50 col-span-1 space-y-5 border-t pt-10 lg:space-y-10"
 						>
 							{%- if item.title or item.text -%}
 								<div class="space-y-2.5">
@@ -61,7 +61,7 @@
 										|merge({
 											icon: 'bullet',
 											mode: 'light',
-											fill: 'text-blanc'
+											fill: 'text-off-white'
 										}),
 									with_context: false
 								)
