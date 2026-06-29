@@ -1,0 +1,44 @@
+---
+description: Conventions pour les tokens de design Tailwind v4 dans theme.css (noms en anglais, pas de valeurs en dur dans les classes utilitaires).
+globs: src/stylesheets/theme.css,**/*.twig
+alwaysApply: false
+---
+
+# Design tokens (`theme.css`)
+
+## Declare in `@theme`, never in Twig utilities
+
+- Colors, radii, typography scales, and background images belong in `src/stylesheets/theme.css` inside `@theme`.
+- Do not use arbitrary Tailwind values in Twig or CSS utilities for design tokens: no `bg-[#102345]`, no `bg-[linear-gradient(...)]`, no `[background:...]`.
+- Use the generated utilities instead (`bg-blue`, `text-green`, `rounded-25`, etc.).
+
+## Token names in English
+
+All custom property **suffixes** in `@theme` must be in **English**, kebab-case:
+
+```css
+/* GOOD */
+--color-blue: #1a2c4c;
+--color-green: #98ffa5;
+--radius-25: --spacing(6.25);
+
+/* BAD */
+--color-bleu: #1a2c4c;
+--color-vert: #98ffa5;
+--color-bleu-profond: #102345;
+--background-image-gradient-bleu: linear-gradient(...);
+```
+
+- The Tailwind class mirrors the token suffix: `--color-blue` → `text-blue`, `bg-blue`, `border-blue`.
+- Legacy French token names (`bleu`, `vert`, `beige`…) may still exist in a client project until a palette rename; **never add new French token names**.
+- When initializing a new project, declare the client palette with English names from the start.
+
+## No preset section backgrounds in the starter
+
+The starter must not ship decorative section backgrounds (gradients, branded fills) in Twig templates. Background colors and images are chosen per project via tokens and block content, not baked into layout shells.
+
+## Checklist when adding a token
+
+1. English kebab-case suffix in `@theme`.
+2. Used via a utility class in Twig/CSS, not an arbitrary value.
+3. `pnpm build` passes.
