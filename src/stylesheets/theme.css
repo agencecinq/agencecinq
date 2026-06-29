@@ -9,11 +9,10 @@
 	--color-black: #000000;
 	--color-white: #ffffff;
 
-	--color-bleu: #1A2C4C;
-	--color-vert: #98FFA5;
-	--color-beige: #F0F3EC;
-	--color-blanc: #F7F7F6;
-	--color-rouge: #FF0000;
+	--color-blue: #1A2C4C;
+	--color-green: #98FFA5;
+	--color-off-white: #F7F7F6;
+	--color-red: #FF0000;
 
 	/* Typographies */
 	/* This line resets all typography variables */
