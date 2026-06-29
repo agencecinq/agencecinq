@@ -70,13 +70,9 @@
 	data-panel="main"
 	class="relative flex min-h-full flex-col items-start gap-5 py-5"
 >
-	{%- if get_language_selector() -%}
-		{{- include('components/language-selector.html.twig') -}}
-	{%- endif -%}
-
 	{%- if main_items|length -%}
 		<nav
-			aria-label="{{ __('Mobile navigation', 'wp-cinquante-et-un') }}"
+			aria-label="{{ __('Mobile navigation', 'collective-la-cabane') }}"
 			class="w-full flex-1 overflow-y-auto"
 		>
 			<ul class="text-button-m divide-blue/25 divide-y">
@@ -152,10 +148,10 @@
 							icon: 'chevron-left',
 							attributes: {
 								'data-dom': 'back-to-main',
-								'aria-label': __('Back to menu', 'wp-cinquante-et-un')
+								'aria-label': __('Back to menu', 'collective-la-cabane')
 							},
 							variant: 'quaternary',
-							title: __('Back', 'wp-cinquante-et-un'),
+							title: __('Back', 'collective-la-cabane'),
 							animate: false
 						},
 						with_context: false
