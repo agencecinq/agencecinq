@@ -10,7 +10,7 @@
 
 <div id="{{ block.id }}" class="text-beige">
 	<div
-		class="relative py-20 after:absolute after:inset-0 after:z-2 after:size-full after:[background:linear-gradient(0deg,rgba(26,44,76,0.3),rgba(26,44,76,0.3))] lg:py-37.5"
+		class="relative py-20 after:absolute after:inset-0 after:z-2 after:size-full after:bg-bleu/30 lg:py-37.5"
 	>
 		{%- if block.content.overline or block.content.title or block.content.text -%}
 			<div
@@ -96,7 +96,7 @@
 							<button
 								type="button"
 								class="border-beige splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50"
-								aria-label="{{ __('Previous', 'wp-cinquante-et-un') }}"
+								aria-label="{{ __('Previous', 'collective-la-cabane') }}"
 							>
 								{{-
 									include(
@@ -112,7 +112,7 @@
 							<button
 								type="button"
 								class="border-beige splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50"
-								aria-label="{{ __('Next', 'wp-cinquante-et-un') }}"
+								aria-label="{{ __('Next', 'collective-la-cabane') }}"
 							>
 								{{-
 									include(
