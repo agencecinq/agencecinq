@@ -177,17 +177,6 @@ class Twig implements Service {
 			)
 		);
 
-		$twig->addFunction(
-			new TwigFunction(
-				'get_language_selector',
-				function () {
-					if ( function_exists( 'cinq_custom_language_selector' ) ) {
-						return cinq_custom_language_selector();
-					}
-				}
-			)
-		);
-
 		return $twig;
 	}
 }
