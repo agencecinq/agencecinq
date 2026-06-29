@@ -9,7 +9,7 @@
 		{% if pagination.prev %}
 			<a
 				href="{{ pagination.prev.link }}{{ anchor|default('') }}"
-				class="hover:border-vert hover:bg-vert flex size-12.5 lg:size-17 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out"
+				class="hover:border-green hover:bg-green flex size-12.5 lg:size-17 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out"
 				aria-label="{{ __('Previous', 'wp-cinquante-et-un') }}"
 			>
 				{{-
@@ -44,7 +44,7 @@
 					{% if page.link %}
 						<a
 							href="{{ page.link }}{{ anchor|default('') }}"
-							class="{{ page.class }} hover:bg-vert flex size-10 lg:size-12.5 items-center justify-center rounded-full transition-colors duration-300 ease-out"
+							class="{{ page.class }} hover:bg-green flex size-10 lg:size-12.5 items-center justify-center rounded-full transition-colors duration-300 ease-out"
 						>
 							{{- page.title -}}
 						</a>
@@ -54,7 +54,7 @@
 							html_classes(
 								'flex size-10 lg:size-12.5 items-center justify-center rounded-full',
 								page.class,
-								'current' in ( page.class|split(' ') ) ? 'bg-vert' : ''
+								'current' in ( page.class|split(' ') ) ? 'bg-green' : ''
 							)
 							}}"
 							{{ 'current' in ( page.class|split(' ') ) ? 'aria-current="page"' : '' }}
@@ -69,7 +69,7 @@
 		{% if pagination.next %}
 			<a
 				href="{{ pagination.next.link }}{{ anchor|default('') }}"
-				class="hover:bg-vert hover:border-vert flex size-12.5 lg:size-17 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out"
+				class="hover:bg-green hover:border-green flex size-12.5 lg:size-17 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out"
 				aria-label="{{ __('Next', 'wp-cinquante-et-un' ) }}"
 			>
 				{{-
