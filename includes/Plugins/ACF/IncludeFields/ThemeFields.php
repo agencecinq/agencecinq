@@ -36,6 +36,9 @@ class ThemeFields implements Service {
 	public function fields(): void {
 		$key = 'theme_fields';
 
+		$menu_locations = get_nav_menu_locations();
+		$main_menu_id   = $menu_locations['main'] ?? '';
+
 		$location = array(
 			array(
 				array(
@@ -264,7 +267,7 @@ class ThemeFields implements Service {
 										'label'           => __( 'Menu Item', 'wp-cinquante-et-un' ),
 										'name'            => 'item',
 										'type'            => 'menu_item_select',
-										'menu'            => get_nav_menu_locations()['main'],
+										'menu'            => $main_menu_id,
 										'return_format'   => 'value',
 										'placeholder'     => __( 'Select a menu to attach to this submenu', 'wp-cinquante-et-un' ),
 										'allow_null'      => 1,
