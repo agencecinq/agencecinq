@@ -71,11 +71,11 @@
 	}
 
 	.wysiwyg mark {
-		@apply bg-vert/20 px-0.5;
+		@apply bg-green/20 px-0.5;
 	}
 
 	.wysiwyg code {
-		@apply rounded-5 bg-bleu/10 px-1.5 py-0.5 font-mono text-body-small-mobile lg:text-body-small-desktop;
+		@apply rounded-5 bg-blue/10 px-1.5 py-0.5 font-mono text-body-small-mobile lg:text-body-small-desktop;
 	}
 
 	.wysiwyg sub,
@@ -98,7 +98,7 @@
 
 	/* Blockquote */
 	.wysiwyg blockquote {
-		@apply border-l-4 border-vert pl-5 text-body-small-mobile lg:text-body-small-desktop italic text-bleu/90;
+		@apply border-l-4 border-green pl-5 text-body-small-mobile lg:text-body-small-desktop italic text-blue/90;
 
 		margin-top: 1.5rem;
 		margin-bottom: 1.5rem;
@@ -109,7 +109,7 @@
 	}
 
 	.wysiwyg blockquote cite {
-		@apply mt-2 block not-italic text-mention-large text-bleu/70;
+		@apply mt-2 block not-italic text-mention-large text-blue/70;
 	}
 
 	/* Lists */
@@ -148,12 +148,12 @@
 
 	/* Horizontal rule */
 	.wysiwyg hr {
-		@apply my-6 border-0 border-t border-bleu/25;
+		@apply my-6 border-0 border-t border-blue/25;
 	}
 
 	/* Pre / code block */
 	.wysiwyg pre {
-		@apply overflow-x-auto rounded-10 border border-bleu/25 bg-bleu/5 p-5 text-body-small-mobile lg:text-body-small-desktop;
+		@apply overflow-x-auto rounded-10 border border-blue/25 bg-blue/5 p-5 text-body-small-mobile lg:text-body-small-desktop;
 
 		margin-top: 1.5rem;
 		margin-bottom: 1.5rem;
@@ -173,15 +173,15 @@
 
 	.wysiwyg th,
 	.wysiwyg td {
-		@apply border border-bleu/25 px-4 py-3 text-left;
+		@apply border border-blue/25 px-4 py-3 text-left;
 	}
 
 	.wysiwyg th {
-		@apply bg-bleu/10 font-semibold;
+		@apply bg-blue/10 font-semibold;
 	}
 
 	.wysiwyg tr:hover td {
-		@apply bg-bleu/5;
+		@apply bg-blue/5;
 	}
 
 	/* Figure */
@@ -203,6 +203,6 @@
 	}
 
 	.wysiwyg figcaption {
-		@apply mt-2 text-mention-large text-bleu/70;
+		@apply mt-2 text-mention-large text-blue/70;
 	}
 }
