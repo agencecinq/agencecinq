@@ -2,7 +2,7 @@
  # Footer
  #
  # @package WordPress
- # @subpackage WPCinquanteEtUn/views
+ # @subpackage CollectiveLaCabane/views
  #
  # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  #}
@@ -19,7 +19,7 @@
 			<form class="col-span-full lg:col-span-8 lg:col-start-3 text-center space-y-10 lg:space-y-20" method="get" action="{{ url | esc_html }}">
 
 				<div class="space-y-10 text-beige">
-					<img class="mx-auto" src="{{ asset( 'src/img/svg/logo.svg' ) }}" alt="{{ __( "WPCinquanteEtUn's logo", 'wp-cinquante-et-un' ) }}" width="168" height="42" loading="lazy">
+					<img class="mx-auto" src="{{ asset( 'src/img/svg/logo.svg' ) }}" alt="{{ __( "Collective La Cabane's logo", 'collective-la-cabane' ) }}" width="168" height="42" loading="lazy">
 
 					{%- if theme.footer.push.title -%}
 						<h2 class="h3">{{- theme.footer.push.title -}}</h2>
@@ -43,7 +43,7 @@
 				{{- include(
 					'components/button.html.twig',
 					{
-						title: __( 'Contact Us', 'wp-cinquante-et-un' ),
+						title: __( 'Contact Us', 'collective-la-cabane' ),
 						variant: 'tertiary',
 						icon: 'arrow-right',
 						attributes: { type: 'submit' },
@@ -59,7 +59,7 @@
 	</div>
 {%- endif -%}
 
-<footer role="contentinfo" class="[background:linear-gradient(225deg,#102345_0%,#08152C_100%)] relative z-2 -mt-13.25 lg:-mt-8.75 rounded-t-[1.5625rem] lg:rounded-t-[2.1875rem] space-y-11.75 pt-20 lg:pt-19 pb-10 lg:pb-13.5 text-beige">
+<footer role="contentinfo" class="bg-gradient-bleu relative z-2 -mt-13.25 lg:-mt-8.75 rounded-t-25 lg:rounded-t-35 space-y-11.75 pt-20 lg:pt-19 pb-10 lg:pb-13.5 text-beige">
 	<div class="container space-y-15 lg:space-y-11.75">
 		<div class="grid-col-1 lg:grid-cols-12 gap-y-15 gap-x-5 lg:gap-y-5 grid">
 
