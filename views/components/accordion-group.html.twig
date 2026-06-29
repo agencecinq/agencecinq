@@ -5,7 +5,7 @@
  # @param accordions (array) - The accordions to display.
  #
  # @example
- # {{- include('components/accordion-group.html.twig', { classes: [ 'bg-beige rounded-20 px-3.5 py-7.5 lg:px-12.75 lg:py-9.25' ], accordions: block.content.accordions }) -}}
+ # {{- include('components/accordion-group.html.twig', { classes: [ 'bg-off-white rounded-20 px-3.5 py-7.5 lg:px-12.75 lg:py-9.25' ], accordions: block.content.accordions }) -}}
  #}
 
 {% if (accordions|length) > 1 %}
@@ -13,7 +13,7 @@
 		class="{{
 		html_classes(
 			classes|default([])|join(' '),
-			'divide-bleu/25 block space-y-3.75 divide-y lg:space-y-6.25'
+			'divide-blue/25 block space-y-3.75 divide-y lg:space-y-6.25'
 		)
 		}}"
 	>
@@ -34,7 +34,7 @@
 					{{- accordion.header -}}
 
 					<span
-						class="text-bleu bg-vert flex size-6.25 shrink-0 items-center justify-center rounded-full"
+						class="text-blue bg-green flex size-6.25 shrink-0 items-center justify-center rounded-full"
 					>
 						{{-
 							include(
