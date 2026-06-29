@@ -53,7 +53,7 @@
 	}
 
 	.button--tertiary {
-		@apply bg-blanc text-bleu text-button-medium-mobile lg:text-button-medium-desktop;
+		@apply bg-off-white text-blue text-button-medium-mobile lg:text-button-medium-desktop;
 
 		padding: calc(var(--spacing) * 1.25); /* 5px */
 	}
@@ -66,11 +66,11 @@
 	}
 
 	.button--tertiary[disabled] {
-		@apply bg-bleu/14! text-bleu! border-bleu/14!;
+		@apply bg-blue/14! text-blue! border-blue/14!;
 	}
 
 	.button--quaternary {
-		@apply text-button-very-small-desktop bg-vert;
+		@apply text-button-very-small-desktop bg-green;
 
 		text-transform: uppercase;
 
@@ -85,55 +85,55 @@
 
 	/* Color Modes */
 	.button--light.button--primary {
-		@apply text-bleu border-bleu;
+		@apply text-blue border-blue;
 	}
 
 	.button--light.button--secondary {
-		@apply bg-bleu text-blanc;
+		@apply bg-blue text-off-white;
 	}
 
 	.button--light.button--secondary:not([disabled]):hover,
 	.button--light.button--secondary:not([disabled]):focus {
-		@apply bg-blanc text-bleu;
+		@apply bg-off-white text-blue;
 	}
 
 	.button--light.button--secondary:not([disabled]):hover.button--icon svg,
 	.button--light.button--secondary:not([disabled]):focus.button--icon svg {
-		@apply text-bleu;
+		@apply text-blue;
 	}
 
 	.button--light.button--secondary.button--icon svg {
-		@apply text-blanc;
+		@apply text-off-white;
 	}
 
 	.button--light[disabled] {
-		@apply bg-blanc/14! text-blanc! border-blanc/14!;
+		@apply bg-off-white/14! text-off-white! border-off-white/14!;
 		backdrop-filter: blur(10px);
 	}
 
 	.button--dark.button--primary {
-		@apply text-blanc border-blanc;
+		@apply text-off-white border-off-white;
 	}
 
 	.button--dark.button--secondary {
-		@apply bg-blanc text-bleu;
+		@apply bg-off-white text-blue;
 	}
 
 	.button--dark.button--secondary:not([disabled]):hover,
 	.button--dark.button--secondary:not([disabled]):focus {
-		@apply bg-bleu text-blanc;
+		@apply bg-blue text-off-white;
 	}
 
 	.button--dark.button--secondary:not([disabled]):hover.button--icon svg,
 	.button--dark.button--secondary:not([disabled]):focus.button--icon svg {
-		@apply text-blanc;
+		@apply text-off-white;
 	}
 
 	.button--dark.button--secondary.button--icon svg {
-		@apply text-bleu;
+		@apply text-blue;
 	}
 
 	.button--dark[disabled] {
-		@apply bg-bleu/14! text-bleu! border-bleu/14!;
+		@apply bg-blue/14! text-blue! border-blue/14!;
 	}
 }
