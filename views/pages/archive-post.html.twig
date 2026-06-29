@@ -19,7 +19,7 @@
 				<div class="col-span-full space-y-15 text-center lg:col-span-10 lg:col-start-2">
 					<div class="space-y-5">
 						{{- yoast_breadcrumb() -}}
-						<h1 class="h2 text-vert">{{- post.hero.title|default(post.title) -}}</h1>
+						<h1 class="h2 text-green">{{- post.hero.title|default(post.title) -}}</h1>
 					</div>
 
 					<ul
@@ -86,7 +86,7 @@
 							{%- if loop.index == 8 or (loop.last and (posts|length) < 10) -%}
 								<div class="col-span-full lg:col-span-4">
 									<div
-										class="bg-vert rounded-15 flex h-full flex-col justify-between gap-2.5 px-6.25 py-8 lg:gap-5"
+										class="bg-green rounded-15 flex h-full flex-col justify-between gap-2.5 px-6.25 py-8 lg:gap-5"
 									>
 										<div class="space-y-5">
 											<h2 class="text-m">Inscrivez-vous<br />à notre newsletter</h2>
