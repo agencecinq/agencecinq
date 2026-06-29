@@ -12,13 +12,13 @@
 {%- set domaine = fn( 'get_query_var', 'domaine' ) | default( '' ) | sanitize -%}
 
 {%- if url -%}
-	<div class="lg:aspect-1440/953 flex items-center relative pt-20 lg:pt-0 pb-38.25 lg:pb-8.75 z-1 after:absolute after:inset-0 after:z-2 after:bg-bleu/30">
+	<div class="lg:aspect-1440/953 flex items-center relative pt-20 lg:pt-0 pb-38.25 lg:pb-8.75 z-1 after:absolute after:inset-0 after:z-2 after:bg-blue/30">
 
 		<div class="container grid gap-2.5 lg:gap-5 grid-cols-12 relative z-3">
 
 			<form class="col-span-full lg:col-span-8 lg:col-start-3 text-center space-y-10 lg:space-y-20" method="get" action="{{ url | esc_html }}">
 
-				<div class="space-y-10 text-beige">
+				<div class="space-y-10 text-off-white">
 					<img class="mx-auto" src="{{ asset( 'src/img/svg/logo.svg' ) }}" alt="{{ __( "Collective La Cabane's logo", 'collective-la-cabane' ) }}" width="168" height="42" loading="lazy">
 
 					{%- if theme.footer.push.title -%}
@@ -30,9 +30,9 @@
 							{%- for item in theme.footer.push.choices | split( '\n' ) -%}
 								{%- set value = item | sanitize -%}
 								<li>
-									<label class="text-button-s text-l text-beige bg-blanc/14 [backdrop-filter:blur(10px)] px-5 py-[0.90625rem] rounded-full inline-block uppercase focus-within:outline focus-within:outline-offset-2 focus-within:outline-[-webkit-focus-ring-color]">
+									<label class="text-button-s text-l text-off-white bg-off-white/14 [backdrop-filter:blur(10px)] px-5 py-[0.90625rem] rounded-full inline-block uppercase focus-within:outline focus-within:outline-offset-2 focus-within:outline-[-webkit-focus-ring-color]">
 										<input type="radio" name="domaine" value="{{ value }}" class="peer sr-only" {% if domaine and value == domaine %} checked="checked" {% endif %}/>
-										<span class="before:size-5 before:transition-colors before:shrink-0 before:ease-in before:duration-300 peer-checked:before:border-vert peer-checked:before:bg-vert before:border before:border-beige before:rounded-full flex gap-1.5 items-center">{{- item -}}</span>
+										<span class="before:size-5 before:transition-colors before:shrink-0 before:ease-in before:duration-300 peer-checked:before:border-green peer-checked:before:bg-green before:border before:border-off-white before:rounded-full flex gap-1.5 items-center">{{- item -}}</span>
 									</label>
 								</li>
 							{%- endfor -%}
@@ -59,7 +59,7 @@
 	</div>
 {%- endif -%}
 
-<footer role="contentinfo" class="relative z-2 -mt-13.25 lg:-mt-8.75 rounded-t-25 lg:rounded-t-35 space-y-11.75 pt-20 lg:pt-19 pb-10 lg:pb-13.5 text-beige">
+<footer role="contentinfo" class="relative z-2 -mt-13.25 lg:-mt-8.75 rounded-t-25 lg:rounded-t-35 space-y-11.75 pt-20 lg:pt-19 pb-10 lg:pb-13.5 text-off-white">
 	<div class="container space-y-15 lg:space-y-11.75">
 		<div class="grid-col-1 lg:grid-cols-12 gap-y-15 gap-x-5 lg:gap-y-5 grid">
 
@@ -68,7 +68,7 @@
 					{%- if theme.footer.newsletter.title or theme.footer.newsletter.subtitle -%}
 						<div class="space-y-1.5 text-center lg:text-left">
 							{%- if theme.footer.newsletter.title -%}
-								<h2 class="h4 text-vert">
+								<h2 class="h4 text-green">
 									{{- theme.footer.newsletter.title -}}
 								</h2>
 							{%- endif -%}
@@ -83,14 +83,14 @@
 
 			<div class="col-span-full lg:col-span-8 lg:col-start-5">
 				{%- if nav_menus.footer.get_items -%}
-					<cinq-accordion-group itemscope class="lg:grid lg:grid-cols-4 lg:gap-5 divide-y space-y-6 divide-beige/25 lg:divide-y-0" itemtype="http://schema.org/SiteNavigationElement" data-accordion-enable-on="mobile">
+					<cinq-accordion-group itemscope class="lg:grid lg:grid-cols-4 lg:gap-5 divide-y space-y-6 divide-off-white/25 lg:divide-y-0" itemtype="http://schema.org/SiteNavigationElement" data-accordion-enable-on="mobile">
 						{%- for item in nav_menus.footer.get_items() -%}
 							{% if item.children -%}
 								<div data-accordion-open="false" data-accordion-deselect="true" class="{{ html_classes( 'js-accordion-panel pb-6 last:pb-0 lg:col-span-1', item.children ? 'lg:space-y-5' : '' ) }}">
 									<button type="button" class="js-accordion-header lg:cursor-auto flex w-full items-center justify-between group gap-2.5 text-l" aria-expanded="false" aria-controls="{{ item.id }}-body" id="{{ item.id }}-header">
 										{{- item.title -}}
 
-										<span class="size-7.5 flex lg:hidden relative items-center text-bleu justify-center rounded-full bg-beige shrink-0">
+										<span class="size-7.5 flex lg:hidden relative items-center text-blue justify-center rounded-full bg-off-white shrink-0">
 											{{-
 													include(
 														'svg/use.html.twig',
@@ -143,7 +143,7 @@
 				<ul class="gap-5 lg:grow justify-center lg:justify-start lg:basis-0 flex">
 					{%- for social in socials -%}
 						<li>
-							<a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.title }}" class="rounded-full flex items-center justify-center text-bleu bg-vert size-10">
+							<a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.title }}" class="rounded-full flex items-center justify-center text-blue bg-green size-10">
 								{{- include( 'svg/use.html.twig', { icon: social.id, classes: [ 'size-7.5' ], } ) -}}
 								<span class="sr-only">{{ social.title }}</span>
 							</a>
