@@ -167,12 +167,12 @@ class Grid {
 									'aria-label'      => __( 'Background Color', 'wp-cinquante-et-un' ),
 									'type'            => 'select',
 									'choices'         => array(
-										'bg-bleu'  => __( 'Blue', 'wp-cinquante-et-un' ),
-										'bg-vert'  => __( 'Green', 'wp-cinquante-et-un' ),
-										'bg-blanc' => __( 'White', 'wp-cinquante-et-un' ),
-										'bg-rouge/80' => __( 'Red', 'wp-cinquante-et-un' ),
+										'bg-blue'  => __( 'Blue', 'wp-cinquante-et-un' ),
+										'bg-green'  => __( 'Green', 'wp-cinquante-et-un' ),
+										'bg-off-white' => __( 'White', 'wp-cinquante-et-un' ),
+										'bg-red/80' => __( 'Red', 'wp-cinquante-et-un' ),
 									),
-									'default_value'   => 'bg-blanc',
+									'default_value'   => 'bg-off-white',
 									'parent_repeater' => 'field_' . $key . '_grid_content_items',
 									'return_format'   => 'value',
 									'wrapper'         => array(
@@ -186,10 +186,10 @@ class Grid {
 									'aria-label'      => __( 'Text Color', 'wp-cinquante-et-un' ),
 									'type'            => 'select',
 									'choices'         => array(
-										'text-bleu'  => __( 'Blue', 'wp-cinquante-et-un' ),
-										'text-blanc' => __( 'White', 'wp-cinquante-et-un' ),
+										'text-blue'  => __( 'Blue', 'wp-cinquante-et-un' ),
+										'text-off-white' => __( 'White', 'wp-cinquante-et-un' ),
 									),
-									'default_value'   => 'text-bleu',
+									'default_value'   => 'text-blue',
 									'parent_repeater' => 'field_' . $key . '_grid_content_items',
 									'return_format'   => 'value',
 									'wrapper'         => array(
@@ -203,10 +203,10 @@ class Grid {
 									'aria-label'      => __( 'Fill Color', 'wp-cinquante-et-un' ),
 									'type'            => 'select',
 									'choices'         => array(
-										'text-vert'  => __( 'Green', 'wp-cinquante-et-un' ),
-										'text-blanc' => __( 'White', 'wp-cinquante-et-un' ),
+										'text-green'  => __( 'Green', 'wp-cinquante-et-un' ),
+										'text-off-white' => __( 'White', 'wp-cinquante-et-un' ),
 									),
-									'default_value'   => 'text-vert',
+									'default_value'   => 'text-green',
 									'parent_repeater' => 'field_' . $key . '_grid_content_items',
 									'return_format'   => 'value',
 									'wrapper'         => array(
