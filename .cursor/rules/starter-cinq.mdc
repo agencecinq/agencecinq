@@ -71,6 +71,7 @@ DO :
 - Coder et commenter en anglais.
 - Déclarer les tokens de design dans `@theme` de `theme.css`.
 - Passer les chaînes utilisateur par les fonctions i18n.
+- Commits en anglais avec gitmoji (voir la règle `git-commits`).
 
 DONT :
 
@@ -91,3 +92,4 @@ Règles dédiées existantes :
 
 - `init-nouveau-projet` : procédure d'initialisation d'un nouveau projet à partir du thème.
 - `remontee-vers-starter` : procédure pour faire remonter une brique d'un projet vers le starter (flux inverse de l'init).
+- `git-commits` : messages de commit en anglais avec gitmoji.
