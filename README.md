@@ -173,7 +173,13 @@ The PHP classes follow WordPress coding standards and are organized like WordPre
 
 ## Installation
 
-Add your local environment variables in a `.env` file. Use `.env.sample` as a template. Laravel's Vite plugin will load the variables automatically.
+Copy the environment template and set your local WordPress URL (used by the Vite dev server for full-page refresh):
+
+```bash
+cp .env.sample .env
+```
+
+Then edit `.env` and set `APP_URL` to your local site URL, derived from the project slug: `APP_URL = https://<slug>.local` (e.g. `https://wp-cinquante-et-un.local`), without a trailing slash. The Laravel Vite plugin loads these variables automatically.
 
 ### PHP Dependencies
 

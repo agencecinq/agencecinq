@@ -83,7 +83,8 @@ Le PHP se nettoie au fur et à mesure, mais retire d'emblée ce qui est claireme
 
 ## Étape 7 : config locale, dépendances, build
 
-- Crée `.env` à partir de `.env.sample` et règle `APP_URL` sur l'URL locale.
+- Crée `.env` à partir de `.env.sample` : `cp .env.sample .env` (ne pas renommer le sample : il reste versionné pour l'équipe).
+- Dans `.env`, règle `APP_URL` sur l'URL locale du nouveau projet, dérivée du slug (étape 0) : `APP_URL = https://<slug>.local` (ex : `https://bellitalia.local`), sans slash final.
 - `composer install` puis `pnpm install`.
 - `pnpm dev` pour développer, `pnpm build` pour vérifier le build prod.
 - Lance phpcs (`composer` / config `phpcs.xml`) et corrige les avertissements introduits.

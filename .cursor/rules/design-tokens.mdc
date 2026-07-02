@@ -1,5 +1,5 @@
 ---
-description: Conventions pour les tokens de design Tailwind v4 dans theme.css (noms en anglais, pas de valeurs en dur dans les classes utilitaires).
+description: Conventions pour les tokens de design Tailwind v4 dans theme.css (noms en anglais, sizes en rem, pas de valeurs en dur dans les classes utilitaires).
 globs: src/stylesheets/theme.css,**/*.twig
 alwaysApply: false
 ---
@@ -37,8 +37,38 @@ All custom property **suffixes** in `@theme` must be in **English**, kebab-case:
 
 The starter must not ship decorative section backgrounds (gradients, branded fills) in Twig templates. Background colors and images are chosen per project via tokens and block content, not baked into layout shells.
 
+## Sizes in `rem` (no `px` in utilities)
+
+All dimensional values in Tailwind classes and CSS must use **rem** or the **spacing scale** (`--spacing`), never **px** arbitrary values.
+
+Applies to: `font-size`, `width`, `height`, `gap`, `padding`, `margin`, `inset`, etc.
+
+- **Prefer spacing utilities** when the design value maps to the scale: `w-11.5` (46px), `gap-6.5` (26px), `py-3.5` (14px), not `w-[46px]` or `gap-[26px]`.
+- **Tailwind arbitrary values in Twig**: `w-[2.875rem]`, `gap-[1.625rem]`, never `w-[46px]`, `gap-[26px]`, `p-[14px]`.
+- **`@theme` tokens** (`--text-*`, `--width-*`, etc.): declare in rem, not px.
+- **CSS** (`base/`, `utilities/`, legacy `components/`): dimensional properties in rem or `calc(var(--spacing) * n)`.
+
+Conversion reference: `rem = px / 16` (e.g. `46px` → `2.875rem` or `w-11.5`, `26px` → `1.625rem` or `gap-6.5`).
+
+**Exceptions:** `border-width` utilities (`border-2`), box-shadow offsets in `@theme` (`--shadow-brutal-sm`), and HTML `width`/`height` attributes on `<img>` (intrinsic dimensions).
+
+If a value is reused, add a token in `@theme` rather than repeating rem arbitrary values in Twig.
+
+## Letter-spacing in `em`
+
+All `letter-spacing` values must be expressed in **em**, never in **px**.
+
+- **`@theme` typography tokens** (`--text-*--letter-spacing`, or dedicated tokens): declare in em (`0.025em`, not `0.5px`).
+- **Tailwind classes in Twig**: `tracking-[0.0227em]`, never `tracking-[0.5px]` or `tracking-wide` when a precise design value is required (utility presets are acceptable for generic typography classes).
+- **CSS**: `letter-spacing` in em only.
+
+Conversion reference: `em = px / font-size-px` on the same element (e.g. `0.5px` at `22px` / `1.375rem` → `0.0227em`).
+
+If a value is reused, add a token in `@theme` rather than repeating em arbitrary values in Twig.
+
 ## Checklist when adding a token
 
 1. English kebab-case suffix in `@theme`.
 2. Used via a utility class in Twig/CSS, not an arbitrary value.
-3. `pnpm build` passes.
+3. Sizes in rem or spacing scale, letter-spacing in em (see above).
+4. `pnpm build` passes.
