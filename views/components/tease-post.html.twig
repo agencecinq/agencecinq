@@ -8,7 +8,7 @@
  #}
 <article itemscope itemtype="https://schema.org/BlogPosting">
 	<div class="space-y-3.75 lg:space-y-5">
-		<div class="bg-blue/30 rounded-15 relative aspect-square overflow-hidden">
+		<div class="bg-fond-carte/30 rounded-15 relative aspect-square overflow-hidden">
 			<a
 				href="{{- post.link -}}"
 				itemprop="url"
@@ -53,7 +53,7 @@
 
 		<div class="space-y-5 lg:space-y-3.75">
 			<div class="space-y-2.5">
-				<h3 class="text-l lg:min-h-[2lh]" itemprop="headline">{{- post.title -}}</h3>
+				<h3 class="text-lede-l lg:min-h-[2lh]" itemprop="headline">{{- post.title -}}</h3>
 				{%- set excerpt =
 					post.excerpt({
 						chars: 89,
@@ -61,7 +61,7 @@
 					})
 				-%}
 				{%- if excerpt|trim -%}
-					<p class="text-s" itemprop="description">
+					<p class="text-corps-s" itemprop="description">
 						{{- excerpt -}}
 					</p>
 				{%- endif -%}
@@ -69,7 +69,7 @@
 			<a
 				href="{{- post.link -}}"
 				itemprop="url"
-				class="text-button-s uppercase underline"
+				class="text-cta uppercase underline"
 				aria-label="{{ __('Discover: %s', 'agencecinq')|format(post.title) }}"
 			>
 				{{- __('Discover', 'agencecinq') -}}

@@ -1,128 +1,140 @@
 @theme {
-	--default-font-family: "Atkinson Hyperlegible", sans-serif;
-	--font-heading: "Shantell Sans", sans-serif;
+	--default-font-family: "Inter", sans-serif;
+	--font-sans: "Inter", sans-serif;
+	--font-heading: "Inter", sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, monospace;
 
 	/* Colors */
-	/* This line resets all color variables */
 	--color-*: initial;
 
-	/* Colors primary */
-	--color-black: #000000;
-	--color-white: #ffffff;
+	--color-fond-page: #08090a;
+	--color-fond-eleve: #0d0f0e;
+	--color-fond-carte: #141614;
+	--color-fond-carte-survol: #1c201c;
 
-	--color-blue: #1A2C4C;
-	--color-green: #98FFA5;
-	--color-off-white: #F7F7F6;
-	--color-red: #FF0000;
+	--color-texte-principal: #f1f0ea;
+	--color-texte-attenue: #9a988d;
+	--color-texte-discret: #7e7c71;
+	--color-texte-sur-accent: #0a0c0a;
+
+	--color-accent: #b3fca4;
+	--color-accent-survol: #c7ffbb;
+	--color-accent-doux: #b3fca424;
+
+	--color-bordure: #f1f0ea1c;
+	--color-bordure-subtile: #f1f0ea0f;
+	--color-bordure-accent: #b3fca4;
 
 	/* Typographies */
-	/* This line resets all typography variables */
 	--text-*: initial;
 
-	/* In Twig the class will be available as `text-h1` */
-	/* Example of how to setup a typography variable */
-	/* Next in utilities typographies.css you can create a utility class to combine mobile and desktop variables */
-	--text-h0-desktop: 7.5rem;
-	--text-h0-desktop--font-weight: 600;
-	--text-h0-desktop--line-height: 1;
+	/* Titres · Inter Medium */
+	--text-display-desktop: 6rem;
+	--text-display-desktop--font-weight: 500;
+	--text-display-desktop--line-height: 0.96;
+	--text-display-desktop--letter-spacing: -0.04em;
 
-	--text-h0-mobile: 3.4375rem;
-	--text-h0-mobile--font-weight: 600;
-	--text-h0-mobile--line-height: calc(60 / 55);
+	--text-display-mobile: 3rem;
+	--text-display-mobile--font-weight: 500;
+	--text-display-mobile--line-height: 0.98;
+	--text-display-mobile--letter-spacing: -0.04em;
 
-	--text-h1-desktop: 4.6875rem;
-	--text-h1-desktop--font-weight: 600;
-	--text-h1-desktop--line-height: calc(85 / 75);
+	--text-titre-1-desktop: 4.75rem;
+	--text-titre-1-desktop--font-weight: 500;
+	--text-titre-1-desktop--line-height: 1;
+	--text-titre-1-desktop--letter-spacing: -0.035em;
 
-	--text-h1-mobile: 2.5rem;
-	--text-h1-mobile--font-weight: 600;
-	--text-h1-mobile--line-height: 1.25;
+	--text-titre-1-mobile: 2.375rem;
+	--text-titre-1-mobile--font-weight: 500;
+	--text-titre-1-mobile--line-height: 1;
+	--text-titre-1-mobile--letter-spacing: -0.035em;
 
-	/*  */
-	--text-h2-desktop: 3.75rem;
-	--text-h2-desktop--font-weight: 500;
-	--text-h2-desktop--line-height: calc(70 / 60);
+	--text-titre-2-desktop: 3.5rem;
+	--text-titre-2-desktop--font-weight: 500;
+	--text-titre-2-desktop--line-height: 1.05;
+	--text-titre-2-desktop--letter-spacing: -0.02em;
 
-	--text-h2-mobile: 2.125rem;
-	--text-h2-mobile--font-weight: 500;
-	--text-h2-mobile--line-height: calc(44 / 34);
+	--text-titre-2-mobile: 2.125rem;
+	--text-titre-2-mobile--font-weight: 500;
+	--text-titre-2-mobile--line-height: 1.05;
+	--text-titre-2-mobile--letter-spacing: -0.02em;
 
-	--text-h3-desktop: 2.8125rem;
-	--text-h3-desktop--font-weight: 600;
-	--text-h3-desktop--line-height: calc(55 / 45);
+	--text-titre-3-desktop: 2rem;
+	--text-titre-3-desktop--font-weight: 500;
+	--text-titre-3-desktop--line-height: 1.15;
+	--text-titre-3-desktop--letter-spacing: -0.015em;
 
-	--text-h3-mobile: 1.625rem;
-	--text-h3-mobile--font-weight: 600;
-	--text-h3-mobile--line-height: calc(36 / 26);
+	--text-titre-3-mobile: 1.625rem;
+	--text-titre-3-mobile--font-weight: 500;
+	--text-titre-3-mobile--line-height: 1.15;
+	--text-titre-3-mobile--letter-spacing: -0.015em;
 
-	--text-h4-desktop: 1.75rem;
-	--text-h4-desktop--font-weight: 600;
-	--text-h4-desktop--line-height: calc(38 / 28);
+	--text-titre-4: 1.25rem;
+	--text-titre-4--font-weight: 500;
+	--text-titre-4--line-height: 1.15;
+	--text-titre-4--letter-spacing: -0.01em;
 
-	--text-h4-mobile: 1.375rem;
-	--text-h4-mobile--font-weight: 600;
-	--text-h4-mobile--line-height: calc(32 / 22);
+	/* Textes · Inter Regular */
+	--text-lede-l-desktop: 1.375rem;
+	--text-lede-l-desktop--font-weight: 400;
+	--text-lede-l-desktop--line-height: 1.55;
 
-	--text-h5-desktop: 1.625rem;
-	--text-h5-desktop--font-weight: 400;
-	--text-h5-desktop--line-height: calc(38 / 26);
+	--text-lede-l-mobile: 1.125rem;
+	--text-lede-l-mobile--font-weight: 400;
+	--text-lede-l-mobile--line-height: 1.55;
 
-	--text-h5-mobile: 1.25rem;
-	--text-h5-mobile--font-weight: 400;
-	--text-h5-mobile--line-height: calc(28 / 20);
+	--text-lede-m-desktop: 1.1875rem;
+	--text-lede-m-desktop--font-weight: 400;
+	--text-lede-m-desktop--line-height: 1.6;
 
-	--text-on-title-desktop: 1rem;
-	--text-on-title-desktop--font-weight: 500;
-	--text-on-title-desktop--line-height: 1.625;
+	--text-lede-m-mobile: 1.0625rem;
+	--text-lede-m-mobile--font-weight: 400;
+	--text-lede-m-mobile--line-height: 1.6;
 
-	--text-on-title-mobile: 0.875rem;
-	--text-on-title-mobile--font-weight: 500;
-	--text-on-title-mobile--line-height: calc(24 / 14);
+	--text-corps-desktop: 1.0625rem;
+	--text-corps-desktop--font-weight: 400;
+	--text-corps-desktop--line-height: 1.6;
 
-	/*  */
-	--text-body-large-desktop: 1.25rem;
-	--text-body-large-desktop--font-weight: 500;
-	--text-body-large-desktop--line-height: 1.5;
+	--text-corps-mobile: 1rem;
+	--text-corps-mobile--font-weight: 400;
+	--text-corps-mobile--line-height: 1.6;
 
-	--text-body-large-mobile: 1rem;
-	--text-body-large-mobile--font-weight: 500;
-	--text-body-large-mobile--line-height: 1.5;
+	--text-corps-s-desktop: 0.9375rem;
+	--text-corps-s-desktop--font-weight: 400;
+	--text-corps-s-desktop--line-height: 1.55;
 
-	--text-body-medium-desktop: 1rem;
-	--text-body-medium-desktop--font-weight: 700;
-	--text-body-medium-desktop--line-height: 1.5;
+	--text-corps-s-mobile: 0.875rem;
+	--text-corps-s-mobile--font-weight: 400;
+	--text-corps-s-mobile--line-height: 1.55;
 
-	--text-body-medium-mobile: 0.875rem;
-	--text-body-medium-mobile--font-weight: 700;
-	--text-body-medium-mobile--line-height: calc(22 / 14);
+	--text-corps-xs-desktop: 0.875rem;
+	--text-corps-xs-desktop--font-weight: 400;
+	--text-corps-xs-desktop--line-height: 1.5;
 
-	--text-body-small-desktop: 1rem;
-	--text-body-small-desktop--font-weight: 500;
-	--text-body-small-desktop--line-height: 1.5;
+	--text-corps-xs-mobile: 0.8125rem;
+	--text-corps-xs-mobile--font-weight: 400;
+	--text-corps-xs-mobile--line-height: 1.5;
 
-	--text-body-small-mobile: 0.875rem;
-	--text-body-small-mobile--font-weight: 500;
-	--text-body-small-mobile--line-height: calc(22 / 14);
+	/* Meta · JetBrains Mono */
+	--text-eyebrow: 0.6875rem;
+	--text-eyebrow--font-weight: 400;
+	--text-eyebrow--line-height: 1.6;
+	--text-eyebrow--letter-spacing: 0.18em;
 
-	--text-button-medium-desktop: 0.9375rem;
-	--text-button-medium-desktop--font-weight: 600;
-	--text-button-medium-desktop--line-height: calc(20/15);
+	--text-label: 0.75rem;
+	--text-label--font-weight: 400;
+	--text-label--line-height: 1.6;
+	--text-label--letter-spacing: 0.1em;
 
-	--text-button-medium-mobile: 0.875rem;
-	--text-button-medium-mobile--font-weight: 600;
-	--text-button-medium-mobile--line-height: calc(20 / 14);
+	--text-cta: 0.8125rem;
+	--text-cta--font-weight: 500;
+	--text-cta--line-height: 1.6;
+	--text-cta--letter-spacing: 0.02em;
 
-	--text-button-small-desktop: 0.8125rem;
-	--text-button-small-desktop--font-weight: 600;
-	--text-button-small-desktop--line-height: calc(18 / 13);
-
-	--text-button-very-small-desktop: 0.75rem;
-	--text-button-very-small-desktop--font-weight: 600;
-	--text-button-very-small-desktop--line-height: calc(18 / 12);
-
-	--text-mention-large: 0.75rem;
-	--text-mention-large--font-weight: 500;
-	--text-mention-large--line-height: 1.5;
+	--text-badge: 0.625rem;
+	--text-badge--font-weight: 400;
+	--text-badge--line-height: 1.6;
+	--text-badge--letter-spacing: 0.1em;
 
 	--animate-marquee: marquee 20s linear infinite;
 

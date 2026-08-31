@@ -24,7 +24,7 @@
 		>
 			<div class="relative z-2 col-span-full space-y-7.5 lg:col-span-5 lg:space-y-10">
 				<div class="space-y-3.75 lg:space-y-6.75">
-					<h2 class="h-on-title uppercase">{{- block.parent.title -}}</h2>
+					<h2 class="text-eyebrow uppercase">{{- block.parent.title -}}</h2>
 
 					<ul
 						class="scrollbar-hidden justify-start-safe -mx-2.5 flex gap-3 overflow-x-auto px-2.5 lg:mx-0 lg:flex-wrap lg:px-0"
@@ -58,7 +58,7 @@
 				</div>
 
 				{%- if block.content.text -%}
-					<p class="h3">
+					<p class="text-titre-3">
 						{{- block.content.text -}}
 					</p>
 				{%- endif -%}
@@ -78,7 +78,7 @@
 
 			<div
 				id="{{ block.id }}-panel"
-				class="lg:before:bg-off-white relative col-span-full -mx-2.5 transition-opacity duration-300 ease-in lg:col-span-6 lg:col-start-7 lg:mx-0 lg:before:absolute lg:before:inset-y-0 lg:before:right-full lg:before:z-1 lg:before:w-screen"
+				class="lg:before:bg-fond-page relative col-span-full -mx-2.5 transition-opacity duration-300 ease-in lg:col-span-6 lg:col-start-7 lg:mx-0 lg:before:absolute lg:before:inset-y-0 lg:before:right-full lg:before:z-1 lg:before:w-screen"
 				role="tabpanel"
 				aria-labelledby="{{ block.current.id ~ '-tab-' ~ block.parent.id }}"
 				aria-live="polite"

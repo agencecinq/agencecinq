@@ -11,7 +11,7 @@
 <div id="{{ block.id }}">
 	<div class="relative w-full overflow-hidden">
 		<div
-			class="text-off-white after:bg-blue/60 relative aspect-402/635 w-full text-center after:absolute after:inset-0 after:z-2 after:size-full lg:aspect-1440/800"
+			class="text-texte-principal after:bg-fond-carte/60 relative aspect-402/635 w-full text-center after:absolute after:inset-0 after:z-2 after:size-full lg:aspect-1440/800"
 		>
 			{%- if block.content.title or block.content.text or block.content.link.url -%}
 				<div
@@ -38,14 +38,14 @@
 									{%- endif -%}
 
 									{%- if block.content.title -%}
-										<p class="h1 text-green">
+										<p class="text-titre-1 text-accent">
 											{{- block.content.title -}}
 										</p>
 									{%- endif -%}
 								</div>
 							{%- endif -%}
 							{%- if block.content.text -%}
-								<p class="h5 col-span-full lg:col-span-8 lg:col-start-3">
+								<p class="text-lede-l col-span-full lg:col-span-8 lg:col-start-3">
 									{{- block.content.text -}}
 								</p>
 							{%- endif -%}

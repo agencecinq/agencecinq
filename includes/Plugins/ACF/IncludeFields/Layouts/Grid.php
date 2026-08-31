@@ -167,12 +167,13 @@ class Grid {
 									'aria-label'      => __( 'Background Color', 'agencecinq' ),
 									'type'            => 'select',
 									'choices'         => array(
-										'bg-blue'  => __( 'Blue', 'agencecinq' ),
-										'bg-green'  => __( 'Green', 'agencecinq' ),
-										'bg-off-white' => __( 'White', 'agencecinq' ),
-										'bg-red/80' => __( 'Red', 'agencecinq' ),
+										'bg-fond-page'  => __( 'Page', 'agencecinq' ),
+										'bg-fond-eleve' => __( 'Élevé', 'agencecinq' ),
+										'bg-fond-carte' => __( 'Carte', 'agencecinq' ),
+										'bg-fond-carte-survol' => __( 'Carte · survol', 'agencecinq' ),
+										'bg-accent'     => __( 'Accent', 'agencecinq' ),
 									),
-									'default_value'   => 'bg-off-white',
+									'default_value'   => 'bg-fond-carte',
 									'parent_repeater' => 'field_' . $key . '_grid_content_items',
 									'return_format'   => 'value',
 									'wrapper'         => array(
@@ -186,10 +187,11 @@ class Grid {
 									'aria-label'      => __( 'Text Color', 'agencecinq' ),
 									'type'            => 'select',
 									'choices'         => array(
-										'text-blue'  => __( 'Blue', 'agencecinq' ),
-										'text-off-white' => __( 'White', 'agencecinq' ),
+										'text-texte-principal'  => __( 'Principal', 'agencecinq' ),
+										'text-texte-attenue'    => __( 'Atténué', 'agencecinq' ),
+										'text-texte-sur-accent' => __( 'Sur accent', 'agencecinq' ),
 									),
-									'default_value'   => 'text-blue',
+									'default_value'   => 'text-texte-principal',
 									'parent_repeater' => 'field_' . $key . '_grid_content_items',
 									'return_format'   => 'value',
 									'wrapper'         => array(
@@ -203,10 +205,11 @@ class Grid {
 									'aria-label'      => __( 'Fill Color', 'agencecinq' ),
 									'type'            => 'select',
 									'choices'         => array(
-										'text-green'  => __( 'Green', 'agencecinq' ),
-										'text-off-white' => __( 'White', 'agencecinq' ),
+										'text-accent' => __( 'Accent', 'agencecinq' ),
+										'text-texte-principal' => __( 'Principal', 'agencecinq' ),
+										'text-texte-sur-accent' => __( 'Sur accent', 'agencecinq' ),
 									),
-									'default_value'   => 'text-green',
+									'default_value'   => 'text-accent',
 									'parent_repeater' => 'field_' . $key . '_grid_content_items',
 									'return_format'   => 'value',
 									'wrapper'         => array(

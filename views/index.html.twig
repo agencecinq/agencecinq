@@ -6,44 +6,54 @@
  #}
 <!DOCTYPE html>
 
-<html itemscope itemtype="http://schema.org/WebPage" {{ html_class( 'no-js no-touch antialiased' ) }} {{ site.language_attributes }}>
+<html
+	itemscope
+	itemtype="http://schema.org/WebPage"
+	{{ html_class('no-js no-touch antialiased') }}
+	{{ site.language_attributes }}
+>
 	<head>
-		<meta charset="{{ site.charset }}"/>
-		<link rel="profile" href="http://gmpg.org/xfn/11"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		{{ function( 'wp_head' ) }}
+		<meta charset="{{ site.charset }}" />
+		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		{{ function('wp_head') }}
 	</head>
 
-	<body {{ body_class( 'text-blue bg-off-white antialiased' ) }}>
-		{{- function( 'wp_body_open ') -}}
-
+	<body {{ body_class('text-texte-principal bg-fond-page antialiased') }}>
+		{{- function('wp_body_open ') -}}
 
 		{%- block content -%}
-		<main id="content" role="main">
+			<main id="content" role="main">
+				<div class="rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 lg:-mb-12.5">
+					{%- block header -%}
+						<div class="relative">
+							{{-
+								include(
+									'header.html.twig',
+									{
+										classes: ['relative z-10']
+									}
+								)
+							-}}
+						</div>
+					{%- endblock -%}
 
-			<div class="rounded-b-25 lg:rounded-b-50 -mb-6.25 lg:-mb-12.5 relative z-3">
-				{%- block header -%}
-				<div class="relative">
-					{{- include( 'header.html.twig', { classes: [ 'relative z-10' ] } ) -}}
+					<div class="container space-y-5 pt-5 pb-20 lg:space-y-20 lg:pt-12.5">
+						{{ yoast_breadcrumb() }}
+						<h1 class="text-titre-2 text-accent">{{- post.title -}}</h1>
+					</div>
 				</div>
-			{%- endblock -%}
 
-			<div class="container space-y-5 lg:space-y-20 pb-20 pt-5 lg:pt-12.5">
-				{{ yoast_breadcrumb() }}
-				<h1 class="h2 text-green">{{- post.title -}}</h1>
-			</div>
-		</div>
+				{%- if post.content -%}
+					<div class="container grid grid-cols-12 gap-5 pt-26.25 pb-20 lg:pt-32.5">
+						<div class="wysiwyg col-span-full lg:col-span-6 lg:col-start-4">
+							{{- post.content -}}
+						</div>
+					</div>
+				{%- endif -%}
 
-		{%- if post.content -%}
-			<div class="container grid grid-cols-12 gap-5 pb-20 pt-26.25 lg:pt-32.5">
-				<div class="col-span-full lg:col-span-6 lg:col-start-4 wysiwyg">
-					{{- post.content -}}
-				</div>
-			</div>
-		{%- endif -%}
-
-		{{-
+				{{-
 					include(
 						'blocks/blocks.html.twig',
 						{
@@ -51,8 +61,13 @@
 						}
 					)
 				-}}
-	</main>
-{%- endblock -%}
+			</main>
+		{%- endblock -%}
 
-{%- block footer -%}
-{{- include('footer.html.twig') -}}{%- endblock -%}{{- function( 'wp_footer' ) -}}<div id="svg-sprite" style="display: none;">{{- include('public/sprite.svg', ignore_missing: true) -}}</div></body></html>
+		{%- block footer -%}
+			{{- include('footer.html.twig') -}}
+		{%- endblock -%}{{- function('wp_footer') -}}<div id="svg-sprite" style="display: none;">
+			{{- include('public/sprite.svg', ignore_missing = true) -}}
+		</div>
+	</body>
+</html>

@@ -9,8 +9,8 @@
 
 {%- set classes = ( [ 
     active ? 'is-active', 
-    'border [&.is-active]:bg-green [&.is-active]:border-blue [&.is-active]:text-blue',
-    mode == 'dark' ? 'text-off-white bg-off-white/14 border-blue/0' : 'text-blue border-blue', 
+    'border [&.is-active]:bg-accent [&.is-active]:border-bordure [&.is-active]:text-texte-principal',
+    mode == 'dark' ? 'text-texte-principal bg-fond-page/14 border-bordure/0' : 'text-texte-principal border-bordure', 
     '[backdrop-filter:blur(10px)]',
     'inline-flex items-center [text-box:trim-both cap alphabetic]',
     'px-2.5', 
@@ -18,7 +18,7 @@
     'lg:px-2.75', 
     'lg:py-[0.609375rem]',
     'rounded-6', 
-    'text-button-m', 
+    'text-cta', 
     'border',
 ] | merge( classes | default( [] ) ) ) | join( ' ' ) -%}
 

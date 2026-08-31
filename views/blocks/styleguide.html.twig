@@ -1,6 +1,6 @@
 <div class="container py-10 lg:py-20">
 	<div class="overflow-x-auto">
-		<table class="bg-blue/40 my-8 w-full border-collapse text-left">
+		<table class="bg-fond-carte/40 my-8 w-full border-collapse text-left">
 			<thead class="uppercase">
 				<tr>
 					<th class="p-4">Name</th>
@@ -11,80 +11,46 @@
 			</thead>
 			<tbody class="divide-y">
 				<tr>
-					<td class="p-4">
-						<code>variant</code>
-					</td>
-					<td class="p-4">
-						<code>string</code>
-					</td>
-					<td class="p-4">
-						<code>'primary'</code>
-					</td>
+					<td class="p-4"><code>variant</code></td>
+					<td class="p-4"><code>string</code></td>
+					<td class="p-4"><code>'primary'</code></td>
 					<td class="p-4">
 						Variant of the button. Can be
 						<code>'primary'</code>,
 						<code>'secondary'</code>,
-						<code>
-							'tertiary'
-						</code>
+						<code>'tertiary'</code>
 						or
 						<code>'quaternary'</code>.
 					</td>
 				</tr>
 				<tr>
-					<td class="p-4">
-						<code>disabled</code>
-					</td>
-					<td class="p-4">
-						<code>bool</code>
-					</td>
-					<td class="p-4">
-						<code>false</code>
-					</td>
+					<td class="p-4"><code>disabled</code></td>
+					<td class="p-4"><code>bool</code></td>
+					<td class="p-4"><code>false</code></td>
 					<td class="p-4">Whether the button is disabled.</td>
 				</tr>
 				<tr>
-					<td class="p-4">
-						<code>icon</code>
-					</td>
-					<td class="p-4">
-						<code>string</code>
-					</td>
-					<td class="p-4">
-						<code>null</code>
-					</td>
+					<td class="p-4"><code>icon</code></td>
+					<td class="p-4"><code>string</code></td>
+					<td class="p-4"><code>null</code></td>
 					<td class="p-4">The name of the icon to display.</td>
 				</tr>
 				<tr>
-					<td class="p-4">
-						<code>fill</code>
-					</td>
-					<td class="p-4">
-						<code>string</code>
-					</td>
-					<td class="p-4">
-						<code>null</code>
-					</td>
+					<td class="p-4"><code>fill</code></td>
+					<td class="p-4"><code>string</code></td>
+					<td class="p-4"><code>null</code></td>
 					<td class="p-4">
 						Color of the icon. Can be
-						<code>'text-green'</code>,
-						<code>
-							'text-blue'
-						</code>
+						<code>'text-accent'</code>,
+						<code>'text-texte-principal'</code>
 						or
-						<code>'text-off-white'</code>.
+						<code>'text-texte-sur-accent'</code>.
 					</td>
 				</tr>
 				<tr>
-					<td class="p-4">
-						<code>mode</code>
-					</td>
-					<td class="p-4">
-						<code>string</code>
-					</td>
-					<td class="p-4">
-						<code>'light'</code>
-					</td>
+					<td class="p-4"><code>mode</code></td>
+					<td class="p-4"><code>string</code></td>
+					<td class="p-4"><code>'light'</code></td>
 					<td class="p-4">
 						Color mode of the button. Can be
 						<code>'light'</code>
@@ -93,52 +59,30 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="p-4">
-						<code>title</code>
-					</td>
-					<td class="p-4">
-						<code>string</code>
-					</td>
+					<td class="p-4"><code>title</code></td>
+					<td class="p-4"><code>string</code></td>
 					<td class="p-4"></td>
 					<td class="p-4">The button text.</td>
 				</tr>
 				<tr>
-					<td class="p-4">
-						<code>attributes</code>
-					</td>
-					<td class="p-4">
-						<code>array</code>
-					</td>
-					<td class="p-4">
-						<code>{}</code>
-					</td>
+					<td class="p-4"><code>attributes</code></td>
+					<td class="p-4"><code>array</code></td>
+					<td class="p-4"><code>{}</code></td>
 					<td class="p-4">Additional HTML attributes for the button element.</td>
 				</tr>
 				<tr>
-					<td class="p-4">
-						<code>classes</code>
-					</td>
-					<td class="p-4">
-						<code>array</code>
-					</td>
-					<td class="p-4">
-						<code>[]</code>
-					</td>
+					<td class="p-4"><code>classes</code></td>
+					<td class="p-4"><code>array</code></td>
+					<td class="p-4"><code>[]</code></td>
 					<td class="p-4">Additional CSS classes for the button element.</td>
 				</tr>
 				<tr>
-					<td class="p-4">
-						<code>animate</code>
-					</td>
-					<td class="p-4">
-						<code>bool</code>
-					</td>
-					<td class="p-4">
-						<code>true</code>
-					</td>
+					<td class="p-4"><code>animate</code></td>
+					<td class="p-4"><code>bool</code></td>
+					<td class="p-4"><code>true</code></td>
 					<td class="p-4">
 						Whether to animate the icon on hover (only for icons with animation, like the 'bullet'
-												or 'arrow-right').
+						or 'arrow-right').
 					</td>
 				</tr>
 			</tbody>
@@ -146,7 +90,7 @@
 	</div>
 
 	<div class="overflow-x-auto">
-		<table class="bg-blue/40 my-8 w-full border-collapse text-left">
+		<table class="bg-fond-carte/40 my-8 w-full border-collapse text-left">
 			<thead class="uppercase">
 				<tr>
 					<th class="py-4">Variant</th>
@@ -180,7 +124,7 @@
 								{
 									title: 'Button',
 									icon: 'bullet',
-									fill: 'text-off-white'
+									fill: 'text-accent'
 								}
 							)
 						-}}
@@ -190,7 +134,7 @@
 								{
 									title: 'Button',
 									icon: 'bullet',
-									fill: 'text-blue'
+									fill: 'text-texte-principal'
 								}
 							)
 						-}}
@@ -244,7 +188,7 @@
 									title: 'Button',
 									icon: 'bullet',
 									mode: 'dark',
-									fill: 'text-off-white'
+									fill: 'text-texte-principal'
 								}
 							)
 						-}}
@@ -255,7 +199,7 @@
 									title: 'Menu',
 									icon: 'bars',
 									mode: 'dark',
-									fill: 'text-off-white',
+									fill: 'text-texte-principal',
 									animate: false
 								}
 							)
@@ -267,7 +211,7 @@
 									title: 'Menu',
 									icon: 'bars',
 									mode: 'dark',
-									fill: 'text-off-white'
+									fill: 'text-texte-principal'
 								}
 							)
 						-}}
@@ -278,7 +222,7 @@
 									title: 'Button',
 									icon: 'bullet',
 									mode: 'dark',
-									fill: 'text-blue'
+									fill: 'text-texte-principal'
 								}
 							)
 						-}}
@@ -334,7 +278,7 @@
 									title: 'Button',
 									variant: 'secondary',
 									icon: 'bullet',
-									fill: 'text-off-white'
+									fill: 'text-texte-principal'
 								}
 							)
 						-}}
@@ -392,7 +336,7 @@
 									title: 'Button',
 									variant: 'secondary',
 									icon: 'bullet',
-									fill: 'text-off-white',
+									fill: 'text-texte-principal',
 									mode: 'dark'
 								}
 							)
@@ -737,163 +681,340 @@
 		</table>
 	</div>
 
-	<div class="overflow-x-auto">
-		<table class="my-8 w-full border-collapse text-left">
-			<thead class="uppercase">
-				<tr>
-					<th class="py-4">Class</th>
-					<th class="py-4">Example</th>
-					<th class="py-4">Class</th>
-					<th class="py-4">Example</th>
-					<th class="py-4">Class</th>
-					<th class="py-4">Example</th>
-				</tr>
-			</thead>
-			<tbody class="divide-y">
-				{% set text_h = {
-					0: 'h0',
-					1: 'h1',
-					2: 'h2',
-					3: 'h3',
-					4: 'h4',
-					5: 'h5'
-				} %}
-				{% set text_h_desktop = {
-					0: 'text-h0-desktop',
-					1: 'text-h1-desktop',
-					2: 'text-h2-desktop',
-					3: 'text-h3-desktop',
-					4: 'text-h4-desktop',
-					5: 'text-h5-desktop'
-				} %}
-				{% set text_h_mobile = {
-					0: 'text-h0-mobile',
-					1: 'text-h1-mobile',
-					2: 'text-h2-mobile',
-					3: 'text-h3-mobile',
-					4: 'text-h4-mobile',
-					5: 'text-h5-mobile'
-				} %}
-				{% for i in 0..5 %}
-					<tr>
-						<td class="py-4">
-							<code class="font-mono">.h{{ i }}</code>
-						</td>
-						<td class="py-4">
-							<span class="{{ text_h[i] }}">Aa</span>
-						</td>
-						<td class="py-4">
-							<code class="font-mono">.text-h{{ i }}-desktop</code>
-						</td>
-						<td class="py-4">
-							<span class="{{ text_h_desktop[i] }}">Aa</span>
-						</td>
-						<td class="py-4">
-							<code class="font-mono">.text-h{{ i }}-mobile</code>
-						</td>
-						<td class="py-4">
-							<span class="{{ text_h_mobile[i] }}">Aa</span>
-						</td>
-					</tr>
+	{% set color_groups = [
+		{
+			label: 'Fonds',
+			swatches: [
+				{
+					name: 'Page',
+					token: 'fond-page',
+					bg: 'bg-fond-page',
+					hex: '#08090A',
+					description: 'Le fond de tout le site.'
+				},
+				{
+					name: 'Élevé',
+					token: 'fond-eleve',
+					bg: 'bg-fond-eleve',
+					hex: '#0D0F0E',
+					description: 'Footer, bandeaux, sections détachées.'
+				},
+				{
+					name: 'Carte',
+					token: 'fond-carte',
+					bg: 'bg-fond-carte',
+					hex: '#141614',
+					description: 'Cartes, encadrés, champs de formulaire.'
+				},
+				{
+					name: 'Carte · survol',
+					token: 'fond-carte-survol',
+					bg: 'bg-fond-carte-survol',
+					hex: '#1C201C',
+					description: "État survolé d'une carte cliquable."
+				}
+			]
+		},
+		{
+			label: 'Textes',
+			swatches: [
+				{
+					name: 'Principal',
+					token: 'texte-principal',
+					bg: 'bg-texte-principal',
+					hex: '#F1F0EA',
+					description: 'Titres et texte courant.'
+				},
+				{
+					name: 'Atténué',
+					token: 'texte-attenue',
+					bg: 'bg-texte-attenue',
+					hex: '#9A988D',
+					description: 'Chapôs, descriptions. 5.8:1 - AA.'
+				},
+				{
+					name: 'Discret',
+					token: 'texte-discret',
+					bg: 'bg-texte-discret',
+					hex: '#7E7C71',
+					description: 'Index, mentions, libellés. 4.8:1 - AA.'
+				},
+				{
+					name: 'Sur accent',
+					token: 'texte-sur-accent',
+					bg: 'bg-texte-sur-accent',
+					hex: '#0A0C0A',
+					description: 'Texte posé sur le vert.'
+				}
+			]
+		},
+		{
+			label: 'Accent & bordures',
+			swatches: [
+				{
+					name: 'Accent',
+					token: 'accent',
+					bg: 'bg-accent',
+					hex: '#B3FCA4',
+					description: 'CTA, nœuds, focus, liens actifs.'
+				},
+				{
+					name: 'Accent · survol',
+					token: 'accent-survol',
+					bg: 'bg-accent-survol',
+					hex: '#C7FFBB',
+					description: 'Survol du CTA primaire.'
+				},
+				{
+					name: 'Accent doux',
+					token: 'accent-doux',
+					bg: 'bg-accent-doux',
+					hex: '14 %',
+					description: 'Fond teinté. Badges, surlignage.'
+				},
+				{
+					name: 'Bordure',
+					token: 'bordure',
+					bg: 'bg-bordure',
+					hex: '11 %',
+					description: 'Filets, séparateurs. Crème à 11 %.'
+				},
+				{
+					name: 'Bordure subtile',
+					token: 'bordure-subtile',
+					bg: 'bg-bordure-subtile',
+					hex: '6 %',
+					description: 'Séparateurs internes. Crème à 6 %.'
+				},
+				{
+					name: 'Bordure accent',
+					token: 'bordure-accent',
+					bg: 'bg-bordure-accent',
+					hex: '#B3FCA4',
+					description: "Filets et focus sur l'accent."
+				}
+			]
+		}
+	] %}
+
+	<section class="bg-fond-page text-texte-principal my-8 flex flex-col gap-14 p-5 lg:p-20">
+		<header class="flex max-w-180 flex-col gap-3">
+			<p class="text-eyebrow text-texte-attenue">Fondations</p>
+			<h2 class="text-titre-2">Couleurs</h2>
+			<p class="text-corps-s text-texte-attenue">
+				Le site est mono-thème (sombre). La profondeur vient de quatre noirs étagés, pas de la couleur. Le vert pistache est l'unique accent et s'emploie avec parcimonie : CTA, nœuds, liens actifs, focus.
+			</p>
+		</header>
+
+		{% for group in color_groups %}
+			<div class="flex flex-col gap-6">
+				<p class="text-eyebrow text-texte-attenue">{{ group.label }}</p>
+				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+					{% for swatch in group.swatches %}
+						<div class="flex flex-col gap-3">
+							<div class="{{ html_classes( 'border-bordure h-33 rounded-lg border', swatch.bg ) }}"></div>
+							<div class="flex flex-col gap-1">
+								<p class="text-titre-4">{{ swatch.name }}</p>
+								<p class="text-label text-accent">--color-{{ swatch.token }}</p>
+								<p class="text-corps-s text-texte-attenue">{{ swatch.description }}</p>
+								<p class="text-label text-texte-discret">{{ swatch.hex }}</p>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+
+	{% set type_groups = [
+		{
+			label: 'Titres · Inter Medium',
+			styles: [
+				{
+					name: 'Display',
+					class: 'text-display',
+					specs: 'desktop · 96 / 96% / -4%',
+					mobile_specs: 'mobile · 48 / 98% / -4%',
+					desktop_class: 'text-display-desktop',
+					mobile_class: 'text-display-mobile text-texte-discret',
+					sample: 'Un site qui grandit avec vous.'
+				},
+				{
+					name: 'Titre 1',
+					class: 'text-titre-1',
+					specs: 'desktop · 76 / 100% / -3,5%',
+					mobile_specs: 'mobile · 38 / 100% / -3,5%',
+					desktop_class: 'text-titre-1-desktop',
+					mobile_class: 'text-titre-1-mobile text-texte-discret',
+					sample: 'Cinq engagements. Aucun négociable.'
+				},
+				{
+					name: 'Titre 2',
+					class: 'text-titre-2',
+					specs: 'desktop · 56 / 105% / -2%',
+					mobile_specs: 'mobile · 34 / 105% / -2%',
+					desktop_class: 'text-titre-2-desktop',
+					mobile_class: 'text-titre-2-mobile text-texte-discret',
+					sample: 'Trois façons de faire grandir votre site.'
+				},
+				{
+					name: 'Titre 3',
+					class: 'text-titre-3',
+					specs: 'desktop · 32 / 115% / -1,5%',
+					mobile_specs: 'mobile · 26 / 115% / -1,5%',
+					desktop_class: 'text-titre-3-desktop',
+					mobile_class: 'text-titre-3-mobile text-texte-discret',
+					sample: 'Maintenance et évolutions'
+				},
+				{
+					name: 'Titre 4',
+					class: 'text-titre-4',
+					specs: '20 / 115% / -1%',
+					mobile_specs: '',
+					desktop_class: 'text-titre-4',
+					mobile_class: '',
+					sample: 'Création de site Shopify'
+				}
+			]
+		},
+		{
+			label: 'Textes · Inter Regular',
+			styles: [
+				{
+					name: 'Lede L',
+					class: 'text-lede-l',
+					specs: 'desktop · 22 / 155%',
+					mobile_specs: 'mobile · 18 / 155%',
+					desktop_class: 'text-lede-l-desktop',
+					mobile_class: 'text-lede-l-mobile text-texte-discret',
+					sample: "Votre site n'est pas une dépense à réamortir tous les trois ans."
+				},
+				{
+					name: 'Lede M',
+					class: 'text-lede-m',
+					specs: 'desktop · 19 / 160%',
+					mobile_specs: 'mobile · 17 / 160%',
+					desktop_class: 'text-lede-m-desktop',
+					mobile_class: 'text-lede-m-mobile text-texte-discret',
+					sample: "C'est un actif qu'on construit pour durer, et qu'on fait évoluer avec votre entreprise."
+				},
+				{
+					name: 'Corps',
+					class: 'text-corps',
+					specs: 'desktop · 17 / 160%',
+					mobile_specs: 'mobile · 16 / 160%',
+					desktop_class: 'text-corps-desktop',
+					mobile_class: 'text-corps-mobile text-texte-discret',
+					sample: 'Des storefronts Shopify taillés pour votre marque : thème dédié, D2C et B2B, CRM branché dès le premier jour.'
+				},
+				{
+					name: 'Corps S',
+					class: 'text-corps-s',
+					specs: 'desktop · 15 / 155%',
+					mobile_specs: 'mobile · 14 / 155%',
+					desktop_class: 'text-corps-s-desktop',
+					mobile_class: 'text-corps-s-mobile text-texte-discret',
+					sample: 'Sites vitrines et éditoriaux WordPress rapides et maintenables.'
+				},
+				{
+					name: 'Corps XS',
+					class: 'text-corps-xs',
+					specs: 'desktop · 14 / 150%',
+					mobile_specs: 'mobile · 13 / 150%',
+					desktop_class: 'text-corps-xs-desktop',
+					mobile_class: 'text-corps-xs-mobile text-texte-discret',
+					sample: 'Paris · Tours · Marseille - contact@agencecinq.com'
+				}
+			]
+		},
+		{
+			label: 'Méta · JetBrains Mono',
+			styles: [
+				{
+					name: 'Eyebrow',
+					class: 'text-eyebrow',
+					specs: '11 / 160% / +18% · CAPS',
+					mobile_specs: '',
+					desktop_class: 'text-eyebrow',
+					mobile_class: '',
+					sample: "Ce qu'on fait"
+				},
+				{
+					name: 'Label',
+					class: 'text-label',
+					specs: '12 / 160% / +10%',
+					mobile_specs: '',
+					desktop_class: 'text-label',
+					mobile_class: '',
+					sample: '01/03 - Réalisations'
+				},
+				{
+					name: 'CTA',
+					class: 'text-cta',
+					specs: '13 / 160% / +2% · Medium',
+					mobile_specs: '',
+					desktop_class: 'text-cta',
+					mobile_class: '',
+					sample: 'Parlons de votre projet'
+				},
+				{
+					name: 'Badge',
+					class: 'text-badge',
+					specs: '10 / 160% / +10% · CAPS',
+					mobile_specs: '',
+					desktop_class: 'text-badge',
+					mobile_class: '',
+					sample: 'Palier 2'
+				}
+			]
+		}
+	] %}
+
+	<section class="bg-fond-page text-texte-principal my-8 flex flex-col gap-16 p-5 lg:p-20">
+		<header class="flex max-w-215 flex-col gap-3">
+			<p class="text-eyebrow text-texte-attenue">Fondations</p>
+			<h2 class="text-titre-2">Typographie</h2>
+			<p class="text-corps-s text-texte-attenue">
+				Deux familles Google Fonts. Inter porte les titres et le texte courant ; JetBrains Mono
+				porte tout le méta : surtitres, index, libellés de bouton, badges. Titres et textes
+				passent en version desktop dès 1024 px ; le méta ne change pas.
+			</p>
+		</header>
+
+		{% for group in type_groups %}
+			<div>
+				<p class="text-eyebrow text-texte-attenue">
+					{{ group.label }}
+				</p>
+				{% for style in group.styles %}
+					<div class="border-bordure-subtile flex flex-col gap-6 border-t py-6 lg:flex-row lg:gap-10">
+						<div class="flex w-full shrink-0 flex-col gap-1.5 whitespace-nowrap lg:w-55">
+							<p class="text-titre-4">
+								{{ style.name }}
+							</p>
+							<p class="text-label text-texte-discret">
+								{{ style.specs }}
+							</p>
+							{%- if style.mobile_specs -%}
+								<p class="text-label text-texte-discret">
+									{{ style.mobile_specs }}
+								</p>
+							{%- endif -%}
+							<code class="text-label text-texte-discret">.{{ style.class }}</code>
+						</div>
+						<div class="flex min-w-0 flex-1 flex-col gap-4 overflow-x-auto">
+							<p class="{{ style.desktop_class }}">
+								{{ style.sample }}
+							</p>
+							{%- if style.mobile_class -%}
+								<p class="{{ style.mobile_class }}">
+									{{ style.sample }}
+								</p>
+							{%- endif -%}
+						</div>
+					</div>
 				{% endfor %}
-
-				<tr>
-					<td class="py-4">
-						<code class="font-mono">.h-on-title</code>
-					</td>
-					<td class="py-4">
-						<span class="h-on-title">Aa</span>
-					</td>
-					<td class="py-4">
-						<code class="font-mono">.text-on-title-desktop</code>
-					</td>
-					<td class="py-4">
-						<span class="text-on-title-desktop">Aa</span>
-					</td>
-					<td class="py-4">
-						<code class="font-mono">.text-on-title-desktop</code>
-					</td>
-					<td class="py-4">
-						<span class="text-on-title-mobile">Aa</span>
-					</td>
-				</tr>
-
-				<tr>
-					<td class="py-4">
-						<code class="font-mono">.text-l</code>
-					</td>
-					<td class="py-4">
-						<span class="text-l">Aa</span>
-					</td>
-					<td class="py-4">
-						<code class="font-mono">.text-body-large-desktop</code>
-					</td>
-					<td class="py-4">
-						<span class="text-body-large-desktop">Aa</span>
-					</td>
-					<td class="py-4">
-						<code class="font-mono">.text-body-large-mobile</code>
-					</td>
-					<td class="py-4">
-						<span class="text-body-large-mobile">Aa</span>
-					</td>
-				</tr>
-
-				<tr>
-					<td class="py-4">
-						<code class="font-mono">.text-m</code>
-					</td>
-					<td class="py-4">
-						<span class="text-m">Aa</span>
-					</td>
-					<td class="py-4">
-						<code class="font-mono">.text-body-medium-desktop</code>
-					</td>
-					<td class="py-4">
-						<span class="text-body-medium-desktop">Aa</span>
-					</td>
-					<td class="py-4">
-						<code class="font-mono">.text-body-medium-mobile</code>
-					</td>
-					<td class="py-4">
-						<span class="text-body-medium-mobile">Aa</span>
-					</td>
-				</tr>
-
-				<tr>
-					<td class="py-4">
-						<code class="font-mono">.text-s</code>
-					</td>
-					<td class="py-4">
-						<span class="text-s">Aa</span>
-					</td>
-					<td class="py-4">
-						<code class="font-mono">.text-body-small-desktop</code>
-					</td>
-					<td class="py-4">
-						<span class="text-body-small-desktop">Aa</span>
-					</td>
-					<td class="py-4">
-						<code class="font-mono">.text-body-small-mobile</code>
-					</td>
-					<td class="py-4">
-						<span class="text-body-small-mobile">Aa</span>
-					</td>
-				</tr>
-
-				<tr>
-					<td class="py-4">
-						<code class="font-mono">.text-mention-large</code>
-					</td>
-					<td class="py-4">
-						<span class="text-mention-large">Aa</span>
-					</td>
-					<td class="py-4">–––––––––––––</td>
-					<td class="py-4">––</td>
-					<td class="py-4">–––––––––––––</td>
-					<td class="py-4">––</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+			</div>
+		{% endfor %}
+	</section>
 </div>

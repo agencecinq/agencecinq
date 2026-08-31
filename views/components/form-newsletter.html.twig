@@ -30,9 +30,9 @@
 			<label class="block">
 				<span class="sr-only">{{- __( 'Your email', 'agencecinq' ) -}}</span>
 				<span class="wpcf7-form-control-wrap" data-name="your-email">
-					<span class="relative block text-blue  bg-off-white border border-blue/25 pr-14 py-3.5 pl-5 rounded-full">
-						<input size="40" maxlength="400" class="wpcf7-form-control placeholder:text-blue/50 text-s leading-[calc(24/14)] w-full lg:leading-normal wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" autocomplete="email" aria-required="true" placeholder="{{ __( 'Email', 'agencecinq' ) }}" aria-invalid="false" value="" type="email" name="your-email"/>
-						<button type="submit" aria-label="{{ __( 'Submit', 'agencecinq' ) }}" class="wpcf7-form-control wpcf7-submit mr-1.5 absolute right-0 inset-y-0 my-auto flex items-center justify-center size-10 rounded-full bg-green" type="submit" value="{{ __( 'Submit', 'agencecinq' ) }}"/>
+					<span class="relative block text-texte-principal  bg-fond-page border border-bordure/25 pr-14 py-3.5 pl-5 rounded-full">
+						<input size="40" maxlength="400" class="wpcf7-form-control placeholder:text-texte-attenue/50 text-corps-s leading-[calc(24/14)] w-full lg:leading-normal wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" autocomplete="email" aria-required="true" placeholder="{{ __( 'Email', 'agencecinq' ) }}" aria-invalid="false" value="" type="email" name="your-email"/>
+						<button type="submit" aria-label="{{ __( 'Submit', 'agencecinq' ) }}" class="wpcf7-form-control wpcf7-submit mr-1.5 absolute right-0 inset-y-0 my-auto flex items-center justify-center size-10 rounded-full bg-accent" type="submit" value="{{ __( 'Submit', 'agencecinq' ) }}"/>
 						{{-
                                 include(
                                     'svg/use.html.twig',
@@ -53,7 +53,7 @@
 				<span class="wpcf7-list-item m-0!">
 					<label class="block">
 						<input type="checkbox" name="acceptance" class="" value="1" aria-invalid="false"/>
-						<span class="wpcf7-list-item-label text-mention-large gap-2 flex">
+						<span class="wpcf7-list-item-label text-corps-xs gap-2 flex">
 							<span class="opacity-80">{{- __( 'I agree to receive the AgenceCinq newsletter and offers', 'agencecinq' ) -}}</span>
 						</span>
 					</label>
@@ -62,7 +62,7 @@
 		</span>
 
 		{%- if theme.footer.newsletter.text -%}
-			<p class="opacity-80 text-mention-large">
+			<p class="opacity-80 text-corps-xs">
 				{{- theme.footer.newsletter.text -}}
 			</p>
 		{%- endif -%}

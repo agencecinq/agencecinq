@@ -21,11 +21,11 @@
 			{%- if (posts|length) > 1 -%}
 				<div class="splide__arrows mx-2.5 flex items-center justify-between gap-2.5 lg:mx-0 lg:gap-5">
 					<div class="flex items-center gap-4.5 font-semibold [font-variant-numeric:tabular-nums]">
-						<span data-dom="current">1</span><hr class="bg-blue h-px w-18.75 border-0"/><span>{{- posts|length -}}</span>
+						<span data-dom="current">1</span><hr class="bg-fond-carte h-px w-18.75 border-0"/><span>{{- posts|length -}}</span>
 					</div>
 
 					<div class="mx-2.5 flex items-center justify-end gap-4.25 lg:mx-0">
-						<button type="button" class="border-blue splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Previous', 'agencecinq') }}">
+						<button type="button" class="border-bordure splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Previous', 'agencecinq') }}">
 							{{-
 								include(
 									'svg/use.html.twig',
@@ -37,7 +37,7 @@
 								)
 							-}}
 						</button>
-						<button type="button" class="border-blue splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Next', 'agencecinq') }}">
+						<button type="button" class="border-bordure splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Next', 'agencecinq') }}">
 							{{-
 								include(
 									'svg/use.html.twig',
@@ -55,7 +55,7 @@
 		</div>
 	</cinq-slideshow>
 {%- else -%}
-	<p class="h-on-title mx-2.5 uppercase lg:mx-0">
+	<p class="text-eyebrow mx-2.5 uppercase lg:mx-0">
 		{{ message|default(__('No items found', 'agencecinq')) }}
 	</p>
 {%- endif -%}
