@@ -1,0 +1,49 @@
+---
+description: Marquage schema.org (microdata) dans les templates Twig quand le contenu correspond à un type connu.
+globs: views/**/*.twig
+alwaysApply: false
+---
+
+# Schema.org dans Twig
+
+## Principe
+
+Enrichir le HTML sémantique avec du **microdata schema.org** (`itemscope`, `itemtype`, `itemprop`) dès qu'un bloc correspond à un type du vocabulaire schema.org. Préférer microdata aux attributs ARIA redondants quand les deux coexistent sans conflit.
+
+## DO
+
+- **Navigation principale** : `<nav>` + `<ul>`/`<li>`, un `SiteNavigationElement` par entrée :
+
+```twig
+<li itemscope itemtype="https://schema.org/SiteNavigationElement">
+  <a href="{{ item.url }}" itemprop="url">
+    <span itemprop="name">{{ item.title }}</span>
+  </a>
+</li>
+```
+
+- **Articles / posts** : `BlogPosting` (voir `views/components/tease-post.html.twig`).
+- **Page racine** : `WebPage` sur `<html>` (voir `views/index.html.twig`).
+- Réutiliser les patterns existants du thème avant d'en inventer un nouveau.
+- Conserver `aria-label` sur `<nav>` et la structure liste pour l'accessibilité.
+
+## DONT
+
+- Pas de liens de menu en rafale dans `<nav>` sans `<ul>`/`<li>`.
+- Pas de JSON-LD dupliqué si le microdata couvre déjà la même entité sur la page.
+- Pas de `itemprop` sans `itemscope`/`itemtype` parent cohérent.
+
+## Types courants
+
+| Contenu | Type schema.org |
+| --- | --- |
+| Menu de navigation | `SiteNavigationElement` |
+| Article de blog | `BlogPosting` |
+| Page web | `WebPage` |
+| En-tête de site | `WPHeader` |
+| Pied de page | `WPFooter` |
+| Fil d'Ariane | `BreadcrumbList` |
+
+## JSON-LD vs microdata
+
+Le thème utilise le **microdata** dans les Twig. Réserver le JSON-LD (`<script type="application/ld+json">`) aux cas où le microdata ne peut pas être placé sur le markup visible (ex : données agrégées injectées côté PHP pour Yoast ou un plugin SEO).

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Production deployment script for the WP CINQ WordPress theme.
+# Production deployment script for the WP CINQ WordPress starter theme.
 # Installs dependencies, builds assets, and removes files not needed in production.
 
 set -e  # Exit on error
@@ -101,7 +101,7 @@ FILES_TO_REMOVE=(
     "phpcs.xml"
     "deploy.sh"
     ".DS_Store"
-    ".env.example"
+    ".env.sample"
 )
 
 for file in "${FILES_TO_REMOVE[@]}"; do
