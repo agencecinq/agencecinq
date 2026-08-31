@@ -10,8 +10,7 @@
 
 	/* Variants */
 	.button--primary {
-		@apply text-button-medium-mobile lg:text-button-medium-desktop;
-		
+		@apply text-cta;
 		padding-inline: calc(var(--spacing) * 3.5); /* 14px */
 		padding-block: calc(var(--spacing) * 2.5); /* 10px */
 		border-style: var(--tw-border-style);
@@ -30,7 +29,7 @@
 	}
 
 	.button--secondary {
-		@apply text-button-small-desktop uppercase transition-colors duration-500 ease-in;
+		@apply text-cta uppercase transition-colors duration-500 ease-in;
 
 		padding-inline: calc(var(--spacing) * 3); /* 12px */
 		padding-block: calc(var(--spacing) * 1.5); /* 6px */
@@ -53,7 +52,7 @@
 	}
 
 	.button--tertiary {
-		@apply bg-off-white text-blue text-button-medium-mobile lg:text-button-medium-desktop;
+		@apply bg-fond-page text-texte-principal text-cta;
 
 		padding: calc(var(--spacing) * 1.25); /* 5px */
 	}
@@ -66,16 +65,21 @@
 	}
 
 	.button--tertiary[disabled] {
-		@apply bg-blue/14! text-blue! border-blue/14!;
+		@apply bg-fond-carte/14! text-texte-principal! border-bordure/14!;
 	}
 
 	.button--quaternary {
-		@apply text-button-very-small-desktop bg-green;
+		@apply text-badge bg-accent text-texte-sur-accent;
 
 		text-transform: uppercase;
 
 		padding-block: calc(var(--spacing) * 1); /* 3px */
 		padding-inline: calc(var(--spacing) * 1.75); /* 7px */
+	}
+
+	.button--quaternary:not([disabled]):hover,
+	.button--quaternary:not([disabled]):focus {
+		@apply bg-accent-survol;
 	}
 
 	.button--quaternary.button--icon {
@@ -85,55 +89,55 @@
 
 	/* Color Modes */
 	.button--light.button--primary {
-		@apply text-blue border-blue;
+		@apply text-texte-principal border-bordure;
 	}
 
 	.button--light.button--secondary {
-		@apply bg-blue text-off-white;
+		@apply bg-fond-carte text-texte-principal;
 	}
 
 	.button--light.button--secondary:not([disabled]):hover,
 	.button--light.button--secondary:not([disabled]):focus {
-		@apply bg-off-white text-blue;
+		@apply bg-fond-page text-texte-principal;
 	}
 
 	.button--light.button--secondary:not([disabled]):hover.button--icon svg,
 	.button--light.button--secondary:not([disabled]):focus.button--icon svg {
-		@apply text-blue;
+		@apply text-texte-principal;
 	}
 
 	.button--light.button--secondary.button--icon svg {
-		@apply text-off-white;
+		@apply text-texte-principal;
 	}
 
 	.button--light[disabled] {
-		@apply bg-off-white/14! text-off-white! border-off-white/14!;
+		@apply bg-fond-page/14! text-texte-principal! border-bordure/14!;
 		backdrop-filter: blur(10px);
 	}
 
 	.button--dark.button--primary {
-		@apply text-off-white border-off-white;
+		@apply text-texte-principal border-bordure;
 	}
 
 	.button--dark.button--secondary {
-		@apply bg-off-white text-blue;
+		@apply bg-fond-page text-texte-principal;
 	}
 
 	.button--dark.button--secondary:not([disabled]):hover,
 	.button--dark.button--secondary:not([disabled]):focus {
-		@apply bg-blue text-off-white;
+		@apply bg-fond-carte text-texte-principal;
 	}
 
 	.button--dark.button--secondary:not([disabled]):hover.button--icon svg,
 	.button--dark.button--secondary:not([disabled]):focus.button--icon svg {
-		@apply text-off-white;
+		@apply text-texte-principal;
 	}
 
 	.button--dark.button--secondary.button--icon svg {
-		@apply text-blue;
+		@apply text-texte-principal;
 	}
 
 	.button--dark[disabled] {
-		@apply bg-blue/14! text-blue! border-blue/14!;
+		@apply bg-fond-carte/14! text-texte-principal! border-bordure/14!;
 	}
 }

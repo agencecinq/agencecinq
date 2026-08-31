@@ -130,7 +130,7 @@ class Twig implements Service {
 		$twig->addFunction(
 			new TwigFunction(
 				'yoast_breadcrumb',
-				function ( $before = '<div class="text-mention-large">', $after = '</div>', $display = false ) {
+				function ( $before = '<div class="text-corps-xs">', $after = '</div>', $display = false ) {
 					return function_exists( 'yoast_breadcrumb' ) ? yoast_breadcrumb( $before, $after, $display ) : '';
 				}
 			)

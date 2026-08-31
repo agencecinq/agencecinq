@@ -47,10 +47,10 @@ class Enqueue implements Service {
 	public function enqueue_styles(): void {
 		$deps = array();
 
-		// Google Fonts: body (Atkinson Hyperlegible) + headings (Shantell Sans).
+		// Google Fonts: Inter (titles + body) and JetBrains Mono (meta).
 		wp_register_style(
 			'google-fonts',
-			'//fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Shantell+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap',
+			'//fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap',
 			array(),
 			null
 		);

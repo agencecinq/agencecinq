@@ -16,7 +16,7 @@
 	<div class="container grid grid-cols-2 gap-x-2.5 gap-y-10 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-15">
 		{% for member in block.content.members %}
 			<div class="col-span-1 space-y-7.5 text-center">
-				<div class="bg-green mx-auto aspect-square w-25 lg:w-50 max-w-full h-auto overflow-hidden rounded-full object-cover object-center">
+				<div class="bg-accent mx-auto aspect-square w-25 lg:w-50 max-w-full h-auto overflow-hidden rounded-full object-cover object-center">
 					{{-
 						include(
 							'components/image.html.twig',
@@ -32,13 +32,13 @@
 						{%- if member.name or member.position -%}
 							<div class="space-y-2.5">
                                 {%- if member.name -%}
-                                    <h3 class="text-l">
+                                    <h3 class="text-lede-l">
                                         {{- member.name -}}
                                     </h3>
                                 {%- endif -%}
 
                                 {%- if member.position -%}
-								<p class="h-on-title">
+								<p class="text-eyebrow">
 									{{- member.position -}}
 								</p>
                                 {%- endif -%}
@@ -46,7 +46,7 @@
 						{%- endif -%}
 
 						{%- if member.linkedin -%}
-							<a href="{{ member.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-off-white max-auto bg-blue mx-auto flex size-7.5 items-center justify-center rounded-full">
+							<a href="{{ member.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-texte-principal max-auto bg-fond-carte mx-auto flex size-7.5 items-center justify-center rounded-full">
 								{{-
 									include(
 										'svg/use.html.twig',

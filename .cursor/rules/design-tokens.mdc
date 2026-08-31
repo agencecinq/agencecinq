@@ -1,5 +1,5 @@
 ---
-description: Conventions pour les tokens de design Tailwind v4 dans theme.css (noms en anglais, sizes en rem, pas de valeurs en dur dans les classes utilitaires).
+description: Conventions pour les tokens de design Tailwind v4 dans theme.css (noms identiques au Figma, sizes en rem, pas de valeurs en dur dans les classes utilitaires).
 globs: src/stylesheets/theme.css,**/*.twig
 alwaysApply: false
 ---
@@ -10,28 +10,37 @@ alwaysApply: false
 
 - Colors, radii, typography scales, and background images belong in `src/stylesheets/theme.css` inside `@theme`.
 - Do not use arbitrary Tailwind values in Twig or CSS utilities for design tokens: no `bg-[#102345]`, no `bg-[linear-gradient(...)]`, no `[background:...]`.
-- Use the generated utilities instead (`bg-blue`, `text-green`, `rounded-25`, etc.).
+- Use the generated utilities instead (`bg-fond-page`, `text-accent`, `rounded-25`, etc.).
 
-## Token names in English
+## Token names follow Figma
 
-All custom property **suffixes** in `@theme` must be in **English**, kebab-case:
+Custom property **suffixes** in `@theme` must use the **same names as the Figma design system** (kebab-case). Do not invent English (or French) aliases, and do not keep legacy starter names (`blue`, `green`, `h0`, `text-l`).
 
 ```css
-/* GOOD */
---color-blue: #1a2c4c;
---color-green: #98ffa5;
---radius-25: --spacing(6.25);
+/* GOOD — same names as Figma */
+--color-fond-page: #08090a;
+--color-accent: #b3fca4;
+--text-titre-1: 4.75rem;
 
-/* BAD */
---color-bleu: #1a2c4c;
---color-vert: #98ffa5;
---color-bleu-profond: #102345;
---background-image-gradient-bleu: linear-gradient(...);
+/* BAD — translated or legacy aliases */
+--color-page: #08090a;
+--color-blue: #08090a;
+--color-green: #b3fca4;
+--text-h0: 6rem;
 ```
 
-- The Tailwind class mirrors the token suffix: `--color-blue` → `text-blue`, `bg-blue`, `border-blue`.
-- Legacy French token names may still exist in old client databases (ACF class values); **never add new French token names**.
-- When initializing a new project, declare the client palette with English names from the start.
+- The Tailwind class mirrors the token suffix: `--color-fond-page` → `bg-fond-page`, `--text-titre-1` → `text-titre-1`.
+- Do not add CSS aliases that map old class names onto the new tokens.
+- Prefer named tokens over opacity modifiers on another token (`text-texte-attenue`, not `text-texte-principal/60`; `bg-accent-doux`, not `bg-accent/20`).
+
+## Responsive type scale
+
+When Figma defines mobile and desktop sizes for a style:
+
+- Declare `--text-{name}-mobile` and `--text-{name}-desktop` in `@theme`.
+- Expose a single public class in `src/stylesheets/components/typographies.css` : `.text-{name} { @apply text-{name}-mobile lg:text-{name}-desktop; }`.
+- Templates use the public class (`text-titre-1`), never the `-mobile` / `-desktop` utilities (except the styleguide).
+- If mobile and desktop are identical, declare a single token (`--text-titre-4`, `--text-eyebrow`).
 
 ## No preset section backgrounds in the starter
 
@@ -68,7 +77,7 @@ If a value is reused, add a token in `@theme` rather than repeating em arbitrary
 
 ## Checklist when adding a token
 
-1. English kebab-case suffix in `@theme`.
+1. Figma kebab-case suffix in `@theme`.
 2. Used via a utility class in Twig/CSS, not an arbitrary value.
 3. Sizes in rem or spacing scale, letter-spacing in em (see above).
 4. `pnpm build` passes.

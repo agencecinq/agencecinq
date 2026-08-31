@@ -8,9 +8,9 @@
 	)
 -}}
 
-<div id="{{ block.id }}" class="text-off-white">
+<div id="{{ block.id }}" class="text-texte-principal">
 	<div
-		class="relative py-20 after:absolute after:inset-0 after:z-2 after:size-full after:bg-blue/30 lg:py-37.5"
+		class="relative py-20 after:absolute after:inset-0 after:z-2 after:size-full after:bg-fond-carte/30 lg:py-37.5"
 	>
 		{%- if block.content.overline or block.content.title or block.content.text -%}
 			<div
@@ -31,7 +31,7 @@
 						}}"
 					>
 						{%- if block.content.overline -%}
-							<p class="h-on-title">
+							<p class="text-eyebrow">
 								{{- block.content.overline -}}
 							</p>
 						{%- endif -%}
@@ -40,8 +40,8 @@
 							<h2
 								class="{{
 								html_classes(
-									block.content.layout == 'column' ? 'h3' : 'h1',
-									'text-green'
+									block.content.layout == 'column' ? 'text-titre-3' : 'text-titre-1',
+									'text-accent'
 								)
 								}}"
 							>
@@ -62,7 +62,7 @@
 						)
 						}}"
 					>
-						<p class="h5">
+						<p class="text-lede-l">
 							{{- block.content.text -}}
 						</p>
 					</div>
@@ -80,7 +80,7 @@
 				}}"
 			>
 				{%- if block.items.label -%}
-					<p class="h-on-title text-center uppercase">
+					<p class="text-eyebrow text-center uppercase">
 						{{- block.items.label -}}
 					</p>
 				{%- endif -%}
@@ -95,7 +95,7 @@
 						<div class="splide__arrows mx-2.5 mb-5 flex items-center justify-end gap-3 lg:hidden">
 							<button
 								type="button"
-								class="border-off-white splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50"
+								class="border-bordure splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50"
 								aria-label="{{ __('Previous', 'collective-la-cabane') }}"
 							>
 								{{-
@@ -111,7 +111,7 @@
 							</button>
 							<button
 								type="button"
-								class="border-off-white splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50"
+								class="border-bordure splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50"
 								aria-label="{{ __('Next', 'collective-la-cabane') }}"
 							>
 								{{-
@@ -137,7 +137,7 @@
 											class="{{
 											html_classes(
 												'size-full max-w-full',
-												'bg-off-white/14',
+												'bg-fond-page/14',
 												'flex flex-col justify-end-safe',
 												'rounded-25 px-2.5 py-5 [backdrop-filter:blur(10px)]',
 												'gap-7.5',
@@ -149,7 +149,7 @@
 											}}"
 										>
 											{%- if figure.overline -%}
-												<h3 class="text-l">{{- figure.overline -}}</h3>
+												<h3 class="text-lede-l">{{- figure.overline -}}</h3>
 											{%- endif -%}
 
 											<div
@@ -166,28 +166,28 @@
 												<div
 													class="{{
 													html_classes(
-														'text-green',
+														'text-accent',
 														figure.content.overline ? '' : 'pt-7 lg:pt-9'
 													)
 													}}"
 												>
 													{%- if figure.content.overline -%}
-														<p class="h5 min-[1lh]">
+														<p class="text-lede-l min-[1lh]">
 															{{- figure.content.overline -}}
 														</p>
 													{%- endif -%}
 
 													{%- if figure.content.value -%}
-														<p class="h0 flex items-baseline gap-2.5">
+														<p class="text-display flex items-baseline gap-2.5">
 															<span>{{- figure.content.value -}}</span>
 															{%- if figure.content.unit -%}
-																<span class="h3">{{- figure.content.unit -}}</span>
+																<span class="text-titre-3">{{- figure.content.unit -}}</span>
 															{%- endif -%}
 														</p>
 													{%- endif -%}
 
 													{%- if figure.content.description -%}
-														<p class="h5 lg:min-h-[2lh]">
+														<p class="text-lede-l lg:min-h-[2lh]">
 															{{- figure.content.description -}}
 														</p>
 													{%- endif -%}
@@ -195,9 +195,9 @@
 
 												{%- if figure.text -%}
 													<footer
-														class="border-off-white/50 min-h-[4lh] border-t pt-5 lg:min-h-[3lh] lg:pt-7.5"
+														class="border-bordure/50 min-h-[4lh] border-t pt-5 lg:min-h-[3lh] lg:pt-7.5"
 													>
-														<p class="text-l">
+														<p class="text-lede-l">
 															{{- figure.text -}}
 														</p>
 													</footer>
