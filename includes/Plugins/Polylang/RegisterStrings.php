@@ -4,17 +4,17 @@
  * Register Strings
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn\Plugins\Polylang
+ * @subpackage AgenceCinq\Plugins\Polylang
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Plugins\Polylang;
+namespace AgenceCinq\Plugins\Polylang;
 
 /**
  * Front Page Fields class
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn\Plugins\Polylang\RegisterStrings
+ * @subpackage AgenceCinq\Plugins\Polylang\RegisterStrings
  */
 class RegisterStrings {
 

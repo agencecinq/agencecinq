@@ -13,10 +13,10 @@
 				href="{{- post.link -}}"
 				itemprop="url"
 				class="absolute inset-0 size-full z-2"
-				aria-label="{{ __('Discover: %s', 'wp-cinquante-et-un')|format(post.title) }}"
+				aria-label="{{ __('Discover: %s', 'agencecinq')|format(post.title) }}"
 				tabindex="-1"
 			>
-				<span class="sr-only">{{- __('Discover', 'wp-cinquante-et-un') -}}</span>
+				<span class="sr-only">{{- __('Discover', 'agencecinq') -}}</span>
 			</a>
 			{{-
 				include(
@@ -70,14 +70,14 @@
 				href="{{- post.link -}}"
 				itemprop="url"
 				class="text-button-s uppercase underline"
-				aria-label="{{ __('Discover: %s', 'wp-cinquante-et-un')|format(post.title) }}"
+				aria-label="{{ __('Discover: %s', 'agencecinq')|format(post.title) }}"
 			>
-				{{- __('Discover', 'wp-cinquante-et-un') -}}
+				{{- __('Discover', 'agencecinq') -}}
 			</a>
 		</div>
 	</div>
 
 	<meta itemprop="datePublished" content="{{ post.date('c') }}" />
 	<meta itemprop="dateModified" content="{{ post.modified('c') }}" />
-	<meta itemprop="author" content="{{ post.author.name|default('WPCinquanteEtUn')|e('html_attr') }}" />
+	<meta itemprop="author" content="{{ post.author.name|default('AgenceCinq')|e('html_attr') }}" />
 </article>

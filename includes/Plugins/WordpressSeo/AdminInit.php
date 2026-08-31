@@ -2,13 +2,13 @@
 /**
  * Admin Init
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Plugins/Yoast
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Plugins/Yoast
  */
 
-namespace WPCinquanteEtUn\Plugins\WordpressSeo;
+namespace AgenceCinq\Plugins\WordpressSeo;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 use WP_Post;
 
 /**

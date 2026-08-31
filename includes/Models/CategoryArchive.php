@@ -5,13 +5,13 @@
  * Custom model for category archive pages.
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Models
+ * @subpackage AgenceCinq/Models
  */
 
-namespace WPCinquanteEtUn\Models;
+namespace AgenceCinq\Models;
 
 use Timber\Term;
-use WPCinquanteEtUn\Traits\ArchivePost;
+use AgenceCinq\Traits\ArchivePost;
 
 /**
  * Class CategoryArchive

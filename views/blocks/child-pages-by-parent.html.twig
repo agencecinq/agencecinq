@@ -5,7 +5,7 @@
  #
  # @param block array The block data. Must contain parent, children and current (the current child page, or first if current page is not in children).
  #
- # @package WPCinquanteEtUn
+ # @package AgenceCinq
  #}
 
 {%- if block.parent and block.current | length > 0 -%}
@@ -29,7 +29,7 @@
 					<ul
 						class="scrollbar-hidden justify-start-safe -mx-2.5 flex gap-3 overflow-x-auto px-2.5 lg:mx-0 lg:flex-wrap lg:px-0"
 						role="tablist"
-						aria-label="{{ __('Content sections: %s', 'wp-cinquante-et-un')|format(block.parent.title) }}"
+						aria-label="{{ __('Content sections: %s', 'agencecinq')|format(block.parent.title) }}"
 					>
 						{%- for child in block.children -%}
 							<li class="whitespace-nowrap" role="presentation">
@@ -67,7 +67,7 @@
 					include(
 						'components/button.html.twig',
 						{
-							title: __('All sectors', 'wp-cinquante-et-un'),
+							title: __('All sectors', 'agencecinq'),
 							icon: 'bullet',
 							url: block.parent.link
 						},

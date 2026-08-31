@@ -4,7 +4,7 @@
  *
  * Helpers are auto-loaded via composer.json "files" directive.
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 

@@ -5,7 +5,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn
+ * @subpackage AgenceCinq
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 

@@ -5,11 +5,11 @@
  * Static helpers that return reusable ACF field arrays (media, settings, radius)
  * and build layouts for flexible content. Use these inside field groups, not as field groups.
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields;
+namespace AgenceCinq\Plugins\ACF\IncludeFields;
 
 /**
  * AcfFieldHelpers
@@ -36,16 +36,16 @@ class AcfFieldHelpers {
 	public static function media( string $key = '' ): array {
 		$tab = array(
 			'key'        => 'field_' . $key . '_tab_media',
-			'label'      => __( 'Media', 'wp-cinquante-et-un' ),
-			'aria-label' => __( 'Media', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Media', 'agencecinq' ),
+			'aria-label' => __( 'Media', 'agencecinq' ),
 			'type'       => 'tab',
 		);
 
 		$field = array(
 			'key'        => 'field_' . $key . '_media',
-			'label'      => __( 'Media', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Media', 'agencecinq' ),
 			'name'       => 'media',
-			'aria-label' => __( 'Media', 'wp-cinquante-et-un' ),
+			'aria-label' => __( 'Media', 'agencecinq' ),
 			'type'       => 'clone',
 			'clone'      => array( 'field_clones_media' ),
 			'display'    => 'seamless',
@@ -72,16 +72,16 @@ class AcfFieldHelpers {
 	public static function settings( string $key = '' ): array {
 		$tab = array(
 			'key'        => 'field_settings_' . $key . '_tab_settings',
-			'label'      => __( 'Settings', 'wp-cinquante-et-un' ),
-			'aria-label' => __( 'Settings', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Settings', 'agencecinq' ),
+			'aria-label' => __( 'Settings', 'agencecinq' ),
 			'type'       => 'tab',
 		);
 
 		$field = array(
 			'key'        => 'field_settings_' . $key . '_layout',
-			'label'      => __( 'Layout', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Layout', 'agencecinq' ),
 			'name'       => 'layout',
-			'aria-label' => __( 'Layout', 'wp-cinquante-et-un' ),
+			'aria-label' => __( 'Layout', 'agencecinq' ),
 			'type'       => 'clone',
 			'clone'      => array( 'field_clones_layout' ),
 			'display'    => 'seamless',
@@ -100,15 +100,15 @@ class AcfFieldHelpers {
 	public static function radius( string $key = '' ): array {
 		return array(
 			'key'           => 'field_' . $key . '_radius',
-			'label'         => __( 'Border Radius', 'wp-cinquante-et-un' ),
+			'label'         => __( 'Border Radius', 'agencecinq' ),
 			'name'          => 'radius',
-			'aria-label'    => __( 'Border Radius', 'wp-cinquante-et-un' ),
+			'aria-label'    => __( 'Border Radius', 'agencecinq' ),
 			'type'          => 'select',
 			'choices'       => array(
-				'top'    => __( 'Top', 'wp-cinquante-et-un' ),
-				'bottom' => __( 'Bottom', 'wp-cinquante-et-un' ),
-				'y'      => __( 'Top and Bottom', 'wp-cinquante-et-un' ),
-				'none'   => __( 'None', 'wp-cinquante-et-un' ),
+				'top'    => __( 'Top', 'agencecinq' ),
+				'bottom' => __( 'Bottom', 'agencecinq' ),
+				'y'      => __( 'Top and Bottom', 'agencecinq' ),
+				'none'   => __( 'None', 'agencecinq' ),
 			),
 			'default_value' => 'none',
 			'return_format' => 'value',

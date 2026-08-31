@@ -4,13 +4,13 @@
  *
  * Registers ACF field group for pages that have a parent and/or at least one child.
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields;
+namespace AgenceCinq\Plugins\ACF\IncludeFields;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * Page Parent Or Child Fields
@@ -67,36 +67,36 @@ class PageParentOrChildFields implements Service {
 		$fields = array(
 			array(
 				'key'        => 'field_' . $key . '_general_tab',
-				'label'      => __( 'General', 'wp-cinquante-et-un' ),
-				'aria-label' => __( 'General', 'wp-cinquante-et-un' ),
+				'label'      => __( 'General', 'agencecinq' ),
+				'aria-label' => __( 'General', 'agencecinq' ),
 				'type'       => 'tab',
 			),
 			array(
 				'key'          => 'field_' . $key . '_general',
-				'label'        => __( 'General', 'wp-cinquante-et-un' ),
+				'label'        => __( 'General', 'agencecinq' ),
 				'name'         => 'general',
-				'aria-label'   => __( 'General', 'wp-cinquante-et-un' ),
+				'aria-label'   => __( 'General', 'agencecinq' ),
 				'type'         => 'group',
-				'instructions' => __( 'General settings for the page.', 'wp-cinquante-et-un' ),
+				'instructions' => __( 'General settings for the page.', 'agencecinq' ),
 				'layout'       => 'block',
 				'sub_fields'   => array(
 					array(
 						'key'          => 'field_' . $key . '_general_title',
-						'label'        => __( 'Title', 'wp-cinquante-et-un' ),
+						'label'        => __( 'Title', 'agencecinq' ),
 						'name'         => 'title',
-						'aria-label'   => __( 'Title', 'wp-cinquante-et-un' ),
+						'aria-label'   => __( 'Title', 'agencecinq' ),
 						'type'         => 'text',
-						'placeholder'  => __( 'Page title', 'wp-cinquante-et-un' ),
-						'instructions' => __( 'Enter the title of the page. Will be used as the page title.', 'wp-cinquante-et-un' ),
+						'placeholder'  => __( 'Page title', 'agencecinq' ),
+						'instructions' => __( 'Enter the title of the page. Will be used as the page title.', 'agencecinq' ),
 					),
 					array(
 						'key'          => 'field_' . $key . '_general_headline',
-						'label'        => __( 'Headline', 'wp-cinquante-et-un' ),
+						'label'        => __( 'Headline', 'agencecinq' ),
 						'name'         => 'headline',
-						'aria-label'   => __( 'Headline', 'wp-cinquante-et-un' ),
+						'aria-label'   => __( 'Headline', 'agencecinq' ),
 						'type'         => 'text',
-						'placeholder'  => __( 'Page headline', 'wp-cinquante-et-un' ),
-						'instructions' => __( 'Enter the headline of the page. Will be used as the page headline in the tease page block for instance. If empty, the page title will be used.', 'wp-cinquante-et-un' ),
+						'placeholder'  => __( 'Page headline', 'agencecinq' ),
+						'instructions' => __( 'Enter the headline of the page. Will be used as the page headline in the tease page block for instance. If empty, the page title will be used.', 'agencecinq' ),
 					),
 				),
 			),
@@ -107,7 +107,7 @@ class PageParentOrChildFields implements Service {
 			acf_add_local_field_group(
 				array(
 					'key'        => 'group_' . $key,
-					'title'      => __( 'Page Parent Or Child Fields', 'wp-cinquante-et-un' ),
+					'title'      => __( 'Page Parent Or Child Fields', 'agencecinq' ),
 					'fields'     => $fields,
 					'location'   => $location,
 					'menu_order' => 1,

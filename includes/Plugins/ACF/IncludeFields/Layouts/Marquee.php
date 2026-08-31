@@ -3,12 +3,12 @@
  * ACF layout: Marquee
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields/Layouts
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts;
+namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\AcfFieldHelpers;
+use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 
 /**
  * Marquee block layout.
@@ -25,19 +25,19 @@ class Marquee {
 		return array(
 			'key'        => 'layout_' . $key . '_marquee',
 			'name'       => 'marquee',
-			'label'      => __( 'Marquee', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Marquee', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
 				...AcfFieldHelpers::settings( $key . '_marquee' ),
 				array(
 					'key'           => 'field_' . $key . '_marquee_color_scheme',
-					'label'         => __( 'Color Scheme', 'wp-cinquante-et-un' ),
+					'label'         => __( 'Color Scheme', 'agencecinq' ),
 					'name'          => 'color_scheme',
-					'aria-label'    => __( 'Color Scheme', 'wp-cinquante-et-un' ),
+					'aria-label'    => __( 'Color Scheme', 'agencecinq' ),
 					'type'          => 'select',
 					'choices'       => array(
-						'light' => __( 'Light', 'wp-cinquante-et-un' ),
-						'dark'  => __( 'Dark', 'wp-cinquante-et-un' ),
+						'light' => __( 'Light', 'agencecinq' ),
+						'dark'  => __( 'Dark', 'agencecinq' ),
 					),
 					'default_value' => 'light',
 					'return_format' => 'value',
@@ -45,25 +45,25 @@ class Marquee {
 				AcfFieldHelpers::radius( $key . '_marquee' ),
 				array(
 					'key'        => 'field_' . $key . '_marquee_tab_2',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
 					'key'        => 'field_' . $key . '_marquee_content',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
 					'name'       => 'content',
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'group',
 					'layout'     => 'block',
 					'sub_fields' => array(
 						array(
 							'key'           => 'field_' . $key . '_marquee_content_title',
-							'label'         => __( 'Title', 'wp-cinquante-et-un' ),
+							'label'         => __( 'Title', 'agencecinq' ),
 							'name'          => 'title',
-							'aria-label'    => __( 'Title', 'wp-cinquante-et-un' ),
+							'aria-label'    => __( 'Title', 'agencecinq' ),
 							'type'          => 'text',
-							'placeholder'   => __( 'Enter the title of the block', 'wp-cinquante-et-un' ),
+							'placeholder'   => __( 'Enter the title of the block', 'agencecinq' ),
 							'default_value' => '',
 						),
 					),

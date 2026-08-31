@@ -2,13 +2,13 @@
 /**
  * Post
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Post
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Post
  */
 
-namespace WPCinquanteEtUn;
+namespace AgenceCinq;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * Post class

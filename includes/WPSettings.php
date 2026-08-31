@@ -2,11 +2,11 @@
 /**
  * WPSettings
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn;
+namespace AgenceCinq;
 
 /**
  * WP Settings
@@ -32,7 +32,7 @@ class WPSettings implements Service {
 	 * @return void
 	 */
 	public function load_textdomain(): void {
-		load_theme_textdomain( 'wp-cinquante-et-un', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'agencecinq', get_template_directory() . '/languages' );
 	}
 
 	/**
@@ -45,10 +45,10 @@ class WPSettings implements Service {
 	public function register_menus(): void {
 		register_nav_menus(
 			array(
-				'main'      => __( 'Main Menu', 'wp-cinquante-et-un' ),
-				'secondary' => __( 'Secondary Menu', 'wp-cinquante-et-un' ),
-				'footer'    => __( 'Footer Menu', 'wp-cinquante-et-un' ),
-				'legals'    => __( 'Legals Menu', 'wp-cinquante-et-un' ),
+				'main'      => __( 'Main Menu', 'agencecinq' ),
+				'secondary' => __( 'Secondary Menu', 'agencecinq' ),
+				'footer'    => __( 'Footer Menu', 'agencecinq' ),
+				'legals'    => __( 'Legals Menu', 'agencecinq' ),
 			)
 		);
 	}

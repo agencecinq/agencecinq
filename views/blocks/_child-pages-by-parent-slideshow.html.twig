@@ -25,7 +25,7 @@
 					</div>
 
 					<div class="mx-2.5 flex items-center justify-end gap-4.25 lg:mx-0">
-						<button type="button" class="border-blue splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Previous', 'wp-cinquante-et-un') }}">
+						<button type="button" class="border-blue splide__arrow splide__arrow--prev flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Previous', 'agencecinq') }}">
 							{{-
 								include(
 									'svg/use.html.twig',
@@ -37,7 +37,7 @@
 								)
 							-}}
 						</button>
-						<button type="button" class="border-blue splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Next', 'wp-cinquante-et-un') }}">
+						<button type="button" class="border-blue splide__arrow splide__arrow--next flex size-12.5 items-center justify-center rounded-full border transition-opacity duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50" aria-label="{{ __('Next', 'agencecinq') }}">
 							{{-
 								include(
 									'svg/use.html.twig',
@@ -56,6 +56,6 @@
 	</cinq-slideshow>
 {%- else -%}
 	<p class="h-on-title mx-2.5 uppercase lg:mx-0">
-		{{ message|default(__('No items found', 'wp-cinquante-et-un')) }}
+		{{ message|default(__('No items found', 'agencecinq')) }}
 	</p>
 {%- endif -%}

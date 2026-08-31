@@ -2,15 +2,15 @@
 /**
  * Class Page
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Page
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Page
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Post;
+namespace AgenceCinq\Post;
 
 use Timber\{ Timber };
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * Page class
@@ -35,7 +35,7 @@ class Page implements Service {
 	 */
 	public function child_pages_slideshow() {
 		if ( ! isset( $_GET['nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_GET['nonce'] ) ), 'security' ) ) {
-			wp_send_json_error( array( 'message' => __( 'Security verification failed. Please try again.', 'wp-cinquante-et-un' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'Security verification failed. Please try again.', 'agencecinq' ) ), 403 );
 			wp_die();
 		}
 
@@ -45,7 +45,7 @@ class Page implements Service {
 			wp_send_json_error(
 				array(
 					'html'    => '',
-					'message' => __( 'Invalid request.', 'wp-cinquante-et-un' ),
+					'message' => __( 'Invalid request.', 'agencecinq' ),
 				),
 				400
 			);
@@ -58,7 +58,7 @@ class Page implements Service {
 			wp_send_json_error(
 				array(
 					'html'    => '',
-					'message' => __( 'The requested content could not be found.', 'wp-cinquante-et-un' ),
+					'message' => __( 'The requested content could not be found.', 'agencecinq' ),
 				),
 				404
 			);
@@ -70,7 +70,7 @@ class Page implements Service {
 		wp_send_json_success(
 			array(
 				'html'    => $html,
-				'message' => __( 'Content loaded.', 'wp-cinquante-et-un' ),
+				'message' => __( 'Content loaded.', 'agencecinq' ),
 			)
 		);
 

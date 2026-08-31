@@ -5,12 +5,12 @@
  * Registers ACF field group for the posts archive (options: theme and archive-post).
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields;
+namespace AgenceCinq\Plugins\ACF\IncludeFields;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * Archive Posts Fields
@@ -49,28 +49,28 @@ class ArchivePostsFields implements Service {
 		$fields = array(
 			array(
 				'key'        => 'field_' . $key,
-				'label'      => __( 'Archive Posts', 'wp-cinquante-et-un' ),
+				'label'      => __( 'Archive Posts', 'agencecinq' ),
 				'name'       => 'archive_posts',
-				'aria-label' => __( 'Archive Posts', 'wp-cinquante-et-un' ),
+				'aria-label' => __( 'Archive Posts', 'agencecinq' ),
 				'type'       => 'group',
 				'layout'     => 'block',
 				'sub_fields' => array(
 					array(
 						'key'        => 'field_' . $key . '_hero',
-						'label'      => __( 'Hero', 'wp-cinquante-et-un' ),
+						'label'      => __( 'Hero', 'agencecinq' ),
 						'name'       => 'hero',
-						'aria-label' => __( 'Hero', 'wp-cinquante-et-un' ),
+						'aria-label' => __( 'Hero', 'agencecinq' ),
 						'type'       => 'group',
 						'layout'     => 'block',
 						'sub_fields' => array(
 							array(
 								'key'          => 'field_' . $key . '_hero_title',
-								'label'        => __( 'Title', 'wp-cinquante-et-un' ),
+								'label'        => __( 'Title', 'agencecinq' ),
 								'name'         => 'title',
-								'aria-label'   => __( 'Title', 'wp-cinquante-et-un' ),
+								'aria-label'   => __( 'Title', 'agencecinq' ),
 								'type'         => 'text',
-								'placeholder'  => __( 'Enter the title of the hero', 'wp-cinquante-et-un' ),
-								'instructions' => __( 'Main heading for the posts archive hero.', 'wp-cinquante-et-un' ),
+								'placeholder'  => __( 'Enter the title of the hero', 'agencecinq' ),
+								'instructions' => __( 'Main heading for the posts archive hero.', 'agencecinq' ),
 							),
 						),
 					),
@@ -83,7 +83,7 @@ class ArchivePostsFields implements Service {
 			acf_add_local_field_group(
 				array(
 					'key'      => 'group_' . $key,
-					'title'    => __( 'Archive Posts', 'wp-cinquante-et-un' ),
+					'title'    => __( 'Archive Posts', 'agencecinq' ),
 					'fields'   => $fields,
 					'location' => $location,
 				)

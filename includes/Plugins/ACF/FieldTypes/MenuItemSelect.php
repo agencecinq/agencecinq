@@ -5,12 +5,12 @@
  * Allows selecting a single entry from a WordPress navigation menu.
  * Behaves like a native ACF Select / Relational field.
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Plugins/ACF/FieldTypes
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Plugins/ACF/FieldTypes
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\FieldTypes;
+namespace AgenceCinq\Plugins\ACF\FieldTypes;
 
 // phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 if ( ! class_exists( 'acf_field' ) ) {
@@ -33,9 +33,9 @@ class MenuItemSelect extends \acf_field {
 	 */
 	public function initialize(): void {
 		$this->name        = 'menu_item_select';
-		$this->label       = __( 'Menu Item Select', 'wp-cinquante-et-un' );
+		$this->label       = __( 'Menu Item Select', 'agencecinq' );
 		$this->category    = 'relational';
-		$this->description = __( 'Select a single entry from a WordPress navigation menu.', 'wp-cinquante-et-un' );
+		$this->description = __( 'Select a single entry from a WordPress navigation menu.', 'agencecinq' );
 		$this->defaults    = array(
 			'menu'          => '',
 			'allow_null'    => 1,
@@ -105,7 +105,7 @@ class MenuItemSelect extends \acf_field {
 	 */
 	public function render_field_settings( $field ): void {
 		$menus   = wp_get_nav_menus();
-		$choices = array( '' => '— ' . __( 'Select a menu', 'wp-cinquante-et-un' ) . ' —' );
+		$choices = array( '' => '— ' . __( 'Select a menu', 'agencecinq' ) . ' —' );
 
 		foreach ( $menus as $menu ) {
 			$choices[ (string) $menu->term_id ] = $menu->name;
@@ -114,8 +114,8 @@ class MenuItemSelect extends \acf_field {
 		acf_render_field_setting(
 			$field,
 			array(
-				'label'        => __( 'Menu', 'wp-cinquante-et-un' ),
-				'instructions' => __( 'Choose the menu from which to list items.', 'wp-cinquante-et-un' ),
+				'label'        => __( 'Menu', 'agencecinq' ),
+				'instructions' => __( 'Choose the menu from which to list items.', 'agencecinq' ),
 				'name'         => 'menu',
 				'type'         => 'select',
 				'choices'      => $choices,
@@ -132,7 +132,7 @@ class MenuItemSelect extends \acf_field {
 				'layout'       => 'horizontal',
 				'choices'      => array(
 					'value'  => __( 'Value', 'acf' ),
-					'object' => __( 'Menu Item Object', 'wp-cinquante-et-un' ),
+					'object' => __( 'Menu Item Object', 'agencecinq' ),
 					'array'  => __( 'Both (Array)', 'acf' ),
 				),
 			)

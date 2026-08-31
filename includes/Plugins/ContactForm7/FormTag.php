@@ -2,20 +2,20 @@
 /**
  * Contact Form 7 Form Tag
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Plugins/ContactForm7
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Plugins/ContactForm7
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Plugins\ContactForm7;
+namespace AgenceCinq\Plugins\ContactForm7;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * Contact Form 7 Form Tag
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Plugins/ContactForm7
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Plugins/ContactForm7
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 class FormTag implements Service {
@@ -69,7 +69,7 @@ class FormTag implements Service {
 			return $tag;
 		}
 
-		$placeholder = __( 'Choose a domain', 'wp-cinquante-et-un' );
+		$placeholder = __( 'Choose a domain', 'agencecinq' );
 
 		array_unshift( $labels, $placeholder );
 		array_unshift( $values, '' );

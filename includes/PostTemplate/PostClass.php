@@ -4,23 +4,23 @@
  *
  * Add custom post classes to the current post.
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/PostTemplate
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/PostTemplate
  * @see https://developer.wordpress.org/reference/hooks/post_class/
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\PostTemplate;
+namespace AgenceCinq\PostTemplate;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * PostClass
  *
  * @see https://developer.wordpress.org/reference/hooks/post_class/
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/PostTemplate
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/PostTemplate
  */
 class PostClass implements Service {
 

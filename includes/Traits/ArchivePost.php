@@ -5,10 +5,10 @@
  * Provides methods to retrieve featured and recent posts for archive pages.
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Traits
+ * @subpackage AgenceCinq/Traits
  */
 
-namespace WPCinquanteEtUn\Traits;
+namespace AgenceCinq\Traits;
 
 use Timber\{Timber, PostQuery};
 
@@ -17,7 +17,7 @@ use Timber\{Timber, PostQuery};
  *
  * This trait provides methods to retrieve featured and recent posts for archive pages.
  *
- * @package WPCinquanteEtUn\Traits
+ * @package AgenceCinq\Traits
  */
 trait ArchivePost {
 	/**

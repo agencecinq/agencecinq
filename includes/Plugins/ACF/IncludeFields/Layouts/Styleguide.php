@@ -3,10 +3,10 @@
  * ACF layout: Styleguide
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields/Layouts
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts;
+namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
 /**
  * Styleguide block layout.
@@ -23,7 +23,7 @@ class Styleguide {
 		return array(
 			'key'        => 'layout_' . $key . '_styleguide',
 			'name'       => 'styleguide',
-			'label'      => __( 'Styleguide', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Styleguide', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(),
 		);

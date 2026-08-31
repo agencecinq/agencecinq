@@ -2,14 +2,14 @@
 /**
  * SavePost Class
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Plugins/ACF
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Plugins/ACF
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF;
+namespace AgenceCinq\Plugins\ACF;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * SavePost Class

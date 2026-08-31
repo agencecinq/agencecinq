@@ -2,15 +2,15 @@
 /**
  * Post States
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Template
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Template
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Template;
+namespace AgenceCinq\Template;
 
-use WPCinquanteEtUn\Service;
-use WPCinquanteEtUn\Taxonomy\PageCat;
+use AgenceCinq\Service;
+use AgenceCinq\Taxonomy\PageCat;
 use WP_Post;
 
 /**
@@ -18,7 +18,7 @@ use WP_Post;
  *
  * Adds a custom post state to the post/page edit screen.
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  */
 class PostStates implements Service {
 
@@ -44,7 +44,7 @@ class PostStates implements Service {
 	public function filter_post_states( array $post_states, WP_Post $post ) {
 
 		if ( 'page-templates/blocks-page.php' === get_post_meta( $post->ID, '_wp_page_template', true ) ) {
-			$post_states[] = __( 'Blocks Page', 'wp-cinquante-et-un' );
+			$post_states[] = __( 'Blocks Page', 'agencecinq' );
 		}
 
 		return $post_states;

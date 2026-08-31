@@ -1,15 +1,15 @@
 {
-	"name": "@agencecinq/wp-cinquante-et-un",
+	"name": "@agencecinq/agencecinq",
 	"version": "1.0.0",
-	"description": "WP CINQ starter WordPress theme",
+	"description": "WordPress theme for the Agence Cinq website",
 	"type": "module",
-	"homepage": "https://github.com/agencecinq/wp-cinquante-et-un/blob/master/README.md",
+	"homepage": "https://github.com/agencecinq/agencecinq/blob/master/README.md",
 	"bugs": {
-		"url": "https://github.com/agencecinq/wp-cinquante-et-un/issues"
+		"url": "https://github.com/agencecinq/agencecinq/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/agencecinq/wp-cinquante-et-un.git"
+		"url": "git+https://github.com/agencecinq/agencecinq.git"
 	},
 	"license": "ISC",
 	"author": "CINQ <contact@agencecinq.com> (https://agencecinq.com)",

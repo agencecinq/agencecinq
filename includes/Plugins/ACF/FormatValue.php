@@ -2,13 +2,13 @@
 /**
  * ACF Format Value
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Plugins/ACF
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Plugins/ACF
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF;
+namespace AgenceCinq\Plugins\ACF;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 use Timber\Timber;
 
 /**

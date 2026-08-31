@@ -1,8 +1,6 @@
-# WP CINQ – WordPress Starter Theme
+# Agence Cinq
 
-**WP CINQ** is the agency's WordPress starter theme, built on Timber/Twig, Vite, Tailwind CSS v4 and TypeScript. It is the single source of truth for new client projects: every new project starts from this starter, never from a copy of the previous project.
-
-It ships a generic, reusable foundation (block library, components, helpers, tooling) free of any client-specific content, so each project begins clean.
+WordPress theme for the Agence Cinq website, based on the CINQ starter (Timber/Twig, Vite, Tailwind CSS v4, TypeScript).
 
 ## Key features
 
@@ -23,9 +21,7 @@ This repository carries Cursor rules in `.cursor/rules/` that document conventio
 
 To add a new DO/DONT or a task-specific rule, follow the "Faire évoluer ces règles" section of `starter-cinq`.
 
-## Getting started from the starter
-
-When creating a new project from this starter, follow the `init-nouveau-projet` rule, then:
+## Getting started
 
 ```bash
 composer install
@@ -126,10 +122,10 @@ Example of usage in a Twig template:
 The project structure is organized as follows:
 
 ```
-wp-cinquante-et-un/
+agencecinq/
 ├── .cursor/rules/       # Cursor rules (conventions + init/back-port workflows)
 ├── .github/workflows/   # CI: release on tag v*
-├── includes/            # PHP classes (PSR-4, namespace WPCinquanteEtUn)
+├── includes/            # PHP classes (PSR-4, namespace AgenceCinq)
 ├── languages/           # i18n (.pot template; translations generated per project)
 ├── src/                 # Source files for assets
 │   ├── stylesheets/     # CSS (theme.css = @theme tokens, styles.css = imports)
@@ -151,7 +147,7 @@ wp-cinquante-et-un/
 
 The `phpcs.xml` file configures **PHP CodeSniffer** (PHPCS) for the theme. It defines the coding style and quality rules applied to the PHP code.
 
-In this theme, the configuration is based on the **WordPress Coding Standards**: indentation, naming, internationalization (text domain `wp-cinquante-et-un`), and more. The `node_modules/`, `vendor/`, and `dist/` directories are excluded from the analysis.
+In this theme, the configuration is based on the **WordPress Coding Standards**: indentation, naming, internationalization (text domain `agencecinq`), and more. The `node_modules/`, `vendor/`, and `dist/` directories are excluded from the analysis.
 
 To run the code analysis (after installing PHPCS, e.g. via Composer or globally):
 
@@ -179,7 +175,7 @@ Copy the environment template and set your local WordPress URL (used by the Vite
 cp .env.sample .env
 ```
 
-Then edit `.env` and set `APP_URL` to your local site URL, derived from the project slug: `APP_URL = https://<slug>.local` (e.g. `https://wp-cinquante-et-un.local`), without a trailing slash. The Laravel Vite plugin loads these variables automatically.
+Then edit `.env` and set `APP_URL` to your local site URL, derived from the project slug: `APP_URL = https://<slug>.local` (e.g. `https://agencecinq.local`), without a trailing slash. The Laravel Vite plugin loads these variables automatically.
 
 ### PHP Dependencies
 

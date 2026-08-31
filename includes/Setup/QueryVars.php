@@ -2,15 +2,15 @@
 /**
  * Query Vars
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Setup
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Setup
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Setup;
+namespace AgenceCinq\Setup;
 
-use WPCinquanteEtUn\Taxonomy\PageCat;
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Taxonomy\PageCat;
+use AgenceCinq\Service;
 use WP_Post;
 
 /**
@@ -19,7 +19,7 @@ use WP_Post;
  * Add custom query vars and rewrite rules for page_cat in page URLs.
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Setup
+ * @subpackage AgenceCinq/Setup
  */
 class QueryVars implements Service {
 

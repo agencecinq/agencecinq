@@ -3,12 +3,12 @@
  * ACF layout: ChildPagesByParent
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields/Layouts
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts;
+namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\AcfFieldHelpers;
+use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 
 /**
  * ChildPagesByParent block layout.
@@ -26,52 +26,52 @@ class ChildPagesByParent {
 
 			'key'        => 'layout_' . $key . '_child_pages_by_parent',
 			'name'       => 'child_pages_by_parent',
-			'label'      => __( 'Child Pages by Parent', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Child Pages by Parent', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
 				array(
 					'key'        => 'field_' . $key . '_child_pages_by_parent_message',
-					'label'      => __( 'Message', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Message', 'agencecinq' ),
 					'name'       => 'message',
-					'aria-label' => __( 'Message', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Message', 'agencecinq' ),
 					'type'       => 'message',
-					'message'    => __( 'Displays the child pages of the selected parent page. Hidden when the parent has no child pages.', 'wp-cinquante-et-un' ),
+					'message'    => __( 'Displays the child pages of the selected parent page. Hidden when the parent has no child pages.', 'agencecinq' ),
 				),
 				...AcfFieldHelpers::settings( $key . '_child_pages_by_parent' ),
 				array(
 					'key'        => 'field_' . $key . '_child_pages_by_parent_content_tab',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
 					'name'       => 'content',
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
 					'key'        => 'field_' . $key . '_child_pages_by_parent_content',
 					'name'       => 'content',
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'group',
 					'layout'     => 'block',
 					'sub_fields' => array(
 						array(
 							'key'           => 'field_' . $key . '_child_pages_by_parent_content_parent_page',
-							'label'         => __( 'Parent Page', 'wp-cinquante-et-un' ),
+							'label'         => __( 'Parent Page', 'agencecinq' ),
 							'name'          => 'parent_page',
-							'aria-label'    => __( 'Parent Page', 'wp-cinquante-et-un' ),
+							'aria-label'    => __( 'Parent Page', 'agencecinq' ),
 							'type'          => 'post_object',
 							'post_type'     => 'page',
-							'placeholder'   => __( 'Select the parent page', 'wp-cinquante-et-un' ),
+							'placeholder'   => __( 'Select the parent page', 'agencecinq' ),
 							'return_format' => 'id',
 						),
 						array(
 							'key'           => 'field_' . $key . '_child_pages_by_parent_content_text',
-							'label'         => __( 'Text', 'wp-cinquante-et-un' ),
+							'label'         => __( 'Text', 'agencecinq' ),
 							'name'          => 'text',
-							'aria-label'    => __( 'Text', 'wp-cinquante-et-un' ),
-							'instructions'  => __( 'Optional text shown below the parent page chips.', 'wp-cinquante-et-un' ),
+							'aria-label'    => __( 'Text', 'agencecinq' ),
+							'instructions'  => __( 'Optional text shown below the parent page chips.', 'agencecinq' ),
 							'type'          => 'textarea',
 							'rows'          => 4,
 							'new_lines'     => 'br',
-							'placeholder'   => __( 'Enter the text of the block', 'wp-cinquante-et-un' ),
+							'placeholder'   => __( 'Enter the text of the block', 'agencecinq' ),
 							'default_value' => '',
 						),
 					),

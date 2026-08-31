@@ -3,12 +3,12 @@
  * ACF layout: Contact
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields/Layouts
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts;
+namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\AcfFieldHelpers;
+use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 
 /**
  * Contact block layout.
@@ -25,56 +25,56 @@ class Contact {
 		return array(
 			'key'        => 'layout_' . $key . '_contact',
 			'name'       => 'contact',
-			'label'      => __( 'Contact us', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Contact us', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
 				...AcfFieldHelpers::settings( $key . '_contact' ),
 				...AcfFieldHelpers::media( $key . '_contact' ),
 				array(
 					'key'        => 'field_' . $key . '_contact_content_tab',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
 					'name'       => 'content',
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
 					'key'        => 'field_' . $key . '_contact_content',
 					'name'       => 'content',
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'group',
 					'layout'     => 'block',
 					'sub_fields' => array(
 						array(
 							'key'           => 'field_' . $key . '_contact_content_image',
-							'label'         => __( 'Image', 'wp-cinquante-et-un' ),
+							'label'         => __( 'Image', 'agencecinq' ),
 							'name'          => 'image',
-							'aria-label'    => __( 'Image', 'wp-cinquante-et-un' ),
+							'aria-label'    => __( 'Image', 'agencecinq' ),
 							'type'          => 'image',
 							'return_format' => 'id',
 						),
 						array(
 							'key'         => 'field_' . $key . '_contact_content_title',
-							'label'       => __( 'Title', 'wp-cinquante-et-un' ),
+							'label'       => __( 'Title', 'agencecinq' ),
 							'name'        => 'title',
-							'aria-label'  => __( 'Title', 'wp-cinquante-et-un' ),
+							'aria-label'  => __( 'Title', 'agencecinq' ),
 							'type'        => 'text',
-							'placeholder' => __( 'Enter the title', 'wp-cinquante-et-un' ),
+							'placeholder' => __( 'Enter the title', 'agencecinq' ),
 						),
 						array(
 							'key'         => 'field_' . $key . '_contact_content_text',
-							'label'       => __( 'Text', 'wp-cinquante-et-un' ),
+							'label'       => __( 'Text', 'agencecinq' ),
 							'name'        => 'text',
-							'aria-label'  => __( 'Text', 'wp-cinquante-et-un' ),
+							'aria-label'  => __( 'Text', 'agencecinq' ),
 							'type'        => 'textarea',
 							'rows'        => 4,
 							'new_lines'   => 'br',
-							'placeholder' => __( 'Enter the text', 'wp-cinquante-et-un' ),
+							'placeholder' => __( 'Enter the text', 'agencecinq' ),
 						),
 						array(
 							'key'        => 'field_' . $key . '_contact_content_link',
-							'label'      => __( 'Link', 'wp-cinquante-et-un' ),
+							'label'      => __( 'Link', 'agencecinq' ),
 							'name'       => 'link',
-							'aria-label' => __( 'Link', 'wp-cinquante-et-un' ),
+							'aria-label' => __( 'Link', 'agencecinq' ),
 							'type'       => 'link',
 						),
 					),

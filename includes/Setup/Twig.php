@@ -2,17 +2,17 @@
 /**
  * Twig
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Setup
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Setup
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Setup;
+namespace AgenceCinq\Setup;
 
 use Twig\Extra\Html\{ HtmlExtension };
 use Twig\Extra\Intl\{ IntlExtension };
 use Twig\{ TwigFunction };
-use WPCinquanteEtUn\{ Service, Vite };
+use AgenceCinq\{ Service, Vite };
 
 /**
  * Twig

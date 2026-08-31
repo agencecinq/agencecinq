@@ -4,23 +4,23 @@
  *
  * Addd custom body classes to the current post or page.
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/PostTemplate
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/PostTemplate
  * @see https://developer.wordpress.org/reference/hooks/body_class/
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\PostTemplate;
+namespace AgenceCinq\PostTemplate;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * BodyClass
  *
  * @see https://developer.wordpress.org/reference/hooks/body_class/
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/PostTemplate
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/PostTemplate
  */
 class BodyClass implements Service {
 

@@ -6,9 +6,9 @@
 		"19h47/wp-get-theme": "dev-master",
 		"19h47/wp-form-controls": "dev-master"
 	},
-	"name": "agencecinq/wp-cinquante-et-un",
+	"name": "agencecinq/agencecinq",
 	"version": "1.0.0",
-	"description": "Starter WordPress Theme by CINQ",
+	"description": "WordPress theme for the Agence Cinq website",
 	"type": "wordpress-theme",
 	"authors": [
 		{
@@ -18,7 +18,7 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"WPCinquanteEtUn\\": "./includes"
+			"AgenceCinq\\": "./includes"
 		},
 		"files": [
 			"./includes/helpers.php",
