@@ -4,20 +4,20 @@
  *
  * Initializes and manages admin-specific functionality for the WP_CINQ theme.
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Admin
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Admin
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Admin;
+namespace AgenceCinq\Admin;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * Init
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Admin
+ * @subpackage AgenceCinq/Admin
  */
 class Init implements Service {
 

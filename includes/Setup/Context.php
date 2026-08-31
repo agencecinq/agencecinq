@@ -2,16 +2,16 @@
 /**
  * Context
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Setup
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Setup
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Setup;
+namespace AgenceCinq\Setup;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 use Timber\{Timber, Site };
-use WPCinquanteEtUn\Models\{ CategoryArchive, Page, Home, SinglePost };
+use AgenceCinq\Models\{ CategoryArchive, Page, Home, SinglePost };
 use WP_Post;
 
 /**
@@ -19,7 +19,7 @@ use WP_Post;
  *
  * Adds custom data to the global context.
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  */
 class Context extends Site implements Service {
 

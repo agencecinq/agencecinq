@@ -4,12 +4,12 @@
  *
  * Custom model for home archive page.
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Models
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Models
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Models;
+namespace AgenceCinq\Models;
 
 use Timber\{ Post, Timber, PostCollectionInterface };
 
@@ -18,7 +18,7 @@ use Timber\{ Post, Timber, PostCollectionInterface };
  *
  * Represents a page with helpers such as siblings.
  *
- * @package WPCinquanteEtUn\Models
+ * @package AgenceCinq\Models
  */
 class Page extends Post {
 

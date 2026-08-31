@@ -5,17 +5,17 @@
  * Single entry point for instantiating theme classes and calling their run() method.
  * Include early from functions.php so components are loaded before templates.
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  */
 
-namespace WPCinquanteEtUn;
+namespace AgenceCinq;
 
 /**
  * Init
  *
  * Registers and runs all theme services. Each service must implement the Service interface.
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 class Init {

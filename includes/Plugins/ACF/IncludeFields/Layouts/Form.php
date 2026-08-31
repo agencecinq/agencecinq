@@ -3,12 +3,12 @@
  * ACF layout: Form
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields/Layouts
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts;
+namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\AcfFieldHelpers;
+use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 
 /**
  * Form block layout.
@@ -25,30 +25,30 @@ class Form {
 		return array(
 			'key'        => 'layout_' . $key . '_form',
 			'name'       => 'form',
-			'label'      => __( 'Form', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Form', 'agencecinq' ),
 			'display'    => 'block',
 			'max'        => 1,
 			'sub_fields' => array(
 				...AcfFieldHelpers::settings( $key . '_form' ),
 				array(
 					'key'        => 'field_' . $key . '_form_tab_content',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
 					'key'        => 'field_' . $key . '_form_content',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
 					'name'       => 'content',
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'group',
 					'layout'     => 'block',
 					'sub_fields' => array(
 						array(
 							'key'           => 'field_' . $key . '_form_content_form',
-							'label'         => __( 'Form', 'wp-cinquante-et-un' ),
+							'label'         => __( 'Form', 'agencecinq' ),
 							'name'          => 'form',
-							'aria-label'    => __( 'Form', 'wp-cinquante-et-un' ),
+							'aria-label'    => __( 'Form', 'agencecinq' ),
 							'type'          => 'post_object',
 							'post_type'     => 'wpcf7_contact_form',
 							'return_format' => 'id',

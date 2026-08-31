@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 

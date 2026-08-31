@@ -2,17 +2,17 @@
 /**
  * GeneralTemplate
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  */
 
-namespace WPCinquanteEtUn;
+namespace AgenceCinq;
 
 use Timber\Timber;
 
 /**
  * GeneralTemplate
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  */
 class GeneralTemplate implements Service {
 

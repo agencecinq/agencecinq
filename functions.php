@@ -1,8 +1,8 @@
 <?php
 /**
- * WP CINQ functions and definitions
+ * Agence Cinq functions and definitions
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
@@ -16,4 +16,4 @@ Timber::init();
 Timber::$locations = array( 'views', 'public' );
 
 // Run the setup.
-WPCinquanteEtUn\Init::run_services();
+AgenceCinq\Init::run_services();

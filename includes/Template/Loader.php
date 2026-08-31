@@ -4,21 +4,21 @@
  *
  * Handles loading and redirecting template-related functionality.
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Template
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Template
  * @see https://developer.wordpress.org/reference/hooks/template_redirect/
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Template;
+namespace AgenceCinq\Template;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * Handles loading and redirecting template-related functionality.
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn
+ * @subpackage AgenceCinq
  */
 class Loader implements Service {
 

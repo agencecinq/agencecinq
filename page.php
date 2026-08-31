@@ -2,8 +2,8 @@
 /**
  * Page template file
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Page
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Page
  */
 
 use Timber\{ Timber };

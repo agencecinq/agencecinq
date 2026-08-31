@@ -3,12 +3,12 @@
  * ACF layout: ChildPages
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields/Layouts
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts;
+namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\AcfFieldHelpers;
+use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 
 /**
  * ChildPages block layout.
@@ -25,16 +25,16 @@ class ChildPages {
 		return array(
 			'key'        => 'layout_' . $key . '_child_pages',
 			'name'       => 'child_pages',
-			'label'      => __( 'Child Pages', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Child Pages', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
 				array(
 					'key'        => 'field_' . $key . '_child_pages_message',
-					'label'      => __( 'Message', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Message', 'agencecinq' ),
 					'name'       => 'message',
-					'aria-label' => __( 'Message', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Message', 'agencecinq' ),
 					'type'       => 'message',
-					'message'    => __( 'Displays the child pages of the current page. Hidden when there are no child pages.', 'wp-cinquante-et-un' ),
+					'message'    => __( 'Displays the child pages of the current page. Hidden when there are no child pages.', 'agencecinq' ),
 				),
 				...AcfFieldHelpers::settings( $key . '_child_pages' ),
 			),

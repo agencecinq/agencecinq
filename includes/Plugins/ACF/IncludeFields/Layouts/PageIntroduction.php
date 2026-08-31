@@ -3,12 +3,12 @@
  * ACF layout: Page Introduction
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields/Layouts
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts;
+namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\AcfFieldHelpers;
+use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 
 /**
  * Page Introduction block layout (intro section with text + media).
@@ -25,7 +25,7 @@ class PageIntroduction {
 		return array(
 			'key'        => 'layout_' . $key . '_page_introduction',
 			'name'       => 'page_introduction',
-			'label'      => __( 'Page Introduction', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Page Introduction', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
 				...AcfFieldHelpers::settings( $key . '_page_introduction' ),
@@ -33,44 +33,44 @@ class PageIntroduction {
 				...AcfFieldHelpers::media( $key . '_page_introduction' ),
 				array(
 					'key'        => 'field_' . $key . '_page_introduction_content_tab',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
 					'name'       => 'content',
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
 					'key'        => 'field_' . $key . '_page_introduction_content',
 					'name'       => 'content',
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'group',
 					'layout'     => 'block',
 					'sub_fields' => array(
 						array(
 							'key'           => 'field_' . $key . '_page_introduction_content_breadcrumb',
-							'label'         => __( 'Breadcrumb', 'wp-cinquante-et-un' ),
+							'label'         => __( 'Breadcrumb', 'agencecinq' ),
 							'name'          => 'breadcrumb',
-							'aria-label'    => __( 'Breadcrumb', 'wp-cinquante-et-un' ),
+							'aria-label'    => __( 'Breadcrumb', 'agencecinq' ),
 							'type'          => 'true_false',
 							'default_value' => false,
-							'instructions'  => __( 'Show the breadcrumb of the page.', 'wp-cinquante-et-un' ),
+							'instructions'  => __( 'Show the breadcrumb of the page.', 'agencecinq' ),
 						),
 						array(
 							'key'         => 'field_' . $key . '_page_introduction_content_title',
-							'label'       => __( 'Title', 'wp-cinquante-et-un' ),
+							'label'       => __( 'Title', 'agencecinq' ),
 							'name'        => 'title',
-							'aria-label'  => __( 'Title', 'wp-cinquante-et-un' ),
+							'aria-label'  => __( 'Title', 'agencecinq' ),
 							'type'        => 'text',
-							'placeholder' => __( 'Enter the title of the block', 'wp-cinquante-et-un' ),
+							'placeholder' => __( 'Enter the title of the block', 'agencecinq' ),
 						),
 						array(
 							'key'         => 'field_' . $key . '_page_introduction_content_text',
-							'label'       => __( 'Text', 'wp-cinquante-et-un' ),
+							'label'       => __( 'Text', 'agencecinq' ),
 							'name'        => 'text',
-							'aria-label'  => __( 'Text', 'wp-cinquante-et-un' ),
+							'aria-label'  => __( 'Text', 'agencecinq' ),
 							'type'        => 'textarea',
 							'rows'        => 4,
 							'new_lines'   => 'br',
-							'placeholder' => __( 'Enter the text of the block', 'wp-cinquante-et-un' ),
+							'placeholder' => __( 'Enter the text of the block', 'agencecinq' ),
 						),
 					),
 				),

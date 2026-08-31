@@ -2,22 +2,22 @@
 /**
  * Enqueue
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Setup
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Setup
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Setup;
+namespace AgenceCinq\Setup;
 
-use WPCinquanteEtUn\{ Service, Vite };
+use AgenceCinq\{ Service, Vite };
 
 /**
  * Theme asset enqueue setup.
  *
  * Registers and enqueues stylesheets and scripts used by the theme.
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn\Setup
+ * @package AgenceCinq
+ * @subpackage AgenceCinq\Setup
  */
 class Enqueue implements Service {
 

@@ -3,12 +3,12 @@
  * Post Fields
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn
+ * @subpackage AgenceCinq
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields;
+namespace AgenceCinq\Plugins\ACF\IncludeFields;
 
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Service;
 
 /**
  * Post Fields
@@ -45,53 +45,53 @@ class PostFields implements Service {
 		$fields = array(
 			array(
 				'key'        => 'field_' . $key . '_general_tab',
-				'label'      => __( 'General', 'wp-cinquante-et-un' ),
+				'label'      => __( 'General', 'agencecinq' ),
 				'name'       => 'general',
-				'aria-label' => __( 'General', 'wp-cinquante-et-un' ),
+				'aria-label' => __( 'General', 'agencecinq' ),
 				'type'       => 'tab',
 			),
 			array(
 				'key'        => 'field_' . $key . '_general',
-				'label'      => __( 'General', 'wp-cinquante-et-un' ),
+				'label'      => __( 'General', 'agencecinq' ),
 				'name'       => 'general',
-				'aria-label' => __( 'General', 'wp-cinquante-et-un' ),
+				'aria-label' => __( 'General', 'agencecinq' ),
 				'type'       => 'group',
 				'layout'     => 'block',
 				'sub_fields' => array(
 					array(
 						'key'          => 'field_' . $key . '_general_subtitle',
-						'label'        => __( 'Subtitle', 'wp-cinquante-et-un' ),
+						'label'        => __( 'Subtitle', 'agencecinq' ),
 						'name'         => 'subtitle',
-						'aria-label'   => __( 'Subtitle', 'wp-cinquante-et-un' ),
+						'aria-label'   => __( 'Subtitle', 'agencecinq' ),
 						'type'         => 'text',
-						'placeholder'  => __( 'Enter the subtitle of the post', 'wp-cinquante-et-un' ),
-						'instructions' => __( 'Short post subtitle.', 'wp-cinquante-et-un' ) . ' <em>(' . __( 'Optional.', 'wp-cinquante-et-un' ) . ')</em>',
+						'placeholder'  => __( 'Enter the subtitle of the post', 'agencecinq' ),
+						'instructions' => __( 'Short post subtitle.', 'agencecinq' ) . ' <em>(' . __( 'Optional.', 'agencecinq' ) . ')</em>',
 					),
 					array(
 						'key'        => 'field_' . $key . '_general_learn_more',
-						'label'      => __( 'Learn more', 'wp-cinquante-et-un' ),
+						'label'      => __( 'Learn more', 'agencecinq' ),
 						'name'       => 'learn_more',
-						'aria-label' => __( 'Learn more', 'wp-cinquante-et-un' ),
+						'aria-label' => __( 'Learn more', 'agencecinq' ),
 						'type'       => 'group',
 						'layout'     => 'block',
 						'sub_fields' => array(
 							array(
 								'key'          => 'field_' . $key . '_general_learn_more_title',
-								'label'        => __( 'Title', 'wp-cinquante-et-un' ),
+								'label'        => __( 'Title', 'agencecinq' ),
 								'name'         => 'title',
-								'aria-label'   => __( 'Title', 'wp-cinquante-et-un' ),
+								'aria-label'   => __( 'Title', 'agencecinq' ),
 								'type'         => 'text',
-								'placeholder'  => __( 'Enter the title of the learn more', 'wp-cinquante-et-un' ),
-								'instructions' => __( 'The title of the learn more.', 'wp-cinquante-et-un' ),
+								'placeholder'  => __( 'Enter the title of the learn more', 'agencecinq' ),
+								'instructions' => __( 'The title of the learn more.', 'agencecinq' ),
 							),
 							array(
 								'key'          => 'field_' . $key . '_general_learn_more_text',
-								'label'        => __( 'Text', 'wp-cinquante-et-un' ),
+								'label'        => __( 'Text', 'agencecinq' ),
 								'name'         => 'text',
-								'aria-label'   => __( 'Text', 'wp-cinquante-et-un' ),
+								'aria-label'   => __( 'Text', 'agencecinq' ),
 								'type'         => 'text',
-								'placeholder'  => __( 'Enter the text of the learn more', 'wp-cinquante-et-un' ),
-								'instructions' => __( 'The text of the learn more.', 'wp-cinquante-et-un' ),
+								'placeholder'  => __( 'Enter the text of the learn more', 'agencecinq' ),
+								'instructions' => __( 'The text of the learn more.', 'agencecinq' ),
 							),
 						),
 					),
@@ -104,7 +104,7 @@ class PostFields implements Service {
 			acf_add_local_field_group(
 				array(
 					'key'      => 'group_' . $key,
-					'title'    => __( 'Post Fields', 'wp-cinquante-et-un' ),
+					'title'    => __( 'Post Fields', 'agencecinq' ),
 					'fields'   => $fields,
 					'location' => $location,
 				)

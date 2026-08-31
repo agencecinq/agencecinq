@@ -3,10 +3,10 @@
  * Single Post
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Models
+ * @subpackage AgenceCinq/Models
  */
 
-namespace WPCinquanteEtUn\Models;
+namespace AgenceCinq\Models;
 
 use Timber\{ Timber, Post, PostCollectionInterface };
 
@@ -16,7 +16,7 @@ use Timber\{ Timber, Post, PostCollectionInterface };
  * Custom model for single post pages.
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Models
+ * @subpackage AgenceCinq/Models
  */
 class SinglePost extends Post {
 

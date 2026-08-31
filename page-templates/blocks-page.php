@@ -2,7 +2,7 @@
 /**
  * Template Name: Blocks
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  */
 
 use Timber\Timber;

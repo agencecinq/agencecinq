@@ -2,21 +2,21 @@
 /**
  * ACF Init
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Plugins/ACF
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Plugins/ACF
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF;
+namespace AgenceCinq\Plugins\ACF;
 
-use WPCinquanteEtUn\Plugins\ACF\FieldTypes\MenuItemSelect;
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Plugins\ACF\FieldTypes\MenuItemSelect;
+use AgenceCinq\Service;
 
 /**
  * ACF Init
  *
- * @package WPCinquanteEtUn
- * @subpackage WPCinquanteEtUn/Plugins/ACF
+ * @package AgenceCinq
+ * @subpackage AgenceCinq/Plugins/ACF
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 class Init implements Service {
@@ -40,7 +40,7 @@ class Init implements Service {
 	public function add_options_pages(): void {
 		acf_add_options_page(
 			array(
-				'page_title'  => __( 'Archive', 'wp-cinquante-et-un' ),
+				'page_title'  => __( 'Archive', 'agencecinq' ),
 				'menu_slug'   => 'archive-post',
 				'parent_slug' => 'edit.php',
 				'position'    => '',
@@ -50,7 +50,7 @@ class Init implements Service {
 
 		acf_add_options_page(
 			array(
-				'page_title'  => __( 'Theme', 'wp-cinquante-et-un' ),
+				'page_title'  => __( 'Theme', 'agencecinq' ),
 				'menu_slug'   => 'options-theme',
 				'parent_slug' => 'options-general.php',
 				'position'    => '',

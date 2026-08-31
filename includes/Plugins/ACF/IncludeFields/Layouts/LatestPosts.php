@@ -3,12 +3,12 @@
  * ACF layout: LatestPosts
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields/Layouts
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts;
+namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\AcfFieldHelpers;
+use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 
 /**
  * LatestPosts block layout.
@@ -25,52 +25,52 @@ class LatestPosts {
 		return array(
 			'key'        => 'layout_' . $key . '_latest_posts',
 			'name'       => 'latest_posts',
-			'label'      => __( 'Latest Posts', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Latest Posts', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
 				...AcfFieldHelpers::settings( $key . '_latest_posts' ),
 				array(
 					'key'        => 'field_' . $key . '_latest_posts_tab_content',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
 					'key'        => 'field_' . $key . '_latest_posts_content',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
 					'name'       => 'content',
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'group',
 					'layout'     => 'block',
 					'sub_fields' => array(
 						array(
 							'key'          => 'field_' . $key . '_latest_posts_content_overline',
-							'label'        => __( 'Overline', 'wp-cinquante-et-un' ),
+							'label'        => __( 'Overline', 'agencecinq' ),
 							'name'         => 'overline',
-							'aria-label'   => __( 'Overline', 'wp-cinquante-et-un' ),
+							'aria-label'   => __( 'Overline', 'agencecinq' ),
 							'type'         => 'text',
-							'placeholder'  => __( 'Enter the overline of the block', 'wp-cinquante-et-un' ),
-							'instructions' => __( 'Small label above the title.', 'wp-cinquante-et-un' ) . ' <em>(' . __( 'Optional', 'wp-cinquante-et-un' ) . ')</em>.',
+							'placeholder'  => __( 'Enter the overline of the block', 'agencecinq' ),
+							'instructions' => __( 'Small label above the title.', 'agencecinq' ) . ' <em>(' . __( 'Optional', 'agencecinq' ) . ')</em>.',
 						),
 						array(
 							'key'           => 'field_' . $key . '_latest_posts_content_title',
-							'label'         => __( 'Title', 'wp-cinquante-et-un' ),
+							'label'         => __( 'Title', 'agencecinq' ),
 							'name'          => 'title',
-							'aria-label'    => __( 'Title', 'wp-cinquante-et-un' ),
+							'aria-label'    => __( 'Title', 'agencecinq' ),
 							'type'          => 'text',
-							'placeholder'   => __( 'Enter the title of the block', 'wp-cinquante-et-un' ),
-							'instructions'  => __( 'Section heading displayed above the posts list.', 'wp-cinquante-et-un' ),
+							'placeholder'   => __( 'Enter the title of the block', 'agencecinq' ),
+							'instructions'  => __( 'Section heading displayed above the posts list.', 'agencecinq' ),
 							'default_value' => '',
 						),
 						array(
 							'key'          => 'field_' . $key . '_latest_posts_content_category',
-							'label'        => __( 'Category', 'wp-cinquante-et-un' ),
+							'label'        => __( 'Category', 'agencecinq' ),
 							'name'         => 'category',
-							'aria-label'   => __( 'Category', 'wp-cinquante-et-un' ),
+							'aria-label'   => __( 'Category', 'agencecinq' ),
 							'type'         => 'taxonomy',
 							'taxonomy'     => 'category',
 							'multiple'     => 1,
-							'instructions' => __( 'Leave empty to show latest posts from all categories.', 'wp-cinquante-et-un' ),
+							'instructions' => __( 'Leave empty to show latest posts from all categories.', 'agencecinq' ),
 						),
 					),
 				),

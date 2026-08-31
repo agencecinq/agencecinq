@@ -34,13 +34,13 @@
 				</p>
 			{%- endif -%}
 
-			<a href="{{ post.link }}" itemprop="url" class="text-button-xs mt-auto uppercase underline" aria-label="{{ __( 'Discover: %s', 'wp-cinquante-et-un' ) | format( post.title ) }}">
-				{{- __( 'Discover', 'wp-cinquante-et-un' ) -}}
+			<a href="{{ post.link }}" itemprop="url" class="text-button-xs mt-auto uppercase underline" aria-label="{{ __( 'Discover: %s', 'agencecinq' ) | format( post.title ) }}">
+				{{- __( 'Discover', 'agencecinq' ) -}}
 			</a>
 		</div>
 	</div>
 
 	<meta itemprop="datePublished" content="{{ post.date( 'c' ) }}">
 	<meta itemprop="dateModified" content="{{ post.modified( 'c' ) }}">
-	<meta itemprop="author" content="{{ post.author.name | default( 'WPCinquanteEtUn' ) | e( 'html_attr' ) }}">
+	<meta itemprop="author" content="{{ post.author.name | default( 'AgenceCinq' ) | e( 'html_attr' ) }}">
 </article>

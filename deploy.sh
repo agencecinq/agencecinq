@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Production deployment script for the WP CINQ WordPress starter theme.
+# Production deployment script for the Agence Cinq WordPress theme.
 # Installs dependencies, builds assets, and removes files not needed in production.
 
 set -e  # Exit on error

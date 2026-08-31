@@ -3,12 +3,12 @@
  * ACF layout: Process
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields/Layouts
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts;
+namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\AcfFieldHelpers;
+use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 
 /**
  * Process block layout.
@@ -25,75 +25,75 @@ class Process {
 		return array(
 			'key'        => 'layout_' . $key . '_process',
 			'name'       => 'process',
-			'label'      => __( 'Process', 'wp-cinquante-et-un' ),
+			'label'      => __( 'Process', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
 				...AcfFieldHelpers::settings( $key . '_process' ),
 				AcfFieldHelpers::radius( $key . '_process' ),
 				array(
 					'key'        => 'field_' . $key . '_process_tab_content',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
 					'key'        => 'field_' . $key . '_process_content',
-					'label'      => __( 'Content', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Content', 'agencecinq' ),
 					'name'       => 'content',
-					'aria-label' => __( 'Content', 'wp-cinquante-et-un' ),
+					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'group',
 					'layout'     => 'block',
 					'sub_fields' => array(
 						array(
 							'key'         => 'field_' . $key . '_process_content_title',
-							'label'       => __( 'Title', 'wp-cinquante-et-un' ),
+							'label'       => __( 'Title', 'agencecinq' ),
 							'name'        => 'title',
-							'aria-label'  => __( 'Title', 'wp-cinquante-et-un' ),
+							'aria-label'  => __( 'Title', 'agencecinq' ),
 							'type'        => 'text',
-							'placeholder' => __( 'Enter the title of the block', 'wp-cinquante-et-un' ),
+							'placeholder' => __( 'Enter the title of the block', 'agencecinq' ),
 						),
 						array(
 							'key'         => 'field_' . $key . '_process_content_subtitle',
-							'label'       => __( 'Subtitle', 'wp-cinquante-et-un' ),
+							'label'       => __( 'Subtitle', 'agencecinq' ),
 							'name'        => 'subtitle',
-							'aria-label'  => __( 'Subtitle', 'wp-cinquante-et-un' ),
+							'aria-label'  => __( 'Subtitle', 'agencecinq' ),
 							'type'        => 'text',
-							'placeholder' => __( 'Enter the subtitle of the block', 'wp-cinquante-et-un' ),
+							'placeholder' => __( 'Enter the subtitle of the block', 'agencecinq' ),
 						),
 						array(
 							'key'         => 'field_' . $key . '_process_content_text',
-							'label'       => __( 'Text', 'wp-cinquante-et-un' ),
+							'label'       => __( 'Text', 'agencecinq' ),
 							'name'        => 'text',
-							'aria-label'  => __( 'Text', 'wp-cinquante-et-un' ),
+							'aria-label'  => __( 'Text', 'agencecinq' ),
 							'type'        => 'textarea',
 							'rows'        => 4,
 							'new_lines'   => 'br',
-							'placeholder' => __( 'Optional explanatory text (e.g. right column).', 'wp-cinquante-et-un' ),
+							'placeholder' => __( 'Optional explanatory text (e.g. right column).', 'agencecinq' ),
 						),
 					),
 				),
 				array(
 					'key'        => 'field_' . $key . '_process_tab_steps',
-					'label'      => __( 'Steps', 'wp-cinquante-et-un' ),
-					'aria-label' => __( 'Steps', 'wp-cinquante-et-un' ),
+					'label'      => __( 'Steps', 'agencecinq' ),
+					'aria-label' => __( 'Steps', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
 					'key'          => 'field_' . $key . '_process_steps',
-					'label'        => __( 'Steps', 'wp-cinquante-et-un' ),
+					'label'        => __( 'Steps', 'agencecinq' ),
 					'name'         => 'steps',
-					'aria-label'   => __( 'Steps', 'wp-cinquante-et-un' ),
+					'aria-label'   => __( 'Steps', 'agencecinq' ),
 					'type'         => 'repeater',
 					'layout'       => 'block',
-					'button_label' => __( 'Add Step', 'wp-cinquante-et-un' ),
+					'button_label' => __( 'Add Step', 'agencecinq' ),
 					'min'          => 1,
 					'max'          => 6,
 					'sub_fields'   => array(
 						array(
 							'key'             => 'field_' . $key . '_process_steps_image',
-							'label'           => __( 'Image', 'wp-cinquante-et-un' ),
+							'label'           => __( 'Image', 'agencecinq' ),
 							'name'            => 'image',
-							'aria-label'      => __( 'Image', 'wp-cinquante-et-un' ),
+							'aria-label'      => __( 'Image', 'agencecinq' ),
 							'type'            => 'image',
 							'return_format'   => 'array',
 							'preview_size'    => 'medium',
@@ -101,29 +101,29 @@ class Process {
 						),
 						array(
 							'key'             => 'field_' . $key . '_process_steps_title',
-							'label'           => __( 'Title', 'wp-cinquante-et-un' ),
+							'label'           => __( 'Title', 'agencecinq' ),
 							'name'            => 'title',
-							'aria-label'      => __( 'Title', 'wp-cinquante-et-un' ),
+							'aria-label'      => __( 'Title', 'agencecinq' ),
 							'type'            => 'text',
-							'placeholder'     => __( 'Enter the title of the step', 'wp-cinquante-et-un' ),
+							'placeholder'     => __( 'Enter the title of the step', 'agencecinq' ),
 							'parent_repeater' => 'field_' . $key . '_process_steps',
 						),
 						array(
 							'key'             => 'field_' . $key . '_process_steps_text',
-							'label'           => __( 'Text', 'wp-cinquante-et-un' ),
+							'label'           => __( 'Text', 'agencecinq' ),
 							'name'            => 'text',
-							'aria-label'      => __( 'Text', 'wp-cinquante-et-un' ),
+							'aria-label'      => __( 'Text', 'agencecinq' ),
 							'type'            => 'textarea',
 							'rows'            => 3,
 							'new_lines'       => 'br',
-							'placeholder'     => __( 'Enter the description of the step', 'wp-cinquante-et-un' ),
+							'placeholder'     => __( 'Enter the description of the step', 'agencecinq' ),
 							'parent_repeater' => 'field_' . $key . '_process_steps',
 						),
 						array(
 							'key'             => 'field_' . $key . '_process_steps_logos',
-							'label'           => __( 'Logos', 'wp-cinquante-et-un' ),
+							'label'           => __( 'Logos', 'agencecinq' ),
 							'name'            => 'logos',
-							'aria-label'      => __( 'Logos', 'wp-cinquante-et-un' ),
+							'aria-label'      => __( 'Logos', 'agencecinq' ),
 							'type'            => 'gallery',
 							'return_format'   => 'id',
 							'preview_size'    => 'thumbnail',
@@ -131,9 +131,9 @@ class Process {
 						),
 						array(
 							'key'             => 'field_' . $key . '_process_steps_link',
-							'label'           => __( 'Link', 'wp-cinquante-et-un' ),
+							'label'           => __( 'Link', 'agencecinq' ),
 							'name'            => 'link',
-							'aria-label'      => __( 'Link', 'wp-cinquante-et-un' ),
+							'aria-label'      => __( 'Link', 'agencecinq' ),
 							'type'            => 'link',
 							'parent_repeater' => 'field_' . $key . '_process_steps',
 						),

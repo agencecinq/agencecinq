@@ -5,33 +5,33 @@
  * Registers ACF field group includes for blocks.
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Plugins/ACF/IncludeFields
+ * @subpackage AgenceCinq/Plugins/ACF/IncludeFields
  */
 
-namespace WPCinquanteEtUn\Plugins\ACF\IncludeFields;
+namespace AgenceCinq\Plugins\ACF\IncludeFields;
 
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\AccordionGroup;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\ChildPages;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\ChildPagesByParent;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Columns;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Contact;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Form;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Gallery;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Grid;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Hero;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\KeyFigures;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Marquee;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\MediaText;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\MultiColumn;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\PageIntroduction;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Presentation;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Process;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Push;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Styleguide;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Support;
-use WPCinquanteEtUn\Plugins\ACF\IncludeFields\Layouts\Team;
-use WPCinquanteEtUn\Service;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\AccordionGroup;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ChildPages;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ChildPagesByParent;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Columns;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Contact;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Form;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Grid;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Hero;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\KeyFigures;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Marquee;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\MediaText;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\MultiColumn;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageIntroduction;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Presentation;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Process;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Push;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Styleguide;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Support;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
+use AgenceCinq\Service;
 
 /**
  * Blocks Fields
@@ -100,13 +100,13 @@ class BlocksFields implements Service {
 		$fields = array(
 			array(
 				'key'          => 'field_' . $key,
-				'label'        => __( 'Blocks', 'wp-cinquante-et-un' ),
+				'label'        => __( 'Blocks', 'agencecinq' ),
 				'name'         => 'blocks',
-				'aria-label'   => __( 'Blocks', 'wp-cinquante-et-un' ),
+				'aria-label'   => __( 'Blocks', 'agencecinq' ),
 				'type'         => 'flexible_content',
-				'instructions' => __( 'Add and arrange blocks to build the page content.', 'wp-cinquante-et-un' ),
+				'instructions' => __( 'Add and arrange blocks to build the page content.', 'agencecinq' ),
 				'layouts'      => AcfFieldHelpers::get_layouts_from( $key, self::$layouts ),
-				'button_label' => __( 'Add Block', 'wp-cinquante-et-un' ),
+				'button_label' => __( 'Add Block', 'agencecinq' ),
 			),
 		);
 
@@ -114,7 +114,7 @@ class BlocksFields implements Service {
 			acf_add_local_field_group(
 				array(
 					'key'        => 'group_' . $key,
-					'title'      => __( 'Blocks Fields', 'wp-cinquante-et-un' ),
+					'title'      => __( 'Blocks Fields', 'agencecinq' ),
 					'fields'     => $fields,
 					'location'   => $location,
 					'menu_order' => 1,

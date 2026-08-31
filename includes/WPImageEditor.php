@@ -2,11 +2,11 @@
 /**
  * WP Image Editor
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-namespace WPCinquanteEtUn;
+namespace AgenceCinq;
 
 /**
  * WP Image editor

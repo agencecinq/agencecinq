@@ -5,13 +5,13 @@
  * Custom model for home archive page.
  *
  * @package WordPress
- * @subpackage WPCinquanteEtUn/Models
+ * @subpackage AgenceCinq/Models
  */
 
-namespace WPCinquanteEtUn\Models;
+namespace AgenceCinq\Models;
 
 use Timber\{ Post, Timber };
-use WPCinquanteEtUn\Traits\ArchivePost;
+use AgenceCinq\Traits\ArchivePost;
 
 /**
  * Class Home
@@ -21,7 +21,7 @@ use WPCinquanteEtUn\Traits\ArchivePost;
  *
  * In order to use the post/classmap and because Timber is waiting for a Timber\Post, we extract logic for featured posts and recent posts in a trait.
  *
- * @package WPCinquanteEtUn\Models
+ * @package AgenceCinq\Models
  */
 class Home extends Post {
 	use ArchivePost;

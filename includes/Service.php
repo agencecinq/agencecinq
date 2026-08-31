@@ -2,10 +2,10 @@
 /**
  * Service contract for theme bootstrap.
  *
- * @package WPCinquanteEtUn
+ * @package AgenceCinq
  */
 
-namespace WPCinquanteEtUn;
+namespace AgenceCinq;
 
 /**
  * Service

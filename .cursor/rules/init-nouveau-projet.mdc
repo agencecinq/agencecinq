@@ -14,9 +14,9 @@ Travaille étape par étape et coche chaque étape avant de passer à la suivant
 Ne devine pas. Lis-les dans le dépôt courant et note-les comme chaînes à remplacer :
 
 - **Nom d'affichage** : en-tête `Theme Name` dans `style.css`.
-- **Slug / text domain** : en-tête `Text Domain` dans `style.css` (ex actuel : `nexiode`). C'est aussi le nom du `.pot` dans `languages/` et, en principe, le nom du dossier du thème.
-- **Namespace PHP** : clé `autoload.psr-4` dans `composer.json` (ex actuel : `Nexiode\`).
-- **Package npm** : clé `name` dans `package.json` (ex actuel : `@agencecinq/nexiode`).
+- **Slug / text domain** : en-tête `Text Domain` dans `style.css` (ex actuel : `agencecinq`). C'est aussi le nom du `.pot` dans `languages/` et, en principe, le nom du dossier du thème.
+- **Namespace PHP** : clé `autoload.psr-4` dans `composer.json` (ex actuel : `AgenceCinq\`).
+- **Package npm** : clé `name` dans `package.json` (ex actuel : `@agencecinq/agencecinq`).
 - **Package Composer** : clé `name` dans `composer.json`. Attention : sur les copies, elle est souvent restée sur un ancien projet (ex constaté : `agencecinq/wp-cinquante-et-un`). Vérifie sa vraie valeur, ne suppose pas qu'elle suit le nom du projet.
 
 Demande à l'utilisateur le nom du nouveau projet, puis dérive les nouvelles valeurs :
