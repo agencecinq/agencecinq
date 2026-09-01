@@ -1,6 +1,6 @@
 <?php
 /**
- * Case study archive template file
+ * Case study category taxonomy template file
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -13,8 +13,8 @@ use Timber\{ Timber };
 
 $templates          = array( 'pages/archive-case-study.html.twig' );
 $data               = Timber::context();
-$data['title']      = post_type_archive_title( '', false );
+$data['title']      = single_term_title( '', false );
 $data['categories'] = CaseStudyCategory::terms();
-$data['category']   = null;
+$data['category']   = $data['term'];
 
 Timber::render( $templates, $data );

@@ -30,6 +30,25 @@
 					}
 				)
 			-}}
+
+			{%- if (post.categories | length) > 0 -%}
+				<div
+					class="absolute inset-x-0 top-0 z-3 m-2.5 flex flex-wrap justify-end gap-2.5 lg:m-5"
+					role="region"
+					aria-label="{{ __('Categories', 'agencecinq') }}"
+				>
+					{%- for category in post.categories -%}
+						{{-
+							include(
+								'components/tag.html.twig',
+								{
+									title: category.name
+								}
+							)
+						-}}
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
 		</div>
 
 		<div class="space-y-5 lg:space-y-3.75">

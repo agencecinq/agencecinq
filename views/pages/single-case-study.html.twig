@@ -9,17 +9,102 @@
 {%- block content -%}
 	<main id="content" role="main" itemscope itemtype="https://schema.org/Article">
 		{%- block header -%}
-			<div class="absolute inset-x-0 top-0 z-10">
-				{{-
-					include(
-						'header.html.twig',
-						{
-							classes: ['relative z-10']
-						}
-					)
-				-}}
-			</div>
+			{{-
+				include(
+					'header.html.twig',
+					{
+						classes: ['relative z-10']
+					}
+				)
+			-}}
 		{%- endblock -%}
+
+		{%- if
+			post.meta('hero').content.client
+				or post.meta('hero').content.platform
+				or post.meta('hero').content.year
+				or post.meta('hero').content.title
+				or post.meta('hero').content.text
+				or post.meta('hero').image
+				or post.title -%}
+			<section class="bg-page text-primary py-16 lg:py-26" aria-labelledby="case-hero-title">
+				<div class="container">
+					{%- if
+						post.meta('hero').content.client
+							or post.meta('hero').content.platform
+							or post.meta('hero').content.year -%}
+						<p class="text-label text-muted uppercase">
+							{%- if post.meta('hero').content.client -%}
+								<span itemprop="about" itemscope itemtype="https://schema.org/Organization">
+									<span itemprop="name">{{- post.meta('hero').content.client -}}</span>
+								</span>
+							{%- endif -%}
+							{%- if post.meta('hero').content.platform -%}
+								{{- post.meta('hero').content.client ? ' · ' -}}
+								<span>{{- post.meta('hero').content.platform -}}</span>
+							{%- endif -%}
+							{%- if post.meta('hero').content.year -%}
+								{{- post.meta('hero').content.client or post.meta('hero').content.platform
+									? ' · ' -}}
+								<time datetime="{{ post.meta('hero').content.year }}" itemprop="dateCreated">
+									{{- post.meta('hero').content.year -}}
+								</time>
+							{%- endif -%}
+						</p>
+					{%- endif -%}
+
+					<h1
+						id="case-hero-title"
+						class="{{
+						html_classes(
+							'text-title-xxl text-primary max-w-250',
+							post.meta('hero').content.client
+								or post.meta('hero').content.platform
+								or post.meta('hero').content.year
+								? 'mt-6'
+						)
+						}}"
+						itemprop="headline"
+					>
+						{{- post.meta('hero').content.title | default(post.title) | raw -}}
+					</h1>
+
+					{%- if post.meta('hero').content.text -%}
+						<p class="text-muted mt-8 max-w-190 text-xl" itemprop="description">
+							{{- post.meta('hero').content.text | raw -}}
+						</p>
+					{%- endif -%}
+
+					{%- if post.meta('hero').image -%}
+						<figure class="border-border bg-card rounded-10 mt-18 overflow-hidden border">
+							<div
+								class="bg-card-hover flex items-center gap-1.75 px-3.5 py-2.75"
+								aria-hidden="true"
+							>
+								<span class="bg-subtle size-2.25 rounded-full"></span>
+								<span class="bg-subtle size-2.25 rounded-full"></span>
+								<span class="bg-subtle size-2.25 rounded-full"></span>
+							</div>
+							<div class="bg-elevated aspect-16/10">
+								{{-
+									include(
+										'components/image.html.twig',
+										{
+											image: post.meta('hero').image,
+											classes: ['size-full object-cover object-top'],
+											loading: 'eager',
+											attributes: {
+												itemprop: 'image'
+											}
+										}
+									)
+								-}}
+							</div>
+						</figure>
+					{%- endif -%}
+				</div>
+			</section>
+		{%- endif -%}
 
 		{{-
 			include(

@@ -74,6 +74,8 @@ class Enqueue implements Service {
 	 * @return void
 	 */
 	public function dequeue_styles(): void {
+
+		wp_dequeue_style( 'wp-block-library' );
 	}
 
 	/**

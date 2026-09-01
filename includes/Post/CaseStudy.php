@@ -17,13 +17,6 @@ use AgenceCinq\Service;
 class CaseStudy implements Service {
 
 	/**
-	 * Post type slug.
-	 *
-	 * @var string
-	 */
-	public const POST_TYPE = 'case-study';
-
-	/**
 	 * Runs initialization tasks.
 	 *
 	 * @access public
@@ -76,7 +69,7 @@ class CaseStudy implements Service {
 		);
 
 		register_post_type(
-			self::POST_TYPE,
+			'case-study',
 			array(
 				'labels'              => $labels,
 				'label'               => __( 'Case study', 'agencecinq' ),

@@ -31,7 +31,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Push;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Styleguide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Support;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
-use AgenceCinq\Post\CaseStudy;
 use AgenceCinq\Service;
 
 /**
@@ -100,7 +99,7 @@ class BlocksFields implements Service {
 				array(
 					'param'    => 'post_type',
 					'operator' => '==',
-					'value'    => CaseStudy::POST_TYPE,
+					'value'    => 'case-study',
 				),
 			),
 		);

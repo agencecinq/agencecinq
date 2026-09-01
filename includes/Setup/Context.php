@@ -11,8 +11,7 @@ namespace AgenceCinq\Setup;
 
 use AgenceCinq\Service;
 use Timber\{Timber, Site };
-use AgenceCinq\Models\{ CategoryArchive, Page, Home, SinglePost };
-use AgenceCinq\Post\CaseStudy;
+use AgenceCinq\Models\{ CategoryArchive, Page, Home, SinglePost, CaseStudy };
 use WP_Post;
 
 /**
@@ -86,7 +85,7 @@ class Context extends Site implements Service {
 		$context['privacy_policy_url'] = get_privacy_policy_url();
 		$context['posts_url']          = get_permalink( get_option( 'page_for_posts' ) );
 		$context['home_url']           = home_url( '/' );
-		$context['case_studies_url']   = get_post_type_archive_link( CaseStudy::POST_TYPE );
+		$context['case_studies_url']   = get_post_type_archive_link( 'case-study' );
 
 		$context['theme'] = get_field( 'theme', 'option' );
 		$context['menus'] = get_field( 'menus', 'option' );
@@ -107,14 +106,15 @@ class Context extends Site implements Service {
 	 */
 	public function add_post_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			'page' => function ( WP_Post $post ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Reserved for future use.
+			'page'       => function ( WP_Post $post ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Reserved for future use.
 				if ( is_home() ) {
 					return Home::class;
 				}
 
 				return Page::class;
 			},
-			'post' => SinglePost::class,
+			'post'       => SinglePost::class,
+			'case-study' => CaseStudy::class,
 		);
 
 		return array_merge( $classmap, $custom_classmap );
