@@ -52,7 +52,7 @@
 	}
 
 	.button--tertiary {
-		@apply bg-fond-page text-texte-principal text-cta;
+		@apply bg-page text-primary text-cta;
 
 		padding: calc(var(--spacing) * 1.25); /* 5px */
 	}
@@ -65,11 +65,11 @@
 	}
 
 	.button--tertiary[disabled] {
-		@apply bg-fond-carte/14! text-texte-principal! border-bordure/14!;
+		@apply bg-card/14! text-primary! border-border/14!;
 	}
 
 	.button--quaternary {
-		@apply text-badge bg-accent text-texte-sur-accent;
+		@apply text-badge bg-accent text-on-accent;
 
 		text-transform: uppercase;
 
@@ -79,7 +79,7 @@
 
 	.button--quaternary:not([disabled]):hover,
 	.button--quaternary:not([disabled]):focus {
-		@apply bg-accent-survol;
+		@apply bg-accent-hover;
 	}
 
 	.button--quaternary.button--icon {
@@ -89,55 +89,55 @@
 
 	/* Color Modes */
 	.button--light.button--primary {
-		@apply text-texte-principal border-bordure;
+		@apply text-primary border-border;
 	}
 
 	.button--light.button--secondary {
-		@apply bg-fond-carte text-texte-principal;
+		@apply bg-card text-primary;
 	}
 
 	.button--light.button--secondary:not([disabled]):hover,
 	.button--light.button--secondary:not([disabled]):focus {
-		@apply bg-fond-page text-texte-principal;
+		@apply bg-page text-primary;
 	}
 
 	.button--light.button--secondary:not([disabled]):hover.button--icon svg,
 	.button--light.button--secondary:not([disabled]):focus.button--icon svg {
-		@apply text-texte-principal;
+		@apply text-primary;
 	}
 
 	.button--light.button--secondary.button--icon svg {
-		@apply text-texte-principal;
+		@apply text-primary;
 	}
 
 	.button--light[disabled] {
-		@apply bg-fond-page/14! text-texte-principal! border-bordure/14!;
+		@apply bg-page/14! text-primary! border-border/14!;
 		backdrop-filter: blur(10px);
 	}
 
 	.button--dark.button--primary {
-		@apply text-texte-principal border-bordure;
+		@apply text-primary border-border;
 	}
 
 	.button--dark.button--secondary {
-		@apply bg-fond-page text-texte-principal;
+		@apply bg-page text-primary;
 	}
 
 	.button--dark.button--secondary:not([disabled]):hover,
 	.button--dark.button--secondary:not([disabled]):focus {
-		@apply bg-fond-carte text-texte-principal;
+		@apply bg-card text-primary;
 	}
 
 	.button--dark.button--secondary:not([disabled]):hover.button--icon svg,
 	.button--dark.button--secondary:not([disabled]):focus.button--icon svg {
-		@apply text-texte-principal;
+		@apply text-primary;
 	}
 
 	.button--dark.button--secondary.button--icon svg {
-		@apply text-texte-principal;
+		@apply text-primary;
 	}
 
 	.button--dark[disabled] {
-		@apply bg-fond-carte/14! text-texte-principal! border-bordure/14!;
+		@apply bg-card/14! text-primary! border-border/14!;
 	}
 }

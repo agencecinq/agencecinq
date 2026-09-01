@@ -11,7 +11,7 @@
 
 use Timber\{ Timber };
 
-$templates = array( 'pages/blocks-page.html.twig' );
+$templates = array( 'pages/front-page.html.twig' );
 $data      = Timber::context();
 
 Timber::render( $templates, $data );

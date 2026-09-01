@@ -1,0 +1,62 @@
+{#
+ # Components: Tease Service
+ #
+ # Column of the homepage “bus système” list: node rule, index, title, text, link.
+ #
+ # @param string title
+ # @param string text
+ # @param object link { title, url, target }
+ # @param string index Index label, e.g. "01/03".
+ # @param array classes
+ #}
+
+{%- set link = link | default( {} ) -%}
+{%- if title or text or link.url -%}
+	<article class="{{ html_classes( 'tease-service group/tease-service flex flex-col items-start', classes | default( [] ) | join( ' ' ) ) }}">
+		<div class="relative h-3 w-full" aria-hidden="true">
+			<span class="bg-border absolute top-1/2 right-0 left-1.5 h-px"></span>
+			<span
+				class="bg-primary ring-page absolute top-1/2 left-0 size-2.75 -translate-y-1/2 rounded-full ring-4 transition-[background-color,scale] duration-300 ease-out group-hover/tease-service:scale-125 group-hover/tease-service:bg-accent"
+			></span>
+		</div>
+
+		{%- if index -%}
+			<p class="text-label text-subtle mt-5">
+				{{- index -}}
+			</p>
+		{%- endif -%}
+
+		{%- if title -%}
+			<h2 class="text-title-md text-primary mt-2.5">
+				{{- title -}}
+			</h2>
+		{%- endif -%}
+
+		{%- if text -%}
+			<p class="text-sm text-muted mt-3">
+				{{- text | raw -}}
+			</p>
+		{%- endif -%}
+
+		{%- if link.url and link.title -%}
+			<a
+				href="{{ link.url }}"
+				class="text-cta text-primary mt-6 inline-flex items-center gap-1.5 hover:text-accent"
+				{{ link.target ? "target=\"#{ link.target }\"" }}
+				{{ link.target == '_blank' ? 'rel="noopener noreferrer"' }}
+			>
+				{{- link.title -}}
+				{{-
+					include(
+						'svg/use.html.twig',
+						{
+							classes: [ 'size-3.5' ],
+							icon: 'arrow-right'
+						},
+						with_context = false
+					)
+				-}}
+			</a>
+		{%- endif -%}
+	</article>
+{%- endif -%}

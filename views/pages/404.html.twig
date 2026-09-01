@@ -9,7 +9,7 @@
 
 {%- block content -%}
 	<main id="content" role="main">
-		<div class="text-texte-principal bg-fond-carte/30 relative after:absolute after:inset-0 after:z-2 after:size-full after:bg-fond-carte/30">
+		<div class="text-primary bg-card/30 relative after:absolute after:inset-0 after:z-2 after:size-full after:bg-card/30">
 			{%- block header -%}
 				{{- include( 'header.html.twig', { classes: [ 'relative z-10' ] } ) -}}
 			{%- endblock -%}
@@ -17,9 +17,9 @@
 			<div class="container relative z-3 pb-20 pt-5 space-y-10 lg:pt-31.5 lg:pb-46.25">
 				<div class="space-y-2.5">
 					<p>{{- __('404 Error', 'agencecinq') -}}</p>
-					<h1 class="text-titre-2 space-y-2.5">
+					<h1 class="text-title-xl space-y-2.5">
 						<p class="">{{- post.title -}}</p>
-						<p class="text-titre-3">{{- post.content -}}</p>
+						<p class="text-title-lg">{{- post.content -}}</p>
 					</h1>
 				</div>
 				{{- include( 'components/button.html.twig', { icon: 'bullet', title: __('Back to home page', 'agencecinq'), url: site.link, variant: 'primary', mode: 'dark' } ) -}}

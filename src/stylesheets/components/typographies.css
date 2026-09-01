@@ -1,53 +1,47 @@
-@layer components {
-	.text-display {
-		@apply text-display-mobile lg:text-display-desktop;
-	}
+@utility text-title-3xl {
+	@apply text-title-3xl-mobile lg:text-title-3xl-desktop;
+}
 
-	.text-titre-1 {
-		@apply text-titre-1-mobile lg:text-titre-1-desktop;
-	}
+@utility text-title-xxl {
+	@apply text-title-xxl-mobile lg:text-title-xxl-desktop;
+}
 
-	.text-titre-2 {
-		@apply text-titre-2-mobile lg:text-titre-2-desktop;
-	}
+@utility text-title-xl {
+	@apply text-title-xl-mobile lg:text-title-xl-desktop;
+}
 
-	.text-titre-3 {
-		@apply text-titre-3-mobile lg:text-titre-3-desktop;
-	}
+@utility text-title-lg {
+	@apply text-title-lg-mobile lg:text-title-lg-desktop;
+}
 
-	.text-lede-l {
-		@apply text-lede-l-mobile lg:text-lede-l-desktop;
-	}
+@utility text-xl {
+	@apply text-xl-mobile lg:text-xl-desktop;
+}
 
-	.text-lede-m {
-		@apply text-lede-m-mobile lg:text-lede-m-desktop;
-	}
+@utility text-lg {
+	@apply text-lg-mobile lg:text-lg-desktop;
+}
 
-	.text-corps {
-		@apply text-corps-mobile lg:text-corps-desktop;
-	}
+@utility text-sm {
+	@apply text-sm-mobile lg:text-sm-desktop;
+}
 
-	.text-corps-s {
-		@apply text-corps-s-mobile lg:text-corps-s-desktop;
-	}
+@utility text-xs {
+	@apply text-xs-mobile lg:text-xs-desktop;
+}
 
-	.text-corps-xs {
-		@apply text-corps-xs-mobile lg:text-corps-xs-desktop;
-	}
+@utility text-eyebrow {
+	@apply font-mono uppercase;
+}
 
-	.text-eyebrow {
-		@apply font-mono uppercase;
-	}
+@utility text-label {
+	@apply font-mono;
+}
 
-	.text-label {
-		@apply font-mono;
-	}
+@utility text-cta {
+	@apply font-mono;
+}
 
-	.text-cta {
-		@apply font-mono;
-	}
-
-	.text-badge {
-		@apply font-mono uppercase;
-	}
+@utility text-badge {
+	@apply font-mono uppercase;
 }

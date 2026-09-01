@@ -31,6 +31,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Push;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Styleguide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Support;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
+use AgenceCinq\Post\CaseStudy;
 use AgenceCinq\Service;
 
 /**
@@ -41,7 +42,7 @@ use AgenceCinq\Service;
 class BlocksFields implements Service {
 
 	/**
-	 * Layout classes used for the blocks field (pages). Order = display order.
+	 * Layout classes used for the blocks field (pages and case studies). Order = display order.
 	 *
 	 * @var array<int, class-string>
 	 */
@@ -93,6 +94,13 @@ class BlocksFields implements Service {
 					'param'    => 'post_type',
 					'operator' => '==',
 					'value'    => 'page',
+				),
+			),
+			array(
+				array(
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => CaseStudy::POST_TYPE,
 				),
 			),
 		);

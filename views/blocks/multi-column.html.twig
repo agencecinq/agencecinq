@@ -9,17 +9,17 @@
 -}}
 
 <section id="{{ block.id }}">
-	<div class="{{ html_classes( 'text-texte-principal py-20 lg:py-37.5', block.radius == 'top' ? 'rounded-t-25 lg:rounded-t-50 relative z-2 -mt-6.25 lg:-mt-12.5', block.radius == 'bottom' ? 'rounded-b-25 lg:rounded-b-50 relative z-2 -mb-6.25 lg:-mb-12.5', block.radius == 'y' ? 'rounded-t-25 rounded-b-25 lg:rounded-t-50 lg:rounded-b-50 relative z-2 -my-6.25 lg:-my-12.5' ) }}">
+	<div class="{{ html_classes( 'text-primary py-20 lg:py-37.5', block.radius == 'top' ? 'rounded-t-25 lg:rounded-t-50 relative z-2 -mt-6.25 lg:-mt-12.5', block.radius == 'bottom' ? 'rounded-b-25 lg:rounded-b-50 relative z-2 -mb-6.25 lg:-mb-12.5', block.radius == 'y' ? 'rounded-t-25 rounded-b-25 lg:rounded-t-50 lg:rounded-b-50 relative z-2 -my-6.25 lg:-my-12.5' ) }}">
 		<div class="container grid grid-cols-4 gap-x-5 gap-y-15 lg:grid-cols-12 lg:gap-y-20">
 			{%- if block.content.title and (block.content.texts|length) > 0 -%}
 				<div class="col-span-full grid grid-cols-2 gap-x-5 gap-y-7.5">
-					<h2 class="{{ html_classes( 'col-span-full', block.content.text_alignment|default('text-left'), block.content.title_style|default('text-titre-2'), 'text-accent text-center' ) }}">
+					<h2 class="{{ html_classes( 'col-span-full', block.content.text_alignment|default('text-left'), block.content.title_style|default('text-title-xl'), 'text-accent text-center' ) }}">
 						{{- block.content.title -}}
 					</h2>
 					{%- for text in block.content.texts -%}
 						{%- if text -%}
 							<div class="col-span-full lg:col-span-1">
-								<p class="text-lede-l">
+								<p class="text-xl">
 									{{- text -}}
 								</p>
 							</div>
@@ -30,7 +30,7 @@
 
 			{%- if block.content.title and (block.content.texts|length) == 0 -%}
 				<div class="col-span-full">
-					<h2 class="{{ html_classes( block.content.text_alignment|default('text-left'), block.content.title_style|default('text-titre-2'), 'text-accent text-center' ) }}">
+					<h2 class="{{ html_classes( block.content.text_alignment|default('text-left'), block.content.title_style|default('text-title-xl'), 'text-accent text-center' ) }}">
 						{{- block.content.title -}}
 					</h2>
 				</div>
@@ -38,8 +38,8 @@
 
 			{%- for column in block.first_row.columns -%}
 				<div class="{{ html_classes( 'col-span-full', loop.length == 2 ? 'lg:col-span-6' ~ (loop.index == 2 ? ' lg:col-start-8' : ' lg:col-start-2') : loop.length == 3 ? 'lg:col-span-4' : '' ) }}">
-					<div class="{{ html_classes( 'rounded-15 lg:rounded-25 relative', column.image ? 'after:absolute after:inset-0 after:z-2 after:size-full after:bg-fond-carte/30' : '' ) }}">
-						<div class="bg-fond-carte/30 rounded-15 lg:rounded-25 relative z-1 h-125 overflow-hidden">
+					<div class="{{ html_classes( 'rounded-15 lg:rounded-25 relative', column.image ? 'after:absolute after:inset-0 after:z-2 after:size-full after:bg-card/30' : '' ) }}">
+						<div class="bg-card/30 rounded-15 lg:rounded-25 relative z-1 h-125 overflow-hidden">
 							{{-
 								include(
 									'components/image.html.twig',
@@ -53,7 +53,7 @@
 
 						{%- for pin in column.pins -%}
 							<cinq-modal-button class="absolute top-[calc(var(--top)*1%)] left-[calc(var(--left)*1%)] z-3 block" style="--top: {{ pin.coordinates.top }}; --left: {{ pin.coordinates.left }};">
-								<button type="button" aria-controls="modal-pin-{{ loop.index0 }}-{{ block.id }}" class="after:bg-accent text-texte-sur-accent before:bg-accent-doux flex size-14 items-center justify-center before:absolute before:inset-0 before:size-full before:animate-pulse before:rounded-full after:absolute after:inset-0 after:m-auto after:size-9 after:rounded-full lg:size-17.5">
+								<button type="button" aria-controls="modal-pin-{{ loop.index0 }}-{{ block.id }}" class="after:bg-accent text-on-accent before:bg-accent-soft flex size-14 items-center justify-center before:absolute before:inset-0 before:size-full before:animate-pulse before:rounded-full after:absolute after:inset-0 after:m-auto after:size-9 after:rounded-full lg:size-17.5">
 									{{-
 										include(
 											'svg/use.html.twig',
@@ -72,7 +72,7 @@
 			{%- endfor -%}
 
 			{%- for column in block.second_row.columns -%}
-				<div class="{{ html_classes( 'text-texte-principal col-span-full space-y-7.5 text-center lg:space-y-20', loop.length == 1 ? 'lg:col-start-5', loop.length == 2 ? 'lg:col-span-4' ~ (loop.first ? ' lg:col-start-2' : ' lg:col-start-8') : 'lg:col-span-4' ) }}">
+				<div class="{{ html_classes( 'text-primary col-span-full space-y-7.5 text-center lg:space-y-20', loop.length == 1 ? 'lg:col-start-5', loop.length == 2 ? 'lg:col-span-4' ~ (loop.first ? ' lg:col-start-2' : ' lg:col-start-8') : 'lg:col-span-4' ) }}">
 					{%- if column.image -%}
 						<div class="h-125">
 							{{-
@@ -86,19 +86,19 @@
 							-}}
 						</div>
 					{%- endif -%}
-					<div class="{{ html_classes( 'mx-auto max-w-95.5 space-y-10 lg:max-w-none', loop.length == 1 ? '' : 'lg:px-5 lg:pb-13', loop.last ? '' : loop.length != 2 ? 'after:bg-fond-page relative after:absolute after:inset-x-0 after:top-full after:mx-auto after:h-px after:w-46.5 after:max-w-full after:translate-y-7.5 lg:after:inset-x-0 lg:after:inset-y-0 lg:after:left-full lg:after:h-full lg:after:w-px lg:after:translate-x-2.5 lg:after:translate-y-0' : '' ) }}">
+					<div class="{{ html_classes( 'mx-auto max-w-95.5 space-y-10 lg:max-w-none', loop.length == 1 ? '' : 'lg:px-5 lg:pb-13', loop.last ? '' : loop.length != 2 ? 'after:bg-page relative after:absolute after:inset-x-0 after:top-full after:mx-auto after:h-px after:w-46.5 after:max-w-full after:translate-y-7.5 lg:after:inset-x-0 lg:after:inset-y-0 lg:after:left-full lg:after:h-full lg:after:w-px lg:after:translate-x-2.5 lg:after:translate-y-0' : '' ) }}">
 						{%- if column.title or column.subtitle or column.text -%}
 							<div class="5 space-y-2">
 								{%- if column.title or column.subtitle -%}
 									<div class="space-y-5">
 										{%- if column.title -%}
-											<h3 class="{{ html_classes( 'text-accent', column.title_style|default('text-titre-2') ) }}">
+											<h3 class="{{ html_classes( 'text-accent', column.title_style|default('text-title-xl') ) }}">
 												{{- column.title -}}
 											</h3>
 										{%- endif -%}
 
 										{%- if column.subtitle -%}
-											<p class="text-titre-4">
+											<p class="text-title-md">
 												{{- column.subtitle -}}
 											</p>
 										{%- endif -%}
@@ -106,7 +106,7 @@
 								{%- endif -%}
 
 								{%- if column.text -%}
-									<p class="text-corps-s">
+									<p class="text-sm">
 										{{- column.text -}}
 									</p>
 								{%- endif -%}
@@ -130,7 +130,7 @@
 
 				{%- if not loop.last and loop.length == 2 -%}
 					<div class="col-span-2 col-start-2 lg:col-start-6">
-						<hr class="bg-fond-page mx-auto h-px w-full border-0 lg:h-full lg:w-px"/>
+						<hr class="bg-page mx-auto h-px w-full border-0 lg:h-full lg:w-px"/>
 					</div>
 				{%- endif -%}
 			{%- endfor -%}
@@ -149,12 +149,12 @@
 								{%- if pin.title or pin.text -%}
 									<div class="space-y-3">
 										{%- if pin.title -%}
-											<p class="text-lede-l">
+											<p class="text-xl">
 												{{- pin.title -}}
 											</p>
 										{%- endif -%}
 										{%- if pin.text -%}
-											<p class="text-corps-s">
+											<p class="text-sm">
 												{{- pin.text -}}
 											</p>
 										{%- endif -%}
@@ -162,7 +162,7 @@
 								{%- endif -%}
 
 								{%- if pin.subtitle -%}
-									<p class="text-corps">
+									<p class="text-base">
 										{{- pin.subtitle -}}
 									</p>
 								{%- endif -%}

@@ -8,7 +8,7 @@
 	role="banner"
 	class="{{
 	html_classes(
-		'text-texte-principal container flex items-center gap-2.5 pt-5.25 pb-5 md:gap-5 lg:pt-8.5 lg:pb-4.5',
+		'text-primary container flex items-center gap-2.5 pt-5.25 pb-5 md:gap-5 lg:pt-8.5 lg:pb-4.5',
 		'[reading-flow:flex-visual]',
 		classes|default([])|join(' ')
 	)
@@ -47,7 +47,7 @@
 						title: __('Menu', 'collective-la-cabane'),
 						classes: ['group/drawer-button'],
 						mode: 'dark',
-						fill: 'text-texte-principal',
+						fill: 'text-primary',
 						animate: false
 					},
 					with_context: false
@@ -59,7 +59,7 @@
 			<nav aria-label="{{ __('Main navigation', 'collective-la-cabane') }}" class="hidden lg:block">
 				<ul
 					itemscope
-					class="text-cta border-bordure/40 -mx-5 flex rounded-full border px-7.5"
+					class="text-cta border-border/40 -mx-5 flex rounded-full border px-7.5"
 					itemtype="http://schema.org/SiteNavigationElement"
 				>
 					{% for item in nav_menus.main.get_items() %}
@@ -144,7 +144,7 @@
 	}
 %}
 	{% block content %}
-		<cinq-mobile-menu class="text-texte-principal max-w-182 mx-auto relative block h-full p-5">
+		<cinq-mobile-menu class="text-primary max-w-182 mx-auto relative block h-full p-5">
 			{{-
 				include(
 					'components/mobile-menu.html.twig',

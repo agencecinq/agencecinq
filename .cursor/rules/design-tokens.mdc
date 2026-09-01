@@ -10,7 +10,7 @@ alwaysApply: false
 
 - Colors, radii, typography scales, and background images belong in `src/stylesheets/theme.css` inside `@theme`.
 - Do not use arbitrary Tailwind values in Twig or CSS utilities for design tokens: no `bg-[#102345]`, no `bg-[linear-gradient(...)]`, no `[background:...]`.
-- Use the generated utilities instead (`bg-fond-page`, `text-accent`, `rounded-25`, etc.).
+- Use the generated utilities instead (`bg-page`, `text-accent`, `rounded-25`, etc.).
 
 ## Token names follow Figma
 
@@ -18,29 +18,30 @@ Custom property **suffixes** in `@theme` must use the **same names as the Figma 
 
 ```css
 /* GOOD — same names as Figma */
---color-fond-page: #08090a;
---color-accent: #b3fca4;
---text-titre-1: 4.75rem;
-
-/* BAD — translated or legacy aliases */
 --color-page: #08090a;
+--color-accent: #b3fca4;
+--text-title-xxl: 4.75rem;
+
+/* BAD — French or legacy aliases */
+--color-fond-page: #08090a;
 --color-blue: #08090a;
 --color-green: #b3fca4;
+--text-titre-1: 4.75rem;
 --text-h0: 6rem;
 ```
 
-- The Tailwind class mirrors the token suffix: `--color-fond-page` → `bg-fond-page`, `--text-titre-1` → `text-titre-1`.
+- The Tailwind class mirrors the token suffix: `--color-page` → `bg-page`, `--text-title-xxl` → `text-title-xxl`.
 - Do not add CSS aliases that map old class names onto the new tokens.
-- Prefer named tokens over opacity modifiers on another token (`text-texte-attenue`, not `text-texte-principal/60`; `bg-accent-doux`, not `bg-accent/20`).
+- Prefer named tokens over opacity modifiers on another token (`text-muted`, not `text-primary/60`; `bg-accent-soft`, not `bg-accent/20`).
 
 ## Responsive type scale
 
 When Figma defines mobile and desktop sizes for a style:
 
 - Declare `--text-{name}-mobile` and `--text-{name}-desktop` in `@theme`.
-- Expose a single public class in `src/stylesheets/components/typographies.css` : `.text-{name} { @apply text-{name}-mobile lg:text-{name}-desktop; }`.
-- Templates use the public class (`text-titre-1`), never the `-mobile` / `-desktop` utilities (except the styleguide).
-- If mobile and desktop are identical, declare a single token (`--text-titre-4`, `--text-eyebrow`).
+- Expose a single public class in `src/stylesheets/components/typographies.css` via `@utility text-{name} { @apply text-{name}-mobile lg:text-{name}-desktop; }`.
+- Templates use the public class (`text-title-xxl`), never the `-mobile` / `-desktop` utilities (except the styleguide).
+- If mobile and desktop are identical, declare a single token (`--text-title-md`, `--text-eyebrow`).
 
 ## No preset section backgrounds in the starter
 

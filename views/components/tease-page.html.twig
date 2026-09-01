@@ -4,7 +4,7 @@
  # @param {object} post The post object containing page details. Required.
  #}
 
-<article class="text-texte-principal rounded-15 after:bg-fond-carte/30 relative flex h-95.5 w-full flex-col justify-end overflow-hidden px-5 py-6.5 lg:py-10 after:absolute after:inset-0 after:z-2 after:size-full lg:h-120 lg:px-7.5">
+<article class="text-primary rounded-15 after:bg-card/30 relative flex h-95.5 w-full flex-col justify-end overflow-hidden px-5 py-6.5 lg:py-10 after:absolute after:inset-0 after:z-2 after:size-full lg:h-120 lg:px-7.5">
 	{{-
 		include(
 			'components/media.html.twig',
@@ -15,7 +15,7 @@
 		)
 	-}}
 	<div class="relative z-3 mt-auto flex flex-col space-y-5">
-		<h3 class="text-titre-4 max-w-91.75 text-balance">
+		<h3 class="text-title-md max-w-91.75 text-balance">
 			{{- post.meta('general').headline | default(post.title) -}}
 		</h3>
 
@@ -28,12 +28,12 @@
 				})
 			-%}
 			{%- if excerpt|trim -%}
-				<p class="text-corps-s max-w-91.75" itemprop="description">
+				<p class="text-sm max-w-91.75" itemprop="description">
 					{{- excerpt -}}
 				</p>
 			{%- endif -%}
 
-			<a href="{{ post.link }}" class="text-texte-principal bg-accent ml-auto flex size-12.5 shrink-0 items-center gap-2.5 rounded-full" aria-label="{{ __('View %s', 'agencecinq')|format(post.title) }}">
+			<a href="{{ post.link }}" class="text-primary bg-accent ml-auto flex size-12.5 shrink-0 items-center gap-2.5 rounded-full" aria-label="{{ __('View %s', 'agencecinq')|format(post.title) }}">
 				{{-
 					include(
 						'svg/use.html.twig',

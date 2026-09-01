@@ -1,6 +1,6 @@
 <div class="container py-10 lg:py-20">
 	<div class="overflow-x-auto">
-		<table class="bg-fond-carte/40 my-8 w-full border-collapse text-left">
+		<table class="bg-card/40 my-8 w-full border-collapse text-left">
 			<thead class="uppercase">
 				<tr>
 					<th class="p-4">Name</th>
@@ -42,9 +42,9 @@
 					<td class="p-4">
 						Color of the icon. Can be
 						<code>'text-accent'</code>,
-						<code>'text-texte-principal'</code>
+						<code>'text-primary'</code>
 						or
-						<code>'text-texte-sur-accent'</code>.
+						<code>'text-on-accent'</code>.
 					</td>
 				</tr>
 				<tr>
@@ -90,7 +90,7 @@
 	</div>
 
 	<div class="overflow-x-auto">
-		<table class="bg-fond-carte/40 my-8 w-full border-collapse text-left">
+		<table class="bg-card/40 my-8 w-full border-collapse text-left">
 			<thead class="uppercase">
 				<tr>
 					<th class="py-4">Variant</th>
@@ -134,7 +134,7 @@
 								{
 									title: 'Button',
 									icon: 'bullet',
-									fill: 'text-texte-principal'
+									fill: 'text-primary'
 								}
 							)
 						-}}
@@ -188,7 +188,7 @@
 									title: 'Button',
 									icon: 'bullet',
 									mode: 'dark',
-									fill: 'text-texte-principal'
+									fill: 'text-primary'
 								}
 							)
 						-}}
@@ -199,7 +199,7 @@
 									title: 'Menu',
 									icon: 'bars',
 									mode: 'dark',
-									fill: 'text-texte-principal',
+									fill: 'text-primary',
 									animate: false
 								}
 							)
@@ -211,7 +211,7 @@
 									title: 'Menu',
 									icon: 'bars',
 									mode: 'dark',
-									fill: 'text-texte-principal'
+									fill: 'text-primary'
 								}
 							)
 						-}}
@@ -222,7 +222,7 @@
 									title: 'Button',
 									icon: 'bullet',
 									mode: 'dark',
-									fill: 'text-texte-principal'
+									fill: 'text-primary'
 								}
 							)
 						-}}
@@ -278,7 +278,7 @@
 									title: 'Button',
 									variant: 'secondary',
 									icon: 'bullet',
-									fill: 'text-texte-principal'
+									fill: 'text-primary'
 								}
 							)
 						-}}
@@ -336,7 +336,7 @@
 									title: 'Button',
 									variant: 'secondary',
 									icon: 'bullet',
-									fill: 'text-texte-principal',
+									fill: 'text-primary',
 									mode: 'dark'
 								}
 							)
@@ -683,246 +683,256 @@
 
 	{% set color_groups = [
 		{
-			label: 'Fonds',
+			label: 'Backgrounds',
+			columns: 'lg:grid-cols-4',
 			swatches: [
 				{
 					name: 'Page',
-					token: 'fond-page',
-					bg: 'bg-fond-page',
-					hex: '#08090A',
-					description: 'Le fond de tout le site.'
+					token: 'page',
+					bg: 'bg-page',
+					description: 'Site-wide background. #08090A'
 				},
 				{
-					name: 'Élevé',
-					token: 'fond-eleve',
-					bg: 'bg-fond-eleve',
-					hex: '#0D0F0E',
-					description: 'Footer, bandeaux, sections détachées.'
+					name: 'Elevated',
+					token: 'elevated',
+					bg: 'bg-elevated',
+					description: 'Footer, banners, detached sections. #0D0F0E'
 				},
 				{
-					name: 'Carte',
-					token: 'fond-carte',
-					bg: 'bg-fond-carte',
-					hex: '#141614',
-					description: 'Cartes, encadrés, champs de formulaire.'
+					name: 'Card',
+					token: 'card',
+					bg: 'bg-card',
+					description: 'Cards, panels, form fields. #141614'
 				},
 				{
-					name: 'Carte · survol',
-					token: 'fond-carte-survol',
-					bg: 'bg-fond-carte-survol',
-					hex: '#1C201C',
-					description: "État survolé d'une carte cliquable."
+					name: 'Card · hover',
+					token: 'card-hover',
+					bg: 'bg-card-hover',
+					description: 'Hovered state of a clickable card. #1C201C'
 				}
 			]
 		},
 		{
-			label: 'Textes',
+			label: 'Texts',
+			columns: 'lg:grid-cols-4',
 			swatches: [
 				{
-					name: 'Principal',
-					token: 'texte-principal',
-					bg: 'bg-texte-principal',
-					hex: '#F1F0EA',
-					description: 'Titres et texte courant.'
+					name: 'Primary',
+					token: 'primary',
+					bg: 'bg-primary',
+					description: 'Headings and body text. #F1F0EA'
 				},
 				{
-					name: 'Atténué',
-					token: 'texte-attenue',
-					bg: 'bg-texte-attenue',
-					hex: '#9A988D',
-					description: 'Chapôs, descriptions. 5.8:1 - AA.'
+					name: 'Muted',
+					token: 'muted',
+					bg: 'bg-muted',
+					description: 'Lead text, descriptions. 5.8:1 — AA. #9A988D'
 				},
 				{
-					name: 'Discret',
-					token: 'texte-discret',
-					bg: 'bg-texte-discret',
-					hex: '#7E7C71',
-					description: 'Index, mentions, libellés. 4.8:1 - AA.'
+					name: 'Subtle',
+					token: 'subtle',
+					bg: 'bg-subtle',
+					description: 'Indices, mentions, labels. 4.8:1 — AA. #7E7C71'
 				},
 				{
-					name: 'Sur accent',
-					token: 'texte-sur-accent',
-					bg: 'bg-texte-sur-accent',
-					hex: '#0A0C0A',
-					description: 'Texte posé sur le vert.'
+					name: 'On accent',
+					token: 'on-accent',
+					bg: 'bg-on-accent',
+					description: 'Text on green accent. #0A0C0A'
 				}
 			]
 		},
 		{
-			label: 'Accent & bordures',
+			label: 'Accent & Borders',
+			columns: 'lg:grid-cols-5',
 			swatches: [
 				{
 					name: 'Accent',
 					token: 'accent',
 					bg: 'bg-accent',
-					hex: '#B3FCA4',
-					description: 'CTA, nœuds, focus, liens actifs.'
+					description: 'CTAs, nodes, focus, active links. #B3FCA4'
 				},
 				{
-					name: 'Accent · survol',
-					token: 'accent-survol',
-					bg: 'bg-accent-survol',
-					hex: '#C7FFBB',
-					description: 'Survol du CTA primaire.'
+					name: 'Accent · hover',
+					token: 'accent-hover',
+					bg: 'bg-accent-hover',
+					description: 'Primary CTA hover. #C7FFBB'
 				},
 				{
-					name: 'Accent doux',
-					token: 'accent-doux',
-					bg: 'bg-accent-doux',
-					hex: '14 %',
-					description: 'Fond teinté. Badges, surlignage.'
+					name: 'Accent soft',
+					token: 'accent-soft',
+					bg: 'bg-accent-soft',
+					description: '14% tinted background. Badges, highlights.'
 				},
 				{
-					name: 'Bordure',
-					token: 'bordure',
-					bg: 'bg-bordure',
-					hex: '11 %',
-					description: 'Filets, séparateurs. Crème à 11 %.'
+					name: 'Border',
+					token: 'border',
+					bg: 'bg-border',
+					description: 'Rules, dividers. Cream at 11%.'
 				},
 				{
-					name: 'Bordure subtile',
-					token: 'bordure-subtile',
-					bg: 'bg-bordure-subtile',
-					hex: '6 %',
-					description: 'Séparateurs internes. Crème à 6 %.'
-				},
-				{
-					name: 'Bordure accent',
-					token: 'bordure-accent',
-					bg: 'bg-bordure-accent',
-					hex: '#B3FCA4',
-					description: "Filets et focus sur l'accent."
+					name: 'Border subtle',
+					token: 'border-subtle',
+					bg: 'bg-border-subtle',
+					description: 'Inner dividers. Cream at 6%.'
 				}
 			]
 		}
 	] %}
 
-	<section class="bg-fond-page text-texte-principal my-8 flex flex-col gap-14 p-5 lg:p-20">
+	{% set contrast_ratios = [
+		{ pair: 'text/primary on bg/page', ratio: '17.45:1', fails: false },
+		{ pair: 'accent on bg/page', ratio: '16.49:1', fails: false },
+		{ pair: 'text/on-accent on accent', ratio: '16.24:1', fails: false },
+		{ pair: 'text/muted on bg/page', ratio: '6.88:1', fails: false },
+		{ pair: 'text/muted on bg/card', ratio: '6.64:1', fails: false },
+		{ pair: 'text/subtle on bg/page', ratio: '4.75:1', fails: false },
+		{ pair: 'text/subtle on bg/elevated', ratio: '4.59:1', fails: false },
+		{ pair: 'text/subtle on bg/card', ratio: '4.34:1 — below AA threshold', fails: true }
+	] %}
+
+	<section class="bg-page text-primary my-8 flex flex-col gap-14 p-5 lg:p-20">
 		<header class="flex max-w-180 flex-col gap-3">
-			<p class="text-eyebrow text-texte-attenue">Fondations</p>
-			<h2 class="text-titre-2">Couleurs</h2>
-			<p class="text-corps-s text-texte-attenue">
-				Le site est mono-thème (sombre). La profondeur vient de quatre noirs étagés, pas de la couleur. Le vert pistache est l'unique accent et s'emploie avec parcimonie : CTA, nœuds, liens actifs, focus.
+			<p class="text-eyebrow text-muted">● Foundations</p>
+			<h2 class="text-title-xl">Colors</h2>
+			<p class="text-sm text-muted">
+				Single-theme site (dark). Depth comes from four stacked blacks, not color. Pistachio green is the sole accent, used sparingly: CTAs, nodes, active links, focus.
 			</p>
 		</header>
 
 		{% for group in color_groups %}
 			<div class="flex flex-col gap-6">
-				<p class="text-eyebrow text-texte-attenue">{{ group.label }}</p>
-				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+				<p class="text-eyebrow text-muted">{{ group.label }}</p>
+				<div class="{{ html_classes( 'grid grid-cols-1 gap-6 sm:grid-cols-2', group.columns ) }}">
 					{% for swatch in group.swatches %}
 						<div class="flex flex-col gap-3">
-							<div class="{{ html_classes( 'border-bordure h-33 rounded-lg border', swatch.bg ) }}"></div>
+							<div class="{{ html_classes( 'border-border h-33 rounded-lg border', swatch.bg ) }}"></div>
 							<div class="flex flex-col gap-1">
-								<p class="text-titre-4">{{ swatch.name }}</p>
+								<p class="text-title-md">{{ swatch.name }}</p>
 								<p class="text-label text-accent">--color-{{ swatch.token }}</p>
-								<p class="text-corps-s text-texte-attenue">{{ swatch.description }}</p>
-								<p class="text-label text-texte-discret">{{ swatch.hex }}</p>
+								<p class="text-sm text-muted">{{ swatch.description }}</p>
 							</div>
 						</div>
 					{% endfor %}
 				</div>
 			</div>
 		{% endfor %}
+
+		<div class="border-border-accent flex flex-col gap-3.5 border-l-2 pl-6">
+			<p class="text-title-md">text/subtle must not be used on bg/card</p>
+			<p class="text-sm text-muted max-w-225">
+				On bg/page it scores 4.75:1, just above the AA threshold. On bg/card (#141614) it drops to 4.34:1 and falls below. On a card, the secondary text level is therefore text/muted (6.6:1). Applies to form placeholders, crosslink subtitles, and card details.
+			</p>
+		</div>
+
+		<div class="flex flex-col gap-2">
+			<p class="text-label text-subtle">Measured Ratios</p>
+			{% for item in contrast_ratios %}
+				<div class="flex flex-col gap-1 sm:flex-row sm:gap-6">
+					<p class="text-sm text-muted w-full sm:w-90">{{ item.pair }}</p>
+					<p class="{{ html_classes( 'text-label', item.fails ? 'text-primary' : 'text-accent' ) }}">{{ item.ratio }}</p>
+				</div>
+			{% endfor %}
+		</div>
 	</section>
 
 	{% set type_groups = [
 		{
-			label: 'Titres · Inter Medium',
+			label: 'Titles · Inter Medium',
 			styles: [
 				{
-					name: 'Display',
-					class: 'text-display',
+					name: 'title-3xl',
+					class: 'text-title-3xl',
 					specs: 'desktop · 96 / 96% / -4%',
 					mobile_specs: 'mobile · 48 / 98% / -4%',
-					desktop_class: 'text-display-desktop',
-					mobile_class: 'text-display-mobile text-texte-discret',
+					desktop_class: 'text-title-3xl-desktop',
+					mobile_class: 'text-title-3xl-mobile text-subtle',
 					sample: 'Un site qui grandit avec vous.'
 				},
 				{
-					name: 'Titre 1',
-					class: 'text-titre-1',
+					name: 'title-xxl',
+					class: 'text-title-xxl',
 					specs: 'desktop · 76 / 100% / -3,5%',
 					mobile_specs: 'mobile · 38 / 100% / -3,5%',
-					desktop_class: 'text-titre-1-desktop',
-					mobile_class: 'text-titre-1-mobile text-texte-discret',
+					desktop_class: 'text-title-xxl-desktop',
+					mobile_class: 'text-title-xxl-mobile text-subtle',
 					sample: 'Cinq engagements. Aucun négociable.'
 				},
 				{
-					name: 'Titre 2',
-					class: 'text-titre-2',
+					name: 'title-xl',
+					class: 'text-title-xl',
 					specs: 'desktop · 56 / 105% / -2%',
 					mobile_specs: 'mobile · 34 / 105% / -2%',
-					desktop_class: 'text-titre-2-desktop',
-					mobile_class: 'text-titre-2-mobile text-texte-discret',
+					desktop_class: 'text-title-xl-desktop',
+					mobile_class: 'text-title-xl-mobile text-subtle',
 					sample: 'Trois façons de faire grandir votre site.'
 				},
 				{
-					name: 'Titre 3',
-					class: 'text-titre-3',
+					name: 'title-lg',
+					class: 'text-title-lg',
 					specs: 'desktop · 32 / 115% / -1,5%',
 					mobile_specs: 'mobile · 26 / 115% / -1,5%',
-					desktop_class: 'text-titre-3-desktop',
-					mobile_class: 'text-titre-3-mobile text-texte-discret',
+					desktop_class: 'text-title-lg-desktop',
+					mobile_class: 'text-title-lg-mobile text-subtle',
 					sample: 'Maintenance et évolutions'
 				},
 				{
-					name: 'Titre 4',
-					class: 'text-titre-4',
+					name: 'title-md',
+					class: 'text-title-md',
 					specs: '20 / 115% / -1%',
 					mobile_specs: '',
-					desktop_class: 'text-titre-4',
+					desktop_class: 'text-title-md',
 					mobile_class: '',
 					sample: 'Création de site Shopify'
 				}
 			]
 		},
 		{
-			label: 'Textes · Inter Regular',
+			label: 'Text · Inter Regular',
 			styles: [
 				{
-					name: 'Lede L',
-					class: 'text-lede-l',
+					name: 'text-xl',
+					class: 'text-xl',
 					specs: 'desktop · 22 / 155%',
 					mobile_specs: 'mobile · 18 / 155%',
-					desktop_class: 'text-lede-l-desktop',
-					mobile_class: 'text-lede-l-mobile text-texte-discret',
+					desktop_class: 'text-xl-desktop',
+					mobile_class: 'text-xl-mobile text-subtle',
 					sample: "Votre site n'est pas une dépense à réamortir tous les trois ans."
 				},
 				{
-					name: 'Lede M',
-					class: 'text-lede-m',
+					name: 'text-lg',
+					class: 'text-lg',
 					specs: 'desktop · 19 / 160%',
 					mobile_specs: 'mobile · 17 / 160%',
-					desktop_class: 'text-lede-m-desktop',
-					mobile_class: 'text-lede-m-mobile text-texte-discret',
+					desktop_class: 'text-lg-desktop',
+					mobile_class: 'text-lg-mobile text-subtle',
 					sample: "C'est un actif qu'on construit pour durer, et qu'on fait évoluer avec votre entreprise."
 				},
 				{
-					name: 'Corps',
-					class: 'text-corps',
-					specs: 'desktop · 17 / 160%',
-					mobile_specs: 'mobile · 16 / 160%',
-					desktop_class: 'text-corps-desktop',
-					mobile_class: 'text-corps-mobile text-texte-discret',
+					name: 'text-base',
+					class: 'text-base',
+					specs: '16 / 160%',
+					mobile_specs: '',
+					desktop_class: 'text-base',
+					mobile_class: '',
 					sample: 'Des storefronts Shopify taillés pour votre marque : thème dédié, D2C et B2B, CRM branché dès le premier jour.'
 				},
 				{
-					name: 'Corps S',
-					class: 'text-corps-s',
+					name: 'text-sm',
+					class: 'text-sm',
 					specs: 'desktop · 15 / 155%',
 					mobile_specs: 'mobile · 14 / 155%',
-					desktop_class: 'text-corps-s-desktop',
-					mobile_class: 'text-corps-s-mobile text-texte-discret',
+					desktop_class: 'text-sm-desktop',
+					mobile_class: 'text-sm-mobile text-subtle',
 					sample: 'Sites vitrines et éditoriaux WordPress rapides et maintenables.'
 				},
 				{
-					name: 'Corps XS',
-					class: 'text-corps-xs',
+					name: 'text-xs',
+					class: 'text-xs',
 					specs: 'desktop · 14 / 150%',
 					mobile_specs: 'mobile · 13 / 150%',
-					desktop_class: 'text-corps-xs-desktop',
-					mobile_class: 'text-corps-xs-mobile text-texte-discret',
+					desktop_class: 'text-xs-desktop',
+					mobile_class: 'text-xs-mobile text-subtle',
 					sample: 'Paris · Tours · Marseille - contact@agencecinq.com'
 				}
 			]
@@ -970,11 +980,11 @@
 		}
 	] %}
 
-	<section class="bg-fond-page text-texte-principal my-8 flex flex-col gap-16 p-5 lg:p-20">
+	<section class="bg-page text-primary my-8 flex flex-col gap-16 p-5 lg:p-20">
 		<header class="flex max-w-215 flex-col gap-3">
-			<p class="text-eyebrow text-texte-attenue">Fondations</p>
-			<h2 class="text-titre-2">Typographie</h2>
-			<p class="text-corps-s text-texte-attenue">
+			<p class="text-eyebrow text-muted">Fondations</p>
+			<h2 class="text-title-xl">Typographie</h2>
+			<p class="text-sm text-muted">
 				Deux familles Google Fonts. Inter porte les titres et le texte courant ; JetBrains Mono
 				porte tout le méta : surtitres, index, libellés de bouton, badges. Titres et textes
 				passent en version desktop dès 1024 px ; le méta ne change pas.
@@ -983,24 +993,24 @@
 
 		{% for group in type_groups %}
 			<div>
-				<p class="text-eyebrow text-texte-attenue">
+				<p class="text-eyebrow text-muted">
 					{{ group.label }}
 				</p>
 				{% for style in group.styles %}
-					<div class="border-bordure-subtile flex flex-col gap-6 border-t py-6 lg:flex-row lg:gap-10">
+					<div class="border-border-subtle flex flex-col gap-6 border-t py-6 lg:flex-row lg:gap-10">
 						<div class="flex w-full shrink-0 flex-col gap-1.5 whitespace-nowrap lg:w-55">
-							<p class="text-titre-4">
+							<p class="text-title-md">
 								{{ style.name }}
 							</p>
-							<p class="text-label text-texte-discret">
+							<p class="text-label text-subtle">
 								{{ style.specs }}
 							</p>
 							{%- if style.mobile_specs -%}
-								<p class="text-label text-texte-discret">
+								<p class="text-label text-subtle">
 									{{ style.mobile_specs }}
 								</p>
 							{%- endif -%}
-							<code class="text-label text-texte-discret">.{{ style.class }}</code>
+							<code class="text-label text-subtle">.{{ style.class }}</code>
 						</div>
 						<div class="flex min-w-0 flex-1 flex-col gap-4 overflow-x-auto">
 							<p class="{{ style.desktop_class }}">

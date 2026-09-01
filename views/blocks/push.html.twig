@@ -24,10 +24,10 @@
 		}}"
 	>
 		{%- if block.content.title -%}
-			<h3 class="text-titre-3 lg:hidden">{{- block.content.title -}}</h3>
+			<h3 class="text-title-lg lg:hidden">{{- block.content.title -}}</h3>
 		{%- endif -%}
 
-		<div class="{{ html_classes( 'rounded-25 overflow-hidden', block.object_fit == 'object-cover' ? 'aspect-square bg-fond-carte/30' : '' ) }}">
+		<div class="{{ html_classes( 'rounded-25 overflow-hidden', block.object_fit == 'object-cover' ? 'aspect-square bg-card/30' : '' ) }}">
 			{{-
 				include(
 					'components/media.html.twig',
@@ -58,10 +58,10 @@
 			{%- if block.content.title or block.content.subtitle or block.content.text -%}
 				<div class="space-y-2.5 lg:space-y-5">
 					{%- if block.content.title -%}
-						<h3 class="text-titre-3 hidden lg:block">{{- block.content.title -}}</h3>
+						<h3 class="text-title-lg hidden lg:block">{{- block.content.title -}}</h3>
 					{%- endif -%}
 					{%- if block.content.subtitle -%}
-						<p class="text-lede-l">
+						<p class="text-xl">
 							{{- block.content.subtitle -}}
 						</p>
 					{%- endif -%}
@@ -94,12 +94,12 @@
 							{%- if item.title or item.text -%}
 								<div class="min-w-0 flex-1 space-y-2.5">
 									{%- if item.title -%}
-										<p class="text-lede-l">
+										<p class="text-xl">
 											{{- item.title -}}
 										</p>
 									{%- endif -%}
 									{%- if item.text -%}
-										<p class="text-corps-s">
+										<p class="text-sm">
 											{{- item.text -}}
 										</p>
 									{%- endif -%}

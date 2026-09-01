@@ -20,7 +20,7 @@
 			{%- if block.content.title -%}
 				<div class="col-span-full space-y-5 lg:col-span-5">
 					{%- if block.content.title -%}
-						<h2 class="text-titre-3">{{- block.content.title -}}</h2>
+						<h2 class="text-title-lg">{{- block.content.title -}}</h2>
 					{%- endif -%}
 				</div>
 			{%- endif -%}
@@ -28,7 +28,7 @@
 			{%- if block.content.subtitle -%}
 				<div class="col-span-full space-y-5 lg:col-span-6 lg:col-start-1">
 					{%- if block.content.subtitle -%}
-						<p class="text-lede-l">
+						<p class="text-xl">
 							{{- block.content.subtitle -}}
 						</p>
 					{%- endif -%}
@@ -37,7 +37,7 @@
 
 			{%- if block.content.text -%}
 				<div class="col-span-full space-y-5 lg:col-span-6 lg:col-start-7 lg:mx-[3.46875rem]">
-					<div class="text-lede-l">
+					<div class="text-xl">
 						{{- block.content.text|raw -}}
 					</div>
 				</div>
@@ -58,7 +58,7 @@
 
 					<div class="relative z-1 flex flex-col gap-y-5 lg:gap-y-7.5">
 						<div
-							class="bg-fond-carte/30 rounded-15 relative aspect-382/429 overflow-hidden lg:aspect-427/480"
+							class="bg-card/30 rounded-15 relative aspect-382/429 overflow-hidden lg:aspect-427/480"
 						>
 							{{-
 								include(
@@ -81,10 +81,10 @@
 										{%- if step.title or step.text -%}
 											<div class="space-y-2.5">
 												{%- if step.title -%}
-													<h3 class="text-titre-4">{{- step.title -}}</h3>
+													<h3 class="text-title-md">{{- step.title -}}</h3>
 												{%- endif -%}
 												{%- if step.text -%}
-													<p class="text-corps-s">
+													<p class="text-sm">
 														{{- step.text -}}
 													</p>
 												{%- endif -%}
