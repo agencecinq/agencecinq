@@ -27,8 +27,8 @@
 				or post.meta('hero').content.text
 				or post.meta('hero').image
 				or post.title -%}
-			<section class="bg-page text-primary py-16 lg:py-26" aria-labelledby="case-hero-title">
-				<div class="container">
+			<section class="bg-page text-primary py-18 lg:py-26" aria-labelledby="case-hero-title">
+				<div class="mx-auto w-full px-6 md:max-w-3xl md:px-10 lg:max-w-360 lg:px-15">
 					{%- if
 						post.meta('hero').content.client
 							or post.meta('hero').content.platform
@@ -76,9 +76,9 @@
 					{%- endif -%}
 
 					{%- if post.meta('hero').image -%}
-						<figure class="border-border bg-card rounded-10 mt-18 overflow-hidden border">
+						<figure class="border-border bg-card rounded-10 mt-18 w-full overflow-hidden border">
 							<div
-								class="bg-card-hover flex items-center gap-1.75 px-3.5 py-2.75"
+								class="bg-card-hover flex h-8 items-center gap-1.75 px-3.5"
 								aria-hidden="true"
 							>
 								<span class="bg-subtle size-2.25 rounded-full"></span>
