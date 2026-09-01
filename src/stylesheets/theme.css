@@ -7,113 +7,109 @@
 	/* Colors */
 	--color-*: initial;
 
-	--color-fond-page: #08090a;
-	--color-fond-eleve: #0d0f0e;
-	--color-fond-carte: #141614;
-	--color-fond-carte-survol: #1c201c;
+	--color-page: #08090a;
+	--color-elevated: #0d0f0e;
+	--color-card: #141614;
+	--color-card-hover: #1c201c;
 
-	--color-texte-principal: #f1f0ea;
-	--color-texte-attenue: #9a988d;
-	--color-texte-discret: #7e7c71;
-	--color-texte-sur-accent: #0a0c0a;
+	--color-primary: #f1f0ea;
+	--color-muted: #9a988d;
+	--color-subtle: #7e7c71;
+	--color-on-accent: #0a0c0a;
 
 	--color-accent: #b3fca4;
-	--color-accent-survol: #c7ffbb;
-	--color-accent-doux: #b3fca424;
+	--color-accent-hover: #c7ffbb;
+	--color-accent-soft: #b3fca424;
 
-	--color-bordure: #f1f0ea1c;
-	--color-bordure-subtile: #f1f0ea0f;
-	--color-bordure-accent: #b3fca4;
+	--color-border: #f1f0ea1c;
+	--color-border-subtle: #f1f0ea0f;
+	--color-border-accent: #b3fca4;
 
 	/* Typographies */
 	--text-*: initial;
 
-	/* Titres · Inter Medium */
-	--text-display-desktop: 6rem;
-	--text-display-desktop--font-weight: 500;
-	--text-display-desktop--line-height: 0.96;
-	--text-display-desktop--letter-spacing: -0.04em;
+	/* Headings · Inter Medium */
+	--text-title-3xl-desktop: 6rem;
+	--text-title-3xl-desktop--font-weight: 500;
+	--text-title-3xl-desktop--line-height: 0.96;
+	--text-title-3xl-desktop--letter-spacing: -0.04em;
 
-	--text-display-mobile: 3rem;
-	--text-display-mobile--font-weight: 500;
-	--text-display-mobile--line-height: 0.98;
-	--text-display-mobile--letter-spacing: -0.04em;
+	--text-title-3xl-mobile: 3rem;
+	--text-title-3xl-mobile--font-weight: 500;
+	--text-title-3xl-mobile--line-height: 0.98;
+	--text-title-3xl-mobile--letter-spacing: -0.04em;
 
-	--text-titre-1-desktop: 4.75rem;
-	--text-titre-1-desktop--font-weight: 500;
-	--text-titre-1-desktop--line-height: 1;
-	--text-titre-1-desktop--letter-spacing: -0.035em;
+	--text-title-xxl-desktop: 4.75rem;
+	--text-title-xxl-desktop--font-weight: 500;
+	--text-title-xxl-desktop--line-height: 1;
+	--text-title-xxl-desktop--letter-spacing: -0.035em;
 
-	--text-titre-1-mobile: 2.375rem;
-	--text-titre-1-mobile--font-weight: 500;
-	--text-titre-1-mobile--line-height: 1;
-	--text-titre-1-mobile--letter-spacing: -0.035em;
+	--text-title-xxl-mobile: 2.375rem;
+	--text-title-xxl-mobile--font-weight: 500;
+	--text-title-xxl-mobile--line-height: 1;
+	--text-title-xxl-mobile--letter-spacing: -0.035em;
 
-	--text-titre-2-desktop: 3.5rem;
-	--text-titre-2-desktop--font-weight: 500;
-	--text-titre-2-desktop--line-height: 1.05;
-	--text-titre-2-desktop--letter-spacing: -0.02em;
+	--text-title-xl-desktop: 3.5rem;
+	--text-title-xl-desktop--font-weight: 500;
+	--text-title-xl-desktop--line-height: 1.05;
+	--text-title-xl-desktop--letter-spacing: -0.02em;
 
-	--text-titre-2-mobile: 2.125rem;
-	--text-titre-2-mobile--font-weight: 500;
-	--text-titre-2-mobile--line-height: 1.05;
-	--text-titre-2-mobile--letter-spacing: -0.02em;
+	--text-title-xl-mobile: 2.125rem;
+	--text-title-xl-mobile--font-weight: 500;
+	--text-title-xl-mobile--line-height: 1.05;
+	--text-title-xl-mobile--letter-spacing: -0.02em;
 
-	--text-titre-3-desktop: 2rem;
-	--text-titre-3-desktop--font-weight: 500;
-	--text-titre-3-desktop--line-height: 1.15;
-	--text-titre-3-desktop--letter-spacing: -0.015em;
+	--text-title-lg-desktop: 2rem;
+	--text-title-lg-desktop--font-weight: 500;
+	--text-title-lg-desktop--line-height: 1.15;
+	--text-title-lg-desktop--letter-spacing: -0.015em;
 
-	--text-titre-3-mobile: 1.625rem;
-	--text-titre-3-mobile--font-weight: 500;
-	--text-titre-3-mobile--line-height: 1.15;
-	--text-titre-3-mobile--letter-spacing: -0.015em;
+	--text-title-lg-mobile: 1.625rem;
+	--text-title-lg-mobile--font-weight: 500;
+	--text-title-lg-mobile--line-height: 1.15;
+	--text-title-lg-mobile--letter-spacing: -0.015em;
 
-	--text-titre-4: 1.25rem;
-	--text-titre-4--font-weight: 500;
-	--text-titre-4--line-height: 1.15;
-	--text-titre-4--letter-spacing: -0.01em;
+	--text-title-md: 1.25rem;
+	--text-title-md--font-weight: 500;
+	--text-title-md--line-height: 1.15;
+	--text-title-md--letter-spacing: -0.01em;
 
-	/* Textes · Inter Regular */
-	--text-lede-l-desktop: 1.375rem;
-	--text-lede-l-desktop--font-weight: 400;
-	--text-lede-l-desktop--line-height: 1.55;
+	/* Text · Inter Regular */
+	--text-xl-desktop: 1.375rem;
+	--text-xl-desktop--font-weight: 400;
+	--text-xl-desktop--line-height: 1.55;
 
-	--text-lede-l-mobile: 1.125rem;
-	--text-lede-l-mobile--font-weight: 400;
-	--text-lede-l-mobile--line-height: 1.55;
+	--text-xl-mobile: 1.125rem;
+	--text-xl-mobile--font-weight: 400;
+	--text-xl-mobile--line-height: 1.55;
 
-	--text-lede-m-desktop: 1.1875rem;
-	--text-lede-m-desktop--font-weight: 400;
-	--text-lede-m-desktop--line-height: 1.6;
+	--text-lg-desktop: 1.1875rem;
+	--text-lg-desktop--font-weight: 400;
+	--text-lg-desktop--line-height: 1.6;
 
-	--text-lede-m-mobile: 1.0625rem;
-	--text-lede-m-mobile--font-weight: 400;
-	--text-lede-m-mobile--line-height: 1.6;
+	--text-lg-mobile: 1.0625rem;
+	--text-lg-mobile--font-weight: 400;
+	--text-lg-mobile--line-height: 1.6;
 
-	--text-corps-desktop: 1.0625rem;
-	--text-corps-desktop--font-weight: 400;
-	--text-corps-desktop--line-height: 1.6;
+	--text-base: 1rem;
+	--text-base--font-weight: 400;
+	--text-base--line-height: 1.6;
 
-	--text-corps-mobile: 1rem;
-	--text-corps-mobile--font-weight: 400;
-	--text-corps-mobile--line-height: 1.6;
+	--text-sm-desktop: 0.9375rem;
+	--text-sm-desktop--font-weight: 400;
+	--text-sm-desktop--line-height: 1.55;
 
-	--text-corps-s-desktop: 0.9375rem;
-	--text-corps-s-desktop--font-weight: 400;
-	--text-corps-s-desktop--line-height: 1.55;
+	--text-sm-mobile: 0.875rem;
+	--text-sm-mobile--font-weight: 400;
+	--text-sm-mobile--line-height: 1.55;
 
-	--text-corps-s-mobile: 0.875rem;
-	--text-corps-s-mobile--font-weight: 400;
-	--text-corps-s-mobile--line-height: 1.55;
+	--text-xs-desktop: 0.875rem;
+	--text-xs-desktop--font-weight: 400;
+	--text-xs-desktop--line-height: 1.5;
 
-	--text-corps-xs-desktop: 0.875rem;
-	--text-corps-xs-desktop--font-weight: 400;
-	--text-corps-xs-desktop--line-height: 1.5;
-
-	--text-corps-xs-mobile: 0.8125rem;
-	--text-corps-xs-mobile--font-weight: 400;
-	--text-corps-xs-mobile--line-height: 1.5;
+	--text-xs-mobile: 0.8125rem;
+	--text-xs-mobile--font-weight: 400;
+	--text-xs-mobile--line-height: 1.5;
 
 	/* Meta · JetBrains Mono */
 	--text-eyebrow: 0.6875rem;

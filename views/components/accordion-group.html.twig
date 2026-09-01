@@ -5,7 +5,7 @@
  # @param accordions (array) - The accordions to display.
  #
  # @example
- # {{- include('components/accordion-group.html.twig', { classes: [ 'bg-fond-page rounded-20 px-3.5 py-7.5 lg:px-12.75 lg:py-9.25' ], accordions: block.content.accordions }) -}}
+ # {{- include('components/accordion-group.html.twig', { classes: [ 'bg-page rounded-20 px-3.5 py-7.5 lg:px-12.75 lg:py-9.25' ], accordions: block.content.accordions }) -}}
  #}
 
 {% if (accordions|length) > 1 %}
@@ -13,7 +13,7 @@
 		class="{{
 		html_classes(
 			classes|default([])|join(' '),
-			'divide-bordure/25 block space-y-3.75 divide-y lg:space-y-6.25'
+			'divide-border/25 block space-y-3.75 divide-y lg:space-y-6.25'
 		)
 		}}"
 	>
@@ -26,7 +26,7 @@
 			>
 				<button
 					type="button"
-					class="js-accordion-header group text-corps flex w-full items-center justify-between gap-2.5 text-left"
+					class="js-accordion-header group text-base flex w-full items-center justify-between gap-2.5 text-left"
 					aria-expanded="false"
 					aria-controls="{{ id }}-body"
 					id="{{ id }}-{{ loop.index }}-header"
@@ -34,7 +34,7 @@
 					{{- accordion.header -}}
 
 					<span
-						class="text-texte-sur-accent bg-accent flex size-6.25 shrink-0 items-center justify-center rounded-full"
+						class="text-on-accent bg-accent flex size-6.25 shrink-0 items-center justify-center rounded-full"
 					>
 						{{-
 							include(
@@ -57,7 +57,7 @@
 					role="region"
 					aria-labelledby="{{ id }}-header"
 				>
-					<div class="js-accordion-inner text-corps-s space-y-3 pt-2.5">
+					<div class="js-accordion-inner text-sm space-y-3 pt-2.5">
 						{{ accordion.content }}
 					</div>
 				</div>

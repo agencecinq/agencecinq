@@ -1,0 +1,65 @@
+{#
+ # Page: Archive: Case study
+ #
+ # @package AgenceCinq
+ #}
+
+{% extends 'index.html.twig' %}
+
+{%- block content -%}
+	<main id="content" role="main">
+		<div class="rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 lg:-mb-12.5">
+			{%- block header -%}
+				{{- include('header.html.twig', { classes: [ 'relative z-10' ] } ) -}}
+			{%- endblock -%}
+
+			<div class="container grid grid-cols-12 gap-5 pt-5 pb-20 lg:pt-12.5">
+				<div class="col-span-full space-y-5 text-center lg:col-span-10 lg:col-start-2">
+					{{- yoast_breadcrumb() -}}
+					<h1 class="text-title-xl text-accent">
+						{{- title | default(__('Case studies', 'agencecinq')) -}}
+					</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="pt-27.5 pb-20 lg:pt-32.5">
+			<div class="container">
+				<div class="grid grid-cols-12 gap-5">
+					<div
+						class="col-span-full grid grid-cols-12 gap-x-2.5 gap-y-10 lg:col-span-10 lg:col-start-2 lg:gap-x-5 lg:gap-y-20"
+					>
+						{%- for post in posts -%}
+							<div class="col-span-6 lg:col-span-4">
+								{{-
+									include(
+										'components/tease-case-study.html.twig',
+										{
+											post: post
+										}
+									)
+								-}}
+							</div>
+						{%- else -%}
+							<p class="col-span-full text-center">
+								{{- __('No case studies found.', 'agencecinq') -}}
+							</p>
+						{%- endfor -%}
+
+						{{-
+							include(
+								'components/pagination.html.twig',
+								{
+									classes: ['col-span-full', 'mx-auto'],
+									pagination: posts.pagination({
+										mid_size: 1
+									})
+								}
+							)
+						-}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+{%- endblock -%}

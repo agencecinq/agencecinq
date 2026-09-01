@@ -1,0 +1,60 @@
+{#
+ # Components: Tease Case study
+ #
+ # Schema.org: Article (headline, image, description, url).
+ #
+ # @param {object} post The case study post. Required.
+ #}
+
+<article itemscope itemtype="https://schema.org/Article">
+	<div class="space-y-3.75 lg:space-y-5">
+		<div class="bg-card/30 rounded-15 relative aspect-square overflow-hidden">
+			<a
+				href="{{- post.link -}}"
+				itemprop="url"
+				class="absolute inset-0 z-2 size-full"
+				aria-label="{{ __('Discover: %s', 'agencecinq') | format(post.title) }}"
+				tabindex="-1"
+			>
+				<span class="sr-only">{{- __('Discover', 'agencecinq') -}}</span>
+			</a>
+			{{-
+				include(
+					'components/image.html.twig',
+					{
+						image: post.thumbnail,
+						classes: ['relative z-1 size-full object-cover object-center'],
+						attributes: {
+							itemprop: 'image'
+						}
+					}
+				)
+			-}}
+		</div>
+
+		<div class="space-y-5 lg:space-y-3.75">
+			<div class="space-y-2.5">
+				<h3 class="text-xl lg:min-h-[2lh]" itemprop="headline">{{- post.title -}}</h3>
+				{%- set excerpt =
+					post.excerpt({
+						chars: 89,
+						read_more: ''
+					})
+				-%}
+				{%- if excerpt | trim -%}
+					<p class="text-sm" itemprop="description">
+						{{- excerpt -}}
+					</p>
+				{%- endif -%}
+			</div>
+			<a
+				href="{{- post.link -}}"
+				itemprop="url"
+				class="text-cta uppercase underline"
+				aria-label="{{ __('Discover: %s', 'agencecinq') | format(post.title) }}"
+			>
+				{{- __('Discover', 'agencecinq') -}}
+			</a>
+		</div>
+	</div>
+</article>

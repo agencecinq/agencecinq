@@ -9,7 +9,7 @@
 -}}
 
 
-<section id="{{ block.id }}" class="{{ html_classes( 'text-texte-principal', block.radius != 'none' ? 'relative z-5', block.radius == 'top' ? '-mt-6.25 rounded-t-25 lg:-mt-12.5 lg:rounded-t-50', block.radius == 'bottom' ? '-mb-6.25 rounded-b-25 lg:-mb-12.5 lg:rounded-b-50', block.radius == 'y' ? '-my-6.25 rounded-t-25 rounded-b-25 lg:-my-12.5 lg:rounded-t-50 lg:rounded-b-50'  ) }}">
+<section id="{{ block.id }}" class="{{ html_classes( 'text-primary', block.radius != 'none' ? 'relative z-5', block.radius == 'top' ? '-mt-6.25 rounded-t-25 lg:-mt-12.5 lg:rounded-t-50', block.radius == 'bottom' ? '-mb-6.25 rounded-b-25 lg:-mb-12.5 lg:rounded-b-50', block.radius == 'y' ? '-my-6.25 rounded-t-25 rounded-b-25 lg:-my-12.5 lg:rounded-t-50 lg:rounded-b-50'  ) }}">
     <div class="container grid grid-cols-4 lg:grid-cols-12 gap-2.5 lg:gap-x-5 gap-y-7.5">
 
         <div class="col-span-full space-y-5 lg:col-span-6">
@@ -17,7 +17,7 @@
                 {{- yoast_breadcrumb() -}}
             {%- endif -%}
 
-            <{{block.content.heading|default('h2')}} class="text-titre-2 text-accent">
+            <{{block.content.heading|default('h2')}} class="text-title-xl text-accent">
                 {{- block.content.title | default(post.title) -}}
             </{{block.content.heading|default('h2')}}>
 
@@ -27,7 +27,7 @@
         {%- if block.content.subtitle or block.links -%}
             <div class="col-span-full lg:col-span-6 lg:col-start-1 space-y-10">
                 {%- if block.content.subtitle -%}
-                    <p class="text-lede-l">
+                    <p class="text-xl">
                         {{- block.content.subtitle -}}
                     </p>
                 {%- endif -%}
@@ -47,7 +47,7 @@
         {%- if block.content.text -%}
             <div class="col-span-full lg:col-span-6 lg:mx-[3.46875rem]">
                 {%- if block.content.text -%}
-                    <p class="text-lede-l">
+                    <p class="text-xl">
                         {{- block.content.text -}}
                     </p>
                 {%- endif -%}
@@ -56,7 +56,7 @@
 
         {%- if block.items -%}
             {%- for item in block.items -%}
-                <div class="col-span-full lg:col-span-3 lg:mt-22.5 text-lede-l space-y-3.75 lg:space-y-6.25 border-t pt-3.75 lg:pt-6.25">
+                <div class="col-span-full lg:col-span-3 lg:mt-22.5 text-xl space-y-3.75 lg:space-y-6.25 border-t pt-3.75 lg:pt-6.25">
                     <h3 class="text-accent">{{- item.title -}}</h3>
                     <p>{{- item.text -}}</p>
                 </div>

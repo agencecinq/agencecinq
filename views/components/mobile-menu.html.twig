@@ -13,8 +13,8 @@
 		html_classes(
 			'rounded-15 relative aspect-297/380 overflow-hidden text-center',
 			mode == 'dark'
-				? 'text-texte-principal bg-fond-carte/30 before:bg-fond-carte/30 before:absolute before:inset-0 before:z-2 before:size-full'
-				: 'text-texte-principal'
+				? 'text-primary bg-card/30 before:bg-card/30 before:absolute before:inset-0 before:z-2 before:size-full'
+				: 'text-primary'
 		)
 		}}"
 	>
@@ -22,12 +22,12 @@
 			{%- if push.overline or push.title -%}
 				<div class="space-y-1">
 					{%- if push.overline -%}
-						<p class="text-corps">
+						<p class="text-base">
 							{{- push.overline -}}
 						</p>
 					{%- endif -%}
 					{%- if push.title -%}
-						<p class="text-titre-4 text-accent">
+						<p class="text-title-md text-accent">
 							{{- push.title -}}
 						</p>
 					{%- endif -%}
@@ -42,7 +42,7 @@
 							classes: ['mt-auto'],
 							mode: mode,
 							icon: 'bullet',
-							fill: mode == 'dark' ? 'text-accent' : 'text-texte-principal'
+							fill: mode == 'dark' ? 'text-accent' : 'text-primary'
 						}),
 					with_context: false
 				)
@@ -75,7 +75,7 @@
 			aria-label="{{ __('Mobile navigation', 'collective-la-cabane') }}"
 			class="w-full flex-1 overflow-y-auto"
 		>
-			<ul class="text-cta divide-bordure/25 divide-y">
+			<ul class="text-cta divide-border/25 divide-y">
 				{% for item in main_items %}
 					{%- set attached = submenus_data|filter(row => row.item == item.id)|first -%}
 					<li>
@@ -136,11 +136,11 @@
 			data-panel="sub"
 			data-sub-id="{{ item.id }}"
 			id="mobile-sub-{{ item.id }}"
-			class="rounded-15 bg-fond-page text-texte-principal absolute inset-x-0 top-0 flex min-h-full flex-col gap-5 p-5"
+			class="rounded-15 bg-page text-primary absolute inset-x-0 top-0 flex min-h-full flex-col gap-5 p-5"
 			aria-hidden="true"
 			style="display: none;"
 		>
-			<div class="border-bordure/25 relative space-y-2.5 border-b pt-5.5 pb-6.25 text-center">
+			<div class="border-border/25 relative space-y-2.5 border-b pt-5.5 pb-6.25 text-center">
 				{{-
 					include(
 						'components/button.html.twig',
@@ -158,13 +158,13 @@
 					)
 				-}}
 
-				<h2 class="text-titre-4">{{- item.title -}}</h2>
+				<h2 class="text-title-md">{{- item.title -}}</h2>
 			</div>
 
 			{%- if item.children|length -%}
 				<nav class="flex-1 overflow-y-auto" aria-label="{{ item.title }}">
 					{# {%- if attached and attached.title -%}
-																																																														<p class="text-corps">{{- attached.title -}}</p>
+																																																														<p class="text-base">{{- attached.title -}}</p>
 																																																													{%- endif -%} #}
 					<ul class="space-y-10">
 						{%- for child in item.children -%}
@@ -172,7 +172,7 @@
 								{%- if child.url != '#' -%}
 									<a
 										href="{{ child.url }}"
-										class="text-lede-l block"
+										class="text-xl block"
 										{{
 										child.is_target_blank or child.is_external
 											? 'target="' ~ child.target ~ '" rel="noopener noreferer"'
@@ -181,7 +181,7 @@
 										{{- child.title -}}
 									</a>
 								{%- else -%}
-									<span class="text-lede-l block">{{- child.title -}}</span>
+									<span class="text-xl block">{{- child.title -}}</span>
 								{% endif %}
 
 								{%- if child.children|length -%}

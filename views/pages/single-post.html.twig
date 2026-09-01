@@ -20,10 +20,10 @@
 					{{- yoast_breadcrumb() -}}
 				</div>
 				<div class="col-span-full space-y-7.5 lg:order-2 lg:col-span-6">
-					<h1 class="text-titre-2 text-accent" itemprop="headline">{{- post.title -}}</h1>
+					<h1 class="text-title-xl text-accent" itemprop="headline">{{- post.title -}}</h1>
 
 					{% if post.meta('general').subtitle %}
-						<p class="text-lede-l">
+						<p class="text-xl">
 							{{- post.meta('general').subtitle -}}
 						</p>
 					{% endif %}
@@ -127,10 +127,10 @@
 
 				{%- if post.meta('general').learn_more.title or post.meta('general').learn_more.text -%}
 					<div class="bg-accent space-y-5 rounded-15 py-7.5 px-6.25">
-						<h3 class="text-corps">
+						<h3 class="text-base">
 							{{- post.meta('general').learn_more.title -}}
 						</h3>
-						<p class="text-lede-l">
+						<p class="text-xl">
 							{{- post.meta('general').learn_more.text -}}
 						</p>
 					</div>
@@ -142,7 +142,7 @@
 			include(
 				'components/collection-posts.html.twig', 
 				{ 
-					classes: [ 'bg-fond-page', 'py-20', 'lg:py-37.5' ], 
+					classes: [ 'bg-page', 'py-20', 'lg:py-37.5' ], 
 					posts: post.related_posts(),
 					content: {
 						title: __('Our latest news', 'collective-la-cabane'),

@@ -5,7 +5,7 @@
  #}
 
 {%- if (pagination.pages|length) > 0 -%}
-	<nav role="navigation" class="{{ html_classes( 'text-lede-l inline-flex items-center gap-7.5', classes|default([]) | join(' ') ) }}">
+	<nav role="navigation" class="{{ html_classes( 'text-xl inline-flex items-center gap-7.5', classes|default([]) | join(' ') ) }}">
 		{% if pagination.prev %}
 			<a
 				href="{{ pagination.prev.link }}{{ anchor|default('') }}"

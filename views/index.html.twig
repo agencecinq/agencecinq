@@ -20,7 +20,7 @@
 		{{ function('wp_head') }}
 	</head>
 
-	<body {{ body_class('text-texte-principal bg-fond-page antialiased') }}>
+	<body {{ body_class('text-primary bg-page antialiased') }}>
 		{{- function('wp_body_open ') -}}
 
 		{%- block content -%}
@@ -41,7 +41,7 @@
 
 					<div class="container space-y-5 pt-5 pb-20 lg:space-y-20 lg:pt-12.5">
 						{{ yoast_breadcrumb() }}
-						<h1 class="text-titre-2 text-accent">{{- post.title -}}</h1>
+						<h1 class="text-title-xl text-accent">{{- post.title -}}</h1>
 					</div>
 				</div>
 

@@ -1,0 +1,163 @@
+{#
+ # Front page
+ #
+ # @package AgenceCinq
+ #}
+
+{% extends 'index.html.twig' %}
+
+{%- block content -%}
+	<main id="content" role="main">
+		{%- block header -%}
+			{{-
+				include(
+					'header.html.twig',
+					{
+						classes: ['relative z-10']
+					}
+				)
+			-}}
+		{%- endblock -%}
+
+		{%- if
+			post.meta('hero').content.overline
+				or (post.meta('hero').specs | length)
+				or post.meta('hero').quote.text
+				or post.meta('hero').quote.attribution
+				or post.meta('hero').quote.image
+				or post.meta('hero').quote.link.url
+				or (post.meta('hero').services | length) -%}
+			<section class="bg-page text-primary py-16 lg:py-24" aria-labelledby="hero-home-title">
+				<div class="container">
+					<div class="space-y-5.5">
+						{%- if post.meta('hero').content.overline -%}
+							<p class="text-eyebrow text-muted">
+								{{- post.meta('hero').content.overline -}}
+							</p>
+						{%- endif -%}
+
+						<h1 id="hero-home-title" class="{{ html_classes('text-title-3xl text-primary') }}">
+							{{- post.meta('hero').content.title | default(post.title) -}}
+						</h1>
+					</div>
+
+					{%- if post.meta('hero').specs | length -%}
+						<ul class="border-border mt-11 grid grid-cols-1 border-y lg:grid-cols-4">
+							{%- for spec in post.meta('hero').specs -%}
+								{%- if spec.text or spec.highlight -%}
+									<li
+										class="text-label text-subtle border-border py-4 uppercase max-lg:not-first:border-t lg:pr-3 lg:not-first:border-l lg:not-first:pl-6"
+									>
+										{%- if spec.text -%}
+											<span>{{- spec.text -}}</span>
+										{%- endif -%}
+										{%- if spec.highlight -%}
+											<span class="text-accent">{{- spec.text ? ' ' }}{{- spec.highlight -}}</span>
+										{%- endif -%}
+									</li>
+								{%- endif -%}
+							{%- endfor -%}
+						</ul>
+					{%- endif -%}
+
+					{%- if
+						post.meta('hero').quote.text
+							or post.meta('hero').quote.attribution
+							or post.meta('hero').quote.image
+							or post.meta('hero').quote.link.url -%}
+						<div class="mt-7.5 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+							<figure
+								class="flex items-center gap-4.5"
+								itemscope
+								itemtype="https://schema.org/Quotation"
+							>
+
+                            {# https://schema.org/Quotation #}
+								{%- if post.meta('hero').quote.image -%}
+									<div class="size-15.5 shrink-0 overflow-hidden rounded-full">
+										{{-
+											include(
+												'components/image.html.twig',
+												{
+													image: post.meta('hero').quote.image,
+													size: 'thumbnail',
+													classes: ['size-full object-cover'],
+													loading: 'eager'
+												}
+											)
+										-}}
+									</div>
+								{%- endif -%}
+
+								<div class="flex min-w-0 flex-col gap-2">
+									{%- if post.meta('hero').quote.text -%}
+										<blockquote class="text-primary text-lg" itemprop="text">
+											<p>
+												{{- post.meta('hero').quote.text | raw -}}
+											</p>
+										</blockquote>
+									{%- endif -%}
+
+									{%- if post.meta('hero').quote.attribution -%}
+										<figcaption
+											class="text-label text-muted uppercase"
+											itemprop="author"
+											itemscope
+											itemtype="https://schema.org/Person"
+										>
+											<span itemprop="name">{{- post.meta('hero').quote.attribution -}}</span>
+										</figcaption>
+									{%- endif -%}
+								</div>
+							</figure>
+
+							{{-
+								include(
+									'components/button.html.twig',
+									post.meta('hero').quote.link
+										| default({})
+										| merge({
+											variant: 'primary',
+											mode: 'light',
+											classes: ['shrink-0 self-start lg:self-center']
+										}),
+									with_context = false
+								)
+							-}}
+						</div>
+					{%- endif -%}
+
+					{%- if post.meta('hero').services | length -%}
+						<ul class="mt-14 grid grid-cols-1 gap-14 lg:grid-cols-3">
+							{%- for service in post.meta('hero').services -%}
+								<li>
+									{{-
+										include(
+											'components/tease-service.html.twig',
+											{
+												title: service.title,
+												text: service.text,
+												link: service.link,
+												index: '%02d/%02d' | format(loop.index, post.meta('hero').services | length)
+											},
+											with_context = false
+										)
+									-}}
+								</li>
+							{%- endfor -%}
+						</ul>
+					{%- endif -%}
+				</div>
+			</section>
+		{%- endif -%}
+
+		{{-
+			include(
+				'blocks/blocks.html.twig',
+				{
+					blocks: post.meta('blocks')
+				}
+			)
+		-}}
+	</main>
+{%- endblock -%}

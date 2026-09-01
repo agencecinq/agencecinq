@@ -31,7 +31,7 @@
 	>
 		<div class="container space-y-10 py-12.5 lg:py-30">
 			{%- if block.content.title -%}
-				<h2 class="text-titre-2 text-center">{{- block.content.title -}}</h2>
+				<h2 class="text-title-xl text-center">{{- block.content.title -}}</h2>
 			{%- endif -%}
 
 			{%- if items|length -%}
@@ -43,10 +43,10 @@
 							{%- if item.title or item.text -%}
 								<div class="space-y-2.5">
 									{%- if item.title -%}
-										<h3 class="text-titre-4">{{- item.title -}}</h3>
+										<h3 class="text-title-md">{{- item.title -}}</h3>
 									{%- endif -%}
 									{%- if item.text -%}
-										<div class="text-lede-l flex-1">
+										<div class="text-xl flex-1">
 											{{- item.text|nl2br -}}
 										</div>
 									{%- endif -%}
@@ -61,7 +61,7 @@
 										|merge({
 											icon: 'bullet',
 											mode: 'light',
-											fill: 'text-texte-principal'
+											fill: 'text-primary'
 										}),
 									with_context: false
 								)

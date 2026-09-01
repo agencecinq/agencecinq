@@ -53,6 +53,7 @@ class Init {
 			Plugins\ACF\FormatValue::class,
 			Plugins\ACF\IncludeFields\ArchivePostsFields::class,
 			Plugins\ACF\IncludeFields\BlocksFields::class,
+			Plugins\ACF\IncludeFields\FrontPageFields::class,
 			Plugins\ACF\IncludeFields\ClonesFields::class,
 			Plugins\ACF\IncludeFields\PageParentOrChildFields::class,
 			Plugins\ACF\IncludeFields\ThemeFields::class,
@@ -61,6 +62,7 @@ class Init {
 			// Yoast.
 			Plugins\WordpressSeo\AdminInit::class,
 			Post\Page::class,
+			Post\CaseStudy::class,
 		);
 	}
 

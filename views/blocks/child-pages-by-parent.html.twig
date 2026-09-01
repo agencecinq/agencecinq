@@ -58,7 +58,7 @@
 				</div>
 
 				{%- if block.content.text -%}
-					<p class="text-titre-3">
+					<p class="text-title-lg">
 						{{- block.content.text -}}
 					</p>
 				{%- endif -%}
@@ -78,7 +78,7 @@
 
 			<div
 				id="{{ block.id }}-panel"
-				class="lg:before:bg-fond-page relative col-span-full -mx-2.5 transition-opacity duration-300 ease-in lg:col-span-6 lg:col-start-7 lg:mx-0 lg:before:absolute lg:before:inset-y-0 lg:before:right-full lg:before:z-1 lg:before:w-screen"
+				class="lg:before:bg-page relative col-span-full -mx-2.5 transition-opacity duration-300 ease-in lg:col-span-6 lg:col-start-7 lg:mx-0 lg:before:absolute lg:before:inset-y-0 lg:before:right-full lg:before:z-1 lg:before:w-screen"
 				role="tabpanel"
 				aria-labelledby="{{ block.current.id ~ '-tab-' ~ block.parent.id }}"
 				aria-live="polite"
