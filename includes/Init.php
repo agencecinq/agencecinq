@@ -54,6 +54,7 @@ class Init {
 			Plugins\ACF\IncludeFields\ArchivePostsFields::class,
 			Plugins\ACF\IncludeFields\BlocksFields::class,
 			Plugins\ACF\IncludeFields\FrontPageFields::class,
+			Plugins\ACF\IncludeFields\CaseStudyFields::class,
 			Plugins\ACF\IncludeFields\ClonesFields::class,
 			Plugins\ACF\IncludeFields\PageParentOrChildFields::class,
 			Plugins\ACF\IncludeFields\ThemeFields::class,
@@ -63,6 +64,7 @@ class Init {
 			Plugins\WordpressSeo\AdminInit::class,
 			Post\Page::class,
 			Post\CaseStudy::class,
+			Taxonomy\CaseStudyCategory::class,
 		);
 	}
 
