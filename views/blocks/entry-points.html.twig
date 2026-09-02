@@ -1,0 +1,96 @@
+{#
+ # Blocks: Entry Points
+ # Commercial entry point: title, intro, then up to two offer cards.
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+{%- set items = block.items | default([]) | filter(item => item.title or item.price or item.label or item.text or item.link.url) -%}
+
+<section
+	id="{{ block.id }}"
+	class="bg-page text-primary py-26"
+	{% if block.content.title %}aria-labelledby="{{ block.id }}-title"{% endif %}
+	itemscope
+	itemtype="https://schema.org/OfferCatalog"
+>
+	<div class="container space-y-14">
+		{%- if block.content.title or block.content.text -%}
+			<header class="space-y-6">
+				{%- if block.content.title -%}
+					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl" itemprop="name">
+						{{- block.content.title -}}
+					</{{ block.content.heading | default('h2') }}>
+				{%- endif -%}
+
+				{%- if block.content.text -%}
+					<p class="text-base text-muted max-w-180" itemprop="description">
+						{{- block.content.text | raw -}}
+					</p>
+				{%- endif -%}
+			</header>
+		{%- endif -%}
+
+		{%- if items | length -%}
+			<ul class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+				{%- for item in items -%}
+					<li
+						class="flex"
+						itemprop="itemListElement"
+						itemscope
+						itemtype="https://schema.org/Offer"
+					>
+						<article class="border-border bg-card flex h-full w-full flex-col rounded-8 border p-8">
+							<div class="space-y-5">
+								<div class="space-y-3">
+									{%- if item.title or item.price -%}
+										<div class="space-y-2.5">
+											{%- if item.title -%}
+												<h3 class="text-title-md text-muted" itemprop="name">
+													{{- item.title -}}
+												</h3>
+											{%- endif -%}
+
+											{%- if item.price -%}
+												<p class="text-title-lg" itemprop="price">
+													{{- item.price -}}
+												</p>
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+
+									{%- if item.label -%}
+										<p class="text-label text-accent uppercase">
+											{{- item.label -}}
+										</p>
+									{%- endif -%}
+								</div>
+
+								{%- if item.text -%}
+									<p class="text-sm text-muted" itemprop="description">
+										{{- item.text | raw -}}
+									</p>
+								{%- endif -%}
+							</div>
+
+							<div class="mt-auto pt-7">
+								{{-
+									include(
+										'components/button.html.twig',
+										item.link
+											| default({})
+											| merge({
+												mode: 'dark',
+												attributes: item.link.url ? { itemprop: 'url' } : {}
+											}),
+										with_context: false
+									)
+								-}}
+							</div>
+						</article>
+					</li>
+				{%- endfor -%}
+			</ul>
+		{%- endif -%}
+	</div>
+</section>
