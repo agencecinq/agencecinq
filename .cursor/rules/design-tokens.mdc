@@ -11,6 +11,7 @@ alwaysApply: false
 - Colors, radii, typography scales, and background images belong in `src/stylesheets/theme.css` inside `@theme`.
 - Do not use arbitrary Tailwind values in Twig or CSS utilities for design tokens: no `bg-[#102345]`, no `bg-[linear-gradient(...)]`, no `[background:...]`.
 - Use the generated utilities instead (`bg-page`, `text-accent`, `rounded-25`, etc.).
+- Prefer Tailwind v4 native syntax over an equivalent arbitrary value: `aspect-4/5`, not `aspect-[4/5]`.
 
 ## Token names follow Figma
 

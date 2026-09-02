@@ -93,6 +93,7 @@ DONT :
 - Pas d'emoji ni de tiret cadratin dans les contenus rédigés.
 - Pas de `mt-*` / `mb-*` / `ml-*` / `mr-*` pour l'espace entre siblings ; `space-y-*` / `space-x-*` sur le parent.
 - Pas de `<div>` (ou `<span>`) vide décoratif si un `before:` / `after:` Tailwind suffit.
+- Pas de valeur arbitraire Tailwind (`aspect-[4/5]`) quand un utilitaire natif existe (`aspect-4/5`).
 
 ## Faire évoluer ces règles
 

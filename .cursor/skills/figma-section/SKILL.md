@@ -109,7 +109,7 @@ Références : `views/blocks/hero.html.twig`, `views/blocks/key-figures.html.twi
 
 ## 3. Styles
 
-Pas de feuille `src/stylesheets/components/{name}.css`. Tailwind **dans le Twig**.
+Pas de feuille `src/stylesheets/components/{name}.css`. Styler en **Tailwind v4 dans le Twig**, avec la syntaxe Tailwind (pas du CSS custom, pas de BEM).
 
 1. Lire `src/stylesheets/theme.css` (`@theme`) et mapper les tokens Figma (même suffixe kebab-case).
 2. Token manquant → le déclarer dans `@theme`, puis l'utiliser (`bg-page`, `text-title-xxl`). Jamais `bg-[#…]`, `text-[22px]`, `tracking-[0.5px]`.
@@ -118,6 +118,7 @@ Pas de feuille `src/stylesheets/components/{name}.css`. Tailwind **dans le Twig*
 5. Grille existante : `container`, `grid-cols-4` / `lg:grid-cols-12`, `gap-x-2.5` / `lg:gap-x-5`.
 6. Espacement entre siblings : `space-y-*` / `space-x-*` sur le parent, pas `mt-*` / `ml-*` sur les enfants.
 7. Décoration sans contenu (ligne, nœud, overlay) : `before:` / `after:`, pas un élément vide.
+8. Syntaxe Tailwind native : utiliser l'utilitaire officiel, pas une valeur arbitraire équivalente. Le linter Tailwind le signale. Ex. `aspect-4/5` (pas `aspect-[4/5]`), `w-11.5` (pas `w-[2.875rem]` si l'échelle le permet).
 
 ## 4. Champs ACF
 
@@ -220,7 +221,7 @@ Références : `Marquee.ts`, `Slideshow.ts`, `AccordionGroup.ts`.
 ## Contrôles finaux
 
 - [ ] Aucun `get_field()`, aucun `template-parts/`, aucune feuille CSS de composant.
-- [ ] Tokens dans `@theme`, utilitaires Tailwind dans le Twig, pas de px / hex arbitraires.
+- [ ] Tokens dans `@theme`, utilitaires Tailwind v4 dans le Twig (syntaxe native, pas de `-[…]` quand un utilitaire existe), pas de px / hex arbitraires.
 - [ ] PHP : WPCS, phpcs propre, i18n, docblock CINQ.
 - [ ] Bloc branché dans `BlocksFields::$layouts` ; CPT / Fields / Taxonomy branchés dans `Init.php`.
 - [ ] Composants Twig existants réutilisés ; gardes dans les includes.
