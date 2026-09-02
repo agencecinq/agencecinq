@@ -16,6 +16,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ChildPagesByParent;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Columns;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Contact;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EntryPoints;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Faq;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Form;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Grid;
@@ -54,6 +55,7 @@ class BlocksFields implements Service {
 		Columns::class,
 		Contact::class,
 		EntryPoints::class,
+		Faq::class,
 		Form::class,
 		Gallery::class,
 		Grid::class,
