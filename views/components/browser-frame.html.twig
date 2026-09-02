@@ -1,0 +1,39 @@
+{#
+ # Browser Frame
+ # Screenshot of the delivered site in a browser chrome (16:10).
+ #
+ # @param {array|int} [image] Image object or ID. Optional.
+ # @param {array} [classes] Extra classes on the figure.
+ # @param {string} [loading] Loading attribute. Defaults to 'lazy'.
+ # @param {string} [sizes] Sizes attribute for the image.
+ # @param {string} [alt] Alt text.
+ # @param {object} [attributes] Extra attributes on the img.
+ #}
+
+<figure
+	class="{{
+	html_classes(
+		'border-border bg-card rounded-10 relative overflow-hidden border',
+		"before:bg-card-hover before:block before:h-8 before:w-full before:content-['']",
+		"after:bg-subtle after:pointer-events-none after:absolute after:top-4 after:left-3.5 after:z-1 after:size-2.25 after:-translate-y-1/2 after:rounded-full after:shadow-[1rem_0_0_var(--color-subtle),2rem_0_0_var(--color-subtle)] after:content-['']",
+		classes | default([])
+	)
+	}}"
+>
+	<div class="bg-elevated aspect-16/10">
+		{{-
+			include(
+				'components/image.html.twig',
+				{
+					image: image,
+					classes: ['size-full object-cover object-top'],
+					loading: loading | default('lazy'),
+					sizes: sizes | default(null),
+					alt: alt | default(null),
+					attributes: attributes | default({})
+				},
+				with_context = false
+			)
+		-}}
+	</div>
+</figure>

@@ -76,31 +76,19 @@
 					{%- endif -%}
 
 					{%- if post.meta('hero').image -%}
-						<figure class="border-border bg-card rounded-10 mt-18 w-full overflow-hidden border">
-							<div
-								class="bg-card-hover flex h-8 items-center gap-1.75 px-3.5"
-								aria-hidden="true"
-							>
-								<span class="bg-subtle size-2.25 rounded-full"></span>
-								<span class="bg-subtle size-2.25 rounded-full"></span>
-								<span class="bg-subtle size-2.25 rounded-full"></span>
-							</div>
-							<div class="bg-elevated aspect-16/10">
-								{{-
-									include(
-										'components/image.html.twig',
-										{
-											image: post.meta('hero').image,
-											classes: ['size-full object-cover object-top'],
-											loading: 'eager',
-											attributes: {
-												itemprop: 'image'
-											}
-										}
-									)
-								-}}
-							</div>
-						</figure>
+						{{-
+							include(
+								'components/browser-frame.html.twig',
+								{
+									image: post.meta('hero').image,
+									classes: ['mt-18 w-full'],
+									loading: 'eager',
+									attributes: {
+										itemprop: 'image'
+									}
+								}
+							)
+						-}}
 					{%- endif -%}
 				</div>
 			</section>
