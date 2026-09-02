@@ -75,6 +75,8 @@ DO :
 - Encapsuler les gardes d'affichage dans les composants Twig inclus (voir `twig-components`).
 - Espacer les filtres Twig via Prettier : `twigFollowOfficialCodingStandards: false` (voir `twig-wpcs`).
 - Styler header, footer, blocs et composants avec Tailwind directement dans les `.twig` (voir `tailwind-twig`).
+- Espacer les enfants d'un même parent avec `space-y-*` / `space-x-*`, pas avec des `mt-*` / `ml-*` sur chaque enfant.
+- Décoration sans contenu (lignes, nœuds, overlays) : pseudo-élément `before:` / `after:` plutôt qu'un élément vide, quand c'est possible.
 - Enrichir le markup avec schema.org quand un type correspond (voir `schema-org`).
 
 DONT :
@@ -89,6 +91,8 @@ DONT :
 - Pas de feuille `src/stylesheets/components/<nom>.css` pour styler un composant UI (BEM + `@apply`) ; utiliser Tailwind dans le Twig.
 - Ne pas modifier l'identité agence lors d'un renommage.
 - Pas d'emoji ni de tiret cadratin dans les contenus rédigés.
+- Pas de `mt-*` / `mb-*` / `ml-*` / `mr-*` pour l'espace entre siblings ; `space-y-*` / `space-x-*` sur le parent.
+- Pas de `<div>` (ou `<span>`) vide décoratif si un `before:` / `after:` Tailwind suffit.
 
 ## Faire évoluer ces règles
 
@@ -108,3 +112,7 @@ Règles dédiées existantes :
 - `twig-wpcs` : espacement des filtres Twig compatible Prettier.
 - `tailwind-twig` : styling des composants en Tailwind dans les `.twig`, pas de feuilles CSS dédiées.
 - `schema-org` : microdata schema.org dans les Twig (nav en ul/li, articles, etc.).
+
+Skills dédiés :
+
+- `figma-section` : implémenter une sélection Figma en bloc Twig + layout ACF PHP + tokens Tailwind (± CPT / TS).

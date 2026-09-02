@@ -1,0 +1,29 @@
+{#
+ # Eyebrow: brand mark + uppercase mono label.
+ #
+ # @param string title The eyebrow label.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- if title -%}
+	<p
+		class="{{
+		html_classes(
+			'text-eyebrow text-muted flex items-center gap-2',
+			classes | default([])
+		)
+		}}"
+	>
+		{{-
+			include(
+				'svg/use.html.twig',
+				{
+					icon: 'mark',
+					classes: ['text-subtle h-[0.35rem] w-2.5 shrink-0']
+				},
+				with_context = false
+			)
+		-}}
+		{{- title -}}
+	</p>
+{%- endif -%}

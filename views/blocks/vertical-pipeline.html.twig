@@ -1,0 +1,105 @@
+{#
+ # Blocks: Vertical Pipeline
+ # Signature pattern: spine + giant numbers. Eyebrow, title, then numbered steps.
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+{%- set steps = block.steps | default([]) | filter(step => step.title or step.text) -%}
+{%- set total = '%02d' | format(steps | length) -%}
+
+<section
+	id="{{ block.id }}"
+	class="relative overflow-hidden bg-elevated text-primary"
+	{% if block.content.title %}aria-labelledby="{{ block.id }}-title"{% endif %}
+>
+	<div
+		class="pointer-events-none absolute inset-x-0 top-0 mx-auto max-w-360"
+		aria-hidden="true"
+	>
+		<div class="absolute top-40 -right-35 opacity-[0.04]">
+			{{-
+				include(
+					'svg/use.html.twig',
+					{
+						icon: 'mark',
+						classes: ['fill-primary h-[17.5rem] w-[31.25rem]']
+					},
+					with_context = false
+				)
+			-}}
+		</div>
+	</div>
+
+	<div class="container relative space-y-34">
+		{%- if block.content.overline or block.content.title -%}
+			<header class="space-y-6">
+				{{-
+					include(
+						'components/eyebrow.html.twig',
+						{
+							title: block.content.overline
+						},
+						with_context = false
+					)
+				-}}
+
+				{%- if block.content.title -%}
+					<{{block.content.heading|default('h2')}} id="{{ block.id }}-title" class="text-title-xxl max-w-200">
+						{{- block.content.title -}}
+					</{{block.content.heading|default('h2')}}>
+				{%- endif -%}
+			</header>
+		{%- endif -%}
+
+		{%- if steps | length -%}
+			<div
+				class="relative before:pointer-events-none before:absolute before:top-8 before:bottom-8 before:left-4 before:w-0.5 before:bg-border before:content-[''] lg:before:top-22.75 lg:before:bottom-22.75 lg:before:left-7.5"
+				itemscope
+				itemtype="https://schema.org/ItemList"
+			>
+				<meta itemprop="numberOfItems" content="{{ steps | length }}" />
+				{%- if block.content.title -%}
+					<meta itemprop="name" content="{{ block.content.title }}" />
+				{%- endif -%}
+
+				<ol>
+					{%- for step in steps -%}
+						<li
+							class="relative flex flex-col gap-3 py-8 lg:flex-row lg:items-start lg:gap-14 lg:px-20 lg:py-10"
+							itemprop="itemListElement"
+							itemscope
+							itemtype="https://schema.org/ListItem"
+						>
+							<meta itemprop="position" content="{{ loop.index }}" />
+
+							<div
+								class="relative flex items-end gap-1 pl-8 before:absolute before:top-1/2 before:left-4 before:size-3.75 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-subtle before:ring-4 before:ring-elevated before:content-[''] lg:w-50 lg:shrink-0 lg:pl-0 lg:before:-left-12.5"
+							>
+								<span class="text-pipeline-number" aria-hidden="true">
+									{{- '%02d' | format(loop.index) -}}
+								</span>
+								<span class="text-label text-subtle" aria-hidden="true">
+									/{{- total -}}
+								</span>
+							</div>
+
+							<div class="flex flex-col gap-3 pl-8 lg:min-w-px lg:flex-1 lg:pt-6 lg:pl-0">
+								{%- if step.title -%}
+									<h3 class="text-title-lg" itemprop="name">
+										{{- step.title -}}
+									</h3>
+								{%- endif -%}
+								{%- if step.text -%}
+									<p class="text-sm text-muted" itemprop="description">
+										{{- step.text | raw -}}
+									</p>
+								{%- endif -%}
+							</div>
+						</li>
+					{%- endfor -%}
+				</ol>
+			</div>
+		{%- endif -%}
+	</div>
+</section>
