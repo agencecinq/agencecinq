@@ -1,0 +1,101 @@
+{#
+ # Blocks: References
+ # Featured case study, then up to three others in a row.
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+{%- set featured = block.featured ? get_post(block.featured) : null -%}
+{%- set item_ids = block.items | default([]) | filter(id => not featured or id != featured.id) -%}
+{%- set items = item_ids | length
+	? get_posts({
+		post_type: 'case-study',
+		post__in: item_ids,
+		orderby: 'post__in',
+		posts_per_page: item_ids | length
+	})
+	: []
+-%}
+{%- set total = (featured ? 1 : 0) + (items | length) -%}
+
+<section
+	id="{{ block.id }}"
+	class="bg-page text-primary"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+	{{ total ? 'itemscope itemtype="https://schema.org/ItemList"' }}
+>
+	<div class="container space-y-18">
+		{%- if block.content.overline or block.content.title -%}
+			<header class="space-y-6">
+				{{-
+					include(
+						'components/eyebrow.html.twig',
+						{
+							title: block.content.overline
+						},
+						with_context: false
+					)
+				-}}
+
+				{%- if block.content.title -%}
+					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl max-w-180">
+						{{- block.content.title -}}
+					</{{ block.content.heading | default('h2') }}>
+				{%- endif -%}
+			</header>
+		{%- endif -%}
+
+		{%- if total -%}
+			{%- if block.content.title -%}
+				<meta itemprop="name" content="{{ block.content.title }}" />
+			{%- endif -%}
+			<meta itemprop="numberOfItems" content="{{ total }}" />
+
+			<div class="space-y-14">
+				{%- if featured -%}
+					<div
+						itemprop="itemListElement"
+						itemscope
+						itemtype="https://schema.org/ListItem"
+					>
+						<meta itemprop="position" content="1" />
+						{{-
+							include(
+								'components/tease-case-study-card.html.twig',
+								{
+									post: featured,
+									sizes: '(min-width: 64rem) 80vw, 100vw'
+								},
+								with_context: false
+							)
+						-}}
+					</div>
+				{%- endif -%}
+
+				{%- if items | length -%}
+					<ul class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+						{%- for item in items -%}
+							<li
+								itemprop="itemListElement"
+								itemscope
+								itemtype="https://schema.org/ListItem"
+							>
+								<meta itemprop="position" content="{{ loop.index + (featured ? 1 : 0) }}" />
+								{{-
+									include(
+										'components/tease-case-study-card.html.twig',
+										{
+											post: item,
+											sizes: '(min-width: 64rem) 25vw, 100vw'
+										},
+										with_context: false
+									)
+								-}}
+							</li>
+						{%- endfor -%}
+					</ul>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+	</div>
+</section>

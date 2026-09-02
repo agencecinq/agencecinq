@@ -30,6 +30,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageIntroduction;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Presentation;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Process;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Push;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\References;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Styleguide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Support;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
@@ -69,6 +70,7 @@ class BlocksFields implements Service {
 		Presentation::class,
 		Process::class,
 		Push::class,
+		References::class,
 		Styleguide::class,
 		Support::class,
 		Team::class,
