@@ -14,6 +14,10 @@
 	@apply text-title-lg-mobile lg:text-title-lg-desktop;
 }
 
+@utility text-pipeline-number {
+	@apply text-pipeline-number-mobile lg:text-pipeline-number-desktop;
+}
+
 @utility text-xl {
 	@apply text-xl-mobile lg:text-xl-desktop;
 }

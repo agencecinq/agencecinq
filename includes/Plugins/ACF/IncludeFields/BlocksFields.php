@@ -31,6 +31,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Push;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Styleguide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Support;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\VerticalPipeline;
 use AgenceCinq\Service;
 
 /**
@@ -67,6 +68,7 @@ class BlocksFields implements Service {
 		Styleguide::class,
 		Support::class,
 		Team::class,
+		VerticalPipeline::class,
 	);
 
 	/**

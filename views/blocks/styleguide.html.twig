@@ -781,36 +781,81 @@
 	] %}
 
 	{% set contrast_ratios = [
-		{ pair: 'text/primary on bg/page', ratio: '17.45:1', fails: false },
-		{ pair: 'accent on bg/page', ratio: '16.49:1', fails: false },
-		{ pair: 'text/on-accent on accent', ratio: '16.24:1', fails: false },
-		{ pair: 'text/muted on bg/page', ratio: '6.88:1', fails: false },
-		{ pair: 'text/muted on bg/card', ratio: '6.64:1', fails: false },
-		{ pair: 'text/subtle on bg/page', ratio: '4.75:1', fails: false },
-		{ pair: 'text/subtle on bg/elevated', ratio: '4.59:1', fails: false },
-		{ pair: 'text/subtle on bg/card', ratio: '4.34:1 — below AA threshold', fails: true }
+		{
+			pair: 'text/primary on bg/page',
+			ratio: '17.45:1',
+			fails: false
+		},
+		{
+			pair: 'accent on bg/page',
+			ratio: '16.49:1',
+			fails: false
+		},
+		{
+			pair: 'text/on-accent on accent',
+			ratio: '16.24:1',
+			fails: false
+		},
+		{
+			pair: 'text/muted on bg/page',
+			ratio: '6.88:1',
+			fails: false
+		},
+		{
+			pair: 'text/muted on bg/card',
+			ratio: '6.64:1',
+			fails: false
+		},
+		{
+			pair: 'text/subtle on bg/page',
+			ratio: '4.75:1',
+			fails: false
+		},
+		{
+			pair: 'text/subtle on bg/elevated',
+			ratio: '4.59:1',
+			fails: false
+		},
+		{
+			pair: 'text/subtle on bg/card',
+			ratio: '4.34:1 — below AA threshold',
+			fails: true
+		}
 	] %}
 
 	<section class="bg-page text-primary my-8 flex flex-col gap-14 p-5 lg:p-20">
 		<header class="flex max-w-180 flex-col gap-3">
-			<p class="text-eyebrow text-muted">● Foundations</p>
+			<p class="text-eyebrow text-muted">
+				● Foundations
+			</p>
 			<h2 class="text-title-xl">Colors</h2>
-			<p class="text-sm text-muted">
-				Single-theme site (dark). Depth comes from four stacked blacks, not color. Pistachio green is the sole accent, used sparingly: CTAs, nodes, active links, focus.
+			<p class="text-muted text-sm">
+				Single-theme site (dark). Depth comes from four stacked blacks, not color. Pistachio green
+				is the sole accent, used sparingly: CTAs, nodes, active links, focus.
 			</p>
 		</header>
 
 		{% for group in color_groups %}
 			<div class="flex flex-col gap-6">
-				<p class="text-eyebrow text-muted">{{ group.label }}</p>
-				<div class="{{ html_classes( 'grid grid-cols-1 gap-6 sm:grid-cols-2', group.columns ) }}">
+				<p class="text-eyebrow text-muted">
+					{{ group.label }}
+				</p>
+				<div class="{{ html_classes('grid grid-cols-1 gap-6 sm:grid-cols-2', group.columns) }}">
 					{% for swatch in group.swatches %}
 						<div class="flex flex-col gap-3">
-							<div class="{{ html_classes( 'border-border h-33 rounded-lg border', swatch.bg ) }}"></div>
+							<div
+								class="{{ html_classes('border-border h-33 rounded-lg border', swatch.bg) }}"
+							></div>
 							<div class="flex flex-col gap-1">
-								<p class="text-title-md">{{ swatch.name }}</p>
-								<p class="text-label text-accent">--color-{{ swatch.token }}</p>
-								<p class="text-sm text-muted">{{ swatch.description }}</p>
+								<p class="text-title-md">
+									{{ swatch.name }}
+								</p>
+								<p class="text-label text-accent">
+									--color-{{ swatch.token }}
+								</p>
+								<p class="text-muted text-sm">
+									{{ swatch.description }}
+								</p>
 							</div>
 						</div>
 					{% endfor %}
@@ -819,18 +864,28 @@
 		{% endfor %}
 
 		<div class="border-border-accent flex flex-col gap-3.5 border-l-2 pl-6">
-			<p class="text-title-md">text/subtle must not be used on bg/card</p>
-			<p class="text-sm text-muted max-w-225">
-				On bg/page it scores 4.75:1, just above the AA threshold. On bg/card (#141614) it drops to 4.34:1 and falls below. On a card, the secondary text level is therefore text/muted (6.6:1). Applies to form placeholders, crosslink subtitles, and card details.
+			<p class="text-title-md">
+				text/subtle must not be used on bg/card
+			</p>
+			<p class="text-muted max-w-225 text-sm">
+				On bg/page it scores 4.75:1, just above the AA threshold. On bg/card (#141614) it drops to
+				4.34:1 and falls below. On a card, the secondary text level is therefore text/muted (6.6:1).
+				Applies to form placeholders, crosslink subtitles, and card details.
 			</p>
 		</div>
 
 		<div class="flex flex-col gap-2">
-			<p class="text-label text-subtle">Measured Ratios</p>
+			<p class="text-label text-subtle">
+				Measured Ratios
+			</p>
 			{% for item in contrast_ratios %}
 				<div class="flex flex-col gap-1 sm:flex-row sm:gap-6">
-					<p class="text-sm text-muted w-full sm:w-90">{{ item.pair }}</p>
-					<p class="{{ html_classes( 'text-label', item.fails ? 'text-primary' : 'text-accent' ) }}">{{ item.ratio }}</p>
+					<p class="text-muted w-full text-sm sm:w-90">
+						{{ item.pair }}
+					</p>
+					<p class="{{ html_classes('text-label', item.fails ? 'text-primary' : 'text-accent') }}">
+						{{ item.ratio }}
+					</p>
 				</div>
 			{% endfor %}
 		</div>
@@ -848,6 +903,15 @@
 					desktop_class: 'text-title-3xl-desktop',
 					mobile_class: 'text-title-3xl-mobile text-subtle',
 					sample: 'Un site qui grandit avec vous.'
+				},
+				{
+					name: 'pipeline-number',
+					class: 'text-pipeline-number',
+					specs: 'desktop · 120 / 85% / -4%',
+					mobile_specs: 'mobile · 60 / 85% / -4%',
+					desktop_class: 'text-pipeline-number-desktop',
+					mobile_class: 'text-pipeline-number-mobile text-subtle',
+					sample: '01'
 				},
 				{
 					name: 'title-xxl',
@@ -982,12 +1046,14 @@
 
 	<section class="bg-page text-primary my-8 flex flex-col gap-16 p-5 lg:p-20">
 		<header class="flex max-w-215 flex-col gap-3">
-			<p class="text-eyebrow text-muted">Fondations</p>
+			<p class="text-eyebrow text-muted">
+				Fondations
+			</p>
 			<h2 class="text-title-xl">Typographie</h2>
-			<p class="text-sm text-muted">
+			<p class="text-muted text-sm">
 				Deux familles Google Fonts. Inter porte les titres et le texte courant ; JetBrains Mono
-				porte tout le méta : surtitres, index, libellés de bouton, badges. Titres et textes
-				passent en version desktop dès 1024 px ; le méta ne change pas.
+				porte tout le méta : surtitres, index, libellés de bouton, badges. Titres et textes passent
+				en version desktop dès 1024 px ; le méta ne change pas.
 			</p>
 		</header>
 
