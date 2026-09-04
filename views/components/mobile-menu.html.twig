@@ -6,15 +6,15 @@
  #}
 
 {% macro push(push) %}
-	{% set mode = push.mode|default('dark') %}
+	{% set mode = push.mode | default('dark') %}
 
 	<article
 		class="{{
 		html_classes(
 			'rounded-15 relative aspect-297/380 overflow-hidden text-center',
 			mode == 'dark'
-				? 'text-primary bg-card/30 before:bg-card/30 before:absolute before:inset-0 before:z-2 before:size-full'
-				: 'text-primary'
+				? 'text-cream bg-gray/30 before:bg-gray/30 before:absolute before:inset-0 before:z-2 before:size-full'
+				: 'text-cream'
 		)
 		}}"
 	>
@@ -27,7 +27,7 @@
 						</p>
 					{%- endif -%}
 					{%- if push.title -%}
-						<p class="text-title-md text-accent">
+						<p class="text-title-md text-pistachio">
 							{{- push.title -}}
 						</p>
 					{%- endif -%}
@@ -37,14 +37,14 @@
 				include(
 					'components/button.html.twig',
 					push.link
-						|default({})
-						|merge({
+						| default({})
+						| merge({
 							classes: ['mt-auto'],
 							mode: mode,
 							icon: 'bullet',
-							fill: mode == 'dark' ? 'text-accent' : 'text-primary'
+							fill: mode == 'dark' ? 'text-pistachio' : 'text-cream'
 						}),
-					with_context: false
+					with_context = false
 				)
 			-}}
 		</div>
@@ -55,31 +55,31 @@
 					image: push.image,
 					classes: ['absolute inset-0 z-1 size-full object-cover', layout == 'compact' ? 'z-1' : '']
 				},
-				with_context: false
+				with_context = false
 			)
 		-}}
 	</article>
 {% endmacro %}
 
-{% set main_items = items|default([]) %}
-{% set submenus_data = menus.main.submenu|default([]) %}
-{% set first_attached = submenus_data|filter(row => row.item)|first %}
+{% set main_items = items | default([]) %}
+{% set submenus_data = menus.main.submenu | default([]) %}
+{% set first_attached = submenus_data | filter(row => row.item) | first %}
 
 <div
 	data-dom="main"
 	data-panel="main"
 	class="relative flex min-h-full flex-col items-start gap-5 py-5"
 >
-	{%- if main_items|length -%}
+	{%- if main_items | length -%}
 		<nav
-			aria-label="{{ __('Mobile navigation', 'collective-la-cabane') }}"
+			aria-label="{{ __('Mobile navigation', 'agencecinq') }}"
 			class="w-full flex-1 overflow-y-auto"
 		>
-			<ul class="text-cta divide-border/25 divide-y">
+			<ul class="text-cta divide-cream-soft/25 divide-y">
 				{% for item in main_items %}
-					{%- set attached = submenus_data|filter(row => row.item == item.id)|first -%}
+					{%- set attached = submenus_data | filter(row => row.item == item.id) | first -%}
 					<li>
-						{% if (item.children|length) or attached %}
+						{% if (item.children | length) or attached %}
 							<button
 								type="button"
 								data-dom="open-sub"
@@ -96,7 +96,7 @@
 											classes: ['size-2.5 shrink-0'],
 											icon: 'chevron-right'
 										},
-										with_context: false
+										with_context = false
 									)
 								-}}
 							</button>
@@ -118,7 +118,7 @@
 		</nav>
 	{%- endif -%}
 
-	{%- if first_attached and (first_attached.pushes|length) -%}
+	{%- if first_attached and (first_attached.pushes | length) -%}
 		<div class="-full grid grid-cols-1 gap-2.5 md:grid-cols-2">
 			{%- for push in first_attached.pushes -%}
 				{{- _self.push(push) -}}
@@ -129,18 +129,18 @@
 
 {# Sub panels: one per top-level item that has children #}
 {% for item in main_items %}
-	{%- set attached = submenus_data|filter(row => row.item == item.id)|first -%}
-	{%- if (item.children|length) or attached -%}
+	{%- set attached = submenus_data | filter(row => row.item == item.id) | first -%}
+	{%- if (item.children | length) or attached -%}
 		<div
 			data-dom="sub"
 			data-panel="sub"
 			data-sub-id="{{ item.id }}"
 			id="mobile-sub-{{ item.id }}"
-			class="rounded-15 bg-page text-primary absolute inset-x-0 top-0 flex min-h-full flex-col gap-5 p-5"
+			class="rounded-15 text-cream absolute inset-x-0 top-0 flex min-h-full flex-col gap-5 bg-black p-5"
 			aria-hidden="true"
 			style="display: none;"
 		>
-			<div class="border-border/25 relative space-y-2.5 border-b pt-5.5 pb-6.25 text-center">
+			<div class="border-cream-soft/25 relative space-y-2.5 border-b pt-5.5 pb-6.25 text-center">
 				{{-
 					include(
 						'components/button.html.twig',
@@ -148,20 +148,20 @@
 							icon: 'chevron-left',
 							attributes: {
 								'data-dom': 'back-to-main',
-								'aria-label': __('Back to menu', 'collective-la-cabane')
+								'aria-label': __('Back to menu', 'agencecinq')
 							},
 							variant: 'quaternary',
-							title: __('Back', 'collective-la-cabane'),
+							title: __('Back', 'agencecinq'),
 							animate: false
 						},
-						with_context: false
+						with_context = false
 					)
 				-}}
 
 				<h2 class="text-title-md">{{- item.title -}}</h2>
 			</div>
 
-			{%- if item.children|length -%}
+			{%- if item.children | length -%}
 				<nav class="flex-1 overflow-y-auto" aria-label="{{ item.title }}">
 					{# {%- if attached and attached.title -%}
 																																																														<p class="text-base">{{- attached.title -}}</p>
@@ -172,7 +172,7 @@
 								{%- if child.url != '#' -%}
 									<a
 										href="{{ child.url }}"
-										class="text-xl block"
+										class="block text-xl"
 										{{
 										child.is_target_blank or child.is_external
 											? 'target="' ~ child.target ~ '" rel="noopener noreferer"'
@@ -181,10 +181,10 @@
 										{{- child.title -}}
 									</a>
 								{%- else -%}
-									<span class="text-xl block">{{- child.title -}}</span>
+									<span class="block text-xl">{{- child.title -}}</span>
 								{% endif %}
 
-								{%- if child.children|length -%}
+								{%- if child.children | length -%}
 									<ul class="text-cta space-y-4">
 										{%- for grandchild in child.children -%}
 											<li>
@@ -206,7 +206,7 @@
 					</ul>
 				</nav>
 			{%- endif -%}
-			{%- if attached and (attached.pushes|length) -%}
+			{%- if attached and (attached.pushes | length) -%}
 				<div class="mt-auto grid grid-cols-1 gap-2.5 md:grid-cols-2">
 					{%- for push in attached.pushes -%}
 						{{- _self.push(push) -}}
