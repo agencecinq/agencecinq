@@ -5,7 +5,7 @@
 
 {{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 
-{%- set items = block.items | default([]) | filter(item => item.question and item.answer) -%}
+{%- set items = block.items | default([]) | filter(item => item.question and item.answer | striptags | trim) -%}
 
 <section
 	id="{{ block.id }}"
@@ -36,7 +36,7 @@
 		{%- endif -%}
 
 		{%- if items | length -%}
-			<cinq-accordion-group class="block max-w-190">
+			<cinq-accordion-group class="block max-w-220">
 				{%- for item in items -%}
 					{%- set question_id = block.id ~ '-question-' ~ loop.index -%}
 					{%- set answer_id = block.id ~ '-answer-' ~ loop.index -%}
@@ -75,7 +75,7 @@
 							itemprop="acceptedAnswer"
 							itemtype="https://schema.org/Answer"
 						>
-							<div class="js-accordion-inner text-sm text-muted [&_a]:text-accent pt-4 [&_a]:underline" itemprop="text">
+							<div class="js-accordion-inner wysiwyg text-muted pt-4 [&_a]:text-accent" itemprop="text">
 								{{- item.answer | raw -}}
 							</div>
 						</div>
