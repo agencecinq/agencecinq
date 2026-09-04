@@ -9,7 +9,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="bg-page text-primary py-26"
+	class="bg-black text-cream py-26"
 	{% if block.content.title %}aria-labelledby="{{ block.id }}-title"{% endif %}
 	itemscope
 	itemtype="https://schema.org/OfferCatalog"
@@ -24,7 +24,7 @@
 				{%- endif -%}
 
 				{%- if block.content.text -%}
-					<p class="text-base text-muted max-w-180" itemprop="description">
+					<p class="text-base text-taupe max-w-180" itemprop="description">
 						{{- block.content.text | raw -}}
 					</p>
 				{%- endif -%}
@@ -32,7 +32,7 @@
 		{%- endif -%}
 
 		{%- if items | length -%}
-			<ul class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+			<ul class="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:gap-x-6">
 				{%- for item in items -%}
 					<li
 						class="flex"
@@ -40,13 +40,13 @@
 						itemscope
 						itemtype="https://schema.org/Offer"
 					>
-						<article class="border-border bg-card flex h-full w-full flex-col rounded-8 border p-8">
+						<article class="border-cream-soft bg-gray flex h-full w-full flex-col rounded-8 border p-8">
 							<div class="space-y-5">
 								<div class="space-y-3">
 									{%- if item.title or item.price -%}
 										<div class="space-y-2.5">
 											{%- if item.title -%}
-												<h3 class="text-title-md text-muted" itemprop="name">
+												<h3 class="text-title-md text-taupe" itemprop="name">
 													{{- item.title -}}
 												</h3>
 											{%- endif -%}
@@ -60,14 +60,14 @@
 									{%- endif -%}
 
 									{%- if item.label -%}
-										<p class="text-label text-accent uppercase">
+										<p class="text-label text-pistachio uppercase">
 											{{- item.label -}}
 										</p>
 									{%- endif -%}
 								</div>
 
 								{%- if item.text -%}
-									<p class="text-sm text-muted" itemprop="description">
+									<p class="text-sm text-taupe" itemprop="description">
 										{{- item.text | raw -}}
 									</p>
 								{%- endif -%}

@@ -1,6 +1,6 @@
 <div class="container py-10 lg:py-20">
 	<div class="overflow-x-auto">
-		<table class="bg-card/40 my-8 w-full border-collapse text-left">
+		<table class="bg-gray/40 my-8 w-full border-collapse text-left">
 			<thead class="uppercase">
 				<tr>
 					<th class="p-4">Name</th>
@@ -16,11 +16,14 @@
 					<td class="p-4"><code>'primary'</code></td>
 					<td class="p-4">
 						Variant of the button. Can be
-						<code>'primary'</code>,
-						<code>'secondary'</code>,
+						<code>'primary'</code>
+						(pistachio pill + arrow),
+						<code>'secondary'</code>
+						(underline),
 						<code>'tertiary'</code>
-						or
-						<code>'quaternary'</code>.
+						(nav pill) or
+						<code>'quaternary'</code>
+						(utility).
 					</td>
 				</tr>
 				<tr>
@@ -33,30 +36,7 @@
 					<td class="p-4"><code>icon</code></td>
 					<td class="p-4"><code>string</code></td>
 					<td class="p-4"><code>null</code></td>
-					<td class="p-4">The name of the icon to display.</td>
-				</tr>
-				<tr>
-					<td class="p-4"><code>fill</code></td>
-					<td class="p-4"><code>string</code></td>
-					<td class="p-4"><code>null</code></td>
-					<td class="p-4">
-						Color of the icon. Can be
-						<code>'text-accent'</code>,
-						<code>'text-primary'</code>
-						or
-						<code>'text-on-accent'</code>.
-					</td>
-				</tr>
-				<tr>
-					<td class="p-4"><code>mode</code></td>
-					<td class="p-4"><code>string</code></td>
-					<td class="p-4"><code>'light'</code></td>
-					<td class="p-4">
-						Color mode of the button. Can be
-						<code>'light'</code>
-						or
-						<code>'dark'</code>.
-					</td>
+					<td class="p-4">The name of the icon to display (quaternary variant).</td>
 				</tr>
 				<tr>
 					<td class="p-4"><code>title</code></td>
@@ -76,21 +56,12 @@
 					<td class="p-4"><code>[]</code></td>
 					<td class="p-4">Additional CSS classes for the button element.</td>
 				</tr>
-				<tr>
-					<td class="p-4"><code>animate</code></td>
-					<td class="p-4"><code>bool</code></td>
-					<td class="p-4"><code>true</code></td>
-					<td class="p-4">
-						Whether to animate the icon on hover (only for icons with animation, like the 'bullet'
-						or 'arrow-right').
-					</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
 
 	<div class="overflow-x-auto">
-		<table class="bg-card/40 my-8 w-full border-collapse text-left">
+		<table class="bg-gray/40 my-8 w-full border-collapse text-left">
 			<thead class="uppercase">
 				<tr>
 					<th class="py-4">Variant</th>
@@ -100,12 +71,12 @@
 			<tbody class="divide-y">
 				<tr>
 					<td class="py-4">Primary</td>
-					<td class="flex flex-wrap gap-4 p-4">
+					<td class="flex flex-wrap items-center gap-4 p-4">
 						{{-
 							include(
 								'components/button.html.twig',
 								{
-									title: 'Button'
+									title: 'Réserver 20 minutes'
 								}
 							)
 						-}}
@@ -113,136 +84,7 @@
 							include(
 								'components/button.html.twig',
 								{
-									title: 'Button',
-									icon: 'bullet'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									icon: 'bullet',
-									fill: 'text-accent'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									icon: 'bullet',
-									fill: 'text-primary'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									disabled: true
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									icon: 'bullet',
-									disabled: true
-								}
-							)
-						-}}
-					</td>
-				</tr>
-				<tr>
-					<td class="py-4">Primary (dark)</td>
-					<td class="flex flex-wrap gap-4 p-4">
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									mode: 'dark'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									icon: 'bullet',
-									mode: 'dark'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									icon: 'bullet',
-									mode: 'dark',
-									fill: 'text-primary'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Menu',
-									icon: 'bars',
-									mode: 'dark',
-									fill: 'text-primary',
-									animate: false
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Menu',
-									icon: 'bars',
-									mode: 'dark',
-									fill: 'text-primary'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									icon: 'bullet',
-									mode: 'dark',
-									fill: 'text-primary'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									mode: 'dark',
-									disabled: true
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									icon: 'bullet',
-									mode: 'dark',
+									title: 'Réserver 20 minutes',
 									disabled: true
 								}
 							)
@@ -251,12 +93,12 @@
 				</tr>
 				<tr>
 					<td class="py-4">Secondary</td>
-					<td class="flex flex-wrap gap-4 p-4">
+					<td class="flex flex-wrap items-center gap-4 p-4">
 						{{-
 							include(
 								'components/button.html.twig',
 								{
-									title: 'Button',
+									title: 'Réserver 20 minutes',
 									variant: 'secondary'
 								}
 							)
@@ -265,40 +107,8 @@
 							include(
 								'components/button.html.twig',
 								{
-									title: 'Button',
+									title: 'Réserver 20 minutes',
 									variant: 'secondary',
-									icon: 'bullet'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									variant: 'secondary',
-									icon: 'bullet',
-									fill: 'text-primary'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									variant: 'secondary',
-									disabled: true
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									variant: 'secondary',
-									icon: 'bullet',
 									disabled: true
 								}
 							)
@@ -306,74 +116,13 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="py-4">Secondary (dark)</td>
-					<td class="flex flex-wrap gap-4 p-4">
+					<td class="py-4">Tertiary (nav)</td>
+					<td class="flex flex-wrap items-center gap-4 p-4">
 						{{-
 							include(
 								'components/button.html.twig',
 								{
-									title: 'Button',
-									variant: 'secondary',
-									mode: 'dark'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									variant: 'secondary',
-									icon: 'bullet',
-									mode: 'dark'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									variant: 'secondary',
-									icon: 'bullet',
-									fill: 'text-primary',
-									mode: 'dark'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									variant: 'secondary',
-									disabled: true,
-									mode: 'dark'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									variant: 'secondary',
-									icon: 'bullet',
-									disabled: true,
-									mode: 'dark'
-								}
-							)
-						-}}
-					</td>
-				</tr>
-				<tr>
-					<td class="py-4">Tertiary</td>
-					<td class="space-x-4 py-4">
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
+									title: 'Réserver 20 minutes',
 									variant: 'tertiary'
 								}
 							)
@@ -382,29 +131,8 @@
 							include(
 								'components/button.html.twig',
 								{
-									title: 'Button',
+									title: 'Réserver 20 minutes',
 									variant: 'tertiary',
-									icon: 'arrow-right'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									variant: 'tertiary',
-									disabled: true
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
-									variant: 'tertiary',
-									icon: 'arrow-right',
 									disabled: true
 								}
 							)
@@ -413,21 +141,12 @@
 				</tr>
 				<tr>
 					<td class="py-4">Quaternary</td>
-					<td class="space-x-4 py-4">
+					<td class="flex flex-wrap items-center gap-4 p-4">
 						{{-
 							include(
 								'components/button.html.twig',
 								{
-									title: 'Button',
-									variant: 'quaternary'
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
+									title: 'Back',
 									variant: 'quaternary',
 									icon: 'chevron-left'
 								}
@@ -437,17 +156,7 @@
 							include(
 								'components/button.html.twig',
 								{
-									title: 'Button',
-									variant: 'quaternary',
-									disabled: true
-								}
-							)
-						-}}
-						{{-
-							include(
-								'components/button.html.twig',
-								{
-									title: 'Button',
+									title: 'Back',
 									variant: 'quaternary',
 									icon: 'chevron-left',
 									disabled: true
@@ -683,98 +392,98 @@
 
 	{% set color_groups = [
 		{
-			label: 'Backgrounds',
-			columns: 'lg:grid-cols-4',
+			label: 'Blacks & grays',
+			columns: 'lg:grid-cols-5',
 			swatches: [
 				{
-					name: 'Page',
-					token: 'page',
-					bg: 'bg-page',
+					name: 'Black',
+					token: 'black',
+					bg: 'bg-black',
 					description: 'Site-wide background. #08090A'
 				},
 				{
-					name: 'Elevated',
-					token: 'elevated',
-					bg: 'bg-elevated',
+					name: 'Off-black',
+					token: 'off-black',
+					bg: 'bg-off-black',
+					description: 'Text on pistachio. #0A0C0A'
+				},
+				{
+					name: 'Dark gray',
+					token: 'dark-gray',
+					bg: 'bg-dark-gray',
 					description: 'Footer, banners, detached sections. #0D0F0E'
 				},
 				{
-					name: 'Card',
-					token: 'card',
-					bg: 'bg-card',
+					name: 'Gray',
+					token: 'gray',
+					bg: 'bg-gray',
 					description: 'Cards, panels, form fields. #141614'
 				},
 				{
-					name: 'Card · hover',
-					token: 'card-hover',
-					bg: 'bg-card-hover',
+					name: 'Medium gray',
+					token: 'medium-gray',
+					bg: 'bg-medium-gray',
 					description: 'Hovered state of a clickable card. #1C201C'
 				}
 			]
 		},
 		{
-			label: 'Texts',
-			columns: 'lg:grid-cols-4',
+			label: 'Cream & warm neutrals',
+			columns: 'lg:grid-cols-5',
 			swatches: [
 				{
-					name: 'Primary',
-					token: 'primary',
-					bg: 'bg-primary',
+					name: 'Cream',
+					token: 'cream',
+					bg: 'bg-cream',
 					description: 'Headings and body text. #F1F0EA'
 				},
 				{
-					name: 'Muted',
-					token: 'muted',
-					bg: 'bg-muted',
+					name: 'Cream soft',
+					token: 'cream-soft',
+					bg: 'bg-cream-soft',
+					description: 'Rules, dividers. Cream at 11%.'
+				},
+				{
+					name: 'Cream faint',
+					token: 'cream-faint',
+					bg: 'bg-cream-faint',
+					description: 'Inner dividers. Cream at 6%.'
+				},
+				{
+					name: 'Taupe',
+					token: 'taupe',
+					bg: 'bg-taupe',
 					description: 'Lead text, descriptions. 5.8:1 — AA. #9A988D'
 				},
 				{
-					name: 'Subtle',
-					token: 'subtle',
-					bg: 'bg-subtle',
+					name: 'Stone',
+					token: 'stone',
+					bg: 'bg-stone',
 					description: 'Indices, mentions, labels. 4.8:1 — AA. #7E7C71'
-				},
-				{
-					name: 'On accent',
-					token: 'on-accent',
-					bg: 'bg-on-accent',
-					description: 'Text on green accent. #0A0C0A'
 				}
 			]
 		},
 		{
-			label: 'Accent & Borders',
-			columns: 'lg:grid-cols-5',
+			label: 'Pistachio',
+			columns: 'lg:grid-cols-3',
 			swatches: [
 				{
-					name: 'Accent',
-					token: 'accent',
-					bg: 'bg-accent',
+					name: 'Pistachio',
+					token: 'pistachio',
+					bg: 'bg-pistachio',
 					description: 'CTAs, nodes, focus, active links. #B3FCA4'
 				},
 				{
-					name: 'Accent · hover',
-					token: 'accent-hover',
-					bg: 'bg-accent-hover',
+					name: 'Light pistachio',
+					token: 'light-pistachio',
+					bg: 'bg-light-pistachio',
 					description: 'Primary CTA hover. #C7FFBB'
 				},
 				{
-					name: 'Accent soft',
-					token: 'accent-soft',
-					bg: 'bg-accent-soft',
+					name: 'Pistachio soft',
+					token: 'pistachio-soft',
+					bg: 'bg-pistachio-soft',
 					description: '14% tinted background. Badges, highlights.'
-				},
-				{
-					name: 'Border',
-					token: 'border',
-					bg: 'bg-border',
-					description: 'Rules, dividers. Cream at 11%.'
-				},
-				{
-					name: 'Border subtle',
-					token: 'border-subtle',
-					bg: 'bg-border-subtle',
-					description: 'Inner dividers. Cream at 6%.'
 				}
 			]
 		}
@@ -782,78 +491,78 @@
 
 	{% set contrast_ratios = [
 		{
-			pair: 'text/primary on bg/page',
+			pair: 'text/cream on bg/black',
 			ratio: '17.45:1',
 			fails: false
 		},
 		{
-			pair: 'accent on bg/page',
+			pair: 'pistachio on bg/black',
 			ratio: '16.49:1',
 			fails: false
 		},
 		{
-			pair: 'text/on-accent on accent',
+			pair: 'text/off-black on pistachio',
 			ratio: '16.24:1',
 			fails: false
 		},
 		{
-			pair: 'text/muted on bg/page',
+			pair: 'text/taupe on bg/black',
 			ratio: '6.88:1',
 			fails: false
 		},
 		{
-			pair: 'text/muted on bg/card',
+			pair: 'text/taupe on bg/gray',
 			ratio: '6.64:1',
 			fails: false
 		},
 		{
-			pair: 'text/subtle on bg/page',
+			pair: 'text/stone on bg/black',
 			ratio: '4.75:1',
 			fails: false
 		},
 		{
-			pair: 'text/subtle on bg/elevated',
+			pair: 'text/stone on bg/dark-gray',
 			ratio: '4.59:1',
 			fails: false
 		},
 		{
-			pair: 'text/subtle on bg/card',
+			pair: 'text/stone on bg/gray',
 			ratio: '4.34:1 — below AA threshold',
 			fails: true
 		}
 	] %}
 
-	<section class="bg-page text-primary my-8 flex flex-col gap-14 p-5 lg:p-20">
+	<section class="bg-black text-cream my-8 flex flex-col gap-14 p-5 lg:p-20">
 		<header class="flex max-w-180 flex-col gap-3">
-			<p class="text-eyebrow text-muted">
+			<p class="text-eyebrow text-taupe">
 				● Foundations
 			</p>
 			<h2 class="text-title-xl">Colors</h2>
-			<p class="text-muted text-sm">
-				Single-theme site (dark). Depth comes from four stacked blacks, not color. Pistachio green
-				is the sole accent, used sparingly: CTAs, nodes, active links, focus.
+			<p class="text-taupe text-sm">
+				Single-theme site (dark). Depth comes from stacked blacks and grays, not extra hues.
+				Pistachio is the sole chromatic color, used sparingly: CTAs, nodes, active links, focus.
 			</p>
 		</header>
 
 		{% for group in color_groups %}
 			<div class="flex flex-col gap-6">
-				<p class="text-eyebrow text-muted">
+				<p class="text-eyebrow text-taupe">
 					{{ group.label }}
 				</p>
 				<div class="{{ html_classes('grid grid-cols-1 gap-6 sm:grid-cols-2', group.columns) }}">
 					{% for swatch in group.swatches %}
 						<div class="flex flex-col gap-3">
 							<div
-								class="{{ html_classes('border-border h-33 rounded-lg border', swatch.bg) }}"
+								class="{{ html_classes('border-cream-soft h-33 rounded-lg border', swatch.bg) }}"
 							></div>
 							<div class="flex flex-col gap-1">
 								<p class="text-title-md">
 									{{ swatch.name }}
 								</p>
-								<p class="text-label text-accent">
+								<p class="text-label text-pistachio">
 									--color-{{ swatch.token }}
 								</p>
-								<p class="text-muted text-sm">
+								<p class="text-taupe text-sm">
 									{{ swatch.description }}
 								</p>
 							</div>
@@ -863,27 +572,27 @@
 			</div>
 		{% endfor %}
 
-		<div class="border-border-accent flex flex-col gap-3.5 border-l-2 pl-6">
+		<div class="border-pistachio flex flex-col gap-3.5 border-l-2 pl-6">
 			<p class="text-title-md">
-				text/subtle must not be used on bg/card
+				text/stone must not be used on bg/gray
 			</p>
-			<p class="text-muted max-w-225 text-sm">
-				On bg/page it scores 4.75:1, just above the AA threshold. On bg/card (#141614) it drops to
-				4.34:1 and falls below. On a card, the secondary text level is therefore text/muted (6.6:1).
+			<p class="text-taupe max-w-225 text-sm">
+				On bg/black it scores 4.75:1, just above the AA threshold. On bg/gray (#141614) it drops to
+				4.34:1 and falls below. On a card, the secondary text level is therefore text/taupe (6.6:1).
 				Applies to form placeholders, crosslink subtitles, and card details.
 			</p>
 		</div>
 
 		<div class="flex flex-col gap-2">
-			<p class="text-label text-subtle">
+			<p class="text-label text-stone">
 				Measured Ratios
 			</p>
 			{% for item in contrast_ratios %}
 				<div class="flex flex-col gap-1 sm:flex-row sm:gap-6">
-					<p class="text-muted w-full text-sm sm:w-90">
+					<p class="text-taupe w-full text-sm sm:w-90">
 						{{ item.pair }}
 					</p>
-					<p class="{{ html_classes('text-label', item.fails ? 'text-primary' : 'text-accent') }}">
+					<p class="{{ html_classes('text-label', item.fails ? 'text-cream' : 'text-pistachio') }}">
 						{{ item.ratio }}
 					</p>
 				</div>
@@ -901,7 +610,7 @@
 					specs: 'desktop · 96 / 96% / -4%',
 					mobile_specs: 'mobile · 48 / 98% / -4%',
 					desktop_class: 'text-title-3xl-desktop',
-					mobile_class: 'text-title-3xl-mobile text-subtle',
+					mobile_class: 'text-title-3xl-mobile text-stone',
 					sample: 'Un site qui grandit avec vous.'
 				},
 				{
@@ -910,7 +619,7 @@
 					specs: 'desktop · 120 / 85% / -4%',
 					mobile_specs: 'mobile · 60 / 85% / -4%',
 					desktop_class: 'text-pipeline-number-desktop',
-					mobile_class: 'text-pipeline-number-mobile text-subtle',
+					mobile_class: 'text-pipeline-number-mobile text-stone',
 					sample: '01'
 				},
 				{
@@ -919,7 +628,7 @@
 					specs: 'desktop · 76 / 100% / -3,5%',
 					mobile_specs: 'mobile · 38 / 100% / -3,5%',
 					desktop_class: 'text-title-xxl-desktop',
-					mobile_class: 'text-title-xxl-mobile text-subtle',
+					mobile_class: 'text-title-xxl-mobile text-stone',
 					sample: 'Cinq engagements. Aucun négociable.'
 				},
 				{
@@ -928,7 +637,7 @@
 					specs: 'desktop · 56 / 105% / -2%',
 					mobile_specs: 'mobile · 34 / 105% / -2%',
 					desktop_class: 'text-title-xl-desktop',
-					mobile_class: 'text-title-xl-mobile text-subtle',
+					mobile_class: 'text-title-xl-mobile text-stone',
 					sample: 'Trois façons de faire grandir votre site.'
 				},
 				{
@@ -937,7 +646,7 @@
 					specs: 'desktop · 32 / 115% / -1,5%',
 					mobile_specs: 'mobile · 26 / 115% / -1,5%',
 					desktop_class: 'text-title-lg-desktop',
-					mobile_class: 'text-title-lg-mobile text-subtle',
+					mobile_class: 'text-title-lg-mobile text-stone',
 					sample: 'Maintenance et évolutions'
 				},
 				{
@@ -960,7 +669,7 @@
 					specs: 'desktop · 22 / 155%',
 					mobile_specs: 'mobile · 18 / 155%',
 					desktop_class: 'text-xl-desktop',
-					mobile_class: 'text-xl-mobile text-subtle',
+					mobile_class: 'text-xl-mobile text-stone',
 					sample: "Votre site n'est pas une dépense à réamortir tous les trois ans."
 				},
 				{
@@ -969,7 +678,7 @@
 					specs: 'desktop · 19 / 160%',
 					mobile_specs: 'mobile · 17 / 160%',
 					desktop_class: 'text-lg-desktop',
-					mobile_class: 'text-lg-mobile text-subtle',
+					mobile_class: 'text-lg-mobile text-stone',
 					sample: "C'est un actif qu'on construit pour durer, et qu'on fait évoluer avec votre entreprise."
 				},
 				{
@@ -987,7 +696,7 @@
 					specs: 'desktop · 15 / 155%',
 					mobile_specs: 'mobile · 14 / 155%',
 					desktop_class: 'text-sm-desktop',
-					mobile_class: 'text-sm-mobile text-subtle',
+					mobile_class: 'text-sm-mobile text-stone',
 					sample: 'Sites vitrines et éditoriaux WordPress rapides et maintenables.'
 				},
 				{
@@ -996,7 +705,7 @@
 					specs: 'desktop · 14 / 150%',
 					mobile_specs: 'mobile · 13 / 150%',
 					desktop_class: 'text-xs-desktop',
-					mobile_class: 'text-xs-mobile text-subtle',
+					mobile_class: 'text-xs-mobile text-stone',
 					sample: 'Paris · Tours · Marseille - contact@agencecinq.com'
 				}
 			]
@@ -1044,13 +753,13 @@
 		}
 	] %}
 
-	<section class="bg-page text-primary my-8 flex flex-col gap-16 p-5 lg:p-20">
+	<section class="bg-black text-cream my-8 flex flex-col gap-16 p-5 lg:p-20">
 		<header class="flex max-w-215 flex-col gap-3">
-			<p class="text-eyebrow text-muted">
+			<p class="text-eyebrow text-taupe">
 				Fondations
 			</p>
 			<h2 class="text-title-xl">Typographie</h2>
-			<p class="text-muted text-sm">
+			<p class="text-taupe text-sm">
 				Deux familles Google Fonts. Inter porte les titres et le texte courant ; JetBrains Mono
 				porte tout le méta : surtitres, index, libellés de bouton, badges. Titres et textes passent
 				en version desktop dès 1024 px ; le méta ne change pas.
@@ -1059,24 +768,24 @@
 
 		{% for group in type_groups %}
 			<div>
-				<p class="text-eyebrow text-muted">
+				<p class="text-eyebrow text-taupe">
 					{{ group.label }}
 				</p>
 				{% for style in group.styles %}
-					<div class="border-border-subtle flex flex-col gap-6 border-t py-6 lg:flex-row lg:gap-10">
+					<div class="border-cream-faint flex flex-col gap-6 border-t py-6 lg:flex-row lg:gap-10">
 						<div class="flex w-full shrink-0 flex-col gap-1.5 whitespace-nowrap lg:w-55">
 							<p class="text-title-md">
 								{{ style.name }}
 							</p>
-							<p class="text-label text-subtle">
+							<p class="text-label text-stone">
 								{{ style.specs }}
 							</p>
 							{%- if style.mobile_specs -%}
-								<p class="text-label text-subtle">
+								<p class="text-label text-stone">
 									{{ style.mobile_specs }}
 								</p>
 							{%- endif -%}
-							<code class="text-label text-subtle">.{{ style.class }}</code>
+							<code class="text-label text-stone">.{{ style.class }}</code>
 						</div>
 						<div class="flex min-w-0 flex-1 flex-col gap-4 overflow-x-auto">
 							<p class="{{ style.desktop_class }}">

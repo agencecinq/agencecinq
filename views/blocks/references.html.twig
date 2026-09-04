@@ -21,7 +21,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="bg-page text-primary"
+	class="bg-black text-cream"
 	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 	{{ total ? 'itemscope itemtype="https://schema.org/ItemList"' }}
 >
@@ -74,7 +74,7 @@
 				{%- endif -%}
 
 				{%- if items | length -%}
-					<ul class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+					<ul class="grid grid-cols-1 gap-y-8 lg:grid-cols-3 lg:gap-x-6">
 						{%- for item in items -%}
 							<li
 								itemprop="itemListElement"

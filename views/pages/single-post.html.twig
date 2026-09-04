@@ -1,26 +1,31 @@
 {#
  # Single post
  #
- # @package CollectiveLaCabane
+ # @package AgenceCinq
  #}
 
 {% extends 'index.html.twig' %}
 
 {%- block content -%}
 	<main id="content" role="main">
-		<div
-			class="rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 lg:-mb-12.5"
-		>
+		<div class="rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 lg:-mb-12.5">
 			{%- block header -%}
-				{{- include('header.html.twig', { classes: [ 'relative z-10' ] } ) -}}
+				{{-
+					include(
+						'header.html.twig',
+						{
+							classes: ['relative z-10']
+						}
+					)
+				-}}
 			{%- endblock -%}
 
-			<div class="container grid grid-cols-12 gap-x-2.5 gap-y-15 pt-5 pb-20 lg:gap-5 lg:pt-12.5">
+			<div class="layout-grid container gap-y-15 pt-5 pb-20 lg:gap-y-5 lg:pt-12.5">
 				<div class="col-span-full lg:order-1">
 					{{- yoast_breadcrumb() -}}
 				</div>
 				<div class="col-span-full space-y-7.5 lg:order-2 lg:col-span-6">
-					<h1 class="text-title-xl text-accent" itemprop="headline">{{- post.title -}}</h1>
+					<h1 class="text-title-xl text-pistachio" itemprop="headline">{{- post.title -}}</h1>
 
 					{% if post.meta('general').subtitle %}
 						<p class="text-xl">
@@ -28,10 +33,10 @@
 						</p>
 					{% endif %}
 
-					{% if post.table_of_contents is defined and (post.table_of_contents|length) > 0 %}
-						<nav class="space-y-2.5" aria-label="{{ __('Table of contents', 'collective-la-cabane') }}">
-							<h2 class="text-accent text-eyebrow uppercase">
-								{{- __('Table of contents', 'collective-la-cabane') -}}
+					{% if post.table_of_contents is defined and (post.table_of_contents | length) > 0 %}
+						<nav class="space-y-2.5" aria-label="{{ __('Table of contents', 'agencecinq') }}">
+							<h2 class="text-pistachio text-eyebrow uppercase">
+								{{- __('Table of contents', 'agencecinq') -}}
 							</h2>
 							<ol class="text-badge space-y-2" role="list">
 								{% for item in post.table_of_contents %}
@@ -39,7 +44,7 @@
 										<a class="inline-block uppercase underline" href="#{{ item.anchor }}">
 											{{- item.title -}}
 										</a>
-										{%- if item.children is defined and (item.children|length) > 0 -%}
+										{%- if item.children is defined and (item.children | length) > 0 -%}
 											<ol class="space-y-1.5 border-l pl-4" role="list">
 												{%- for child in item.children -%}
 													<li>
@@ -57,10 +62,10 @@
 					{%- endif -%}
 				</div>
 
-				<footer class="col-span-full flex-col lg:flex-row flex gap-y-2.5 gap-x-22.5 lg:order-4">
-					<nav class="flex gap-2.5" aria-label="{{ __('Share this post', 'collective-la-cabane') }}">
+				<footer class="col-span-full flex flex-col gap-x-22.5 gap-y-2.5 lg:order-4 lg:flex-row">
+					<nav class="flex gap-2.5" aria-label="{{ __('Share this post', 'agencecinq') }}">
 						<p>
-							{{- __('Share this post', 'collective-la-cabane') -}}
+							{{- __('Share this post', 'agencecinq') -}}
 						</p>
 						<ul class="flex gap-2.5" role="list">
 							{%- for social in shares -%}
@@ -89,7 +94,7 @@
 
 					<p>
 						<time datetime="{{ post.date('c') }}" itemprop="datePublished">
-							{{- __('Published on: %s', 'collective-la-cabane')|format(post.date) -}}
+							{{- __('Published on: %s', 'agencecinq') | format(post.date) -}}
 						</time>
 					</p>
 				</footer>
@@ -119,37 +124,35 @@
 			</div>
 		</div>
 
-        <div class="container grid grid-cols-12 gap-2.5 lg:gap-5 pb-20 pt-32.5">
-            <div class="col-span-full space-y-12.5 lg:col-span-6 lg:col-start-4">
+		<div class="layout-grid container pt-32.5 pb-20">
+			<div class="col-span-full space-y-12.5 lg:col-span-6 lg:col-start-4">
 				<div class="wysiwyg">
-                {{- post.content -}}
+					{{- post.content -}}
 				</div>
 
 				{%- if post.meta('general').learn_more.title or post.meta('general').learn_more.text -%}
-					<div class="bg-accent space-y-5 rounded-15 py-7.5 px-6.25">
-						<h3 class="text-base">
-							{{- post.meta('general').learn_more.title -}}
-						</h3>
+					<div class="bg-pistachio rounded-15 space-y-5 px-6.25 py-7.5">
+						<h3 class="text-base">{{- post.meta('general').learn_more.title -}}</h3>
 						<p class="text-xl">
 							{{- post.meta('general').learn_more.text -}}
 						</p>
 					</div>
 				{%- endif -%}
-            </div>
-        </div>
+			</div>
+		</div>
 
-		{{- 
+		{{-
 			include(
-				'components/collection-posts.html.twig', 
-				{ 
-					classes: [ 'bg-page', 'py-20', 'lg:py-37.5' ], 
+				'components/collection-posts.html.twig',
+				{
+					classes: ['bg-black', 'py-20', 'lg:py-37.5'],
 					posts: post.related_posts(),
 					content: {
-						title: __('Our latest news', 'collective-la-cabane'),
-						overline: __('Discover more', 'collective-la-cabane'),
+						title: __('Our latest news', 'agencecinq'),
+						overline: __('Discover more', 'agencecinq')
 					}
 				}
-			) 
+			)
 		-}}
 	</main>
 {%- endblock -%}

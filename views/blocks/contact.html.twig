@@ -11,14 +11,14 @@
 <div id="{{ block.id }}">
 	<div class="relative w-full overflow-hidden">
 		<div
-			class="text-primary after:bg-card/60 relative aspect-402/635 w-full text-center after:absolute after:inset-0 after:z-2 after:size-full lg:aspect-1440/800"
+			class="text-cream after:bg-gray/60 relative aspect-402/635 w-full text-center after:absolute after:inset-0 after:z-2 after:size-full lg:aspect-1440/800"
 		>
 			{%- if block.content.title or block.content.text or block.content.link.url -%}
 				<div
 					class="absolute inset-0 z-3 container flex flex-col items-center justify-center gap-20"
 				>
 					{%- if block.content.title or block.content.text -%}
-						<div class="grid grid-cols-12 gap-x-5 gap-y-15 lg:gap-y-20">
+						<div class="layout-grid gap-y-15 lg:gap-y-20">
 							{%- if block.content.image or block.content.title -%}
 								<div class="col-span-full space-y-7.5 lg:col-span-10 lg:col-start-2 lg:space-y-2.5">
 									{%- if block.content.image -%}
@@ -38,7 +38,7 @@
 									{%- endif -%}
 
 									{%- if block.content.title -%}
-										<p class="text-title-xxl text-accent">
+										<p class="text-title-xxl text-pistachio">
 											{{- block.content.title -}}
 										</p>
 									{%- endif -%}

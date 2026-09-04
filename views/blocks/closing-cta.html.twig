@@ -9,7 +9,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="bg-page pt-42 pb-52 text-primary border-t border-border"
+	class="bg-black pt-42 pb-52 text-cream border-t border-cream-soft"
 	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 >
 	<div class="container flex flex-col items-center">
@@ -23,7 +23,7 @@
 					{%- endif -%}
 
 					{%- if block.content.text -%}
-						<p class="text-lg text-muted max-w-140">
+						<p class="text-lg text-taupe max-w-140">
 							{{- block.content.text | raw -}}
 						</p>
 					{%- endif -%}
@@ -33,16 +33,7 @@
 			{{-
 				include(
 					'components/button.html.twig',
-					link
-						| merge({
-							title: link.title ? link.title ~ ' →' : '',
-							classes: [
-								'border-0',
-								'bg-accent',
-								'text-on-accent',
-								'hover:bg-accent-hover'
-							]
-						}),
+					link,
 					with_context: false
 				)
 			-}}

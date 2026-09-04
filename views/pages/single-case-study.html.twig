@@ -27,13 +27,13 @@
 				or post.meta('hero').content.text
 				or post.meta('hero').image
 				or post.title -%}
-			<section class="bg-page text-primary py-18 lg:py-26" aria-labelledby="case-hero-title">
-				<div class="mx-auto w-full px-6 md:max-w-3xl md:px-10 lg:max-w-360 lg:px-15">
+			<section class="bg-black text-cream py-18 lg:py-26" aria-labelledby="case-hero-title">
+				<div class="container">
 					{%- if
 						post.meta('hero').content.client
 							or post.meta('hero').content.platform
 							or post.meta('hero').content.year -%}
-						<p class="text-label text-muted uppercase">
+						<p class="text-label text-taupe uppercase">
 							{%- if post.meta('hero').content.client -%}
 								<span itemprop="about" itemscope itemtype="https://schema.org/Organization">
 									<span itemprop="name">{{- post.meta('hero').content.client -}}</span>
@@ -57,7 +57,7 @@
 						id="case-hero-title"
 						class="{{
 						html_classes(
-							'text-title-xxl text-primary max-w-250',
+							'text-title-xxl text-cream max-w-250',
 							post.meta('hero').content.client
 								or post.meta('hero').content.platform
 								or post.meta('hero').content.year
@@ -70,7 +70,7 @@
 					</h1>
 
 					{%- if post.meta('hero').content.text -%}
-						<p class="text-muted mt-8 max-w-190 text-xl" itemprop="description">
+						<p class="text-taupe mt-8 max-w-190 text-xl" itemprop="description">
 							{{- post.meta('hero').content.text | raw -}}
 						</p>
 					{%- endif -%}

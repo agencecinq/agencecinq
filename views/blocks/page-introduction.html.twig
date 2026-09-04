@@ -17,7 +17,7 @@
 	id="{{ block.id }}"
 	class="{{
 	html_classes(
-		'text-primary',
+		'text-cream',
 		block.radius != 'none' ? 'relative z-5',
 		block.radius == 'top' ? 'rounded-t-25 lg:rounded-t-50 -mt-6.25 lg:-mt-12.5',
 		block.radius == 'bottom' ? 'rounded-b-25 lg:rounded-b-50 -mb-6.25 lg:-mb-12.5',
@@ -26,7 +26,7 @@
 	)
 	}}"
 >
-	<div class="container grid grid-cols-12 gap-x-2.5 gap-y-15 lg:gap-x-5">
+	<div class="container layout-grid gap-y-15">
 		{%- if block.content.breadcrumb or block.content.title or block.content.text or block.content.breadcrumb -%}
 			<div class="col-span-full space-y-7.5 lg:col-span-6">
 				{%- if block.content.breadcrumb or block.content.title -%}
@@ -36,7 +36,7 @@
 						{%- endif -%}
 
 						{%- if block.content.title -%}
-							<h1 class="text-title-xl text-accent">{{- block.content.title -}}</h1>
+							<h1 class="text-title-xl text-pistachio">{{- block.content.title -}}</h1>
 						{%- endif -%}
 					</div>
 				{%- endif -%}

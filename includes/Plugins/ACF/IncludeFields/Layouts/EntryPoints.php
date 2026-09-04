@@ -114,7 +114,7 @@ class EntryPoints {
 							'aria-label'      => __( 'Label', 'agencecinq' ),
 							'type'            => 'text',
 							'placeholder'     => __( 'e.g. Written report', 'agencecinq' ),
-							'instructions'    => __( 'Uppercase category shown in accent.', 'agencecinq' ),
+							'instructions'    => __( 'Uppercase category shown in pistachio.', 'agencecinq' ),
 							'parent_repeater' => 'field_' . $key . '_entry_points_items',
 						),
 						array(

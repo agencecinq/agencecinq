@@ -15,7 +15,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="bg-page text-primary"
+	class="bg-black text-cream"
 	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 >
 	<div class="container space-y-18">
@@ -41,7 +41,7 @@
 
 		{%- if posts | length -%}
 			<ul
-				class="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-14"
+				class="grid grid-cols-1 gap-y-10 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-14"
 				itemscope
 				itemtype="https://schema.org/ItemList"
 			>

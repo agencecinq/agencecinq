@@ -1,3 +1,8 @@
 @utility container {
-  @apply px-2.5 md:px-10 lg:px-15 md:max-w-3xl mx-auto lg:max-w-360;
+	@apply px-2.5 md:px-10 lg:px-15 md:max-w-3xl mx-auto lg:max-w-360;
+}
+
+/* Same 12 columns and gutters as the overlay in `views/components/grid.html.twig`. */
+@utility layout-grid {
+	@apply grid grid-cols-12 gap-x-4 lg:gap-x-6;
 }

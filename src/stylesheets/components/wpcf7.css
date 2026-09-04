@@ -50,15 +50,15 @@
 			input[type="number"],
 			select
 		) {
-		@apply border-border/25 bg-page text-primary placeholder:text-muted/50 w-full rounded-full border;
+		@apply border-cream-soft/25 bg-black text-cream placeholder:text-taupe/50 w-full rounded-full border;
 		@apply text-sm px-5.25 py-3.5;
-		@apply focus:border-border/50 focus:ring-0 focus:outline-none;
+		@apply focus:border-cream-soft/50 focus:ring-0 focus:outline-none;
 	}
 
 	.block-form .wpcf7 .wpcf7-form textarea {
-		@apply rounded-25 border-border/25 bg-page text-primary placeholder:text-muted/50 w-full border;
+		@apply rounded-25 border-cream-soft/25 bg-black text-cream placeholder:text-taupe/50 w-full border;
 		@apply text-sm px-5.25 py-4;
-		@apply focus:border-border/50 focus:ring-0 focus:outline-none;
+		@apply focus:border-cream-soft/50 focus:ring-0 focus:outline-none;
 		min-height: 10rem;
 		resize: none;
 	}
@@ -79,50 +79,32 @@
 
 	/* Validation / messages */
 	.block-form .wpcf7 .wpcf7-not-valid-tip {
-		@apply text-xs text-muted mt-2;
+		@apply text-xs text-taupe mt-2;
 	}
 
 	.block-form .wpcf7 .wpcf7-response-output {
-		@apply rounded-15 border-border/25 bg-page/70 text-sm text-primary mt-5 border px-5 py-4;
+		@apply rounded-15 border-cream-soft/25 bg-black/70 text-sm text-cream mt-5 border px-5 py-4;
 	}
 
 	.block-form .wpcf7 form.invalid .wpcf7-response-output {
-		@apply border-border/40;
+		@apply border-cream-soft/40;
 	}
 
 	.block-form .wpcf7 form.sent .wpcf7-response-output {
-		@apply border-accent/60;
+		@apply border-pistachio/60;
 	}
 
-	/* Submit (same look as .button.button--primary.button--light) */
+	/* Submit (same look as primary button) */
 	.block-form .wpcf7 .wpcf7-submit {
-		@apply text-primary border-border relative inline-flex items-center justify-center border text-cta;
-		border-radius: calc(infinity * 1px);
-		text-align: center;
-		padding-inline: calc(var(--spacing) * 3.5);
-		padding-block: calc(var(--spacing) * 2.5);
+		@apply relative inline-flex items-center justify-center gap-2 rounded-full bg-pistachio px-6 py-3.5 text-cta text-off-black whitespace-nowrap transition-colors duration-300 ease-out hover:bg-light-pistachio;
 	}
 
-	@media (width >= 64rem /* 1024px */) {
-		.block-form .wpcf7 .wpcf7-submit {
-			padding-block: 0.90625rem;
-		}
-	}
-
-	.block-form .wpcf7 .wpcf7-submit::before {
-		@apply bg-accent;
-		content: "";
-		position: absolute;
-		left: calc(var(--spacing) * 3);
-		top: 50%;
-		transform: translateY(-50%);
-		width: 0.5rem;
-		height: 0.5rem;
-		border-radius: calc(infinity * 1px);
+	.block-form .wpcf7 .wpcf7-submit::after {
+		content: "→";
 	}
 
 	.block-form .wpcf7 .wpcf7-submit[disabled] {
-		@apply opacity-60;
+		@apply pointer-events-none cursor-not-allowed opacity-50;
 	}
 
 	.block-form .wpcf7 .wpcf7-spinner {
@@ -136,7 +118,7 @@
 		}
 
 		.wpcf7-list-item-label {
-			@apply text-xs text-muted;
+			@apply text-xs text-taupe;
 		}
 
 		input[type="checkbox"] {

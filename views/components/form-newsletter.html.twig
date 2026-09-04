@@ -1,73 +1,68 @@
 {#
  # Newsletter form (Contact Form 7).
  #
- # @param {int} [form_id] CF7 form post ID. Default: theme.footer.newsletter.form
+ # @param {int} form_id CF7 form post ID.
  # @param {int} [container_post_id] Post ID where the form is displayed (0 if not on a post). Default: post.id|default(0)
  # @param {int} [instance] Instance number when the same form appears multiple times on the page (1, 2, …). Default: 1
  #}
-{% set form_id = form_id|default(theme.footer.newsletter.form) %}
-{% set container_post_id = container_post_id|default(post.id|default(0)) %}
-{% set instance = instance|default(1) %}
-{% set unit_tag = 'wpcf7-f' ~ form_id ~ '-p' ~ container_post_id ~ '-o' ~ instance %}
-<div class="wpcf7 no-js" id="{{ unit_tag }}" lang="{{ site.language }}" dir="ltr" data-wpcf7-id="{{ form_id }}">
-	<div class="screen-reader-response">
-		<p role="status" aria-live="polite" aria-atomic="true"></p>
-		<ul></ul>
-	</div>
+{%- if form_id -%}
+	{% set container_post_id = container_post_id | default(post.id | default(0)) %}
+	{% set instance = instance | default(1) %}
+	{% set unit_tag = 'wpcf7-f' ~ form_id ~ '-p' ~ container_post_id ~ '-o' ~ instance %}
+	<div class="wpcf7 no-js" id="{{ unit_tag }}" lang="{{ site.language }}" dir="ltr" data-wpcf7-id="{{ form_id }}">
+		<div class="screen-reader-response">
+			<p role="status" aria-live="polite" aria-atomic="true"></p>
+			<ul></ul>
+		</div>
 
-	<form action="/#{{ unit_tag }}" method="post" class="wpcf7-form init" aria-label="{{ __( 'Newsletter form', 'agencecinq' ) }}" novalidate="novalidate" data-status="init">
-		<fieldset class="hidden-fields-container">
-			<input type="hidden" name="_wpcf7" value="{{ form_id }}"/>
-			<input type="hidden" name="_wpcf7_version" value="6.1.5"/>
-			<input type="hidden" name="_wpcf7_locale" value="{{ site.language }}"/>
-			<input type="hidden" name="_wpcf7_unit_tag" value="{{ unit_tag }}"/>
-			<input type="hidden" name="_wpcf7_container_post" value="{{ container_post_id }}"/>
-			<input type="hidden" name="_wpcf7_posted_data_hash" value=""/>
-		</fieldset>
+		<form action="/#{{ unit_tag }}" method="post" class="wpcf7-form init" aria-label="{{ __( 'Newsletter form', 'agencecinq' ) }}" novalidate="novalidate" data-status="init">
+			<fieldset class="hidden-fields-container">
+				<input type="hidden" name="_wpcf7" value="{{ form_id }}"/>
+				<input type="hidden" name="_wpcf7_version" value="6.1.5"/>
+				<input type="hidden" name="_wpcf7_locale" value="{{ site.language }}"/>
+				<input type="hidden" name="_wpcf7_unit_tag" value="{{ unit_tag }}"/>
+				<input type="hidden" name="_wpcf7_container_post" value="{{ container_post_id }}"/>
+				<input type="hidden" name="_wpcf7_posted_data_hash" value=""/>
+			</fieldset>
 
 
-		<div class="space-y-4">
-			<label class="block">
-				<span class="sr-only">{{- __( 'Your email', 'agencecinq' ) -}}</span>
-				<span class="wpcf7-form-control-wrap" data-name="your-email">
-					<span class="relative block text-primary  bg-page border border-border/25 pr-14 py-3.5 pl-5 rounded-full">
-						<input size="40" maxlength="400" class="wpcf7-form-control placeholder:text-muted/50 text-sm leading-[calc(24/14)] w-full lg:leading-normal wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" autocomplete="email" aria-required="true" placeholder="{{ __( 'Email', 'agencecinq' ) }}" aria-invalid="false" value="" type="email" name="your-email"/>
-						<button type="submit" aria-label="{{ __( 'Submit', 'agencecinq' ) }}" class="wpcf7-form-control wpcf7-submit mr-1.5 absolute right-0 inset-y-0 my-auto flex items-center justify-center size-10 rounded-full bg-accent" type="submit" value="{{ __( 'Submit', 'agencecinq' ) }}"/>
-						{{-
-                                include(
-                                    'svg/use.html.twig',
-                                    {
-                                        icon: 'envelope',
-                                        classes: [ 'size-10' ],
-                                    }
-                                )
-                            -}}
-					</button>
+			<div class="space-y-4">
+				<label class="block">
+					<span class="sr-only">{{- __( 'Your email', 'agencecinq' ) -}}</span>
+					<span class="wpcf7-form-control-wrap" data-name="your-email">
+						<span class="relative block text-cream  bg-black border border-cream-soft/25 pr-14 py-3.5 pl-5 rounded-full">
+							<input size="40" maxlength="400" class="wpcf7-form-control placeholder:text-taupe/50 text-sm leading-[calc(24/14)] w-full lg:leading-normal wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" autocomplete="email" aria-required="true" placeholder="{{ __( 'Email', 'agencecinq' ) }}" aria-invalid="false" value="" type="email" name="your-email"/>
+							<button type="submit" aria-label="{{ __( 'Submit', 'agencecinq' ) }}" class="wpcf7-form-control wpcf7-submit mr-1.5 absolute right-0 inset-y-0 my-auto flex items-center justify-center size-10 rounded-full bg-pistachio" type="submit" value="{{ __( 'Submit', 'agencecinq' ) }}"/>
+							{{-
+									include(
+										'svg/use.html.twig',
+										{
+											icon: 'envelope',
+											classes: [ 'size-10' ],
+										}
+									)
+								-}}
+						</button>
+					</span>
+				</span>
+			</label>
+
+
+			<span class="wpcf7-form-control-wrap block" data-name="acceptance">
+				<span class="wpcf7-form-control wpcf7-acceptance">
+					<span class="wpcf7-list-item m-0!">
+						<label class="block">
+							<input type="checkbox" name="acceptance" class="" value="1" aria-invalid="false"/>
+							<span class="wpcf7-list-item-label text-xs gap-2 flex">
+								<span class="opacity-80">{{- __( 'I agree to receive the AgenceCinq newsletter and offers', 'agencecinq' ) -}}</span>
+							</span>
+						</label>
+					</span>
 				</span>
 			</span>
-		</label>
+		</div>
 
 
-		<span class="wpcf7-form-control-wrap block" data-name="acceptance">
-			<span class="wpcf7-form-control wpcf7-acceptance">
-				<span class="wpcf7-list-item m-0!">
-					<label class="block">
-						<input type="checkbox" name="acceptance" class="" value="1" aria-invalid="false"/>
-						<span class="wpcf7-list-item-label text-xs gap-2 flex">
-							<span class="opacity-80">{{- __( 'I agree to receive the AgenceCinq newsletter and offers', 'agencecinq' ) -}}</span>
-						</span>
-					</label>
-				</span>
-			</span>
-		</span>
-
-		{%- if theme.footer.newsletter.text -%}
-			<p class="opacity-80 text-xs">
-				{{- theme.footer.newsletter.text -}}
-			</p>
-		{%- endif -%}
-	</div>
-
-
-	<div class="wpcf7-response-output" aria-hidden="true"></div>
-</form></div>
+		<div class="wpcf7-response-output" aria-hidden="true"></div>
+	</form></div>
+{%- endif -%}

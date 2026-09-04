@@ -14,26 +14,26 @@
 {%- if title or text or link.url -%}
 	<article class="{{ html_classes( 'tease-service group/tease-service flex flex-col items-start', classes | default( [] ) | join( ' ' ) ) }}">
 		<div class="relative h-3 w-full" aria-hidden="true">
-			<span class="bg-border absolute top-1/2 right-0 left-1.5 h-px"></span>
+			<span class="bg-cream-soft absolute top-1/2 right-0 left-1.5 h-px"></span>
 			<span
-				class="bg-primary ring-page absolute top-1/2 left-0 size-2.75 -translate-y-1/2 rounded-full ring-4 transition-[background-color,scale] duration-300 ease-out group-hover/tease-service:scale-125 group-hover/tease-service:bg-accent"
+				class="bg-cream ring-black absolute top-1/2 left-0 size-2.75 -translate-y-1/2 rounded-full ring-4 transition-[background-color,scale] duration-300 ease-out group-hover/tease-service:scale-125 group-hover/tease-service:bg-pistachio"
 			></span>
 		</div>
 
 		{%- if index -%}
-			<p class="text-label text-subtle mt-5">
+			<p class="text-label text-stone mt-5">
 				{{- index -}}
 			</p>
 		{%- endif -%}
 
 		{%- if title -%}
-			<h2 class="text-title-md text-primary mt-2.5">
+			<h2 class="text-title-md text-cream mt-2.5">
 				{{- title -}}
 			</h2>
 		{%- endif -%}
 
 		{%- if text -%}
-			<p class="text-sm text-muted mt-3">
+			<p class="text-sm text-taupe mt-3">
 				{{- text | raw -}}
 			</p>
 		{%- endif -%}
@@ -41,7 +41,7 @@
 		{%- if link.url and link.title -%}
 			<a
 				href="{{ link.url }}"
-				class="text-cta text-primary mt-6 inline-flex items-center gap-1.5 hover:text-accent"
+				class="text-cta text-cream mt-6 inline-flex items-center gap-1.5 hover:text-pistachio"
 				{{ link.target ? "target=\"#{ link.target }\"" }}
 				{{ link.target == '_blank' ? 'rel="noopener noreferrer"' }}
 			>

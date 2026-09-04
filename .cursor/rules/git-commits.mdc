@@ -52,9 +52,7 @@ Wrap at ~72 characters per line.
 :bug: Guard main menu location in ThemeFields
 ```
 
-```text
-:recycle: Rename theme identifiers for Collective La Cabane
-```
+
 
 ```text
 :lipstick: Adjust footer newsletter spacing on mobile

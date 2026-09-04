@@ -12,7 +12,7 @@
 	id="{{ block.id }}"
 	class="{{
 	html_classes(
-		'bg-accent py-15 lg:py-20',
+		'bg-pistachio py-15 lg:py-20',
 		block.radius != 'none' ? 'relative z-5',
 		block.radius == 'top' ? 'rounded-t-25 lg:rounded-t-50 -mt-6.25 lg:-mt-12.5',
 		block.radius == 'bottom' ? 'rounded-b-25 lg:rounded-b-50 -mb-6.25 lg:-mb-12.5',
@@ -21,7 +21,7 @@
 	)
 	}}"
 >
-	<div class="container grid grid-cols-12 gap-x-5 gap-y-15">
+	<div class="container layout-grid gap-y-15">
 		<div class="col-span-full space-y-2.5 lg:col-span-5 lg:space-y-5">
 			<p class="text-eyebrow">
 				{{- block.content.overline -}}
@@ -33,7 +33,7 @@
 			<div class="flex items-center gap-5">
 				{%- if block.content.contact.image -%}
 					<div
-						class="border-border size-22 shrink-0 overflow-hidden rounded-full border-[0.375rem]"
+						class="border-cream-soft size-22 shrink-0 overflow-hidden rounded-full border-[0.375rem]"
 					>
 						{{-
 							include(
@@ -54,8 +54,7 @@
 				include(
 					'components/button.html.twig',
 					{
-						variant: 'tertiary',
-						icon: 'arrow-right',
+						variant: 'primary',
 						title: block.content.contact.link.title,
 						url: block.content.contact.link.url
 					},
@@ -69,7 +68,7 @@
 				include(
 					'components/accordion-group.html.twig',
 					{
-						classes: ['bg-page rounded-20 px-3.5 py-7.5 lg:px-12.75 lg:py-9.25'],
+						classes: ['bg-black rounded-20 px-3.5 py-7.5 lg:px-12.75 lg:py-9.25'],
 						accordions: block.accordions
 					}
 				)

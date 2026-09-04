@@ -1,0 +1,26 @@
+{#
+ # Components: Grid
+ #
+ # 12-column debug overlay aligned on `.container` (2 columns below `lg`).
+ # Page layouts use `.layout-grid` (`grid-cols-12 gap-x-4 lg:gap-x-6`) so tracks match.
+ # Hidden by default. Press G to toggle.
+ #}
+<cinq-grid class="pointer-events-none fixed inset-0 z-50" hidden aria-hidden="true">
+	<div class="container grid h-full grid-cols-2 gap-x-4 lg:grid-cols-12 lg:gap-x-6">
+		{%- for i in 1..12 -%}
+			<div
+				class="{{
+				html_classes(
+					cycle( [ 'bg-pistachio/12', 'bg-pistachio/6' ], loop.index0 ),
+					'relative h-full',
+					loop.index > 2 ? 'max-lg:hidden'
+				)
+				}}"
+			>
+				<span class="text-badge text-pistachio/70 absolute inset-x-0 bottom-2 text-center">
+					{{- loop.index -}}
+				</span>
+			</div>
+		{%- endfor -%}
+	</div>
+</cinq-grid>

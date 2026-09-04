@@ -8,7 +8,7 @@
  #}
 <section {{ attributes ? attributes | map( ( value, key ) => value == '' ? key : "#{key}=\"#{value}\"" ) | join( ' ' ) | raw }} class="{{ html_classes( classes | default([]) | join( ' ' ) ) }}">
 	{%- if content.overline or content.title -%}
-		<div class="container mb-10 grid grid-cols-12 gap-2.5 lg:mb-15 lg:gap-5">
+		<div class="container mb-10 layout-grid lg:mb-15">
 			<div class="col-span-12">
 				<div class="space-y-5 text-center">
 					{%- if content.overline -%}
@@ -25,7 +25,7 @@
 		</div>
 	{%- endif -%}
 
-	<div class="lg:container lg:grid lg:grid-cols-12 lg:gap-5">
+	<div class="lg:container lg:grid lg:grid-cols-12 lg:gap-x-6">
 		<cinq-slideshow class="block slideshow lg:col-span-10 lg:col-start-2 lg:mx-9.75">
 			<div class="splide" data-dom="slider" data-focus="center">
 				<div class="splide__track" data-dom="track">
@@ -42,7 +42,7 @@
 	</div>
 
     {%- if link.url -%}
-        <div class="container mt-15 grid grid-cols-12 gap-2.5 text-center lg:mt-20 lg:gap-5">
+        <div class="container layout-grid mt-15 text-center lg:mt-20">
             <div class="col-span-12">
                 {{-
                     include(
