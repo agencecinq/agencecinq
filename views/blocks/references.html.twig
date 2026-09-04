@@ -1,13 +1,12 @@
 {#
  # Blocks: References
- # Featured case study, then up to three others in a row.
+ # First case study is featured; the rest follow in a grid.
  #}
 
 {{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 
-{%- set featured = block.featured ? get_post(block.featured) : null -%}
-{%- set item_ids = block.items | default([]) | filter(id => not featured or id != featured.id) -%}
-{%- set items = item_ids | length
+{%- set item_ids = block.items | default([]) -%}
+{%- set posts = item_ids | length
 	? get_posts({
 		post_type: 'case-study',
 		post__in: item_ids,
@@ -16,7 +15,9 @@
 	})
 	: []
 -%}
-{%- set total = (featured ? 1 : 0) + (items | length) -%}
+{%- set featured = posts | first -%}
+{%- set items = posts | slice(1) -%}
+{%- set total = posts | length -%}
 
 <section
 	id="{{ block.id }}"
