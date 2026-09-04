@@ -9,24 +9,62 @@
 
 <footer
 	role="contentinfo"
-	class="text-subtle bg-elevated border-border border-t pt-18 pb-8 lg:pt-31 lg:pb-8.5"
+	class="text-subtle text-label bg-elevated border-border border-t pt-18 pb-8 lg:pt-31 lg:pb-8.5"
 >
-	<div class="container space-y-15 lg:space-y-11.75">
-		{%- if nav_menus.footer.get_items -%}
-			<nav aria-label="{{ __('Footer', 'agencecinq') }}">
-				<ul class="grid gap-6 lg:grid-cols-4 lg:gap-5">
-					{%- for item in nav_menus.footer.get_items() -%}
-						<li itemscope itemtype="https://schema.org/SiteNavigationElement" class="lg:col-span-1">
-							{%- if item.children -%}
-								<div class="space-y-5">
-									<span class="text-xl" itemprop="name">{{- item.title -}}</span>
+	<div class="container space-y-12 lg:space-y-20">
+		<div class="grid grid-cols-12 gap-x-4 gap-y-10 lg:gap-x-6">
+			<div class="col-span-full space-y-4 lg:col-span-4">
+				<a href="{{ site.url }}" class="text-primary block h-[1.339375rem] w-18">
+					{{
+						include(
+							'svg/use.html.twig',
+							{
+								icon: 'logo',
+								classes: ['size-full']
+							}
+						)
+					}}
+				</a>
+
+				<p class="text-muted text-sm">
+					Un site est un actif. Pas un passif qu’on change tous les trois ans.
+				</p>
+
+				<div class="space-y-1">
+					<p>
+						Paris · Tours · Marseille
+					</p>
+					<p class="text-accent">
+						<a href="mailto:contact@agencecinq.com">contact@agencecinq.com</a>
+					</p>
+					<p class="text-accent">
+						<a href="tel:0673778608">06 73 77 86 08</a>, Joachim, fondateur
+					</p>
+				</div>
+			</div>
+			{%- if nav_menus.footer.get_items() -%}
+				<nav
+					class="col-span-full lg:col-span-8"
+					aria-label="{{ __('Footer navigation', 'agencecinq') }}"
+				>
+					<ul class="grid grid-cols-4 gap-4 lg:gap-6">
+						{%- for item in nav_menus.footer.get_items() -%}
+							<li
+								itemscope
+								itemtype="https://schema.org/SiteNavigationElement"
+								class="col-span-2 space-y-3 lg:col-span-1"
+							>
+								{%- if item.children -%}
+									<p class="text-eyebrow" itemprop="name">
+										{{- item.title -}}
+									</p>
 									<ul class="space-y-3">
 										{%- for child in item.children -%}
 											<li itemscope itemtype="https://schema.org/SiteNavigationElement">
 												<a
 													href="{{ child.url }}"
 													itemprop="url"
-													class="text-badge hover:underline"
+													class="text-muted text-sm hover:underline"
 													{{
 													child.is_target_blank or child.is_external
 														? 'target="' ~ child.target ~ '" rel="noopener noreferrer"'
@@ -37,29 +75,27 @@
 											</li>
 										{%- endfor -%}
 									</ul>
-								</div>
-							{%- else -%}
-								<a
-									href="{{ item.url }}"
-									itemprop="url"
-									class="text-xl"
-									{{
-									item.is_target_blank or item.is_external
-										? 'target="' ~ item.target ~ '" rel="noopener noreferrer"'
-									}}
-								>
-									<span itemprop="name">{{- item.title -}}</span>
-								</a>
-							{%- endif -%}
-						</li>
-					{%- endfor -%}
-				</ul>
-			</nav>
-		{%- endif -%}
+								{%- else -%}
+									<a
+										href="{{ item.url }}"
+										itemprop="url"
+										class=""
+										{{
+										item.is_target_blank or item.is_external
+											? 'target="' ~ item.target ~ '" rel="noopener noreferrer"'
+										}}
+									>
+										<span itemprop="name">{{- item.title -}}</span>
+									</a>
+								{%- endif -%}
+							</li>
+						{%- endfor -%}
+					</ul>
+				</nav>
+			{%- endif -%}
+		</div>
 
-		<div
-			class="border-border text-label flex flex-col gap-3 border-t pt-6 lg:flex-row lg:justify-between"
-		>
+		<div class="border-border flex flex-col gap-3 border-t pt-6 lg:flex-row lg:justify-between">
 			<div class="flex items-center gap-2">
 				{{-
 					include(
@@ -72,7 +108,7 @@
 				-}}
 
 				{{- '&copy;&nbsp;' ~ ('now' | date('Y')) ~ '&nbsp;' ~ site.name ~ '&nbsp;&middot;&nbsp;' -}}
-				{{- __('Made with care', 'wp-agencecinq') -}}
+				{{- __('Made with care', 'agencecinq') -}}
 			</div>
 			{%- if nav_menus.legals.get_items -%}
 				<ul itemscope class="flex gap-5" itemtype="http://schema.org/SiteNavigationElement">
