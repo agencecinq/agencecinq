@@ -1,0 +1,82 @@
+{#
+ # Components: Tease Post Column
+ #
+ # Lightweight blog teaser column: node rule, date · category, title, excerpt, read link.
+ # Schema.org: BlogPosting (headline, description, url, datePublished, dateModified, author, articleSection).
+ #
+ # @param object post Timber post.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- if post -%}
+	{%- set category =
+		post.categories | default([]) | filter(term => term.slug not in ['uncategorized', 'non-classe']) | first
+	-%}
+	{%- set excerpt =
+		post.excerpt({
+			words: 22,
+			read_more: ''
+		})
+	-%}
+
+	<article
+		class="{{
+		html_classes(
+			'group/tease-post relative flex flex-col space-y-5',
+			classes | default([]) | join(' ')
+		)
+		}}"
+		itemscope
+		itemtype="https://schema.org/BlogPosting"
+		itemprop="item"
+	>
+		<div
+			class="before:bg-border after:bg-primary after:ring-page group-hover/tease-post:after:bg-accent relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px before:content-[''] after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 after:transition-[background-color,transform] after:duration-300 after:ease-out after:content-[''] group-hover/tease-post:after:scale-125"
+			aria-hidden="true"
+		></div>
+
+		<div class="flex flex-col space-y-3">
+			<p class="text-label text-subtle uppercase">
+				<time datetime="{{ post.date('c') }}" itemprop="datePublished">
+					{{- post.date('j F Y') | upper -}}
+				</time>
+				{%- if category -%}
+					<span aria-hidden="true">{{ ' · ' }}</span>
+					<span itemprop="articleSection">{{- category.name -}}</span>
+				{%- endif -%}
+			</p>
+
+			<h3 class="text-title-md text-primary" itemprop="headline">
+				<a href="{{ post.link }}" class="after:absolute after:inset-0" itemprop="url">
+					{{- post.title -}}
+				</a>
+			</h3>
+
+			{%- if excerpt | trim -%}
+				<p class="text-muted text-sm" itemprop="description">
+					{{- excerpt -}}
+				</p>
+			{%- endif -%}
+		</div>
+
+		<p class="text-label text-primary pointer-events-none inline-flex items-center gap-1.5">
+			{{- __('Read the article', 'agencecinq') -}}
+			{{-
+				include(
+					'svg/use.html.twig',
+					{
+						icon: 'arrow-right',
+						classes: ['size-3']
+					},
+					with_context = false
+				)
+			-}}
+		</p>
+
+		<meta itemprop="dateModified" content="{{ post.modified('c') }}" />
+		<meta
+			itemprop="author"
+			content="{{ post.author.name | default('AgenceCinq') | e('html_attr') }}"
+		/>
+	</article>
+{%- endif -%}
