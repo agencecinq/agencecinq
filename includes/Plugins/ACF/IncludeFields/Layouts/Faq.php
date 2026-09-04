@@ -107,7 +107,7 @@ class Faq {
 							'tabs'            => 'visual',
 							'toolbar'         => 'basic',
 							'media_upload'    => 0,
-							'instructions'    => __( 'Keep the answer short and direct (featured snippet).', 'agencecinq' ),
+							'instructions'    => __( 'Keep the answer short and direct (featured snippet). If the answer is empty, the question is not displayed.', 'agencecinq' ),
 							'parent_repeater' => 'field_' . $key . '_faq_items',
 						),
 					),

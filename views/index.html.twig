@@ -1,7 +1,7 @@
 {#
  # Index
  #
- # @package CollectiveLaCabane
+ # @package AgenceCinq
  # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  #}
 <!DOCTYPE html>
@@ -20,33 +20,28 @@
 		{{ function('wp_head') }}
 	</head>
 
-	<body {{ body_class('text-primary bg-page antialiased') }}>
+	<body {{ body_class('text-cream bg-black antialiased') }}>
 		{{- function('wp_body_open ') -}}
 
+		{%- block header -%}
+			{{-
+				include(
+					'header.html.twig',
+					{
+						classes: ['sticky top-0 z-10']
+					}
+				)
+			-}}
+		{%- endblock -%}
 		{%- block content -%}
 			<main id="content" role="main">
-				<div class="rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 lg:-mb-12.5">
-					{%- block header -%}
-						<div class="relative">
-							{{-
-								include(
-									'header.html.twig',
-									{
-										classes: ['relative z-10']
-									}
-								)
-							-}}
-						</div>
-					{%- endblock -%}
-
-					<div class="container space-y-5 pt-5 pb-20 lg:space-y-20 lg:pt-12.5">
-						{{ yoast_breadcrumb() }}
-						<h1 class="text-title-xl text-accent">{{- post.title -}}</h1>
-					</div>
+				<div class="container space-y-5 pt-5 pb-20 lg:space-y-20 lg:pt-12.5">
+					{{ yoast_breadcrumb() }}
+					<h1 class="text-title-xl text-pistachio">{{- post.title -}}</h1>
 				</div>
 
 				{%- if post.content -%}
-					<div class="container grid grid-cols-12 gap-5 pt-26.25 pb-20 lg:pt-32.5">
+					<div class="layout-grid container gap-y-5 pt-26.25 pb-20 lg:pt-32.5">
 						<div class="wysiwyg col-span-full lg:col-span-6 lg:col-start-4">
 							{{- post.content -}}
 						</div>
@@ -69,5 +64,7 @@
 		{%- endblock -%}{{- function('wp_footer') -}}<div id="svg-sprite" style="display: none;">
 			{{- include('public/sprite.svg', ignore_missing = true) -}}
 		</div>
+
+		{{- include('components/grid.html.twig') -}}
 	</body>
 </html>

@@ -162,8 +162,8 @@ class Context extends Site implements Service {
 	public function add_menus_to_context( array $context ): array {
 		$menus = get_registered_nav_menus();
 
-		foreach ( $menus as $menu => $value ) {
-			$context['nav_menus'][ $menu ] = Timber::get_menu( $menu );
+		foreach ( $menus as $key => $value ) {
+			$context['nav_menus'][ $key ] = Timber::get_menu( $key );
 		}
 
 		return $context;

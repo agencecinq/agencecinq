@@ -9,7 +9,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="bg-page text-primary"
+	class="bg-black text-cream"
 	{% if block.content.title %}aria-labelledby="{{ block.id }}-title"{% endif %}
 >
 	<div class="container space-y-18">
@@ -35,7 +35,7 @@
 
 		{%- if members | length -%}
 			<ul
-				class="grid grid-cols-2 gap-8 lg:grid-cols-4"
+				class="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4 lg:gap-x-6"
 				itemscope
 				itemtype="https://schema.org/ItemList"
 			>
@@ -58,7 +58,7 @@
 							itemtype="https://schema.org/Person"
 							itemprop="item"
 						>
-							<div class="bg-card aspect-4/5 w-full overflow-hidden rounded-8">
+							<div class="bg-gray aspect-4/5 w-full overflow-hidden rounded-8">
 								{{-
 									include(
 										'components/image.html.twig',
@@ -80,7 +80,7 @@
 							{%- endif -%}
 
 							{%- if member.position -%}
-								<p class="text-label text-subtle" itemprop="jobTitle">
+								<p class="text-label text-stone" itemprop="jobTitle">
 									{{- member.position -}}
 								</p>
 							{%- endif -%}

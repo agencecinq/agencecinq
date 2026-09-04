@@ -31,12 +31,12 @@
 		itemprop="item"
 	>
 		<div
-			class="before:bg-border after:bg-primary after:ring-page group-hover/tease-post:after:bg-accent relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px before:content-[''] after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 after:transition-[background-color,transform] after:duration-300 after:ease-out after:content-[''] group-hover/tease-post:after:scale-125"
+			class="before:bg-cream-soft after:bg-cream after:ring-black group-hover/tease-post:after:bg-pistachio relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px before:content-[''] after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 after:transition-[background-color,transform] after:duration-300 after:ease-out after:content-[''] group-hover/tease-post:after:scale-125"
 			aria-hidden="true"
 		></div>
 
 		<div class="flex flex-col space-y-3">
-			<p class="text-label text-subtle uppercase">
+			<p class="text-label text-stone uppercase">
 				<time datetime="{{ post.date('c') }}" itemprop="datePublished">
 					{{- post.date('j F Y') | upper -}}
 				</time>
@@ -46,20 +46,20 @@
 				{%- endif -%}
 			</p>
 
-			<h3 class="text-title-md text-primary" itemprop="headline">
+			<h3 class="text-title-md text-cream" itemprop="headline">
 				<a href="{{ post.link }}" class="after:absolute after:inset-0" itemprop="url">
 					{{- post.title -}}
 				</a>
 			</h3>
 
 			{%- if excerpt | trim -%}
-				<p class="text-muted text-sm" itemprop="description">
+				<p class="text-taupe text-sm" itemprop="description">
 					{{- excerpt -}}
 				</p>
 			{%- endif -%}
 		</div>
 
-		<p class="text-label text-primary pointer-events-none inline-flex items-center gap-1.5">
+		<p class="text-label text-cream pointer-events-none inline-flex items-center gap-1.5">
 			{{- __('Read the article', 'agencecinq') -}}
 			{{-
 				include(

@@ -10,7 +10,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="relative overflow-hidden bg-elevated text-primary"
+	class="relative overflow-hidden bg-dark-gray text-cream"
 	{% if block.content.title %}aria-labelledby="{{ block.id }}-title"{% endif %}
 >
 	<div
@@ -23,7 +23,7 @@
 					'svg/use.html.twig',
 					{
 						icon: 'mark',
-						classes: ['fill-primary h-[17.5rem] w-[31.25rem]']
+						classes: ['fill-cream h-[17.5rem] w-[31.25rem]']
 					},
 					with_context = false
 				)
@@ -54,7 +54,7 @@
 
 		{%- if steps | length -%}
 			<div
-				class="relative before:pointer-events-none before:absolute before:top-8 before:bottom-8 before:left-4 before:w-0.5 before:bg-border before:content-[''] lg:before:top-22.75 lg:before:bottom-22.75 lg:before:left-7.5"
+				class="relative before:pointer-events-none before:absolute before:top-8 before:bottom-8 before:left-4 before:w-0.5 before:bg-cream-soft before:content-[''] lg:before:top-22.75 lg:before:bottom-22.75 lg:before:left-7.5"
 				itemscope
 				itemtype="https://schema.org/ItemList"
 			>
@@ -74,12 +74,12 @@
 							<meta itemprop="position" content="{{ loop.index }}" />
 
 							<div
-								class="relative flex items-end gap-1 pl-8 before:absolute before:top-1/2 before:left-4 before:size-3.75 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-subtle before:ring-4 before:ring-elevated before:content-[''] lg:w-50 lg:shrink-0 lg:pl-0 lg:before:-left-12.5"
+								class="relative flex items-end gap-1 pl-8 before:absolute before:top-1/2 before:left-4 before:size-3.75 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-stone before:ring-4 before:ring-dark-gray before:content-[''] lg:w-50 lg:shrink-0 lg:pl-0 lg:before:-left-12.5"
 							>
 								<span class="text-pipeline-number" aria-hidden="true">
 									{{- '%02d' | format(loop.index) -}}
 								</span>
-								<span class="text-label text-subtle" aria-hidden="true">
+								<span class="text-label text-stone" aria-hidden="true">
 									/{{- total -}}
 								</span>
 							</div>
@@ -91,7 +91,7 @@
 									</h3>
 								{%- endif -%}
 								{%- if step.text -%}
-									<p class="text-sm text-muted" itemprop="description">
+									<p class="text-sm text-taupe" itemprop="description">
 										{{- step.text | raw -}}
 									</p>
 								{%- endif -%}

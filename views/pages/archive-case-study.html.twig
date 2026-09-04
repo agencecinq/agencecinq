@@ -13,11 +13,11 @@
 				{{- include('header.html.twig', { classes: [ 'relative z-10' ] } ) -}}
 			{%- endblock -%}
 
-			<div class="container grid grid-cols-12 gap-5 pt-5 pb-20 lg:pt-12.5">
+			<div class="container layout-grid gap-y-5 pt-5 pb-20 lg:pt-12.5">
 				<div class="col-span-full space-y-15 text-center lg:col-span-10 lg:col-start-2">
 					<div class="space-y-5">
 						{{- yoast_breadcrumb() -}}
-						<h1 class="text-title-xl text-accent">
+						<h1 class="text-title-xl text-pistachio">
 							{{- title | default(__('Case studies', 'agencecinq')) -}}
 						</h1>
 					</div>
@@ -61,11 +61,7 @@
 		</div>
 
 		<div class="pt-27.5 pb-20 lg:pt-32.5">
-			<div class="container">
-				<div class="grid grid-cols-12 gap-5">
-					<div
-						class="col-span-full grid grid-cols-12 gap-x-2.5 gap-y-10 lg:col-span-10 lg:col-start-2 lg:gap-x-5 lg:gap-y-20"
-					>
+			<div class="container layout-grid gap-y-10 lg:gap-y-20">
 						{%- for post in posts -%}
 							<div class="col-span-6 lg:col-span-4">
 								{{-
@@ -94,8 +90,6 @@
 								}
 							)
 						-}}
-					</div>
-				</div>
 			</div>
 		</div>
 	</main>

@@ -138,7 +138,7 @@ class ChildPagesByParent extends Piece {
 	}
 
 	showError(message: string): void {
-		this.$slideshow.innerHTML = `<p class="text-eyebrow text-accent" role="alert">${message}</p>`;
+		this.$slideshow.innerHTML = `<p class="text-eyebrow text-pistachio" role="alert">${message}</p>`;
 	}
 
 	locked(): void {

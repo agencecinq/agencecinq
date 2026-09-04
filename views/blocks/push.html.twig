@@ -13,7 +13,7 @@
 -}}
 
 {% set image_on_left = (block.image_position|default('right')) == 'left' %}
-<section id="{{ block.id }}" class="container grid grid-cols-12 gap-x-5 gap-y-10">
+<section id="{{ block.id }}" class="container layout-grid gap-y-10">
 	<div
 		class="{{
 		html_classes(
@@ -27,7 +27,7 @@
 			<h3 class="text-title-lg lg:hidden">{{- block.content.title -}}</h3>
 		{%- endif -%}
 
-		<div class="{{ html_classes( 'rounded-25 overflow-hidden', block.object_fit == 'object-cover' ? 'aspect-square bg-card/30' : '' ) }}">
+		<div class="{{ html_classes( 'rounded-25 overflow-hidden', block.object_fit == 'object-cover' ? 'aspect-square bg-gray/30' : '' ) }}">
 			{{-
 				include(
 					'components/media.html.twig',
@@ -79,7 +79,7 @@
 					{%- for item in block.content.items -%}
 						<li class="flex items-center gap-3.75 lg:gap-5">
 							<span
-								class="bg-accent flex size-22 lg:size-23 shrink-0 items-center justify-center rounded-full"
+								class="bg-pistachio flex size-22 lg:size-23 shrink-0 items-center justify-center rounded-full"
 							>
 								{{-
 									include(

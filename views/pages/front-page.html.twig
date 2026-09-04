@@ -8,17 +8,6 @@
 
 {%- block content -%}
 	<main id="content" role="main">
-		{%- block header -%}
-			{{-
-				include(
-					'header.html.twig',
-					{
-						classes: ['relative z-10']
-					}
-				)
-			-}}
-		{%- endblock -%}
-
 		{%- if
 			post.meta('hero').content.overline
 				or (post.meta('hero').specs | length)
@@ -27,32 +16,34 @@
 				or post.meta('hero').quote.image
 				or post.meta('hero').quote.link.url
 				or (post.meta('hero').services | length) -%}
-			<section class="bg-page text-primary py-16 lg:py-24" aria-labelledby="hero-home-title">
+			<section class="text-cream bg-black py-16 lg:py-24" aria-labelledby="hero-home-title">
 				<div class="container">
 					<div class="space-y-5.5">
 						{%- if post.meta('hero').content.overline -%}
-							<p class="text-eyebrow text-muted">
+							<p class="text-eyebrow text-taupe">
 								{{- post.meta('hero').content.overline -}}
 							</p>
 						{%- endif -%}
 
-						<h1 id="hero-home-title" class="{{ html_classes('text-title-3xl text-primary') }}">
+						<h1 id="hero-home-title" class="{{ html_classes('text-title-3xl text-cream') }}">
 							{{- post.meta('hero').content.title | default(post.title) -}}
 						</h1>
 					</div>
 
 					{%- if post.meta('hero').specs | length -%}
-						<ul class="border-border mt-11 grid grid-cols-1 border-y lg:grid-cols-4">
+						<ul class="border-cream-soft layout-grid mt-11 border-y">
 							{%- for spec in post.meta('hero').specs -%}
 								{%- if spec.text or spec.highlight -%}
 									<li
-										class="text-label text-subtle border-border py-4 uppercase max-lg:not-first:border-t lg:pr-3 lg:not-first:border-l lg:not-first:pl-6"
+										class="text-label text-stone border-cream-soft col-span-full py-4 uppercase max-lg:not-first:border-t lg:col-span-3"
 									>
 										{%- if spec.text -%}
 											<span>{{- spec.text -}}</span>
 										{%- endif -%}
 										{%- if spec.highlight -%}
-											<span class="text-accent">{{- spec.text ? ' ' }}{{- spec.highlight -}}</span>
+											<span class="text-pistachio">
+												{{- spec.text ? ' ' }}{{- spec.highlight -}}
+											</span>
 										{%- endif -%}
 									</li>
 								{%- endif -%}
@@ -71,8 +62,7 @@
 								itemscope
 								itemtype="https://schema.org/Quotation"
 							>
-
-                            {# https://schema.org/Quotation #}
+								{# https://schema.org/Quotation #}
 								{%- if post.meta('hero').quote.image -%}
 									<div class="size-15.5 shrink-0 overflow-hidden rounded-full">
 										{{-
@@ -91,7 +81,7 @@
 
 								<div class="flex min-w-0 flex-col gap-2">
 									{%- if post.meta('hero').quote.text -%}
-										<blockquote class="text-primary text-lg" itemprop="text">
+										<blockquote class="text-cream text-lg" itemprop="text">
 											<p>
 												{{- post.meta('hero').quote.text | raw -}}
 											</p>
@@ -100,7 +90,7 @@
 
 									{%- if post.meta('hero').quote.attribution -%}
 										<figcaption
-											class="text-label text-muted uppercase"
+											class="text-label text-taupe uppercase"
 											itemprop="author"
 											itemscope
 											itemtype="https://schema.org/Person"
@@ -128,7 +118,7 @@
 					{%- endif -%}
 
 					{%- if post.meta('hero').services | length -%}
-						<ul class="mt-14 grid grid-cols-1 gap-14 lg:grid-cols-3">
+						<ul class="mt-14 grid grid-cols-1 gap-y-14 lg:grid-cols-3 lg:gap-x-6">
 							{%- for service in post.meta('hero').services -%}
 								<li>
 									{{-

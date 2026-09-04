@@ -1,5 +1,5 @@
 ---
-description: Conventions pour les tokens de design Tailwind v4 dans theme.css (noms identiques au Figma, sizes en rem, pas de valeurs en dur dans les classes utilitaires).
+description: Conventions pour les tokens de design Tailwind v4 dans theme.css (couleurs nommées par teinte en anglais, typo aux noms Figma, sizes en rem, pas de valeurs en dur).
 globs: src/stylesheets/theme.css,**/*.twig
 alwaysApply: false
 ---
@@ -10,30 +10,41 @@ alwaysApply: false
 
 - Colors, radii, typography scales, and background images belong in `src/stylesheets/theme.css` inside `@theme`.
 - Do not use arbitrary Tailwind values in Twig or CSS utilities for design tokens: no `bg-[#102345]`, no `bg-[linear-gradient(...)]`, no `[background:...]`.
-- Use the generated utilities instead (`bg-page`, `text-accent`, `rounded-25`, etc.).
+- Use the generated utilities instead (`bg-black`, `text-pistachio`, `rounded-25`, etc.).
 - Prefer Tailwind v4 native syntax over an equivalent arbitrary value: `aspect-4/5`, not `aspect-[4/5]`.
 
-## Token names follow Figma
+## Color tokens are named by hue
 
-Custom property **suffixes** in `@theme` must use the **same names as the Figma design system** (kebab-case). Do not invent English (or French) aliases, and do not keep legacy starter names (`blue`, `green`, `h0`, `text-l`).
+Color custom properties are named after the **hue in English** (kebab-case), not the UI role (`page`, `accent`, `primary`) and not French (`fond-page`, `gris-foncé`).
+
+```css
+/* GOOD — hue in English */
+--color-black: #08090a;
+--color-dark-gray: #0d0f0e;
+--color-pistachio: #b3fca4;
+--color-cream: #f1f0ea;
+
+/* BAD — UI role or French */
+--color-page: #08090a;
+--color-accent: #b3fca4;
+--color-fond-page: #08090a;
+--color-gris-fonce: #0d0f0e;
+```
+
+Typography and radius suffixes still follow the **Figma design system** (kebab-case). Do not keep legacy starter names (`h0`, `text-l`).
 
 ```css
 /* GOOD — same names as Figma */
---color-page: #08090a;
---color-accent: #b3fca4;
 --text-title-xxl: 4.75rem;
 
 /* BAD — French or legacy aliases */
---color-fond-page: #08090a;
---color-blue: #08090a;
---color-green: #b3fca4;
 --text-titre-1: 4.75rem;
 --text-h0: 6rem;
 ```
 
-- The Tailwind class mirrors the token suffix: `--color-page` → `bg-page`, `--text-title-xxl` → `text-title-xxl`.
+- The Tailwind class mirrors the token suffix: `--color-black` → `bg-black`, `--text-title-xxl` → `text-title-xxl`.
 - Do not add CSS aliases that map old class names onto the new tokens.
-- Prefer named tokens over opacity modifiers on another token (`text-muted`, not `text-primary/60`; `bg-accent-soft`, not `bg-accent/20`).
+- Prefer named tokens over opacity modifiers on another token (`text-taupe`, not `text-cream/60`; `bg-pistachio-soft`, not `bg-pistachio/20`).
 
 ## Responsive type scale
 
@@ -79,7 +90,7 @@ If a value is reused, add a token in `@theme` rather than repeating em arbitrary
 
 ## Checklist when adding a token
 
-1. Figma kebab-case suffix in `@theme`.
+1. Color: hue in English. Type/radius: Figma kebab-case suffix in `@theme`.
 2. Used via a utility class in Twig/CSS, not an arbitrary value.
 3. Sizes in rem or spacing scale, letter-spacing in em (see above).
 4. `pnpm build` passes.

@@ -4,26 +4,24 @@
 	--font-heading: "Inter", sans-serif;
 	--font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-	/* Colors */
+	/* Colors · named by hue */
 	--color-*: initial;
 
-	--color-page: #08090a;
-	--color-elevated: #0d0f0e;
-	--color-card: #141614;
-	--color-card-hover: #1c201c;
+	--color-black: #08090a;
+	--color-off-black: #0a0c0a;
+	--color-dark-gray: #0d0f0e;
+	--color-gray: #141614;
+	--color-medium-gray: #1c201c;
 
-	--color-primary: #f1f0ea;
-	--color-muted: #9a988d;
-	--color-subtle: #7e7c71;
-	--color-on-accent: #0a0c0a;
+	--color-cream: #f1f0ea;
+	--color-cream-soft: #f1f0ea1c;
+	--color-cream-faint: #f1f0ea0f;
+	--color-taupe: #9a988d;
+	--color-stone: #7e7c71;
 
-	--color-accent: #b3fca4;
-	--color-accent-hover: #c7ffbb;
-	--color-accent-soft: #b3fca424;
-
-	--color-border: #f1f0ea1c;
-	--color-border-subtle: #f1f0ea0f;
-	--color-border-accent: #b3fca4;
+	--color-pistachio: #b3fca4;
+	--color-light-pistachio: #c7ffbb;
+	--color-pistachio-soft: #b3fca424;
 
 	/* Typographies */
 	--text-*: initial;

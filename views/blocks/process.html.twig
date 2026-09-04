@@ -16,7 +16,7 @@
 
 <section id="{{ block.id }}" class="container space-y-15 lg:space-y-20">
 	{%- if block.content.title or block.content.subtitle or block.content.text -%}
-		<div class="grid grid-cols-4 gap-x-2.5 gap-y-7.5 lg:grid-cols-12 lg:gap-x-5">
+		<div class="grid grid-cols-4 gap-x-4 gap-y-7.5 lg:grid-cols-12 lg:gap-x-6">
 			{%- if block.content.title -%}
 				<div class="col-span-full space-y-5 lg:col-span-5">
 					{%- if block.content.title -%}
@@ -46,11 +46,11 @@
 	{%- endif -%}
 
 	{%- if (block.steps|default([])|length) > 0 -%}
-		<div class="grid grid-cols-1 gap-x-5 gap-y-15 lg:grid-cols-12">
+		<div class="layout-grid gap-y-15">
 			{%- for step in block.steps -%}
 				<article class="col-span-full lg:col-span-4">
 					<span
-						class="bg-accent relative z-2 mx-auto -mb-[1.78125rem] flex size-14.25 items-center justify-center rounded-full font-semibold lg:-mb-[2.34375rem] lg:size-18.75"
+						class="bg-pistachio relative z-2 mx-auto -mb-[1.78125rem] flex size-14.25 items-center justify-center rounded-full font-semibold lg:-mb-[2.34375rem] lg:size-18.75"
 						aria-hidden="true"
 					>
 						{{- loop.index -}}
@@ -58,7 +58,7 @@
 
 					<div class="relative z-1 flex flex-col gap-y-5 lg:gap-y-7.5">
 						<div
-							class="bg-card/30 rounded-15 relative aspect-382/429 overflow-hidden lg:aspect-427/480"
+							class="bg-gray/30 rounded-15 relative aspect-382/429 overflow-hidden lg:aspect-427/480"
 						>
 							{{-
 								include(

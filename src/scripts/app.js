@@ -4,6 +4,7 @@ import '@agencecinq/drawer';
 import '@agencecinq/modal';
 
 load('cinq-accordion-group', () => import('./components/AccordionGroup.ts'));
+load('cinq-grid', () => import('./components/Grid.ts'));
 load('cinq-marquee', () => import('./components/Marquee.ts'));
 load('cinq-media-text-reveal', () => import('./components/MediaTextReveal.ts'));
 load('cinq-child-pages-by-parent', () => import('./components/ChildPagesByParent.ts'));

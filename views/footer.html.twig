@@ -2,19 +2,19 @@
  # Footer
  #
  # @package WordPress
- # @subpackage CollectiveLaCabane/views
+ # @subpackage AgenceCinq/views
  #
  # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  #}
 
 <footer
 	role="contentinfo"
-	class="text-subtle text-label bg-elevated border-border border-t pt-18 pb-8 lg:pt-31 lg:pb-8.5"
+	class="text-stone text-label bg-dark-gray border-cream-soft border-t pt-18 pb-8 lg:pt-31 lg:pb-8.5"
 >
 	<div class="container space-y-12 lg:space-y-20">
-		<div class="grid grid-cols-12 gap-x-4 gap-y-10 lg:gap-x-6">
+		<div class="layout-grid gap-y-10">
 			<div class="col-span-full space-y-4 lg:col-span-4">
-				<a href="{{ site.url }}" class="text-primary block h-[1.339375rem] w-18">
+				<a href="{{ site.url }}" class="text-cream block h-[1.339375rem] w-18">
 					{{
 						include(
 							'svg/use.html.twig',
@@ -26,7 +26,7 @@
 					}}
 				</a>
 
-				<p class="text-muted text-sm">
+				<p class="text-taupe text-sm">
 					Un site est un actif. Pas un passif qu’on change tous les trois ans.
 				</p>
 
@@ -34,10 +34,10 @@
 					<p>
 						Paris · Tours · Marseille
 					</p>
-					<p class="text-accent">
+					<p class="text-pistachio">
 						<a href="mailto:contact@agencecinq.com">contact@agencecinq.com</a>
 					</p>
-					<p class="text-accent">
+					<p class="text-pistachio">
 						<a href="tel:0673778608">06 73 77 86 08</a>, Joachim, fondateur
 					</p>
 				</div>
@@ -64,7 +64,7 @@
 												<a
 													href="{{ child.url }}"
 													itemprop="url"
-													class="text-muted text-sm hover:underline"
+													class="text-taupe text-sm hover:underline"
 													{{
 													child.is_target_blank or child.is_external
 														? 'target="' ~ child.target ~ '" rel="noopener noreferrer"'
@@ -95,7 +95,7 @@
 			{%- endif -%}
 		</div>
 
-		<div class="border-border flex flex-col gap-3 border-t pt-6 lg:flex-row lg:justify-between">
+		<div class="border-cream-soft flex flex-col gap-3 border-t pt-6 lg:flex-row lg:justify-between">
 			<div class="flex items-center gap-2">
 				{{-
 					include(
