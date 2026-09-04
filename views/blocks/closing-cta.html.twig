@@ -1,0 +1,51 @@
+{#
+ # Blocks: Closing CTA
+ # Centered closing band: title, lead, primary CTA.
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+{%- set link = block.content.link | default({}) -%}
+
+<section
+	id="{{ block.id }}"
+	class="bg-page pt-42 pb-52 text-primary border-t border-border"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
+	<div class="container flex flex-col items-center">
+		<div class="flex w-full max-w-225 flex-col items-center text-center space-y-14">
+			{%- if block.content.title or block.content.text -%}
+				<header class="flex flex-col items-center space-y-6">
+					{%- if block.content.title -%}
+						<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xxl text-balance">
+							{{- block.content.title -}}
+						</{{ block.content.heading | default('h2') }}>
+					{%- endif -%}
+
+					{%- if block.content.text -%}
+						<p class="text-lg text-muted max-w-140">
+							{{- block.content.text | raw -}}
+						</p>
+					{%- endif -%}
+				</header>
+			{%- endif -%}
+
+			{{-
+				include(
+					'components/button.html.twig',
+					link
+						| merge({
+							title: link.title ? link.title ~ ' →' : '',
+							classes: [
+								'border-0',
+								'bg-accent',
+								'text-on-accent',
+								'hover:bg-accent-hover'
+							]
+						}),
+					with_context: false
+				)
+			-}}
+		</div>
+	</div>
+</section>
