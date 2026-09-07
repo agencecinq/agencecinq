@@ -9,7 +9,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="bg-black text-cream py-26"
+	class="bg-black text-cream"
 	{% if block.content.title %}aria-labelledby="{{ block.id }}-title"{% endif %}
 	itemscope
 	itemtype="https://schema.org/OfferCatalog"
@@ -40,7 +40,7 @@
 						itemscope
 						itemtype="https://schema.org/Offer"
 					>
-						<article class="border-cream-soft bg-gray flex h-full w-full flex-col rounded-8 border p-8">
+						<article class="border-cream-soft bg-gray flex flex-col rounded-8 border p-8">
 							<div class="space-y-5">
 								<div class="space-y-3">
 									{%- if item.title or item.price -%}
@@ -73,20 +73,20 @@
 								{%- endif -%}
 							</div>
 
-							<div class="mt-auto pt-7">
-								{{-
-									include(
-										'components/button.html.twig',
-										item.link
-											| default({})
-											| merge({
-												mode: 'dark',
-												attributes: item.link.url ? { itemprop: 'url' } : {}
-											}),
-										with_context: false
-									)
-								-}}
-							</div>
+							{%- if item.link.url -%}
+								<div class="mt-auto pt-7">
+									{{-
+										include(
+											'components/button.html.twig',
+											item.link | merge({
+													mode: 'dark',
+													attributes: item.link.url ? { itemprop: 'url' } : {},
+												}),
+											with_context: false
+										)
+									-}}
+								</div>
+							{%- endif -%}
 						</article>
 					</li>
 				{%- endfor -%}
