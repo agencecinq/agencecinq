@@ -1,47 +1,61 @@
 {#
  # Components: Tease Service
  #
- # Column of the homepage “bus système” list: node rule, index, title, text, link.
+ # Column of the “bus système” list: node rule, index, title, text, link.
+ # Schema.org: Service (name, description, url).
  #
  # @param string title
  # @param string text
  # @param object link { title, url, target }
  # @param string index Index label, e.g. "01/03".
+ # @param string heading Heading tag for the title. Defaults to h3.
  # @param array classes
  #}
 
-{%- set link = link | default( {} ) -%}
+{%- set link = link | default({}) -%}
+{%- set heading = heading | default('h3') -%}
 {%- if title or text or link.url -%}
-	<article class="{{ html_classes( 'tease-service group/tease-service flex flex-col items-start', classes | default( [] ) | join( ' ' ) ) }}">
-		<div class="relative h-3 w-full" aria-hidden="true">
-			<span class="bg-cream-soft absolute top-1/2 right-0 left-1.5 h-px"></span>
-			<span
-				class="bg-cream ring-black absolute top-1/2 left-0 size-2.75 -translate-y-1/2 rounded-full ring-4 transition-[background-color,scale] duration-300 ease-out group-hover/tease-service:scale-125 group-hover/tease-service:bg-pistachio"
-			></span>
+	<article
+		class="{{
+		html_classes(
+			'group/tease-service relative flex flex-col space-y-5',
+			classes | default([]) | join(' ')
+		)
+		}}"
+		itemscope
+		itemtype="https://schema.org/Service"
+		itemprop="item"
+	>
+		<div
+			class="before:bg-cream-soft after:bg-cream after:ring-black group-hover/tease-service:after:bg-pistachio relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px before:content-[''] after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 after:transition-[background-color,transform] after:duration-300 after:ease-out after:content-[''] group-hover/tease-service:after:scale-125"
+			aria-hidden="true"
+		></div>
+
+		<div class="flex flex-col space-y-3">
+			{%- if index -%}
+				<p class="text-label text-stone">
+					{{- index -}}
+				</p>
+			{%- endif -%}
+
+			{%- if title -%}
+				<{{ heading }} class="text-title-md text-cream" itemprop="name">
+					{{- title -}}
+				</{{ heading }}>
+			{%- endif -%}
+
+			{%- if text -%}
+				<p class="text-sm text-taupe" itemprop="description">
+					{{- text | raw -}}
+				</p>
+			{%- endif -%}
 		</div>
-
-		{%- if index -%}
-			<p class="text-label text-stone mt-5">
-				{{- index -}}
-			</p>
-		{%- endif -%}
-
-		{%- if title -%}
-			<h2 class="text-title-md text-cream mt-2.5">
-				{{- title -}}
-			</h2>
-		{%- endif -%}
-
-		{%- if text -%}
-			<p class="text-sm text-taupe mt-3">
-				{{- text | raw -}}
-			</p>
-		{%- endif -%}
 
 		{%- if link.url and link.title -%}
 			<a
 				href="{{ link.url }}"
-				class="text-cta text-cream mt-6 inline-flex items-center gap-1.5 hover:text-pistachio"
+				class="text-cta text-cream inline-flex items-center gap-1.5 hover:text-pistachio"
+				itemprop="url"
 				{{ link.target ? "target=\"#{ link.target }\"" }}
 				{{ link.target == '_blank' ? 'rel="noopener noreferrer"' }}
 			>
@@ -50,10 +64,10 @@
 					include(
 						'svg/use.html.twig',
 						{
-							classes: [ 'size-3.5' ],
+							classes: ['size-3.5'],
 							icon: 'arrow-right'
 						},
-						with_context = false
+						with_context: false
 					)
 				-}}
 			</a>
