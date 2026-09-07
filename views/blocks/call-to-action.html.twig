@@ -1,8 +1,6 @@
 {#
- # Blocks: Closing CTA
+ # Blocks: Call to action
  #}
-
-{%- set link = block.content.link | default({}) -%}
 
 <section
 	id="{{ block.id }}"
@@ -30,7 +28,7 @@
 			{{-
 				include(
 					'components/button.html.twig',
-					link | merge({ variant: 'primary' }),
+					block.content.link | default({}) | merge({ variant: 'primary' }),
 					with_context = false
 				)
 			-}}
