@@ -1,0 +1,64 @@
+{#
+ # Pricing tier: name, price, included features.
+ # Featured variant uses pistachio chrome and an optional badge.
+ #
+ # @param string title The tier name.
+ # @param string price The displayed price.
+ # @param array features Repeater rows with a `text` key.
+ # @param bool featured Whether this tier is highlighted.
+ # @param string badge Optional badge label, shown when featured.
+ #}
+
+{%- set features = features | default([]) | filter(feature => feature.text) -%}
+
+{%- if title or price or (features | length) -%}
+	<article
+		class="{{
+		html_classes(
+			'rounded-8 flex w-full flex-col space-y-3 border p-8',
+			featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black'
+		)
+		}}"
+	>
+		{%- if (featured and badge) or title or price -%}
+			<div class="{{ html_classes(featured and badge ? 'space-y-4') }}">
+				{%- if featured and badge -%}
+					<p class="text-badge bg-pistachio text-off-black rounded-3 inline-block px-2 py-1">
+						{{- badge -}}
+					</p>
+				{%- endif -%}
+
+				{%- if title or price -%}
+					<div class="space-y-2.5">
+						{%- if title -%}
+							<h3 class="text-title-md text-taupe" itemprop="name">{{- title -}}</h3>
+						{%- endif -%}
+
+						{%- if price -%}
+							<p class="text-title-lg text-cream" itemprop="price">
+								{{- price -}}
+							</p>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+
+		{%- if features | length -%}
+			<ul class="border-cream-soft space-y-3 border-t pt-6">
+				{%- for feature in features -%}
+					<li
+						class="{{
+						html_classes(
+							"text-taupe flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full before:content-['']",
+							featured ? 'before:bg-pistachio' : 'before:bg-taupe'
+						)
+						}}"
+					>
+						{{- feature.text -}}
+					</li>
+				{%- endfor -%}
+			</ul>
+		{%- endif -%}
+	</article>
+{%- endif -%}
