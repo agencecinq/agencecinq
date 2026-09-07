@@ -12,8 +12,6 @@ namespace AgenceCinq\Plugins\ACF\IncludeFields;
 
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\AccordionGroup;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CallToAction;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ChildPages;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ChildPagesByParent;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Columns;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Contact;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EntryPoints;
@@ -53,8 +51,6 @@ class BlocksFields implements Service {
 	private static $layouts = array(
 		AccordionGroup::class,
 		CallToAction::class,
-		ChildPages::class,
-		ChildPagesByParent::class,
 		Columns::class,
 		Contact::class,
 		EntryPoints::class,
