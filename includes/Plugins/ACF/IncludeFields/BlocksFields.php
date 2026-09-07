@@ -30,6 +30,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Process;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Push;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\References;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Services;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Styleguide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Support;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
@@ -69,6 +70,7 @@ class BlocksFields implements Service {
 		Process::class,
 		Push::class,
 		References::class,
+		Services::class,
 		Styleguide::class,
 		Support::class,
 		Team::class,

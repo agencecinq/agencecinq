@@ -1,0 +1,73 @@
+{#
+ # Blocks: Services
+ # Bus-system pattern: eyebrow, title, then up to three service columns.
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+{%- set items = block.items | default([]) | filter(item => item.title or item.text or item.link.url) -%}
+
+<section
+	id="{{ block.id }}"
+	class="bg-black text-cream"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
+	<div class="container space-y-18">
+		{%- if block.content.overline or block.content.title -%}
+			<header class="space-y-6">
+				{{-
+					include(
+						'components/eyebrow.html.twig',
+						{
+							title: block.content.overline
+						},
+						with_context: false
+					)
+				-}}
+
+				{%- if block.content.title -%}
+					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl max-w-180">
+						{{- block.content.title -}}
+					</{{ block.content.heading | default('h2') }}>
+				{%- endif -%}
+			</header>
+		{%- endif -%}
+
+		{%- if items | length -%}
+			<ul
+				class="layout-grid gap-y-14"
+				itemscope
+				itemtype="https://schema.org/ItemList"
+			>
+				{%- if block.content.title -%}
+					<meta itemprop="name" content="{{ block.content.title }}" />
+				{%- endif -%}
+				<meta itemprop="numberOfItems" content="{{ items | length }}" />
+
+				{%- for item in items -%}
+					<li
+						class="col-span-full lg:col-span-4"
+						itemprop="itemListElement"
+						itemscope
+						itemtype="https://schema.org/ListItem"
+					>
+						<meta itemprop="position" content="{{ loop.index }}" />
+						{{-
+							include(
+								'components/tease-service.html.twig',
+								{
+									title: item.title,
+									text: item.text,
+									link: item.link,
+									index: '%02d/%02d' | format(loop.index, items | length),
+									heading: 'h3'
+								},
+								with_context: false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+		{%- endif -%}
+	</div>
+</section>
