@@ -26,6 +26,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\MediaText;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\MultiColumn;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageIntroduction;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Presentation;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Process;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Push;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\References;
@@ -64,6 +65,7 @@ class BlocksFields implements Service {
 		MultiColumn::class,
 		PageIntroduction::class,
 		Presentation::class,
+		PricingTiers::class,
 		Process::class,
 		Push::class,
 		References::class,

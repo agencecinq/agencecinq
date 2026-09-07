@@ -144,6 +144,7 @@
 
 	--radius-*: initial;
 
+	--radius-3: --spacing(0.75);
 	--radius-5: --spacing(1.25);
 	--radius-6: --spacing(1.5);
 	--radius-8: --spacing(2);
