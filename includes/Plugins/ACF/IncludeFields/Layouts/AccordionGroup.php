@@ -1,9 +1,10 @@
 <?php
 /**
- * ACF layout: AccordionGroup
+ * ACF layout: Accordion Group
  *
  * @package WordPress
  * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
+ * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
 namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
@@ -11,12 +12,12 @@ namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 
 /**
- * AccordionGroup block layout.
+ * Accordion Group block layout.
  */
 class AccordionGroup {
 
 	/**
-	 * Returns the layout array for the AccordionGroup block.
+	 * Returns the layout array for the Accordion Group block.
 	 *
 	 * @param string $key The field key prefix (e.g. 'blocks' or 'archive_posts').
 	 * @return array<string, mixed>
@@ -29,9 +30,8 @@ class AccordionGroup {
 			'display'    => 'block',
 			'sub_fields' => array(
 				...AcfFieldHelpers::settings( $key . '_accordion_group' ),
-				AcfFieldHelpers::radius( $key . '_accordion_group' ),
 				array(
-					'key'        => 'field_' . $key . '_accordion_group_tab_content',
+					'key'        => 'field_' . $key . '_accordion_group_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
 					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'tab',
@@ -45,109 +45,70 @@ class AccordionGroup {
 					'layout'     => 'block',
 					'sub_fields' => array(
 						array(
-							'key'           => 'field_' . $key . '_accordion_group_content_overline',
-							'label'         => __( 'Overline', 'agencecinq' ),
-							'name'          => 'overline',
-							'aria-label'    => __( 'Overline', 'agencecinq' ),
-							'type'          => 'text',
-							'placeholder'   => __( 'Overline of the block', 'agencecinq' ),
-							'instructions'  => __( 'Optional text shown above the main title.', 'agencecinq' ),
-							'default_value' => '',
+							'key'          => 'field_' . $key . '_accordion_group_content_overline',
+							'label'        => __( 'Overline', 'agencecinq' ),
+							'name'         => 'overline',
+							'aria-label'   => __( 'Overline', 'agencecinq' ),
+							'type'         => 'text',
+							'placeholder'  => __( 'Enter the overline of the block', 'agencecinq' ),
+							'instructions' => __( 'Eyebrow label shown above the title.', 'agencecinq' ),
 						),
 						array(
-							'key'           => 'field_' . $key . '_accordion_group_content_title',
-							'label'         => __( 'Title', 'agencecinq' ),
-							'name'          => 'title',
-							'aria-label'    => __( 'Title', 'agencecinq' ),
-							'type'          => 'text',
-							'placeholder'   => __( 'Title of the block', 'agencecinq' ),
-							'default_value' => '',
+							'key'         => 'field_' . $key . '_accordion_group_content_title',
+							'label'       => __( 'Title', 'agencecinq' ),
+							'name'        => 'title',
+							'aria-label'  => __( 'Title', 'agencecinq' ),
+							'type'        => 'text',
+							'placeholder' => __( 'Enter the title of the block', 'agencecinq' ),
 						),
 						array(
-							'key'        => 'field_' . $key . '_accordion_group_content_contact',
-							'label'      => __( 'Contact', 'agencecinq' ),
-							'name'       => 'contact',
-							'aria-label' => __( 'Contact', 'agencecinq' ),
-							'type'       => 'group',
+							'key'        => 'field_' . $key . '_accordion_group_content_heading',
+							'label'      => __( 'Heading', 'agencecinq' ),
+							'name'       => 'heading',
+							'aria-label' => __( 'Heading', 'agencecinq' ),
+							'type'       => 'clone',
+							'clone'      => array( 'field_clones_heading' ),
+							'display'    => 'seamless',
 							'layout'     => 'block',
-							'sub_fields' => array(
-
-								array(
-									'key'           => 'field_' . $key . '_accordion_group_content_contact_image',
-									'label'         => __( 'Image', 'agencecinq' ),
-									'name'          => 'image',
-									'aria-label'    => __( 'Image', 'agencecinq' ),
-									'instructions'  => __( 'Select or upload an image.', 'agencecinq' ),
-									'type'          => 'image',
-									'return_format' => 'id',
-								),
-								array(
-									'key'           => 'field_' . $key . '_accordion_group_content_contact_title',
-									'label'         => __( 'Title', 'agencecinq' ),
-									'name'          => 'title',
-									'aria-label'    => __( 'Title', 'agencecinq' ),
-									'type'          => 'text',
-									'placeholder'   => __( 'Title of the contact', 'agencecinq' ),
-									'instructions'  => __( 'Contact name or title.', 'agencecinq' ),
-									'default_value' => '',
-								),
-								array(
-									'key'           => 'field_' . $key . '_accordion_group_content_contact_text',
-									'label'         => __( 'Text', 'agencecinq' ),
-									'name'          => 'text',
-									'aria-label'    => __( 'Text', 'agencecinq' ),
-									'instructions'  => __( 'Short description or bio.', 'agencecinq' ),
-									'default_value' => '',
-									'placeholder'   => __( 'Text of the contact', 'agencecinq' ),
-									'type'          => 'textarea',
-									'rows'          => 2,
-								),
-								array(
-									'key'          => 'field_' . $key . '_accordion_group_content_contact_link',
-									'label'        => __( 'Link', 'agencecinq' ),
-									'name'         => 'link',
-									'aria-label'   => __( 'Link', 'agencecinq' ),
-									'type'         => 'link',
-									'instructions' => __( 'Enter the link URL.', 'agencecinq' ),
-								),
-							),
 						),
 					),
 				),
 				array(
-					'key'        => 'field_' . $key . '_accordion_group_tab_accordions',
-					'label'      => __( 'Accordions', 'agencecinq' ),
-					'aria-label' => __( 'Accordions', 'agencecinq' ),
+					'key'        => 'field_' . $key . '_accordion_group_tab_items',
+					'label'      => __( 'Items', 'agencecinq' ),
+					'aria-label' => __( 'Items', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
-					'key'          => 'field_' . $key . '_accordion_group_accordions',
-					'label'        => __( 'Accordions', 'agencecinq' ),
-					'name'         => 'accordions',
-					'aria-label'   => __( 'Accordions', 'agencecinq' ),
+					'key'          => 'field_' . $key . '_accordion_group_items',
+					'label'        => __( 'Items', 'agencecinq' ),
+					'name'         => 'items',
+					'aria-label'   => __( 'Items', 'agencecinq' ),
 					'type'         => 'repeater',
 					'layout'       => 'block',
-					'button_label' => __( 'Add Accordion', 'agencecinq' ),
+					'button_label' => __( 'Add Item', 'agencecinq' ),
+					'min'          => 1,
+					'instructions' => __( 'Each row is an accordion panel. The first item opens by default.', 'agencecinq' ),
 					'sub_fields'   => array(
 						array(
-							'key'           => 'field_' . $key . '_accordion_group_accordions_header',
-							'label'         => __( 'Header', 'agencecinq' ),
-							'name'          => 'header',
-							'aria-label'    => __( 'Header', 'agencecinq' ),
-							'type'          => 'text',
-							'placeholder'   => __( 'Enter the title of the accordion', 'agencecinq' ),
-							'default_value' => '',
+							'key'             => 'field_' . $key . '_accordion_group_items_title',
+							'label'           => __( 'Title', 'agencecinq' ),
+							'name'            => 'title',
+							'aria-label'      => __( 'Title', 'agencecinq' ),
+							'type'            => 'text',
+							'placeholder'     => __( 'Enter the title of the item', 'agencecinq' ),
+							'parent_repeater' => 'field_' . $key . '_accordion_group_items',
 						),
 						array(
-							'key'           => 'field_' . $key . '_accordion_group_accordions_content',
-							'label'         => __( 'Content', 'agencecinq' ),
-							'name'          => 'content',
-							'aria-label'    => __( 'Content', 'agencecinq' ),
-							'type'          => 'textarea',
-							'new_lines'     => 'br',
-							'rows'          => 4,
-							'placeholder'   => __( 'Enter the content of the accordion', 'agencecinq' ),
-							'default_value' => '',
+							'key'             => 'field_' . $key . '_accordion_group_items_text',
+							'label'           => __( 'Text', 'agencecinq' ),
+							'name'            => 'text',
+							'aria-label'      => __( 'Text', 'agencecinq' ),
+							'type'            => 'wysiwyg',
+							'tabs'            => 'visual',
+							'toolbar'         => 'basic',
+							'media_upload'    => 0,
+							'parent_repeater' => 'field_' . $key . '_accordion_group_items',
 						),
 					),
 				),
