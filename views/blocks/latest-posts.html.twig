@@ -5,14 +5,6 @@
 
 {{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 
-{%- set query = { post_type: 'post', posts_per_page: 3 } -%}
-{%- if block.content.category -%}
-	{%- set query = query | merge({
-		category__in: block.content.category is iterable ? block.content.category : [block.content.category]
-	}) -%}
-{%- endif -%}
-{%- set posts = get_posts(query) -%}
-
 <section
 	id="{{ block.id }}"
 	class="bg-black text-cream"
@@ -39,36 +31,41 @@
 			</header>
 		{%- endif -%}
 
-		{%- if posts | length -%}
-			<ul
-				class="grid grid-cols-1 gap-y-10 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-14"
-				itemscope
-				itemtype="https://schema.org/ItemList"
-			>
-				{%- if block.content.title -%}
-					<meta itemprop="name" content="{{ block.content.title }}" />
-				{%- endif -%}
-				<meta itemprop="numberOfItems" content="{{ posts | length }}" />
+		
+		<ul
+			class="grid grid-cols-1 gap-y-10 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-14"
+			itemscope
+			itemtype="https://schema.org/ItemList"
+		>
+			{%- if block.content.title -%}
+				<meta itemprop="name" content="{{ block.content.title }}" />
+			{%- endif -%}
+			<meta itemprop="numberOfItems" content="{{ posts | length }}" />
 
-				{%- for post in posts -%}
-					<li
-						itemprop="itemListElement"
-						itemscope
-						itemtype="https://schema.org/ListItem"
-					>
-						<meta itemprop="position" content="{{ loop.index }}" />
-						{{-
-							include(
-								'components/tease-post-column.html.twig',
-								{
-									post: post
-								},
-								with_context: false
-							)
-						-}}
-					</li>
-				{%- endfor -%}
-			</ul>
-		{%- endif -%}
+			{%- for post in get_posts({ category__in: block.content.category, post_type: 'post', posts_per_page: 3 })  -%}
+				<li
+					itemprop="itemListElement"
+					itemscope
+					itemtype="https://schema.org/ListItem"
+				>
+					<meta itemprop="position" content="{{ loop.index }}" />
+					{{-
+						include(
+							'components/tease-post-column.html.twig',
+							{
+								post: post
+							},
+							with_context: false
+						)
+					-}}
+				</li>
+			{%- else -%}
+				<li>
+					<p>{{- __('No posts found', 'agencecinq') -}}</p>
+				</li>
+			
+			{%- endfor -%}
+		</ul>
+		
 	</div>
 </section>
