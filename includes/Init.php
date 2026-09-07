@@ -56,13 +56,11 @@ class Init {
 			Plugins\ACF\IncludeFields\FrontPageFields::class,
 			Plugins\ACF\IncludeFields\CaseStudyFields::class,
 			Plugins\ACF\IncludeFields\ClonesFields::class,
-			Plugins\ACF\IncludeFields\PageParentOrChildFields::class,
 			Plugins\ACF\IncludeFields\ThemeFields::class,
 			Plugins\ACF\IncludeFields\PostFields::class,
 			Plugins\ContactForm7\FormTag::class,
 			// Yoast.
 			Plugins\WordpressSeo\AdminInit::class,
-			Post\Page::class,
 			Post\CaseStudy::class,
 			Taxonomy\CaseStudyCategory::class,
 		);

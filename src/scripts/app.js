@@ -7,7 +7,6 @@ load('cinq-accordion-group', () => import('./components/AccordionGroup.ts'));
 load('cinq-grid', () => import('./components/Grid.ts'));
 load('cinq-marquee', () => import('./components/Marquee.ts'));
 load('cinq-media-text-reveal', () => import('./components/MediaTextReveal.ts'));
-load('cinq-child-pages-by-parent', () => import('./components/ChildPagesByParent.ts'));
 load('cinq-slideshow', () => import('./components/Slideshow.ts'));
 load('cinq-mobile-menu', () => import('./components/MobileMenu.ts'));
 
