@@ -1,19 +1,16 @@
 {#
  # Blocks: Closing CTA
- # Centered closing band: title, lead, primary CTA.
  #}
-
-{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 
 {%- set link = block.content.link | default({}) -%}
 
 <section
 	id="{{ block.id }}"
-	class="bg-black pt-42 pb-52 text-cream border-t border-cream-soft"
+	class="border-cream-soft bg-black pt-31.5 pb-39 text-cream border-t lg:pt-42 lg:pb-52"
 	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 >
 	<div class="container flex flex-col items-center">
-		<div class="flex w-full max-w-225 flex-col items-center text-center space-y-14">
+		<div class="flex w-full max-w-225 flex-col items-center space-y-14 text-center">
 			{%- if block.content.title or block.content.text -%}
 				<header class="flex flex-col items-center space-y-6">
 					{%- if block.content.title -%}
@@ -23,7 +20,7 @@
 					{%- endif -%}
 
 					{%- if block.content.text -%}
-						<p class="text-lg text-taupe max-w-140">
+						<p class="text-taupe text-lg max-w-140">
 							{{- block.content.text | raw -}}
 						</p>
 					{%- endif -%}
@@ -33,8 +30,8 @@
 			{{-
 				include(
 					'components/button.html.twig',
-					link,
-					with_context: false
+					link | merge({ variant: 'primary' }),
+					with_context = false
 				)
 			-}}
 		</div>
