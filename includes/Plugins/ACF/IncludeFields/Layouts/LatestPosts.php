@@ -28,7 +28,6 @@ class LatestPosts {
 			'label'      => __( 'Latest Posts', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_latest_posts' ),
 				array(
 					'key'        => 'field_' . $key . '_latest_posts_tab_content',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -83,6 +82,7 @@ class LatestPosts {
 						),
 					),
 				),
+				...AcfFieldHelpers::settings( $key . '_latest_posts' ),
 			),
 		);
 	}

@@ -28,7 +28,6 @@ class References {
 			'label'      => __( 'References', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_references' ),
 				array(
 					'key'        => 'field_' . $key . '_references_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -91,6 +90,7 @@ class References {
 					'min'           => 1,
 					'instructions'  => __( 'The first case study is featured at full width. The following ones appear in the grid below. Drag to reorder. Each case study needs a screenshot (16:10, 1600×1000, no browser chrome).', 'agencecinq' ),
 				),
+				...AcfFieldHelpers::settings( $key . '_references' ),
 			),
 		);
 	}

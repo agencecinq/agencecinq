@@ -28,8 +28,6 @@ class Hero {
 			'label'      => __( 'Hero', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_hero' ),
-				...AcfFieldHelpers::media( $key . '_hero' ),
 				array(
 					'key'        => 'field_' . $key . '_hero_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -155,6 +153,8 @@ class Hero {
 						),
 					),
 				),
+				...AcfFieldHelpers::media( $key . '_hero' ),
+				...AcfFieldHelpers::settings( $key . '_hero' ),
 			),
 		);
 	}

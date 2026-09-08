@@ -140,8 +140,6 @@
 	--text-badge--line-height: 1.6;
 	--text-badge--letter-spacing: 0.1em;
 
-	--animate-marquee: marquee 20s linear infinite;
-
 	--radius-*: initial;
 
 	--radius-3: --spacing(0.75);
@@ -154,13 +152,4 @@
 	--radius-25: --spacing(6.25);
 	--radius-35: --spacing(8.75);
 	--radius-50: --spacing(12.5);
-
-	@keyframes marquee {
-		0% {
-			transform: translateX(0);
-		}
-		100% {
-			transform: translateX(-100%);
-		}
-	}
 }

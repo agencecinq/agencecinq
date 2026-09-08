@@ -29,7 +29,7 @@ class AcfFieldHelpers {
 	 * );
 	 * ```
 	 *
-	 * @param string $key The key prefix for the field (e.g. 'hero', 'page', 'media_text').
+	 * @param string $key The key prefix for the field (e.g. 'hero', 'page', 'services').
 	 *
 	 * @return array<int, array<string, mixed>> Tab and clone field definitions.
 	 */
@@ -58,15 +58,15 @@ class AcfFieldHelpers {
 	/**
 	 * Returns the settings fields for a block (tab + layout clone).
 	 *
-	 * Use with array_merge in your layout sub_fields:
+	 * Append at the end of the layout sub_fields so Settings is the last tab:
 	 * ```php
-	 * 'sub_fields' => array_merge(
-	 *     AcfFieldHelpers::settings( 'block_name' ),
-	 *     array( ... )
-	 * );
+	 * 'sub_fields' => array(
+	 *     array( ... ),
+	 *     ...AcfFieldHelpers::settings( 'block_name' ),
+	 * ),
 	 * ```
 	 *
-	 * @param string $key The block key (e.g. 'hero', 'presentation', or 'blocks_hero' for unique keys).
+	 * @param string $key The block key (e.g. 'hero', 'services', or 'blocks_hero' for unique keys).
 	 * @return array<int, array<string, mixed>>
 	 */
 	public static function settings( string $key = '' ): array {

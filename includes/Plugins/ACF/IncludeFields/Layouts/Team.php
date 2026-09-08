@@ -28,7 +28,6 @@ class Team {
 			'label'      => __( 'Team', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_team' ),
 				array(
 					'key'        => 'field_' . $key . '_team_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -120,6 +119,7 @@ class Team {
 						),
 					),
 				),
+				...AcfFieldHelpers::settings( $key . '_team' ),
 			),
 		);
 	}

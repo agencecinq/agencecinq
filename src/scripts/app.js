@@ -5,8 +5,6 @@ import '@agencecinq/modal';
 
 load('cinq-accordion-group', () => import('./components/AccordionGroup.ts'));
 load('cinq-grid', () => import('./components/Grid.ts'));
-load('cinq-marquee', () => import('./components/Marquee.ts'));
-load('cinq-media-text-reveal', () => import('./components/MediaTextReveal.ts'));
 load('cinq-slideshow', () => import('./components/Slideshow.ts'));
 load('cinq-vertical-pipeline', () => import('./components/VerticalPipeline.ts'));
 load('cinq-mobile-menu', () => import('./components/MobileMenu.ts'));

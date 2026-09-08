@@ -29,7 +29,6 @@ class CallToAction {
 			'label'      => __( 'Call to action', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_call_to_action' ),
 				array(
 					'key'        => 'field_' . $key . '_call_to_action_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -92,6 +91,7 @@ class CallToAction {
 						),
 					),
 				),
+				...AcfFieldHelpers::settings( $key . '_call_to_action' ),
 			),
 		);
 	}

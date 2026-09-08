@@ -30,8 +30,7 @@ class VerticalPipeline extends Piece {
 	}
 
 	mount() {
-		this.items = Array.from(this.querySelectorAll(":scope > ol > li"));
-		this.setProgress(0);
+		this.items = this.domAttrAll<HTMLLIElement>("item");
 
 		this.scrollTrigger = ScrollTrigger.create({
 			trigger: this,

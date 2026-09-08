@@ -136,27 +136,6 @@ class Twig implements Service {
 			)
 		);
 
-		// Add Polylang function if it exists.
-		if ( function_exists( 'pll__' ) ) {
-			$twig->addFunction(
-				new TwigFunction(
-					'pll__',
-					fn( $text ) => pll__( $text )
-				)
-			);
-		}
-
-		if ( function_exists( 'pll_the_languages' ) ) {
-			$twig->addFunction(
-				new TwigFunction(
-					'pll_the_languages',
-					function ( $args = array( 'raw' => true ) ) {
-						return pll_the_languages( $args );
-					}
-				)
-			);
-		}
-
 		// @see https://developer.wordpress.org/reference/functions/get_search_form/
 		$twig->addFunction(
 			new TwigFunction(

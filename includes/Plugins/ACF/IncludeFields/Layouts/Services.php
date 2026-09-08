@@ -29,7 +29,6 @@ class Services {
 			'label'      => __( 'Services', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_services' ),
 				array(
 					'key'        => 'field_' . $key . '_services_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -122,6 +121,7 @@ class Services {
 						),
 					),
 				),
+				...AcfFieldHelpers::settings( $key . '_services' ),
 			),
 		);
 	}
