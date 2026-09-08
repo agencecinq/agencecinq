@@ -29,7 +29,6 @@ class AccordionGroup {
 			'label'      => __( 'Accordion Group', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_accordion_group' ),
 				array(
 					'key'        => 'field_' . $key . '_accordion_group_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -112,6 +111,7 @@ class AccordionGroup {
 						),
 					),
 				),
+				...AcfFieldHelpers::settings( $key . '_accordion_group' ),
 			),
 		);
 	}

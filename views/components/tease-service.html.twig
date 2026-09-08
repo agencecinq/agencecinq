@@ -60,16 +60,6 @@
 				{{ link.target == '_blank' ? 'rel="noopener noreferrer"' }}
 			>
 				{{- link.title -}}
-				{{-
-					include(
-						'svg/use.html.twig',
-						{
-							classes: ['size-3.5'],
-							icon: 'arrow-right'
-						},
-						with_context: false
-					)
-				-}}
 			</a>
 		{%- endif -%}
 	</article>

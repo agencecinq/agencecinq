@@ -75,7 +75,7 @@ Pas de `template-parts/sections/*.php` ni de `get_field()`. La présentation vit
 
 **Bloc flexible** — `views/blocks/{name}.html.twig` :
 
-- Nom de fichier = `acf_fc_layout` en kebab-case (`key_figures` → `key-figures.html.twig`). Résolu par `views/blocks/blocks.html.twig`.
+- Nom de fichier = `acf_fc_layout` en kebab-case (`latest_posts` → `latest-posts.html.twig`). Résolu par `views/blocks/blocks.html.twig`.
 - Données : objet `block` (meta ACF), pas `get_field()`.
 - Toujours inclure `blocks/_layout.html.twig` avec `paddings: block.layout.paddings` et `id: block.id`.
 - Wrapper : `<div id="{{ block.id }}">`.
@@ -105,7 +105,7 @@ Exemple d'ouverture de bloc :
 </div>
 ```
 
-Références : `views/blocks/hero.html.twig`, `views/blocks/key-figures.html.twig`.
+Références : `views/blocks/hero.html.twig`, `views/blocks/services.html.twig`.
 
 ## 3. Styles
 
@@ -157,7 +157,6 @@ class Example {
 			'label'      => __( 'Example', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_example' ),
 				array(
 					'key'        => 'field_' . $key . '_example_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -192,18 +191,19 @@ class Example {
 						),
 					),
 				),
+				...AcfFieldHelpers::settings( $key . '_example' ),
 			),
 		);
 	}
 }
 ```
 
-- `name` : snake_case ; Twig = kebab (`key_figures` → `key-figures.html.twig`).
-- Toujours `…AcfFieldHelpers::settings( $key . '_{name}' )`. `media()` seulement s'il y a un média de section.
+- `name` : snake_case ; Twig = kebab (`latest_posts` → `latest-posts.html.twig`).
+- Onglets ACF : Content en premier, puis les autres onglets de contenu, puis `media()` s'il y a un média de section, puis `…AcfFieldHelpers::settings( $key . '_{name}' )` en dernier.
 - Cloner `field_clones_heading` / `field_clones_media` / `field_clones_layout` plutôt que les redéfinir (`ClonesFields.php`).
 - Dans `BlocksFields.php` : `use` + entrée dans `$layouts` (ordre alpha, = ordre admin).
 
-Références plus riches : `Layouts/Push.php`, `Layouts/Hero.php`.
+Références plus riches : `Layouts/Services.php`, `Layouts/Hero.php`.
 
 **Champs de CPT** (meta hors flexible) — `IncludeFields/{Name}Fields.php` + `Init.php`. Référence : `CaseStudyFields.php`.
 

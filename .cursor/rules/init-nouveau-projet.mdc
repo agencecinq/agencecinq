@@ -79,7 +79,7 @@ Le PHP se nettoie au fur et à mesure, mais retire d'emblée ce qui est claireme
 - Blocs ACF non utilisés : supprime le trio cohérent (layout dans `includes/Plugins/ACF/IncludeFields/Layouts/`, template `views/blocks/`, composant `src/scripts/components/` s'il existe).
 - CPT / taxonomies non pertinents : `includes/Post/`, `includes/Taxonomy/`, et les routeurs racine associés (`single-<cpt>.php`, `archive-<cpt>.php`, `taxonomy-<tax>.php`).
 - `acf-json/` : repars d'une base propre si le projet précédent y a laissé ses groupes.
-- Strings Polylang, champs ThemeFields, etc. : adapte au nouveau projet.
+- Chaînes i18n, champs ThemeFields, etc. : adapte au nouveau projet.
 
 ## Étape 7 : config locale, dépendances, build
 

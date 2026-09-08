@@ -104,7 +104,7 @@ class SinglePost extends Post {
 	 * @return string The URL that can be used to share the post.
 	 */
 	public function share_url(): string {
-		return 'mailto:?subject=' . pll__( 'I wanted you to see this post' ) . '&amp;body=' . pll__( 'Check out this post' ) . ' ' . $this->link . '.'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		return 'mailto:?subject=' . __( 'I wanted you to see this post', 'agencecinq' ) . '&amp;body=' . __( 'Check out this post', 'agencecinq' ) . ' ' . $this->link . '.'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 

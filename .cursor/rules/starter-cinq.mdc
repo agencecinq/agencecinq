@@ -73,6 +73,7 @@ DO :
 - Passer les chaînes utilisateur par les fonctions i18n.
 - Commits en anglais avec gitmoji (voir la règle `git-commits`).
 - Encapsuler les gardes d'affichage dans les composants Twig inclus (voir `twig-components`).
+- Onglets ACF d'un layout flexible : Content en premier, Settings en dernier.
 - Espacer les filtres Twig via Prettier : `twigFollowOfficialCodingStandards: false` (voir `twig-wpcs`).
 - Styler header, footer, blocs et composants avec Tailwind directement dans les `.twig` (voir `tailwind-twig`).
 - Grille de page : `container` + `layout-grid` (`grid-cols-12 gap-x-4 lg:gap-x-6`), comme l’overlay `views/components/grid.html.twig`.

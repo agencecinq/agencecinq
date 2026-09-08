@@ -12,27 +12,13 @@ namespace AgenceCinq\Plugins\ACF\IncludeFields;
 
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\AccordionGroup;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CallToAction;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Columns;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Contact;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EntryPoints;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Form;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Grid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Hero;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\KeyFigures;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Marquee;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\MediaText;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\MultiColumn;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageIntroduction;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Presentation;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Process;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Push;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\References;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Services;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Styleguide;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Support;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\VerticalPipeline;
 use AgenceCinq\Service;
@@ -52,27 +38,13 @@ class BlocksFields implements Service {
 	private static $layouts = array(
 		AccordionGroup::class,
 		CallToAction::class,
-		Columns::class,
-		Contact::class,
 		EntryPoints::class,
-		Form::class,
-		Gallery::class,
-		Grid::class,
 		Hero::class,
-		KeyFigures::class,
 		LatestPosts::class,
-		Marquee::class,
-		MediaText::class,
-		MultiColumn::class,
-		PageIntroduction::class,
-		Presentation::class,
 		PricingTiers::class,
-		Process::class,
-		Push::class,
 		References::class,
 		Services::class,
 		Styleguide::class,
-		Support::class,
 		Team::class,
 		VerticalPipeline::class,
 	);

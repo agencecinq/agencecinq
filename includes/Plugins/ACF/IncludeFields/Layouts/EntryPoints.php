@@ -28,7 +28,6 @@ class EntryPoints {
 			'label'      => __( 'Entry Points', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_entry_points' ),
 				array(
 					'key'        => 'field_' . $key . '_entry_points_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -139,6 +138,7 @@ class EntryPoints {
 						),
 					),
 				),
+				...AcfFieldHelpers::settings( $key . '_entry_points' ),
 			),
 		);
 	}

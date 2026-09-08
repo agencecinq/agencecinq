@@ -29,7 +29,6 @@ class PricingTiers {
 			'label'      => __( 'Pricing Tiers', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_pricing_tiers' ),
 				array(
 					'key'        => 'field_' . $key . '_pricing_tiers_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -165,6 +164,7 @@ class PricingTiers {
 						),
 					),
 				),
+				...AcfFieldHelpers::settings( $key . '_pricing_tiers' ),
 			),
 		);
 	}

@@ -28,7 +28,6 @@ class VerticalPipeline {
 			'label'      => __( 'Vertical Pipeline', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
-				...AcfFieldHelpers::settings( $key . '_vertical_pipeline' ),
 				array(
 					'key'        => 'field_' . $key . '_vertical_pipeline_content_tab',
 					'label'      => __( 'Content', 'agencecinq' ),
@@ -111,6 +110,7 @@ class VerticalPipeline {
 						),
 					),
 				),
+				...AcfFieldHelpers::settings( $key . '_vertical_pipeline' ),
 			),
 		);
 	}
