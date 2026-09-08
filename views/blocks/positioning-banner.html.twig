@@ -1,0 +1,55 @@
+{#
+ # Blocks: Positioning Banner
+ # Thin banner under the hero: status, commitments and an optional link, in one mono line.
+ #}
+
+{%- set items =
+	block.content.items | default([]) | filter(item => item.text or item.link.title or item.link.url)
+-%}
+
+{%- if items | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id
+			}
+		)
+	-}}
+
+	<div id="{{ block.id }}" class="border-cream-soft bg-dark-gray text-label border-y py-4">
+		<div class="container">
+			<ul class="scrollbar-hidden flex items-center justify-center-safe gap-x-6 overflow-x-auto">
+				{%- for item in items -%}
+					{%- set link = item.link | default({}) -%}
+					{%- set url = link.url | default('') -%}
+					{%- set label = item.text | default(link.title) -%}
+
+					<li
+						class="after:text-stone flex items-center gap-6 after:content-['·'] last:gap-0 last:after:hidden"
+					>
+						{%- if url -%}
+							<a
+								href="{{ url }}"
+								{{ link.target ? 'target="' ~ link.target ~ '"' }}
+								{{ link.target == '_blank' ? 'rel="noopener noreferrer"' }}
+								class="text-cream hover:text-pistachio whitespace-nowrap underline"
+							>
+								{{- label -}}
+							</a>
+						{%- elseif item.status -%}
+							<span
+								class="text-cream before:bg-pistachio flex items-center gap-2 whitespace-nowrap before:size-1.75 before:shrink-0 before:rounded-full before:content-['']"
+							>
+								{{- label -}}
+							</span>
+						{%- else -%}
+							<span class="text-taupe whitespace-nowrap">{{- label -}}</span>
+						{%- endif -%}
+					</li>
+				{%- endfor -%}
+			</ul>
+		</div>
+	</div>
+{%- endif -%}
