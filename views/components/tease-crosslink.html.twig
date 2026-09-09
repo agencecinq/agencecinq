@@ -1,0 +1,37 @@
+{#
+ # Components: Tease Crosslink
+ #
+ # Sibling-page card: title with arrow, mono description, whole card is the link.
+ #
+ # @param string title Visible label and SEO anchor.
+ # @param string url
+ # @param string target
+ # @param string text Short description.
+ # @param array classes
+ #}
+
+{%- set target = target | default('') -%}
+
+{%- if url and title -%}
+	<a
+		href="{{ url }}"
+		class="{{
+		html_classes(
+			'border-cream-soft bg-gray hover:border-pistachio group rounded-8 flex h-full flex-col space-y-2 border p-6 transition-colors',
+			classes | default([]) | join(' ')
+		)
+		}}"
+		itemprop="url"
+		{{ target ? 'target="' ~ target ~ '"' }}
+		{{ target == '_blank' ? 'rel="noopener noreferrer"' }}
+	>
+		<span class="text-title-md text-cream group-hover:text-pistachio transition-colors">
+			<span itemprop="name">{{- title -}}</span>
+			<span aria-hidden="true">{{ ' →' }}</span>
+		</span>
+
+		{%- if text -%}
+			<span class="text-label text-taupe">{{- text -}}</span>
+		{%- endif -%}
+	</a>
+{%- endif -%}

@@ -15,58 +15,51 @@
 
 <section
 	id="{{ block.id }}"
-	class="text-cream bg-black"
 	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 >
 	<div class="layout-grid container">
 		<div class="col-span-full space-y-14 lg:col-span-9">
-			<div class="space-y-8">
-				{%- if block.content.overline or block.content.title -%}
-					<header class="space-y-6">
-						{%- if block.content.overline -%}
-							<p class="text-label text-taupe uppercase">
-								{{- block.content.overline -}}
-							</p>
-						{%- endif -%}
+			{%- if block.content.overline or block.content.title or block.content.text -%}
+				<div class="space-y-8">
+					{%- if block.content.overline or block.content.title -%}
+						<header class="space-y-6">
+							{%- if block.content.overline -%}
+								<p class="text-label text-taupe uppercase">
+									{{- block.content.overline -}}
+								</p>
+							{%- endif -%}
 
-						{%- if block.content.title -%}
-							<h1 id="{{ block.id }}-title" class="text-title-xxl">{{- block.content.title -}}</h1>
-						{%- endif -%}
-					</header>
-				{%- endif -%}
+							{%- if block.content.title -%}
+								<h1 id="{{ block.id }}-title" class="text-title-xxl">
+									{{- block.content.title -}}
+								</h1>
+							{%- endif -%}
+						</header>
+					{%- endif -%}
 
-				{%- if block.content.text -%}
-					<p class="text-taupe max-w-190 text-xl">
-						{{- block.content.text | raw -}}
-					</p>
-				{%- endif -%}
-			</div>
+					{%- if block.content.text -%}
+						<p class="text-taupe max-w-190 text-xl">
+							{{- block.content.text | raw -}}
+						</p>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
 
-			{%- if block.content.link.title or block.content.secondary_link.title -%}
+			{%- if block.content.links.0.title or block.content.links.1.title -%}
 				<div class="flex flex-wrap items-center gap-4">
-					{{-
-						include(
-							'components/button.html.twig',
-							block.content.link
-								| default({})
-								| merge({
-									variant: 'primary'
-								}),
-							with_context = false
-						)
-					-}}
-
-					{{-
-						include(
-							'components/button.html.twig',
-							block.content.secondary_link
-								| default({})
-								| merge({
-									variant: 'secondary'
-								}),
-							with_context = false
-						)
-					-}}
+					{%- for link in block.content.links -%}
+						{{-
+							include(
+								'components/button.html.twig',
+								link
+									| default({})
+									| merge({
+										variant: loop.first ? 'primary' : 'secondary'
+									}),
+								with_context = false
+							)
+						-}}
+					{%- endfor -%}
 				</div>
 			{%- endif -%}
 		</div>

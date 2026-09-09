@@ -6,6 +6,7 @@
  *
  * @package WordPress
  * @subpackage AgenceCinq/Plugins/ACF/IncludeFields
+ * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
 namespace AgenceCinq\Plugins\ACF\IncludeFields;

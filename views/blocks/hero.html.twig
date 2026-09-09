@@ -4,7 +4,7 @@
 
 {{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 
-<div id="{{ block.id }}" class="text-cream relative flex items-end after:absolute after:inset-0 after:z-2 after:size-full after:bg-gray/30 lg:min-h-screen">
+<div id="{{ block.id }}" class="relative flex items-end after:absolute after:inset-0 after:z-2 after:size-full after:bg-gray/30 lg:min-h-screen">
 	<div class="relative z-3 container grid grid-cols-4 items-end gap-x-4 gap-y-10 lg:grid-cols-12 lg:gap-x-6 lg:gap-y-15">
 		<div class="col-span-full md:col-span-3 mb-4 space-y-5 lg:col-span-5 lg:mb-20">
 			{%- if block.content.title -%}

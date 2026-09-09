@@ -1,0 +1,61 @@
+{#
+ # Blocks: Client Quote
+ # Centered client testimonial on a raised background, with name, role and company.
+ #}
+
+{%- if block.content.quote -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id
+			}
+		)
+	-}}
+
+	<figure id="{{ block.id }}" class="bg-dark-gray" itemscope itemtype="https://schema.org/Quotation">
+		<div class="container flex flex-col items-center">
+			<div class="flex w-full max-w-225 flex-col items-center space-y-8 text-center">
+				<blockquote class="text-title-lg wrap-break-word" itemprop="text">
+					<p>
+						{{- '&laquo;&nbsp;' | raw -}}
+						{{- block.content.quote | raw -}}
+						{{- '&nbsp;&raquo;' | raw -}}
+					</p>
+				</blockquote>
+
+				{%- if block.content.name or block.content.role or block.content.company -%}
+					<figcaption
+						class="space-y-1.5"
+						itemprop="author"
+						itemscope
+						itemtype="https://schema.org/Person"
+					>
+						{%- if block.content.name -%}
+							<p class="text-sm wrap-break-word" itemprop="name">
+								{{- block.content.name -}}
+							</p>
+						{%- endif -%}
+
+						{%- if block.content.role or block.content.company -%}
+							<p class="text-label text-stone wrap-break-word">
+								{%- if block.content.role -%}
+									<span itemprop="jobTitle">{{- block.content.role -}}</span>
+								{%- endif -%}
+								{%- if block.content.role and block.content.company -%}
+									{{- ', ' -}}
+								{%- endif -%}
+								{%- if block.content.company -%}
+									<span itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
+										<span itemprop="name">{{- block.content.company -}}</span>
+									</span>
+								{%- endif -%}
+							</p>
+						{%- endif -%}
+					</figcaption>
+				{%- endif -%}
+			</div>
+		</div>
+	</figure>
+{%- endif -%}

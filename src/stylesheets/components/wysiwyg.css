@@ -34,7 +34,7 @@
 	}
 
 	.wysiwyg h3 {
-		@apply text-title-md;
+		@apply text-title-lg text-cream;
 
 		margin-top: 1.25rem;
 		margin-bottom: 1.25rem;

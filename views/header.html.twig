@@ -8,7 +8,7 @@
 	role="banner"
 	class="{{
 	html_classes(
-		'text-label text-cream border-cream/11 border-b bg-black py-[0.78125rem]',
+		'text-label border-cream/11 border-b bg-black py-[0.78125rem]',
 		classes | default([]) | join(' ')
 	)
 	}}"
@@ -123,7 +123,7 @@
 	}
 %}
 	{% block content %}
-		<cinq-mobile-menu class="text-cream relative mx-auto block h-full max-w-182 p-5">
+		<cinq-mobile-menu class="relative mx-auto block h-full max-w-182 p-5">
 			{{-
 				include(
 					'components/mobile-menu.html.twig',

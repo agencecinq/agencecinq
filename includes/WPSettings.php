@@ -22,6 +22,21 @@ class WPSettings implements Service {
 		add_action( 'after_setup_theme', array( $this, 'register_menus' ) );
 		add_action( 'after_setup_theme', array( $this, 'add_theme_supports' ) );
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 0 );
+		add_filter( 'wp_robots', array( $this, 'robots' ) );
+	}
+
+	/**
+	 * Mark 404 responses as noindex.
+	 *
+	 * @param array<string, bool|string> $robots Associative array of robots directives.
+	 * @return array<string, bool|string>
+	 */
+	public function robots( array $robots ): array {
+		if ( is_404() ) {
+			$robots['noindex'] = true;
+		}
+
+		return $robots;
 	}
 
 	/**

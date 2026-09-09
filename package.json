@@ -1,6 +1,6 @@
 {
 	"name": "@agencecinq/agencecinq",
-	"version": "1.0.0",
+	"version": "0.1.3",
 	"description": "WordPress theme for the Agence Cinq website",
 	"type": "module",
 	"homepage": "https://github.com/agencecinq/agencecinq/blob/master/README.md",

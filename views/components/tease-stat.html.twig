@@ -1,0 +1,39 @@
+{#
+ # Components: Tease Stat
+ #
+ # Column of the stats band: node rule, figure, caption.
+ #
+ # @param string title The figure (e.g. "30 jours").
+ # @param string text The caption under the figure.
+ # @param array classes
+ #}
+
+{%- if title or text -%}
+	<div
+		class="{{
+		html_classes(
+			'group/stat flex flex-col space-y-6',
+			classes | default([]) | join(' ')
+		)
+		}}"
+	>
+		<div
+			class="before:bg-cream-soft after:bg-cream after:ring-dark-gray group-hover/stat:after:bg-pistachio relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px before:content-[''] after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 after:transition-[background-color,transform] after:duration-300 after:ease-out after:content-[''] group-hover/stat:after:scale-125"
+			aria-hidden="true"
+		></div>
+
+		<div class="flex flex-col space-y-2.5">
+			{%- if title -%}
+				<p class="text-title-xl tabular-nums" itemprop="name">
+					{{- title -}}
+				</p>
+			{%- endif -%}
+
+			{%- if text -%}
+				<p class="text-sm text-taupe">
+					{{- text | raw -}}
+				</p>
+			{%- endif -%}
+		</div>
+	</div>
+{%- endif -%}
