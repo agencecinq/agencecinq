@@ -22,6 +22,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\References;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Services;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Styleguide;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\VerticalPipeline;
 use AgenceCinq\Service;
@@ -51,6 +52,7 @@ class BlocksFields implements Service {
 		References::class,
 		Services::class,
 		Styleguide::class,
+		Subscriptions::class,
 		Team::class,
 		VerticalPipeline::class,
 	);

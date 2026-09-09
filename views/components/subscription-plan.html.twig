@@ -1,0 +1,63 @@
+{#
+ # Subscription plan: platform overline, name, description, monthly prices.
+ # Schema.org: Service (name, description, serviceType) with nested Offers.
+ #
+ # @param string overline Platform label (e.g. Shopify).
+ # @param string title The plan name.
+ # @param string text The plan description.
+ # @param array prices Repeater rows with a `text` key.
+ # @param string heading Heading tag for the title. Defaults to h3.
+ #}
+
+{%- set heading = heading | default('h3') -%}
+{%- set prices = prices | default([]) | filter(price => price.text) -%}
+
+{%- if overline or title or text or (prices | length) -%}
+	<article
+		class="border-cream-soft bg-black flex w-full flex-col rounded-8 border p-8"
+		itemscope
+		itemtype="https://schema.org/Service"
+		itemprop="item"
+	>
+		<div class="space-y-6">
+			<div class="space-y-4">
+				{%- if overline or title -%}
+					<header class="space-y-3">
+						{%- if overline -%}
+							<p class="text-eyebrow text-stone" itemprop="serviceType">
+								{{- overline -}}
+							</p>
+						{%- endif -%}
+
+						{%- if title -%}
+							<{{ heading }} class="text-title-lg text-cream" itemprop="name">
+								{{- title -}}
+							</{{ heading }}>
+						{%- endif -%}
+					</header>
+				{%- endif -%}
+
+				{%- if text -%}
+					<p class="text-sm text-taupe" itemprop="description">
+						{{- text | raw -}}
+					</p>
+				{%- endif -%}
+			</div>
+
+			{%- if prices | length -%}
+				<ul class="flex flex-wrap gap-x-6 gap-y-2">
+					{%- for price in prices -%}
+						<li
+							class="text-label text-pistachio"
+							itemprop="offers"
+							itemscope
+							itemtype="https://schema.org/Offer"
+						>
+							<span itemprop="price">{{- price.text -}}</span>
+						</li>
+					{%- endfor -%}
+				</ul>
+			{%- endif -%}
+		</div>
+	</article>
+{%- endif -%}
