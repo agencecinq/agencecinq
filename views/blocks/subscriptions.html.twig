@@ -1,0 +1,69 @@
+{#
+ # Blocks: Subscriptions
+ # Title, intro, then up to two subscription plan cards.
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+{%- set items = block.items | default([]) | filter(item => item.overline or item.title or item.text or item.prices) -%}
+
+<section
+	id="{{ block.id }}"
+	class="bg-dark-gray text-cream"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
+	<div class="container space-y-14">
+		{%- if block.content.title or block.content.text -%}
+			<header class="space-y-6">
+				{%- if block.content.title -%}
+					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl">
+						{{- block.content.title -}}
+					</{{ block.content.heading | default('h2') }}>
+				{%- endif -%}
+
+				{%- if block.content.text -%}
+					<p class="text-base text-taupe max-w-180">
+						{{- block.content.text | raw -}}
+					</p>
+				{%- endif -%}
+			</header>
+		{%- endif -%}
+
+		{%- if items | length -%}
+			<ul
+				class="layout-grid gap-y-8"
+				itemscope
+				itemtype="https://schema.org/ItemList"
+			>
+				{%- if block.content.title -%}
+					<meta itemprop="name" content="{{ block.content.title }}" />
+				{%- endif -%}
+				<meta itemprop="numberOfItems" content="{{ items | length }}" />
+
+				{%- for item in items -%}
+					<li
+						class="col-span-full flex lg:col-span-6"
+						itemprop="itemListElement"
+						itemscope
+						itemtype="https://schema.org/ListItem"
+					>
+						<meta itemprop="position" content="{{ loop.index }}" />
+						{{-
+							include(
+								'components/subscription-plan.html.twig',
+								{
+									overline: item.overline,
+									title: item.title,
+									text: item.text,
+									prices: item.prices,
+									heading: 'h3'
+								},
+								with_context: false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+		{%- endif -%}
+	</div>
+</section>
