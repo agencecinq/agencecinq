@@ -15,6 +15,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CallToAction;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EntryPoints;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Hero;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHero;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\References;
@@ -42,6 +43,7 @@ class BlocksFields implements Service {
 		EntryPoints::class,
 		Hero::class,
 		LatestPosts::class,
+		PageHero::class,
 		PositioningBanner::class,
 		PricingTiers::class,
 		References::class,
