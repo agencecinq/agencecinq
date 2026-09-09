@@ -16,7 +16,7 @@
 				or post.meta('hero').quote.image
 				or post.meta('hero').quote.link.url
 				or (post.meta('hero').services | length) -%}
-			<section class="text-cream bg-black py-16 lg:py-24" aria-labelledby="hero-home-title">
+			<section class="py-16 lg:py-24" aria-labelledby="hero-home-title">
 				<div class="container">
 					<div class="space-y-5.5">
 						{%- if post.meta('hero').content.overline -%}
@@ -25,7 +25,7 @@
 							</p>
 						{%- endif -%}
 
-						<h1 id="hero-home-title" class="{{ html_classes('text-title-3xl text-cream') }}">
+						<h1 id="hero-home-title" class="text-title-3xl">
 							{{- post.meta('hero').content.title | default(post.title) -}}
 						</h1>
 					</div>
@@ -81,7 +81,7 @@
 
 								<div class="flex min-w-0 flex-col gap-2">
 									{%- if post.meta('hero').quote.text -%}
-										<blockquote class="text-cream text-lg" itemprop="text">
+										<blockquote class="text-lg" itemprop="text">
 											<p>
 												{{- post.meta('hero').quote.text | raw -}}
 											</p>

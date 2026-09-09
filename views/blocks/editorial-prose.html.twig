@@ -1,0 +1,32 @@
+{#
+ # Blocks: Editorial Prose
+ # Single 720px reading column: title, body copy, optional subtitles.
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+<section
+	id="{{ block.id }}"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+	itemscope
+	itemtype="https://schema.org/Article"
+>
+	<div class="container">
+		<div class="max-w-180 space-y-8">
+			{%- if block.content.title -%}
+				<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl" itemprop="headline">
+					{{- block.content.title -}}
+				</{{ block.content.heading | default('h2') }}>
+			{%- endif -%}
+
+			{%- if block.content.text -%}
+				<div
+						class="wysiwyg text-base text-taupe [&_a]:text-pistachio [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-cream [&_h3]:mt-10 [&_h3]:mb-4 [&_ol]:text-base [&_p]:mb-5 [&_p]:text-base [&_ul]:text-base"
+					itemprop="articleBody"
+				>
+					{{- block.content.text | raw -}}
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</section>

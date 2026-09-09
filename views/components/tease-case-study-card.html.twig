@@ -15,7 +15,7 @@
 	{%- set year = post.year | default('') -%}
 
 	<article
-		class="{{ html_classes(classes | default([])) }}"
+		class="{{ html_classes(classes | default([]) | join(' ')) }}"
 		itemscope
 		itemtype="https://schema.org/Article"
 		itemprop="item"

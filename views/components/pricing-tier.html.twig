@@ -1,17 +1,17 @@
 {#
  # Pricing tier: name, price, included features.
- # Featured variant uses pistachio chrome and an optional badge.
+ # Featured variant uses pistachio chrome. Badge is independent of featured.
  #
  # @param string title The tier name.
  # @param string price The displayed price.
  # @param array features Repeater rows with a `text` key.
  # @param bool featured Whether this tier is highlighted.
- # @param string badge Optional badge label, shown when featured.
+ # @param string badge Optional badge label.
  #}
 
 {%- set features = features | default([]) | filter(feature => feature.text) -%}
 
-{%- if title or price or (features | length) -%}
+{%- if title or price or badge or (features | length) -%}
 	<article
 		class="{{
 		html_classes(
@@ -20,9 +20,9 @@
 		)
 		}}"
 	>
-		{%- if (featured and badge) or title or price -%}
-			<div class="{{ html_classes(featured and badge ? 'space-y-4') }}">
-				{%- if featured and badge -%}
+		{%- if badge or title or price -%}
+			<div class="{{ html_classes(badge ? 'space-y-4') }}">
+				{%- if badge -%}
 					<p class="text-badge bg-pistachio text-off-black rounded-3 inline-block px-2 py-1">
 						{{- badge -}}
 					</p>
@@ -50,7 +50,7 @@
 					<li
 						class="{{
 						html_classes(
-							"text-taupe flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full before:content-['']",
+							'text-taupe flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full',
 							featured ? 'before:bg-pistachio' : 'before:bg-taupe'
 						)
 						}}"

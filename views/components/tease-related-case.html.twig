@@ -1,0 +1,49 @@
+{#
+ # Components: Tease Related case
+ #
+ # Related-case card: client name with arrow, platform · description, whole card is the link.
+ #
+ # @param {object} post The case study post. Required.
+ # @param {string} [text] Short description shown after the platform.
+ # @param {array} [classes] Extra classes on the link.
+ #}
+
+{%- if post and post.link -%}
+	{%- set client = post.client | default(post.title) -%}
+	{%- set platform = post.platform | default('') -%}
+	{%- set text = text | default('') -%}
+
+	{%- set description = text -%}
+	{%- if platform and text -%}
+		{%- set description = platform ~ ' · ' ~ text -%}
+	{%- elseif platform -%}
+		{%- set description = platform -%}
+	{%- endif -%}
+
+	<article
+		class="h-full"
+		itemscope
+		itemtype="https://schema.org/Article"
+		itemprop="item"
+	>
+		<a
+			href="{{ post.link }}"
+			class="{{
+			html_classes(
+				'border-cream-soft bg-gray hover:border-pistachio group rounded-8 flex h-full flex-col space-y-2 border p-6 transition-colors',
+				classes | default([]) | join(' ')
+			)
+			}}"
+			itemprop="url"
+		>
+			<span class="text-title-md text-cream group-hover:text-pistachio transition-colors">
+				<span itemprop="headline">{{- client -}}</span>
+				<span aria-hidden="true">{{ ' →' }}</span>
+			</span>
+
+			{%- if description -%}
+				<span class="text-sm text-taupe" itemprop="description">{{- description -}}</span>
+			{%- endif -%}
+		</a>
+	</article>
+{%- endif -%}
