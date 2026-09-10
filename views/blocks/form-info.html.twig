@@ -1,0 +1,124 @@
+{#
+ # Blocks: Form + Info
+ # Contact page: CF7 form on the left, coordinates on the right with node rules.
+ #}
+
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
+
+{%- set info = block.info | default({}) -%}
+{%- set locations = info.locations | default([]) | filter(location => location.title) -%}
+{%- set phone_href = info.phone
+	? 'tel:'
+		~ (info.phone | replace({
+			' ': '',
+			'.': '',
+			'-': ''
+		}))
+	: ''
+-%}
+{%- set node_rule =
+	"relative space-y-3.5 pt-8 before:absolute before:top-1.5 before:right-0 before:left-1.5 before:h-px before:bg-cream-soft before:content-[''] after:absolute after:top-1.5 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:bg-cream after:ring-4 after:ring-black after:content-['']"
+-%}
+
+<section
+	id="{{ block.id }}"
+	class="block-form"
+	aria-label="{{ __('Contact', 'agencecinq') }}"
+	itemscope
+	itemtype="https://schema.org/ContactPage"
+>
+	<div class="layout-grid container gap-y-16">
+		<div class="col-span-full space-y-5 lg:col-span-8">
+			{{-
+				include(
+					'components/form-contact.html.twig',
+					{
+						form_id: block.content.form | default(null)
+					},
+					with_context = false
+				)
+			-}}
+
+			{%- if block.content.notice -%}
+				<p class="text-stone">
+					{{- block.content.notice -}}
+				</p>
+			{%- endif -%}
+		</div>
+
+		{%- if (locations | length) or info.email or info.phone -%}
+			<aside
+				class="col-span-full space-y-12 lg:col-span-3 lg:col-start-10"
+				itemscope
+				itemtype="https://schema.org/Organization"
+				itemprop="mainEntity"
+			>
+				{%- if locations | length -%}
+					<div class="{{ node_rule }}">
+						{%- if info.locations_overline -%}
+							<p class="text-label text-stone uppercase">
+								{{- info.locations_overline -}}
+							</p>
+						{%- endif -%}
+
+						<ul class="space-y-2">
+							{%- for location in locations -%}
+								<li
+									class="text-taupe text-base"
+									itemprop="location"
+									itemscope
+									itemtype="https://schema.org/Place"
+								>
+									<span itemprop="name">{{- location.title -}}</span>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				{%- endif -%}
+
+				{%- if info.email or info.phone -%}
+					<div class="{{ node_rule }}">
+						{%- if info.contact_overline -%}
+							<p class="text-label text-stone uppercase">
+								{{- info.contact_overline -}}
+							</p>
+						{%- endif -%}
+
+						<div class="space-y-2">
+							{%- if info.email -%}
+								<p>
+									<a
+										href="mailto:{{ info.email }}"
+										class="text-title-md text-cream hover:text-pistachio"
+										itemprop="email"
+									>
+										{{- info.email -}}
+									</a>
+								</p>
+							{%- endif -%}
+
+							{%- if info.phone -%}
+								<p class="text-title-md text-cream">
+									<a href="{{ phone_href }}" class="hover:text-pistachio" itemprop="telephone">
+										{{- info.phone -}}
+									</a>
+									{%- if info.phone_note -%}
+										{{- ', ' ~ info.phone_note -}}
+									{%- endif -%}
+								</p>
+							{%- endif -%}
+						</div>
+					</div>
+				{%- endif -%}
+			</aside>
+		{%- endif -%}
+	</div>
+</section>

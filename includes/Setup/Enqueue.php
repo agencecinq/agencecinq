@@ -76,6 +76,8 @@ class Enqueue implements Service {
 	public function dequeue_styles(): void {
 
 		wp_dequeue_style( 'wp-block-library' );
+		wp_dequeue_style( 'contact-form-7' );
+		wp_dequeue_style( 'contact-form-7-rtl' );
 	}
 
 	/**

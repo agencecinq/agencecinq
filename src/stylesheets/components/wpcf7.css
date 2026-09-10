@@ -1,41 +1,75 @@
 @layer components {
-	/* Layout */
+	.wpcf7 .screen-reader-response {
+		@apply sr-only;
+	}
+
+	.wpcf7 .hidden-fields-container {
+		@apply hidden;
+	}
+
+	.wpcf7 form.init .wpcf7-response-output,
+	.wpcf7 form.resetting .wpcf7-response-output,
+	.wpcf7 form.submitting .wpcf7-response-output {
+		@apply hidden;
+	}
+
+	.wpcf7-spinner {
+		@apply bg-stone relative mx-6 inline-block size-6 rounded-full opacity-75;
+
+		visibility: hidden;
+	}
+
+	form.submitting .wpcf7-spinner {
+		visibility: visible;
+	}
+
+	.wpcf7-spinner::before {
+		@apply bg-cream absolute top-1 left-1 size-1.5 rounded-full content-[''];
+
+		transform-origin: 0.5rem 0.5rem;
+		animation: wpcf7-spin 1000ms linear infinite;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.wpcf7-spinner::before {
+			animation: none;
+		}
+	}
+
+	@keyframes wpcf7-spin {
+		from {
+			transform: rotate(0deg);
+		}
+
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	/* Layout · first four fields in two columns, the rest full width. */
 	.block-form .wpcf7 .wpcf7-form {
-		@apply grid grid-cols-2 gap-5;
+		@apply flex flex-col gap-5;
 	}
 
-	.block-form .wpcf7 .wpcf7-form p {
-		@apply m-0;
-		grid-column: span 2 / span 2;
+	.block-form .wpcf7 .wpcf7-form > p {
+		@apply m-0 grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2;
 	}
 
-	.block-form .wpcf7 .wpcf7-form p:first-of-type {
-		/* margin-bottom: 1rem; */
-		text-align: center;
+	.block-form .wpcf7 .wpcf7-form br {
+		@apply hidden;
 	}
 
-	.block-form .wpcf7 .wpcf7-form p:last-of-type {
-		text-align: center;
-		margin-top: 1rem;
-		position: relative;
-	}
-
-	@media (width >= 64rem /* 1024px */) {
-		.block-form .wpcf7 .wpcf7-form p:first-of-type,
-		.block-form .wpcf7 .wpcf7-form p:last-of-type,
-		.block-form .wpcf7 .wpcf7-form p:has(textarea),
-		.block-form .wpcf7 .wpcf7-form p:not(:has(input)):not(:has(textarea)):not(:has(select)),
-		.block-form .wpcf7 .wpcf7-form p:has(input[type="checkbox"]) {
-			grid-column: span 2 / span 2 !important;
-		}
-
-		.block-form .wpcf7 .wpcf7-form p {
-			grid-column: span 1 / span 1;
-		}
+	.block-form .wpcf7 .wpcf7-form > p > label:nth-child(n + 5 of label),
+	.block-form .wpcf7 .wpcf7-form > .wpcf7-response-output {
+		@apply col-span-full;
 	}
 
 	.block-form .wpcf7 .wpcf7-form .wpcf7-form-control-wrap {
-		@apply block;
+		@apply relative block w-full font-sans text-base;
+	}
+
+	.block-form .wpcf7 .wpcf7-form label {
+		@apply text-eyebrow text-stone flex w-full flex-col items-start gap-2 uppercase;
 	}
 
 	/* Fields */
@@ -48,22 +82,21 @@
 			input[type="tel"],
 			input[type="url"],
 			input[type="number"],
-			select
+			select,
+			textarea
 		) {
-		@apply border-cream-soft/25 bg-black text-cream placeholder:text-taupe/50 w-full rounded-full border;
-		@apply text-sm px-5.25 py-3.5;
-		@apply focus:border-cream-soft/50 focus:ring-0 focus:outline-none;
+		@apply border-cream-soft bg-gray text-cream placeholder:text-taupe rounded-3 w-full border px-3.5 py-3 text-base;
+		@apply transition-colors duration-300 ease-out;
+		@apply focus:border-pistachio focus:ring-0 focus:outline-none;
 	}
 
 	.block-form .wpcf7 .wpcf7-form textarea {
-		@apply rounded-25 border-cream-soft/25 bg-black text-cream placeholder:text-taupe/50 w-full border;
-		@apply text-sm px-5.25 py-4;
-		@apply focus:border-cream-soft/50 focus:ring-0 focus:outline-none;
-		min-height: 10rem;
-		resize: none;
+		@apply h-27 resize-none;
 	}
 
 	.block-form .wpcf7 .wpcf7-form select {
+		@apply pr-10;
+
 		appearance: none;
 		background-image:
 			linear-gradient(45deg, transparent 50%, currentColor 50%),
@@ -78,29 +111,30 @@
 	}
 
 	/* Validation / messages */
+	.block-form .wpcf7 .wpcf7-form .wpcf7-not-valid {
+		@apply border-cream;
+	}
+
 	.block-form .wpcf7 .wpcf7-not-valid-tip {
-		@apply text-xs text-taupe mt-2;
+		@apply text-xs mt-2 block font-sans font-normal tracking-normal text-cream normal-case;
 	}
 
 	.block-form .wpcf7 .wpcf7-response-output {
-		@apply rounded-15 border-cream-soft/25 bg-black/70 text-sm text-cream mt-5 border px-5 py-4;
-	}
-
-	.block-form .wpcf7 form.invalid .wpcf7-response-output {
-		@apply border-cream-soft/40;
+		@apply rounded-3 border-cream-soft bg-gray text-cream col-span-full border px-3.5 py-3 text-sm;
 	}
 
 	.block-form .wpcf7 form.sent .wpcf7-response-output {
-		@apply border-pistachio/60;
+		@apply border-pistachio;
+	}
+
+	.block-form .wpcf7 form.invalid .wpcf7-response-output,
+	.block-form .wpcf7 form.unaccepted .wpcf7-response-output {
+		@apply border-stone;
 	}
 
 	/* Submit (same look as primary button) */
 	.block-form .wpcf7 .wpcf7-submit {
-		@apply relative inline-flex items-center justify-center gap-2 rounded-full bg-pistachio px-6 py-3.5 text-cta text-off-black whitespace-nowrap transition-colors duration-300 ease-out hover:bg-light-pistachio;
-	}
-
-	.block-form .wpcf7 .wpcf7-submit::after {
-		content: "→";
+		@apply bg-pistachio text-cta text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio relative col-span-full inline-flex w-auto items-center justify-center justify-self-start gap-2 rounded-full px-6 py-3.5 whitespace-nowrap transition-colors duration-300 ease-out;
 	}
 
 	.block-form .wpcf7 .wpcf7-submit[disabled] {
@@ -108,44 +142,11 @@
 	}
 
 	.block-form .wpcf7 .wpcf7-spinner {
-		@apply absolute top-1/2 right-0 -translate-y-1/2;
-		margin: 0;
-	}
-
-	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item {
-		label {
-			@apply inline-flex items-start gap-2.5;
-		}
-
-		.wpcf7-list-item-label {
-			@apply text-xs text-taupe;
-		}
-
-		input[type="checkbox"] {
-			position: absolute;
-			opacity: 0;
-			cursor: pointer;
-			height: 0;
-			width: 0;
-		}
-
-		.wpcf7-list-item-label::before {
-			@apply h-3.75 border;
-
-			border-radius: 0.3125rem /* 5px */;
-			display: block;
-			content: "";
-			flex-shrink: 0;
-			width: calc(13.83 / 16 * 1rem);
-		}
-
-		input[type="checkbox"]:checked ~ .wpcf7-list-item-label::before {
-			@apply bg-current
-		}
+		@apply m-0 align-middle;
 	}
 
 	.wpcf7 .wpcf7-form .wpcf7-list-item {
-		margin: 0!important;
+		margin: 0 !important;
 
 		input[type="checkbox"] {
 			position: absolute;
@@ -162,7 +163,7 @@
 		.wpcf7-list-item-label::before {
 			@apply h-3.75 border;
 
-			border-radius: 0.3125rem /* 5px */;
+			border-radius: 0.3125rem;
 			display: block;
 			content: "";
 			flex-shrink: 0;
@@ -170,7 +171,7 @@
 		}
 
 		input[type="checkbox"]:checked ~ .wpcf7-list-item-label::before {
-			@apply bg-current
+			@apply bg-current;
 		}
 	}
 }

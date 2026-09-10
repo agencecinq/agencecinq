@@ -17,6 +17,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Crosslinks;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EntryPoints;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FormInfo;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Hero;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHero;
@@ -54,6 +55,7 @@ class BlocksFields implements Service {
 		Crosslinks::class,
 		EditorialProse::class,
 		EntryPoints::class,
+		FormInfo::class,
 		Hero::class,
 		LatestPosts::class,
 		PageHero::class,
