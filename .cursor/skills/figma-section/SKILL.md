@@ -214,9 +214,9 @@ Uniquement si le design a une interaction (slider, accordion, marquee, reveal).
 - `src/scripts/components/{Name}.ts` — classe `piecesjs` (`Piece`), `customElements.define( 'cinq-{kebab}', … )`.
 - Lazy-load dans `src/scripts/app.js` : `load('cinq-{kebab}', () => import('./components/{Name}.ts'));`
 - Markup Twig : balise `<cinq-{kebab}>` + `data-dom` comme les composants existants.
-- Libs déjà là : GSAP, Splide, `@agencecinq/drawer`, `@agencecinq/modal`, `@19h47/accordion`.
+- Libs déjà là : GSAP, Splide, `@agencecinq/drawer`, `@agencecinq/modal`, `@agencecinq/accordion`.
 
-Références : `Marquee.ts`, `Slideshow.ts`, `AccordionGroup.ts`.
+Références : `Marquee.ts`, `Slideshow.ts`, `@agencecinq/accordion`.
 
 ## Contrôles finaux
 
