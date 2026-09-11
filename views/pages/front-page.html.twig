@@ -7,143 +7,183 @@
 {% extends 'index.html.twig' %}
 
 {%- block content -%}
+	{%- set hero = post.meta('hero') | default({}) -%}
+	{%- set content = hero.content | default({}) -%}
+	{%- set quote = hero.quote | default({}) -%}
+	{%- set link = quote.link | default({}) -%}
+	{%- set repositories = post.repositories | default([]) -%}
+	{%- set quote_text =
+		quote.text
+			| default('')
+			| replace({
+				'&laquo;': '',
+				'&raquo;': '',
+				'«': '',
+				'»': ''
+			})
+			| trim
+	-%}
+	{%- set language_dots = {
+		liquid: 'before:bg-cyan',
+		astro: 'before:bg-orange',
+		php: 'before:bg-indigo',
+		javascript: 'before:bg-yellow',
+		js: 'before:bg-yellow',
+		typescript: 'before:bg-blue',
+		ts: 'before:bg-blue'
+	} -%}
+
 	<main id="content" role="main">
-		{%- if
-			post.meta('hero').content.overline
-				or (post.meta('hero').specs | length)
-				or post.meta('hero').quote.text
-				or post.meta('hero').quote.attribution
-				or post.meta('hero').quote.image
-				or post.meta('hero').quote.link.url
-				or (post.meta('hero').services | length) -%}
-			<section class="py-16 lg:py-24" aria-labelledby="hero-home-title">
-				<div class="container">
-					<div class="space-y-5.5">
-						{%- if post.meta('hero').content.overline -%}
+		<section class="py-16 lg:py-24" aria-labelledby="hero-home-title">
+			<div class="layout-grid container items-center gap-y-14">
+				<div class="col-span-full space-y-14 lg:col-span-9">
+					<header class="space-y-5.5">
+						{%- if content.overline -%}
 							<p class="text-eyebrow text-taupe">
-								{{- post.meta('hero').content.overline -}}
+								{{- content.overline -}}
 							</p>
 						{%- endif -%}
 
 						<h1 id="hero-home-title" class="text-title-3xl">
-							{{- post.meta('hero').content.title | default(post.title) -}}
+							{{- content.title | default(post.title) | raw -}}
 						</h1>
-					</div>
+					</header>
 
-					{%- if post.meta('hero').specs | length -%}
-						<ul class="border-cream-soft layout-grid mt-11 border-y">
-							{%- for spec in post.meta('hero').specs -%}
-								{%- if spec.text or spec.highlight -%}
-									<li
-										class="text-label text-stone border-cream-soft col-span-full py-4 uppercase max-lg:not-first:border-t lg:col-span-3"
-									>
-										{%- if spec.text -%}
-											<span>{{- spec.text -}}</span>
-										{%- endif -%}
-										{%- if spec.highlight -%}
-											<span class="text-pistachio">
-												{{- spec.text ? ' ' }}{{- spec.highlight -}}
-											</span>
-										{%- endif -%}
-									</li>
-								{%- endif -%}
-							{%- endfor -%}
-						</ul>
-					{%- endif -%}
-
-					{%- if
-						post.meta('hero').quote.text
-							or post.meta('hero').quote.attribution
-							or post.meta('hero').quote.image
-							or post.meta('hero').quote.link.url -%}
-						<div class="mt-7.5 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-							<figure
-								class="flex items-center gap-4.5"
-								itemscope
-								itemtype="https://schema.org/Quotation"
-							>
-								{# https://schema.org/Quotation #}
-								{%- if post.meta('hero').quote.image -%}
-									<div class="size-15.5 shrink-0 overflow-hidden rounded-full">
-										{{-
-											include(
-												'components/image.html.twig',
-												{
-													image: post.meta('hero').quote.image,
-													size: 'thumbnail',
-													classes: ['size-full object-cover'],
-													loading: 'eager'
-												}
-											)
-										-}}
-									</div>
-								{%- endif -%}
-
-								<div class="flex min-w-0 flex-col gap-2">
-									{%- if post.meta('hero').quote.text -%}
+					{%- if quote_text or quote.attribution or link.title -%}
+						<div class="max-w-160 space-y-6">
+							{%- if quote_text or quote.attribution -%}
+								<figure class="space-y-2" itemscope itemtype="https://schema.org/Quotation">
+									{%- if quote_text -%}
 										<blockquote class="text-lg" itemprop="text">
 											<p>
-												{{- post.meta('hero').quote.text | raw -}}
+												{{- '&laquo;&nbsp;' | raw -}}
+												{{- quote_text | raw -}}
+												{{- '&nbsp;&raquo;' | raw -}}
 											</p>
 										</blockquote>
 									{%- endif -%}
 
-									{%- if post.meta('hero').quote.attribution -%}
+									{%- if quote.attribution -%}
 										<figcaption
 											class="text-label text-taupe uppercase"
 											itemprop="author"
 											itemscope
 											itemtype="https://schema.org/Person"
 										>
-											<span itemprop="name">{{- post.meta('hero').quote.attribution -}}</span>
+											<span itemprop="name">{{- quote.attribution -}}</span>
 										</figcaption>
 									{%- endif -%}
-								</div>
-							</figure>
+								</figure>
+							{%- endif -%}
 
 							{{-
 								include(
 									'components/button.html.twig',
-									post.meta('hero').quote.link
+									link
 										| default({})
 										| merge({
-											variant: 'primary',
-											mode: 'light',
-											classes: ['shrink-0 self-start lg:self-center']
+											variant: 'primary'
 										}),
 									with_context = false
 								)
 							-}}
 						</div>
 					{%- endif -%}
-
-					{%- if post.meta('hero').services | length -%}
-						<ul class="mt-14 grid grid-cols-1 gap-y-14 lg:grid-cols-3 lg:gap-x-6">
-							{%- for service in post.meta('hero').services -%}
-								<li>
-									{{-
-										include(
-											'components/tease-service.html.twig',
-											{
-												title: service.title,
-												text: service.text,
-												link: service.link,
-												index: '%02d/%02d' | format(
-													loop.index,
-													post.meta('hero').services | length
-												),
-												heading: 'h2'
-											},
-											with_context = false
-										)
-									-}}
-								</li>
-							{%- endfor -%}
-						</ul>
-					{%- endif -%}
 				</div>
-			</section>
-		{%- endif -%}
+
+				{%- if repositories | length -%}
+					<aside
+						class="group/repos relative col-span-full h-107.5 overflow-hidden before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:z-1 before:h-16 before:bg-linear-to-b before:from-black before:to-transparent after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-1 after:h-16 after:bg-linear-to-t after:from-black after:to-transparent lg:col-span-3 lg:col-start-10"
+						aria-label="{{ __('Recent repositories', 'agencecinq') }}"
+					>
+						<div
+							class="animate-marquee-y flex flex-col group-hover/repos:[animation-play-state:paused] motion-reduce:animate-none"
+						>
+							{%- for clone in [false, true] -%}
+								<ul {{ clone ? 'aria-hidden="true"' }}>
+									{%- for repo in repositories -%}
+										{%- if repo.name or repo.language or repo.pushed_at -%}
+											{%- set language_key =
+												repo.language
+													| default('')
+													| lower
+													| trim
+													| replace({
+														' ': ''
+													})
+											-%}
+											<li
+												class="border-cream-soft space-y-2 border-b py-4.5"
+												{{
+												not clone
+													? 'itemscope itemtype="https://schema.org/SoftwareSourceCode"'
+												}}
+											>
+												<div
+													class="{{
+													html_classes(
+														'flex items-center gap-3 before:size-2.25 before:shrink-0 before:rounded-full',
+														language_dots[language_key] | default('before:bg-stone')
+													)
+													}}"
+												>
+													{%- if repo.name -%}
+														<p class="text-title-md" itemprop="name">
+															{{- repo.name -}}
+														</p>
+													{%- endif -%}
+
+													<span
+														class="text-badge text-stone border-cream-soft rounded-full border px-2 py-0.75"
+													>
+														{%- if repo.private -%}
+															{{- __('Private', 'agencecinq') -}}
+														{%- else -%}
+															{{- __('Public', 'agencecinq') -}}
+														{%- endif -%}
+													</span>
+												</div>
+
+												{%- if repo.language or repo.pushed_at -%}
+													<p class="text-label text-stone">
+														{%- if repo.language -%}
+															<span itemprop="programmingLanguage">{{- repo.language -}}</span>
+														{%- endif -%}
+														{%- if repo.language and repo.pushed_at -%}
+															{{- ' · ' -}}
+														{%- endif -%}
+														{%- if repo.pushed_at -%}
+															<time datetime="{{ repo.pushed_at }}">
+																{{-
+																	__('%s ago', 'agencecinq') | format(
+																		function('human_time_diff', repo.pushed_at | date('U'))
+																	)
+																-}}
+															</time>
+														{%- endif -%}
+													</p>
+												{%- endif -%}
+											</li>
+										{%- endif -%}
+									{%- endfor -%}
+								</ul>
+							{%- endfor -%}
+						</div>
+					</aside>
+				{%- endif -%}
+
+				{{-
+					include(
+						'components/client-logos.html.twig',
+						{
+							items: hero.logos | default([]),
+							classes: ['col-span-full']
+						},
+						with_context = false
+					)
+				-}}
+			</div>
+		</section>
 
 		{{-
 			include(
