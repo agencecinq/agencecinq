@@ -1,0 +1,35 @@
+{#
+ # Client logo row.
+ #
+ # @param {array} items Gallery of image IDs.
+ # @param {array} [classes] Extra classes on the list.
+ #}
+
+{%- if items | length -%}
+	<ul
+		class="{{
+		html_classes(
+			'flex flex-wrap items-center justify-center gap-x-8 gap-y-6 opacity-60 lg:gap-x-20',
+			classes | default([]) | join(' ')
+		)
+		}}"
+		aria-label="{{ __('Clients', 'agencecinq') }}"
+	>
+		{%- for image in items -%}
+			<li class="flex w-22 items-center justify-center">
+				{{-
+					include(
+						'components/image.html.twig',
+						{
+							image: image,
+							size: 'medium',
+							classes: ['h-auto w-full object-contain'],
+							loading: 'lazy'
+						},
+						with_context = false
+					)
+				-}}
+			</li>
+		{%- endfor -%}
+	</ul>
+{%- endif -%}

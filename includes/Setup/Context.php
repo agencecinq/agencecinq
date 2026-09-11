@@ -10,8 +10,8 @@
 namespace AgenceCinq\Setup;
 
 use AgenceCinq\Service;
-use Timber\{Timber, Site };
-use AgenceCinq\Models\{ CategoryArchive, Page, Home, SinglePost, CaseStudy };
+use Timber\{Timber, Site, Post };
+use AgenceCinq\Models\{ CategoryArchive, FrontPage, Home, SinglePost, CaseStudy };
 use WP_Post;
 
 /**
@@ -111,7 +111,11 @@ class Context extends Site implements Service {
 					return Home::class;
 				}
 
-				return Page::class;
+				if ( is_front_page() ) {
+					return FrontPage::class;
+				}
+
+				return Post::class;
 			},
 			'post'       => SinglePost::class,
 			'case-study' => CaseStudy::class,

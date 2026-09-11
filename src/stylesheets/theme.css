@@ -23,6 +23,12 @@
 	--color-light-pistachio: #c7ffbb;
 	--color-pistachio-soft: #b3fca424;
 
+	--color-cyan: #67daf9;
+	--color-orange: #ff5d01;
+	--color-indigo: #4f5d95;
+	--color-yellow: #f1e05a;
+	--color-blue: #3178c6;
+
 	/* Typographies */
 	--text-*: initial;
 
@@ -152,4 +158,12 @@
 	--radius-25: --spacing(6.25);
 	--radius-35: --spacing(8.75);
 	--radius-50: --spacing(12.5);
+
+	--animate-marquee-y: marquee-y 25s linear infinite;
+
+	@keyframes marquee-y {
+		to {
+			transform: translateY(-50%);
+		}
+	}
 }
