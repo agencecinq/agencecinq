@@ -8,7 +8,7 @@
 	role="banner"
 	class="{{
 	html_classes(
-		'text-label border-cream/11 border-b bg-black py-[0.78125rem]',
+		'text-label border-cream/11 border-b bg-black py-[0.78125rem] lg:py-0',
 		classes | default([]) | join(' ')
 	)
 	}}"
@@ -31,30 +31,58 @@
 
 		{%- if nav_menus.main.get_items -%}
 			<nav aria-label="{{ __('Main navigation', 'agencecinq') }}" class="hidden flex-1 lg:block">
-				<ul itemscope class="flex gap-8" itemtype="http://schema.org/SiteNavigationElement">
+				<ul class="flex">
 					{% for item in nav_menus.main.get_items() %}
-						<li class="group">
+						<li
+							class="group relative"
+							itemscope
+							itemtype="https://schema.org/SiteNavigationElement"
+						>
 							<a
 								href="{{ item.url }}"
 								itemprop="url"
 								class="{{
 								html_classes(
+									'px-4 py-[1.4rem]',
 									item.current
 										or 'current-menu-parent' in item.classes
 										or 'current-page-ancestor' in item.classes
 										? 'text-pistachio'
 										: '',
 									item.classes | default([]) | join(' '),
-									'hover:text-pistachio text-cream/65 block'
+									'hover:text-pistachio group-hover:text-pistachio text-cream/65 focus:text-pistachio group-focus-within:text-pistachio block'
 								)
 								}}"
+								{{ item.children | length ? 'aria-haspopup="true"' }}
 								{{
 								item.is_target_blank or item.is_external
-									? 'target="' ~ item.target ~ '" rel="noopener noreferer"'
+									? 'target="' ~ item.target ~ '" rel="noopener noreferrer"'
 								}}
 							>
-								{{- item.title -}}
+								<span itemprop="name">{{- item.title -}}</span>
 							</a>
+
+							{%- if item.children | length -%}
+								<ul
+									class="border-gray/11 bg-gray rounded-b-8 invisible absolute inset-s-0 top-full z-20 w-72 space-y-6 border px-5 py-4.5 opacity-0 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
+								>
+									{% for child in item.children %}
+										<li itemscope itemtype="https://schema.org/SiteNavigationElement">
+											<a
+												href="{{ child.url }}"
+												itemprop="url"
+												class="text-cream hover:text-pistachio focus:text-pistachio font-sans text-base transition-colors"
+												{{
+												child.is_target_blank or child.is_external
+													? 'target="' ~ child.target ~ '" rel="noopener noreferrer"'
+												}}
+											>
+												<span itemprop="name">{{- child.title -}}</span>
+											</a>
+										</li>
+									{% endfor %}
+								</ul>
+							{%- endif -%}
 						</li>
 					{% endfor %}
 				</ul>
