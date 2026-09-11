@@ -1,16 +1,21 @@
 {#
  # Browser Frame
- # Screenshot of the delivered site in a browser chrome (16:10).
+ # Screenshot or video of the delivered site in a browser chrome (16:10).
  #
  # @param {array|int} [image] Image object or ID. Optional.
+ # @param {array|string} [video] Video file array (with url) or URL string. Optional.
+ # @param {array|string} [poster] Poster image array (with url) or URL string. Optional.
  # @param {array} [classes] Extra classes on the figure.
  # @param {string} [loading] Loading attribute. Defaults to 'lazy'.
  # @param {string} [sizes] Sizes attribute for the image.
  # @param {string} [alt] Alt text.
- # @param {object} [attributes] Extra attributes on the img.
+ # @param {object} [attributes] Extra attributes on the img / video.
  #}
 
-{%- if image -%}
+{%- set video_url = video.url | default(video) -%}
+{%- set poster_url = poster.url | default(poster) -%}
+
+{%- if image or video_url -%}
 	<figure
 		class="{{
 		html_classes(
@@ -22,20 +27,35 @@
 		}}"
 	>
 		<div class="bg-dark-gray aspect-16/10">
-			{{-
-				include(
-					'components/image.html.twig',
-					{
-						image: image,
-						classes: ['size-full object-cover object-top'],
-						loading: loading | default('lazy'),
-						sizes: sizes | default(null),
-						alt: alt | default(null),
-						attributes: attributes | default({})
-					},
-					with_context = false
-				)
-			-}}
+			{%- if video_url -%}
+				<video
+					class="size-full object-cover object-top"
+					src="{{ video_url }}"
+					{% if poster_url %}poster="{{ poster_url }}"{% endif %}
+					autoplay
+					muted
+					loop
+					playsinline
+					{% for key, value in attributes | default({}) %}
+						{{ key }}="{{ value }}"
+					{% endfor %}
+				></video>
+			{%- else -%}
+				{{-
+					include(
+						'components/image.html.twig',
+						{
+							image: image,
+							classes: ['size-full object-cover object-top'],
+							loading: loading | default('lazy'),
+							sizes: sizes | default(null),
+							alt: alt | default(null),
+							attributes: attributes | default({})
+						},
+						with_context = false
+					)
+				-}}
+			{%- endif -%}
 		</div>
 	</figure>
 {%- endif -%}

@@ -5,7 +5,7 @@
  # Schema.org: Article (headline, image, url).
  #
  # @param {object} post The case study post. Required.
- # @param {string} [sizes] Sizes attribute for the screenshot.
+ # @param {string} [sizes] Sizes attribute for the screenshot image.
  # @param {array} [classes] Extra classes on the article.
  #}
 
@@ -31,6 +31,8 @@
 					'components/browser-frame.html.twig',
 					{
 						image: post.screenshot,
+						video: post.video,
+						poster: post.poster,
 						sizes: sizes | default(null),
 						alt: client,
 						attributes: {

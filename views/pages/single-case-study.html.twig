@@ -14,7 +14,8 @@
 				or post.meta('hero').content.year
 				or post.meta('hero').content.title
 				or post.meta('hero').content.text
-				or post.meta('hero').image
+				or post.screenshot
+				or post.video
 				or post.title -%}
 			<section class="py-18 lg:py-26" aria-labelledby="case-hero-title">
 				<div class="container space-y-18">
@@ -60,7 +61,9 @@
 						include(
 							'components/browser-frame.html.twig',
 							{
-								image: post.meta('hero').image,
+								image: post.screenshot,
+								video: post.video,
+								poster: post.poster,
 								classes: ['w-full'],
 								loading: 'eager',
 								attributes: {
