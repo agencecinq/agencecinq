@@ -30,9 +30,7 @@
 				include(
 					'components/browser-frame.html.twig',
 					{
-						image: post.screenshot,
-						video: post.video,
-						poster: post.poster,
+						media: post.media,
 						sizes: sizes | default(null),
 						alt: client,
 						attributes: {

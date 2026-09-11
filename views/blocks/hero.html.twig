@@ -54,7 +54,7 @@
 		{%- if block.footer.items -%}
 			<ul class="bg-black/16 border-cream-soft/16 scrollbar-hidden text-sm col-span-full flex items-center-safe justify-center-safe overflow-x-auto rounded-full border p-4 [backdrop-filter:blur(10px)] lg:col-span-8 lg:col-start-3">
 				{%- for item in block.footer.items -%}
-					<li class="flex items-center gap-2 whitespace-nowrap after:ms-7.5 after:me-7.5 after:block after:size-1.5 after:shrink-0 after:rounded-full after:bg-pistachio after:content-[''] last:after:hidden lg:after:ms-10 lg:after:me-10">
+					<li class="flex items-center gap-2 whitespace-nowrap after:ms-7.5 after:me-7.5 after:block after:size-1.5 after:shrink-0 after:rounded-full after:bg-pistachio  last:after:hidden lg:after:ms-10 lg:after:me-10">
 						{%- if item.image -%}
 							<div class="size-5.25 block shrink-0">
 								{{- include( 'components/image.html.twig', { classes: [ 'size-full block object-contain' ], image: item.image, width: 21, height: 21, loading: 'lazy' } ) -}}

@@ -9,17 +9,6 @@
 {%- block content -%}
 	<main id="content" role="main">
 		<div class="rounded-b-25 lg:rounded-b-50 relative z-3 -mb-6.25 lg:-mb-12.5">
-			{%- block header -%}
-				{{-
-					include(
-						'header.html.twig',
-						{
-							classes: ['relative z-10']
-						}
-					)
-				-}}
-			{%- endblock -%}
-
 			<div class="layout-grid container gap-y-5 pt-5 pb-20 lg:pt-12.5">
 				<div class="col-span-full space-y-15 text-center lg:col-span-10 lg:col-start-2">
 					<div class="space-y-5">
@@ -89,7 +78,7 @@
 								<div class="space-y-5">
 									<h2 class="text-base">Inscrivez-vous<br />à notre newsletter</h2>
 									<p class="text-xl">
-										{{- __('News and updates from
+										{{- __('News and updates from Agence Cinq', 'agencecinq') -}}
 									</p>
 								</div>
 								{{-

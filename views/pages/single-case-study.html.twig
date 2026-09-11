@@ -14,8 +14,7 @@
 				or post.meta('hero').content.year
 				or post.meta('hero').content.title
 				or post.meta('hero').content.text
-				or post.screenshot
-				or post.video
+				or post.media
 				or post.title -%}
 			<section class="py-18 lg:py-26" aria-labelledby="case-hero-title">
 				<div class="container space-y-18">
@@ -56,23 +55,22 @@
 							</p>
 						{%- endif -%}
 					</div>
-
-					{{-
-						include(
-							'components/browser-frame.html.twig',
-							{
-								image: post.screenshot,
-								video: post.video,
-								poster: post.poster,
-								classes: ['w-full'],
-								loading: 'eager',
-								attributes: {
-									itemprop: 'image'
-								}
-							},
-							with_context: false
-						)
-					-}}
+					{%- if post.media -%}
+						{{-
+							include(
+								'components/browser-frame.html.twig',
+								{
+									media: post.media,
+									classes: ['w-full'],
+									loading: 'eager',
+									attributes: {
+										itemprop: 'image'
+									}
+								},
+								with_context = false
+							)
+						-}}
+					{%- endif -%}
 				</div>
 			</section>
 		{%- endif -%}
