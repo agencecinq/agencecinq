@@ -20,7 +20,7 @@ use Timber\{ Post };
 class FrontPage extends Post {
 
 	/**
-	 * Returns the latest GitHub repositories for the homepage hero.
+	 * Returns GitHub repositories for the homepage hero (sorted by last push).
 	 *
 	 * @return array<int, array<string, mixed>>
 	 */

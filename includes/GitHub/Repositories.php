@@ -2,7 +2,7 @@
 /**
  * GitHub repositories
  *
- * Fetches the latest pushed repositories from the GitHub API and caches them.
+ * Fetches all non-fork, non-archived repositories from the GitHub API and caches them.
  *
  * @package WordPress
  * @subpackage AgenceCinq/GitHub
@@ -22,9 +22,9 @@ class Repositories {
 	private const TRANSIENT_KEY = 'agencecinq_github_repositories';
 
 	/**
-	 * Number of repositories shown in the homepage hero.
+	 * Max repositories per GitHub API page (API hard limit).
 	 */
-	private const LIMIT = 5;
+	private const PER_PAGE = 100;
 
 	/**
 	 * Cache lifetime in seconds.
@@ -55,12 +55,11 @@ class Repositories {
 	}
 
 	/**
-	 * Fetches repositories from GitHub.
+	 * Fetches all repositories from GitHub (paginated).
 	 *
 	 * @return array<int, array<string, mixed>>|null
 	 */
 	private static function fetch(): ?array {
-		$url  = 'https://api.github.com/orgs/agencecinq/repos?sort=pushed&per_page=30&type=all';
 		$args = array(
 			'timeout' => 8,
 			'headers' => array(
@@ -76,43 +75,51 @@ class Repositories {
 			$args['headers']['Authorization'] = 'Bearer ' . $token;
 		}
 
-		$response = wp_remote_get( $url, $args );
-
-		if ( is_wp_error( $response ) ) {
-			return null;
-		}
-
-		if ( 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
-			return null;
-		}
-
-		$body = json_decode( wp_remote_retrieve_body( $response ), true );
-
-		if ( ! is_array( $body ) ) {
-			return null;
-		}
-
 		$rows = array();
+		$page = 1;
 
-		foreach ( $body as $repo ) {
-			if ( ! is_array( $repo ) ) {
-				continue;
+		do {
+			$url = sprintf(
+				'https://api.github.com/orgs/agencecinq/repos?sort=pushed&per_page=%d&type=all&page=%d',
+				self::PER_PAGE,
+				$page
+			);
+
+			$response = wp_remote_get( $url, $args );
+
+			if ( is_wp_error( $response ) ) {
+				return null;
 			}
 
-			if ( ! empty( $repo['fork'] ) || ! empty( $repo['archived'] ) ) {
-				continue;
+			if ( 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
+				return null;
 			}
 
-			if ( empty( $repo['name'] ) ) {
-				continue;
+			$body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			if ( ! is_array( $body ) ) {
+				return null;
 			}
 
-			$rows[] = $repo;
+			foreach ( $body as $repo ) {
+				if ( ! is_array( $repo ) ) {
+					continue;
+				}
 
-			if ( count( $rows ) >= self::LIMIT ) {
-				break;
+				if ( ! empty( $repo['fork'] ) || ! empty( $repo['archived'] ) ) {
+					continue;
+				}
+
+				if ( empty( $repo['name'] ) ) {
+					continue;
+				}
+
+				$rows[] = $repo;
 			}
-		}
+
+			$has_more = count( $body ) === self::PER_PAGE;
+			++$page;
+		} while ( $has_more );
 
 		return $rows;
 	}

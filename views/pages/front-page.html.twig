@@ -23,7 +23,7 @@
 			})
 			| trim
 	-%}
-	{%- set language_dots = {
+	{%- set languages = {
 		liquid: 'before:bg-cyan',
 		astro: 'before:bg-orange',
 		php: 'before:bg-indigo',
@@ -98,6 +98,7 @@
 					>
 						<div
 							class="animate-marquee-y flex flex-col group-hover/repos:[animation-play-state:paused] motion-reduce:animate-none"
+							style="animation-duration: {{ (repositories | length) * 5 }}s"
 						>
 							{%- for clone in [false, true] -%}
 								<ul {{ clone ? 'aria-hidden="true"' }}>
@@ -123,7 +124,7 @@
 													class="{{
 													html_classes(
 														'flex items-center gap-3 before:size-2.25 before:shrink-0 before:rounded-full',
-														language_dots[language_key] | default('before:bg-stone')
+														languages[language_key] | default('before:bg-stone')
 													)
 													}}"
 												>
