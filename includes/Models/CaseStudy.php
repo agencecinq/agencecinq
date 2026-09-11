@@ -107,7 +107,7 @@ class CaseStudy extends Post {
 		$hero  = $this->hero();
 		$video = $hero['video'] ?? null;
 
-		return is_array( $video ) && ! empty( $video['url'] ) ? $video : null;
+		return $this->normalize_media_array( $video );
 	}
 
 	/**
@@ -123,7 +123,36 @@ class CaseStudy extends Post {
 		$hero   = $this->hero();
 		$poster = $hero['poster'] ?? null;
 
-		return is_array( $poster ) && ! empty( $poster['url'] ) ? $poster : null;
+		return $this->normalize_media_array( $poster );
+	}
+
+	/**
+	 * Normalizes an ACF file/image value to an array with a url key.
+	 *
+	 * @param mixed $value ACF array, attachment ID, or URL string.
+	 * @return array<string, mixed>|null
+	 */
+	private function normalize_media_array( $value ): ?array {
+		if ( is_array( $value ) && ! empty( $value['url'] ) ) {
+			return $value;
+		}
+
+		if ( is_numeric( $value ) ) {
+			$url = wp_get_attachment_url( (int) $value );
+
+			return $url ? array(
+				'ID'  => (int) $value,
+				'url' => $url,
+			) : null;
+		}
+
+		if ( is_string( $value ) && '' !== $value ) {
+			return array(
+				'url' => $value,
+			);
+		}
+
+		return null;
 	}
 
 	/**
