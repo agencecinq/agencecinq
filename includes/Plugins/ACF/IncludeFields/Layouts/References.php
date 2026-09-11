@@ -88,7 +88,7 @@ class References {
 					'elements'      => array( 'featured_image' ),
 					'return_format' => 'id',
 					'min'           => 1,
-					'instructions'  => __( 'The first case study is featured at full width. The following ones appear in the grid below. Drag to reorder. Each case study needs a screenshot (16:10, 1600×1000, no browser chrome).', 'agencecinq' ),
+					'instructions'  => __( 'The first case study is featured at full width. The following ones appear in the grid below. Drag to reorder. Each case study needs a screenshot or video (16:10, no browser chrome).', 'agencecinq' ),
 				),
 				...AcfFieldHelpers::settings( $key . '_references' ),
 			),

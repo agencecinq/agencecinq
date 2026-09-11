@@ -67,15 +67,63 @@ class CaseStudy extends Post {
 	}
 
 	/**
+	 * Returns the hero media type (image or video).
+	 *
+	 * @return string
+	 */
+	public function media_type(): string {
+		$hero = $this->hero();
+		$type = isset( $hero['media_type'] ) ? (string) $hero['media_type'] : 'image';
+
+		return in_array( $type, array( 'image', 'video' ), true ) ? $type : 'image';
+	}
+
+	/**
 	 * Returns the delivered-site screenshot attachment ID.
 	 *
 	 * @return int|null
 	 */
 	public function screenshot(): ?int {
+		if ( 'image' !== $this->media_type() ) {
+			return null;
+		}
+
 		$hero = $this->hero();
 		$id   = isset( $hero['image'] ) ? (int) $hero['image'] : 0;
 
 		return $id > 0 ? $id : null;
+	}
+
+	/**
+	 * Returns the delivered-site video file array from ACF.
+	 *
+	 * @return array<string, mixed>|null
+	 */
+	public function video(): ?array {
+		if ( 'video' !== $this->media_type() ) {
+			return null;
+		}
+
+		$hero  = $this->hero();
+		$video = $hero['video'] ?? null;
+
+		return is_array( $video ) && ! empty( $video['url'] ) ? $video : null;
+	}
+
+	/**
+	 * Returns the video poster image array from ACF.
+	 *
+	 * @return array<string, mixed>|null
+	 */
+	public function poster(): ?array {
+		if ( 'video' !== $this->media_type() ) {
+			return null;
+		}
+
+		$hero   = $this->hero();
+		$poster = $hero['poster'] ?? null;
+
+		return is_array( $poster ) && ! empty( $poster['url'] ) ? $poster : null;
 	}
 
 	/**
