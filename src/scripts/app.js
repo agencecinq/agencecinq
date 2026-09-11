@@ -3,7 +3,7 @@ import { load } from 'piecesjs';
 import '@agencecinq/drawer';
 import '@agencecinq/modal';
 
-load('cinq-accordion-group', () => import('./components/AccordionGroup.ts'));
+load('cinq-accordion', () => import('@agencecinq/accordion'));
 load('cinq-grid', () => import('./components/Grid.ts'));
 load('cinq-slideshow', () => import('./components/Slideshow.ts'));
 load('cinq-vertical-pipeline', () => import('./components/VerticalPipeline.ts'));

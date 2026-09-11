@@ -11,19 +11,21 @@
 -%}
 
 {%- if items | length -%}
-	<cinq-accordion-group class="{{ html_classes(classes | default([]) | join(' ')) }}">
+	<cinq-accordion class="{{ html_classes(classes | default([]) | join(' ')) }}">
 		{%- for item in items -%}
 			{%- set header_id = id ~ '-item-' ~ loop.index -%}
 			{%- set panel_id = id ~ '-panel-' ~ loop.index -%}
 
 			<div
-				class="js-accordion-panel border-cream-soft border-b py-6"
-				data-accordion-open="{{ loop.first ? 'true' : 'false' }}"
-				data-accordion-deselect="true"
+				class="border-cream-soft border-b py-6"
+				data-panel
+				data-open="{{ loop.first ? 'true' : 'false' }}"
+				data-deselect="true"
 			>
 				<button
 					type="button"
-					class="js-accordion-header group text-title-md text-cream aria-expanded:text-pistachio flex w-full cursor-pointer items-center gap-6 text-left"
+					class="group text-title-md text-cream aria-expanded:text-pistachio flex w-full cursor-pointer items-center gap-6 text-left"
+					data-header
 					aria-expanded="{{ loop.first ? 'true' : 'false' }}"
 					aria-controls="{{ panel_id }}"
 					id="{{ header_id }}"
@@ -39,12 +41,13 @@
 					id="{{ panel_id }}"
 					role="region"
 					aria-labelledby="{{ header_id }}"
+					{% if not loop.first %}hidden{% endif %}
 				>
-					<div class="js-accordion-inner wysiwyg text-taupe [&_a]:text-pistachio pt-4">
+					<div class="wysiwyg text-taupe [&_a]:text-pistachio pt-4" data-inner>
 						{{- item.text | raw -}}
 					</div>
 				</div>
 			</div>
 		{%- endfor -%}
-	</cinq-accordion-group>
+	</cinq-accordion>
 {%- endif -%}
