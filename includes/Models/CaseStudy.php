@@ -67,63 +67,49 @@ class CaseStudy extends Post {
 	}
 
 	/**
-	 * Returns the hero media type (image or video).
+	 * Returns the hero media payload for the browser frame (image or video).
 	 *
-	 * @return string
+	 * @return array{type: string, image?: int, video?: array<string, mixed>, poster?: array<string, mixed>}|null
 	 */
-	public function media_type(): string {
+	public function media(): ?array {
 		$hero = $this->hero();
 		$type = isset( $hero['media_type'] ) ? (string) $hero['media_type'] : 'image';
 
-		return in_array( $type, array( 'image', 'video' ), true ) ? $type : 'image';
-	}
+		if ( ! in_array( $type, array( 'image', 'video' ), true ) ) {
+			$type = 'image';
+		}
 
-	/**
-	 * Returns the delivered-site screenshot attachment ID.
-	 *
-	 * @return int|null
-	 */
-	public function screenshot(): ?int {
-		if ( 'image' !== $this->media_type() ) {
+		if ( 'video' === $type ) {
+			$video = $this->normalize_media_array( $hero['video'] ?? null );
+
+			if ( null === $video ) {
+				return null;
+			}
+
+			$media = array(
+				'type'  => 'video',
+				'video' => $video,
+			);
+
+			$poster = $this->normalize_media_array( $hero['poster'] ?? null );
+
+			if ( null !== $poster ) {
+				$media['poster'] = $poster;
+			}
+
+			return $media;
+		}
+
+		$id = isset( $hero['image'] ) ? (int) $hero['image'] : 0;
+
+		if ( $id <= 0 ) {
 			return null;
 		}
 
-		$hero = $this->hero();
-		$id   = isset( $hero['image'] ) ? (int) $hero['image'] : 0;
-
-		return $id > 0 ? $id : null;
-	}
-
-	/**
-	 * Returns the delivered-site video file array from ACF.
-	 *
-	 * @return array<string, mixed>|null
-	 */
-	public function video(): ?array {
-		if ( 'video' !== $this->media_type() ) {
-			return null;
-		}
-
-		$hero  = $this->hero();
-		$video = $hero['video'] ?? null;
-
-		return $this->normalize_media_array( $video );
-	}
-
-	/**
-	 * Returns the video poster image array from ACF.
-	 *
-	 * @return array<string, mixed>|null
-	 */
-	public function poster(): ?array {
-		if ( 'video' !== $this->media_type() ) {
-			return null;
-		}
-
-		$hero   = $this->hero();
-		$poster = $hero['poster'] ?? null;
-
-		return $this->normalize_media_array( $poster );
+		return array(
+			'type'  => 'image',
+			'image' => $id,
+		);
 	}
 
 	/**

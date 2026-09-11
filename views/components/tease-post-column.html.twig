@@ -10,7 +10,10 @@
 
 {%- if post -%}
 	{%- set category =
-		post.categories | default([]) | filter(term => term.slug not in ['uncategorized', 'non-classe']) | first
+		post.categories
+			| default([])
+			| filter(term => term.slug not in ['uncategorized', 'non-classe'])
+			| first
 	-%}
 	{%- set excerpt =
 		post.excerpt({
@@ -31,7 +34,7 @@
 		itemprop="item"
 	>
 		<div
-			class="before:bg-cream-soft after:bg-cream after:ring-black group-hover/tease-post:after:bg-pistachio relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px before:content-[''] after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 after:transition-[background-color,transform] after:duration-300 after:ease-out after:content-[''] group-hover/tease-post:after:scale-125"
+			class="before:bg-cream-soft after:bg-cream group-hover/tease-post:after:bg-pistachio relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 after:ring-black after:transition-[background-color,transform] after:duration-300 after:ease-out group-hover/tease-post:after:scale-125"
 			aria-hidden="true"
 		></div>
 

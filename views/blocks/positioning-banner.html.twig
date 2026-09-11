@@ -40,11 +40,11 @@
 							</a>
 						{%- elseif item.status -%}
 							<span
-								class="text-cream before:bg-pistachio flex items-center gap-2 whitespace-nowrap before:size-1.75 before:shrink-0 before:rounded-full before:content-['']"
+								class="text-cream before:bg-pistachio flex items-center gap-2 whitespace-nowrap before:size-1.75 before:shrink-0 before:rounded-full"
 							>
 								{{- label -}}
 							</span>
-						{%- else -%}
+						{% else %}
 							<span class="text-taupe whitespace-nowrap">{{- label -}}</span>
 						{%- endif -%}
 					</li>
