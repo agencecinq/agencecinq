@@ -43,8 +43,14 @@ class PostStates implements Service {
 	 */
 	public function filter_post_states( array $post_states, WP_Post $post ) {
 
-		if ( 'page-templates/blocks-page.php' === get_post_meta( $post->ID, '_wp_page_template', true ) ) {
+		$template = get_post_meta( $post->ID, '_wp_page_template', true );
+
+		if ( 'page-templates/blocks-page.php' === $template ) {
 			$post_states[] = __( 'Blocks Page', 'agencecinq' );
+		}
+
+		if ( 'page-templates/content-page.php' === $template ) {
+			$post_states[] = __( 'Content Page', 'agencecinq' );
 		}
 
 		return $post_states;

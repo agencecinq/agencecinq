@@ -94,9 +94,9 @@ class BlocksFields implements Service {
 		$location = array(
 			array(
 				array(
-					'param'    => 'post_type',
+					'param'    => 'page_template',
 					'operator' => '==',
-					'value'    => 'page',
+					'value'    => 'page-templates/blocks-page.php',
 				),
 			),
 			array(
