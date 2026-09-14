@@ -1,6 +1,6 @@
 {#
  # Components: Tease Case study card
- # Showroom card: browser frame, client, platform · year, link to the case.
+ # Showroom card: browser frame, client on its own line, then platform · year and link.
  #
  # Schema.org: Article (headline, image, url).
  #
@@ -41,16 +41,16 @@
 				)
 			-}}
 
-			<div class="flex items-center justify-between gap-3 overflow-hidden whitespace-nowrap">
-				<div class="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
-					{%- if client -%}
-						<p class="text-title-md min-w-0 truncate" itemprop="headline">
-							{{- client -}}
-						</p>
-					{%- endif -%}
+			<div class="space-y-1 overflow-hidden whitespace-nowrap">
+				{%- if client -%}
+					<p class="text-title-md truncate" itemprop="headline">
+						{{- client -}}
+					</p>
+				{%- endif -%}
 
+				<div class="flex items-center justify-between gap-3">
 					{%- if platform or year -%}
-						<p class="text-label text-stone shrink-0">
+						<p class="text-label text-stone min-w-0 truncate">
 							{%- if platform -%}
 								{{- platform -}}
 							{%- endif -%}
@@ -62,11 +62,11 @@
 							{%- endif -%}
 						</p>
 					{%- endif -%}
-				</div>
 
-				<p class="text-label text-taupe group-hover:text-cream shrink-0 transition-colors">
-					{{- __('View the case', 'agencecinq') ~ ' →' -}}
-				</p>
+					<p class="text-label text-taupe group-hover:text-cream shrink-0 transition-colors">
+						{{- __('View the case', 'agencecinq') ~ ' →' -}}
+					</p>
+				</div>
 			</div>
 		</a>
 	</article>
