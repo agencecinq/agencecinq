@@ -10,16 +10,19 @@ importers:
     dependencies:
       '@agencecinq/accordion':
         specifier: ^3.0.0
-        version: 3.0.0(@agencecinq/utils@5.0.1)
+        version: 3.0.0(@agencecinq/utils@7.3.0)
       '@agencecinq/drawer':
         specifier: ^5.0.1
-        version: 5.0.1(@agencecinq/utils@5.0.1)
+        version: 5.0.1(@agencecinq/utils@7.3.0)
       '@agencecinq/modal':
         specifier: ^2.0.1
-        version: 2.0.1(@agencecinq/utils@5.0.1)
+        version: 2.0.1(@agencecinq/utils@7.3.0)
+      '@agencecinq/snake':
+        specifier: ^1.0.0
+        version: 1.0.0(@agencecinq/utils@7.3.0)
       '@agencecinq/utils':
-        specifier: ^5.0.1
-        version: 5.0.1
+        specifier: ^7.3.0
+        version: 7.3.0
       '@splidejs/splide':
         specifier: ^4.1.4
         version: 4.1.4
@@ -81,8 +84,13 @@ packages:
     peerDependencies:
       '@agencecinq/utils': '*'
 
-  '@agencecinq/utils@5.0.1':
-    resolution: {integrity: sha512-Fh4TyEtiln1OIOKTLZTsT9QR8Qsiv73mWrW7DHUSNvSdfptTrzjk42NQ6iG8gDdcoJpmOWMyn9AOfNHZVriiGA==}
+  '@agencecinq/snake@1.0.0':
+    resolution: {integrity: sha512-+X9PF3Z/m6Hk2UJe11sG9RRVeOk/YX1emHAXDP07smb4uooaUlolcBn6OVUAKIuO1hJARyuTPpi1TK74LsYpbg==}
+    peerDependencies:
+      '@agencecinq/utils': '>=7.3.0'
+
+  '@agencecinq/utils@7.3.0':
+    resolution: {integrity: sha512-Yww3n2sJPcorAvnjesuB9qWaiaTxJScP4YyFfYWre3kLGfTKpln1ws73jEMTItW1EXZzSLiXuqc9YQaFlLvu5A==}
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -1407,23 +1415,27 @@ packages:
 
 snapshots:
 
-  '@agencecinq/accordion@3.0.0(@agencecinq/utils@5.0.1)':
+  '@agencecinq/accordion@3.0.0(@agencecinq/utils@7.3.0)':
     dependencies:
-      '@agencecinq/utils': 5.0.1
+      '@agencecinq/utils': 7.3.0
 
-  '@agencecinq/drawer@5.0.1(@agencecinq/utils@5.0.1)':
+  '@agencecinq/drawer@5.0.1(@agencecinq/utils@7.3.0)':
     dependencies:
-      '@agencecinq/utils': 5.0.1
+      '@agencecinq/utils': 7.3.0
       '@types/fs-extra': 11.0.4
       fs-extra: 11.3.5
 
-  '@agencecinq/modal@2.0.1(@agencecinq/utils@5.0.1)':
+  '@agencecinq/modal@2.0.1(@agencecinq/utils@7.3.0)':
     dependencies:
-      '@agencecinq/utils': 5.0.1
+      '@agencecinq/utils': 7.3.0
       '@types/fs-extra': 11.0.4
       fs-extra: 11.3.5
 
-  '@agencecinq/utils@5.0.1': {}
+  '@agencecinq/snake@1.0.0(@agencecinq/utils@7.3.0)':
+    dependencies:
+      '@agencecinq/utils': 7.3.0
+
+  '@agencecinq/utils@7.3.0': {}
 
   '@alloc/quick-lru@5.2.0': {}
 

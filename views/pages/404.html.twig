@@ -9,85 +9,111 @@
 
 {%- block content -%}
 	<main id="content" role="main">
-		<section class="py-31.5 lg:py-42" aria-labelledby="error-title">
-			<div class="container flex flex-col items-center space-y-8 text-center">
-				<div class="flex w-full flex-col items-center space-y-8">
-					{{-
-						include(
-							'svg/use.html.twig',
-							{
-								icon: 'mark',
-								classes: ['text-pistachio h-[1.959rem] w-14'],
-								attributes: {
-									'aria-hidden': 'true'
-								}
-							},
-							with_context = false
-						)
-					-}}
-
-					<div class="flex w-full flex-col items-center space-y-12">
-						<div class="flex w-full flex-col items-center space-y-6">
-							<header class="flex flex-col items-center space-y-5">
-								{%- if post.overline -%}
-									<p class="text-eyebrow text-stone">
-										{{- post.overline -}}
-									</p>
-								{%- endif -%}
-
-								{%- if post.title -%}
-									<h1 id="error-title" class="text-title-xxl text-balance">
-										{{- post.title -}}
-									</h1>
-								{%- endif -%}
-							</header>
-
-							{%- if post.text -%}
-								<p class="text-taupe text-lg max-w-130">
-									{{- post.text | raw -}}
-								</p>
-							{%- endif -%}
-						</div>
-
+		<section class="relative transform-3d" aria-labelledby="error-title">
+			<cinq-snake cols="39" rows="15" class="relative block">
+				<canvas
+					tabindex="0"
+					class="text-pistachio-soft absolute inset-0 z-1 block size-full touch-none outline-none pointer-coarse:hidden"
+					aria-label="{{ __('Snake. Arrow keys to move.', 'agencecinq') }}"
+				></canvas>
+				<div
+					class="text-eyebrow text-pistachio pointer-events-none absolute inset-x-0 top-6 z-5 container flex items-center gap-2 uppercase pointer-coarse:hidden"
+				>
+					<p class="flex items-center gap-2">
+						{{- __('Score', 'agencecinq') -}}
+						<span data-score aria-live="polite">0</span>
+					</p>
+					<button
+						type="button"
+						hidden
+						data-replay
+						class="hover:text-light-pistachio focus-visible:text-light-pistachio pointer-events-auto uppercase transition-colors hover:underline focus-visible:underline"
+					>
+						{{- __('Replay', 'agencecinq') -}}
+					</button>
+				</div>
+				<div
+					class="pointer-events-none relative z-2 container flex flex-col items-center space-y-8 py-31.5 text-center lg:py-42"
+				>
+					<div class="flex w-full flex-col items-center space-y-8">
 						{{-
 							include(
-								'components/button.html.twig',
-								post.link
-									| default({})
-									| merge({
-										variant: 'primary'
-									}),
+								'svg/use.html.twig',
+								{
+									icon: 'mark',
+									classes: ['text-pistachio h-[1.959rem] w-14'],
+									attributes: {
+										'aria-hidden': 'true'
+									}
+								},
 								with_context = false
 							)
 						-}}
-					</div>
-				</div>
 
-				{%- set items = post.items | default([]) | filter(item => item.link.url and item.link.title) -%}
-				{%- if items | length -%}
-					<nav aria-label="{{ __('Related links', 'agencecinq') }}">
-						<ul
-							class="text-label text-taupe flex flex-wrap items-start justify-center gap-x-6 gap-y-3"
-						>
-							{%- for item in items -%}
-								<li itemscope itemtype="https://schema.org/SiteNavigationElement">
-									<a
-										href="{{ item.link.url }}"
-										itemprop="url"
-										class="hover:text-pistachio transition-colors"
-										{{
-										item.link.target == '_blank'
-											? 'target="_blank" rel="noopener noreferrer"'
-										}}
-									>
-										<span itemprop="name">{{- item.link.title -}}</span>
-									</a>
-								</li>
-							{%- endfor -%}
-						</ul>
-					</nav>
-				{%- endif -%}
-			</div>
+						<div class="flex w-full flex-col items-center space-y-12">
+							<div class="flex w-full flex-col items-center space-y-6">
+								<header class="flex flex-col items-center space-y-5">
+									{%- if post.overline -%}
+										<p class="text-eyebrow text-stone">
+											{{- post.overline -}}
+										</p>
+									{%- endif -%}
+
+									{%- if post.title -%}
+										<h1 id="error-title" class="text-title-xxl text-balance">{{- post.title -}}</h1>
+									{%- endif -%}
+								</header>
+
+								{%- if post.text -%}
+									<p class="text-taupe max-w-130 text-lg">
+										{{- post.text | raw -}}
+									</p>
+								{%- endif -%}
+							</div>
+
+							{{-
+								include(
+									'components/button.html.twig',
+									post.link
+										| default({})
+										| merge({
+											variant: 'primary',
+											classes: 'pointer-events-auto'
+										}),
+									with_context = false
+								)
+							-}}
+						</div>
+					</div>
+
+					{%- set items =
+						post.items | default([]) | filter(item => item.link.url and item.link.title)
+					-%}
+					{%- if items | length -%}
+						<nav aria-label="{{ __('Related links', 'agencecinq') }}">
+							<ul
+								class="text-label text-taupe flex flex-wrap items-start justify-center gap-x-6 gap-y-3"
+							>
+								{%- for item in items -%}
+									<li itemscope itemtype="https://schema.org/SiteNavigationElement">
+										<a
+											href="{{ item.link.url }}"
+											itemprop="url"
+											class="hover:text-pistachio transition-colors"
+											{{
+											item.link.target == '_blank'
+												? 'target="_blank" rel="noopener noreferrer"'
+											}}
+										>
+											<span itemprop="name">{{- item.link.title -}}</span>
+										</a>
+									</li>
+								{%- endfor -%}
+							</ul>
+						</nav>
+					{%- endif -%}
+				</div>
+			</cinq-snake>
 		</section>
 	</main>
 {%- endblock -%}
