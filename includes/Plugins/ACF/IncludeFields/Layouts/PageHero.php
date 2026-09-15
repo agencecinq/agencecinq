@@ -9,8 +9,6 @@
 
 namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
-use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
-
 /**
  * Page Hero block layout.
  */
@@ -60,7 +58,7 @@ class PageHero {
 							'aria-label'   => __( 'Title', 'agencecinq' ),
 							'type'         => 'text',
 							'placeholder'  => __( 'Enter the title of the block', 'agencecinq' ),
-							'instructions' => __( 'Main heading of the page. Always rendered as an H1.', 'agencecinq' ),
+							'instructions' => __( 'Main heading of the page.', 'agencecinq' ),
 						),
 						array(
 							'key'          => 'field_' . $key . '_page_hero_content_text',
@@ -114,7 +112,37 @@ class PageHero {
 						),
 					),
 				),
-				...AcfFieldHelpers::settings( $key . '_page_hero' ),
+				array(
+					'key'        => 'field_' . $key . '_page_hero_tab_settings',
+					'label'      => __( 'Settings', 'agencecinq' ),
+					'aria-label' => __( 'Settings', 'agencecinq' ),
+					'type'       => 'tab',
+				),
+				array(
+					'key'           => 'field_' . $key . '_page_hero_heading',
+					'label'         => __( 'Heading', 'agencecinq' ),
+					'name'          => 'heading',
+					'aria-label'    => __( 'Heading', 'agencecinq' ),
+					'type'          => 'select',
+					'instructions'  => __( 'Choose the heading level for the title of the block. It is important to use heading levels in a hierarchical way for accessibility and SEO reasons.', 'agencecinq' ),
+					'choices'       => array(
+						'h1' => __( 'H1', 'agencecinq' ),
+						'h2' => __( 'H2', 'agencecinq' ),
+						'h3' => __( 'H3', 'agencecinq' ),
+					),
+					'default_value' => 'h1',
+					'return_format' => 'value',
+				),
+				array(
+					'key'        => 'field_' . $key . '_page_hero_layout',
+					'label'      => __( 'Layout', 'agencecinq' ),
+					'name'       => 'layout',
+					'aria-label' => __( 'Layout', 'agencecinq' ),
+					'type'       => 'clone',
+					'clone'      => array( 'field_clones_layout' ),
+					'display'    => 'seamless',
+					'layout'     => 'block',
+				),
 			),
 		);
 	}

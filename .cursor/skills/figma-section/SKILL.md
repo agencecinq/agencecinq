@@ -105,7 +105,7 @@ Exemple d'ouverture de bloc :
 </div>
 ```
 
-Références : `views/blocks/hero.html.twig`, `views/blocks/services.html.twig`.
+Références : `views/blocks/page-hero.html.twig`, `views/blocks/services.html.twig`.
 
 ## 3. Styles
 
@@ -203,7 +203,7 @@ class Example {
 - Cloner `field_clones_heading` / `field_clones_media` / `field_clones_layout` plutôt que les redéfinir (`ClonesFields.php`).
 - Dans `BlocksFields.php` : `use` + entrée dans `$layouts` (ordre alpha, = ordre admin).
 
-Références plus riches : `Layouts/Services.php`, `Layouts/Hero.php`.
+Références plus riches : `Layouts/Services.php`, `Layouts/PageHero.php`.
 
 **Champs de CPT** (meta hors flexible) — `IncludeFields/{Name}Fields.php` + `Init.php`. Référence : `CaseStudyFields.php`.
 

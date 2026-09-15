@@ -13,10 +13,7 @@
 	)
 -}}
 
-<section
-	id="{{ block.id }}"
-	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
->
+<section id="{{ block.id }}" {{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}>
 	<div class="layout-grid container">
 		<div class="col-span-full space-y-14 lg:col-span-9">
 			{%- if block.content.overline or block.content.title or block.content.text -%}
@@ -30,22 +27,22 @@
 							{%- endif -%}
 
 							{%- if block.content.title -%}
-								<h1 id="{{ block.id }}-title" class="text-title-xxl">
+								<{{ block.heading }} id="{{ block.id }}-title" class="text-title-xxl">
 									{{- block.content.title -}}
-								</h1>
+								</{{ block.heading }}>
 							{%- endif -%}
 						</header>
 					{%- endif -%}
 
 					{%- if block.content.text -%}
-						<p class="text-taupe max-w-190 text-xl">
+						<p class="text-taupe text-xl">
 							{{- block.content.text | raw -}}
 						</p>
 					{%- endif -%}
 				</div>
 			{%- endif -%}
 
-			{%- if block.content.links.0.title or block.content.links.1.title -%}
+			{%- if block.content.links -%}
 				<div class="flex flex-wrap items-center gap-4">
 					{%- for link in block.content.links -%}
 						{{-
