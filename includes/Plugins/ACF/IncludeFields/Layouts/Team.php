@@ -22,6 +22,25 @@ class Team {
 	 * @return array<string, mixed>
 	 */
 	public static function get_layout( string $key ): array {
+		$settings = AcfFieldHelpers::settings( $key . '_team' );
+		array_splice(
+			$settings,
+			1,
+			0,
+			array(
+				array(
+					'key'        => 'field_' . $key . '_team_heading',
+					'label'      => __( 'Heading', 'agencecinq' ),
+					'name'       => 'heading',
+					'aria-label' => __( 'Heading', 'agencecinq' ),
+					'type'       => 'clone',
+					'clone'      => array( 'field_clones_heading' ),
+					'display'    => 'seamless',
+					'layout'     => 'block',
+				),
+			)
+		);
+
 		return array(
 			'key'        => 'layout_' . $key . '_team',
 			'name'       => 'team',
@@ -59,16 +78,6 @@ class Team {
 							'type'        => 'text',
 							'placeholder' => __( 'Enter the title of the block', 'agencecinq' ),
 						),
-						array(
-							'key'        => 'field_' . $key . '_team_content_heading',
-							'label'      => __( 'Heading', 'agencecinq' ),
-							'name'       => 'heading',
-							'aria-label' => __( 'Heading', 'agencecinq' ),
-							'type'       => 'clone',
-							'clone'      => array( 'field_clones_heading' ),
-							'display'    => 'seamless',
-							'layout'     => 'block',
-						),
 					),
 				),
 				array(
@@ -85,7 +94,7 @@ class Team {
 					'type'         => 'repeater',
 					'layout'       => 'block',
 					'button_label' => __( 'Add Member', 'agencecinq' ),
-					'instructions' => __( 'Each row is a team portrait. Four photos with the same crop and background (800 × 1000, 4:5) work best.', 'agencecinq' ),
+					'instructions' => __( 'Each row is a team portrait. Four photos with the same crop (800 × 1000, 4:5) on a transparent background work best.', 'agencecinq' ),
 					'sub_fields'   => array(
 						array(
 							'key'             => 'field_' . $key . '_team_members_image',
@@ -96,7 +105,7 @@ class Team {
 							'return_format'   => 'id',
 							'library'         => 'all',
 							'preview_size'    => 'medium',
-							'instructions'    => __( 'Vertical portrait, 800 × 1000 recommended. Use the same framing and background for every member.', 'agencecinq' ),
+							'instructions'    => __( 'Vertical portrait, 800 × 1000 recommended. Use a transparent PNG with the same framing for every member.', 'agencecinq' ),
 							'parent_repeater' => 'field_' . $key . '_team_members',
 						),
 						array(
@@ -119,7 +128,7 @@ class Team {
 						),
 					),
 				),
-				...AcfFieldHelpers::settings( $key . '_team' ),
+				...$settings,
 			),
 		);
 	}

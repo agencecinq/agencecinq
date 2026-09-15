@@ -1,92 +1,127 @@
 {#
  # Blocks: Team
- # Four portraits: eyebrow, title, then a row of name + role cards.
+ # Four portraits over a full-bleed CINQ logo marquee.
  #}
 
-{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id
+		}
+	)
+-}}
 
-{%- set members = block.members | default(block.content.members) | default([]) | filter(member => member.name or member.position or member.image) -%}
+{%- set members =
+	block.members
+		| default(block.content.members)
+		| default([])
+		| filter(member => member.name or member.position or member.image)
+-%}
 
 <section
 	id="{{ block.id }}"
-	{% if block.content.title %}aria-labelledby="{{ block.id }}-title"{% endif %}
+	class="relative overflow-x-clip"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' : '' }}
 >
-	<div class="container space-y-18">
+	<div class="space-y-18">
 		{%- if block.content.overline or block.content.title -%}
-			<header class="space-y-6">
-				{{-
-					include(
-						'components/eyebrow.html.twig',
-						{
-							title: block.content.overline
-						},
-						with_context: false
-					)
-				-}}
-
-				{%- if block.content.title -%}
-					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl max-w-180">
+			<header class="container grid grid-cols-2 gap-4 lg:grid-cols-12 lg:gap-6">
+				<div class="col-span-full space-y-6 lg:col-span-6">
+					{{-
+						include(
+							'components/eyebrow.html.twig',
+							{
+								title: block.content.overline
+							},
+							with_context = false
+						)
+					-}}
+					{%- if block.content.title -%}
+						{{-
+							('<' ~ block.heading ~ ' id="' ~ block.id
+								~ '-title" class="text-title-xl text-balance">') | raw
+						-}}
 						{{- block.content.title -}}
-					</{{ block.content.heading | default('h2') }}>
-				{%- endif -%}
+						{{- ('</' ~ block.heading ~ '>') | raw -}}
+					{%- endif -%}
+				</div>
 			</header>
 		{%- endif -%}
 
 		{%- if members | length -%}
-			<ul
-				class="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4 lg:gap-x-6"
-				itemscope
-				itemtype="https://schema.org/ItemList"
-			>
-				{%- if block.content.title -%}
-					<meta itemprop="name" content="{{ block.content.title }}" />
-				{%- endif -%}
-				<meta itemprop="numberOfItems" content="{{ members | length }}" />
-
-				{%- for member in members -%}
-					<li
-						itemprop="itemListElement"
-						itemscope
-						itemtype="https://schema.org/ListItem"
-					>
-						<meta itemprop="position" content="{{ loop.index }}" />
-
-						<article
-							class="space-y-3.5"
-							itemscope
-							itemtype="https://schema.org/Person"
-							itemprop="item"
-						>
-							<div class="bg-gray aspect-4/5 w-full overflow-hidden rounded-8">
+			<div class="relative">
+				<div class="pointer-events-none absolute inset-x-0 top-0 z-0" aria-hidden="true">
+					<div class="animate-marquee-x flex w-max items-center gap-16 transform-3d">
+						{%- for i in 1..16 -%}
+							<div class="h-16 w-52 shrink-0">
 								{{-
 									include(
-										'components/image.html.twig',
+										'svg/use.html.twig',
 										{
-											image: member.image,
-											classes: ['size-full object-cover object-center'],
-											alt: member.name,
-											attributes: { itemprop: 'image' }
+											icon: 'logo',
+											classes: ['h-16 w-52 ']
 										},
-										with_context: false
+										with_context = false
 									)
 								-}}
 							</div>
+						{%- endfor -%}
+					</div>
+				</div>
 
-							{%- if member.name -%}
-								<h3 class="text-title-md" itemprop="name">
-									{{- member.name -}}
-								</h3>
-							{%- endif -%}
+				<ul
+					class="relative z-1 container grid grid-cols-1 gap-x-4 gap-y-10 lg:grid-cols-4 lg:gap-x-6"
+					itemscope
+					itemtype="https://schema.org/ItemList"
+				>
+					{%- if block.content.title -%}
+						<meta itemprop="name" content="{{ block.content.title }}" />
+					{%- endif -%}
+					<meta itemprop="numberOfItems" content="{{ members | length }}" />
 
-							{%- if member.position -%}
-								<p class="text-label text-stone" itemprop="jobTitle">
-									{{- member.position -}}
-								</p>
-							{%- endif -%}
-						</article>
-					</li>
-				{%- endfor -%}
-			</ul>
+					{%- for member in members -%}
+						<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+							<meta itemprop="position" content="{{ loop.index }}" />
+
+							<article
+								class="space-y-3.5"
+								itemscope
+								itemtype="https://schema.org/Person"
+								itemprop="item"
+							>
+								<div class="aspect-4/5 w-full overflow-hidden">
+									{{-
+										include(
+											'components/image.html.twig',
+											{
+												image: member.image,
+												classes: ['size-full object-cover object-center'],
+												alt: member.name,
+												attributes: {
+													itemprop: 'image'
+												}
+											},
+											with_context = false
+										)
+									-}}
+								</div>
+
+								{%- if member.name -%}
+									<h3 class="text-title-md" itemprop="name">{{- member.name -}}</h3>
+								{%- endif -%}
+
+								{%- if member.position -%}
+									<p class="text-label text-stone" itemprop="jobTitle">
+										{{- member.position -}}
+									</p>
+								{%- endif -%}
+							</article>
+						</li>
+					{%- endfor -%}
+				</ul>
+			</div>
 		{%- endif -%}
 	</div>
 </section>
