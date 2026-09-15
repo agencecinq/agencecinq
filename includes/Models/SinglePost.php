@@ -8,7 +8,7 @@
 
 namespace AgenceCinq\Models;
 
-use Timber\{ Timber, Post, PostCollectionInterface };
+use Timber\{ Post };
 
 /**
  * Single Post
@@ -105,43 +105,5 @@ class SinglePost extends Post {
 	 */
 	public function share_url(): string {
 		return 'mailto:?subject=' . __( 'I wanted you to see this post', 'agencecinq' ) . '&amp;body=' . __( 'Check out this post', 'agencecinq' ) . ' ' . $this->link . '.'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
-
-
-	/**
-	 * Retrieves related posts for the current post.
-	 *
-	 * This method fetches posts that are related to the current post,
-	 * typically based on shared categories, tags, or other criteria.
-	 *
-	 * @return PostCollectionInterface|null A collection of related posts or `null` if none are found.
-	 */
-	public function related_posts(): PostCollectionInterface|null {
-		$categories = wp_get_post_categories( $this->ID, array( 'fields' => 'ids' ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.wp_get_post_categories_wp_get_post_categories
-
-		$args = array(
-			'post_type'      => 'post',
-			'posts_per_page' => 3,
-			'orderby'        => 'date',
-			'order'          => 'DESC',
-			'post__not_in'   => array( $this->ID ), // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post__not_in
-			'category__in'   => $categories,
-		);
-
-		$posts = Timber::get_posts( $args );
-
-		if ( 0 === count( $posts ) ) {
-			$args = array(
-				'post_type'      => 'post',
-				'posts_per_page' => 3,
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-				'post__not_in'   => array( $this->ID ), // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_post__not_in
-			);
-
-			return Timber::get_posts( $args );
-		}
-
-		return $posts;
 	}
 }

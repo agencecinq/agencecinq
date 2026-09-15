@@ -6,10 +6,10 @@ import { addTrapFocus, getFocusableElements, removeTrapFocus } from '@agencecinq
  * Uses focus trap so Tab cycles only within the visible panel.
  */
 class MobileMenu extends Piece {
-	private $main: HTMLElement | null = null;
-	private $subPanels: HTMLElement[] = [];
+	$main: HTMLElement | null = null;
+	$subPanels: HTMLElement[] = [];
 	/** Button that opened the current sub panel (for focus return on back). */
-	private $lastOpenSub: HTMLButtonElement | null = null;
+	#$lastOpenSub: HTMLButtonElement | null = null;
 
 	constructor() {
 		super('MobileMenu');
@@ -19,10 +19,10 @@ class MobileMenu extends Piece {
 		this.$main = this.domAttr('main') as HTMLElement | null;
 		this.$subPanels = Array.from(this.domAttrAll('sub'));
 
-		this.on('click', this, this.handleClick);
+		this.on('click', this, this.#handleClick);
 	}
 
-	private handleClick = (e: Event): void => {
+	#handleClick = (e: Event): void => {
 		const target = e.target as HTMLElement;
 		const openSub = target.closest<HTMLButtonElement>('[data-dom="open-sub"]');
 		const backBtn = target.closest<HTMLButtonElement>('[data-dom="back-to-main"]');
@@ -30,15 +30,15 @@ class MobileMenu extends Piece {
 		if (openSub) {
 			const id = openSub.getAttribute('data-open-sub');
 			if (id) {
-				this.$lastOpenSub = openSub;
-				this.showSub(id);
+				this.#$lastOpenSub = openSub;
+				this.#showSub(id);
 			}
 		} else if (backBtn) {
-			this.showMain();
+			this.#showMain();
 		}
 	};
 
-	private showMain(): void {
+	#showMain(): void {
 		if (this.$main) {
 			this.$main.style.removeProperty('display');
 			this.$main.removeAttribute('aria-hidden');
@@ -51,8 +51,8 @@ class MobileMenu extends Piece {
 			(btn as HTMLButtonElement).setAttribute('aria-expanded', 'false');
 		});
 		// Remove trap from sub panel and return focus to the button that opened it.
-		const returnFocusTo = this.$lastOpenSub;
-		this.$lastOpenSub = null;
+		const returnFocusTo = this.#$lastOpenSub;
+		this.#$lastOpenSub = null;
 		removeTrapFocus(returnFocusTo ?? null);
 		// Trap focus in the main panel (keep focus on the button we returned to if any).
 		if (this.$main) {
@@ -61,7 +61,7 @@ class MobileMenu extends Piece {
 		}
 	}
 
-	private showSub(id: string): void {
+	#showSub(id: string): void {
 		if (this.$main) {
 			this.$main.style.setProperty('display', 'none');
 			this.$main.setAttribute('aria-hidden', 'true');
@@ -86,7 +86,7 @@ class MobileMenu extends Piece {
 	}
 
 	unmount(): void {
-		this.off('click', this, this.handleClick);
+		this.off('click', this, this.#handleClick);
 		removeTrapFocus();
 	}
 }

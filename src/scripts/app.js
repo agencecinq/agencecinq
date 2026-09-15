@@ -9,7 +9,6 @@ load("cinq-snake", async () => {
 	await import("@agencecinq/snake");
 	await import("./components/Snake.ts");
 });
-load("cinq-slideshow", () => import("./components/Slideshow.ts"));
 load("cinq-vertical-pipeline", () => import("./components/VerticalPipeline.ts"));
 load("cinq-mobile-menu", () => import("./components/MobileMenu.ts"));
 

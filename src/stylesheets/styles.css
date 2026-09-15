@@ -1,11 +1,9 @@
 @import "tailwindcss";
-@import "@splidejs/splide/dist/css/splide-core.min.css";
 
 @import "./theme.css";
 
 /* Base */
 @import "./base/base.css";
-@import "./base/font-face.css";
 
 /* Utilities */
 @import "./utilities/container.css";
