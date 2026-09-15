@@ -1,13 +1,17 @@
-import { load } from 'piecesjs';
+import { load } from "piecesjs";
 
-import '@agencecinq/drawer';
-import '@agencecinq/modal';
+import "@agencecinq/drawer";
+import "@agencecinq/modal";
 
-load('cinq-accordion', () => import('@agencecinq/accordion'));
-load('cinq-grid', () => import('./components/Grid.ts'));
-load('cinq-slideshow', () => import('./components/Slideshow.ts'));
-load('cinq-vertical-pipeline', () => import('./components/VerticalPipeline.ts'));
-load('cinq-mobile-menu', () => import('./components/MobileMenu.ts'));
+load("cinq-accordion", () => import("@agencecinq/accordion"));
+load("cinq-grid", () => import("./components/Grid.ts"));
+load("cinq-snake", async () => {
+	await import("@agencecinq/snake");
+	await import("./components/Snake.ts");
+});
+load("cinq-slideshow", () => import("./components/Slideshow.ts"));
+load("cinq-vertical-pipeline", () => import("./components/VerticalPipeline.ts"));
+load("cinq-mobile-menu", () => import("./components/MobileMenu.ts"));
 
 // The object cinq is defined in includes/Setup/Enqueue.php and localized to app.js
 // It provideds useful information such as the text domain, template_directory_uri, base_url, etc.
