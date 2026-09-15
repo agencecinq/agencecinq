@@ -18,7 +18,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Crosslinks;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EntryPoints;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FormInfo;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Hero;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHero;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
@@ -56,7 +55,6 @@ class BlocksFields implements Service {
 		EditorialProse::class,
 		EntryPoints::class,
 		FormInfo::class,
-		Hero::class,
 		LatestPosts::class,
 		PageHero::class,
 		PositioningBanner::class,
