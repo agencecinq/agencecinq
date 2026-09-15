@@ -160,10 +160,20 @@
 	--radius-50: --spacing(12.5);
 
 	--animate-marquee-y: marquee-y 25s linear infinite;
+	--animate-marquee-x: marquee-x 50s linear infinite;
 
 	@keyframes marquee-y {
 		to {
 			transform: translateY(-50%);
+		}
+	}
+
+	@keyframes marquee-x {
+		0% {
+			transform: translate(0);
+		}
+		100% {
+			transform: translate(-50%);
 		}
 	}
 }
