@@ -1,6 +1,9 @@
 {#
  # Index
  #
+ # Document shell + default page layout (Page Hero component + editor content,
+ # then optional flexible blocks).
+ #
  # @package AgenceCinq
  # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  #}
@@ -36,17 +39,32 @@
 
 		{%- block content -%}
 			<main id="content" role="main">
-				<div class="container space-y-5 pt-5 pb-20 lg:space-y-20 lg:pt-12.5">
-					{{ yoast_breadcrumb() }}
-					<h1 class="text-title-xl text-pistachio">{{- post.title -}}</h1>
-				</div>
+				{{-
+					include(
+						'components/page-hero.html.twig',
+						{
+							id: 'page-hero',
+							overline: post.meta('overline'),
+							title: post.title,
+							text: post.post_excerpt,
+							links: post.meta('links'),
+							heading: 'h1',
+							classes: ['pt-26', 'pb-20']
+						},
+						with_context = false
+					)
+				-}}
 
 				{%- if post.content -%}
-					<div class="layout-grid container gap-y-5 pt-26.25 pb-20 lg:pt-32.5">
-						<div class="wysiwyg col-span-full lg:col-span-6 lg:col-start-4">
-							{{- post.content -}}
+					<section class="py-26" aria-label="{{ __('Page content', 'agencecinq') }}">
+						<div class="container">
+							<div
+								class="wysiwyg text-base text-taupe max-w-180 [&_a]:text-pistachio [&_h2]:mb-8 [&_h2]:text-title-xl [&_h2]:text-cream [&_h2:not(:first-child)]:mt-10 [&_h3]:mb-4 [&_h3]:text-title-lg [&_h3]:text-cream [&_h3:not(:first-child)]:mt-10 [&_ol]:text-base [&_p]:mb-5 [&_p]:text-base [&_ul]:text-base"
+							>
+								{{- post.content -}}
+							</div>
 						</div>
-					</div>
+					</section>
 				{%- endif -%}
 
 				{{-
@@ -62,7 +80,11 @@
 
 		{%- block footer -%}
 			{{- include('footer.html.twig') -}}
-		{%- endblock -%}{{- function('wp_footer') -}}<div id="svg-sprite" style="display: none;">
+		{%- endblock -%}
+
+		{{- function('wp_footer') -}}
+
+		<div id="svg-sprite" style="display: none;">
 			{{- include('public/sprite.svg', ignore_missing = true) -}}
 		</div>
 

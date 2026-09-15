@@ -10,7 +10,6 @@
 namespace AgenceCinq\Template;
 
 use AgenceCinq\Service;
-use AgenceCinq\Taxonomy\PageCat;
 use WP_Post;
 
 /**
@@ -47,10 +46,6 @@ class PostStates implements Service {
 
 		if ( 'page-templates/blocks-page.php' === $template ) {
 			$post_states[] = __( 'Blocks Page', 'agencecinq' );
-		}
-
-		if ( 'page-templates/content-page.php' === $template ) {
-			$post_states[] = __( 'Content Page', 'agencecinq' );
 		}
 
 		return $post_states;

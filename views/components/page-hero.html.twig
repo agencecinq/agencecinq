@@ -1,0 +1,71 @@
+{#
+ # Components: Page Hero
+ # Inner-page hero: overline, title, lead, then CTAs.
+ #
+ # @param string id Section id (also used for the title element id suffix).
+ # @param string overline Uppercase mono label above the title.
+ # @param string title Main heading text.
+ # @param string text Lead paragraph (excerpt or ACF text).
+ # @param array links Link arrays (title, url, target). First = primary, next = secondary.
+ # @param string heading Heading tag. Defaults to h1.
+ # @param array classes Extra classes for the section.
+ #}
+
+{%- set heading = heading | default('h1') -%}
+{%- set title_id = id ? id ~ '-title' : 'page-title' -%}
+
+{%- if overline or title or text or links -%}
+	<section
+		id="{{ id | default('page-hero') }}"
+		class="{{ html_classes(classes | default([]) | join(' ')) }}"
+		{{ title ? 'aria-labelledby="' ~ title_id ~ '"' }}
+	>
+		<div class="layout-grid container">
+			<div class="col-span-full space-y-14 lg:col-span-9">
+				{%- if overline or title or text -%}
+					<div class="space-y-8">
+						{%- if overline or title -%}
+							<header class="space-y-6">
+								{%- if overline -%}
+									<p class="text-label text-taupe uppercase">
+										{{- overline -}}
+									</p>
+								{%- endif -%}
+
+								{%- if title -%}
+									<{{ heading }} id="{{ title_id }}" class="text-title-xxl">
+										{{- title -}}
+									</{{ heading }}>
+								{%- endif -%}
+							</header>
+						{%- endif -%}
+
+						{%- if text -%}
+							<p class="text-taupe max-w-190 text-xl">
+								{{- text | raw -}}
+							</p>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
+
+				{%- if links -%}
+					<div class="flex flex-wrap items-center gap-4">
+						{%- for link in links -%}
+							{{-
+								include(
+									'components/button.html.twig',
+									link
+										| default({})
+										| merge({
+											variant: loop.first ? 'primary' : 'secondary'
+										}),
+									with_context = false
+								)
+							-}}
+						{%- endfor -%}
+					</div>
+				{%- endif -%}
+			</div>
+		</div>
+	</section>
+{%- endif -%}

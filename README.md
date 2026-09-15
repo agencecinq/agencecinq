@@ -1,42 +1,93 @@
 # Agence Cinq
 
-WordPress theme for the Agence Cinq website, based on the CINQ starter (Timber/Twig, Vite, Tailwind CSS v4, TypeScript).
+WordPress theme for [agencecinq.com](https://agencecinq.com), built on the CINQ starter stack (Timber/Twig, Vite, Tailwind CSS v4, TypeScript).
 
-## Key features
+Current version: see `package.json` / `style.css`.
 
-- **Timber & Twig**: clean, reusable template components.
-- **Modern tooling**: Composer, pnpm, Vite, TypeScript, PHP CodeSniffer (WPCS) and a GitHub release workflow.
-- **Tailwind CSS v4**: design tokens declared in `@theme` (`src/stylesheets/theme.css`), no `tailwind.config.js`.
-- **Accessibility**: semantic HTML, clear structure, ARIA best practices where relevant.
-- **Performance**: optimized images (WebP, lazy‑loading), SVG sprite, minified assets in production.
-- **Extensibility**: class‑based PHP in `includes/`, Twig components in `views/`, front‑end sources in `src/`.
+## Stack
+
+- **Templating**: Timber 2 + Twig. Root `*.php` files are WordPress routers that load a Timber context and render `views/pages/`.
+- **Build**: Vite (`pnpm dev` / `pnpm build`), `laravel-vite-plugin`. Entries: `src/stylesheets/styles.css`, `src/scripts/app.js`. Output in `dist/` (gitignored).
+- **CSS**: Tailwind CSS v4 in pure CSS. Design tokens live in `@theme` (`src/stylesheets/theme.css`).
+- **JS**: TypeScript components in `src/scripts/components/`, mounted via `piecesjs`. Global `cinq` object injected from PHP (`includes/Setup/Enqueue.php`).
+- **Packages**: `@agencecinq/accordion`, `@agencecinq/drawer`, `@agencecinq/modal`, `@agencecinq/utils`, plus GSAP and Splide.
+- **PHP**: OOP, PSR-4 (`AgenceCinq\` → `includes/`), WordPress Coding Standards (`phpcs.xml`).
+- **Fields**: ACF groups in PHP under `includes/Plugins/ACF/IncludeFields/` (layouts in `Layouts/`).
+- **i18n**: text domain `agencecinq`, files in `languages/`.
+- **Deploy**: `deploy.sh` on GitHub release tags `v*` (`.github/workflows/release.yml`).
+
+## Content architecture
+
+### Homepage hero
+
+The front page hero is **not** a flexible block. It is defined by `FrontPageFields` and rendered in `views/pages/front-page.html.twig` (title, quote, client logos, GitHub repositories marquee).
+
+Repositories are fetched from the GitHub org API (`includes/GitHub/Repositories.php`), cached in a transient, and exclude forks/archived repos. Optional token: `CINQ_GITHUB_TOKEN` in `wp-config.php`. Marquee duration scales with the number of repos (5s per item).
+
+### Flexible blocks
+
+Layouts are registered in `BlocksFields` and rendered via `views/blocks/blocks.html.twig` (name `snake_case` → template `kebab-case.html.twig`).
+
+| Layout             | Twig                           |
+| ------------------ | ------------------------------ |
+| Accordion Group    | `accordion-group.html.twig`    |
+| Call To Action     | `call-to-action.html.twig`     |
+| Client Quote       | `client-quote.html.twig`       |
+| Credibility Banner | `credibility-banner.html.twig` |
+| Crosslinks         | `crosslinks.html.twig`         |
+| Editorial Prose    | `editorial-prose.html.twig`    |
+| Entry Points       | `entry-points.html.twig`       |
+| Form + Info        | `form-info.html.twig`          |
+| Latest Posts       | `latest-posts.html.twig`       |
+| Page Hero          | `page-hero.html.twig`          |
+| Positioning Banner | `positioning-banner.html.twig` |
+| Pricing Rules      | `pricing-rules.html.twig`      |
+| Pricing Tiers      | `pricing-tiers.html.twig`      |
+| References         | `references.html.twig`         |
+| Related Cases      | `related-cases.html.twig`      |
+| Services           | `services.html.twig`           |
+| Stats              | `stats.html.twig`              |
+| Styleguide         | `styleguide.html.twig`         |
+| Subscriptions      | `subscriptions.html.twig`      |
+| Team               | `team.html.twig`               |
+| Vertical Pipeline  | `vertical-pipeline.html.twig`  |
+
+**Page Hero** (`page_hero` / `components/page-hero.html.twig`): inner-page hero (overline, title, lead, CTAs). Shared by the flexible block and the default page layout. On default pages, the lead is the WordPress excerpt; heading level for the block lives under **Settings** (default `h1`).
+
+There is no flexible **Hero** block (full-bleed media + featured posts). That layout was a leftover and was removed; use homepage fields, Page Hero, or Case Study hero instead.
+
+### Other page types
+
+- **Case studies**: CPT + dedicated hero fields (`CaseStudyFields`), template `views/pages/single-case-study.html.twig`.
+- **Default pages**: `components/page-hero.html.twig` (overline + title + excerpt + CTAs via `PageFields`), WordPress editor for the body, optional flexible blocks. Richer layouts use the **Blocks** page template (same Page Hero component as a flexible block).
+- **Blog archive**: options in `ArchivePostsFields`.
 
 ## Workflows (AI-assisted)
 
-This repository carries Cursor rules in `.cursor/rules/` that document conventions and automate the two key flows. They are the operational reference for the team:
+Cursor rules in `.cursor/rules/` document conventions and team workflows:
 
-- **`starter-cinq`** (always on): stack, conventions, coding standards (WPCS), language rules, and the living DO/DONT list. This is the base of truth and is meant to evolve over time.
-- **`init-nouveau-projet`**: step-by-step procedure to turn this starter into a new client project (detect and replace identifiers, reset tokens, fonts, icons and assets). Use it when starting a new project.
-- **`remontee-vers-starter`**: the reverse flow. When something built on a project is reusable, this procedure brings it back into the starter (re-neutralize identifiers, strip client content, version bump).
-
-To add a new DO/DONT or a task-specific rule, follow the "Faire évoluer ces règles" section of `starter-cinq`.
+- **`starter-cinq`** (always on): stack, conventions, WPCS, living DO/DONT list.
+- **`init-nouveau-projet`**: how to bootstrap a **new** client project from the CINQ starter (not from a copy of this site).
+- **`remontee-vers-starter`**: how to port a reusable brick from a project back into the starter.
+- **`figma-section` skill**: implement a Figma selection as Twig + ACF layout + tokens.
 
 ## Getting started
 
+Prerequisites: PHP 8.4, Composer, pnpm, Node 22.
+
 ```bash
+cp .env.sample .env   # set APP_URL=https://agencecinq.local (no trailing slash)
 composer install
 pnpm install
-pnpm build      # also generates public/sprite.svg from src/icons/
-pnpm dev        # local dev server
+pnpm build            # also generates public/sprite.svg from src/icons/
+pnpm dev              # Vite HMR
 ```
 
-Replace the placeholder assets (`screenshot.png`, `src/img/svg/logo.svg`) and the example palette in `src/stylesheets/theme.css` with the project's own.
+Activate required plugins (ACF, etc.) in WordPress.
 
-### SVG sprite support
+### SVG sprite
 
-Includes built-in support for SVG sprites, allowing you to easily manage and use SVG icons throughout your theme. SVG will be pickup from the `src/icons/` folder and compiled into a single sprite file during the build process. This file can then be referenced in your Twig templates for efficient icon usage. This file is located in `public/sprite.svg` after build. It is located in the public folder to allow easy access and avoid Vite processing.
-
-The theme provide a Twig component located at `views/svg/use.html.twig` to facilitate the use of SVG icons from the sprite. You can include an icon in your templates like this:
+Icons in `src/icons/` are compiled to `public/sprite.svg` on build. Use `views/svg/use.html.twig`:
 
 ```twig
 {{
@@ -51,19 +102,7 @@ The theme provide a Twig component located at `views/svg/use.html.twig` to facil
 }}
 ```
 
-The sprite itself is included in the theme's `index.html.twig` file to ensure it's available throughout the site:
-
-```twig
-<div style="display: none;">
-	{{ include 'svg/sprite.html.twig' }}
-</div>
-```
-
-### Responsive Images with WebP Support
-
-The theme includes a custom Twig component for rendering responsive images with WebP support. This component automatically generates the necessary `srcset` and `sizes` attributes for optimal image loading across different devices and screen sizes.
-
-You can use the image component in your Twig templates like this:
+### Responsive images
 
 ```twig
 {{
@@ -79,169 +118,61 @@ You can use the image component in your Twig templates like this:
 }}
 ```
 
-It will be rendered as:
+`image` (ID or Timber image) is required. SVG/GIF skip WebP conversion. See the component docblock for options.
 
-```html
-<picture>
-	<source
-		type="image/webp"
-		srcset="image-300.webp 300w, image-600.webp 600w, image-900.webp 900w"
-		sizes="(max-width: 600px) 100vw, 600px"
-	/>
-	<img
-		class="custom-image-class"
-		width="600"
-		height="400"
-		loading="lazy"
-		src="image-600.jpg"
-		alt="Post Title"
-		srcset="image-300.jpg 300w, image-600.jpg 600w, image-900.jpg 900w"
-		sizes="(max-width: 600px) 100vw, 600px"
-	/>
-</picture>
-```
-
-> The only required parameter is `image`, which is an image ID or TimberImage object. Other parameters like `alt`, `sizes`, and `classes` are optional and can be customized as needed. See the comments in the `image.html.twig` file for more details on available parameters.
-
-> The component also handle .svg images by rendering a simple `<img>` tag without `srcset` or `sizes` attributes. It will also skip WebP conversion for SVG images. Gif images are also handled as normal images without WebP conversion and compression.
-
-### Static images support
-
-The theme supports static images located in the `src/img/` directory. You can reference these images directly in your Twig templates thanks to the assets function provided by the Vite class PHP located in `includes/Vite.php`.
-
-It's useful for images that don't require responsive handling or WebP conversion, such as logos or decorative images without losing dev and build mode benefits provided by Vite.
-
-Example of usage in a Twig template:
+### Static images
 
 ```twig
 <img src="{{ assets('src/img/logo.png') }}" alt="Logo" width="200" height="100" />
 ```
 
-## Structure
-
-The project structure is organized as follows:
-
-```
-agencecinq/
-├── .cursor/rules/       # Cursor rules (conventions + init/back-port workflows)
-├── .github/workflows/   # CI: release on tag v*
-├── includes/            # PHP classes (PSR-4, namespace AgenceCinq)
-├── languages/           # i18n (.pot template; translations generated per project)
-├── src/                 # Source files for assets
-│   ├── stylesheets/     # CSS (theme.css = @theme tokens, styles.css = imports)
-│   ├── scripts/         # TypeScript components (mounted via piecesjs)
-│   ├── icons/           # SVG icons compiled into public/sprite.svg
-│   ├── img/             # Static images
-|   └── fonts/           # Font files
-├── views/               # Twig templates (pages/, blocks/, components/, svg/)
-├── public/              # Compiled assets (sprite.svg, etc.)
-├── deploy.sh            # Production build + dev-files purge (used by CI)
-├── .env.sample          # Sample environment variables file
-├── composer.json        # PHP dependencies
-├── package.json         # JavaScript dependencies
-├── phpcs.xml            # PHP CodeSniffer configuration (WPCS)
-└── vite.config.js       # Vite configuration
-```
-
-### PHP CodeSniffer (phpcs.xml)
-
-The `phpcs.xml` file configures **PHP CodeSniffer** (PHPCS) for the theme. It defines the coding style and quality rules applied to the PHP code.
-
-In this theme, the configuration is based on the **WordPress Coding Standards**: indentation, naming, internationalization (text domain `agencecinq`), and more. The `node_modules/`, `vendor/`, and `dist/` directories are excluded from the analysis.
-
-To run the code analysis (after installing PHPCS, e.g. via Composer or globally):
+### PHP CodeSniffer
 
 ```bash
 ./vendor/bin/phpcs
 ```
 
-Or if PHPCS is installed globally:
+### Twig cache
 
-```bash
-phpcs
-```
-
-This keeps the theme's PHP code aligned with WordPress standards and project conventions.
-
-### PHP Classes
-
-The PHP classes follow WordPress coding standards and are organized like WordPress core files. For example, the `after_setup_theme` hook is located in `includes/WPSettings.php` because this hook is located in wp-settings.php in WordPress core.
-
-## Installation
-
-Copy the environment template and set your local WordPress URL (used by the Vite dev server for full-page refresh):
-
-```bash
-cp .env.sample .env
-```
-
-Then edit `.env` and set `APP_URL` to your local site URL, derived from the project slug: `APP_URL = https://<slug>.local` (e.g. `https://agencecinq.local`), without a trailing slash. The Laravel Vite plugin loads these variables automatically.
-
-### PHP Dependencies
-
-Use Composer to install the required PHP dependencies:
-
-```bash
-composer install
-```
-
-Don't forget to install and activate the required WordPress plugins, such as ACF, to ensure full functionality of the theme.
-
-### JavaScript Dependencies
-
-Use pnpm to install the required JavaScript dependencies:
-
-```bash
-pnpm install
-```
-
-### Development Server
-
-To start the development server with Vite, run:
-
-```bash
-pnpm dev
-```
-
-It will start a local development server and provide a URL to access your site.
-
-### Building for Production
-
-To build the assets for production, run:
-
-```bash
-pnpm build
-```
-
-### Twig Cache
-
-When the WP_DEBUG constant is set to false (which is the default in production environments), Twig files are cached for performance. If you modify any Twig files, you need to clear the cache to see the changes. The cache folder is located at `vendor/timber/timber/cache`.
-
-To clear the cache, simply delete the contents of the `cache` folder or run the following command:
+When `WP_DEBUG` is false, clear Twig cache after template changes:
 
 ```bash
 rm -rf vendor/timber/timber/cache/*
 ```
 
-### Troubleshooting
+## Structure
 
-- If you encounter issues with Twig templates not updating, ensure you have cleared the cache as described above.
-- Make sure all dependencies are installed correctly by running `composer install` and `pnpm install`.
-- Check your local environment variables in the `.env` file to ensure they are set up correctly.
+```
+agencecinq/
+├── .cursor/             # Rules + skills
+├── .github/workflows/   # Release on tag v*
+├── includes/            # PHP (Setup/, GitHub/, Models/, Plugins/ACF/, Post/, …)
+├── languages/           # i18n
+├── src/
+│   ├── stylesheets/     # theme.css = @theme tokens
+│   ├── scripts/         # TypeScript (piecesjs components)
+│   ├── icons/           # → public/sprite.svg
+│   ├── img/
+│   └── fonts/
+├── views/               # pages/, blocks/, components/, svg/
+├── public/
+├── deploy.sh
+├── .env.sample
+├── composer.json
+├── package.json
+├── phpcs.xml
+└── vite.config.js
+```
 
 ## Resources
 
-- Twig documentation: [https://twig.symfony.com/doc/](https://twig.symfony.com/doc/)
-- Timber documentation: [https://timber.github.io/docs/](https://timber.github.io/docs/)
-- Tailwind CSS documentation: [https://tailwindcss.com/docs](https://tailwindcss.com/docs)
-- WordPress Theme Development: [https://developer.wordpress.org/themes/](https://developer.wordpress.org/themes/)
-- Vite documentation: [https://vitejs.dev/](https://vitejs.dev/)
-- ACF documentation: [https://www.advancedcustomfields.com/resources/](https://www.advancedcustomfields.com/resources/)
-
-## Contributing
-
-Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
+- [Twig](https://twig.symfony.com/doc/)
+- [Timber](https://timber.github.io/docs/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [WordPress themes](https://developer.wordpress.org/themes/)
+- [Vite](https://vitejs.dev/)
+- [ACF](https://www.advancedcustomfields.com/resources/)
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+MIT. See [LICENSE](LICENSE).
