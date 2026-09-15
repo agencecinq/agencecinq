@@ -53,7 +53,7 @@ class Init {
 			Plugins\ACF\FormatValue::class,
 			Plugins\ACF\IncludeFields\ArchivePostsFields::class,
 			Plugins\ACF\IncludeFields\BlocksFields::class,
-			Plugins\ACF\IncludeFields\ContentPageFields::class,
+			Plugins\ACF\IncludeFields\PageFields::class,
 			Plugins\ACF\IncludeFields\FrontPageFields::class,
 			Plugins\ACF\IncludeFields\CaseStudyFields::class,
 			Plugins\ACF\IncludeFields\ClonesFields::class,
