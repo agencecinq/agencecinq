@@ -1,8 +1,6 @@
 # Agence Cinq
 
-WordPress theme for [agencecinq.com](https://agencecinq.com), built on the CINQ starter stack (Timber/Twig, Vite, Tailwind CSS v4, TypeScript).
-
-Current version: see `package.json` / `style.css`.
+WordPress theme for [agencecinq.com](https://agencecinq.com) (Timber/Twig, Vite, Tailwind CSS v4, TypeScript).
 
 ## Stack
 
@@ -10,13 +8,17 @@ Current version: see `package.json` / `style.css`.
 - **Build**: Vite (`pnpm dev` / `pnpm build`), `laravel-vite-plugin`. Entries: `src/stylesheets/styles.css`, `src/scripts/app.js`. Output in `dist/` (gitignored).
 - **CSS**: Tailwind CSS v4 in pure CSS. Design tokens live in `@theme` (`src/stylesheets/theme.css`).
 - **JS**: TypeScript components in `src/scripts/components/`, mounted via `piecesjs`. Global `cinq` object injected from PHP (`includes/Setup/Enqueue.php`).
-- **Packages**: `@agencecinq/accordion`, `@agencecinq/drawer`, `@agencecinq/modal`, `@agencecinq/utils`, plus GSAP and Splide.
+- **Packages**: `@agencecinq/accordion`, `@agencecinq/drawer`, `@agencecinq/modal`, `@agencecinq/utils`, plus GSAP.
 - **PHP**: OOP, PSR-4 (`AgenceCinq\` → `includes/`), WordPress Coding Standards (`phpcs.xml`).
 - **Fields**: ACF groups in PHP under `includes/Plugins/ACF/IncludeFields/` (layouts in `Layouts/`).
 - **i18n**: text domain `agencecinq`, files in `languages/`.
-- **Deploy**: `deploy.sh` on GitHub release tags `v*` (`.github/workflows/release.yml`).
+- **Deploy**: `deploy.sh` on GitHub release tags `v`* (`.github/workflows/release.yml`).
+
+
 
 ## Content architecture
+
+
 
 ### Homepage hero
 
@@ -27,6 +29,7 @@ Repositories are fetched from the GitHub org API (`includes/GitHub/Repositories.
 ### Flexible blocks
 
 Layouts are registered in `BlocksFields` and rendered via `views/blocks/blocks.html.twig` (name `snake_case` → template `kebab-case.html.twig`).
+
 
 | Layout             | Twig                           |
 | ------------------ | ------------------------------ |
@@ -52,9 +55,8 @@ Layouts are registered in `BlocksFields` and rendered via `views/blocks/blocks.h
 | Team               | `team.html.twig`               |
 | Vertical Pipeline  | `vertical-pipeline.html.twig`  |
 
-**Page Hero** (`page_hero` / `components/page-hero.html.twig`): inner-page hero (overline, title, lead, CTAs). Shared by the flexible block and the default page layout. On default pages, the lead is the WordPress excerpt; heading level for the block lives under **Settings** (default `h1`).
 
-There is no flexible **Hero** block (full-bleed media + featured posts). That layout was a leftover and was removed; use homepage fields, Page Hero, or Case Study hero instead.
+**Page Hero** (`page_hero` / `components/page-hero.html.twig`): inner-page hero (overline, title, lead, CTAs). Shared by the flexible block and the default page layout. On default pages, the lead is the WordPress excerpt; heading level for the block lives under **Settings** (default `h1`).
 
 ### Other page types
 
@@ -62,14 +64,21 @@ There is no flexible **Hero** block (full-bleed media + featured posts). That la
 - **Default pages**: `components/page-hero.html.twig` (overline + title + excerpt + CTAs via `PageFields`), WordPress editor for the body, optional flexible blocks. Richer layouts use the **Blocks** page template (same Page Hero component as a flexible block).
 - **Blog archive**: options in `ArchivePostsFields`.
 
+
+
 ## Workflows (AI-assisted)
 
-Cursor rules in `.cursor/rules/` document conventions and team workflows:
+Cursor rules in `.cursor/rules/`:
 
-- **`starter-cinq`** (always on): stack, conventions, WPCS, living DO/DONT list.
-- **`init-nouveau-projet`**: how to bootstrap a **new** client project from the CINQ starter (not from a copy of this site).
-- **`remontee-vers-starter`**: how to port a reusable brick from a project back into the starter.
-- **`figma-section` skill**: implement a Figma selection as Twig + ACF layout + tokens.
+- `theme-cinq` (always on): stack, conventions, WPCS, living DO/DONT list.
+- `design-tokens`: colors, typography, rem/em — no hardcoded values.
+- `twig-components`: guards and param naming in reusable Twig components.
+- `twig-wpcs`: Twig filter spacing compatible with Prettier.
+- `schema-org`: schema.org microdata in Twig.
+- `typescript-components`: native `#` private fields (not `private`).
+- `git-commits`: English commit messages with gitmoji.
+
+
 
 ## Getting started
 
@@ -102,6 +111,8 @@ Icons in `src/icons/` are compiled to `public/sprite.svg` on build. Use `views/s
 }}
 ```
 
+
+
 ### Responsive images
 
 ```twig
@@ -126,11 +137,15 @@ Icons in `src/icons/` are compiled to `public/sprite.svg` on build. Use `views/s
 <img src="{{ assets('src/img/logo.png') }}" alt="Logo" width="200" height="100" />
 ```
 
+
+
 ### PHP CodeSniffer
 
 ```bash
 ./vendor/bin/phpcs
 ```
+
+
 
 ### Twig cache
 
@@ -139,6 +154,8 @@ When `WP_DEBUG` is false, clear Twig cache after template changes:
 ```bash
 rm -rf vendor/timber/timber/cache/*
 ```
+
+
 
 ## Structure
 
@@ -164,6 +181,8 @@ agencecinq/
 └── vite.config.js
 ```
 
+
+
 ## Resources
 
 - [Twig](https://twig.symfony.com/doc/)
@@ -172,6 +191,8 @@ agencecinq/
 - [WordPress themes](https://developer.wordpress.org/themes/)
 - [Vite](https://vitejs.dev/)
 - [ACF](https://www.advancedcustomfields.com/resources/)
+
+
 
 ## License
 

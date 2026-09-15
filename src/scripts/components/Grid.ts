@@ -10,29 +10,30 @@ class Grid extends Piece {
 	mount(): void {
 		const stored = sessionStorage.getItem(STORAGE_KEY);
 
+		// @ts-expect-error Vite injects import.meta.env (not on default ImportMeta).
 		if (stored === 'on' || (stored === null && import.meta.env.DEV)) {
 			this.hidden = false;
 		}
 
-		document.addEventListener('keydown', this.onKeydown);
+		document.addEventListener('keydown', this.#onKeydown);
 	}
 
 	unmount(): void {
-		document.removeEventListener('keydown', this.onKeydown);
+		document.removeEventListener('keydown', this.#onKeydown);
 	}
 
-	private onKeydown = (event: KeyboardEvent): void => {
-		if (event.key !== 'g' && event.key !== 'G') {
+	#onKeydown = (event: KeyboardEvent): void => {
+		const { key, metaKey, ctrlKey, altKey, target } = event;
+
+		if (key !== 'g' && key !== 'G') {
 			return;
 		}
 
-		if (event.metaKey || event.ctrlKey || event.altKey) {
+		if (metaKey || ctrlKey || altKey) {
 			return;
 		}
 
-		const target = event.target as HTMLElement | null;
-
-		if (target?.closest('input, textarea, select, [contenteditable="true"]')) {
+		if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable="true"]')) {
 			return;
 		}
 

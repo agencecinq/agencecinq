@@ -140,19 +140,5 @@
 				{%- endif -%}
 			</div>
 		</div>
-
-		{{-
-			include(
-				'components/collection-posts.html.twig',
-				{
-					classes: ['py-20', 'lg:py-37.5'],
-					posts: post.related_posts(),
-					content: {
-						title: __('Our latest news', 'agencecinq'),
-						overline: __('Discover more', 'agencecinq')
-					}
-				}
-			)
-		-}}
 	</main>
 {%- endblock -%}

@@ -31,7 +31,7 @@ Color custom properties are named after the **hue in English** (kebab-case), not
 --color-gris-fonce: #0d0f0e;
 ```
 
-Typography and radius suffixes still follow the **Figma design system** (kebab-case). Do not keep legacy starter names (`h0`, `text-l`).
+Typography and radius suffixes still follow the **Figma design system** (kebab-case). Do not keep legacy names (`h0`, `text-l`).
 
 ```css
 /* GOOD — same names as Figma */
@@ -55,9 +55,9 @@ When Figma defines mobile and desktop sizes for a style:
 - Templates use the public class (`text-title-xxl`), never the `-mobile` / `-desktop` utilities (except the styleguide).
 - If mobile and desktop are identical, declare a single token (`--text-title-md`, `--text-eyebrow`).
 
-## No preset section backgrounds in the starter
+## No preset section backgrounds in layout shells
 
-The starter must not ship decorative section backgrounds (gradients, branded fills) in Twig templates. Background colors and images are chosen per project via tokens and block content, not baked into layout shells.
+Do not bake decorative section backgrounds (gradients, branded fills) into Twig layout shells. Background colors and images come from tokens and block content.
 
 ## Sizes in `rem` (no `px` in utilities)
 
