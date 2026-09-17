@@ -114,6 +114,7 @@ Règles dédiées existantes :
 - `tailwind-twig` : styling des composants en Tailwind dans les `.twig`, pas de feuilles CSS dédiées.
 - `schema-org` : microdata schema.org dans les Twig (nav en ul/li, articles, etc.).
 - `typescript-components` : champs privés natifs `#` dans les composants TS (pas `private`).
+- `lock-content` : booléen ACF `lock_content` ; si Locked, Claude ne contribue pas le contenu éditorial.
 
 Skills dédiés :
 

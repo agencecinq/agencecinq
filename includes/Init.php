@@ -59,6 +59,7 @@ class Init {
 			Plugins\ACF\IncludeFields\ClonesFields::class,
 			Plugins\ACF\IncludeFields\ThemeFields::class,
 			Plugins\ACF\IncludeFields\PostFields::class,
+			Plugins\ACF\IncludeFields\LockContentFields::class,
 			Plugins\ContactForm7\FormTag::class,
 			// Yoast.
 			Plugins\WordpressSeo\AdminInit::class,
