@@ -5,6 +5,7 @@ import "@agencecinq/modal";
 
 load("cinq-accordion", () => import("@agencecinq/accordion"));
 load("cinq-grid", () => import("./components/Grid.ts"));
+load("cinq-hover-video", () => import("./components/HoverVideo.ts"));
 load("cinq-snake", async () => {
 	await import("@agencecinq/snake");
 	await import("./components/Snake.ts");

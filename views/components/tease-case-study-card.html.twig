@@ -13,7 +13,11 @@
 	{%- set client = post.client | default(post.title) -%}
 	{%- set platform = post.platform | default('') -%}
 	{%- set year = post.year | default('') -%}
+	{%- set has_video = post.media.video.url | default(null) -%}
 
+	{%- if has_video -%}
+		<cinq-hover-video class="block">
+	{%- endif -%}
 	<article
 		class="{{ html_classes(classes | default([]) | join(' ')) }}"
 		itemscope
@@ -33,6 +37,7 @@
 						media: post.media,
 						sizes: sizes | default(null),
 						alt: client,
+						autoplay: false,
 						attributes: {
 							itemprop: 'image'
 						}
@@ -70,4 +75,7 @@
 			</div>
 		</a>
 	</article>
+	{%- if has_video -%}
+		</cinq-hover-video>
+	{%- endif -%}
 {%- endif -%}

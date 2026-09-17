@@ -9,12 +9,14 @@
  # @param {string} [sizes] Sizes attribute for the image.
  # @param {string} [alt] Alt text.
  # @param {object} [attributes] Extra attributes on the img / video.
+ # @param {bool} [autoplay] Whether the video autoplays. Defaults to true.
  #}
 
 {%- set media = media | default({}) -%}
 {%- set video_url = media.video.url | default(null) -%}
 {%- set poster_url = media.poster.url | default(null) -%}
 {%- set image = media.image | default(null) -%}
+{%- set autoplay = autoplay is not defined ? true : autoplay -%}
 
 <figure
 	class="{{
@@ -32,7 +34,8 @@
 				class="size-full object-cover object-top"
 				src="{{ video_url }}"
 				{% if poster_url %}poster="{{ poster_url }}"{% endif %}
-				autoplay
+				{% if autoplay %}autoplay{% endif %}
+				preload="{{ autoplay ? 'auto' : 'metadata' }}"
 				muted
 				loop
 				playsinline
