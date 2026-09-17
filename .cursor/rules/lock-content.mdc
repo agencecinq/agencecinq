@@ -1,0 +1,17 @@
+---
+description: Respecter le booléen ACF lock_content avant de rédiger ou modifier le contenu éditorial d’une page, d’un article ou d’une étude de cas.
+alwaysApply: true
+---
+
+# Lock content
+
+Le champ ACF `lock_content` (metabox latérale **Lock content**) indique si Claude a le droit de **contribuer le contenu** d’un post. Il ne verrouille pas l’écran d’édition WordPress.
+
+## Avant de rédiger ou modifier du contenu
+
+Sur une **page**, un **article** ou une **étude de cas**, lire la meta `lock_content` (`get_post_meta( $id, 'lock_content', true )` ou le switch dans wp-admin).
+
+- **Locked** (`1`) : ne pas rédiger, réécrire ni remplir le contenu éditorial (copy, valeurs ACF, textes dans les Twig de cette entrée). Le code de structure, le CSS et les correctifs hors copy restent possibles si la demande le vise clairement.
+- **Unlocked** ou champ absent (`0` / vide) : Claude peut contribuer le contenu.
+
+Ne pas cocher ni décocher ce champ sauf demande explicite.
