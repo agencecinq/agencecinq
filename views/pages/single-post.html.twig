@@ -7,26 +7,8 @@
 {% extends 'index.html.twig' %}
 
 {%- block content -%}
-	{%- set category =
-		post.categories
-			| default([])
-			| filter(term => term.slug not in ['uncategorized', 'non-classe'])
-			| first
-	-%}
-	{%- set excerpt = post.post_excerpt | default('') | trim -%}
-	{%- if not excerpt -%}
-		{%- set excerpt =
-			post.excerpt({
-				words: 40,
-				read_more: false
-			}) | striptags | trim
-		-%}
-	{%- endif -%}
-
 	<main id="content" role="main" itemscope itemtype="https://schema.org/BlogPosting">
-	
-
-		<section class="pb-20 pt-18 lg:pb-20 lg:pt-26" aria-labelledby="post-title">
+		<section class="pb-14 pt-18 lg:pb-20 lg:pt-26" aria-labelledby="post-title">
 			<div class="layout-grid container items-center gap-y-10 lg:gap-x-20">
 				<div class="col-span-full space-y-8 lg:col-span-6">
 					<header class="space-y-6">
@@ -34,10 +16,10 @@
 							<time datetime="{{ post.date('c') }}" itemprop="datePublished">
 								{{- post.date('j F Y') | upper -}}
 							</time>
-							{%- if category -%}
+							{%- for category in post.categories | default([]) -%}
 								<span aria-hidden="true"> · </span>
 								<span itemprop="articleSection">{{- category.name | upper -}}</span>
-							{%- endif -%}
+							{%- endfor -%}
 							{%- if post.reading_time -%}
 								<span aria-hidden="true"> · </span>
 								<span>
@@ -46,14 +28,14 @@
 							{%- endif -%}
 						</p>
 
-						<h1 id="post-title" class="text-title-xl text-cream" itemprop="headline">
+						<h1 id="post-title" class="text-title-xxl text-cream lg:text-title-xl" itemprop="headline">
 							{{- post.title -}}
 						</h1>
 					</header>
 
-					{%- if excerpt -%}
+					{%- if post.post_excerpt -%}
 						<p class="text-taupe text-xl" itemprop="description">
-							{{- excerpt -}}
+							{{- post.post_excerpt -}}
 						</p>
 					{%- endif -%}
 
@@ -67,7 +49,7 @@
 
 				{%- if post.thumbnail -%}
 					<div class="col-span-full lg:col-span-6">
-						<div class="border-cream-soft aspect-4/3 overflow-hidden rounded-10 border">
+						<div class="border-cream-soft aspect-40/21 overflow-hidden rounded-8 border lg:aspect-4/3 lg:rounded-10">
 							{{-
 								include(
 									'components/image.html.twig',
@@ -89,7 +71,7 @@
 		</section>
 
 		{%- if post.content -%}
-			<section class="pb-26 pt-20" aria-label="{{ __('Article content', 'agencecinq') }}">
+			<section class="py-18 lg:pt-20 lg:pb-26" aria-label="{{ __('Article content', 'agencecinq') }}">
 				<div class="container">
 					<div
 						class="wysiwyg text-base text-taupe max-w-180 [&_a]:text-pistachio [&_h2]:mb-5 [&_h2]:text-title-lg [&_h2]:text-cream [&_h2:not(:first-child)]:mt-10 [&_h3]:mb-4 [&_h3]:text-title-md [&_h3]:text-cream [&_h3:not(:first-child)]:mt-10 [&_p]:mb-5 [&_p]:text-base"
@@ -101,7 +83,7 @@
 			</section>
 		{%- endif -%}
 
-		{%- set related_items = post.meta('related_cases') | default([]) | filter(item => item.case_study) -%}
+		{%- set related_items = post.meta('related_cases') | default([]) -%}
 		{%- if related_items | length -%}
 			{%- set item_span = related_items | length == 2 ? 'col-span-full md:col-span-6' : 'col-span-full lg:col-span-4' -%}
 
@@ -118,7 +100,7 @@
 
 					<meta itemprop="numberOfItems" content="{{ related_items | length }}" />
 
-					<ul class="layout-grid gap-y-6">
+					<ul class="layout-grid gap-y-4 lg:gap-y-6">
 						{%- for item in related_items -%}
 							{%- set case = get_post(item.case_study) -%}
 
