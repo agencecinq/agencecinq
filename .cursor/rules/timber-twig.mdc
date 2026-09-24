@@ -23,7 +23,12 @@ Référence : [Timber v2 docs](https://timber.github.io/docs/v2/), [PostExcerpt]
 {{ post.excerpt.length(40).read_more(false) }}
 ```
 
-- Pour le chapô / lead d’une single quand l’éditeur a rempli l’extrait WP : préférer **`post.post_excerpt`** (champ natif), et ne tomber sur `post.excerpt` qu’en fallback.
+- Pour le chapô / lead d’une single quand l’éditeur a rempli l’extrait WP : préférer **`post.post_excerpt`**, avec fallback via `default` :
+
+```twig
+{{ post.post_excerpt | default(post.excerpt({ words: 40, read_more: false }) | striptags) | trim }}
+```
+
 - Désactiver le « Read more » avec **`read_more: false`** (pas une chaîne vide).
 - Après une modif Twig en prod (`WP_DEBUG` false) : vider `vendor/timber/timber/cache/*` (sinon l’ancien bytecode peut encore appeler `preview`).
 

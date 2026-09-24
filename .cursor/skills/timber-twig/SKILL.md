@@ -18,8 +18,8 @@ Always follow the official [Timber v2 documentation](https://timber.github.io/do
 {# Chainable #}
 {{ post.excerpt.length(40).read_more(false) }}
 
-{# Manual WP excerpt only (e.g. single chapô) #}
-{{ post.post_excerpt }}
+{# Manual WP excerpt with generated fallback #}
+{{ post.post_excerpt | default(post.excerpt({ words: 40, read_more: false }) | striptags) | trim }}
 ```
 
 - `read_more: false` disables the link (do not use `''`).
