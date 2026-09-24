@@ -79,6 +79,7 @@ DO :
 - Décoration sans contenu (lignes, nœuds, overlays) : pseudo-élément `before:` / `after:` plutôt qu'un élément vide, quand c'est possible.
 - Enrichir le markup avec schema.org quand un type correspond (voir `schema-org`).
 - Privé TypeScript : champs natifs `#`, pas le modificateur `private` (voir `typescript-components`).
+- Extraits Timber 2 : `post.excerpt` (hash ou chaînage), jamais `post.preview` (voir `timber-twig`).
 
 DONT :
 
@@ -96,6 +97,7 @@ DONT :
 - Pas de `<div>` (ou `<span>`) vide décoratif si un `before:` / `after:` Tailwind suffit.
 - Pas de valeur arbitraire Tailwind (`aspect-[4/5]`) quand un utilitaire natif existe (`aspect-4/5`).
 - Pas de modificateur TypeScript `private` dans les composants ; utiliser `#` (voir `typescript-components`).
+- Pas de `{{ post.preview }}` (deprecated Timber 2) : utiliser `{{ post.excerpt }}` (voir `timber-twig`).
 
 ## Faire évoluer ces règles
 
@@ -115,7 +117,9 @@ Règles dédiées existantes :
 - `schema-org` : microdata schema.org dans les Twig (nav en ul/li, articles, etc.).
 - `typescript-components` : champs privés natifs `#` dans les composants TS (pas `private`).
 - `lock-content` : booléen ACF `lock_content` ; si Locked, Claude ne contribue pas le contenu éditorial.
+- `timber-twig` : extraits Timber 2 (`post.excerpt`, pas `post.preview`).
 
 Skills dédiés :
 
 - `figma-section` : implémenter une sélection Figma en bloc Twig + layout ACF PHP + tokens Tailwind (± CPT / TS).
+- `timber-twig` : API Timber 2 pour les excerpts Twig (doc officielle + anti-`preview`).
