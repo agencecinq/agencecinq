@@ -10,25 +10,25 @@ importers:
     dependencies:
       '@agencecinq/accordion':
         specifier: ^3.0.0
-        version: 3.0.0(@agencecinq/utils@7.3.0)
+        version: 3.0.0(@agencecinq/utils@7.4.0)
       '@agencecinq/drawer':
         specifier: ^7.0.1
-        version: 7.0.1(@agencecinq/utils@7.3.0)
+        version: 7.0.1(@agencecinq/utils@7.4.0)
       '@agencecinq/modal':
         specifier: ^4.0.1
-        version: 4.0.1(@agencecinq/utils@7.3.0)
+        version: 4.0.1(@agencecinq/utils@7.4.0)
       '@agencecinq/snake':
         specifier: ^1.0.0
-        version: 1.0.0(@agencecinq/utils@7.3.0)
+        version: 1.0.0(@agencecinq/utils@7.4.0)
       '@agencecinq/utils':
-        specifier: ^7.3.0
-        version: 7.3.0
+        specifier: ^7.4.0
+        version: 7.4.0
       gsap:
         specifier: ^3.15.0
         version: 3.15.0
       piecesjs:
-        specifier: ^0.5.5
-        version: 0.5.5
+        specifier: ^0.5.6
+        version: 0.5.6
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -49,11 +49,11 @@ importers:
         specifier: ^8.5.28
         version: 8.5.28
       prettier:
-        specifier: ^3.9.6
-        version: 3.9.6
+        specifier: ^3.9.9
+        version: 3.9.9
       prettier-plugin-tailwindcss:
         specifier: ^0.8.1
-        version: 0.8.1(@zackad/prettier-plugin-twig@0.17.0)(prettier@3.9.6)
+        version: 0.8.1(@zackad/prettier-plugin-twig@0.17.0)(prettier@3.9.9)
       vite:
         specifier: ^8.3.0
         version: 8.3.0(jiti@2.7.0)
@@ -88,8 +88,8 @@ packages:
     peerDependencies:
       '@agencecinq/utils': '>=7.3.0'
 
-  '@agencecinq/utils@7.3.0':
-    resolution: {integrity: sha512-Yww3n2sJPcorAvnjesuB9qWaiaTxJScP4YyFfYWre3kLGfTKpln1ws73jEMTItW1EXZzSLiXuqc9YQaFlLvu5A==}
+  '@agencecinq/utils@7.4.0':
+    resolution: {integrity: sha512-oPDKnbSXKtmBa7ZxAoqOT3i0RyTAwrx4eqkvyZoXvsoPgv4fNn6hfI35I0gQTStuuZtkTjO1XZXtYfxXUYBVhQ==}
 
   '@alloc/quick-lru@5.3.0':
     resolution: {integrity: sha512-U4+70Pc5ZS9osnCBCE5Jha/ciHM+Yp+CNMNC/7HvYbNRk1Ldd+f7qO65W5qfhu/TCv+/ozljlXXe9Nj8419DMA==}
@@ -934,11 +934,8 @@ packages:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
 
-  piecesjs@0.4.1:
-    resolution: {integrity: sha512-HQBfVrn5YKzXlkpeTt+8fPel/XMJfMfLz5P3eGV7yDcbUhenYKrbaGRIK3KjezCIBSMvhfm/olXTMqr+dPlNMg==}
-
-  piecesjs@0.5.5:
-    resolution: {integrity: sha512-Ml5ZcKt8/1vllM+KtoHEPimxB0GyBMf3NP1Qg2Kk8SGo3qD9FyCm0TieuFgmd7T0d2OZrr0VZlZJYZy4DyMawg==}
+  piecesjs@0.5.6:
+    resolution: {integrity: sha512-nuU1fMWkldhiKzFdTg2Aavro3BcIiw5CJfkv5lpO/1zjgo8SRD1RA12NSSJc8YNI0X/1re97vEHBGtuyRPc24A==}
 
   postcss@8.5.28:
     resolution: {integrity: sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A==}
@@ -999,8 +996,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.9.6:
-    resolution: {integrity: sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==}
+  prettier@3.9.9:
+    resolution: {integrity: sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1222,23 +1219,23 @@ packages:
 
 snapshots:
 
-  '@agencecinq/accordion@3.0.0(@agencecinq/utils@7.3.0)':
+  '@agencecinq/accordion@3.0.0(@agencecinq/utils@7.4.0)':
     dependencies:
-      '@agencecinq/utils': 7.3.0
+      '@agencecinq/utils': 7.4.0
 
-  '@agencecinq/drawer@7.0.1(@agencecinq/utils@7.3.0)':
+  '@agencecinq/drawer@7.0.1(@agencecinq/utils@7.4.0)':
     dependencies:
-      '@agencecinq/utils': 7.3.0
+      '@agencecinq/utils': 7.4.0
 
-  '@agencecinq/modal@4.0.1(@agencecinq/utils@7.3.0)':
+  '@agencecinq/modal@4.0.1(@agencecinq/utils@7.4.0)':
     dependencies:
-      '@agencecinq/utils': 7.3.0
+      '@agencecinq/utils': 7.4.0
 
-  '@agencecinq/snake@1.0.0(@agencecinq/utils@7.3.0)':
+  '@agencecinq/snake@1.0.0(@agencecinq/utils@7.4.0)':
     dependencies:
-      '@agencecinq/utils': 7.3.0
+      '@agencecinq/utils': 7.4.0
 
-  '@agencecinq/utils@7.3.0': {}
+  '@agencecinq/utils@7.4.0': {}
 
   '@alloc/quick-lru@5.3.0': {}
 
@@ -1499,7 +1496,7 @@ snapshots:
       '@babel/types': 7.29.8
       he: 1.2.0
       lodash: 4.18.1
-      prettier: 3.9.6
+      prettier: 3.9.9
 
   ansi-regex@5.0.1: {}
 
@@ -1894,11 +1891,7 @@ snapshots:
 
   picomatch@4.0.7: {}
 
-  piecesjs@0.4.1: {}
-
-  piecesjs@0.5.5:
-    dependencies:
-      piecesjs: 0.4.1
+  piecesjs@0.5.6: {}
 
   postcss@8.5.28:
     dependencies:
@@ -1906,13 +1899,13 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prettier-plugin-tailwindcss@0.8.1(@zackad/prettier-plugin-twig@0.17.0)(prettier@3.9.6):
+  prettier-plugin-tailwindcss@0.8.1(@zackad/prettier-plugin-twig@0.17.0)(prettier@3.9.9):
     dependencies:
-      prettier: 3.9.6
+      prettier: 3.9.9
     optionalDependencies:
       '@zackad/prettier-plugin-twig': 0.17.0
 
-  prettier@3.9.6: {}
+  prettier@3.9.9: {}
 
   prettysize@2.0.0: {}
 
