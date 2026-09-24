@@ -1,0 +1,33 @@
+---
+description: API Timber 2 pour les extraits de posts (post.excerpt, pas post.preview). À appliquer quand on écrit ou modifie des Twig qui affichent un excerpt.
+globs: views/**/*.twig
+alwaysApply: false
+---
+
+# Timber 2 — excerpts
+
+Référence : [Timber v2 docs](https://timber.github.io/docs/v2/), [PostExcerpt](https://timber.github.io/docs/v2/reference/timber-postexcerpt/), [Posts guide](https://timber.github.io/docs/v2/guides/posts/).
+
+## DO
+
+- Utiliser **`{{ post.excerpt }}`** (Timber 2). Objet chaînable `Timber\PostExcerpt`.
+- Passer les options en hash (forme préférée de la doc) :
+
+```twig
+{{ post.excerpt({ words: 40, read_more: false }) }}
+```
+
+- Ou chaîner les méthodes :
+
+```twig
+{{ post.excerpt.length(40).read_more(false) }}
+```
+
+- Pour le chapô / lead d’une single quand l’éditeur a rempli l’extrait WP : préférer **`post.post_excerpt`** (champ natif), et ne tomber sur `post.excerpt` qu’en fallback.
+- Désactiver le « Read more » avec **`read_more: false`** (pas une chaîne vide).
+- Après une modif Twig en prod (`WP_DEBUG` false) : vider `vendor/timber/timber/cache/*` (sinon l’ancien bytecode peut encore appeler `preview`).
+
+## DONT
+
+- **Jamais `{{ post.preview }}`** ni `post.preview.length(…)` : deprecated depuis Timber 2.0 (`Helper.php`). Remplacer par `post.excerpt`.
+- Ne pas inventer d’API d’extrait hors doc Timber 2.

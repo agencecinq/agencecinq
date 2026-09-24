@@ -96,12 +96,12 @@
 		@apply line-through opacity-80;
 	}
 
-	/* Blockquote */
+	/* Blockquote · article pull quote */
 	.wysiwyg blockquote {
-		@apply border-l-4 border-pistachio pl-5 text-sm italic text-cream;
+		@apply border-pistachio border-l-2 pl-6 text-title-lg not-italic text-cream;
 
-		margin-top: 1.5rem;
-		margin-bottom: 1.5rem;
+		margin-top: 2.5rem;
+		margin-bottom: 2.5rem;
 	}
 
 	.wysiwyg blockquote p:last-child {

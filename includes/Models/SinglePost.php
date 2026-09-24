@@ -21,89 +21,22 @@ use Timber\{ Post };
 class SinglePost extends Post {
 
 	/**
-	 * Generates and returns the table of contents for a single post.
+	 * Estimated reading time in minutes (minimum 1 when the post has content).
 	 *
-	 * This function scans the post content for headings and builds a structured
-	 * table of contents, which can be used for easy navigation within the post.
-	 *
-	 * @return array An array representing the table of contents, with each entry containing the title and anchor.
+	 * @return int
 	 */
-	public function table_of_contents(): array {
-		$content           = $this->post_content;
-		$matches           = array();
-		$table_of_contents = array();
-		$updated_content   = $content;
-		$used_anchors      = array();
+	public function reading_time(): int {
+		$content = wp_strip_all_tags( (string) $this->post_content );
+		$content = preg_replace( '/\s+/u', ' ', $content ?? '' );
+		$content = trim( (string) $content );
 
-		// Find all h2 and h3 headings.
-		preg_match_all( '/<(h2|h3)\b[^>]*>(.*?)<\/\1>/is', $content, $matches, PREG_SET_ORDER );
-
-		$h2 = null;
-
-		foreach ( $matches as $match ) {
-			$tag   = strtolower( $match[1] );
-			$title = wp_strip_all_tags( $match[2] );
-			$base  = sanitize_title( $title );
-
-			if ( empty( $title ) || empty( $base ) ) {
-				continue; // Skip empty titles.
-			}
-
-			// Ensure unique anchor (WordPress-style: base, base-2, base-3…).
-			$anchor = $base;
-			if ( isset( $used_anchors[ $anchor ] ) ) {
-				$used_anchors[ $anchor ] += 1;
-				$anchor                   = $base . '-' . $used_anchors[ $anchor ];
-			} else {
-				$used_anchors[ $anchor ] = 1;
-			}
-
-			// Replace only the first occurrence to avoid duplicate IDs when the same heading appears twice.
-			$heading = sprintf( '<%1$s id="%2$s">%3$s</%1$s>', $tag, esc_attr( $anchor ), $match[2] );
-			$pos     = strpos( $updated_content, $match[0] );
-			if ( false !== $pos ) {
-				$updated_content = substr_replace( $updated_content, $heading, $pos, strlen( $match[0] ) );
-			}
-
-			if ( 'h2' === $tag ) {
-				$h2                  = array(
-					'title'    => $title,
-					'anchor'   => $anchor,
-					'tag'      => $tag,
-					'children' => array(),
-				);
-				$table_of_contents[] = $h2;
-			} elseif ( 'h3' === $tag ) {
-				if ( $h2 && ! empty( $table_of_contents ) ) {
-					$table_of_contents[ count( $table_of_contents ) - 1 ]['children'][] = array(
-						'title'  => $title,
-						'anchor' => $anchor,
-						'tag'    => $tag,
-					);
-				} else {
-					$table_of_contents[] = array(
-						'title'    => $title,
-						'anchor'   => $anchor,
-						'tag'      => $tag,
-						'children' => array(),
-					);
-				}
-			}
+		if ( '' === $content ) {
+			return 0;
 		}
 
-		// Update the post content with headings with IDs.
-		$this->content = apply_filters( 'the_content', $updated_content );
+		$words            = count( preg_split( '/\s+/u', $content, -1, PREG_SPLIT_NO_EMPTY ) );
+		$words_per_minute = 200;
 
-		return $table_of_contents;
-	}
-
-
-	/**
-	 * Generates and returns the shareable URL for the current post.
-	 *
-	 * @return string The URL that can be used to share the post.
-	 */
-	public function share_url(): string {
-		return 'mailto:?subject=' . __( 'I wanted you to see this post', 'agencecinq' ) . '&amp;body=' . __( 'Check out this post', 'agencecinq' ) . ' ' . $this->link . '.'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		return max( 1, (int) ceil( $words / $words_per_minute ) );
 	}
 }
