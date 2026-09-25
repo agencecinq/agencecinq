@@ -23,7 +23,7 @@
 							{%- if post.reading_time -%}
 								<span aria-hidden="true"> · </span>
 								<span>
-									{{- __('%s min de lecture', 'agencecinq') | format(post.reading_time) -}}
+									{{- __('%d min de lecture', 'agencecinq') | format(post.reading_time) -}}
 								</span>
 							{%- endif -%}
 						</p>

@@ -50,3 +50,26 @@ function html_class( string $c = '' ): string {
 	// Separates classes with a single space, collates classes for html element.
 	return 'class="' . join( ' ', get_html_class( $c ) ) . '"';
 }
+
+
+/**
+ * Estimate reading time in minutes from HTML or plain text.
+ *
+ * @param string $content Post content.
+ * @return int At least 1 when the content is not empty, 0 otherwise.
+ */
+function cinq_estimate_reading_time( string $content ): int {
+	$text = trim( wp_strip_all_tags( $content ) );
+
+	if ( '' === $text ) {
+		return 0;
+	}
+
+	$words = preg_match_all( '/[\p{L}\p{N}\'-]+/u', $text, $matches );
+
+	if ( ! $words ) {
+		return 1;
+	}
+
+	return max( 1, (int) ceil( $words / 200 ) );
+}
