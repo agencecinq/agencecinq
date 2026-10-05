@@ -48,72 +48,63 @@ require_once ABSPATH . 'wp-admin/includes/media.php';
 require_once ABSPATH . 'wp-admin/includes/image.php';
 
 /**
- * Sideload (or refresh) a theme image, keyed by filename in _cinq_seed_source.
+ * Sideload (or reuse) a remote product image, keyed by source URL in _cinq_seed_source.
  *
- * @param string $filename Relative to src/img/product/.
- * @param int    $page_id  Parent page ID.
- * @param string $title    Attachment title.
+ * @param string $url     Public image URL.
+ * @param int    $page_id Parent page ID.
+ * @param string $title   Attachment title / alt text.
  * @return int Attachment ID or 0.
  */
-$seed_image = static function ( string $filename, int $page_id, string $title ): int {
-	$path = get_stylesheet_directory() . '/src/img/product/' . $filename;
-
-	if ( ! file_exists( $path ) ) {
-		WP_CLI::warning( sprintf( 'Missing product image: %s', $filename ) );
-		return 0;
-	}
-
+$seed_image = static function ( string $url, int $page_id, string $title ): int {
 	$existing_attachment = get_posts(
 		array(
 			'post_type'      => 'attachment',
 			'posts_per_page' => 1,
 			'meta_key'       => '_cinq_seed_source',
-			'meta_value'     => $filename,
+			'meta_value'     => $url,
 			'fields'         => 'ids',
 		)
 	);
 
 	if ( $existing_attachment ) {
-		$attachment_id = (int) $existing_attachment[0];
-		$attached_file = get_attached_file( $attachment_id );
-
-		if ( $attached_file && copy( $path, $attached_file ) ) {
-			wp_update_attachment_metadata(
-				$attachment_id,
-				wp_generate_attachment_metadata( $attachment_id, $attached_file )
-			);
-		}
-
-		return $attachment_id;
+		return (int) $existing_attachment[0];
 	}
 
-	$tmp = wp_tempnam( $filename );
-	copy( $path, $tmp );
+	$tmp = download_url( $url );
+
+	if ( is_wp_error( $tmp ) ) {
+		WP_CLI::warning( $tmp->get_error_message() );
+		return 0;
+	}
 
 	$file_array = array(
-		'name'     => $filename,
+		'name'     => wp_basename( wp_parse_url( $url, PHP_URL_PATH ) ),
 		'tmp_name' => $tmp,
 	);
 
 	$attachment_id = media_handle_sideload( $file_array, $page_id, $title );
 
 	if ( is_wp_error( $attachment_id ) ) {
+		wp_delete_file( $tmp );
 		WP_CLI::warning( $attachment_id->get_error_message() );
 		return 0;
 	}
 
-	update_post_meta( $attachment_id, '_cinq_seed_source', $filename );
+	update_post_meta( $attachment_id, '_cinq_seed_source', $url );
+	update_post_meta( $attachment_id, '_wp_attachment_image_alt', $title );
 
 	return (int) $attachment_id;
 };
 
-$hero_image_id = $seed_image( 'hero-preview.png', $page_id, 'Aperçu CINQ Reading Time' );
+$media_base = 'https://www.agencecinq.com/wp-content/uploads/2026/10/';
+
+$hero_image_id = $seed_image( $media_base . 'hero-preview.png', $page_id, 'Aperçu CINQ Reading Time' );
 $gallery_ids   = array_values(
 	array_filter(
 		array(
-			$seed_image( 'format-editorial.png', $page_id, 'Exemple format carte éditoriale' ),
-			$seed_image( 'format-header.png', $page_id, 'Exemple format en-tête d’article' ),
-			$seed_image( 'format-list.png', $page_id, 'Exemple format liste de ressources' ),
+			$seed_image( $media_base . 'format-editorial.png', $page_id, 'Exemple format carte éditoriale' ),
+			$seed_image( $media_base . 'format-header.png', $page_id, 'Exemple format en-tête d’article' ),
+			$seed_image( $media_base . 'format-list.png', $page_id, 'Exemple format liste de ressources' ),
 		)
 	)
 );
