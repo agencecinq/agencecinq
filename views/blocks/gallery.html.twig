@@ -1,0 +1,60 @@
+{#
+ # Blocks: Gallery
+ # Section intro + image gallery.
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+{%- set images = block.gallery | default([]) -%}
+
+<section
+	id="{{ block.id }}"
+	class="bg-dark-gray"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
+	<div class="container space-y-16">
+		{%- if block.content.overline or block.content.title or block.content.text -%}
+			<header class="space-y-4.5">
+				{{-
+					include(
+						'components/eyebrow.html.twig',
+						{ title: block.content.overline },
+						with_context = false
+					)
+				-}}
+
+				{%- if block.content.title -%}
+					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl">
+						{{- block.content.title -}}
+					</{{ block.content.heading | default('h2') }}>
+				{%- endif -%}
+
+				{%- if block.content.text -%}
+					<p class="text-lg text-taupe max-w-175">
+						{{- block.content.text | raw -}}
+					</p>
+				{%- endif -%}
+			</header>
+		{%- endif -%}
+
+		{%- if images | length -%}
+			<ul class="grid grid-cols-1 gap-5 lg:grid-cols-3">
+				{%- for image in images -%}
+					<li class="overflow-hidden rounded-15">
+						{{-
+							include(
+								'components/image.html.twig',
+								{
+									image: image,
+									classes: ['size-full'],
+									sizes: '(min-width: 64rem) 30vw, 100vw'
+								},
+								with_context = false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+		{%- endif -%}
+	</div>
+</section>

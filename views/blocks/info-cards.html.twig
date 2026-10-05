@@ -1,0 +1,78 @@
+{#
+ # Blocks: Info cards
+ # Four technical note cards with optional footer signature.
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+{%- set items = block.items | default([]) | filter(item => item.title or item.text) -%}
+{%- set footer = block.footer | default({}) -%}
+
+<section
+	id="{{ block.id }}"
+	class="bg-dark-gray"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
+	<div class="container space-y-13">
+		{%- if block.content.overline or block.content.title -%}
+			<header class="space-y-4.5">
+				{{-
+					include(
+						'components/eyebrow.html.twig',
+						{ title: block.content.overline },
+						with_context = false
+					)
+				-}}
+
+				{%- if block.content.title -%}
+					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl">
+						{{- block.content.title -}}
+					</{{ block.content.heading | default('h2') }}>
+				{%- endif -%}
+			</header>
+		{%- endif -%}
+
+		{%- if items | length -%}
+			<ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+				{%- for item in items -%}
+					<li class="border-cream-soft bg-off-black flex min-h-52.5 flex-col justify-between rounded-15 border p-6">
+						{%- if item.icon -%}
+							<span class="bg-pistachio-soft text-pistachio flex size-10.5 items-center justify-center rounded-8">
+								{{-
+									include(
+										'svg/use.html.twig',
+										{
+											icon: item.icon,
+											classes: ['size-4.75 fill-none stroke-current']
+										},
+										with_context = false
+									)
+								-}}
+							</span>
+						{%- endif -%}
+
+						<div class="space-y-2">
+							{%- if item.title -%}
+								<h3 class="text-title-md">{{- item.title -}}</h3>
+							{%- endif -%}
+							{%- if item.text -%}
+								<p class="text-sm text-taupe">{{- item.text | raw -}}</p>
+							{%- endif -%}
+						</div>
+					</li>
+				{%- endfor -%}
+			</ul>
+		{%- endif -%}
+
+		{%- if footer.left or footer.right -%}
+			<div class="text-cta flex flex-wrap items-center justify-between gap-3">
+				{%- if footer.left -%}
+					<p class="text-stone">{{- footer.left -}}</p>
+				{%- endif -%}
+				{%- if footer.right -%}
+					<p class="text-pistachio uppercase">{{- footer.right -}}</p>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+	</div>
+</section>

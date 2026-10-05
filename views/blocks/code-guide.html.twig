@@ -1,0 +1,134 @@
+{#
+ # Blocks: Code guide
+ # Developer-facing section with optional badge, aside contract card, and code columns.
+ #}
+
+{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+
+{%- set columns = block.columns | default([]) -%}
+{%- set aside = block.aside | default({}) -%}
+
+<section
+	id="{{ block.id }}"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
+	<div class="container space-y-17">
+		<div class="space-y-8">
+			{%- if block.content.badge -%}
+				<p class="border-pistachio-soft bg-pistachio-soft text-eyebrow text-pistachio inline-flex rounded-full border px-3.5 py-2.5 uppercase">
+					{{- block.content.badge -}}
+				</p>
+			{%- endif -%}
+
+			<div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
+				{%- if block.content.overline or block.content.title or block.content.text -%}
+					<header class="max-w-240 min-w-0 flex-1 space-y-4.5">
+						{{-
+							include(
+								'components/eyebrow.html.twig',
+								{ title: block.content.overline },
+								with_context = false
+							)
+						-}}
+
+						{%- if block.content.title -%}
+							<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl">
+								{{- block.content.title -}}
+							</{{ block.content.heading | default('h2') }}>
+						{%- endif -%}
+
+						{%- if block.content.text -%}
+							<p class="text-lg text-taupe">
+								{{- block.content.text | raw -}}
+							</p>
+						{%- endif -%}
+					</header>
+				{%- endif -%}
+
+				{%- if aside.label or aside.title or aside.text -%}
+					<aside class="border-pistachio-soft bg-pistachio-soft w-full max-w-82.5 shrink-0 space-y-2.5 rounded-15 border p-6">
+						{%- if aside.label -%}
+							<p class="text-eyebrow text-pistachio uppercase">{{- aside.label -}}</p>
+						{%- endif -%}
+						{%- if aside.title -%}
+							<p class="font-mono text-title-lg text-cream">{{- aside.title -}}</p>
+						{%- endif -%}
+						{%- if aside.text -%}
+							<p class="text-sm text-taupe">{{- aside.text | raw -}}</p>
+						{%- endif -%}
+					</aside>
+				{%- endif -%}
+			</div>
+		</div>
+
+		{%- if columns | length -%}
+			<ul class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+				{%- for column in columns -%}
+					{%- set snippets = column.snippets | default([]) | filter(snippet => snippet.code) -%}
+					{%- set framed = column.style == 'framed' -%}
+
+					<li class="{{ framed ? 'border-cream-soft rounded-15 border p-7' : '' }} flex flex-col gap-6">
+						{%- if column.title or column.index or column.meta -%}
+							<div class="flex items-center justify-between gap-4">
+								<div class="space-y-1.5">
+									{%- if framed and column.overline -%}
+										<p class="text-eyebrow text-pistachio uppercase">{{- column.overline -}}</p>
+									{%- endif -%}
+									<div class="flex items-center gap-3">
+										{%- if column.index and not framed -%}
+											<span class="text-label text-pistachio uppercase">{{- column.index -}}</span>
+										{%- endif -%}
+										{%- if column.title -%}
+											<h3 class="text-title-md">{{- column.title -}}</h3>
+										{%- endif -%}
+									</div>
+								</div>
+								{%- if column.meta -%}
+									<p class="text-label text-taupe shrink-0">{{- column.meta -}}</p>
+								{%- endif -%}
+							</div>
+						{%- endif -%}
+
+						{%- if snippets | length -%}
+							<div class="space-y-6">
+								{%- for snippet in snippets -%}
+									{{-
+										include(
+											'components/code-block.html.twig',
+											{
+												code: snippet.code,
+												language: snippet.language,
+												copy_label: __('Copy', 'agencecinq')
+											},
+											with_context = false
+										)
+									-}}
+								{%- endfor -%}
+							</div>
+						{%- endif -%}
+
+						{%- if column.note -%}
+							{%- if column.note_icon -%}
+								<p class="bg-dark-gray text-sm text-taupe flex items-start gap-3 rounded-8 p-4.5">
+									{{-
+										include(
+											'svg/use.html.twig',
+											{
+												icon: column.note_icon,
+												classes: ['mt-0.5 size-4.75 shrink-0 fill-none stroke-current text-pistachio']
+											},
+											with_context = false
+										)
+									-}}
+									<span class="min-w-0">{{- column.note | raw -}}</span>
+								</p>
+							{%- else -%}
+								<p class="text-sm text-taupe">{{- column.note | raw -}}</p>
+							{%- endif -%}
+						{%- endif -%}
+					</li>
+				{%- endfor -%}
+			</ul>
+		{%- endif -%}
+	</div>
+</section>

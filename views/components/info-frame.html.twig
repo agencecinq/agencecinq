@@ -1,0 +1,90 @@
+{#
+ # Components: Info frame
+ # Optional framed meta row: leading icon + mono label, body text, trailing aside.
+ #
+ # @param string icon Leading sprite icon name.
+ # @param string label Mono label next to the leading icon.
+ # @param string text Main description.
+ # @param string aside_icon Trailing sprite icon name.
+ # @param string aside Trailing description.
+ # @param string aside_code Optional mono suffix after the aside text.
+ # @param array classes Extra classes for the frame.
+ #}
+
+{%- if icon or label or text or aside_icon or aside or aside_code -%}
+	<aside
+		class="{{
+		html_classes(
+			'border-cream-soft bg-gray flex flex-col gap-4 rounded-15 border p-6 lg:flex-row lg:items-center lg:gap-6',
+			classes | default([]) | join(' ')
+		)
+		}}"
+	>
+		{%- if icon or label or text -%}
+			<div class="flex min-w-0 flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+				{%- if icon or label -%}
+					<p
+						class="{{
+						html_classes(
+							'text-cream flex shrink-0 items-center gap-2.5 font-mono text-sm',
+							text ? 'sm:border-cream-soft sm:border-e sm:pe-6'
+						)
+						}}"
+					>
+						{%- if icon -%}
+							{{-
+								include(
+									'svg/use.html.twig',
+									{
+										icon: icon,
+										classes: ['size-4.5 shrink-0 fill-none stroke-current text-pistachio']
+									},
+									with_context = false
+								)
+							-}}
+						{%- endif -%}
+
+						{%- if label -%}
+							<span>{{- label -}}</span>
+						{%- endif -%}
+					</p>
+				{%- endif -%}
+
+				{%- if text -%}
+					<p class="text-sm text-taupe min-w-0 flex-1">
+						{{- text | raw -}}
+					</p>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+
+		{%- if aside_icon or aside or aside_code -%}
+			<p class="text-sm text-taupe flex shrink-0 items-center gap-2.5">
+				{%- if aside_icon -%}
+					{{-
+						include(
+							'svg/use.html.twig',
+							{
+								icon: aside_icon,
+								classes: ['size-4.5 shrink-0 fill-none stroke-current text-pistachio']
+							},
+							with_context = false
+						)
+					-}}
+				{%- endif -%}
+
+				<span>
+					{%- if aside -%}
+						{{- aside | raw -}}
+					{%- endif -%}
+					{%- if aside and aside_code -%}
+						{{- ' ' -}}
+					{%- endif -%}
+					{%- if aside_code -%}
+						<span class="font-mono text-cream">{{- aside_code -}}</span>
+					{%- endif -%}
+				</span>
+			</p>
+		{%- endif -%}
+	</aside>
+{%- endif -%}

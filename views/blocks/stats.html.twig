@@ -1,11 +1,12 @@
 {#
  # Blocks: Stats
- # Four-column figures band, each column capped with a node rule.
+ # Optional intro + aside, then four-column figures band.
  #}
 
 {%- set items = block.content.items | default([]) | filter(item => item.title or item.text) -%}
+{%- set has_intro = block.content.overline or block.content.title or block.content.aside_label or block.content.aside_title or block.content.aside_text -%}
 
-{%- if items | length -%}
+{%- if items | length or has_intro -%}
 	{{-
 		include(
 			'blocks/_layout.html.twig',
@@ -16,37 +17,77 @@
 		)
 	-}}
 
-	<div
+	<section
 		id="{{ block.id }}"
 		class="bg-dark-gray text-cream"
-		itemscope
-		itemtype="https://schema.org/ItemList"
+		{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+		{{ items | length ? 'itemscope itemtype="https://schema.org/ItemList"' }}
 	>
-		<meta itemprop="numberOfItems" content="{{ items | length }}" />
+		{%- if items | length -%}
+			<meta itemprop="numberOfItems" content="{{ items | length }}" />
+		{%- endif -%}
 
-		<div class="container">
-			<ul class="layout-grid gap-y-14">
-				{%- for item in items -%}
-					<li
-						class="col-span-full md:col-span-6 lg:col-span-3"
-						itemprop="itemListElement"
-						itemscope
-						itemtype="https://schema.org/ListItem"
-					>
-						<meta itemprop="position" content="{{ loop.index }}" />
-						{{-
-							include(
-								'components/tease-stat.html.twig',
-								{
-									title: item.title,
-									text: item.text
-								},
-								with_context = false
-							)
-						-}}
-					</li>
-				{%- endfor -%}
-			</ul>
+		<div class="container space-y-13">
+			{%- if has_intro -%}
+				<div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between lg:gap-20">
+					{%- if block.content.overline or block.content.title -%}
+						<header class="max-w-230 space-y-4.5">
+							{{-
+								include(
+									'components/eyebrow.html.twig',
+									{ title: block.content.overline },
+									with_context = false
+								)
+							-}}
+
+							{%- if block.content.title -%}
+								<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl">
+									{{- block.content.title -}}
+								</{{ block.content.heading | default('h2') }}>
+							{%- endif -%}
+						</header>
+					{%- endif -%}
+
+					{%- if block.content.aside_label or block.content.aside_title or block.content.aside_text -%}
+						<aside class="border-pistachio-soft bg-pistachio-soft w-full max-w-82.5 space-y-2 rounded-15 border p-5.5">
+							{%- if block.content.aside_label -%}
+								<p class="text-eyebrow text-pistachio uppercase">{{- block.content.aside_label -}}</p>
+							{%- endif -%}
+							{%- if block.content.aside_title -%}
+								<p class="font-mono text-lg text-cream">{{- block.content.aside_title -}}</p>
+							{%- endif -%}
+							{%- if block.content.aside_text -%}
+								<p class="text-sm text-taupe">{{- block.content.aside_text -}}</p>
+							{%- endif -%}
+						</aside>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+
+			{%- if items | length -%}
+				<ul class="layout-grid gap-y-14">
+					{%- for item in items -%}
+						<li
+							class="col-span-full md:col-span-6 lg:col-span-3"
+							itemprop="itemListElement"
+							itemscope
+							itemtype="https://schema.org/ListItem"
+						>
+							<meta itemprop="position" content="{{ loop.index }}" />
+							{{-
+								include(
+									'components/tease-stat.html.twig',
+									{
+										title: item.title,
+										text: item.text
+									},
+									with_context = false
+								)
+							-}}
+						</li>
+					{%- endfor -%}
+				</ul>
+			{%- endif -%}
 		</div>
-	</div>
+	</section>
 {%- endif -%}

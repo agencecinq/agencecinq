@@ -1,0 +1,67 @@
+{#
+ # Components: Tease Editorial Card
+ # Framed editorial card with optional figure or data flow.
+ #
+ # @param string overline Uppercase eyebrow.
+ # @param string title Card title.
+ # @param string figure Large figure (takes priority over flow).
+ # @param string flow_input Left side of an optional data flow.
+ # @param string flow_output Right side of an optional data flow.
+ # @param string text Supporting text.
+ # @param string heading Heading tag for the title. Defaults to h3.
+ # @param array classes Extra classes on the article.
+ #}
+
+{%- if overline or title or figure or flow_input or flow_output or text -%}
+	<article
+		class="{{
+		html_classes(
+			'border-cream-soft bg-gray flex h-full min-h-82.5 flex-col justify-between rounded-15 border p-8',
+			classes | default([]) | join(' ')
+		)
+		}}"
+	>
+		<div class="space-y-3">
+			{%- if overline -%}
+				<p class="text-eyebrow text-pistachio uppercase">{{- overline -}}</p>
+			{%- endif -%}
+
+			{%- if title -%}
+				<{{ heading | default('h3') }} class="text-title-lg">
+					{{- title -}}
+				</{{ heading | default('h3') }}>
+			{%- endif -%}
+		</div>
+
+		{%- if figure -%}
+			<p class="text-title-xxl text-pistachio py-8 tabular-nums lg:py-10">
+				{{- figure -}}
+			</p>
+		{%- elseif flow_input or flow_output -%}
+			<div class="text-label flex flex-wrap items-center gap-4.5 py-8 uppercase lg:py-10">
+				{%- if flow_input -%}
+					<span class="text-taupe normal-case">{{- flow_input -}}</span>
+				{%- endif -%}
+				{{-
+					include(
+						'svg/use.html.twig',
+						{
+							icon: 'arrow-right',
+							classes: ['size-5.5 fill-current text-stone']
+						},
+						with_context = false
+					)
+				-}}
+				{%- if flow_output -%}
+					<span class="bg-pistachio-soft text-pistachio rounded-8 px-3.5 py-2.5 normal-case">
+						{{- flow_output -}}
+					</span>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+
+		{%- if text -%}
+			<p class="text-sm text-taupe">{{- text | raw -}}</p>
+		{%- endif -%}
+	</article>
+{%- endif -%}

@@ -11,6 +11,7 @@ load("cinq-snake", async () => {
 	await import("./components/Snake.ts");
 });
 load("cinq-vertical-pipeline", () => import("./components/VerticalPipeline.ts"));
+load("cinq-copy", () => import("./components/Copy.ts"));
 load("cinq-mobile-menu", () => import("./components/MobileMenu.ts"));
 
 // The object cinq is defined in includes/Setup/Enqueue.php and localized to app.js

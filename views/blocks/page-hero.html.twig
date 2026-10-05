@@ -1,6 +1,6 @@
 {#
  # Blocks: Page Hero
- # Inner-page hero: overline, title, lead, then two CTAs.
+ # Inner-page hero: overline, title, lead, CTAs, optional meta and image.
  #}
 
 {{-
@@ -22,6 +22,8 @@
 			title: block.content.title,
 			text: block.content.text,
 			links: block.content.links,
+			meta: block.content.meta,
+			image: block.image,
 			heading: block.heading
 		},
 		with_context = false

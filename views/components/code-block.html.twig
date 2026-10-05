@@ -1,0 +1,59 @@
+{#
+ # Components: Code block
+ # Window chrome + optional copy control for a code snippet.
+ #
+ # @param string code The code to display.
+ # @param string [language] Toolbar language label (e.g. PHP, Terminal).
+ # @param string [copy_label] Copy button label. Defaults to "Copy".
+ # @param string [copied_label] Label after a successful copy.
+ # @param array [classes] Extra classes on the root.
+ #}
+
+{%- set code = code | default('') -%}
+{%- set language = language | default('') -%}
+{%- set copy_label = copy_label | default(__('Copy', 'agencecinq')) -%}
+{%- set copied_label = copied_label | default(__('Copied', 'agencecinq')) -%}
+
+{%- if code -%}
+	<cinq-copy
+		class="{{
+		html_classes(
+			'border-cream-soft bg-gray block overflow-hidden rounded-15 border shadow-[0_1.25rem_3.75rem_rgba(0,0,0,0.4)]',
+			classes | default([]) | join(' ')
+		)
+		}}"
+		data-copied="{{ copied_label | e('html_attr') }}"
+	>
+		<div class="bg-medium-gray flex items-center justify-between px-4 py-3">
+			<div class="flex items-center gap-2.5">
+				<span
+					class="after:bg-stone before:bg-stone relative h-1.75 w-8.25 shrink-0 before:absolute before:top-0 before:left-0 before:size-1.75 before:rounded-full after:absolute after:top-0 after:left-3.25 after:size-1.75 after:rounded-full after:shadow-[1rem_0_0_var(--color-stone)]"
+					aria-hidden="true"
+				></span>
+				{%- if language -%}
+					<span class="text-label text-taupe uppercase">{{- language -}}</span>
+				{%- endif -%}
+			</div>
+
+			<button
+				type="button"
+				data-dom="copy"
+				class="text-label text-taupe hover:text-cream focus-visible:text-cream inline-flex items-center gap-1.75 uppercase transition-colors"
+			>
+				{{-
+					include(
+						'svg/use.html.twig',
+						{
+							icon: 'copy',
+							classes: ['size-3.5 fill-none stroke-current']
+						},
+						with_context = false
+					)
+				-}}
+				<span data-dom="label">{{- copy_label -}}</span>
+			</button>
+		</div>
+
+		<pre class="overflow-x-auto p-5.5"><code data-dom="source" class="font-mono text-sm leading-[1.8] text-cream whitespace-pre">{{- code -}}</code></pre>
+	</cinq-copy>
+{%- endif -%}

@@ -13,11 +13,15 @@ namespace AgenceCinq\Plugins\ACF\IncludeFields;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\AccordionGroup;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CallToAction;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ClientQuote;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Crosslinks;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EntryPoints;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FormInfo;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHero;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
@@ -50,11 +54,15 @@ class BlocksFields implements Service {
 		AccordionGroup::class,
 		CallToAction::class,
 		ClientQuote::class,
+		CodeGuide::class,
 		CredibilityBanner::class,
 		Crosslinks::class,
+		EditorialCards::class,
 		EditorialProse::class,
 		EntryPoints::class,
 		FormInfo::class,
+		Gallery::class,
+		InfoCards::class,
 		LatestPosts::class,
 		PageHero::class,
 		PositioningBanner::class,
