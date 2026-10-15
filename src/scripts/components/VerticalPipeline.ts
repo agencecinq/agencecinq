@@ -1,12 +1,14 @@
 import { Piece } from "piecesjs";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { clamp } from "@agencecinq/utils";
 
-gsap.registerPlugin(ScrollTrigger);
-
+/**
+ * Fills the spine as the list crosses the middle of the viewport: progress
+ * goes from 0 when its top reaches the center to 1 when its bottom does.
+ * Updates are batched to one per frame.
+ */
 class VerticalPipeline extends Piece {
 	#items: HTMLLIElement[] = [];
-	#scrollTrigger: ScrollTrigger | null = null;
+	#frame = 0;
 
 	constructor() {
 		super("VerticalPipeline");
@@ -28,26 +30,40 @@ class VerticalPipeline extends Piece {
 		});
 	}
 
+	#update = () => {
+		this.#frame = 0;
+
+		const { top, height } = this.getBoundingClientRect();
+		const progress = height ? clamp((window.innerHeight / 2 - top) / height, 0, 1) : 0;
+
+		this.#setProgress(progress);
+		this.#updateItems(progress);
+	};
+
+	#requestUpdate = () => {
+		if (!this.#frame) {
+			this.#frame = requestAnimationFrame(this.#update);
+		}
+	};
+
+	#listen(listening: boolean) {
+		const method = listening ? "addEventListener" : "removeEventListener";
+
+		window[method]("scroll", this.#requestUpdate, { passive: true } as AddEventListenerOptions);
+		window[method]("resize", this.#requestUpdate);
+	}
+
 	mount() {
 		this.#items = this.domAttrAll<HTMLLIElement>("item");
 
-		this.#scrollTrigger = ScrollTrigger.create({
-			trigger: this,
-			start: "top center",
-			end: "bottom center",
-			scrub: true,
-			onUpdate: ({ progress }) => {
-				this.#setProgress(progress);
-				this.#updateItems(progress);
-			},
-		});
+		this.#listen(true);
+		this.#requestUpdate();
 	}
 
 	unmount() {
-		if (this.#scrollTrigger) {
-			this.#scrollTrigger.kill();
-			this.#scrollTrigger = null;
-		}
+		this.#listen(false);
+		cancelAnimationFrame(this.#frame);
+		this.#frame = 0;
 
 		this.#items.forEach((item) => item.classList.remove("is-active"));
 		this.#items = [];
