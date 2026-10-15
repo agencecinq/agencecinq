@@ -33,6 +33,6 @@ class WPImageEditor implements Service {
 	 * @return int
 	 */
 	public function quality( int $quality, string $mime_type ): int { // phpcs:ignore 
-		return 100;
+		return 82;
 	}
 }
