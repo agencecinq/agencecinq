@@ -1,8 +1,8 @@
 import { load } from "piecesjs";
 
 import "@agencecinq/drawer";
-import "@agencecinq/modal";
 
+load("cinq-modal", () => import("@agencecinq/modal"));
 load("cinq-accordion", () => import("@agencecinq/accordion"));
 load("cinq-grid", () => import("./components/Grid.ts"));
 load("cinq-hover-video", () => import("./components/HoverVideo.ts"));
