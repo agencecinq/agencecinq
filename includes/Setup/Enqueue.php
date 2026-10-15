@@ -33,6 +33,10 @@ class Enqueue implements Service {
 
 		add_action( 'wp_head', array( $this, 'preload_wp_scripts' ) );
 		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
+
+		// Contact Form 7 scripts only on pages that render a form.
+		add_filter( 'wpcf7_load_js', '__return_false' );
+		add_action( 'wpcf7_shortcode_callback', 'wpcf7_enqueue_scripts' );
 	}
 
 
@@ -61,7 +65,6 @@ class Enqueue implements Service {
 
 		// enqueue theme-style-css into our head.
 		wp_enqueue_style( get_theme_text_domain() . '-main', $filename, $deps, null );
-		wp_enqueue_style( get_theme_text_domain() . '-style', get_stylesheet_uri(), array( get_theme_text_domain() . '-main' ), null );
 	}
 
 
