@@ -34,10 +34,30 @@ class Enqueue implements Service {
 		add_action( 'wp_head', array( $this, 'preload_wp_scripts' ) );
 		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
 		add_filter( 'wp_preload_resources', array( $this, 'preload_resources' ) );
+		add_filter( 'style_loader_tag', array( $this, 'style_loader_tag' ), 10, 2 );
 
 		// Contact Form 7 scripts only on pages that render a form.
 		add_filter( 'wpcf7_load_js', '__return_false' );
 		add_action( 'wpcf7_shortcode_callback', 'wpcf7_enqueue_scripts' );
+	}
+
+
+	/**
+	 * Load the Axeptio stylesheet without blocking the render.
+	 *
+	 * It only styles the placeholder of the Axeptio shortcode, inside the content:
+	 * the cookie banner comes from the SDK.
+	 *
+	 * @param string $tag    Link tag.
+	 * @param string $handle Style handle.
+	 * @return string
+	 */
+	public function style_loader_tag( string $tag, string $handle ): string {
+		if ( 'axeptio/main' !== $handle ) {
+			return $tag;
+		}
+
+		return str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $tag );
 	}
 
 
