@@ -7,6 +7,7 @@ WordPress theme for [agencecinq.com](https://agencecinq.com) (Timber/Twig, Vite,
 - **Templating**: Timber 2 + Twig. Root `*.php` files are WordPress routers that load a Timber context and render `views/pages/`.
 - **Build**: Vite (`pnpm dev` / `pnpm build`), `laravel-vite-plugin`. Entries: `src/stylesheets/styles.css`, `src/scripts/app.js`. Output in `dist/` (gitignored).
 - **CSS**: Tailwind CSS v4 in pure CSS. Design tokens live in `@theme` (`src/stylesheets/theme.css`).
+- **Fonts**: Inter and JetBrains Mono are self-hosted (latin woff2 in `src/fonts/`, `@font-face` in `src/stylesheets/base/font-face.css`), preloaded from `Enqueue::preload_resources()`. No request to Google Fonts.
 - **JS**: TypeScript components in `src/scripts/components/`, mounted via `piecesjs`. Global `cinq` object injected from PHP (`includes/Setup/Enqueue.php`).
 - **Packages**: `@agencecinq/accordion`, `@agencecinq/drawer`, `@agencecinq/modal`, `@agencecinq/utils`, plus GSAP.
 - **PHP**: OOP, PSR-4 (`AgenceCinq\` → `includes/`), WordPress Coding Standards (`phpcs.xml`).
@@ -93,6 +94,14 @@ pnpm dev              # Vite HMR
 ```
 
 Activate required plugins (ACF, etc.) in WordPress.
+
+The single post reads its reading time from the [`cinq-wp-reading-time`](https://github.com/agencecinq/cinq-wp-reading-time) mu-plugin: copy (or symlink) `cinq-wp-reading-time.php` into `wp-content/mu-plugins/`. Without it the post renders without reading time.
+
+In Yoast SEO, enable **Settings → Advanced → Crawl optimization → Remove emoji scripts** on every environment: the theme does not remove them itself.
+
+### Asset caching
+
+`.htaccess` serves `dist/` with `Cache-Control: public, max-age=31536000, immutable`: Vite puts a content hash in every file name there. Apache only (`mod_headers` + `AllowOverride`); on Nginx, set the header in the server config.
 
 ### SVG sprite
 
