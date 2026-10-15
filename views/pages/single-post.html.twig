@@ -56,9 +56,11 @@
 									{
 										image: post.thumbnail,
 										classes: ['size-full object-cover object-center'],
+										sizes: '(min-width: 64rem) 50vw, 100vw',
 										loading: 'eager',
 										attributes: {
-											itemprop: 'image'
+											itemprop: 'image',
+											fetchpriority: 'high'
 										}
 									},
 									with_context = false

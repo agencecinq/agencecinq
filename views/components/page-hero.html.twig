@@ -89,7 +89,8 @@
 								image: image,
 								classes: ['size-full'],
 								sizes: '(min-width: 64rem) 40vw, 100vw',
-								loading: 'eager'
+								loading: 'eager',
+								attributes: { fetchpriority: 'high' }
 							},
 							with_context = false
 						)

@@ -9,12 +9,17 @@
  # @param {string} [sizes] Sizes attribute for the image.
  # @param {string} [alt] Alt text.
  # @param {object} [attributes] Extra attributes on the img / video.
+ # @param {string} [fetchpriority] Fetch priority of the image ('high' for the LCP). Not applied to the video.
  # @param {bool} [autoplay] Whether the video autoplays. Defaults to true.
  #}
 
 {%- set media = media | default({}) -%}
 {%- set video_url = media.video.url | default(null) -%}
-{%- set poster_url = media.poster.url | default(null) -%}
+{#- Poster at the large size, as WebP: the uploaded original can weigh several hundred KB. -#}
+{%- set poster_url = media.poster.sizes.large | default(media.poster.url | default(null)) -%}
+{%- if poster_url and not (poster_url ends with '.webp') -%}
+	{%- set poster_url = poster_url | towebp(82) -%}
+{%- endif -%}
 {%- set image = media.image | default(null) -%}
 {%- set autoplay = autoplay is not defined ? true : autoplay -%}
 
@@ -35,7 +40,7 @@
 				src="{{ video_url }}"
 				{% if poster_url %}poster="{{ poster_url }}"{% endif %}
 				{% if autoplay %}autoplay{% endif %}
-				preload="{{ autoplay ? 'auto' : 'metadata' }}"
+				preload="{{ autoplay ? 'auto' : 'none' }}"
 				muted
 				loop
 				playsinline
@@ -52,8 +57,8 @@
 						classes: ['size-full object-cover object-top'],
 						loading: loading | default('lazy'),
 						sizes: sizes | default(null),
-						alt: alt | default(null),
-						attributes: attributes | default({})
+						alt: alt ?? null,
+						attributes: attributes | default({}) | merge(fetchpriority | default(false) ? { fetchpriority: fetchpriority } : {})
 					},
 					with_context = false
 				)
