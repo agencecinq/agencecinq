@@ -3,6 +3,7 @@
 @import "./theme.css";
 
 /* Base */
+@import "./base/font-face.css";
 @import "./base/base.css";
 
 /* Utilities */

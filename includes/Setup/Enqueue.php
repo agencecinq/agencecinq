@@ -33,6 +33,7 @@ class Enqueue implements Service {
 
 		add_action( 'wp_head', array( $this, 'preload_wp_scripts' ) );
 		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
+		add_filter( 'wp_preload_resources', array( $this, 'preload_resources' ) );
 
 		// Contact Form 7 scripts only on pages that render a form.
 		add_filter( 'wpcf7_load_js', '__return_false' );
@@ -41,30 +42,38 @@ class Enqueue implements Service {
 
 
 	/**
+	 * Preload the fonts painted above the fold (Inter for titles and body,
+	 * JetBrains Mono for eyebrows and buttons) so they are not discovered only once the CSS is parsed.
+	 *
+	 * @param array $resources Resources to preload.
+	 * @return array
+	 */
+	public function preload_resources( array $resources ): array {
+		foreach ( array( 'inter-variable', 'jetbrains-mono-variable' ) as $font ) {
+			$resources[] = array(
+				'href'        => Vite::asset( 'src/fonts/' . $font . '.woff2' ),
+				'as'          => 'font',
+				'type'        => 'font/woff2',
+				'crossorigin' => 'anonymous',
+			);
+		}
+
+		return $resources;
+	}
+
+
+	/**
 	 * Enqueue styles.
 	 *
-	 * Enqueue stylesheets.
+	 * Enqueue stylesheets. Fonts are self-hosted: see src/stylesheets/base/font-face.css.
 	 *
 	 * @access public
 	 * @return void
 	 */
 	public function enqueue_styles(): void {
-		$deps = array();
-
-		// Google Fonts: Inter (titles + body) and JetBrains Mono (meta).
-		wp_register_style(
-			'google-fonts',
-			'//fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap',
-			array(),
-			null
-		);
-		$deps[] = 'google-fonts';
-
-		// register theme-style-css.
 		$filename = Vite::asset( 'src/stylesheets/styles.css' );
 
-		// enqueue theme-style-css into our head.
-		wp_enqueue_style( get_theme_text_domain() . '-main', $filename, $deps, null );
+		wp_enqueue_style( get_theme_text_domain() . '-main', $filename, array(), null );
 	}
 
 
