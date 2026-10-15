@@ -28,7 +28,6 @@
 			href="{{- post.link -}}"
 			itemprop="url"
 			class="group flex flex-col gap-4"
-			aria-label="{{ __('View the case: %s', 'agencecinq') | format(client) }}"
 		>
 			{{-
 				include(
@@ -36,7 +35,7 @@
 					{
 						media: post.media,
 						sizes: sizes | default(null),
-						alt: client,
+						alt: '',
 						autoplay: false,
 						attributes: {
 							itemprop: 'image'
