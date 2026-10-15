@@ -21,11 +21,11 @@ use Timber\{ Post };
 class SinglePost extends Post {
 
 	/**
-	 * Estimated reading time in minutes (minimum 1 when the post has content).
+	 * Estimated reading time in minutes, from the cinq-wp-reading-time mu-plugin.
 	 *
-	 * @return int
+	 * @return int 0 when the plugin is missing or the content is empty.
 	 */
 	public function reading_time(): int {
-		return cinq_estimate_reading_time( (string) $this->post_content );
+		return function_exists( 'cinq_reading_time' ) ? cinq_reading_time( $this->ID ) : 0;
 	}
 }
