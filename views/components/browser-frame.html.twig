@@ -3,24 +3,24 @@
  # Screenshot or video of the delivered site in a browser chrome (16:10).
  # Renders the chrome even when media is empty.
  #
+ # A video poster goes through components/image.html.twig under the video
+ # (srcset, WebP, lazy loading, fetch priority) instead of the poster attribute,
+ # which takes a single URL. The video stays transparent until it plays.
+ #
  # @param {object} [media] Media payload ({ type, image } or { type, video, poster }). Optional.
  # @param {array} [classes] Extra classes on the figure.
- # @param {string} [loading] Loading attribute. Defaults to 'lazy'.
- # @param {string} [sizes] Sizes attribute for the image.
+ # @param {string} [loading] Loading attribute of the image or poster. Defaults to 'lazy'.
+ # @param {string} [sizes] Sizes attribute of the image or poster.
  # @param {string} [alt] Alt text.
- # @param {object} [attributes] Extra attributes on the img / video.
- # @param {string} [fetchpriority] Fetch priority of the image ('high' for the LCP). Not applied to the video.
+ # @param {object} [attributes] Extra attributes on the img, or on the video when there is one.
+ # @param {string} [fetchpriority] Fetch priority of the image or poster ('high' for the LCP).
  # @param {bool} [autoplay] Whether the video autoplays. Defaults to true.
  #}
 
 {%- set media = media | default({}) -%}
 {%- set video_url = media.video.url | default(null) -%}
-{#- Poster at the large size, as WebP: the uploaded original can weigh several hundred KB. -#}
-{%- set poster_url = media.poster.sizes.large | default(media.poster.url | default(null)) -%}
-{%- if poster_url and not (poster_url ends with '.webp') -%}
-	{%- set poster_url = poster_url | towebp(82) -%}
-{%- endif -%}
-{%- set image = media.image | default(null) -%}
+{%- set poster_id = media.poster.ID | default(media.poster.id | default(null)) -%}
+{%- set image = media.image | default(video_url ? poster_id : null) -%}
 {%- set autoplay = autoplay is not defined ? true : autoplay -%}
 
 <figure
@@ -33,12 +33,29 @@
 	)
 	}}"
 >
-	<div class="bg-dark-gray aspect-16/10">
+	<div class="bg-dark-gray relative aspect-16/10">
+		{%- if image -%}
+			{{-
+				include(
+					'components/image.html.twig',
+					{
+						image: image,
+						classes: ['size-full object-cover object-top'],
+						loading: loading | default('lazy'),
+						sizes: sizes | default(null),
+						alt: video_url ? '' : (alt ?? null),
+						attributes: (video_url ? {} : attributes | default({})) | merge(fetchpriority | default(false) ? { fetchpriority: fetchpriority } : {})
+					},
+					with_context = false
+				)
+			-}}
+		{%- endif -%}
+
 		{%- if video_url -%}
 			<video
-				class="size-full object-cover object-top"
+				class="absolute inset-0 size-full object-cover object-top"
 				src="{{ video_url }}"
-				{% if poster_url %}poster="{{ poster_url }}"{% endif %}
+				{% if not poster_id and media.poster.url | default(null) %}poster="{{ media.poster.url }}"{% endif %}
 				{% if autoplay %}autoplay{% endif %}
 				preload="{{ autoplay ? 'auto' : 'none' }}"
 				muted
@@ -48,21 +65,6 @@
 					{{ key }}="{{ value }}"
 				{% endfor %}
 			></video>
-		{%- elseif image -%}
-			{{-
-				include(
-					'components/image.html.twig',
-					{
-						image: image,
-						classes: ['size-full object-cover object-top'],
-						loading: loading | default('lazy'),
-						sizes: sizes | default(null),
-						alt: alt ?? null,
-						attributes: attributes | default({}) | merge(fetchpriority | default(false) ? { fetchpriority: fetchpriority } : {})
-					},
-					with_context = false
-				)
-			-}}
 		{%- endif -%}
 	</div>
 </figure>
