@@ -308,7 +308,7 @@ $blocks = array(
 					),
 					array(
 						'language' => 'PHP',
-						'code'     => "\$minutes = cinq_reading_time();\n\n\$minutes = cinq_reading_time( 42 );",
+						'code'     => "\$minutes = cinq_wp_reading_time();\n\n\$minutes = cinq_wp_reading_time( 42 );",
 					),
 				),
 				'note'      => 'Fonctionne aussi comme plugin classique dans <span class="font-mono text-cream">wp-content/plugins/</span>.',
@@ -323,7 +323,7 @@ $blocks = array(
 				'snippets'  => array(
 					array(
 						'language' => 'PHP',
-						'code'     => "if ( function_exists( 'cinq_reading_time' ) ) {\n    \$minutes = cinq_reading_time();\n\n    if ( \$minutes > 0 ) {\n        printf( esc_html__( '%d min read', 'cinq-wp-reading-time' ), \$minutes );\n    }\n}",
+						'code'     => "if ( function_exists( 'cinq_wp_reading_time' ) ) {\n    \$minutes = cinq_wp_reading_time();\n\n    if ( \$minutes > 0 ) {\n        printf( esc_html__( '%d min read', 'cinq-wp-reading-time' ), \$minutes );\n    }\n}",
 					),
 				),
 				'note'      => 'Le thème vérifie la disponibilité de la fonction, récupère la minute, puis applique sa propre traduction et son propre balisage.',
