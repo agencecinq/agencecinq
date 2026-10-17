@@ -25,6 +25,7 @@
 								<span>
 									{{- __('%d min de lecture', 'agencecinq') | format(post.reading_time) -}}
 								</span>
+								<meta itemprop="timeRequired" content="PT{{ post.reading_time }}M" />
 							{%- endif -%}
 						</p>
 

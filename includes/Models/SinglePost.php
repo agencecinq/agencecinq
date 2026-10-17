@@ -26,6 +26,6 @@ class SinglePost extends Post {
 	 * @return int 0 when the plugin is missing or the content is empty.
 	 */
 	public function reading_time(): int {
-		return function_exists( 'cinq_reading_time' ) ? cinq_reading_time( $this->ID ) : 0;
+		return function_exists( 'cinq_wp_reading_time' ) ? cinq_wp_reading_time( $this->ID ) : 0;
 	}
 }
