@@ -9,6 +9,7 @@
 /* Utilities */
 @import "./utilities/container.css";
 @import "./utilities/scrollbar-hidden.css";
+@import "./utilities/view-transition.css";
 
 /* Components */
 @import "./components/typographies.css";
