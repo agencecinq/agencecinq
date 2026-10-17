@@ -113,7 +113,7 @@ $blocks = array(
 	array(
 		'acf_fc_layout' => 'page_hero',
 		'content'       => array(
-			'overline' => 'PLUGIN WORDPRESS · v1.1.0',
+			'overline' => 'PLUGIN WORDPRESS · v2.0.0',
 			'title'    => 'Le « petit article » qui dure 27 minutes ? Non merci.',
 			'text'     => 'CINQ Reading Time annonce la couleur avant la première ligne. Une estimation simple, stockée avec le post, rendue comme vous voulez.',
 			'links'    => array(
@@ -308,7 +308,7 @@ $blocks = array(
 					),
 					array(
 						'language' => 'PHP',
-						'code'     => "\$minutes = cinq_reading_time();\n\n\$minutes = cinq_reading_time( 42 );",
+						'code'     => "\$minutes = cinq_wp_reading_time();\n\n\$minutes = cinq_wp_reading_time( 42 );",
 					),
 				),
 				'note'      => 'Fonctionne aussi comme plugin classique dans <span class="font-mono text-cream">wp-content/plugins/</span>.',
@@ -323,7 +323,7 @@ $blocks = array(
 				'snippets'  => array(
 					array(
 						'language' => 'PHP',
-						'code'     => "if ( function_exists( 'cinq_reading_time' ) ) {\n    \$minutes = cinq_reading_time();\n\n    if ( \$minutes > 0 ) {\n        printf( esc_html__( '%d min read', 'cinq-wp-reading-time' ), \$minutes );\n    }\n}",
+						'code'     => "if ( function_exists( 'cinq_wp_reading_time' ) ) {\n    \$minutes = cinq_wp_reading_time();\n\n    if ( \$minutes > 0 ) {\n        printf( esc_html__( '%d min read', 'cinq-wp-reading-time' ), \$minutes );\n    }\n}",
 					),
 				),
 				'note'      => 'Le thème vérifie la disponibilité de la fonction, récupère la minute, puis applique sa propre traduction et son propre balisage.',
@@ -361,7 +361,7 @@ $blocks = array(
 				'snippets'  => array(
 					array(
 						'language' => 'PHP',
-						'code'     => "add_filter( 'cinq_reading_time_post_types', function () {\n    return array( 'post', 'guide' );\n} );",
+						'code'     => "add_filter( 'cinq_wp_reading_time_post_types', function () {\n    return array( 'post', 'guide' );\n} );",
 					),
 				),
 				'note'      => 'Le calcul et la sauvegarde s’appliquent alors aux articles et au type personnalisé <span class="font-mono text-cream">guide</span>.',
@@ -376,7 +376,7 @@ $blocks = array(
 				'snippets'  => array(
 					array(
 						'language' => 'PHP',
-						'code'     => "add_filter( 'cinq_reading_time_wpm', function () {\n    return 180;\n} );",
+						'code'     => "add_filter( 'cinq_wp_reading_time_wpm', function () {\n    return 180;\n} );",
 					),
 				),
 				'note'      => 'Une cadence plus posée pour les contenus denses, sans modifier le plugin ni ajouter d’option en base.',
@@ -421,7 +421,7 @@ $blocks = array(
 		),
 		'footer'        => array(
 			'left'  => 'agencecinq/cinq-wp-reading-time',
-			'right' => 'Current  -  v1.1.0',
+			'right' => 'Current  -  v2.0.0',
 		),
 		'layout'        => array(
 			'paddings' => array(
