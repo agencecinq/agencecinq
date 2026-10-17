@@ -103,6 +103,10 @@ In Yoast SEO, enable **Settings → Advanced → Crawl optimization → Remove e
 
 `.htaccess` serves `dist/` with `Cache-Control: public, max-age=31536000, immutable`: Vite puts a content hash in every file name there. Apache only (`mod_headers` + `AllowOverride`); on Nginx, set the header in the server config.
 
+### Page navigation
+
+Pages cross-fade with the browser's view transition (`src/stylesheets/utilities/view-transition.css`, skipped under `prefers-reduced-motion`). `Enqueue::speculation_rules_configuration()` prefetches a linked page after a short hover (`prefetch`, `moderate`) instead of on click as in core; add `no-prefetch` to an internal link whose visit changes something. No View Transitions or Speculative Loading plugin needed.
+
 ### SVG sprite
 
 Icons in `src/icons/` are compiled to `public/sprite.svg` on build. Use `views/svg/use.html.twig`:
