@@ -1,8 +1,8 @@
 {#
  # Components: Tease Post Column
  #
- # Lightweight blog teaser column: node rule, date · category, title, excerpt, read link.
- # Schema.org: BlogPosting (headline, description, url, datePublished, dateModified, author, articleSection).
+ # Lightweight blog teaser column: node rule, date · category · reading time, title, excerpt, read link.
+ # Schema.org: BlogPosting (headline, description, url, datePublished, dateModified, author, articleSection, timeRequired).
  #
  # @param object post Timber post.
  # @param array classes Optional extra classes.
@@ -46,6 +46,11 @@
 				{%- if category -%}
 					<span aria-hidden="true">{{ ' · ' }}</span>
 					<span itemprop="articleSection">{{- category.name -}}</span>
+				{%- endif -%}
+				{%- if post.reading_time -%}
+					<span aria-hidden="true">{{ ' · ' }}</span>
+					<span>{{- __('%d min de lecture', 'agencecinq') | format(post.reading_time) -}}</span>
+					<meta itemprop="timeRequired" content="PT{{ post.reading_time }}M" />
 				{%- endif -%}
 			</p>
 

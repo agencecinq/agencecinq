@@ -1,7 +1,7 @@
 {#
  # Components: Tease Post
  #
- # Schema.org: BlogPosting (headline, image, description, url, datePublished, dateModified, author).
+ # Schema.org: BlogPosting (headline, image, description, url, datePublished, dateModified, author, timeRequired).
  # A11y: Single main link per card (Discover) with aria-label; heading h3; categories region with aria-label; image alt from thumbnail.
  #
  # @todo This is a static component, it should be dynamic and receive data as props
@@ -53,6 +53,12 @@
 
 		<div class="space-y-5 lg:space-y-3.75">
 			<div class="space-y-2.5">
+				{%- if post.reading_time -%}
+					<p class="text-label uppercase">
+						{{- __('%d min de lecture', 'agencecinq') | format(post.reading_time) -}}
+						<meta itemprop="timeRequired" content="PT{{ post.reading_time }}M" />
+					</p>
+				{%- endif -%}
 				<h2 class="text-xl lg:min-h-[2lh]" itemprop="headline">{{- post.title -}}</h2>
 				{%- set excerpt =
 					post.excerpt({
