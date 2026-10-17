@@ -34,6 +34,7 @@ class Enqueue implements Service {
 		add_action( 'wp_head', array( $this, 'preload_wp_scripts' ) );
 		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
 		add_filter( 'wp_preload_resources', array( $this, 'preload_resources' ) );
+		add_filter( 'wp_speculation_rules_configuration', array( $this, 'speculation_rules_configuration' ) );
 		add_filter( 'style_loader_tag', array( $this, 'style_loader_tag' ), 10, 2 );
 
 		// Contact Form 7 scripts only on pages that render a form.
@@ -79,6 +80,27 @@ class Enqueue implements Service {
 		}
 
 		return $resources;
+	}
+
+
+	/**
+	 * Prefetch a linked page after a short hover (`moderate`) rather than on
+	 * click. Prefetch only: prerendering would run the page's scripts before
+	 * it is shown. `null` (logged-in visitors, plain permalinks) keeps
+	 * speculative loading off.
+	 *
+	 * @param array|null $config Speculation rules configuration.
+	 * @return array|null
+	 */
+	public function speculation_rules_configuration( ?array $config ): ?array {
+		if ( null === $config ) {
+			return null;
+		}
+
+		return array(
+			'mode'      => 'prefetch',
+			'eagerness' => 'moderate',
+		);
 	}
 
 
