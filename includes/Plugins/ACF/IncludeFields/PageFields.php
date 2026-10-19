@@ -84,11 +84,11 @@ class PageFields implements Service {
 						'type'          => 'link',
 						'return_format' => 'array',
 						'default_value' => array(
-							'title'  => __( 'Réserver 20 minutes', 'agencecinq' ),
+							'title'  => __( 'Réserver 30 minutes', 'agencecinq' ),
 							'url'    => '',
 							'target' => '',
 						),
-						'instructions'  => __( 'Primary CTA. Default label: Reserve 20 minutes. The diagnostic is never a first click.', 'agencecinq' ),
+						'instructions'  => __( 'Primary CTA. Default label: Reserve 30 minutes. The diagnostic is never a first click.', 'agencecinq' ),
 						'wrapper'       => array(
 							'width' => 6 * 100 / 12,
 						),

@@ -437,7 +437,7 @@ $blocks = array(
 			'heading' => 'h2',
 			'text'    => 'Parce que la simplicité côté code ne dispense pas d’expliquer pourquoi elle existe. Si vous voulez le même soin sur un site entier, CINQ est là.',
 			'link'    => array(
-				'title'  => 'Réserver 20 minutes',
+				'title'  => 'Réserver 30 minutes',
 				'url'    => 'mailto:contact@agencecinq.com',
 				'target' => '',
 			),
