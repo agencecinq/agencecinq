@@ -10,6 +10,7 @@
 namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
 use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
+use AgenceCinq\Plugins\ACF\IncludeFields\CatalogueChoices;
 
 /**
  * Pricing Tiers block layout.
@@ -80,17 +81,76 @@ class PricingTiers {
 					'type'       => 'tab',
 				),
 				array(
-					'key'          => 'field_' . $key . '_pricing_tiers_items',
-					'label'        => __( 'Tiers', 'agencecinq' ),
-					'name'         => 'items',
-					'aria-label'   => __( 'Tiers', 'agencecinq' ),
-					'type'         => 'repeater',
-					'layout'       => 'block',
-					'min'          => 1,
-					'max'          => 3,
-					'button_label' => __( 'Add Tier', 'agencecinq' ),
-					'instructions' => __( 'Three pricing cards in a row. Highlight at most one tier.', 'agencecinq' ),
-					'sub_fields'   => array(
+					'key'           => 'field_' . $key . '_pricing_tiers_source',
+					'label'         => __( 'Source', 'agencecinq' ),
+					'name'          => 'source',
+					'aria-label'    => __( 'Source', 'agencecinq' ),
+					'type'          => 'button_group',
+					'choices'       => array(
+						'catalogue' => __( 'Catalogue', 'agencecinq' ),
+						'manual'    => __( 'Manual', 'agencecinq' ),
+					),
+					'default_value' => 'manual',
+					'return_format' => 'value',
+					'instructions'  => __( 'Catalogue: the tiers, prices and included lines come from Central and follow its changes within the minute. Manual: for an offer outside the catalogue.', 'agencecinq' ),
+				),
+				array(
+					'key'               => 'field_' . $key . '_pricing_tiers_catalogue',
+					'label'             => __( 'Catalogue', 'agencecinq' ),
+					'name'              => 'catalogue',
+					'aria-label'        => __( 'Catalogue', 'agencecinq' ),
+					'type'              => 'group',
+					'layout'            => 'block',
+					'conditional_logic' => self::when_source( $key, 'catalogue' ),
+					'sub_fields'        => array(
+						array(
+							'key'           => 'field_' . $key . '_pricing_tiers_catalogue_platform',
+							'label'         => __( 'Platform', 'agencecinq' ),
+							'name'          => 'platform',
+							'aria-label'    => __( 'Platform', 'agencecinq' ),
+							'type'          => 'select',
+							'choices'       => CatalogueChoices::platforms(),
+							'return_format' => 'value',
+							'instructions'  => __( 'Every published package of the platform, in the order of the catalogue, with its first four included lines.', 'agencecinq' ),
+							'wrapper'       => array( 'width' => 100 / 3 ),
+						),
+						array(
+							'key'           => 'field_' . $key . '_pricing_tiers_catalogue_featured',
+							'label'         => __( 'Featured', 'agencecinq' ),
+							'name'          => 'featured',
+							'aria-label'    => __( 'Featured', 'agencecinq' ),
+							'type'          => 'select',
+							'choices'       => CatalogueChoices::packages(),
+							'allow_null'    => 1,
+							'return_format' => 'value',
+							'instructions'  => __( 'Package to highlight (pistachio border and soft fill).', 'agencecinq' ),
+							'wrapper'       => array( 'width' => 100 / 3 ),
+						),
+						array(
+							'key'          => 'field_' . $key . '_pricing_tiers_catalogue_badge',
+							'label'        => __( 'Badge', 'agencecinq' ),
+							'name'         => 'badge',
+							'aria-label'   => __( 'Badge', 'agencecinq' ),
+							'type'         => 'text',
+							'placeholder'  => __( 'e.g. Most chosen', 'agencecinq' ),
+							'instructions' => __( 'Shown on the featured package.', 'agencecinq' ),
+							'wrapper'      => array( 'width' => 100 / 3 ),
+						),
+					),
+				),
+				array(
+					'key'               => 'field_' . $key . '_pricing_tiers_items',
+					'label'             => __( 'Tiers', 'agencecinq' ),
+					'name'              => 'items',
+					'aria-label'        => __( 'Tiers', 'agencecinq' ),
+					'type'              => 'repeater',
+					'layout'            => 'block',
+					'min'               => 1,
+					'max'               => 3,
+					'button_label'      => __( 'Add Tier', 'agencecinq' ),
+					'instructions'      => __( 'Three pricing cards in a row. Highlight at most one tier.', 'agencecinq' ),
+					'conditional_logic' => self::when_source( $key, 'manual' ),
+					'sub_fields'        => array(
 						array(
 							'key'             => 'field_' . $key . '_pricing_tiers_items_featured',
 							'label'           => __( 'Featured', 'agencecinq' ),
@@ -156,6 +216,25 @@ class PricingTiers {
 					),
 				),
 				...AcfFieldHelpers::settings( $key . '_pricing_tiers' ),
+			),
+		);
+	}
+
+	/**
+	 * Conditional logic: shows a field for one source only.
+	 *
+	 * @param string $key    The field key prefix.
+	 * @param string $source 'catalogue' or 'manual'.
+	 * @return array<int, array<int, array<string, string>>>
+	 */
+	private static function when_source( string $key, string $source ): array {
+		return array(
+			array(
+				array(
+					'field'    => 'field_' . $key . '_pricing_tiers_source',
+					'operator' => '==',
+					'value'    => $source,
+				),
 			),
 		);
 	}

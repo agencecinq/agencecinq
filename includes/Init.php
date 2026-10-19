@@ -61,6 +61,10 @@ class Init {
 			Plugins\ACF\IncludeFields\PostFields::class,
 			Plugins\ACF\IncludeFields\LockContentFields::class,
 			Plugins\ContactForm7\FormTag::class,
+			Plugins\ContactForm7\Estimation::class,
+			// Catalogue.
+			Catalogue\QuoteRequest::class,
+			Catalogue\Central::class,
 			// Yoast.
 			Plugins\WordpressSeo\AdminInit::class,
 			Post\CaseStudy::class,

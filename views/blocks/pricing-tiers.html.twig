@@ -1,11 +1,29 @@
 {#
  # Blocks: Pricing Tiers
- # Title, intro, then up to three pricing cards. One card can be featured.
+ # Title, intro, then the pricing cards. One card can be featured.
+ # Source « catalogue »: every package of a platform, from Central, with its first four included lines.
+ # Source « manual »: up to three cards typed in the block.
  #}
 
 {{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 
-{%- set items = block.items | default([]) | filter(item => item.title or item.price or item.badge or item.features) -%}
+{%- if block.source == 'catalogue' -%}
+	{%- set catalogue = catalogue() -%}
+	{%- set items = [] -%}
+
+	{%- for package in catalogue ? catalogue.packages( block.catalogue.platform ) : [] -%}
+		{%- set featured = package.code == block.catalogue.featured -%}
+		{%- set items = items | merge( [ {
+			title: package.name,
+			price: catalogue.price( package ),
+			features: package.included | slice( 0, 4 ) | map( text => { text: text } ),
+			featured: featured,
+			badge: featured ? block.catalogue.badge : ''
+		} ] ) -%}
+	{%- endfor -%}
+{%- else -%}
+	{%- set items = block.items | default([]) | filter(item => item.title or item.price or item.badge or item.features) -%}
+{%- endif -%}
 
 <section
 	id="{{ block.id }}"
@@ -31,7 +49,18 @@
 		{%- endif -%}
 
 		{%- if items | length -%}
-			<ul class="grid grid-cols-1 items-start gap-y-8 lg:grid-cols-3 lg:gap-x-6">
+			<ul
+				class="{{
+				html_classes(
+					'grid grid-cols-1 items-start gap-y-8 lg:gap-x-6',
+					{
+						'lg:grid-cols-2': items | length == 2,
+						'lg:grid-cols-3': items | length == 3,
+						'lg:grid-cols-4': items | length >= 4
+					}
+				)
+				}}"
+			>
 				{%- for item in items -%}
 					<li
 						class="flex"

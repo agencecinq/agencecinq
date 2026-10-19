@@ -10,6 +10,7 @@
 namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
 use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
+use AgenceCinq\Plugins\ACF\IncludeFields\CatalogueChoices;
 
 /**
  * Subscriptions block layout.
@@ -62,14 +63,15 @@ class Subscriptions {
 							'layout'     => 'block',
 						),
 						array(
-							'key'         => 'field_' . $key . '_subscriptions_content_text',
-							'label'       => __( 'Text', 'agencecinq' ),
-							'name'        => 'text',
-							'aria-label'  => __( 'Text', 'agencecinq' ),
-							'type'        => 'textarea',
-							'rows'        => 4,
-							'new_lines'   => 'br',
-							'placeholder' => __( 'Enter the introductory text of the block', 'agencecinq' ),
+							'key'          => 'field_' . $key . '_subscriptions_content_text',
+							'label'        => __( 'Text', 'agencecinq' ),
+							'name'         => 'text',
+							'aria-label'   => __( 'Text', 'agencecinq' ),
+							'type'         => 'textarea',
+							'rows'         => 4,
+							'new_lines'    => 'br',
+							'placeholder'  => __( 'Enter the introductory text of the block', 'agencecinq' ),
+							'instructions' => __( 'Write {day_rate} for the ad hoc day rate from Central (e.g. 1 200 € HT).', 'agencecinq' ),
 						),
 					),
 				),
@@ -122,17 +124,37 @@ class Subscriptions {
 							'parent_repeater' => 'field_' . $key . '_subscriptions_items',
 						),
 						array(
-							'key'             => 'field_' . $key . '_subscriptions_items_prices',
-							'label'           => __( 'Prices', 'agencecinq' ),
-							'name'            => 'prices',
-							'aria-label'      => __( 'Prices', 'agencecinq' ),
-							'type'            => 'repeater',
-							'layout'          => 'block',
-							'max'             => 3,
-							'button_label'    => __( 'Add Price', 'agencecinq' ),
-							'instructions'    => __( 'Up to three monthly amounts, shown side by side.', 'agencecinq' ),
+							'key'             => 'field_' . $key . '_subscriptions_items_platform',
+							'label'           => __( 'Catalogue', 'agencecinq' ),
+							'name'            => 'platform',
+							'aria-label'      => __( 'Catalogue', 'agencecinq' ),
+							'type'            => 'select',
+							'choices'         => CatalogueChoices::platforms(),
+							'allow_null'      => 1,
+							'return_format'   => 'value',
+							'instructions'    => __( 'Takes the tiers and monthly prices of the platform from Central. Leave empty to type the prices. An empty title takes the name of the range.', 'agencecinq' ),
 							'parent_repeater' => 'field_' . $key . '_subscriptions_items',
-							'sub_fields'      => array(
+						),
+						array(
+							'key'               => 'field_' . $key . '_subscriptions_items_prices',
+							'label'             => __( 'Prices', 'agencecinq' ),
+							'name'              => 'prices',
+							'aria-label'        => __( 'Prices', 'agencecinq' ),
+							'type'              => 'repeater',
+							'layout'            => 'block',
+							'max'               => 3,
+							'button_label'      => __( 'Add Price', 'agencecinq' ),
+							'instructions'      => __( 'Up to three monthly amounts, shown side by side.', 'agencecinq' ),
+							'parent_repeater'   => 'field_' . $key . '_subscriptions_items',
+							'conditional_logic' => array(
+								array(
+									array(
+										'field'    => 'field_' . $key . '_subscriptions_items_platform',
+										'operator' => '==empty',
+									),
+								),
+							),
+							'sub_fields'        => array(
 								array(
 									'key'             => 'field_' . $key . '_subscriptions_items_prices_text',
 									'label'           => __( 'Text', 'agencecinq' ),

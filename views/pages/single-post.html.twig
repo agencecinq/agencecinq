@@ -136,7 +136,7 @@
 		{%- set cta_link = theme.contact.link | default({}) -%}
 		{%- if cta_link.url is defined and cta_link.url -%}
 			{%- set cta_link = cta_link | merge({
-				title: cta_link.title | default(__('Réserver 20 minutes', 'agencecinq'))
+				title: cta_link.title | default(__('Réserver 30 minutes', 'agencecinq'))
 			}) -%}
 		{%- endif -%}
 
@@ -147,7 +147,7 @@
 					block: {
 						id: 'post-closing-cta',
 						content: {
-							title: __('On commence par 20 minutes.', 'agencecinq'),
+							title: __('On commence par 30 minutes.', 'agencecinq'),
 							heading: 'h2',
 							text: __(
 								"On regarde votre site en direct, on vous dit si on est le bon interlocuteur, et on vous donne un ordre de grandeur. Le diagnostic, s'il a du sens, se décide à la fin de l'appel.",
