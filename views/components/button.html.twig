@@ -36,6 +36,7 @@
 		html_classes(
 			classes | default( [] ) | join( ' ' ),
 			'button inline-flex items-center whitespace-nowrap transition-colors duration-300 ease-out',
+			'focus-visible:outline-pistachio focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50',
 			'button--' ~ variant,
 			disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : '',
 			variant == 'primary' ? 'gap-2 rounded-full bg-pistachio px-6 py-3.5 text-cta text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio' : '',

@@ -176,6 +176,7 @@ class Enqueue implements Service {
 			'api_url'                => home_url( 'wp-json' ),
 			'current_url'            => $current_url,
 			'nonce'                  => wp_create_nonce( 'security' ),
+			'rest_nonce'             => wp_create_nonce( 'wp_rest' ),
 			'text_domain'            => get_theme_text_domain(),
 		);
 
