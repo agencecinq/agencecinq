@@ -110,13 +110,19 @@
 		background-repeat: no-repeat;
 	}
 
+	/* Long-form fields and acceptances always take the full row. */
+	.block-form .wpcf7 .wpcf7-form > p > label:has(textarea),
+	.block-form .wpcf7 .wpcf7-form > p > .wpcf7-form-control-wrap:has(.wpcf7-acceptance) {
+		@apply col-span-full;
+	}
+
 	/* Validation / messages */
 	.block-form .wpcf7 .wpcf7-form .wpcf7-not-valid {
 		@apply border-cream;
 	}
 
 	.block-form .wpcf7 .wpcf7-not-valid-tip {
-		@apply text-xs mt-2 block font-sans font-normal tracking-normal text-cream normal-case;
+		@apply text-cream mt-2 block font-sans text-xs font-normal tracking-normal normal-case;
 	}
 
 	.block-form .wpcf7 .wpcf7-response-output {
@@ -134,7 +140,7 @@
 
 	/* Submit (same look as primary button) */
 	.block-form .wpcf7 .wpcf7-submit {
-		@apply bg-pistachio text-cta text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio relative col-span-full inline-flex w-auto items-center justify-center justify-self-start gap-2 rounded-full px-6 py-3.5 whitespace-nowrap transition-colors duration-300 ease-out;
+		@apply bg-pistachio text-cta text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio relative col-span-full inline-flex w-auto items-center justify-center gap-2 justify-self-start rounded-full px-6 py-3.5 whitespace-nowrap transition-colors duration-300 ease-out;
 	}
 
 	.block-form .wpcf7 .wpcf7-submit[disabled] {
@@ -173,5 +179,63 @@
 		input[type="checkbox"]:checked ~ .wpcf7-list-item-label::before {
 			@apply bg-current;
 		}
+	}
+
+	/* Choice groups · <fieldset><legend> around radios */
+	.block-form .wpcf7 .wpcf7-form fieldset {
+		@apply m-0 border-0 p-0;
+	}
+
+	.block-form .wpcf7 .wpcf7-form legend {
+		@apply text-eyebrow text-stone mb-3 p-0;
+	}
+
+	.block-form .wpcf7 .wpcf7-form fieldset > p {
+		@apply m-0;
+	}
+
+	.block-form .wpcf7 .wpcf7-radio {
+		@apply flex flex-wrap gap-x-6 gap-y-3;
+	}
+
+	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item label {
+		@apply text-taupe cursor-pointer flex-row items-start font-sans text-base tracking-normal normal-case;
+	}
+
+	.block-form .wpcf7 .wpcf7-acceptance .wpcf7-list-item label {
+		@apply text-sm;
+	}
+
+	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item-label {
+		@apply gap-3;
+	}
+
+	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item-label::before {
+		@apply border-stone mt-1.25 size-4 transition-colors duration-300 ease-out;
+	}
+
+	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item input[type="radio"] {
+		@apply sr-only;
+	}
+
+	.block-form .wpcf7 .wpcf7-radio .wpcf7-list-item-label::before {
+		@apply rounded-full;
+	}
+
+	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item input:checked ~ .wpcf7-list-item-label::before {
+		@apply border-pistachio bg-pistachio;
+	}
+
+	.block-form .wpcf7 .wpcf7-radio .wpcf7-list-item input:checked ~ .wpcf7-list-item-label::before {
+		@apply shadow-[inset_0_0_0_3px_var(--color-black)];
+	}
+
+	.block-form
+		.wpcf7
+		.wpcf7-form
+		.wpcf7-list-item
+		input:focus-visible
+		~ .wpcf7-list-item-label::before {
+		@apply outline-pistachio outline-2 outline-offset-2;
 	}
 }
