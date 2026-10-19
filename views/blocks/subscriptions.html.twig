@@ -5,7 +5,17 @@
 
 {{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 
-{%- set items = block.items | default([]) | filter(item => item.overline or item.title or item.text or item.prices) -%}
+{%- set catalogue = catalogue() -%}
+{%- set day_rate = catalogue and catalogue.ad_hoc_day_rate() ? catalogue.amount( catalogue.ad_hoc_day_rate() ) ~ '&nbsp;HT' : '' -%}
+
+{#- A plan linked to a platform takes its tiers and monthly prices from Central. -#}
+{%- set items = block.items | default([]) | map( item => item.platform and catalogue ? item | merge( {
+	title: item.title ?: ( catalogue.retainers( item.platform ) | first ).range | default( '' ),
+	prices: catalogue.retainers( item.platform ) | map( retainer => {
+		text: catalogue.retainer_tier( retainer ) ~ ' · ' ~ catalogue.retainer_price( retainer )
+	} )
+} ) : item ) -%}
+{%- set items = items | filter(item => item.overline or item.title or item.text or item.prices) -%}
 
 <section
 	id="{{ block.id }}"
@@ -23,7 +33,7 @@
 
 				{%- if block.content.text -%}
 					<p class="text-base text-taupe max-w-180">
-						{{- block.content.text | raw -}}
+						{{- block.content.text | replace( { '{day_rate}': day_rate } ) | raw -}}
 					</p>
 				{%- endif -%}
 			</header>

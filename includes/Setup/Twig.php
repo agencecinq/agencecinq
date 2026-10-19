@@ -13,6 +13,7 @@ use Twig\Extra\Html\{ HtmlExtension };
 use Twig\Extra\Intl\{ IntlExtension };
 use Twig\{ TwigFunction };
 use AgenceCinq\{ Service, Vite };
+use AgenceCinq\Catalogue\{ Catalogue };
 
 /**
  * Twig
@@ -122,6 +123,16 @@ class Twig implements Service {
 				'asset',
 				function ( $asset ) {
 					return Vite::asset( $asset );
+				}
+			)
+		);
+
+		// Public catalogue served by Central, null when it is unavailable.
+		$twig->addFunction(
+			new TwigFunction(
+				'catalogue',
+				function () {
+					return Catalogue::instance();
 				}
 			)
 		);
