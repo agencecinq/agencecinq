@@ -135,7 +135,7 @@
 
 	--text-label: 0.75rem;
 	--text-label--font-weight: 400;
-	--text-label--line-height: 1.6;
+	--text-label--line-height: calc(19/12);
 	--text-label--letter-spacing: 0.1em;
 
 	--text-cta: 0.8125rem;
@@ -163,6 +163,8 @@
 
 	--animate-marquee-y: marquee-y 25s linear infinite;
 	--animate-marquee-x: marquee-x 50s linear infinite;
+
+	--header-height: 4rem;
 
 	@keyframes marquee-y {
 		to {

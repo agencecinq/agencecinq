@@ -11,15 +11,31 @@
  #}
 
 {%- set catalogue = catalogue() -%}
-{%- set platforms = catalogue ? catalogue.platforms() | filter( platform => catalogue.packages( platform.id ) | length ) : [] -%}
+{%- set platforms = catalogue
+	? catalogue.platforms() | filter(platform => catalogue.packages(platform.id) | length)
+	: []
+-%}
 
 {%- if platforms | length -%}
-	{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id
+			}
+		)
+	-}}
 
-	{%- set platform_ids = platforms | map( platform => platform.id ) -%}
-	{%- set platform = block.catalogue.platform in platform_ids ? block.catalogue.platform : platform_ids | first -%}
-	{%- set package = catalogue.package( platform, block.catalogue.package | default( '' ) ) ?? catalogue.packages( platform ) | first -%}
-	{%- set composition = catalogue.compose( platform, package.code, [] ) -%}
+	{%- set platform_ids = platforms | map(platform => platform.id) -%}
+	{%- set platform = block.catalogue.platform in platform_ids
+		? block.catalogue.platform
+		: platform_ids | first
+	-%}
+	{%- set package = catalogue.package(platform, block.catalogue.package | default(''))
+		?? (catalogue.packages(platform) | first)
+	-%}
+	{%- set composition = catalogue.compose(platform, package.code, []) -%}
 	{%- set firm = composition.total.mode == 'ferme' -%}
 	{%- set labels = {
 		package: 'Socle',
@@ -28,24 +44,37 @@
 		error: 'L’envoi n’a pas abouti. Vérifiez votre connexion, puis réessayez.'
 	} -%}
 
-	{%- set chip_classes = [
-		'border-cream-soft bg-gray text-label text-taupe inline-flex cursor-pointer items-center gap-2.5 rounded-full border px-4.5 py-3 uppercase transition-colors',
-		'hover:text-cream has-checked:border-pistachio has-checked:bg-pistachio-soft has-checked:text-cream',
-		'has-focus-visible:outline-pistachio has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
-		'before:bg-stone before:size-1.75 before:shrink-0 before:rounded-full has-checked:before:bg-pistachio'
-	] | join( ' ' ) -%}
+	{%- set chip_classes =
+		[
+			'border-cream-soft bg-gray text-label text-taupe inline-flex cursor-pointer items-center gap-2.5 rounded-full border px-4.5 py-3 uppercase transition-colors',
+			'hover:text-cream has-checked:border-pistachio has-checked:bg-pistachio-soft has-checked:text-cream',
+			'has-focus-visible:outline-pistachio has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
+			'before:bg-stone before:size-1.75 before:shrink-0 before:rounded-full has-checked:before:bg-pistachio'
+		] | join(' ')
+	-%}
 
 	{%- set steps = [
-		{ id: 'platform', title: block.steps.platform_title },
-		{ id: 'package', title: block.steps.package_title, text: block.steps.package_text },
-		{ id: 'modules', title: block.steps.modules_title, text: block.steps.modules_text }
+		{
+			id: 'platform',
+			title: block.steps.platform_title
+		},
+		{
+			id: 'package',
+			title: block.steps.package_title,
+			text: block.steps.package_text
+		},
+		{
+			id: 'modules',
+			title: block.steps.modules_title,
+			text: block.steps.modules_text
+		}
 	] -%}
 
 	<section id="{{ block.id }}" aria-label="{{ block.result.title }}">
 		<div class="container">
 			<cinq-configurator
 				class="block"
-				data-labels="{{ labels | json_encode | e( 'html_attr' ) }}"
+				data-labels="{{ labels | json_encode | e('html_attr') }}"
 				data-booking="{{ block.result.page }}"
 				data-modal="{{ block.id }}-sent"
 			>
@@ -58,7 +87,9 @@
 						{%- for step in steps -%}
 							<fieldset class="min-w-0">
 								<legend class="float-left w-full">
-									<span class="text-label text-stone block uppercase">Étape {{ '%02d' | format( loop.index ) }}</span>
+									<span class="text-label text-stone block uppercase">
+										Étape {{ '%02d' | format(loop.index) }}
+									</span>
 									<span class="text-title-md text-cream mt-2.5 block">{{- step.title -}}</span>
 								</legend>
 
@@ -80,12 +111,17 @@
 									</div>
 								{%- elseif step.id == 'package' -%}
 									{%- if step.text -%}
-										<p class="text-sm text-taupe clear-left pt-2">{{- step.text -}}</p>
+										<p class="text-taupe clear-left pt-2 text-sm">
+											{{- step.text -}}
+										</p>
 									{%- endif -%}
 
 									<div class="clear-left flex flex-wrap gap-3 pt-5">
 										{%- for item in catalogue.packages() -%}
-											<label class="{{ chip_classes }}" {{ item.category.id != platform ? 'hidden' }}>
+											<label
+												class="{{ chip_classes }}"
+												{{ item.category.id != platform ? 'hidden' }}
+											>
 												<input
 													type="radio"
 													name="socle"
@@ -95,34 +131,46 @@
 													data-platform="{{ item.category.id }}"
 													data-name="{{ item.name }}"
 													data-price="{{ item.priceExclVat }}"
-													data-mode="{{ catalogue.mode( item ) }}"
-													data-label="{{ catalogue.price( item, true ) }}"
-													data-modules="{{ item.moduleIds | join( ',' ) }}"
+													data-mode="{{ catalogue.mode(item) }}"
+													data-label="{{ catalogue.price(item, true) }}"
+													data-modules="{{ item.moduleIds | join(',') }}"
 													{{ item.id == package.id ? 'checked' }}
 												/>
-												<span>{{- item.name }} · {{ catalogue.price( item, true ) -}}</span>
+												<span>{{- item.name }} · {{ catalogue.price(item, true) -}}</span>
 											</label>
 										{%- endfor -%}
 									</div>
-								{%- else -%}
-									{%- set accepted = package.moduleIds | default( [] ) -%}
+								{% else %}
+									{%- set accepted = package.moduleIds | default([]) -%}
 
 									{%- if step.text -%}
 										<p
-											class="text-sm text-taupe clear-left pt-2"
+											class="text-taupe clear-left pt-2 text-sm"
 											data-dom="modules-text"
-											data-template="{{ step.text | e( 'html_attr' ) }}"
+											data-template="{{ step.text | e('html_attr') }}"
 											{{ accepted is empty ? 'hidden' }}
 										>
-											{{- step.text | replace( { '{package}': package.name } ) -}}
+											{{-
+												step.text | replace({
+													'{package}': package.name
+												})
+											-}}
 										</p>
 									{%- endif -%}
 
-									<p class="text-sm text-taupe clear-left pt-2" data-dom="modules-empty" {{ accepted is not empty ? 'hidden' }}>
+									<p
+										class="text-taupe clear-left pt-2 text-sm"
+										data-dom="modules-empty"
+										{{ accepted is not empty ? 'hidden' }}
+									>
 										{{- block.steps.modules_empty -}}
 									</p>
 
-									<div class="clear-left flex flex-wrap gap-3 pt-5" data-dom="modules" {{ accepted is empty ? 'hidden' }}>
+									<div
+										class="clear-left flex flex-wrap gap-3 pt-5"
+										data-dom="modules"
+										{{ accepted is empty ? 'hidden' }}
+									>
 										{%- for item in catalogue.modules() -%}
 											{%- set eligible = item.id in accepted -%}
 											<label class="{{ chip_classes }}" {{ not eligible ? 'hidden' }}>
@@ -135,11 +183,11 @@
 													data-platform="{{ item.category.id }}"
 													data-name="{{ item.name }}"
 													data-price="{{ item.priceExclVat }}"
-													data-mode="{{ catalogue.mode( item ) }}"
-													data-label="{{ catalogue.price( item, true ) }}"
+													data-mode="{{ catalogue.mode(item) }}"
+													data-label="{{ catalogue.price(item, true) }}"
 													{{ not eligible ? 'disabled' }}
 												/>
-												<span>{{- item.name }} · {{ catalogue.price( item, true ) -}}</span>
+												<span>{{- item.name }} · {{ catalogue.price(item, true) -}}</span>
 											</label>
 										{%- endfor -%}
 									</div>
@@ -149,7 +197,7 @@
 					</div>
 
 					<aside
-						class="bg-gray border-pistachio rounded-8 w-full border p-8 lg:w-105 lg:shrink-0"
+						class="bg-gray border-pistachio rounded-8 w-full border p-8 lg:sticky lg:inset-x-0 lg:top-[calc(var(--header-height)+--spacing(20))] lg:w-105 lg:shrink-0"
 						aria-labelledby="{{ block.id }}-result"
 					>
 						<h2 id="{{ block.id }}-result" class="text-eyebrow text-pistachio">
@@ -158,41 +206,61 @@
 
 						<dl class="mt-6" data-dom="lines">
 							<div class="border-cream-faint flex items-center justify-between gap-4 border-t py-3">
-								<dt class="text-sm text-taupe">{{ labels.package }} {{ package.name }}</dt>
-								<dd class="text-label text-cream whitespace-nowrap">{{- catalogue.price( package, true ) -}}</dd>
+								<dt class="text-taupe text-sm">
+									{{ labels.package }} {{ package.name }}
+								</dt>
+								<dd class="text-label text-cream whitespace-nowrap">
+									{{- catalogue.price(package, true) -}}
+								</dd>
 							</div>
 						</dl>
 
 						<template data-dom="line">
 							<div class="border-cream-faint flex items-center justify-between gap-4 border-t py-3">
-								<dt class="text-sm text-taupe"></dt>
+								<dt class="text-taupe text-sm"></dt>
 								<dd class="text-label text-cream whitespace-nowrap"></dd>
 							</div>
 						</template>
 
 						<dl class="border-cream-faint flex items-center justify-between gap-4 border-t py-3">
-							<dt class="text-title-md text-cream">{{- block.result.total_label -}}</dt>
-							<dd class="text-title-lg text-pistachio text-right" data-dom="total" aria-live="polite">
+							<dt class="text-title-md text-cream">
+								{{- block.result.total_label -}}
+							</dt>
+							<dd
+								class="text-title-lg text-pistachio text-right"
+								data-dom="total"
+								aria-live="polite"
+							>
 								{%- if composition.total.mode == 'sur_devis' -%}
 									{{- labels.quote -}}
 								{%- elseif composition.total.mode == 'a_partir_de' -%}
-									{{- labels.from }} {{ catalogue.amount( composition.total.amount ) -}}
-								{%- else -%}
-									{{- catalogue.amount( composition.total.amount ) -}}
+									{{- labels.from }} {{ catalogue.amount(composition.total.amount) -}}
+								{% else %}
+									{{- catalogue.amount(composition.total.amount) -}}
 								{%- endif -%}
 							</dd>
 						</dl>
 
-						{%- set mention_classes = 'text-label text-taupe mt-5 flex items-center gap-2.5 uppercase before:size-1.75 before:shrink-0 before:rounded-full' -%}
+						{%- set mention_classes =
+							'text-label text-taupe mt-5 flex items-center gap-2.5 uppercase before:size-1.75 before:shrink-0 before:rounded-full'
+						-%}
 
 						{%- if block.result.firm_text -%}
-							<p class="{{ mention_classes }} before:bg-pistachio" data-dom="firm" {{ not firm ? 'hidden' }}>
+							<p
+								class="{{ mention_classes }} before:bg-pistachio"
+								data-dom="firm"
+								{{ not firm ? 'hidden' }}
+							>
 								{{- block.result.firm_text -}}
 							</p>
 						{%- endif -%}
 
 						{%- if block.result.open_text -%}
-							<p class="{{ mention_classes }} before:bg-stone" data-dom="open" {{ firm ? 'hidden' }}>
+							<p
+								class="{{ mention_classes }} before:bg-stone"
+								data-dom="open"
+								{{ firm ? 'hidden' }}
+							>
 								{{- block.result.open_text -}}
 							</p>
 						{%- endif -%}
@@ -221,7 +289,9 @@
 									<span
 										class="border-coral mt-[0.2em] flex size-4 shrink-0 items-center justify-center rounded-full border text-[0.625rem] leading-none"
 										aria-hidden="true"
-									>!</span>
+									>
+										!
+									</span>
 									<span>{{- block.result.email_error -}}</span>
 								</p>
 							</div>
@@ -238,8 +308,10 @@
 										{
 											title: block.result.button_label,
 											type: 'submit',
-											classes: [ 'w-full justify-center lg:w-auto' ],
-											attributes: { 'data-dom': 'submit' }
+											classes: ['w-full justify-center lg:w-auto'],
+											attributes: {
+												'data-dom': 'submit'
+											}
 										},
 										with_context = false
 									)
@@ -249,17 +321,22 @@
 							<p class="text-coral text-sm" data-dom="status" role="alert" hidden></p>
 
 							{%- if block.result.privacy -%}
-								<p class="text-xs text-taupe">
+								<p class="text-taupe text-xs">
 									{{- block.result.privacy -}}
 									{%- if privacy_policy_url %}
-										<a href="{{ privacy_policy_url }}" class="text-cream underline underline-offset-2">Politique de confidentialité</a>
+										<a
+											href="{{ privacy_policy_url }}"
+											class="text-cream underline underline-offset-2"
+										>
+											Politique de confidentialité
+										</a>
 									{%- endif -%}
 								</p>
 							{%- endif -%}
 						</div>
 
 						{%- if block.result.notice -%}
-							<p class="text-sm text-taupe mt-5">
+							<p class="text-taupe mt-5 text-sm">
 								{{- block.result.notice | raw -}}
 							</p>
 						{%- endif -%}
