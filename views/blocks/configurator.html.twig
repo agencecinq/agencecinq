@@ -54,7 +54,7 @@
 					action="{{ block.result.page }}"
 					class="flex flex-col gap-14 lg:flex-row lg:items-start"
 				>
-					<div class="min-w-0 flex-1 space-y-12">
+					<div class="min-w-0 flex-1 space-y-12" data-dom="steps">
 						{%- for step in steps -%}
 							<fieldset class="min-w-0">
 								<legend class="float-left w-full">
@@ -151,8 +151,9 @@
 					<aside
 						class="bg-gray border-pistachio rounded-8 w-full border p-8 lg:w-105 lg:shrink-0"
 						aria-labelledby="{{ block.id }}-result"
+						data-dom="result"
 					>
-						<h2 id="{{ block.id }}-result" class="text-eyebrow text-pistachio">
+						<h2 id="{{ block.id }}-result" class="text-eyebrow text-pistachio scroll-mt-24">
 							{{- block.result.title -}}
 						</h2>
 
@@ -265,6 +266,30 @@
 						{%- endif -%}
 					</aside>
 				</form>
+
+				{#- Mobile only: the total stays in view while choosing, until the estimate itself is on screen. Shown by cinq-configurator. -#}
+				{%- if block.result.bar_link -%}
+					<div class="bg-gray border-pistachio fixed inset-x-0 bottom-0 z-4 border-t lg:hidden" data-dom="bar" hidden>
+						<div class="container flex items-center justify-between gap-4 py-3">
+							<p class="flex flex-col gap-1">
+								<span class="text-eyebrow text-stone">{{- block.result.total_label -}}</span>
+								<span class="text-title-md text-pistachio" data-dom="bar-total"></span>
+							</p>
+
+							{{-
+								include(
+									'components/button.html.twig',
+									{
+										title: block.result.bar_link,
+										url: '#' ~ block.id ~ '-result',
+										variant: 'secondary'
+									},
+									with_context = false
+								)
+							-}}
+						</div>
+					</div>
+				{%- endif -%}
 
 				{{-
 					include(

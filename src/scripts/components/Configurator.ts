@@ -62,6 +62,12 @@ class Configurator extends Piece {
 	#submit: HTMLButtonElement | null = null;
 	#status: HTMLElement | null = null;
 	#modal: ModalElement | null = null;
+	#steps: HTMLElement | null = null;
+	#result: HTMLElement | null = null;
+	#bar: HTMLElement | null = null;
+	#barTotal: HTMLElement | null = null;
+	#observer: IntersectionObserver | null = null;
+	#onScreen = new Map<Element, boolean>();
 	#sending = false;
 	#labels: Labels = { package: '', from: '', quote: '', error: '' };
 	#format = new Intl.NumberFormat( 'fr-FR', {
@@ -131,6 +137,19 @@ class Configurator extends Piece {
 		} finally {
 			this.#setSending( false );
 		}
+	};
+
+	/**
+	 * The total bar shows while the steps are on screen and the estimate is not:
+	 * never two totals at once.
+	 */
+	#onIntersect = ( entries: IntersectionObserverEntry[] ): void => {
+		entries.forEach( ( entry ) => this.#onScreen.set( entry.target, entry.isIntersecting ) );
+
+		const choosing = !! this.#steps && !! this.#onScreen.get( this.#steps );
+		const estimateShown = !! this.#result && !! this.#onScreen.get( this.#result );
+
+		this.#bar?.toggleAttribute( 'hidden', ! choosing || estimateShown );
 	};
 
 	#onEmailInput = (): void => {
@@ -309,12 +328,19 @@ class Configurator extends Piece {
 			}
 		}
 
+		const total = {
+			ferme: this.#format.format( amount ),
+			a_partir_de: `${ this.#labels.from } ${ this.#format.format( amount ) }`,
+			sur_devis: this.#labels.quote,
+		}[ mode ];
+
+		// Only the estimate's total is a live region: the bar repeats it silently.
 		if ( this.#total ) {
-			this.#total.textContent = {
-				ferme: this.#format.format( amount ),
-				a_partir_de: `${ this.#labels.from } ${ this.#format.format( amount ) }`,
-				sur_devis: this.#labels.quote,
-			}[ mode ];
+			this.#total.textContent = total;
+		}
+
+		if ( this.#barTotal ) {
+			this.#barTotal.textContent = total;
 		}
 
 		this.#firm?.toggleAttribute( 'hidden', 'ferme' !== mode );
@@ -357,6 +383,16 @@ class Configurator extends Piece {
 		this.#submit = this.#one<HTMLButtonElement>( 'submit' );
 		this.#status = this.#one<HTMLElement>( 'status' );
 		this.#modal = this.dataset.modal ? document.getElementById( this.dataset.modal ) as ModalElement | null : null;
+		this.#steps = this.#one<HTMLElement>( 'steps' );
+		this.#result = this.#one<HTMLElement>( 'result' );
+		this.#bar = this.#one<HTMLElement>( 'bar' );
+		this.#barTotal = this.#one<HTMLElement>( 'bar-total' );
+
+		if ( this.#bar && this.#steps && this.#result ) {
+			this.#observer = new IntersectionObserver( this.#onIntersect );
+			this.#observer.observe( this.#steps );
+			this.#observer.observe( this.#result );
+		}
 
 		try {
 			this.#labels = { ...this.#labels, ...JSON.parse( this.dataset.labels ?? '{}' ) };
@@ -379,6 +415,7 @@ class Configurator extends Piece {
 		this.#form?.removeEventListener( 'submit', this.#onSubmit );
 		this.#email?.removeEventListener( 'input', this.#onEmailInput );
 		document.documentElement.removeEventListener( EVENTS.MODAL_CLOSE, this.#onModalClose );
+		this.#observer?.disconnect();
 
 		this.#form = null;
 		this.#platforms = [];
@@ -398,6 +435,12 @@ class Configurator extends Piece {
 		this.#submit = null;
 		this.#status = null;
 		this.#modal = null;
+		this.#steps = null;
+		this.#result = null;
+		this.#bar = null;
+		this.#barTotal = null;
+		this.#observer = null;
+		this.#onScreen.clear();
 	}
 }
 

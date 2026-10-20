@@ -87,6 +87,13 @@ class Configurator {
 						self::text( $prefix . '_result', 'total_label', __( 'Total label', 'agencecinq' ), 'Total estimé, HT' ),
 						self::text(
 							$prefix . '_result',
+							'bar_link',
+							__( 'Total bar link', 'agencecinq' ),
+							'Voir le détail',
+							__( 'Mobile only: the bar that keeps the total in view while choosing, and links to the estimate.', 'agencecinq' )
+						),
+						self::text(
+							$prefix . '_result',
 							'firm_text',
 							__( 'Firm price mention', 'agencecinq' ),
 							'Prix ferme, périmètre écrit',
