@@ -7,16 +7,19 @@
  # @param array features Repeater rows with a `text` key.
  # @param bool featured Whether this tier is highlighted.
  # @param string badge Optional badge label.
+ # @param bool reserve_badge Keep the badge space without a badge, to line up with sibling tiers.
  #}
 
 {%- set features = features | default([]) | filter(feature => feature.text) -%}
 
 {%- if title or price or badge or (features | length) -%}
+	{#- Without its own badge, pt-18 (p-8 + 1.5rem badge + space-y-4) lines the content up with badged siblings. -#}
 	<article
 		class="{{
 		html_classes(
 			'rounded-8 flex w-full flex-col space-y-3 border p-8',
-			featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black'
+			featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black',
+			reserve_badge and not badge ? 'lg:pt-18'
 		)
 		}}"
 	>
@@ -31,7 +34,9 @@
 				{%- if title or price -%}
 					<div class="space-y-2.5">
 						{%- if title -%}
-							<h3 class="text-title-md text-taupe" itemprop="name">{{- title -}}</h3>
+							<h3 class="text-title-md text-taupe wrap-break-word hyphens-auto" itemprop="name">
+								{{- title -}}
+							</h3>
 						{%- endif -%}
 
 						{%- if price -%}
