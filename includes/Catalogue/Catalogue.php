@@ -330,10 +330,16 @@ class Catalogue {
 	 */
 	private static function label( ?float $amount, string $mode, bool $short ): string {
 		if ( null === $amount || self::QUOTE === $mode ) {
-			return 'Sur devis';
+			return __( 'On quote', 'agencecinq' );
 		}
 
-		$text = self::amount( $amount ) . ( $short ? '' : self::NBSP . 'HT' );
+		$text = $short
+			? self::amount( $amount )
+			: sprintf(
+				/* translators: %s: amount, e.g. « 14 900 € ». */
+				_x( '%s excl. VAT', 'price long label', 'agencecinq' ),
+				self::amount( $amount )
+			);
 
 		if ( self::FROM === $mode ) {
 			return ( $short ? _x( 'From ', 'price short label', 'agencecinq' ) : _x( 'From ', 'price long label', 'agencecinq' ) ) . $text;
