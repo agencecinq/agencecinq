@@ -5,7 +5,15 @@
  # Source « manual »: up to three cards typed in the block.
  #}
 
-{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id,
+		}
+	)
+-}}
 
 {%- if block.source == 'catalogue' -%}
 	{%- set catalogue = catalogue() -%}
@@ -13,16 +21,26 @@
 
 	{%- for package in catalogue ? catalogue.packages( block.catalogue.platform ) : [] -%}
 		{%- set featured = package.code == block.catalogue.featured -%}
-		{%- set items = items | merge( [ {
-			title: package.name,
-			price: catalogue.price( package ),
-			features: package.included | slice( 0, 4 ) | map( text => { text: text } ),
-			featured: featured,
-			badge: featured ? block.catalogue.badge : ''
-		} ] ) -%}
+		{%- set items =
+			items | merge(
+				[
+					{
+						title: package.name,
+						price: catalogue.price( package ),
+						features: package.included | slice( 0, 4 ) | map( text => { text: text } ),
+						featured: featured,
+						badge: featured ? block.catalogue.badge : '',
+					},
+				]
+			)
+		-%}
 	{%- endfor -%}
 {%- else -%}
-	{%- set items = block.items | default([]) | filter(item => item.title or item.price or item.badge or item.features) -%}
+	{%- set items =
+		block.items
+			| default( [] )
+			| filter( item => item.title or item.price or item.badge or item.features )
+	-%}
 {%- endif -%}
 
 <section
@@ -35,13 +53,17 @@
 		{%- if block.content.title or block.content.text -%}
 			<header class="space-y-6">
 				{%- if block.content.title -%}
-					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl max-w-225" itemprop="name">
+					<{{ block.content.heading | default( 'h2' ) }}
+						id="{{ block.id }}-title"
+						class="text-title-xl max-w-225"
+						itemprop="name"
+					>
 						{{- block.content.title -}}
-					</{{ block.content.heading | default('h2') }}>
+					</{{ block.content.heading | default( 'h2' ) }}>
 				{%- endif -%}
 
 				{%- if block.content.text -%}
-					<p class="text-base text-taupe max-w-180" itemprop="description">
+					<p class="text-taupe max-w-180 text-base" itemprop="description">
 						{{- block.content.text | raw -}}
 					</p>
 				{%- endif -%}
@@ -51,23 +73,18 @@
 		{%- if items | length -%}
 			<ul
 				class="{{
-				html_classes(
-					'grid grid-cols-1 items-start gap-y-8 lg:gap-x-6',
-					{
-						'lg:grid-cols-2': items | length == 2,
-						'lg:grid-cols-3': items | length == 3,
-						'lg:grid-cols-4': items | length >= 4
-					}
-				)
+					html_classes(
+						'grid grid-cols-1 items-start gap-y-8 lg:gap-x-6',
+						{
+							'lg:grid-cols-2': ( items | length ) == 2,
+							'lg:grid-cols-3': ( items | length ) == 3,
+							'lg:grid-cols-4': ( items | length ) >= 4,
+						}
+					)
 				}}"
 			>
 				{%- for item in items -%}
-					<li
-						class="flex"
-						itemprop="itemListElement"
-						itemscope
-						itemtype="https://schema.org/Offer"
-					>
+					<li class="flex" itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer">
 						{{-
 							include(
 								'components/pricing-tier.html.twig',
@@ -76,7 +93,7 @@
 									price: item.price,
 									features: item.features,
 									featured: item.featured,
-									badge: item.badge
+									badge: item.badge,
 								},
 								with_context: false
 							)

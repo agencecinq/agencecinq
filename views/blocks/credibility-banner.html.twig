@@ -3,7 +3,7 @@
  # Reassurance strip: three to four short verifiable proofs, separated by rules.
  #}
 
-{%- set items = block.content.items | default([]) | filter(item => item.text) -%}
+{%- set items = block.content.items | default( [] ) | filter( item => item.text ) -%}
 
 {%- if items | length -%}
 	{{-
@@ -11,7 +11,7 @@
 			'blocks/_layout.html.twig',
 			{
 				paddings: block.layout.paddings,
-				id: block.id
+				id: block.id,
 			}
 		)
 	-}}

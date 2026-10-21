@@ -13,13 +13,13 @@
  # {{ include( 'components/drawer.html.twig', { id: 'drawer1', direction: 'from-left', aria_label: 'Menu' } ) }}
 #}
 
-{% set direction = direction | default('') %}
-{% set aria_label = aria_label | default('') %}
+{% set direction = direction | default( '' ) %}
+{% set aria_label = aria_label | default( '' ) %}
 {% set translate =
 	'inset-0 max-w-full group-open:opacity-100 opacity-0 duration-300 ease-out transition-opacity'
 %}
-{% set margin_top = margin_top | default('0rem') %}
-{% set background = background | default('') %}
+{% set margin_top = margin_top | default( '0rem' ) %}
+{% set background = background | default( '' ) %}
 
 {% if direction == 'from-left' %}
 	{% set translate =
@@ -40,9 +40,9 @@
 <cinq-drawer
 	id="{{ id }}"
 	cid="{{ id }}"
-	class="{{ html_classes('group fixed inset-0 z-5 block w-full', classes | default('')) }}"
+	class="{{ html_classes( 'group fixed inset-0 z-5 block w-full', classes | default( '' ) ) }}"
 	style="opacity: 0; visibility: hidden; height: calc(100% - {{ margin_top }}); margin-top: {{
-	margin_top
+		margin_top
 	}};"
 >
 	<div
@@ -54,19 +54,17 @@
 		aria-modal="true"
 		{{ aria_label ? 'aria-label="' ~ aria_label ~ '"' : '' }}
 		class="{{
-		html_classes(
-			'bg-black px-2.5 pt-[4.575rem] pb-2.5 transition-transform duration-300 ease-out',
-			translate,
-			'max-h-full',
-			background,
-			'absolute z-2'
-		)
+			html_classes(
+				'bg-black px-2.5 pt-[4.575rem] pb-2.5 transition-transform duration-300 ease-out',
+				translate,
+				'max-h-full',
+				background,
+				'absolute z-2'
+			)
 		}}"
 	>
 		<div class="scrollbar-hidden h-full overflow-y-auto scroll-smooth">
-			{%- block content -%}
-
-			{%- endblock -%}
+			{%- block content -%}{%- endblock -%}
 		</div>
 	</div>
 </cinq-drawer>

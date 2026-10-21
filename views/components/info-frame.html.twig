@@ -14,10 +14,10 @@
 {%- if icon or label or text or aside_icon or aside or aside_code -%}
 	<aside
 		class="{{
-		html_classes(
-			'border-cream-soft bg-gray flex flex-col gap-4 rounded-15 border p-6 lg:flex-row lg:items-center lg:gap-6',
-			classes | default([]) | join(' ')
-		)
+			html_classes(
+				'border-cream-soft bg-gray rounded-15 flex flex-col gap-4 border p-6 lg:flex-row lg:items-center lg:gap-6',
+				classes | default( [] ) | join( ' ' )
+			)
 		}}"
 	>
 		{%- if icon or label or text -%}
@@ -25,10 +25,10 @@
 				{%- if icon or label -%}
 					<p
 						class="{{
-						html_classes(
-							'text-cream flex shrink-0 items-center gap-2.5 font-mono text-sm',
-							text ? 'sm:border-cream-soft sm:border-e sm:pe-6'
-						)
+							html_classes(
+								'text-cream flex shrink-0 items-center gap-2.5 font-mono text-sm',
+								text ? 'sm:border-cream-soft sm:border-e sm:pe-6'
+							)
 						}}"
 					>
 						{%- if icon -%}
@@ -37,9 +37,9 @@
 									'svg/use.html.twig',
 									{
 										icon: icon,
-										classes: ['size-4.5 shrink-0 fill-none stroke-current text-pistachio']
+										classes: [ 'size-4.5 shrink-0 fill-none stroke-current text-pistachio' ],
 									},
-									with_context = false
+									with_context: false
 								)
 							-}}
 						{%- endif -%}
@@ -51,7 +51,7 @@
 				{%- endif -%}
 
 				{%- if text -%}
-					<p class="text-sm text-taupe min-w-0 flex-1">
+					<p class="text-taupe min-w-0 flex-1 text-sm">
 						{{- text | raw -}}
 					</p>
 				{%- endif -%}
@@ -59,16 +59,16 @@
 		{%- endif -%}
 
 		{%- if aside_icon or aside or aside_code -%}
-			<p class="text-sm text-taupe flex shrink-0 items-center gap-2.5">
+			<p class="text-taupe flex shrink-0 items-center gap-2.5 text-sm">
 				{%- if aside_icon -%}
 					{{-
 						include(
 							'svg/use.html.twig',
 							{
 								icon: aside_icon,
-								classes: ['size-4.5 shrink-0 fill-none stroke-current text-pistachio']
+								classes: [ 'size-4.5 shrink-0 fill-none stroke-current text-pistachio' ],
 							},
-							with_context = false
+							with_context: false
 						)
 					-}}
 				{%- endif -%}
@@ -81,7 +81,7 @@
 						{{- ' ' -}}
 					{%- endif -%}
 					{%- if aside_code -%}
-						<span class="font-mono text-cream">{{- aside_code -}}</span>
+						<span class="text-cream font-mono">{{- aside_code -}}</span>
 					{%- endif -%}
 				</span>
 			</p>

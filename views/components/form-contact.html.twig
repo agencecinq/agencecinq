@@ -4,5 +4,5 @@
  # @param {int} form_id CF7 form post ID.
  #}
 {%- if form_id -%}
-	{{- function('do_shortcode', '[contact-form-7 id="' ~ form_id ~ '"]') | raw -}}
+	{{- function( 'do_shortcode', '[contact-form-7 id="' ~ form_id ~ '"]' ) | raw -}}
 {%- endif -%}

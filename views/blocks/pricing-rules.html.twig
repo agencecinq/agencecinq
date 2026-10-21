@@ -3,30 +3,34 @@
  # Title, three rule columns (bus-system node), then example totals.
  #}
 
-{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id,
+		}
+	)
+-}}
 
-{%- set items = block.items | default([]) | filter(item => item.title or item.text) -%}
-{%- set examples_items = block.examples.items | default([]) | filter(item => item.text) -%}
+{%- set items = block.items | default( [] ) | filter( item => item.title or item.text ) -%}
+{%- set examples_items = block.examples.items | default( [] ) | filter( item => item.text ) -%}
 
-<section
-	id="{{ block.id }}"
-	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
->
+<section id="{{ block.id }}" {{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}>
 	<div class="container space-y-14">
 		{%- if block.content.title -%}
 			<header>
-				<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl">
+				<{{ block.content.heading | default( 'h2' ) }}
+					id="{{ block.id }}-title"
+					class="text-title-xl"
+				>
 					{{- block.content.title -}}
-				</{{ block.content.heading | default('h2') }}>
+				</{{ block.content.heading | default( 'h2' ) }}>
 			</header>
 		{%- endif -%}
 
 		{%- if items | length -%}
-			<ul
-				class="layout-grid gap-y-14"
-				itemscope
-				itemtype="https://schema.org/ItemList"
-			>
+			<ul class="layout-grid gap-y-14" itemscope itemtype="https://schema.org/ItemList">
 				{%- if block.content.title -%}
 					<meta itemprop="name" content="{{ block.content.title }}" />
 				{%- endif -%}
@@ -46,8 +50,8 @@
 								{
 									title: item.title,
 									text: item.text,
-									index: '%02d/%02d' | format(loop.index, items | length),
-									heading: 'h3'
+									index: '%02d/%02d' | format( loop.index, items | length ),
+									heading: 'h3',
 								},
 								with_context: false
 							)
@@ -57,7 +61,7 @@
 			</ul>
 		{%- endif -%}
 
-		{%- if block.examples.title or examples_items | length -%}
+		{%- if block.examples.title or ( examples_items | length ) -%}
 			<aside
 				class="border-pistachio space-y-3 border-l-2 pl-6"
 				{{ block.examples.title ? 'aria-labelledby="' ~ block.id ~ '-examples-title"' }}
@@ -71,9 +75,7 @@
 				{%- if examples_items | length -%}
 					<ul class="space-y-3">
 						{%- for item in examples_items -%}
-							<li class="text-label text-taupe">
-								{{- item.text -}}
-							</li>
+							<li class="text-label text-taupe">{{- item.text -}}</li>
 						{%- endfor -%}
 					</ul>
 				{%- endif -%}

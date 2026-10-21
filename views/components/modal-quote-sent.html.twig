@@ -17,7 +17,9 @@
 		aria-labelledby="{{ id }}-title"
 		class="text-cream backdrop:bg-scrim m-auto max-h-[calc(100dvh---spacing(10))] w-[calc(100vw---spacing(5))] max-w-140 bg-transparent p-0"
 	>
-		<div class="bg-dark-gray border-cream-soft rounded-10 max-h-[inherit] overflow-y-auto border p-6 lg:p-14">
+		<div
+			class="bg-dark-gray border-cream-soft rounded-10 max-h-[inherit] overflow-y-auto border p-6 lg:p-14"
+		>
 			<div class="flex items-center gap-4">
 				{{-
 					include(
@@ -25,9 +27,9 @@
 						{
 							title: modal.eyebrow,
 							tone: 'accent',
-							classes: [ 'flex-1' ]
+							classes: [ 'flex-1' ],
 						},
-						with_context = false
+						with_context: false
 					)
 				-}}
 
@@ -43,14 +45,26 @@
 				</cinq-modal-button>
 			</div>
 
-			<h2 id="{{ id }}-title" class="text-title-lg mt-5 outline-none lg:mt-7" tabindex="-1" data-dom="title">
+			<h2
+				id="{{ id }}-title"
+				class="text-title-lg mt-5 outline-none lg:mt-7"
+				tabindex="-1"
+				data-dom="title"
+			>
 				{{- modal.title -}}
 			</h2>
 
-			<p class="text-base text-taupe mt-3" role="status" data-dom="message" data-template="{{ modal.message | e( 'html_attr' ) }}"></p>
+			<p
+				class="text-taupe mt-3 text-base"
+				role="status"
+				data-dom="message"
+				data-template="{{ modal.message | e( 'html_attr' ) }}"
+			></p>
 
 			{%- if modal.help -%}
-				<p class="text-sm text-taupe mt-2">{{- modal.help -}}</p>
+				<p class="text-taupe mt-2 text-sm">
+					{{- modal.help -}}
+				</p>
 			{%- endif -%}
 
 			<div
@@ -63,9 +77,9 @@
 					'components/eyebrow.html.twig',
 					{
 						title: modal.next_eyebrow,
-						classes: [ 'mt-5 lg:mt-7' ]
+						classes: [ 'mt-5 lg:mt-7' ],
 					},
-					with_context = false
+					with_context: false
 				)
 			-}}
 
@@ -74,7 +88,9 @@
 			{%- endif -%}
 
 			{%- if modal.next_text -%}
-				<p class="text-base text-taupe mt-2">{{- modal.next_text -}}</p>
+				<p class="text-taupe mt-2 text-base">
+					{{- modal.next_text -}}
+				</p>
 			{%- endif -%}
 
 			{%- if modal.button_label -%}
@@ -86,16 +102,18 @@
 								title: modal.button_label,
 								url: '#',
 								classes: [ 'w-full justify-center lg:w-auto' ],
-								attributes: { 'data-dom': 'booking' }
+								attributes: { 'data-dom': 'booking' },
 							},
-							with_context = false
+							with_context: false
 						)
 					-}}
 				</div>
 			{%- endif -%}
 
 			{%- if modal.note -%}
-				<p class="text-sm text-taupe mt-4">{{- modal.note -}}</p>
+				<p class="text-taupe mt-4 text-sm">
+					{{- modal.note -}}
+				</p>
 			{%- endif -%}
 		</div>
 	</dialog>

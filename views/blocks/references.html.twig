@@ -3,7 +3,15 @@
  # First case study is featured; the rest follow in a grid.
  #}
 
-{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id,
+		}
+	)
+-}}
 
 <section
 	id="{{ block.id }}"
@@ -16,23 +24,31 @@
 				{{-
 					include(
 						'components/eyebrow.html.twig',
-						{
-							title: block.content.overline
-						},
+						{ title: block.content.overline },
 						with_context: false
 					)
 				-}}
 
 				{%- if block.content.title -%}
-					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl max-w-180">
+					<{{ block.content.heading | default( 'h2' ) }}
+						id="{{ block.id }}-title"
+						class="text-title-xl max-w-180"
+					>
 						{{- block.content.title -}}
-					</{{ block.content.heading | default('h2') }}>
+					</{{ block.content.heading | default( 'h2' ) }}>
 				{%- endif -%}
 			</header>
 		{%- endif -%}
 
 		{%- if block.items | length -%}
-		{% set posts = get_posts({ post_type: 'case-study', post__in: block.items , orderby: 'post__in', posts_per_page: -1 }) %}
+			{% set posts =
+				get_posts( {
+					post_type: 'case-study',
+					post__in: block.items,
+					orderby: 'post__in',
+					posts_per_page: -1,
+				} )
+			%}
 
 			{%- if block.content.title -%}
 				<meta itemprop="name" content="{{ block.content.title }}" />
@@ -41,18 +57,14 @@
 
 			<div class="space-y-14">
 				{%- if posts[0] -%}
-					<div
-						itemprop="itemListElement"
-						itemscope
-						itemtype="https://schema.org/ListItem"
-					>
+					<div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
 						<meta itemprop="position" content="1" />
 						{{-
 							include(
 								'components/tease-case-study-card.html.twig',
 								{
 									post: posts[0],
-									sizes: '(min-width: 64rem) 80vw, 100vw'
+									sizes: '(min-width: 64rem) 80vw, 100vw',
 								},
 								with_context: false
 							)
@@ -60,21 +72,16 @@
 					</div>
 				{%- endif -%}
 
-			
 				<ul class="grid grid-cols-1 gap-y-8 lg:grid-cols-3 lg:gap-x-6">
 					{%- for item in posts[1:] -%}
-						<li
-							itemprop="itemListElement"
-							itemscope
-							itemtype="https://schema.org/ListItem"
-						>
-							<meta itemprop="position" content="{{ loop.index + (featured ? 1 : 0) }}" />
+						<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+							<meta itemprop="position" content="{{ loop.index + ( featured ? 1 : 0 ) }}" />
 							{{-
 								include(
 									'components/tease-case-study-card.html.twig',
 									{
 										post: item,
-										sizes: '(min-width: 64rem) 25vw, 100vw'
+										sizes: '(min-width: 64rem) 25vw, 100vw',
 									},
 									with_context: false
 								)
@@ -82,7 +89,6 @@
 						</li>
 					{%- endfor -%}
 				</ul>
-				
 			</div>
 		{%- endif -%}
 	</div>

@@ -3,9 +3,21 @@
  # Commercial entry point: title, intro, then up to two offer cards.
  #}
 
-{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id,
+		}
+	)
+-}}
 
-{%- set items = block.items | default([]) | filter(item => item.title or item.price or item.label or item.text or item.link.url) -%}
+{%- set items =
+	block.items
+		| default( [] )
+		| filter( item => item.title or item.price or item.label or item.text or item.link.url )
+-%}
 
 <section
 	id="{{ block.id }}"
@@ -17,13 +29,17 @@
 		{%- if block.content.title or block.content.text -%}
 			<header class="space-y-6">
 				{%- if block.content.title -%}
-					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl" itemprop="name">
+					<{{ block.content.heading | default( 'h2' ) }}
+						id="{{ block.id }}-title"
+						class="text-title-xl"
+						itemprop="name"
+					>
 						{{- block.content.title -}}
-					</{{ block.content.heading | default('h2') }}>
+					</{{ block.content.heading | default( 'h2' ) }}>
 				{%- endif -%}
 
 				{%- if block.content.text -%}
-					<p class="text-base text-taupe max-w-180" itemprop="description">
+					<p class="text-taupe max-w-180 text-base" itemprop="description">
 						{{- block.content.text | raw -}}
 					</p>
 				{%- endif -%}
@@ -33,21 +49,14 @@
 		{%- if items | length -%}
 			<ul class="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:gap-x-6">
 				{%- for item in items -%}
-					<li
-						class="flex"
-						itemprop="itemListElement"
-						itemscope
-						itemtype="https://schema.org/Offer"
-					>
-						<article class="border-cream-soft bg-gray flex flex-col rounded-8 border p-8">
+					<li class="flex" itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer">
+						<article class="border-cream-soft bg-gray rounded-8 flex flex-col border p-8">
 							<div class="space-y-5">
 								<div class="space-y-3">
 									{%- if item.title or item.price -%}
 										<div class="space-y-2.5">
 											{%- if item.title -%}
-												<h3 class="text-title-md text-taupe" itemprop="name">
-													{{- item.title -}}
-												</h3>
+												<h3 class="text-title-md text-taupe" itemprop="name">{{- item.title -}}</h3>
 											{%- endif -%}
 
 											{%- if item.price -%}
@@ -66,7 +75,7 @@
 								</div>
 
 								{%- if item.text -%}
-									<p class="text-sm text-taupe" itemprop="description">
+									<p class="text-taupe text-sm" itemprop="description">
 										{{- item.text | raw -}}
 									</p>
 								{%- endif -%}
@@ -77,10 +86,10 @@
 									{{-
 										include(
 											'components/button.html.twig',
-											item.link | merge({
-													mode: 'dark',
-													attributes: item.link.url ? { itemprop: 'url' } : {},
-												}),
+											item.link | merge( {
+												mode: 'dark',
+												attributes: item.link.url ? { itemprop: 'url' } : {},
+											} ),
 											with_context: false
 										)
 									-}}

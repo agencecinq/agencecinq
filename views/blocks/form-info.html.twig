@@ -8,20 +8,20 @@
 		'blocks/_layout.html.twig',
 		{
 			paddings: block.layout.paddings,
-			id: block.id
+			id: block.id,
 		}
 	)
 -}}
 
-{%- set info = block.info | default({}) -%}
-{%- set locations = info.locations | default([]) | filter(location => location.title) -%}
+{%- set info = block.info | default( {} ) -%}
+{%- set locations = info.locations | default( [] ) | filter( location => location.title ) -%}
 {%- set phone_href = info.phone
 	? 'tel:'
-		~ (info.phone | replace({
+		~ ( info.phone | replace( {
 			' ': '',
 			'.': '',
-			'-': ''
-		}))
+			'-': '',
+		} ) )
 	: ''
 -%}
 {%- set node_rule =
@@ -31,7 +31,7 @@
 <section
 	id="{{ block.id }}"
 	class="block-form"
-	aria-label="{{ __('Contact', 'agencecinq') }}"
+	aria-label="{{ __( 'Contact', 'agencecinq' ) }}"
 	itemscope
 	itemtype="https://schema.org/ContactPage"
 >
@@ -40,10 +40,8 @@
 			{{-
 				include(
 					'components/form-contact.html.twig',
-					{
-						form_id: block.content.form | default(null)
-					},
-					with_context = false
+					{ form_id: block.content.form | default( null ) },
+					with_context: false
 				)
 			-}}
 
@@ -54,7 +52,7 @@
 			{%- endif -%}
 		</div>
 
-		{%- if (locations | length) or info.email or info.phone -%}
+		{%- if ( locations | length ) or info.email or info.phone -%}
 			<aside
 				class="col-span-full space-y-12 lg:col-span-3 lg:col-start-10"
 				itemscope

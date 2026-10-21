@@ -12,40 +12,31 @@
 			<a
 				href="{{- post.link -}}"
 				itemprop="url"
-				class="absolute inset-0 size-full z-2"
-				aria-label="{{ __('Discover: %s', 'agencecinq')|format(post.title) }}"
+				class="absolute inset-0 z-2 size-full"
+				aria-label="{{ __( 'Discover: %s', 'agencecinq' ) | format( post.title ) }}"
 				tabindex="-1"
 			>
-				<span class="sr-only">{{- __('Discover', 'agencecinq') -}}</span>
+				<span class="sr-only">{{- __( 'Discover', 'agencecinq' ) -}}</span>
 			</a>
 			{{-
 				include(
 					'components/image.html.twig',
 					{
 						image: post.thumbnail,
-						classes: ['relative z-1 size-full object-cover object-center'],
-						attributes: {
-							itemprop: 'image'
-						}
+						classes: [ 'relative z-1 size-full object-cover object-center' ],
+						attributes: { itemprop: 'image' },
 					}
 				)
 			-}}
 
-			{%- if (post.categories|length) > 0 -%}
+			{%- if ( post.categories | length ) > 0 -%}
 				<div
 					class="absolute inset-x-0 top-0 z-3 m-2.5 flex flex-wrap justify-end gap-2.5 lg:m-5"
 					role="region"
 					aria-label="Post categories"
 				>
 					{%- for category in post.categories -%}
-						{{-
-							include(
-								'components/tag.html.twig',
-								{
-									title: category.name
-								}
-							)
-						-}}
+						{{- include( 'components/tag.html.twig', { title: category.name } ) -}}
 					{%- endfor -%}
 				</div>
 			{%- endif -%}
@@ -55,18 +46,18 @@
 			<div class="space-y-2.5">
 				{%- if post.reading_time -%}
 					<p class="text-label uppercase">
-						{{- __('%d min de lecture', 'agencecinq') | format(post.reading_time) -}}
+						{{- __( '%d min de lecture', 'agencecinq' ) | format( post.reading_time ) -}}
 						<meta itemprop="timeRequired" content="PT{{ post.reading_time }}M" />
 					</p>
 				{%- endif -%}
 				<h2 class="text-xl lg:min-h-[2lh]" itemprop="headline">{{- post.title -}}</h2>
 				{%- set excerpt =
-					post.excerpt({
+					post.excerpt( {
 						chars: 89,
-						read_more: false
-					})
+						read_more: false,
+					} )
 				-%}
-				{%- if excerpt|trim -%}
+				{%- if excerpt | trim -%}
 					<p class="text-sm" itemprop="description">
 						{{- excerpt -}}
 					</p>
@@ -76,14 +67,17 @@
 				href="{{- post.link -}}"
 				itemprop="url"
 				class="text-cta uppercase underline"
-				aria-label="{{ __('Discover: %s', 'agencecinq')|format(post.title) }}"
+				aria-label="{{ __( 'Discover: %s', 'agencecinq' ) | format( post.title ) }}"
 			>
-				{{- __('Discover', 'agencecinq') -}}
+				{{- __( 'Discover', 'agencecinq' ) -}}
 			</a>
 		</div>
 	</div>
 
-	<meta itemprop="datePublished" content="{{ post.date('c') }}" />
-	<meta itemprop="dateModified" content="{{ post.modified('c') }}" />
-	<meta itemprop="author" content="{{ post.author.name|default('AgenceCinq')|e('html_attr') }}" />
+	<meta itemprop="datePublished" content="{{ post.date( 'c' ) }}" />
+	<meta itemprop="dateModified" content="{{ post.modified( 'c' ) }}" />
+	<meta
+		itemprop="author"
+		content="{{ post.author.name | default( 'AgenceCinq' ) | e( 'html_attr' ) }}"
+	/>
 </article>

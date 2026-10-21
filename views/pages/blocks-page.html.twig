@@ -8,13 +8,6 @@
 
 {%- block content -%}
 	<main id="content" role="main">
-		{{-
-			include(
-				'blocks/blocks.html.twig',
-				{
-					blocks: post.meta('blocks')
-				}
-			)
-		-}}
+		{{- include( 'blocks/blocks.html.twig', { blocks: post.meta( 'blocks' ) } ) -}}
 	</main>
 {%- endblock -%}

@@ -6,16 +6,16 @@
  # @param array classes Optional extra classes.
  #}
 
-{%- set accent = tone | default( 'neutral' ) == 'accent' -%}
+{%- set accent = ( tone | default( 'neutral' ) ) == 'accent' -%}
 
 {%- if title -%}
 	<p
 		class="{{
-		html_classes(
-			'text-eyebrow flex items-center gap-2',
-			accent ? 'text-pistachio' : 'text-taupe',
-			classes | default([]) | join(' ')
-		)
+			html_classes(
+				'text-eyebrow flex items-center gap-2',
+				accent ? 'text-pistachio' : 'text-taupe',
+				classes | default( [] ) | join( ' ' )
+			)
 		}}"
 	>
 		{{-
@@ -23,9 +23,9 @@
 				'svg/use.html.twig',
 				{
 					icon: 'mark',
-					classes: [ accent ? 'text-pistachio' : 'text-stone', 'h-[0.35rem] w-2.5 shrink-0' ]
+					classes: [ accent ? 'text-pistachio' : 'text-stone', 'h-[0.35rem] w-2.5 shrink-0' ],
 				},
-				with_context = false
+				with_context: false
 			)
 		-}}
 		{{- title -}}

@@ -9,12 +9,17 @@
 			'blocks/_layout.html.twig',
 			{
 				paddings: block.layout.paddings,
-				id: block.id
+				id: block.id,
 			}
 		)
 	-}}
 
-	<figure id="{{ block.id }}" class="bg-dark-gray" itemscope itemtype="https://schema.org/Quotation">
+	<figure
+		id="{{ block.id }}"
+		class="bg-dark-gray"
+		itemscope
+		itemtype="https://schema.org/Quotation"
+	>
 		<div class="container flex flex-col items-center">
 			<div class="flex w-full max-w-225 flex-col items-center space-y-8 text-center">
 				<blockquote class="text-title-lg wrap-break-word" itemprop="text">

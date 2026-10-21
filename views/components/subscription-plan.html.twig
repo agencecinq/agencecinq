@@ -9,12 +9,12 @@
  # @param string heading Heading tag for the title. Defaults to h3.
  #}
 
-{%- set heading = heading | default('h3') -%}
-{%- set prices = prices | default([]) | filter(price => price.text) -%}
+{%- set heading = heading | default( 'h3' ) -%}
+{%- set prices = prices | default( [] ) | filter( price => price.text ) -%}
 
-{%- if overline or title or text or (prices | length) -%}
+{%- if overline or title or text or ( prices | length ) -%}
 	<article
-		class="border-cream-soft bg-black flex w-full flex-col rounded-8 border p-8"
+		class="border-cream-soft rounded-8 flex w-full flex-col border bg-black p-8"
 		itemscope
 		itemtype="https://schema.org/Service"
 		itemprop="item"
@@ -38,7 +38,7 @@
 				{%- endif -%}
 
 				{%- if text -%}
-					<p class="text-sm text-taupe" itemprop="description">
+					<p class="text-taupe text-sm" itemprop="description">
 						{{- text | raw -}}
 					</p>
 				{%- endif -%}

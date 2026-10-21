@@ -20,7 +20,15 @@
 	{%- set icon_html = '' -%}
 	{%- if variant == 'quaternary' and icon is not empty -%}
 		{%- set icon_html -%}
-			{{- include( 'svg/use.html.twig', { classes: [ 'size-2.5' ], icon: icon } ) -}}
+			{{-
+				include(
+					'svg/use.html.twig',
+					{
+						classes: [ 'size-2.5' ],
+						icon: icon,
+					}
+				)
+			-}}
 		{%- endset -%}
 	{%- endif -%}
 {%- endif -%}
@@ -29,24 +37,36 @@
 
 {%- if title -%}
 	<{{ url ? 'a' : 'button' }}
-		{{ url ? "href=\"#{url}\"" : "type=\"#{ type | default( 'button' ) }\"" }}
-		{{ url and target ? "target=\"#{target}\"" : '' }}
+		{{ url ? "href=\"#{ url }\"" : "type=\"#{ type | default( 'button' ) }\"" }}
+		{{ url and target ? "target=\"#{ target }\"" : '' }}
 		{{ url and target == '_blank' ? 'rel="noopener noreferrer"' : '' }}
 		class="{{
-		html_classes(
-			classes | default( [] ) | join( ' ' ),
-			'button inline-flex items-center whitespace-nowrap transition-colors duration-300 ease-out',
-			'focus-visible:outline-pistachio focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50',
-			'button--' ~ variant,
-			disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : '',
-			variant == 'primary' ? 'gap-2 rounded-full bg-pistachio px-6 py-3.5 text-cta text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio' : '',
-			variant == 'secondary' ? 'border-b border-stone pb-0.75 text-cta text-cream hover:border-pistachio hover:text-pistachio focus-visible:border-pistachio focus-visible:text-pistachio' : '',
-			variant == 'tertiary' ? 'rounded-full bg-pistachio px-4.5 py-2.5 text-label text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio' : '',
-			variant == 'quaternary' ? 'gap-0.75 text-cta text-cream hover:text-pistachio focus-visible:text-pistachio' : ''
-		)
+			html_classes(
+				classes | default( [] ) | join( ' ' ),
+				'button inline-flex items-center whitespace-nowrap transition-colors duration-300 ease-out',
+				'focus-visible:outline-pistachio focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50',
+				'button--' ~ variant,
+				disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : '',
+				variant == 'primary'
+					? 'bg-pistachio text-cta text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio gap-2 rounded-full px-6 py-3.5'
+					: '',
+				variant == 'secondary'
+					? 'border-stone text-cta text-cream hover:border-pistachio hover:text-pistachio focus-visible:border-pistachio focus-visible:text-pistachio border-b pb-0.75'
+					: '',
+				variant == 'tertiary'
+					? 'bg-pistachio text-label text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio rounded-full px-4.5 py-2.5'
+					: '',
+				variant == 'quaternary'
+					? 'text-cta text-cream hover:text-pistachio focus-visible:text-pistachio gap-0.75'
+					: ''
+			)
 		}}"
 		{{ disabled ? 'disabled' }}
-		{{ attributes ? attributes | map( ( value, key ) => value == '' ? key : "#{key}=\"#{value}\"" ) | join( ' ' ) | raw }}
+		{{ attributes
+			? attributes
+				| map( ( value, key ) => value == '' ? key : "#{ key }=\"#{ value }\"" )
+				| join( ' ' )
+				| raw }}
 	>
 		{%- if icon_html is not empty -%}
 			{{- icon_html -}}

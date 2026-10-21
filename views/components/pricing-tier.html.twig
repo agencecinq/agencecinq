@@ -9,19 +9,19 @@
  # @param string badge Optional badge label.
  #}
 
-{%- set features = features | default([]) | filter(feature => feature.text) -%}
+{%- set features = features | default( [] ) | filter( feature => feature.text ) -%}
 
-{%- if title or price or badge or (features | length) -%}
+{%- if title or price or badge or ( features | length ) -%}
 	<article
 		class="{{
-		html_classes(
-			'rounded-8 flex w-full flex-col space-y-3 border p-8',
-			featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black'
-		)
+			html_classes(
+				'rounded-8 flex w-full flex-col space-y-3 border p-8',
+				featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black'
+			)
 		}}"
 	>
 		{%- if badge or title or price -%}
-			<div class="{{ html_classes(badge ? 'space-y-4') }}">
+			<div class="{{ html_classes( badge ? 'space-y-4' ) }}">
 				{%- if badge -%}
 					<p class="text-badge bg-pistachio text-off-black rounded-3 inline-block px-2 py-1">
 						{{- badge -}}
@@ -49,10 +49,10 @@
 				{%- for feature in features -%}
 					<li
 						class="{{
-						html_classes(
-							'text-taupe flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full',
-							featured ? 'before:bg-pistachio' : 'before:bg-taupe'
-						)
+							html_classes(
+								'text-taupe flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full',
+								featured ? 'before:bg-pistachio' : 'before:bg-taupe'
+							)
 						}}"
 					>
 						{{- feature.text -}}

@@ -7,11 +7,11 @@
  #}
 
 {%- set items =
-	items | default([]) | filter(item => item.title and (item.text | striptags | trim))
+	items | default( [] ) | filter( item => item.title and ( item.text | striptags | trim ) )
 -%}
 
 {%- if items | length -%}
-	<cinq-accordion class="{{ html_classes(classes | default([]) | join(' ')) }}">
+	<cinq-accordion class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}">
 		{%- for item in items -%}
 			{%- set header_id = id ~ '-item-' ~ loop.index -%}
 			{%- set panel_id = id ~ '-panel-' ~ loop.index -%}

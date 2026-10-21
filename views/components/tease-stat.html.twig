@@ -11,10 +11,7 @@
 {%- if title or text -%}
 	<div
 		class="{{
-		html_classes(
-			'group/stat flex flex-col space-y-6',
-			classes | default([]) | join(' ')
-		)
+			html_classes( 'group/stat flex flex-col space-y-6', classes | default( [] ) | join( ' ' ) )
 		}}"
 	>
 		<div

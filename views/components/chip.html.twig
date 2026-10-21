@@ -7,23 +7,41 @@
  # @param array classes Additional CSS classes to apply to the chip. Optional.
  #}
 
-{%- set classes = ( [ 
-    active ? 'is-active', 
-    'border [&.is-active]:bg-pistachio [&.is-active]:border-cream-soft [&.is-active]:text-cream',
-    mode == 'dark' ? 'text-cream bg-black/14 border-cream-soft/0' : 'text-cream border-cream-soft', 
-    '[backdrop-filter:blur(10px)]',
-    'inline-flex items-center [text-box:trim-both cap alphabetic]',
-    'px-2.5', 
-    'py-2.25', 
-    'lg:px-2.75', 
-    'lg:py-[0.609375rem]',
-    'rounded-6', 
-    'text-cta', 
-    'border',
-] | merge( classes | default( [] ) ) ) | join( ' ' ) -%}
+{%- set classes =
+	[
+		active ? 'is-active',
+		'border [&.is-active]:bg-pistachio [&.is-active]:border-cream-soft [&.is-active]:text-cream',
+		mode == 'dark' ? 'text-cream bg-black/14 border-cream-soft/0' : 'text-cream border-cream-soft',
+		'[backdrop-filter:blur(10px)]',
+		'inline-flex items-center [text-box:trim-both cap alphabetic]',
+		'px-2.5',
+		'py-2.25',
+		'lg:px-2.75',
+		'lg:py-[0.609375rem]',
+		'rounded-6',
+		'text-cta',
+		'border',
+	]
+		| merge( classes | default( [] ) )
+		| join( ' ' )
+-%}
 
 {%- if url -%}
-	<a href="{{ url }}" class="{{ classes }}" {{ html_attr( target == '_blank' ? { target: '_blank', rel: 'noopener noreferrer' } : ( target ? { target: target } ), attributes | default( {} ) ) }}>
+	<a
+		href="{{ url }}"
+		class="{{ classes }}"
+		{{
+			html_attr(
+				target == '_blank'
+					? {
+						target: '_blank',
+						rel: 'noopener noreferrer',
+					}
+					: target ? { target: target },
+				attributes | default( {} )
+			)
+		}}
+	>
 		{{- title -}}
 	</a>
 {%- else -%}

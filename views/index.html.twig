@@ -12,7 +12,7 @@
 <html
 	itemscope
 	itemtype="http://schema.org/WebPage"
-	{{ html_class('no-js no-touch antialiased') }}
+	{{ html_class( 'no-js no-touch antialiased' ) }}
 	{{ site.language_attributes }}
 >
 	<head>
@@ -20,21 +20,14 @@
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		{{ function('wp_head') }}
+		{{ function( 'wp_head' ) }}
 	</head>
 
-	<body {{ body_class('text-cream bg-black antialiased') }}>
-		{{- function('wp_body_open ') -}}
+	<body {{ body_class( 'text-cream bg-black antialiased' ) }}>
+		{{- function( 'wp_body_open ' ) -}}
 
 		{%- block header -%}
-			{{-
-				include(
-					'header.html.twig',
-					{
-						classes: ['sticky top-0 z-10']
-					}
-				)
-			-}}
+			{{- include( 'header.html.twig', { classes: [ 'sticky top-0 z-10' ] } ) -}}
 		{%- endblock -%}
 
 		{%- block content -%}
@@ -44,22 +37,22 @@
 						'components/page-hero.html.twig',
 						{
 							id: 'page-hero',
-							overline: post.meta('overline'),
+							overline: post.meta( 'overline' ),
 							title: post.title,
 							text: post.post_excerpt,
-							links: post.meta('links'),
+							links: post.meta( 'links' ),
 							heading: 'h1',
-							classes: ['pt-26', 'pb-20']
+							classes: [ 'pt-26', 'pb-20' ],
 						},
-						with_context = false
+						with_context: false
 					)
 				-}}
 
 				{%- if post.content -%}
-					<section class="py-26" aria-label="{{ __('Page content', 'agencecinq') }}">
+					<section class="py-26" aria-label="{{ __( 'Page content', 'agencecinq' ) }}">
 						<div class="container">
 							<div
-								class="wysiwyg text-base text-taupe max-w-180 [&_a]:text-pistachio [&_h2]:mb-8 [&_h2]:text-title-xl [&_h2]:text-cream [&_h2:not(:first-child)]:mt-10 [&_h3]:mb-4 [&_h3]:text-title-lg [&_h3]:text-cream [&_h3:not(:first-child)]:mt-10 [&_ol]:text-base [&_p]:mb-5 [&_p]:text-base [&_ul]:text-base"
+								class="wysiwyg text-taupe [&_a]:text-pistachio [&_h2]:text-title-xl [&_h2]:text-cream [&_h3]:text-title-lg [&_h3]:text-cream max-w-180 text-base [&_h2]:mb-8 [&_h2:not(:first-child)]:mt-10 [&_h3]:mb-4 [&_h3:not(:first-child)]:mt-10 [&_ol]:text-base [&_p]:mb-5 [&_p]:text-base [&_ul]:text-base"
 							>
 								{{- post.content -}}
 							</div>
@@ -67,27 +60,20 @@
 					</section>
 				{%- endif -%}
 
-				{{-
-					include(
-						'blocks/blocks.html.twig',
-						{
-							blocks: post.meta('blocks')
-						}
-					)
-				-}}
+				{{- include( 'blocks/blocks.html.twig', { blocks: post.meta( 'blocks' ) } ) -}}
 			</main>
 		{%- endblock -%}
 
 		{%- block footer -%}
-			{{- include('footer.html.twig') -}}
+			{{- include( 'footer.html.twig' ) -}}
 		{%- endblock -%}
 
-		{{- function('wp_footer') -}}
+		{{- function( 'wp_footer' ) -}}
 
 		<div id="svg-sprite" style="display: none;">
-			{{- include('public/sprite.svg', ignore_missing = true) -}}
+			{{- include( 'public/sprite.svg', ignore_missing: true ) -}}
 		</div>
 
-		{{- include('components/grid.html.twig') -}}
+		{{- include( 'components/grid.html.twig' ) -}}
 	</body>
 </html>

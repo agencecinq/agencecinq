@@ -9,9 +9,9 @@
  #}
 
 {%- if post and post.link -%}
-	{%- set client = post.client | default(post.title) -%}
-	{%- set platform = post.platform | default('') -%}
-	{%- set text = text | default('') -%}
+	{%- set client = post.client | default( post.title ) -%}
+	{%- set platform = post.platform | default( '' ) -%}
+	{%- set text = text | default( '' ) -%}
 
 	{%- set description = text -%}
 	{%- if platform and text -%}
@@ -20,19 +20,14 @@
 		{%- set description = platform -%}
 	{%- endif -%}
 
-	<article
-		class="h-full"
-		itemscope
-		itemtype="https://schema.org/Article"
-		itemprop="item"
-	>
+	<article class="h-full" itemscope itemtype="https://schema.org/Article" itemprop="item">
 		<a
 			href="{{ post.link }}"
 			class="{{
-			html_classes(
-				'border-cream-soft bg-gray hover:border-pistachio group rounded-8 flex h-full flex-col space-y-2 border p-6 transition-colors',
-				classes | default([]) | join(' ')
-			)
+				html_classes(
+					'border-cream-soft bg-gray hover:border-pistachio group rounded-8 flex h-full flex-col space-y-2 border p-6 transition-colors',
+					classes | default( [] ) | join( ' ' )
+				)
 			}}"
 			itemprop="url"
 		>
@@ -42,7 +37,7 @@
 			</span>
 
 			{%- if description -%}
-				<span class="text-sm text-taupe" itemprop="description">{{- description -}}</span>
+				<span class="text-taupe text-sm" itemprop="description">{{- description -}}</span>
 			{%- endif -%}
 		</a>
 	</article>

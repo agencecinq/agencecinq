@@ -5,19 +5,19 @@
  # @param array items Main menu items (from nav_menus.main.get_items()).
  #}
 
-{% macro cta(link) %}
+{% macro cta( link ) %}
 	{%- if link -%}
 		<div class="mt-auto">
 			{{-
 				include(
 					'components/button.html.twig',
 					link
-						| default({})
-						| merge({
+						| default( {} )
+						| merge( {
 							variant: 'primary',
-							classes: ['w-full justify-center']
-						}),
-					with_context = false
+							classes: [ 'w-full justify-center' ],
+						} ),
+					with_context: false
 				)
 			-}}
 		</div>
@@ -27,7 +27,7 @@
 <div data-dom="main" data-panel="main" class="relative flex min-h-full flex-col space-y-8">
 	{%- if items | length -%}
 		<nav
-			aria-label="{{ __('Mobile navigation', 'agencecinq') }}"
+			aria-label="{{ __( 'Mobile navigation', 'agencecinq' ) }}"
 			class="w-full flex-1 overflow-y-auto"
 		>
 			<ul>
@@ -54,10 +54,8 @@
 								class="text-title-md text-cream block py-4.5"
 								href="{{ item.url }}"
 								itemprop="url"
-								{{
-								item.is_target_blank or item.is_external
-									? 'target="' ~ item.target ~ '" rel="noopener noreferrer"'
-								}}
+								{{ item.is_target_blank or item.is_external
+									? 'target="' ~ item.target ~ '" rel="noopener noreferrer"' }}
 							>
 								<span itemprop="name">{{- item.title -}}</span>
 							</a>
@@ -68,7 +66,7 @@
 		</nav>
 	{%- endif -%}
 
-	{{- _self.cta(theme.contact.link | default(null)) -}}
+	{{- _self.cta( theme.contact.link | default( null ) ) -}}
 </div>
 
 {% for item in items %}
@@ -87,10 +85,10 @@
 					type="button"
 					data-dom="back-to-main"
 					class="text-title-md text-cream flex items-center gap-2.5"
-					aria-label="{{ __('Back to menu', 'agencecinq') }}"
+					aria-label="{{ __( 'Back to menu', 'agencecinq' ) }}"
 				>
 					<span class="text-pistachio text-lg" aria-hidden="true">←</span>
-					{{- __('Back', 'agencecinq') -}}
+					{{- __( 'Back', 'agencecinq' ) -}}
 				</button>
 			</div>
 
@@ -107,10 +105,8 @@
 									href="{{ child.url }}"
 									itemprop="url"
 									class="text-title-md text-cream block py-4.5"
-									{{
-									child.is_target_blank or child.is_external
-										? 'target="' ~ child.target ~ '" rel="noopener noreferrer"'
-									}}
+									{{ child.is_target_blank or child.is_external
+										? 'target="' ~ child.target ~ '" rel="noopener noreferrer"' }}
 								>
 									<span itemprop="name">{{- child.title -}}</span>
 								</a>
@@ -127,13 +123,13 @@
 							href="{{ item.url }}"
 							class="text-title-md text-cream border-cream-faint block border-b py-4.5"
 						>
-							{{- __('See all', 'agencecinq') -}}
+							{{- __( 'See all', 'agencecinq' ) -}}
 						</a>
 					</li>
 				</ul>
 			</nav>
 
-			{{- _self.cta(theme.contact.link | default(null)) -}}
+			{{- _self.cta( theme.contact.link | default( null ) ) -}}
 		</div>
 	{%- endif -%}
 {% endfor %}

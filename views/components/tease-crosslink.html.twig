@@ -10,16 +10,16 @@
  # @param array classes
  #}
 
-{%- set target = target | default('') -%}
+{%- set target = target | default( '' ) -%}
 
 {%- if url and title -%}
 	<a
 		href="{{ url }}"
 		class="{{
-		html_classes(
-			'border-cream-soft bg-gray hover:border-pistachio group rounded-8 flex h-full flex-col space-y-2 border p-6 transition-colors',
-			classes | default([]) | join(' ')
-		)
+			html_classes(
+				'border-cream-soft bg-gray hover:border-pistachio group rounded-8 flex h-full flex-col space-y-2 border p-6 transition-colors',
+				classes | default( [] ) | join( ' ' )
+			)
 		}}"
 		itemprop="url"
 		{{ target ? 'target="' ~ target ~ '"' }}

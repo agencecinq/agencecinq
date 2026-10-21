@@ -4,7 +4,9 @@
  #}
 
 {%- set items =
-	block.content.items | default([]) | filter(item => item.text or item.link.title or item.link.url)
+	block.content.items
+		| default( [] )
+		| filter( item => item.text or item.link.title or item.link.url )
 -%}
 
 {%- if items | length -%}
@@ -13,7 +15,7 @@
 			'blocks/_layout.html.twig',
 			{
 				paddings: block.layout.paddings,
-				id: block.id
+				id: block.id,
 			}
 		)
 	-}}
@@ -22,9 +24,9 @@
 		<div class="container">
 			<ul class="scrollbar-hidden flex items-center justify-center-safe gap-x-6 overflow-x-auto">
 				{%- for item in items -%}
-					{%- set link = item.link | default({}) -%}
-					{%- set url = link.url | default('') -%}
-					{%- set label = item.text | default(link.title) -%}
+					{%- set link = item.link | default( {} ) -%}
+					{%- set url = link.url | default( '' ) -%}
+					{%- set label = item.text | default( link.title ) -%}
 
 					<li
 						class="after:text-stone flex items-center gap-6 after:content-['·'] last:gap-0 last:after:hidden"
