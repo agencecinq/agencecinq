@@ -263,8 +263,8 @@ class Catalogue {
 
 	/**
 	 * Displayed price of a line.
-	 * Long: « 14 900 € HT », « À partir de 6 000 € HT », « Sur devis ».
-	 * Short: « 14 900 € », « Dès 6 000 € », « Sur devis ».
+	 * Long: fixed price excl. VAT « 14 900 € HT », starting price « À partir de 6 000 € HT », on quote « Sur devis ».
+	 * Short: fixed price « 14 900 € », starting price « Dès 6 000 € », on quote « Sur devis ».
 	 *
 	 * @param array<string, mixed> $line  Package or module.
 	 * @param bool                 $short Short form, for chips and lists.
@@ -311,9 +311,13 @@ class Catalogue {
 	 * @return string
 	 */
 	public static function retainer_price( array $retainer ): string {
-		$amount = self::amount( (float) ( $retainer['monthlyPriceExclVat'] ?? 0 ) ) . self::NBSP . 'HT par mois';
+		$amount = sprintf(
+			/* translators: %s: monthly amount, e.g. « 390 € ». */
+			_x( '%s excl. VAT per month', 'retainer price', 'agencecinq' ),
+			self::amount( (float) ( $retainer['monthlyPriceExclVat'] ?? 0 ) )
+		);
 
-		return self::FROM === self::mode( $retainer ) ? 'à partir de ' . $amount : $amount;
+		return self::FROM === self::mode( $retainer ) ? _x( 'From ', 'price long label', 'agencecinq' ) . $amount : $amount;
 	}
 
 	/**
@@ -332,7 +336,7 @@ class Catalogue {
 		$text = self::amount( $amount ) . ( $short ? '' : self::NBSP . 'HT' );
 
 		if ( self::FROM === $mode ) {
-			return ( $short ? 'Dès ' : 'À partir de ' ) . $text;
+			return ( $short ? _x( 'From ', 'price short label', 'agencecinq' ) : _x( 'From ', 'price long label', 'agencecinq' ) ) . $text;
 		}
 
 		return $text;
