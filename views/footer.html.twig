@@ -14,13 +14,17 @@
 	<div class="container space-y-12 lg:space-y-20">
 		<div class="layout-grid gap-y-10">
 			<div class="col-span-full space-y-4 lg:col-span-4">
-				<a href="{{ site.url }}" class="text-cream block h-[1.339375rem] w-18" aria-label="{{ site.name }}">
+				<a
+					href="{{ site.url }}"
+					class="text-cream block h-[1.339375rem] w-18"
+					aria-label="{{ site.name }}"
+				>
 					{{
 						include(
 							'svg/use.html.twig',
 							{
 								icon: 'logo',
-								classes: ['size-full']
+								classes: [ 'size-full' ],
 							}
 						)
 					}}
@@ -45,7 +49,7 @@
 			{%- if nav_menus.footer.get_items() -%}
 				<nav
 					class="col-span-full lg:col-span-8"
-					aria-label="{{ __('Footer navigation', 'agencecinq') }}"
+					aria-label="{{ __( 'Footer navigation', 'agencecinq' ) }}"
 				>
 					<ul class="grid grid-cols-4 gap-4 lg:gap-6">
 						{%- for item in nav_menus.footer.get_items() -%}
@@ -65,10 +69,8 @@
 													href="{{ child.url }}"
 													itemprop="url"
 													class="text-taupe text-sm hover:underline"
-													{{
-													child.is_target_blank or child.is_external
-														? 'target="' ~ child.target ~ '" rel="noopener noreferrer"'
-													}}
+													{{ child.is_target_blank or child.is_external
+														? 'target="' ~ child.target ~ '" rel="noopener noreferrer"' }}
 												>
 													<span itemprop="name">{{- child.title -}}</span>
 												</a>
@@ -80,10 +82,8 @@
 										href="{{ item.url }}"
 										itemprop="url"
 										class=""
-										{{
-										item.is_target_blank or item.is_external
-											? 'target="' ~ item.target ~ '" rel="noopener noreferrer"'
-										}}
+										{{ item.is_target_blank or item.is_external
+											? 'target="' ~ item.target ~ '" rel="noopener noreferrer"' }}
 									>
 										<span itemprop="name">{{- item.title -}}</span>
 									</a>
@@ -102,13 +102,14 @@
 						'svg/use.html.twig',
 						{
 							icon: 'mark',
-							classes: ['w-2.5 h-[0.35rem]']
+							classes: [ 'w-2.5 h-[0.35rem]' ],
 						}
 					)
 				-}}
 
-				{{- '&copy;&nbsp;' ~ ('now' | date('Y')) ~ '&nbsp;' ~ site.name ~ '&nbsp;&middot;&nbsp;' -}}
-				{{- __('Made with care', 'agencecinq') -}}
+				{{- '&copy;&nbsp;' ~ ( 'now' | date( 'Y' ) ) ~ '&nbsp;' ~ site.name
+					~ '&nbsp;&middot;&nbsp;' -}}
+				{{- __( 'Made with care', 'agencecinq' ) -}}
 			</div>
 			{%- if nav_menus.legals.get_items -%}
 				<ul itemscope class="flex gap-5" itemtype="http://schema.org/SiteNavigationElement">
@@ -118,10 +119,8 @@
 								href="{{ item.url }}"
 								class="hover:underline"
 								itemprop="url"
-								{{
-								item.is_target_blank or item.is_external
-									? 'target="' ~ item.target ~ '" rel="noopener noreferer"'
-								}}
+								{{ item.is_target_blank or item.is_external
+									? 'target="' ~ item.target ~ '" rel="noopener noreferer"' }}
 							>
 								{{- item.title -}}
 							</a>

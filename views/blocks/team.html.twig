@@ -8,16 +8,16 @@
 		'blocks/_layout.html.twig',
 		{
 			paddings: block.layout.paddings,
-			id: block.id
+			id: block.id,
 		}
 	)
 -}}
 
 {%- set members =
 	block.members
-		| default(block.content.members)
-		| default([])
-		| filter(member => member.name or member.position or member.image)
+		| default( block.content.members )
+		| default( [] )
+		| filter( member => member.name or member.position or member.image )
 -%}
 
 <section
@@ -32,19 +32,17 @@
 					{{-
 						include(
 							'components/eyebrow.html.twig',
-							{
-								title: block.content.overline
-							},
-							with_context = false
+							{ title: block.content.overline },
+							with_context: false
 						)
 					-}}
 					{%- if block.content.title -%}
 						{{-
-							('<' ~ block.heading ~ ' id="' ~ block.id
-								~ '-title" class="text-title-xl text-balance">') | raw
+							( '<' ~ block.heading ~ ' id="' ~ block.id
+								~ '-title" class="text-title-xl text-balance">' ) | raw
 						-}}
 						{{- block.content.title -}}
-						{{- ('</' ~ block.heading ~ '>') | raw -}}
+						{{- ( '</' ~ block.heading ~ '>' ) | raw -}}
 					{%- endif -%}
 				</div>
 			</header>
@@ -61,9 +59,9 @@
 										'svg/use.html.twig',
 										{
 											icon: 'logo',
-											classes: ['h-16 w-52 ']
+											classes: [ 'h-16 w-52 ' ],
 										},
-										with_context = false
+										with_context: false
 									)
 								-}}
 							</div>
@@ -97,13 +95,11 @@
 											'components/image.html.twig',
 											{
 												image: member.image,
-												classes: ['size-full object-cover object-center'],
+												classes: [ 'size-full object-cover object-center' ],
 												alt: member.name,
-												attributes: {
-													itemprop: 'image'
-												}
+												attributes: { itemprop: 'image' },
 											},
-											with_context = false
+											with_context: false
 										)
 									-}}
 								</div>

@@ -10,9 +10,9 @@
  # @param bool reserve_badge Keep the badge space without a badge, to line up with sibling tiers.
  #}
 
-{%- set features = features | default([]) | filter(feature => feature.text) -%}
+{%- set features = features | default( [] ) | filter( feature => feature.text ) -%}
 
-{%- if title or price or badge or (features | length) -%}
+{%- if title or price or badge or ( features | length ) -%}
 	<article
 		class="{{
 		html_classes(
@@ -23,7 +23,7 @@
 		}}"
 	>
 		{%- if badge or title or price -%}
-			<div class="{{ html_classes(badge ? 'space-y-4') }}">
+			<div class="{{ html_classes( badge ? 'space-y-4' ) }}">
 				{%- if badge -%}
 					<p class="text-badge bg-pistachio text-off-black rounded-3 inline-block px-2 py-1">
 						{{- badge -}}
@@ -53,10 +53,10 @@
 				{%- for feature in features -%}
 					<li
 						class="{{
-						html_classes(
-							'text-taupe flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full',
-							featured ? 'before:bg-pistachio' : 'before:bg-taupe'
-						)
+							html_classes(
+								'text-taupe flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full',
+								featured ? 'before:bg-pistachio' : 'before:bg-taupe'
+							)
 						}}"
 					>
 						{{- feature.text -}}

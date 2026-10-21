@@ -8,26 +8,26 @@
 		'blocks/_layout.html.twig',
 		{
 			paddings: block.layout.paddings,
-			id: block.id
+			id: block.id,
 		}
 	)
 -}}
 
-{%- set items = block.items | default([]) | filter(item => item.link.url and item.link.title) -%}
+{%- set items =
+	block.items | default( [] ) | filter( item => item.link.url and item.link.title )
+-%}
 
 <nav
 	id="{{ block.id }}"
 	class="bg-dark-gray"
-	aria-label="{{ block.content.overline | default(__('Related links', 'agencecinq')) }}"
+	aria-label="{{ block.content.overline | default( __( 'Related links', 'agencecinq' ) ) }}"
 >
 	<div class="container space-y-10">
 		{{-
 			include(
 				'components/eyebrow.html.twig',
-				{
-					title: block.content.overline
-				},
-				with_context = false
+				{ title: block.content.overline },
+				with_context: false
 			)
 		-}}
 
@@ -46,9 +46,9 @@
 									title: item.link.title,
 									url: item.link.url,
 									target: item.link.target,
-									text: item.text
+									text: item.text,
 								},
-								with_context = false
+								with_context: false
 							)
 						-}}
 					</li>

@@ -12,22 +12,22 @@
  # @param array classes
  #}
 
-{%- set link = link | default({}) -%}
-{%- set heading = heading | default('h3') -%}
+{%- set link = link | default( {} ) -%}
+{%- set heading = heading | default( 'h3' ) -%}
 {%- if title or text or link.url -%}
 	<article
 		class="{{
-		html_classes(
-			'group/tease-service relative flex flex-col space-y-5',
-			classes | default([]) | join(' ')
-		)
+			html_classes(
+				'group/tease-service relative flex flex-col space-y-5',
+				classes | default( [] ) | join( ' ' )
+			)
 		}}"
 		itemscope
 		itemtype="https://schema.org/Service"
 		itemprop="item"
 	>
 		<div
-			class="before:bg-cream-soft after:bg-cream after:ring-black group-hover/tease-service:after:bg-pistachio relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px  after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 after:transition-[background-color,transform] after:duration-300 after:ease-out  group-hover/tease-service:after:scale-125"
+			class="before:bg-cream-soft after:bg-cream group-hover/tease-service:after:bg-pistachio relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 after:ring-black after:transition-[background-color,transform] after:duration-300 after:ease-out group-hover/tease-service:after:scale-125"
 			aria-hidden="true"
 		></div>
 
@@ -45,7 +45,7 @@
 			{%- endif -%}
 
 			{%- if text -%}
-				<p class="text-sm text-taupe" itemprop="description">
+				<p class="text-taupe text-sm" itemprop="description">
 					{{- text | raw -}}
 				</p>
 			{%- endif -%}
@@ -54,7 +54,7 @@
 		{%- if link.url and link.title -%}
 			<a
 				href="{{ link.url }}"
-				class="text-cta text-cream inline-flex items-center gap-1.5 hover:text-pistachio"
+				class="text-cta text-cream hover:text-pistachio inline-flex items-center gap-1.5"
 				itemprop="url"
 				{{ link.target ? "target=\"#{ link.target }\"" }}
 				{{ link.target == '_blank' ? 'rel="noopener noreferrer"' }}

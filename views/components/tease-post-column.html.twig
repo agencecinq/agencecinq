@@ -11,23 +11,23 @@
 {%- if post -%}
 	{%- set category =
 		post.categories
-			| default([])
-			| filter(term => term.slug not in ['uncategorized', 'non-classe'])
+			| default( [] )
+			| filter( term => term.slug not in [ 'uncategorized', 'non-classe' ] )
 			| first
 	-%}
 	{%- set excerpt =
-		post.excerpt({
+		post.excerpt( {
 			words: 22,
-			read_more: false
-		})
+			read_more: false,
+		} )
 	-%}
 
 	<article
 		class="{{
-		html_classes(
-			'group/tease-post relative flex flex-col space-y-5',
-			classes | default([]) | join(' ')
-		)
+			html_classes(
+				'group/tease-post relative flex flex-col space-y-5',
+				classes | default( [] ) | join( ' ' )
+			)
 		}}"
 		itemscope
 		itemtype="https://schema.org/BlogPosting"
@@ -40,8 +40,8 @@
 
 		<div class="flex flex-col space-y-3">
 			<p class="text-label text-stone uppercase">
-				<time datetime="{{ post.date('c') }}" itemprop="datePublished">
-					{{- post.date('j F Y') | upper -}}
+				<time datetime="{{ post.date( 'c' ) }}" itemprop="datePublished">
+					{{- post.date( 'j F Y' ) | upper -}}
 				</time>
 				{%- if category -%}
 					<span aria-hidden="true">{{ ' · ' }}</span>
@@ -49,7 +49,7 @@
 				{%- endif -%}
 				{%- if post.reading_time -%}
 					<span aria-hidden="true">{{ ' · ' }}</span>
-					<span>{{- __('%d min de lecture', 'agencecinq') | format(post.reading_time) -}}</span>
+					<span>{{- __( '%d min de lecture', 'agencecinq' ) | format( post.reading_time ) -}}</span>
 					<meta itemprop="timeRequired" content="PT{{ post.reading_time }}M" />
 				{%- endif -%}
 			</p>
@@ -68,23 +68,23 @@
 		</div>
 
 		<p class="text-label text-cream pointer-events-none inline-flex items-center gap-1.5">
-			{{- __('Read the article', 'agencecinq') -}}
+			{{- __( 'Read the article', 'agencecinq' ) -}}
 			{{-
 				include(
 					'svg/use.html.twig',
 					{
 						icon: 'arrow-right',
-						classes: ['size-3']
+						classes: [ 'size-3' ],
 					},
-					with_context = false
+					with_context: false
 				)
 			-}}
 		</p>
 
-		<meta itemprop="dateModified" content="{{ post.modified('c') }}" />
+		<meta itemprop="dateModified" content="{{ post.modified( 'c' ) }}" />
 		<meta
 			itemprop="author"
-			content="{{ post.author.name | default('AgenceCinq') | e('html_attr') }}"
+			content="{{ post.author.name | default( 'AgenceCinq' ) | e( 'html_attr' ) }}"
 		/>
 	</article>
 {%- endif -%}

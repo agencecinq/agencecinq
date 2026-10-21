@@ -17,20 +17,20 @@
  # @param {bool} [autoplay] Whether the video autoplays. Defaults to true.
  #}
 
-{%- set media = media | default({}) -%}
-{%- set video_url = media.video.url | default(null) -%}
-{%- set poster_id = media.poster.ID | default(media.poster.id | default(null)) -%}
-{%- set image = media.image | default(video_url ? poster_id : null) -%}
+{%- set media = media | default( {} ) -%}
+{%- set video_url = media.video.url | default( null ) -%}
+{%- set poster_id = media.poster.ID | default( media.poster.id | default( null ) ) -%}
+{%- set image = media.image | default( video_url ? poster_id : null ) -%}
 {%- set autoplay = autoplay is not defined ? true : autoplay -%}
 
 <figure
 	class="{{
-	html_classes(
-		'border-cream-soft bg-gray rounded-10 relative overflow-hidden border',
-		"before:bg-medium-gray before:block before:h-8 before:w-full before:content-['']",
-		"after:bg-stone after:pointer-events-none after:absolute after:top-4 after:left-3.5 after:z-1 after:size-2.25 after:-translate-y-1/2 after:rounded-full after:shadow-[1rem_0_0_var(--color-stone),2rem_0_0_var(--color-stone)] after:content-['']",
-		classes | default([]) | join(' ')
-	)
+		html_classes(
+			'border-cream-soft bg-gray rounded-10 relative overflow-hidden border',
+			"before:bg-medium-gray before:block before:h-8 before:w-full before:content-['']",
+			"after:bg-stone after:pointer-events-none after:absolute after:top-4 after:left-3.5 after:z-1 after:size-2.25 after:-translate-y-1/2 after:rounded-full after:shadow-[1rem_0_0_var(--color-stone),2rem_0_0_var(--color-stone)] after:content-['']",
+			classes | default( [] ) | join( ' ' )
+		)
 	}}"
 >
 	<div class="bg-dark-gray relative aspect-16/10">
@@ -40,13 +40,15 @@
 					'components/image.html.twig',
 					{
 						image: image,
-						classes: ['size-full object-cover object-top'],
-						loading: loading | default('lazy'),
-						sizes: sizes | default(null),
-						alt: video_url ? '' : (alt ?? null),
-						attributes: (video_url ? {} : attributes | default({})) | merge(fetchpriority | default(false) ? { fetchpriority: fetchpriority } : {})
+						classes: [ 'size-full object-cover object-top' ],
+						loading: loading | default( 'lazy' ),
+						sizes: sizes | default( null ),
+						alt: video_url ? '' : alt ?? null,
+						attributes: ( video_url ? {} : attributes | default( {} ) ) | merge(
+							fetchpriority | default( false ) ? { fetchpriority: fetchpriority } : {}
+						),
 					},
-					with_context = false
+					with_context: false
 				)
 			-}}
 		{%- endif -%}
@@ -55,15 +57,19 @@
 			<video
 				class="absolute inset-0 size-full object-cover object-top"
 				src="{{ video_url }}"
-				{% if not poster_id and media.poster.url | default(null) %}poster="{{ media.poster.url }}"{% endif %}
-				{% if autoplay %}autoplay{% endif %}
 				preload="{{ autoplay ? 'auto' : 'none' }}"
 				muted
 				loop
 				playsinline
-				{% for key, value in attributes | default({}) %}
-					{{ key }}="{{ value }}"
-				{% endfor %}
+				{{
+					html_attr(
+						{
+							poster: poster_id ? null : media.poster.url | default( null ),
+							autoplay: autoplay ? true : false,
+						},
+						attributes | default( {} )
+					)
+				}}
 			></video>
 		{%- endif -%}
 	</div>

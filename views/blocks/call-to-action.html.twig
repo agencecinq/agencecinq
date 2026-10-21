@@ -4,7 +4,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="border-cream-soft pt-31.5 pb-39 border-t lg:pt-42 lg:pb-52"
+	class="border-cream-soft border-t pt-31.5 pb-39 lg:pt-42 lg:pb-52"
 	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 >
 	<div class="container flex flex-col items-center">
@@ -12,13 +12,16 @@
 			{%- if block.content.title or block.content.text -%}
 				<header class="flex flex-col items-center space-y-6">
 					{%- if block.content.title -%}
-						<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xxl text-balance">
+						<{{ block.content.heading | default( 'h2' ) }}
+							id="{{ block.id }}-title"
+							class="text-title-xxl text-balance"
+						>
 							{{- block.content.title -}}
-						</{{ block.content.heading | default('h2') }}>
+						</{{ block.content.heading | default( 'h2' ) }}>
 					{%- endif -%}
 
 					{%- if block.content.text -%}
-						<p class="text-taupe text-lg max-w-140">
+						<p class="text-taupe max-w-140 text-lg">
 							{{- block.content.text | raw -}}
 						</p>
 					{%- endif -%}
@@ -28,8 +31,8 @@
 			{{-
 				include(
 					'components/button.html.twig',
-					block.content.link | default({}) | merge({ variant: 'primary' }),
-					with_context = false
+					block.content.link | default( {} ) | merge( { variant: 'primary' } ),
+					with_context: false
 				)
 			-}}
 		</div>

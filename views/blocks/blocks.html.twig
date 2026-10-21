@@ -20,13 +20,13 @@
 			{%- for block in blocks -%}
 				{{-
 					include(
-						"blocks/#{ block.acf_fc_layout | lower | replace( { '_' : '-' } ) }.html.twig",
+						"blocks/#{ block.acf_fc_layout | lower | replace( { '_': '-' } ) }.html.twig",
 						{
 							block: block,
 							loop: loop.index0,
-							classes: [ 'block-index-' ~ loop.index0 ]
+							classes: [ 'block-index-' ~ loop.index0 ],
 						},
-						ignore_missing = true
+						ignore_missing: true
 					)
 				-}}
 			{%- endfor -%}

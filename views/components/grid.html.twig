@@ -10,11 +10,11 @@
 		{%- for i in 1..12 -%}
 			<div
 				class="{{
-				html_classes(
-					cycle( [ 'bg-pistachio/12', 'bg-pistachio/6' ], loop.index0 ),
-					'relative h-full',
-					loop.index > 2 ? 'max-lg:hidden'
-				)
+					html_classes(
+						cycle( [ 'bg-pistachio/12', 'bg-pistachio/6' ], loop.index0 ),
+						'relative h-full',
+						loop.index > 2 ? 'max-lg:hidden'
+					)
 				}}"
 			>
 				<span class="text-badge text-pistachio/70 absolute inset-x-0 bottom-2 text-center">

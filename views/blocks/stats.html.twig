@@ -3,16 +3,21 @@
  # Optional intro + aside, then four-column figures band.
  #}
 
-{%- set items = block.content.items | default([]) | filter(item => item.title or item.text) -%}
-{%- set has_intro = block.content.overline or block.content.title or block.content.aside_label or block.content.aside_title or block.content.aside_text -%}
+{%- set items = block.content.items | default( [] ) | filter( item => item.title or item.text ) -%}
+{%- set has_intro = block.content.overline
+	or block.content.title
+	or block.content.aside_label
+	or block.content.aside_title
+	or block.content.aside_text
+-%}
 
-{%- if items | length or has_intro -%}
+{%- if ( items | length ) or has_intro -%}
 	{{-
 		include(
 			'blocks/_layout.html.twig',
 			{
 				paddings: block.layout.paddings,
-				id: block.id
+				id: block.id,
 			}
 		)
 	-}}
@@ -36,28 +41,40 @@
 								include(
 									'components/eyebrow.html.twig',
 									{ title: block.content.overline },
-									with_context = false
+									with_context: false
 								)
 							-}}
 
 							{%- if block.content.title -%}
-								<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl">
+								<{{ block.content.heading | default( 'h2' ) }}
+									id="{{ block.id }}-title"
+									class="text-title-xl"
+								>
 									{{- block.content.title -}}
-								</{{ block.content.heading | default('h2') }}>
+								</{{ block.content.heading | default( 'h2' ) }}>
 							{%- endif -%}
 						</header>
 					{%- endif -%}
 
-					{%- if block.content.aside_label or block.content.aside_title or block.content.aside_text -%}
-						<aside class="border-pistachio-soft bg-pistachio-soft w-full max-w-82.5 space-y-2 rounded-15 border p-5.5">
+					{%- if
+						block.content.aside_label or block.content.aside_title or block.content.aside_text -%}
+						<aside
+							class="border-pistachio-soft bg-pistachio-soft rounded-15 w-full max-w-82.5 space-y-2 border p-5.5"
+						>
 							{%- if block.content.aside_label -%}
-								<p class="text-eyebrow text-pistachio uppercase">{{- block.content.aside_label -}}</p>
+								<p class="text-eyebrow text-pistachio uppercase">
+									{{- block.content.aside_label -}}
+								</p>
 							{%- endif -%}
 							{%- if block.content.aside_title -%}
-								<p class="font-mono text-lg text-cream">{{- block.content.aside_title -}}</p>
+								<p class="text-cream font-mono text-lg">
+									{{- block.content.aside_title -}}
+								</p>
 							{%- endif -%}
 							{%- if block.content.aside_text -%}
-								<p class="text-sm text-taupe">{{- block.content.aside_text -}}</p>
+								<p class="text-taupe text-sm">
+									{{- block.content.aside_text -}}
+								</p>
 							{%- endif -%}
 						</aside>
 					{%- endif -%}
@@ -79,9 +96,9 @@
 									'components/tease-stat.html.twig',
 									{
 										title: item.title,
-										text: item.text
+										text: item.text,
 									},
-									with_context = false
+									with_context: false
 								)
 							-}}
 						</li>

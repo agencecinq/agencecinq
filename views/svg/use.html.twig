@@ -11,13 +11,20 @@
  # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  #}
 <svg
-	class="{{ html_classes(
-		icon,
-		classes | default( [] ) | join( ' ' ),
-		( classes | default([]) | filter( class => class starts with 'fill-') | length ) == 0 ? 'fill-current'
-	) }}"
+	class="{{
+		html_classes(
+			icon,
+			classes | default( [] ) | join( ' ' ),
+			( classes | default( [] ) | filter( class => class starts with 'fill-' ) | length ) == 0
+				? 'fill-current'
+		)
+	}}"
 	{{ id is defined ? "id=\"#{ id }\"" }}
-	{{ attributes ? attributes | map( ( value, key ) => value == '' ? key : "#{key}=\"#{value}\"" ) | join( ' ' )  | raw }}
+	{{ attributes
+		? attributes
+			| map( ( value, key ) => value == '' ? key : "#{ key }=\"#{ value }\"" )
+			| join( ' ' )
+			| raw }}
 >
 	<use xlink:href="#{{ icon }}" href="#{{ icon }}"></use>
 </svg>

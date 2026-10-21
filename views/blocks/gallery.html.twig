@@ -3,9 +3,17 @@
  # Section intro + image gallery.
  #}
 
-{{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
+{{-
+	include(
+		'blocks/_layout.html.twig',
+		{
+			paddings: block.layout.paddings,
+			id: block.id,
+		}
+	)
+-}}
 
-{%- set images = block.gallery | default([]) -%}
+{%- set images = block.gallery | default( [] ) -%}
 
 <section
 	id="{{ block.id }}"
@@ -19,18 +27,21 @@
 					include(
 						'components/eyebrow.html.twig',
 						{ title: block.content.overline },
-						with_context = false
+						with_context: false
 					)
 				-}}
 
 				{%- if block.content.title -%}
-					<{{ block.content.heading | default('h2') }} id="{{ block.id }}-title" class="text-title-xl">
+					<{{ block.content.heading | default( 'h2' ) }}
+						id="{{ block.id }}-title"
+						class="text-title-xl"
+					>
 						{{- block.content.title -}}
-					</{{ block.content.heading | default('h2') }}>
+					</{{ block.content.heading | default( 'h2' ) }}>
 				{%- endif -%}
 
 				{%- if block.content.text -%}
-					<p class="text-lg text-taupe max-w-175">
+					<p class="text-taupe max-w-175 text-lg">
 						{{- block.content.text | raw -}}
 					</p>
 				{%- endif -%}
@@ -40,16 +51,16 @@
 		{%- if images | length -%}
 			<ul class="grid grid-cols-1 gap-5 lg:grid-cols-3">
 				{%- for image in images -%}
-					<li class="overflow-hidden rounded-15">
+					<li class="rounded-15 overflow-hidden">
 						{{-
 							include(
 								'components/image.html.twig',
 								{
 									image: image,
-									classes: ['size-full'],
-									sizes: '(min-width: 64rem) 30vw, 100vw'
+									classes: [ 'size-full' ],
+									sizes: '(min-width: 64rem) 30vw, 100vw',
 								},
-								with_context = false
+								with_context: false
 							)
 						-}}
 					</li>

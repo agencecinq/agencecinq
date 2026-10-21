@@ -7,10 +7,10 @@
 <header
 	role="banner"
 	class="{{
-	html_classes(
-		'text-label border-cream/11 border-b bg-black py-[0.78125rem] lg:py-0',
-		classes | default([]) | join(' ')
-	)
+		html_classes(
+			'text-label border-cream/11 border-b bg-black py-[0.78125rem] lg:py-0',
+			classes | default( [] ) | join( ' ' )
+		)
 	}}"
 >
 	<div class="container flex items-center gap-4 lg:gap-6">
@@ -21,7 +21,7 @@
 						'svg/use.html.twig',
 						{
 							icon: 'logo',
-							classes: ['size-full']
+							classes: [ 'size-full' ],
 						}
 					)
 				-}}
@@ -30,7 +30,7 @@
 		</div>
 
 		{%- if nav_menus.main.get_items -%}
-			<nav aria-label="{{ __('Main navigation', 'agencecinq') }}" class="hidden flex-1 lg:block">
+			<nav aria-label="{{ __( 'Main navigation', 'agencecinq' ) }}" class="hidden flex-1 lg:block">
 				<ul class="flex">
 					{% for item in nav_menus.main.get_items() %}
 						<li
@@ -42,22 +42,20 @@
 								href="{{ item.url }}"
 								itemprop="url"
 								class="{{
-								html_classes(
-									'px-4 pt-[1.40625rem] pb-[1.34375rem]',
-									item.current
-										or 'current-menu-parent' in item.classes
-										or 'current-page-ancestor' in item.classes
-										? 'text-pistachio'
-										: '',
-									item.classes | default([]) | join(' '),
-									'hover:text-pistachio group-hover:text-pistachio text-cream/65 focus:text-pistachio group-focus-within:text-pistachio block'
-								)
+									html_classes(
+										'px-4 pt-[1.40625rem] pb-[1.34375rem]',
+										item.current
+											or 'current-menu-parent' in item.classes
+											or 'current-page-ancestor' in item.classes
+											? 'text-pistachio'
+											: '',
+										item.classes | default( [] ) | join( ' ' ),
+										'hover:text-pistachio group-hover:text-pistachio text-cream/65 focus:text-pistachio group-focus-within:text-pistachio block'
+									)
 								}}"
 								{{ item.children | length ? 'aria-haspopup="true"' }}
-								{{
-								item.is_target_blank or item.is_external
-									? 'target="' ~ item.target ~ '" rel="noopener noreferrer"'
-								}}
+								{{ item.is_target_blank or item.is_external
+									? 'target="' ~ item.target ~ '" rel="noopener noreferrer"' }}
 							>
 								<span itemprop="name">{{- item.title -}}</span>
 							</a>
@@ -72,10 +70,8 @@
 												href="{{ child.url }}"
 												itemprop="url"
 												class="text-cream hover:text-pistachio focus:text-pistachio font-sans text-base transition-colors"
-												{{
-												child.is_target_blank or child.is_external
-													? 'target="' ~ child.target ~ '" rel="noopener noreferrer"'
-												}}
+												{{ child.is_target_blank or child.is_external
+													? 'target="' ~ child.target ~ '" rel="noopener noreferrer"' }}
 											>
 												<span itemprop="name">{{- child.title -}}</span>
 											</a>
@@ -93,12 +89,8 @@
 			{{-
 				include(
 					'components/button.html.twig',
-					theme.contact.link
-						| default({})
-						| merge({
-							variant: 'tertiary'
-						}),
-					with_context = false
+					theme.contact.link | default( {} ) | merge( { variant: 'tertiary' } ),
+					with_context: false
 				)
 			-}}
 		</div>
@@ -109,8 +101,8 @@
 					include(
 						'svg/use.html.twig',
 						{
-							classes: ['size-5', 'block group-aria-expanded/drawer-button:hidden'],
-							icon: 'bars'
+							classes: [ 'size-5', 'block group-aria-expanded/drawer-button:hidden' ],
+							icon: 'bars',
 						}
 					)
 				-}}
@@ -118,8 +110,8 @@
 					include(
 						'svg/use.html.twig',
 						{
-							classes: ['size-5', 'hidden group-aria-expanded/drawer-button:block'],
-							icon: 'times'
+							classes: [ 'size-5', 'hidden group-aria-expanded/drawer-button:block' ],
+							icon: 'times',
 						}
 					)
 				-}}
@@ -129,14 +121,12 @@
 					'components/button.html.twig',
 					{
 						icon_html: icon_html,
-						attributes: {
-							'aria-controls': 'menu-drawer'
-						},
-						title: '<span class="sr-only">' ~ __('Menu', 'agencecinq') ~ '</span>',
-						classes: ['group/drawer-button'],
-						variant: 'quaternary'
+						attributes: { 'aria-controls': 'menu-drawer' },
+						title: '<span class="sr-only">' ~ __( 'Menu', 'agencecinq' ) ~ '</span>',
+						classes: [ 'group/drawer-button' ],
+						variant: 'quaternary',
 					},
-					with_context = false
+					with_context: false
 				)
 			-}}
 		</cinq-drawer-button>
@@ -147,7 +137,7 @@
 	with {
 		id: 'menu-drawer',
 		classes: [],
-		aria_label: __('Menu', 'agencecinq')
+		aria_label: __( 'Menu', 'agencecinq' ),
 	}
 %}
 	{% block content %}
@@ -155,9 +145,7 @@
 			{{-
 				include(
 					'components/mobile-menu.html.twig',
-					{
-						items: nav_menus.main is defined ? nav_menus.main.get_items() | default([]) : []
-					}
+					{ items: nav_menus.main is defined ? nav_menus.main.get_items() | default( [] ) : [] }
 				)
 			-}}
 		</cinq-mobile-menu>

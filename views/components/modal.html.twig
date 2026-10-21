@@ -1,22 +1,35 @@
-<cinq-modal class="{{ html_classes( 'block', classes | default( [] ) | join( ' ' ) ) }}" id="{{ id }}">
-	<dialog role="dialog" class="scrollbar-hidden m-auto w-full max-w-[calc(100vw---spacing(5))] pt-[1.09375rem] lg:px-[1.09375rem] bg-transparent backdrop:bg-black/50 lg:w-114.75" aria-labelledby="">
-
-        <cinq-modal-button class="absolute w-fit top-0 z-2 left-0 lg:left-auto mx-auto lg:mx-0 right-0 block">
-            <button aria-controls="{{ id }}" type="button" class="size-8.75 flex  items-center justify-center rounded-full bg-pistachio">
-                {{-
-                    include(
-                        'svg/use.html.twig',
-                        {
-                            icon: 'times',
-                            classes: ['size-8.75 pointer-events-none']
-                        },
-                        with_context: false
-                    )
-                -}}
-            </button>
+<cinq-modal
+	class="{{ html_classes( 'block', classes | default( [] ) | join( ' ' ) ) }}"
+	id="{{ id }}"
+>
+	<dialog
+		role="dialog"
+		class="scrollbar-hidden m-auto w-full max-w-[calc(100vw---spacing(5))] bg-transparent pt-[1.09375rem] backdrop:bg-black/50 lg:w-114.75 lg:px-[1.09375rem]"
+		aria-labelledby=""
+	>
+		<cinq-modal-button
+			class="absolute top-0 right-0 left-0 z-2 mx-auto block w-fit lg:left-auto lg:mx-0"
+		>
+			<button
+				aria-controls="{{ id }}"
+				type="button"
+				class="bg-pistachio flex size-8.75 items-center justify-center rounded-full"
+			>
+				{{-
+					include(
+						'svg/use.html.twig',
+						{
+							icon: 'times',
+							classes: [ 'size-8.75 pointer-events-none' ],
+						},
+						with_context: false
+					)
+				-}}
+			</button>
 		</cinq-modal-button>
 
-		<div class="p-7.5 bg-black relative z-1 rounded-15"> {% block content %}{% endblock %}
-			</div>
-		</dialog>
-	</cinq-modal>
+		<div class="rounded-15 relative z-1 bg-black p-7.5">
+			{% block content %}{% endblock %}
+		</div>
+	</dialog>
+</cinq-modal>

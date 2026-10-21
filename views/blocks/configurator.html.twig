@@ -12,7 +12,7 @@
 
 {%- set catalogue = catalogue() -%}
 {%- set platforms = catalogue
-	? catalogue.platforms() | filter(platform => catalogue.packages(platform.id) | length)
+	? catalogue.platforms() | filter( platform => catalogue.packages( platform.id ) | length )
 	: []
 -%}
 
@@ -22,26 +22,26 @@
 			'blocks/_layout.html.twig',
 			{
 				paddings: block.layout.paddings,
-				id: block.id
+				id: block.id,
 			}
 		)
 	-}}
 
-	{%- set platform_ids = platforms | map(platform => platform.id) -%}
+	{%- set platform_ids = platforms | map( platform => platform.id ) -%}
 	{%- set platform = block.catalogue.platform in platform_ids
 		? block.catalogue.platform
 		: platform_ids | first
 	-%}
-	{%- set package = catalogue.package(platform, block.catalogue.package | default(''))
-		?? (catalogue.packages(platform) | first)
+	{%- set package = catalogue.package( platform, block.catalogue.package | default( '' ) )
+		?? ( catalogue.packages( platform ) | first )
 	-%}
-	{%- set composition = catalogue.compose(platform, package.code, []) -%}
+	{%- set composition = catalogue.compose( platform, package.code, [] ) -%}
 	{%- set firm = composition.total.mode == 'ferme' -%}
 	{%- set labels = {
 		package: 'Socle',
 		from: 'À partir de',
 		quote: 'Sur devis',
-		error: 'L’envoi n’a pas abouti. Vérifiez votre connexion, puis réessayez.'
+		error: 'L’envoi n’a pas abouti. Vérifiez votre connexion, puis réessayez.',
 	} -%}
 
 	{%- set chip_classes =
@@ -49,32 +49,32 @@
 			'border-cream-soft bg-gray text-label text-taupe inline-flex cursor-pointer items-center gap-2.5 rounded-full border px-4.5 py-3 uppercase transition-colors',
 			'hover:text-cream has-checked:border-pistachio has-checked:bg-pistachio-soft has-checked:text-cream',
 			'has-focus-visible:outline-pistachio has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
-			'before:bg-stone before:size-1.75 before:shrink-0 before:rounded-full has-checked:before:bg-pistachio'
-		] | join(' ')
+			'before:bg-stone before:size-1.75 before:shrink-0 before:rounded-full has-checked:before:bg-pistachio',
+		] | join( ' ' )
 	-%}
 
 	{%- set steps = [
 		{
 			id: 'platform',
-			title: block.steps.platform_title
+			title: block.steps.platform_title,
 		},
 		{
 			id: 'package',
 			title: block.steps.package_title,
-			text: block.steps.package_text
+			text: block.steps.package_text,
 		},
 		{
 			id: 'modules',
 			title: block.steps.modules_title,
-			text: block.steps.modules_text
-		}
+			text: block.steps.modules_text,
+		},
 	] -%}
 
 	<section id="{{ block.id }}" aria-label="{{ block.result.title }}">
 		<div class="container">
 			<cinq-configurator
 				class="block"
-				data-labels="{{ labels | json_encode | e('html_attr') }}"
+				data-labels="{{ labels | json_encode | e( 'html_attr' ) }}"
 				data-booking="{{ block.result.page }}"
 				data-modal="{{ block.id }}-sent"
 			>
@@ -88,7 +88,7 @@
 							<fieldset class="min-w-0">
 								<legend class="float-left w-full">
 									<span class="text-label text-stone block uppercase">
-										Étape {{ '%02d' | format(loop.index) }}
+										Étape {{ '%02d' | format( loop.index ) }}
 									</span>
 									<span class="text-title-md text-cream mt-2.5 block">{{- step.title -}}</span>
 								</legend>
@@ -131,30 +131,26 @@
 													data-platform="{{ item.category.id }}"
 													data-name="{{ item.name }}"
 													data-price="{{ item.priceExclVat }}"
-													data-mode="{{ catalogue.mode(item) }}"
-													data-label="{{ catalogue.price(item, true) }}"
-													data-modules="{{ item.moduleIds | join(',') }}"
+													data-mode="{{ catalogue.mode( item ) }}"
+													data-label="{{ catalogue.price( item, true ) }}"
+													data-modules="{{ item.moduleIds | join( ',' ) }}"
 													{{ item.id == package.id ? 'checked' }}
 												/>
-												<span>{{- item.name }} · {{ catalogue.price(item, true) -}}</span>
+												<span>{{- item.name }} · {{ catalogue.price( item, true ) -}}</span>
 											</label>
 										{%- endfor -%}
 									</div>
 								{% else %}
-									{%- set accepted = package.moduleIds | default([]) -%}
+									{%- set accepted = package.moduleIds | default( [] ) -%}
 
 									{%- if step.text -%}
 										<p
 											class="text-taupe clear-left pt-2 text-sm"
 											data-dom="modules-text"
-											data-template="{{ step.text | e('html_attr') }}"
+											data-template="{{ step.text | e( 'html_attr' ) }}"
 											{{ accepted is empty ? 'hidden' }}
 										>
-											{{-
-												step.text | replace({
-													'{package}': package.name
-												})
-											-}}
+											{{- step.text | replace( { '{package}': package.name } ) -}}
 										</p>
 									{%- endif -%}
 
@@ -183,11 +179,11 @@
 													data-platform="{{ item.category.id }}"
 													data-name="{{ item.name }}"
 													data-price="{{ item.priceExclVat }}"
-													data-mode="{{ catalogue.mode(item) }}"
-													data-label="{{ catalogue.price(item, true) }}"
+													data-mode="{{ catalogue.mode( item ) }}"
+													data-label="{{ catalogue.price( item, true ) }}"
 													{{ not eligible ? 'disabled' }}
 												/>
-												<span>{{- item.name }} · {{ catalogue.price(item, true) -}}</span>
+												<span>{{- item.name }} · {{ catalogue.price( item, true ) -}}</span>
 											</label>
 										{%- endfor -%}
 									</div>
@@ -210,7 +206,7 @@
 									{{ labels.package }} {{ package.name }}
 								</dt>
 								<dd class="text-label text-cream whitespace-nowrap">
-									{{- catalogue.price(package, true) -}}
+									{{- catalogue.price( package, true ) -}}
 								</dd>
 							</div>
 						</dl>
@@ -234,9 +230,9 @@
 								{%- if composition.total.mode == 'sur_devis' -%}
 									{{- labels.quote -}}
 								{%- elseif composition.total.mode == 'a_partir_de' -%}
-									{{- labels.from }} {{ catalogue.amount(composition.total.amount) -}}
+									{{- labels.from }} {{ catalogue.amount( composition.total.amount ) -}}
 								{% else %}
-									{{- catalogue.amount(composition.total.amount) -}}
+									{{- catalogue.amount( composition.total.amount ) -}}
 								{%- endif -%}
 							</dd>
 						</dl>
@@ -308,12 +304,10 @@
 										{
 											title: block.result.button_label,
 											type: 'submit',
-											classes: ['w-full justify-center lg:w-auto'],
-											attributes: {
-												'data-dom': 'submit'
-											}
+											classes: [ 'w-full justify-center lg:w-auto' ],
+											attributes: { 'data-dom': 'submit' },
 										},
-										with_context = false
+										with_context: false
 									)
 								-}}
 							{%- endif -%}
@@ -348,9 +342,9 @@
 						'components/modal-quote-sent.html.twig',
 						{
 							id: block.id ~ '-sent',
-							modal: block.modal
+							modal: block.modal,
 						},
-						with_context = false
+						with_context: false
 					)
 				-}}
 			</cinq-configurator>

@@ -14,13 +14,13 @@
  #}
 
 {%- set title_id = id ? id ~ '-title' : 'page-title' -%}
-{%- set link_items = links is iterable ? links | filter(link => link.title) : [] -%}
-{%- set meta_items = meta is iterable ? meta | filter(item => item.text) : [] -%}
+{%- set link_items = links is iterable ? links | filter( link => link.title ) : [] -%}
+{%- set meta_items = meta is iterable ? meta | filter( item => item.text ) : [] -%}
 
-{%- if overline or title or text or link_items | length or image -%}
+{%- if overline or title or text or ( link_items | length ) or image -%}
 	<section
-		id="{{ id | default('page-hero') }}"
-		class="{{ html_classes(classes | default([]) | join(' ')) }}"
+		id="{{ id | default( 'page-hero' ) }}"
+		class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}"
 		{{ title ? 'aria-labelledby="' ~ title_id ~ '"' }}
 	>
 		<div class="layout-grid container items-center gap-y-12">
@@ -36,9 +36,9 @@
 								{%- endif -%}
 
 								{%- if title -%}
-									<{{ heading | default('h1') }} id="{{ title_id }}" class="text-title-xxl">
+									<{{ heading | default( 'h1' ) }} id="{{ title_id }}" class="text-title-xxl">
 										{{- title -}}
-									</{{ heading | default('h1') }}>
+									</{{ heading | default( 'h1' ) }}>
 								{%- endif -%}
 							</header>
 						{%- endif -%}
@@ -51,7 +51,7 @@
 					</div>
 				{%- endif -%}
 
-				{%- if link_items | length or meta_items | length -%}
+				{%- if ( link_items | length ) or ( meta_items | length ) -%}
 					<div class="space-y-6">
 						{%- if link_items | length -%}
 							<div class="flex flex-wrap items-center gap-4">
@@ -59,8 +59,8 @@
 									{{-
 										include(
 											'components/button.html.twig',
-											link | merge({ variant: loop.first ? 'primary' : 'secondary' }),
-											with_context = false
+											link | merge( { variant: loop.first ? 'primary' : 'secondary' } ),
+											with_context: false
 										)
 									-}}
 								{%- endfor -%}
@@ -68,9 +68,13 @@
 						{%- endif -%}
 
 						{%- if meta_items | length -%}
-							<ul class="text-label text-stone flex flex-wrap items-center gap-x-4.5 gap-y-2 uppercase">
+							<ul
+								class="text-label text-stone flex flex-wrap items-center gap-x-4.5 gap-y-2 uppercase"
+							>
 								{%- for item in meta_items -%}
-									<li class="after:bg-cream-soft flex items-center after:ms-4.5 after:h-3.5 after:w-px last:after:hidden">
+									<li
+										class="after:bg-cream-soft flex items-center after:ms-4.5 after:h-3.5 after:w-px last:after:hidden"
+									>
 										{{- item.text -}}
 									</li>
 								{%- endfor -%}
@@ -87,12 +91,12 @@
 							'components/image.html.twig',
 							{
 								image: image,
-								classes: ['size-full'],
+								classes: [ 'size-full' ],
 								sizes: '(min-width: 64rem) 40vw, 100vw',
 								loading: 'eager',
-								attributes: { fetchpriority: 'high' }
+								attributes: { fetchpriority: 'high' },
 							},
-							with_context = false
+							with_context: false
 						)
 					-}}
 				</div>
