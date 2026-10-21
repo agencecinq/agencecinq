@@ -101,14 +101,29 @@ class Composition {
 	public static function lines( array $composition ): array {
 		$package = $composition['package'];
 		$lines   = array(
-			sprintf( '%s · Socle %s : %s', $package['category']['label'] ?? '', $package['name'] ?? '', Catalogue::price( $package ) ),
+			sprintf(
+				/* translators: 1: category, 2: package name, 3: price. */
+				_x( '%1$s · Base %2$s: %3$s', 'composition package line', 'agencecinq' ),
+				$package['category']['label'] ?? '',
+				$package['name'] ?? '',
+				Catalogue::price( $package )
+			),
 		);
 
 		foreach ( $composition['modules'] as $module ) {
-			$lines[] = sprintf( '%s : %s', $module['name'] ?? '', Catalogue::price( $module ) );
+			$lines[] = sprintf(
+				/* translators: 1: module name, 2: price. */
+				_x( '%1$s: %2$s', 'composition module line', 'agencecinq' ),
+				$module['name'] ?? '',
+				Catalogue::price( $module )
+			);
 		}
 
-		$lines[] = sprintf( 'Total : %s', Catalogue::total_label( $composition['total'] ) );
+		$lines[] = sprintf(
+			/* translators: %s: total price. */
+			_x( 'Total: %s', 'composition total line', 'agencecinq' ),
+			Catalogue::total_label( $composition['total'] )
+		);
 
 		return $lines;
 	}
