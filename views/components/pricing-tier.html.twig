@@ -13,7 +13,6 @@
 {%- set features = features | default([]) | filter(feature => feature.text) -%}
 
 {%- if title or price or badge or (features | length) -%}
-	{#- Without its own badge, pt-18 (p-8 + 1.5rem badge + space-y-4) lines the content up with badged siblings. -#}
 	<article
 		class="{{
 		html_classes(
