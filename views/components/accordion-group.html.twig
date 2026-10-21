@@ -41,7 +41,7 @@
 					id="{{ panel_id }}"
 					role="region"
 					aria-labelledby="{{ header_id }}"
-					{% if not loop.first %}hidden{% endif %}
+					{{ html_attr( { hidden: not loop.first } ) }}
 				>
 					<div class="wysiwyg text-taupe [&_a]:text-pistachio pt-4" data-inner>
 						{{- item.text | raw -}}

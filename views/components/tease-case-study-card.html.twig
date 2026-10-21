@@ -15,9 +15,7 @@
 	{%- set year = post.year | default('') -%}
 	{%- set has_video = post.media.video.url | default(null) -%}
 
-	{%- if has_video -%}
-		<cinq-hover-video class="block">
-	{%- endif -%}
+	{%- set card -%}
 	<article
 		class="{{ html_classes(classes | default([]) | join(' ')) }}"
 		itemscope
@@ -74,7 +72,11 @@
 			</div>
 		</a>
 	</article>
+	{%- endset -%}
+
 	{%- if has_video -%}
-		</cinq-hover-video>
+		<cinq-hover-video class="block">{{ card }}</cinq-hover-video>
+	{%- else -%}
+		{{ card }}
 	{%- endif -%}
 {%- endif -%}

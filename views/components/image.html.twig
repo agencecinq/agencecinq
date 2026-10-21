@@ -29,7 +29,7 @@
 	{% set width = 'image/svg+xml' == image.post_mime_type ? image.width : ( image.sizes[size].width ? image.sizes[size].width : image.width ) -%}
 	{% set height = 'image/svg+xml' == image.post_mime_type ? image.height : ( image.sizes[size].height ? image.sizes[size].height : image.height ) -%}
 
-	<picture{{ size ? ' data-size="' ~ size ~ '"' }} data-mime-type="{{ image.post_mime_type }}">
+	<picture data-size="{{ size }}" data-mime-type="{{ image.post_mime_type }}">
 
 		{%- if 'image/svg+xml' != image.post_mime_type and 'image/gif' != image.post_mime_type and image.srcset( size ) -%}
 			<source type="image/webp" srcset="{{
@@ -57,11 +57,15 @@
 			alt="{{ ( alt ?? ( image.alt ? image.alt : image.title ) ) | e }}"
 			width="{{ width | e }}"
 			height="{{ height | e }}"
-			{{ attributes ? attributes | map( ( value, key ) => value == '' ? key : key ~ '="' ~ value ~ '"' ) | join( ' ' ) | raw }}
-			{% if 'image/svg+xml' != image.post_mime_type and image.srcset( size ) %}
-				srcset="{{ image.srcset( size ) | e }}"
-				sizes="{{ sizes ? sizes : ( image.img_sizes ? image.img_sizes( size ) | e : image.srcset( size ) ? fn( 'wp_get_attachment_image_sizes', image.id, size ) | e : '100vw' ) }}"
-			{% endif %}
+			{{
+				html_attr(
+					'image/svg+xml' != image.post_mime_type and image.srcset( size ) ? {
+						srcset: image.srcset( size ),
+						sizes: sizes ? sizes : ( image.img_sizes ? image.img_sizes( size ) : fn( 'wp_get_attachment_image_sizes', image.id, size ) )
+					},
+					attributes | default( {} )
+				)
+			}}
 		>
 	</picture>
 

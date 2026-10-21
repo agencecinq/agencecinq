@@ -21,12 +21,12 @@
 	"devDependencies": {
 		"@tailwindcss/postcss": "^4.3.3",
 		"@tailwindcss/vite": "^4.3.3",
-		"@zackad/prettier-plugin-twig": "^0.17.0",
+		"@zackad/prettier-plugin-twig": "github:agencecinq/prettier-plugin-twig#v1.0.2",
 		"laravel-vite-plugin": "^3.2.0",
-		"postcss": "^8.5.28",
-		"prettier": "^3.9.9",
+		"postcss": "^8.5.31",
+		"prettier": "^3.9.10",
 		"prettier-plugin-tailwindcss": "^0.8.1",
-		"vite": "^8.3.2",
+		"vite": "^8.3.4",
 		"vite-plugin-compression": "^0.5.1",
 		"vite-svg-sprite-wrapper": "^1.5.0"
 	},
@@ -35,7 +35,7 @@
 		"@agencecinq/drawer": "^7.0.1",
 		"@agencecinq/modal": "^4.0.1",
 		"@agencecinq/snake": "^1.0.0",
-		"@agencecinq/utils": "^7.5.0",
+		"@agencecinq/utils": "^7.10.0",
 		"piecesjs": "^0.5.7",
 		"tailwindcss": "^4.3.3"
 	}

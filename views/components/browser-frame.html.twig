@@ -55,15 +55,19 @@
 			<video
 				class="absolute inset-0 size-full object-cover object-top"
 				src="{{ video_url }}"
-				{% if not poster_id and media.poster.url | default(null) %}poster="{{ media.poster.url }}"{% endif %}
-				{% if autoplay %}autoplay{% endif %}
 				preload="{{ autoplay ? 'auto' : 'none' }}"
 				muted
 				loop
 				playsinline
-				{% for key, value in attributes | default({}) %}
-					{{ key }}="{{ value }}"
-				{% endfor %}
+				{{
+					html_attr(
+						{
+							poster: poster_id ? null : media.poster.url | default(null),
+							autoplay: autoplay ? true : false
+						},
+						attributes | default({})
+					)
+				}}
 			></video>
 		{%- endif -%}
 	</div>

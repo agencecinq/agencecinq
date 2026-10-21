@@ -11,7 +11,7 @@
 <section
 	id="{{ block.id }}"
 	class="relative overflow-hidden bg-dark-gray"
-	{% if block.content.title %}aria-labelledby="{{ block.id }}-title"{% endif %}
+	{{ html_attr( block.content.title ? { 'aria-labelledby': block.id ~ '-title' } ) }}
 >
 	<div
 		class="pointer-events-none absolute inset-x-0 top-0 mx-auto max-w-360"

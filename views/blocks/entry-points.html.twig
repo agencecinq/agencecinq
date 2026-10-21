@@ -9,7 +9,7 @@
 
 <section
 	id="{{ block.id }}"
-	{% if block.content.title %}aria-labelledby="{{ block.id }}-title"{% endif %}
+	{{ html_attr( block.content.title ? { 'aria-labelledby': block.id ~ '-title' } ) }}
 	itemscope
 	itemtype="https://schema.org/OfferCatalog"
 >
