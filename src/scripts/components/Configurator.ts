@@ -64,12 +64,7 @@ class Configurator extends Piece {
 	#modal: ModalElement | null = null;
 	#sending = false;
 	#labels: Labels = { package: '', from: '', quote: '', error: '' };
-	#format = new Intl.NumberFormat( 'fr-FR', {
-		style: 'currency',
-		currency: 'EUR',
-		minimumFractionDigits: 0,
-		maximumFractionDigits: 2,
-	} );
+	#format!: Intl.NumberFormat;
 
 	constructor() {
 		super( 'Configurator' );
@@ -357,6 +352,12 @@ class Configurator extends Piece {
 		this.#submit = this.#one<HTMLButtonElement>( 'submit' );
 		this.#status = this.#one<HTMLElement>( 'status' );
 		this.#modal = this.dataset.modal ? document.getElementById( this.dataset.modal ) as ModalElement | null : null;
+		this.#format = new Intl.NumberFormat( this.lang || document.documentElement.lang || undefined, {
+			style: 'currency',
+			currency: 'EUR',
+			minimumFractionDigits: 0,
+			maximumFractionDigits: 2,
+		} );
 
 		try {
 			this.#labels = { ...this.#labels, ...JSON.parse( this.dataset.labels ?? '{}' ) };
