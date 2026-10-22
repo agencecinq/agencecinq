@@ -103,7 +103,7 @@ class Composition {
 		$lines   = array(
 			sprintf(
 				/* translators: 1: category, 2: package name, 3: price. */
-				_x( '%1$s · Base %2$s: %3$s', 'composition package line', 'agencecinq' ),
+				_x( '%1$s · Package %2$s: %3$s', 'composition package line', 'agencecinq' ),
 				$package['category']['label'] ?? '',
 				$package['name'] ?? '',
 				Catalogue::price( $package )

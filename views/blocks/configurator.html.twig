@@ -38,10 +38,13 @@
 	{%- set composition = catalogue.compose( platform, package.code, [] ) -%}
 	{%- set firm = composition.total.mode == 'ferme' -%}
 	{%- set labels = {
-		package: 'Socle',
-		from: 'À partir de',
-		quote: 'Sur devis',
-		error: 'L’envoi n’a pas abouti. Vérifiez votre connexion, puis réessayez.',
+		package: __( 'Package', 'agencecinq' ),
+		from: _x( 'From', 'starting price', 'agencecinq' ),
+		quote: __( 'On request', 'agencecinq' ),
+		error: __(
+			'The request could not be sent. Check your connection, then try again.',
+			'agencecinq'
+		),
 	} -%}
 
 	{%- set chip_classes =
