@@ -9,6 +9,7 @@
  # @param array included The included lines, as strings.
  # @param bool featured Whether this tier is highlighted.
  # @param string badge Optional badge label.
+ # @param bool reserve_badge Keep the badge space without a badge, to line up with sibling tiers.
  #}
 
 {%- set included = included | default( [] ) -%}
@@ -18,20 +19,23 @@
 	class="{{
 		html_classes(
 			'rounded-8 flex w-full flex-col space-y-3 border p-8',
-			featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black'
+			featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black',
+			reserve_badge and not badge ? 'md:pt-18'
 		)
 	}}"
 >
 	<div class="{{ html_classes( badge ? 'space-y-4' ) }}">
 		{%- if badge -%}
-			<p class="text-badge bg-pistachio text-off-black rounded-3 inline-block px-2 py-1">
+			<p class="text-badge bg-pistachio text-off-black rounded-3 block w-fit px-2 py-1">
 				{{- badge -}}
 			</p>
 		{%- endif -%}
 
 		<div class="space-y-2.5">
 			{%- if name -%}
-				<h3 class="text-title-md text-taupe" itemprop="name">{{- name -}}</h3>
+				<h3 class="text-title-md text-taupe wrap-break-word hyphens-auto" itemprop="name">
+					{{- name -}}
+				</h3>
 			{%- endif -%}
 
 			{%- if priceExclVat is not empty or quote -%}
@@ -44,7 +48,9 @@
 
 				<p class="text-title-lg text-cream">
 					{%- if priceExclVat is not empty -%}
-						<data itemprop="price" value="{{ priceExclVat }}">{{- price -}}</data>
+						<data itemprop="price" value="{{ priceExclVat }}">
+							{{- price -}}
+						</data>
 					{%- else -%}
 						{{- price -}}
 					{%- endif -%}

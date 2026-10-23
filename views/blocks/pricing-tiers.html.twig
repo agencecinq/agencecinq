@@ -2,7 +2,7 @@
  # Blocks: Pricing Tiers
  # Title, intro, then the pricing cards. One card can be featured.
  # Source « catalogue »: every package of a platform, from Central, with its first four included lines.
- # Source « manual »: up to three cards typed in the block, with the fields of a package.
+ # Source « manual »: up to four cards typed in the block, with the fields of a package.
  #}
 
 {{-
@@ -72,18 +72,25 @@
 			<ul
 				class="{{
 					html_classes(
-						'grid grid-cols-1 items-start gap-y-8 lg:gap-x-6',
+						'grid grid-cols-1 gap-y-8 md:grid-cols-2 md:gap-x-6',
 						{
-							'lg:grid-cols-2': ( items | length ) == 2,
 							'lg:grid-cols-3': ( items | length ) == 3,
-							'lg:grid-cols-4': ( items | length ) >= 4,
+							'xl:grid-cols-4': ( items | length ) >= 4,
 						}
 					)
 				}}"
 			>
+				{%- set reserve_badge = items has some item => item.badge -%}
+
 				{%- for item in items -%}
 					<li class="flex" itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer">
-						{{- include( 'components/pricing-tier.html.twig', item, with_context: false ) -}}
+						{{-
+							include(
+								'components/pricing-tier.html.twig',
+								item | merge( { reserve_badge: reserve_badge } ),
+								with_context: false
+							)
+						-}}
 					</li>
 				{%- endfor -%}
 			</ul>

@@ -147,9 +147,9 @@ class PricingTiers {
 					'type'              => 'repeater',
 					'layout'            => 'block',
 					'min'               => 1,
-					'max'               => 3,
+					'max'               => 4,
 					'button_label'      => __( 'Add Tier', 'agencecinq' ),
-					'instructions'      => __( 'Three pricing cards in a row. Highlight at most one tier.', 'agencecinq' ),
+					'instructions'      => __( 'Up to four pricing cards in a row. Highlight at most one tier.', 'agencecinq' ),
 					'conditional_logic' => self::when_source( $key, 'manual' ),
 					'sub_fields'        => array(
 						array(

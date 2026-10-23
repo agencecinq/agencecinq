@@ -34,6 +34,7 @@ class Enqueue implements Service {
 		add_action( 'wp_head', array( $this, 'preload_wp_scripts' ) );
 		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
 		add_filter( 'wp_preload_resources', array( $this, 'preload_resources' ) );
+		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
 		add_filter( 'wp_speculation_rules_configuration', array( $this, 'speculation_rules_configuration' ) );
 		add_filter( 'style_loader_tag', array( $this, 'style_loader_tag' ), 10, 2 );
 
@@ -80,6 +81,23 @@ class Enqueue implements Service {
 		}
 
 		return $resources;
+	}
+
+
+	/**
+	 * Connect to the Axeptio SDK origin ahead: the plugin injects the SDK from
+	 * a script at the end of the body, so the browser only discovers it there.
+	 *
+	 * @param array  $urls          URLs to print for resource hints.
+	 * @param string $relation_type Relation type the URLs are printed for.
+	 * @return array
+	 */
+	public function resource_hints( array $urls, string $relation_type ): array {
+		if ( 'preconnect' === $relation_type && wp_script_is( 'axeptio/sdk-script' ) ) {
+			$urls[] = 'https://static.axept.io';
+		}
+
+		return $urls;
 	}
 
 
