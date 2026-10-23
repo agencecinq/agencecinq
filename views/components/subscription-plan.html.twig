@@ -1,18 +1,23 @@
 {#
- # Subscription plan: platform overline, name, description, monthly prices.
+ # Subscription plan: platform overline, range, description, monthly prices.
+ # Takes the retainers of the catalogue, or retainers typed in the block with the same fields.
  # Schema.org: Service (name, description, serviceType) with nested Offers.
  #
  # @param string overline Platform label (e.g. Shopify).
- # @param string title The plan name.
+ # @param string range The plan name.
  # @param string text The plan description.
- # @param array prices Repeater rows with a `text` key.
+ # @param array retainers Retainers: name, monthlyPriceExclVat, priceMode { id }.
  # @param string heading Heading tag for the title. Defaults to h3.
  #}
 
 {%- set heading = heading | default( 'h3' ) -%}
-{%- set prices = prices | default( [] ) | filter( price => price.text ) -%}
+{%- set retainers =
+	retainers
+		| default( [] )
+		| filter( retainer => retainer.name or retainer.monthlyPriceExclVat is not empty )
+-%}
 
-{%- if overline or title or text or ( prices | length ) -%}
+{%- if overline or range or text or ( retainers | length ) -%}
 	<article
 		class="border-cream-soft rounded-8 flex w-full flex-col border bg-black p-8"
 		itemscope
@@ -21,7 +26,7 @@
 	>
 		<div class="space-y-6">
 			<div class="space-y-4">
-				{%- if overline or title -%}
+				{%- if overline or range -%}
 					<header class="space-y-3">
 						{%- if overline -%}
 							<p class="text-eyebrow text-stone" itemprop="serviceType">
@@ -29,9 +34,9 @@
 							</p>
 						{%- endif -%}
 
-						{%- if title -%}
+						{%- if range -%}
 							<{{ heading }} class="text-title-lg text-cream" itemprop="name">
-								{{- title -}}
+								{{- range -}}
 							</{{ heading }}>
 						{%- endif -%}
 					</header>
@@ -44,16 +49,22 @@
 				{%- endif -%}
 			</div>
 
-			{%- if prices | length -%}
+			{%- if retainers | length -%}
 				<ul class="flex flex-wrap gap-x-6 gap-y-2">
-					{%- for price in prices -%}
+					{%- for retainer in retainers -%}
 						<li
 							class="text-label text-pistachio"
 							itemprop="offers"
 							itemscope
 							itemtype="https://schema.org/Offer"
 						>
-							<span itemprop="price">{{- price.text -}}</span>
+							<span itemprop="price">
+								{{-
+									[ retainer | retainer_tier, retainer | retainer_price ]
+										| filter( part => part )
+										| join( ' · ' )
+								-}}
+							</span>
 						</li>
 					{%- endfor -%}
 				</ul>

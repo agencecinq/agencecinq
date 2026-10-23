@@ -9,6 +9,7 @@
 
 namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
+use AgenceCinq\Catalogue\Catalogue;
 use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 use AgenceCinq\Plugins\ACF\IncludeFields\CatalogueChoices;
 
@@ -172,28 +173,43 @@ class PricingTiers {
 							'parent_repeater' => 'field_' . $key . '_pricing_tiers_items',
 						),
 						array(
-							'key'             => 'field_' . $key . '_pricing_tiers_items_title',
+							'key'             => 'field_' . $key . '_pricing_tiers_items_name',
 							'label'           => __( 'Title', 'agencecinq' ),
-							'name'            => 'title',
+							'name'            => 'name',
 							'aria-label'      => __( 'Title', 'agencecinq' ),
 							'type'            => 'text',
 							'placeholder'     => __( 'Enter the name of the tier', 'agencecinq' ),
 							'parent_repeater' => 'field_' . $key . '_pricing_tiers_items',
 						),
 						array(
-							'key'             => 'field_' . $key . '_pricing_tiers_items_price',
+							'key'             => 'field_' . $key . '_pricing_tiers_items_priceExclVat',
 							'label'           => __( 'Price', 'agencecinq' ),
-							'name'            => 'price',
+							'name'            => 'priceExclVat',
 							'aria-label'      => __( 'Price', 'agencecinq' ),
-							'type'            => 'text',
-							'placeholder'     => __( 'e.g. 14 900 € excl. VAT', 'agencecinq' ),
-							'instructions'    => __( 'Firm global price only. Do not show a day rate or a number of days.', 'agencecinq' ),
+							'type'            => 'number',
+							'min'             => 0,
+							'placeholder'     => __( 'e.g. 14900', 'agencecinq' ),
+							'append'          => __( '€ excl. VAT', 'agencecinq' ),
+							'instructions'    => __( 'Global price, without a day rate or a number of days. Leave it empty on quote.', 'agencecinq' ),
+							'wrapper'         => array( 'width' => 50 ),
 							'parent_repeater' => 'field_' . $key . '_pricing_tiers_items',
 						),
 						array(
-							'key'             => 'field_' . $key . '_pricing_tiers_items_features',
+							'key'             => 'field_' . $key . '_pricing_tiers_items_priceMode',
+							'label'           => __( 'Price Mode', 'agencecinq' ),
+							'name'            => 'priceMode',
+							'aria-label'      => __( 'Price Mode', 'agencecinq' ),
+							'type'            => 'select',
+							'choices'         => CatalogueChoices::price_modes(),
+							'default_value'   => Catalogue::FIRM,
+							'return_format'   => 'value',
+							'wrapper'         => array( 'width' => 50 ),
+							'parent_repeater' => 'field_' . $key . '_pricing_tiers_items',
+						),
+						array(
+							'key'             => 'field_' . $key . '_pricing_tiers_items_included',
 							'label'           => __( 'Included', 'agencecinq' ),
-							'name'            => 'features',
+							'name'            => 'included',
 							'aria-label'      => __( 'Included', 'agencecinq' ),
 							'type'            => 'repeater',
 							'layout'          => 'block',
@@ -203,13 +219,13 @@ class PricingTiers {
 							'parent_repeater' => 'field_' . $key . '_pricing_tiers_items',
 							'sub_fields'      => array(
 								array(
-									'key'             => 'field_' . $key . '_pricing_tiers_items_features_text',
+									'key'             => 'field_' . $key . '_pricing_tiers_items_included_text',
 									'label'           => __( 'Text', 'agencecinq' ),
 									'name'            => 'text',
 									'aria-label'      => __( 'Text', 'agencecinq' ),
 									'type'            => 'text',
 									'placeholder'     => __( 'Enter the included line', 'agencecinq' ),
-									'parent_repeater' => 'field_' . $key . '_pricing_tiers_items_features',
+									'parent_repeater' => 'field_' . $key . '_pricing_tiers_items_included',
 								),
 							),
 						),

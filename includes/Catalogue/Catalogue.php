@@ -283,7 +283,7 @@ class Catalogue {
 	public static function price( array $line, bool $short = false ): string {
 		$price = $line['priceExclVat'] ?? null;
 
-		return self::label( null === $price ? null : (float) $price, self::mode( $line ), $short );
+		return self::label( is_numeric( $price ) ? (float) $price : null, self::mode( $line ), $short );
 	}
 
 	/**
@@ -315,13 +315,19 @@ class Catalogue {
 	}
 
 	/**
-	 * Monthly price of a retainer: « €390 excl. VAT per month », « from €1,200 excl. VAT per month ».
+	 * Monthly price of a retainer: « €390 excl. VAT per month », « from €1,200 excl. VAT per month », « On quote ».
 	 *
 	 * @param array<string, mixed> $retainer Retainer.
 	 * @return string
 	 */
 	public static function retainer_price( array $retainer ): string {
-		$amount = self::amount( (float) ( $retainer['monthlyPriceExclVat'] ?? 0 ) );
+		$price = $retainer['monthlyPriceExclVat'] ?? null;
+
+		if ( ! is_numeric( $price ) || self::QUOTE === self::mode( $retainer ) ) {
+			return __( 'On quote', 'agencecinq' );
+		}
+
+		$amount = self::amount( (float) $price );
 
 		if ( self::FROM === self::mode( $retainer ) ) {
 			/* translators: %s: monthly amount, e.g. « €1,200 ». */

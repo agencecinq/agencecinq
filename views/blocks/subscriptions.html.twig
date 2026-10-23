@@ -19,26 +19,21 @@
 	: ''
 -%}
 
-{#- A plan linked to a platform takes its tiers and monthly prices from Central. -#}
+{#- A plan linked to a platform takes its range and retainers from Central. -#}
 {%- set items =
 	block.items
 		| default( [] )
 		| map(
 			item => item.platform and catalogue
 				? item | merge( {
-					title: item.title ?: catalogue.retainers( item.platform ) | first.range | default( '' ),
-					prices: catalogue.retainers( item.platform ) | map(
-						retainer => {
-							text: catalogue.retainer_tier( retainer ) ~ ' · '
-								~ catalogue.retainer_price( retainer ),
-						}
-					),
+					range: item.range ?: catalogue.retainers( item.platform ) | first.range | default( '' ),
+					retainers: catalogue.retainers( item.platform ),
 				} )
 				: item
 		)
 -%}
 {%- set items =
-	items | filter( item => item.overline or item.title or item.text or item.prices )
+	items | filter( item => item.overline or item.range or item.text or item.retainers )
 -%}
 
 <section
@@ -84,13 +79,7 @@
 						{{-
 							include(
 								'components/subscription-plan.html.twig',
-								{
-									overline: item.overline,
-									title: item.title,
-									text: item.text,
-									prices: item.prices,
-									heading: 'h3',
-								},
+								item | merge( { heading: 'h3' } ),
 								with_context: false
 							)
 						-}}

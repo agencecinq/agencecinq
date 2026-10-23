@@ -147,6 +147,11 @@ class Twig implements Service {
 			)
 		);
 
+		// Prices of a catalogue line, or of a manual item with the same fields, even when Central is unavailable.
+		$twig->addFilter( new TwigFilter( 'price', array( Catalogue::class, 'price' ) ) );
+		$twig->addFilter( new TwigFilter( 'retainer_tier', array( Catalogue::class, 'retainer_tier' ) ) );
+		$twig->addFilter( new TwigFilter( 'retainer_price', array( Catalogue::class, 'retainer_price' ) ) );
+
 		// Add Yoast Breadcrumbs function.
 		$twig->addFunction(
 			new TwigFunction(

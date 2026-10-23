@@ -55,6 +55,19 @@ class CatalogueChoices {
 	}
 
 	/**
+	 * Price modes, for the prices typed in a block.
+	 *
+	 * @return array<string, string>
+	 */
+	public static function price_modes(): array {
+		return array(
+			Catalogue::FIRM  => __( 'Fixed price', 'agencecinq' ),
+			Catalogue::FROM  => __( 'Starting price', 'agencecinq' ),
+			Catalogue::QUOTE => __( 'On quote', 'agencecinq' ),
+		);
+	}
+
+	/**
 	 * The catalogue, in the admin only.
 	 *
 	 * @return Catalogue|null

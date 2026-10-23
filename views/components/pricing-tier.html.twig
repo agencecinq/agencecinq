@@ -1,68 +1,78 @@
 {#
- # Pricing tier: name, price, included features.
+ # Pricing tier: name, price, included lines.
+ # Takes a catalogue package, or a tier typed in the block with the same fields.
  # Featured variant uses pistachio chrome. Badge is independent of featured.
  #
- # @param string title The tier name.
- # @param string price The displayed price.
- # @param array features Repeater rows with a `text` key.
+ # @param string name The tier name.
+ # @param float|null priceExclVat The price, null on quote.
+ # @param array priceMode The price mode, { id }.
+ # @param array included The included lines, as strings.
  # @param bool featured Whether this tier is highlighted.
  # @param string badge Optional badge label.
  # @param bool reserve_badge Keep the badge space without a badge, to line up with sibling tiers.
  #}
 
-{%- set features = features | default( [] ) | filter( feature => feature.text ) -%}
+{%- set included = included | default( [] ) -%}
+{%- set quote = priceMode.id == constant( 'AgenceCinq\\Catalogue\\Catalogue::QUOTE' ) -%}
 
-{%- if title or price or badge or ( features | length ) -%}
-	<article
-		class="{{
-			html_classes(
-				'rounded-8 flex w-full flex-col space-y-3 border p-8',
-				featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black',
-				reserve_badge and not badge ? 'md:pt-18'
-			)
-		}}"
-	>
-		{%- if badge or title or price -%}
-			<div class="{{ html_classes( badge ? 'space-y-4' ) }}">
-				{%- if badge -%}
-					<p class="text-badge bg-pistachio text-off-black rounded-3 block w-fit px-2 py-1">
-						{{- badge -}}
-					</p>
-				{%- endif -%}
-
-				{%- if title or price -%}
-					<div class="space-y-2.5">
-						{%- if title -%}
-							<h3 class="text-title-md text-taupe wrap-break-word hyphens-auto" itemprop="name">
-								{{- title -}}
-							</h3>
-						{%- endif -%}
-
-						{%- if price -%}
-							<p class="text-title-lg text-cream" itemprop="price">
-								{{- price -}}
-							</p>
-						{%- endif -%}
-					</div>
-				{%- endif -%}
-			</div>
+<article
+	class="{{
+		html_classes(
+			'rounded-8 flex w-full flex-col space-y-3 border p-8',
+			featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black',
+			reserve_badge and not badge ? 'md:pt-18'
+		)
+	}}"
+>
+	<div class="{{ html_classes( badge ? 'space-y-4' ) }}">
+		{%- if badge -%}
+			<p class="text-badge bg-pistachio text-off-black rounded-3 block w-fit px-2 py-1">
+				{{- badge -}}
+			</p>
 		{%- endif -%}
 
-		{%- if features | length -%}
-			<ul class="border-cream-soft space-y-3 border-t pt-6">
-				{%- for feature in features -%}
-					<li
-						class="{{
-							html_classes(
-								'text-taupe flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full',
-								featured ? 'before:bg-pistachio' : 'before:bg-taupe'
-							)
-						}}"
-					>
-						{{- feature.text -}}
-					</li>
-				{%- endfor -%}
-			</ul>
-		{%- endif -%}
-	</article>
-{%- endif -%}
+		<div class="space-y-2.5">
+			{%- if name -%}
+				<h3 class="text-title-md text-taupe wrap-break-word hyphens-auto" itemprop="name">
+					{{- name -}}
+				</h3>
+			{%- endif -%}
+
+			{%- if priceExclVat is not empty or quote -%}
+				{%- set price =
+					{
+						priceExclVat: priceExclVat,
+						priceMode: priceMode,
+					} | price
+				-%}
+
+				<p class="text-title-lg text-cream">
+					{%- if priceExclVat is not empty -%}
+						<data itemprop="price" value="{{ priceExclVat }}">
+							{{- price -}}
+						</data>
+					{%- else -%}
+						{{- price -}}
+					{%- endif -%}
+				</p>
+			{%- endif -%}
+		</div>
+	</div>
+
+	{%- if included | length -%}
+		<ul class="border-cream-soft space-y-3 border-t pt-6">
+			{%- for line in included -%}
+				<li
+					class="{{
+						html_classes(
+							'text-taupe flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full',
+							featured ? 'before:bg-pistachio' : 'before:bg-taupe'
+						)
+					}}"
+				>
+					{{- line -}}
+				</li>
+			{%- endfor -%}
+		</ul>
+	{%- endif -%}
+</article>
