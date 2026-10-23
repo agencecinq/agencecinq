@@ -15,13 +15,7 @@
 		@apply hidden;
 	}
 
-	.wysiwyg h1 {
-		@apply text-title-xxl text-cream;
-
-		margin-top: 2.5rem;
-		margin-bottom: 2rem;
-	}
-
+	.wysiwyg h1,
 	.wysiwyg h2 {
 		@apply text-title-xl text-cream;
 
@@ -103,10 +97,6 @@
 
 		margin-top: 2.5rem;
 		margin-bottom: 2.5rem;
-	}
-
-	.wysiwyg blockquote p {
-		@apply text-title-lg;
 	}
 
 	.wysiwyg blockquote p:last-child {
