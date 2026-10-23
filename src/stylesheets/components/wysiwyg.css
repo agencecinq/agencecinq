@@ -1,5 +1,7 @@
 @layer components {
-	.wysiwyg {}
+	.wysiwyg {
+		@apply text-taupe text-base;
+	}
 
 	.wysiwyg > *:first-child {
 		@apply mt-0;
@@ -10,9 +12,9 @@
 	}
 
 	.wysiwyg p {
-		@apply text-sm;
+		@apply text-base;
 
-		margin-bottom: 1em;
+		margin-bottom: 1.25rem;
 	}
 
 	.wysiwyg p:empty {
@@ -27,17 +29,17 @@
 	}
 
 	.wysiwyg h2 {
-		@apply text-title-lg;
+		@apply text-title-xl text-cream;
 
-		margin-top: 3.75rem;
-		margin-bottom: 1.25rem;
+		margin-top: 2.5rem;
+		margin-bottom: 2rem;
 	}
 
 	.wysiwyg h3 {
 		@apply text-title-lg text-cream;
 
-		margin-top: 1.25rem;
-		margin-bottom: 1.25rem;
+		margin-top: 2.5rem;
+		margin-bottom: 1rem;
 	}
 
 	.wysiwyg h4 {
@@ -57,7 +59,7 @@
 
 	/* Inline */
 	.wysiwyg a {
-		@apply underline underline-offset-2;
+		@apply text-pistachio underline underline-offset-2;
 	}
 
 	.wysiwyg a:has(> code) {
@@ -119,7 +121,7 @@
 	/* Lists */
 	.wysiwyg ul,
 	.wysiwyg ol {
-		@apply text-sm;
+		@apply text-base;
 
 		margin-top: 1rem;
 		margin-bottom: 1rem;
