@@ -2151,7 +2151,7 @@ msgid "€ excl. VAT"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:193
-msgid "Firm global price only. Do not show a day rate or a number of days."
+msgid "Global price, without a day rate or a number of days. Leave it empty on quote."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:199

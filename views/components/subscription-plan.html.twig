@@ -11,7 +11,11 @@
  #}
 
 {%- set heading = heading | default( 'h3' ) -%}
-{%- set retainers = retainers | default( [] ) -%}
+{%- set retainers =
+	retainers
+		| default( [] )
+		| filter( retainer => retainer.name or retainer.monthlyPriceExclVat is not empty )
+-%}
 
 {%- if overline or range or text or ( retainers | length ) -%}
 	<article

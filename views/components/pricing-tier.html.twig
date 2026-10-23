@@ -12,6 +12,7 @@
  #}
 
 {%- set included = included | default( [] ) -%}
+{%- set quote = priceMode.id == constant( 'AgenceCinq\\Catalogue\\Catalogue::QUOTE' ) -%}
 
 <article
 	class="{{
@@ -33,14 +34,22 @@
 				<h3 class="text-title-md text-taupe" itemprop="name">{{- name -}}</h3>
 			{%- endif -%}
 
-			<p class="text-title-lg text-cream" itemprop="price">
-				{{-
+			{%- if priceExclVat is not empty or quote -%}
+				{%- set price =
 					{
 						priceExclVat: priceExclVat,
 						priceMode: priceMode,
 					} | price
-				-}}
-			</p>
+				-%}
+
+				<p class="text-title-lg text-cream">
+					{%- if priceExclVat is not empty -%}
+						<data itemprop="price" value="{{ priceExclVat }}">{{- price -}}</data>
+					{%- else -%}
+						{{- price -}}
+					{%- endif -%}
+				</p>
+			{%- endif -%}
 		</div>
 	</div>
 

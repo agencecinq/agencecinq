@@ -190,7 +190,7 @@ class PricingTiers {
 							'min'             => 0,
 							'placeholder'     => __( 'e.g. 14900', 'agencecinq' ),
 							'append'          => __( '€ excl. VAT', 'agencecinq' ),
-							'instructions'    => __( 'Firm global price only. Do not show a day rate or a number of days.', 'agencecinq' ),
+							'instructions'    => __( 'Global price, without a day rate or a number of days. Leave it empty on quote.', 'agencecinq' ),
 							'wrapper'         => array( 'width' => 50 ),
 							'parent_repeater' => 'field_' . $key . '_pricing_tiers_items',
 						),
