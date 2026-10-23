@@ -1,7 +1,7 @@
 {#
  # Blocks: Pricing Tiers
  # Title, intro, then the pricing cards. One card can be featured.
- # Source « catalogue »: every package of a platform, from Central, with its first four included lines.
+ # Sources « catalogue » (packages), « retainers » and « modules »: the cards of a platform, from Central.
  # Source « manual »: up to four cards typed in the block, with the fields of a package.
  #}
 
@@ -15,24 +15,10 @@
 	)
 -}}
 
-{%- if block.source == 'catalogue' -%}
+{%- if block.source in [ 'catalogue', 'retainers', 'modules' ] -%}
 	{%- set catalogue = catalogue() -%}
-	{%- set items = [] -%}
-
-	{%- for package in catalogue ? catalogue.packages( block.catalogue.platform ) : [] -%}
-		{%- set featured = package.code == block.catalogue.featured -%}
-		{%- set items =
-			items | merge(
-				[
-					package | merge( {
-						included: package.included | default( [] ) | slice( 0, 4 ),
-						featured: featured,
-						badge: featured ? block.catalogue.badge : '',
-					} ),
-				]
-			)
-		-%}
-	{%- endfor -%}
+	{%- set items = catalogue ? catalogue.tiers( block.source, block.catalogue | default( {} ) ) : []
+	-%}
 {%- else -%}
 	{%- set items =
 		block.items

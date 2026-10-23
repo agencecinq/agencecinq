@@ -88,12 +88,14 @@ class PricingTiers {
 					'aria-label'    => __( 'Source', 'agencecinq' ),
 					'type'          => 'button_group',
 					'choices'       => array(
-						'catalogue' => __( 'Catalogue', 'agencecinq' ),
+						'catalogue' => __( 'Packages', 'agencecinq' ),
+						'retainers' => __( 'Retainers', 'agencecinq' ),
+						'modules'   => __( 'Modules', 'agencecinq' ),
 						'manual'    => __( 'Manual', 'agencecinq' ),
 					),
 					'default_value' => 'manual',
 					'return_format' => 'value',
-					'instructions'  => __( 'Catalogue: the tiers, prices and included lines come from Central and follow its changes within the minute. Manual: for an offer outside the catalogue.', 'agencecinq' ),
+					'instructions'  => __( 'Packages, Retainers, Modules: the cards, prices, badges and included lines come from Central and follow its changes within the minute. Manual: for an offer outside the catalogue.', 'agencecinq' ),
 				),
 				array(
 					'key'               => 'field_' . $key . '_pricing_tiers_catalogue',
@@ -102,7 +104,7 @@ class PricingTiers {
 					'aria-label'        => __( 'Catalogue', 'agencecinq' ),
 					'type'              => 'group',
 					'layout'            => 'block',
-					'conditional_logic' => self::when_source( $key, 'catalogue' ),
+					'conditional_logic' => self::when_source( $key, 'catalogue', 'retainers', 'modules' ),
 					'sub_fields'        => array(
 						array(
 							'key'           => 'field_' . $key . '_pricing_tiers_catalogue_platform',
@@ -112,7 +114,7 @@ class PricingTiers {
 							'type'          => 'select',
 							'choices'       => CatalogueChoices::platforms(),
 							'return_format' => 'value',
-							'instructions'  => __( 'Every published package of the platform, in the order of the catalogue, with its first four included lines.', 'agencecinq' ),
+							'instructions'  => __( 'In the order of the catalogue, with the first four included lines. A package shows its lead time, a retainer its response time, a module its benefit.', 'agencecinq' ),
 							'wrapper'       => array( 'width' => 100 / 3 ),
 						),
 						array(
@@ -121,10 +123,10 @@ class PricingTiers {
 							'name'          => 'featured',
 							'aria-label'    => __( 'Featured', 'agencecinq' ),
 							'type'          => 'select',
-							'choices'       => CatalogueChoices::packages(),
+							'choices'       => CatalogueChoices::lines(),
 							'allow_null'    => 1,
 							'return_format' => 'value',
-							'instructions'  => __( 'Package to highlight (pistachio border and soft fill).', 'agencecinq' ),
+							'instructions'  => __( 'Card to highlight (pistachio border and soft fill).', 'agencecinq' ),
 							'wrapper'       => array( 'width' => 100 / 3 ),
 						),
 						array(
@@ -134,8 +136,33 @@ class PricingTiers {
 							'aria-label'   => __( 'Badge', 'agencecinq' ),
 							'type'         => 'text',
 							'placeholder'  => __( 'e.g. Most chosen', 'agencecinq' ),
-							'instructions' => __( 'Shown on the featured package.', 'agencecinq' ),
+							'instructions' => __( 'Shown on the featured card, instead of its lead time or response time.', 'agencecinq' ),
 							'wrapper'      => array( 'width' => 100 / 3 ),
+						),
+						array(
+							'key'               => 'field_' . $key . '_pricing_tiers_catalogue_packages',
+							'label'             => __( 'Packages', 'agencecinq' ),
+							'name'              => 'packages',
+							'aria-label'        => __( 'Packages', 'agencecinq' ),
+							'type'              => 'checkbox',
+							'choices'           => CatalogueChoices::packages(),
+							'layout'            => 'horizontal',
+							'return_format'     => 'value',
+							'instructions'      => __( 'Packages of the platform to show. None ticked: every package of the platform.', 'agencecinq' ),
+							'conditional_logic' => self::when_source( $key, 'catalogue' ),
+						),
+						array(
+							'key'               => 'field_' . $key . '_pricing_tiers_catalogue_modules',
+							'label'             => __( 'Modules', 'agencecinq' ),
+							'name'              => 'modules',
+							'aria-label'        => __( 'Modules', 'agencecinq' ),
+							'type'              => 'checkbox',
+							'choices'           => CatalogueChoices::modules(),
+							'layout'            => 'vertical',
+							'return_format'     => 'value',
+							'required'          => 1,
+							'instructions'      => __( 'Up to four modules of the platform to show.', 'agencecinq' ),
+							'conditional_logic' => self::when_source( $key, 'modules' ),
 						),
 					),
 				),
@@ -237,21 +264,22 @@ class PricingTiers {
 	}
 
 	/**
-	 * Conditional logic: shows a field for one source only.
+	 * Conditional logic: shows a field for some sources only.
 	 *
-	 * @param string $key    The field key prefix.
-	 * @param string $source 'catalogue' or 'manual'.
+	 * @param string $key        The field key prefix.
+	 * @param string ...$sources 'catalogue', 'retainers', 'modules' or 'manual'.
 	 * @return array<int, array<int, array<string, string>>>
 	 */
-	private static function when_source( string $key, string $source ): array {
-		return array(
-			array(
+	private static function when_source( string $key, string ...$sources ): array {
+		return array_map(
+			static fn( string $source ): array => array(
 				array(
 					'field'    => 'field_' . $key . '_pricing_tiers_source',
 					'operator' => '==',
 					'value'    => $source,
 				),
 			),
+			$sources
 		);
 	}
 }

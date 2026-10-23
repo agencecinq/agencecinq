@@ -2067,18 +2067,6 @@ msgstr ""
 msgid "Manual"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:96
-msgid ""
-"Catalogue: the tiers, prices and included lines come from Central and follow "
-"its changes within the minute. Manual: for an offer outside the catalogue."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:115
-msgid ""
-"Every published package of the platform, in the order of the catalogue, with "
-"its first four included lines."
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:120
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:122
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:157
@@ -2086,17 +2074,9 @@ msgstr ""
 msgid "Featured"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:127
-msgid "Package to highlight (pistachio border and soft fill)."
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:136
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:171
 msgid "e.g. Most chosen"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:137
-msgid "Shown on the featured package."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:151
@@ -3292,4 +3272,59 @@ msgstr ""
 
 #: views/pages/single-post.html.twig:88
 msgid "Article content"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:95 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:91 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:144 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:146
+msgid "Packages"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:96 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:92
+msgid "Retainers"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:97 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:93 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:156 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:158
+msgid "Modules"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:98
+msgid "Packages, Retainers, Modules: the cards, prices, badges and included lines come from Central and follow its changes within the minute. Manual: for an offer outside the catalogue."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:117
+msgid "In the order of the catalogue, with the first four included lines. A package shows its lead time, a retainer its response time, a module its benefit."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:129
+msgid "Card to highlight (pistachio border and soft fill)."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:139
+msgid "Shown on the featured card, instead of its lead time or response time."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:151
+msgid "Packages of the platform to show. None ticked: every package of the platform."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:164
+msgid "Up to four modules of the platform to show."
+msgstr ""
+
+#: includes/Catalogue/Catalogue.php:396
+msgid "After scoping"
+msgstr ""
+
+#. translators: %s: number of weeks.
+#: includes/Catalogue/Catalogue.php:400
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: response time, e.g. « 3 working days ».
+#: includes/Catalogue/Catalogue.php:417
+#, php-format
+msgctxt "retainer badge"
+msgid "Response: %s"
 msgstr ""

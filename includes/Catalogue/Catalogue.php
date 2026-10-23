@@ -156,6 +156,51 @@ class Catalogue {
 	}
 
 	/**
+	 * Pricing cards of a platform: its packages, its retainers, or a selection of its modules.
+	 * Name, price, badge and the first four included lines come from the catalogue.
+	 * The featured card shows the badge of the block instead of its own, when there is one.
+	 *
+	 * @param string               $source   'catalogue' (packages), 'retainers' or 'modules'.
+	 * @param array<string, mixed> $settings Platform, packages, modules, featured and badge of the block.
+	 * @return array<int, array<string, mixed>>
+	 */
+	public function tiers( string $source, array $settings ): array {
+		$platform = (string) ( $settings['platform'] ?? '' );
+		$lines    = match ( $source ) {
+			'retainers' => $this->retainers( $platform ),
+			'modules'   => self::pick( $this->modules( $platform ), 'id', (array) ( $settings['modules'] ?? array() ) ),
+			default     => self::pick( $this->packages( $platform ), 'code', (array) ( $settings['packages'] ?? array() ) ),
+		};
+
+		return array_map(
+			static function ( array $line ) use ( $source, $settings ): array {
+				$included = (array) ( $line['included'] ?? array() );
+				$featured = ( $line['code'] ?? $line['id'] ?? '' ) === ( $settings['featured'] ?? '' );
+				$badge    = $featured ? (string) ( $settings['badge'] ?? '' ) : '';
+
+				if ( 'retainers' === $source ) {
+					$line['name'] = self::retainer_tier( $line );
+					$badge        = $badge ? $badge : self::response_time( $line );
+				} elseif ( 'modules' === $source ) {
+					array_unshift( $included, $line['benefit'] ?? '' );
+				} else {
+					$badge = $badge ? $badge : self::lead_time( $line );
+				}
+
+				return array_merge(
+					$line,
+					array(
+						'included' => array_slice( array_values( array_filter( $included ) ), 0, 4 ),
+						'featured' => $featured,
+						'badge'    => $badge,
+					)
+				);
+			},
+			$lines
+		);
+	}
+
+	/**
 	 * Price of an ad hoc day, outside any contract.
 	 *
 	 * @return float|null
@@ -339,6 +384,40 @@ class Catalogue {
 	}
 
 	/**
+	 * Lead time of a package: « 6 weeks », « After scoping » without one.
+	 *
+	 * @param array<string, mixed> $package Package.
+	 * @return string
+	 */
+	public static function lead_time( array $package ): string {
+		$weeks = $package['leadTimeWeeks'] ?? null;
+
+		if ( ! is_numeric( $weeks ) ) {
+			return __( 'After scoping', 'agencecinq' );
+		}
+
+		/* translators: %s: number of weeks. */
+		return sprintf( _n( '%s week', '%s weeks', (int) $weeks, 'agencecinq' ), number_format_i18n( (int) $weeks ) );
+	}
+
+	/**
+	 * Response time of a retainer: « Response: 3 working days », nothing without one.
+	 *
+	 * @param array<string, mixed> $retainer Retainer.
+	 * @return string
+	 */
+	public static function response_time( array $retainer ): string {
+		$time = trim( (string) ( $retainer['responseTime'] ?? '' ) );
+
+		if ( '' === $time ) {
+			return '';
+		}
+
+		/* translators: %s: response time, e.g. « 3 working days ». */
+		return sprintf( _x( 'Response: %s', 'retainer badge', 'agencecinq' ), mb_strtolower( mb_substr( $time, 0, 1 ) ) . mb_substr( $time, 1 ) );
+	}
+
+	/**
 	 * Builds a price label.
 	 *
 	 * @param float|null $amount Amount, null on quote.
@@ -376,6 +455,29 @@ class Catalogue {
 		$items = $this->data[ $key ] ?? array();
 
 		return is_array( $items ) ? array_values( array_filter( $items, 'is_array' ) ) : array();
+	}
+
+	/**
+	 * Keeps the lines whose key is in a selection, in the order of the catalogue. No selection keeps them all.
+	 *
+	 * @param array<int, array<string, mixed>> $items     Lines.
+	 * @param string                           $key       Key the selection holds: 'code' or 'id'.
+	 * @param array<int, mixed>                $selection Selected values.
+	 * @return array<int, array<string, mixed>>
+	 */
+	private static function pick( array $items, string $key, array $selection ): array {
+		$selection = array_filter( array_map( 'strval', $selection ) );
+
+		if ( ! $selection ) {
+			return $items;
+		}
+
+		return array_values(
+			array_filter(
+				$items,
+				static fn( array $item ): bool => in_array( (string) ( $item[ $key ] ?? '' ), $selection, true )
+			)
+		);
 	}
 
 	/**
