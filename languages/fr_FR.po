@@ -334,8 +334,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:49
 #: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:93
 #: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:95
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:108
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:110
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:54
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:54
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:95
@@ -1837,96 +1835,34 @@ msgstr ""
 msgid "Info"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:89
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:91
+#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:86
+msgid "The cities, email and phone come from Settings › Theme › Contact."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:90
+#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:92
 msgid "Locations overline"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:93
+#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:94
 msgid "Where to find us"
 msgstr "Où nous trouver"
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:94
+#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:95
 msgid "Enter the overline above the cities"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:98
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:100
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:94
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:96
-msgid "Locations"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:103
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:99
-msgid "Add Location"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:104
-msgid "Cities listed under the node rule, one per line."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:112
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:108
-msgid "e.g. Paris"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:119
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:121
+#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:99
+#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:101
 msgid "Contact overline"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:123
+#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:103
 msgid "Or directly"
 msgstr "Ou directement"
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:124
+#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:104
 msgid "Enter the overline above the email and phone"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:128
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:130
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:115
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:117
-#: views/components/form-newsletter.html.twig:54
-msgid "Email"
-msgstr "E-mail"
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:133
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:120
-msgid "Enter the contact email"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:137
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:139
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:124
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:126
-msgid "Phone"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:142
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:129
-msgid "Enter the phone number"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:146
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:148
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:133
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:135
-msgid "Phone note"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:150
-msgid "Joachim, direct line"
-msgstr "Joachim, en direct"
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:151
-msgid "e.g. Joachim, direct line"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:152
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:139
-msgid "Shown after the number. Optional."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:29
@@ -2578,7 +2514,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:57
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:62
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:64
-#: includes/Plugins/ACF/Init.php:53
+#: includes/Plugins/ACF/Init.php:85
 msgid "Theme"
 msgstr ""
 
@@ -2586,7 +2522,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:72
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:77
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:79
-#: views/blocks/form-info.html.twig:34
+#: views/blocks/form-info.html.twig:26
 msgid "Contact"
 msgstr ""
 
@@ -2605,8 +2541,45 @@ msgstr ""
 msgid "Optional"
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:94
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:96
+msgid "Locations"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:99
+msgid "Add Location"
+msgstr ""
+
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:100
-msgid "Cities listed in the footer."
+msgid "Cities listed in the footer and in the Form + Info block."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:108
+msgid "e.g. Paris"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:115
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:117
+#: views/components/form-newsletter.html.twig:54
+msgid "Email"
+msgstr "E-mail"
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:120
+msgid "Enter the contact email"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:124
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:126
+msgid "Phone"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:129
+msgid "Enter the phone number"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:133
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:135
+msgid "Phone note"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:137
@@ -2615,6 +2588,10 @@ msgstr "Joachim, fondateur"
 
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:138
 msgid "e.g. Joachim, founder"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:139
+msgid "Shown after the number. Optional."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:164
@@ -2758,7 +2735,7 @@ msgstr ""
 msgid "Theme Fields"
 msgstr ""
 
-#: includes/Plugins/ACF/Init.php:43
+#: includes/Plugins/ACF/Init.php:75
 msgid "Archive"
 msgstr ""
 
@@ -3234,11 +3211,11 @@ msgstr "Lire l’article"
 msgid "Post categories"
 msgstr "Catégories de l’article"
 
-#: views/footer.html.twig:82
+#: views/footer.html.twig:72
 msgid "Footer navigation"
 msgstr "Navigation du pied de page"
 
-#: views/footer.html.twig:142
+#: views/footer.html.twig:132
 msgid "Made with care"
 msgstr "Fait avec soin"
 

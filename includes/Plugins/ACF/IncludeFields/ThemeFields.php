@@ -97,7 +97,7 @@ class ThemeFields implements Service {
 								'type'         => 'repeater',
 								'layout'       => 'table',
 								'button_label' => __( 'Add Location', 'agencecinq' ),
-								'instructions' => __( 'Cities listed in the footer.', 'agencecinq' ),
+								'instructions' => __( 'Cities listed in the footer and in the Form + Info block.', 'agencecinq' ),
 								'sub_fields'   => array(
 									array(
 										'key'             => 'field_' . $key . '_theme_contact_locations_title',

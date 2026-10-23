@@ -57,17 +57,7 @@
 
 						{%- if contact.phone -%}
 							<p class="text-pistachio">
-								<a
-									href="tel:{{
-										contact.phone | replace( {
-											' ': '',
-											'.': '',
-											'-': '',
-										} )
-									}}"
-								>
-									{{- contact.phone -}}
-								</a>
+								<a href="tel:{{ contact.phone | tel }}">{{- contact.phone -}}</a>
 								{%- if contact.phone_note -%}
 									{{- ', ' ~ contact.phone_note -}}
 								{%- endif -%}

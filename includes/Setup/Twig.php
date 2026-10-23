@@ -11,7 +11,7 @@ namespace AgenceCinq\Setup;
 
 use Twig\Extra\Html\{ HtmlExtension };
 use Twig\Extra\Intl\{ IntlExtension };
-use Twig\{ TwigFunction };
+use Twig\{ TwigFilter, TwigFunction };
 use AgenceCinq\{ Service, Vite };
 use AgenceCinq\Catalogue\{ Catalogue };
 
@@ -123,6 +123,16 @@ class Twig implements Service {
 				'asset',
 				function ( $asset ) {
 					return Vite::asset( $asset );
+				}
+			)
+		);
+
+		// Phone number of a tel: link: digits and the leading +.
+		$twig->addFilter(
+			new TwigFilter(
+				'tel',
+				function ( $phone ) {
+					return preg_replace( '/[^\d+]/', '', $phone );
 				}
 			)
 		);

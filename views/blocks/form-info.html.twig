@@ -14,16 +14,8 @@
 -}}
 
 {%- set info = block.info | default( {} ) -%}
-{%- set locations = info.locations | default( [] ) | filter( location => location.title ) -%}
-{%- set phone_href = info.phone
-	? 'tel:'
-		~ ( info.phone | replace( {
-			' ': '',
-			'.': '',
-			'-': '',
-		} ) )
-	: ''
--%}
+{%- set contact = theme.contact | default( {} ) -%}
+{%- set locations = contact.locations | default( [] ) | filter( location => location.title ) -%}
 {%- set node_rule =
 	'relative space-y-3.5 pt-8 before:absolute before:top-1.5 before:right-0 before:left-1.5 before:h-px before:bg-cream-soft  after:absolute after:top-1.5 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:bg-cream after:ring-4 after:ring-black '
 -%}
@@ -52,7 +44,7 @@
 			{%- endif -%}
 		</div>
 
-		{%- if ( locations | length ) or info.email or info.phone -%}
+		{%- if ( locations | length ) or contact.email or contact.phone -%}
 			<aside
 				class="col-span-full space-y-12 lg:col-span-3 lg:col-start-10"
 				itemscope
@@ -82,7 +74,7 @@
 					</div>
 				{%- endif -%}
 
-				{%- if info.email or info.phone -%}
+				{%- if contact.email or contact.phone -%}
 					<div class="{{ node_rule }}">
 						{%- if info.contact_overline -%}
 							<p class="text-label text-stone uppercase">
@@ -91,25 +83,29 @@
 						{%- endif -%}
 
 						<div class="space-y-2">
-							{%- if info.email -%}
+							{%- if contact.email -%}
 								<p>
 									<a
-										href="mailto:{{ info.email }}"
+										href="mailto:{{ contact.email }}"
 										class="text-title-md text-cream hover:text-pistachio"
 										itemprop="email"
 									>
-										{{- info.email -}}
+										{{- contact.email -}}
 									</a>
 								</p>
 							{%- endif -%}
 
-							{%- if info.phone -%}
+							{%- if contact.phone -%}
 								<p class="text-title-md text-cream">
-									<a href="{{ phone_href }}" class="hover:text-pistachio" itemprop="telephone">
-										{{- info.phone -}}
+									<a
+										href="tel:{{ contact.phone | tel }}"
+										class="hover:text-pistachio"
+										itemprop="telephone"
+									>
+										{{- contact.phone -}}
 									</a>
-									{%- if info.phone_note -%}
-										{{- ', ' ~ info.phone_note -}}
+									{%- if contact.phone_note -%}
+										{{- ', ' ~ contact.phone_note -}}
 									{%- endif -%}
 								</p>
 							{%- endif -%}
