@@ -29,9 +29,6 @@ interface ModalElement extends HTMLElement {
 	show(): boolean;
 }
 
-/** Asks for a dot in the domain: « nom@entreprise » is refused. */
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
 /**
  * The estimator. The server renders every platform, package and module with its price;
  * this only shows the modules the chosen package accepts (its data-modules) and sums the total.
@@ -111,6 +108,7 @@ class Configurator extends Piece {
 
 			if ( ! response.ok ) {
 				if ( 'cinq_quote_email' === data.code ) {
+					this.#email.setCustomValidity( data.message || this.#labels.error );
 					this.#setEmailError( true, true );
 				} else {
 					this.#setStatus( data.message || this.#labels.error );
@@ -129,8 +127,10 @@ class Configurator extends Piece {
 	};
 
 	#onEmailInput = (): void => {
+		this.#email?.setCustomValidity( '' );
+
 		// Clear the error as soon as the address becomes valid, never add one while typing.
-		if ( this.#email?.getAttribute( 'aria-invalid' ) === 'true' ) {
+		if ( this.#emailError && ! this.#emailError.hidden ) {
 			this.#validateEmail( false );
 		}
 	};
@@ -142,7 +142,7 @@ class Configurator extends Piece {
 	};
 
 	#validateEmail( focus: boolean ): boolean {
-		const valid = EMAIL.test( this.#email?.value.trim() ?? '' );
+		const valid = this.#email?.checkValidity() ?? false;
 
 		this.#setEmailError( ! valid, focus );
 
