@@ -30,8 +30,8 @@ class Enqueue implements Service {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_filter( 'script_module_data_' . get_theme_text_domain() . '-main', array( $this, 'script_module_data' ) );
 
-		add_action( 'wp_head', array( $this, 'preload_wp_scripts' ) );
 		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
 		add_filter( 'wp_preload_resources', array( $this, 'preload_resources' ) );
 		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
@@ -133,6 +133,7 @@ class Enqueue implements Service {
 	public function enqueue_styles(): void {
 		$filename = Vite::asset( 'src/stylesheets/styles.css' );
 
+		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Vite hashes the filename.
 		wp_enqueue_style( get_theme_text_domain() . '-main', $filename, array(), null );
 	}
 
@@ -175,69 +176,24 @@ class Enqueue implements Service {
 			null
 		);
 
-		// We register an empty feature script to attach inline scripts to.
-		wp_register_script( get_theme_text_domain() . '-feature', false );
-		// These no-touch and no-js classes are added by default in the <html> tag by WordPress. We
-		// replace them with touch/js classes when appropriate.
-		wp_add_inline_script( get_theme_text_domain() . '-feature', '!function(e,n,o){("ontouchstart"in e||e.DocumentTouch&&n instanceof DocumentTouch||o.MaxTouchPoints>0||o.msMaxTouchPoints>0)&&(n.documentElement.className=n.documentElement.className.replace(/\bno-touch\b/,"touch")),n.documentElement.className=n.documentElement.className.replace(/\bno-js\b/,"js")}(window,document,navigator);' );
-		// Detect Safari browser. We add an is-safari class to the <html> tag when Safari is detected.
-		wp_add_inline_script( get_theme_text_domain() . '-feature', '/Safari/.test(navigator.userAgent)&&/Apple Computer/.test(navigator.vendor)&&(document.documentElement.className+=" is-safari");' );
-
-		$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
-		$current_url = is_singular() ? get_permalink() : ( $request_uri ? esc_url_raw( home_url( $request_uri ) ) : home_url() );
-
-		$data = array(
-			'template_directory_uri' => get_template_directory_uri(),
-			'base_url'               => site_url(),
-			'home_url'               => home_url( '/' ),
-			'ajax_url'               => admin_url( 'admin-ajax.php' ),
-			'api_url'                => home_url( 'wp-json' ),
-			'current_url'            => $current_url,
-			'nonce'                  => wp_create_nonce( 'security' ),
-			'rest_nonce'             => wp_create_nonce( 'wp_rest' ),
-			'text_domain'            => get_theme_text_domain(),
-		);
-
-		// @TODO doesn't work with wp_enqueue_script_module so we use wp_add_inline_script attached to the feature script.
-		wp_add_inline_script(
-			get_theme_text_domain() . '-feature',
-			'var cinq = ' . wp_json_encode(
-				$data
-			),
-			'before'
-		);
-
-		wp_enqueue_script( get_theme_text_domain() . '-feature' );
 		wp_enqueue_script_module( get_theme_text_domain() . '-main' );
 	}
 
 
 	/**
-	 * Preload scripts
+	 * Data of the main module, read by src/scripts/theme.ts.
 	 *
-	 * We add preload links for our scripts for faster loading.
+	 * A script module takes no inline script: WordPress prints this data as JSON
+	 * in the footer, in script#wp-script-module-data-agencecinq-main.
 	 *
-	 * @access public
-	 * @return void
+	 * @param array $data Data of the module.
+	 * @return array
 	 */
-	public function preload_wp_scripts(): void {
-		global $wp_scripts;
+	public function script_module_data( array $data ): array {
+		$data['api_url']    = home_url( 'wp-json' );
+		$data['rest_nonce'] = wp_create_nonce( 'wp_rest' );
 
-		foreach ( $wp_scripts->queue as $handle ) {
-			if ( ! isset( $wp_scripts->registered[ $handle ] ) ) {
-				continue;
-			}
-			$script = $wp_scripts->registered[ $handle ];
-
-			if ( substr( $script->handle, 0, strlen( get_theme_text_domain() ) ) !== get_theme_text_domain() ) {
-				continue;
-			}
-
-			if ( isset( $script->extra['group'] ) && 1 === $script->extra['group'] ) {
-				$href = $script->src . ( $script->ver ? "?ver={$script->ver}" : '' );
-				echo '<link rel="preload" as="script" href="' . esc_attr( $href ) . '">';
-			}
-		}
+		return $data;
 	}
 
 

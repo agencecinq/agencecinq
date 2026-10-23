@@ -12,7 +12,7 @@
 
 {%- set catalogue = catalogue() -%}
 {%- set platforms = catalogue
-	? catalogue.platforms() | filter( platform => catalogue.packages( platform.id ) | length )
+	? catalogue.platforms() | filter( item => catalogue.packages( item.id ) | length )
 	: []
 -%}
 
@@ -27,16 +27,16 @@
 		)
 	-}}
 
-	{%- set platform_ids = platforms | map( platform => platform.id ) -%}
-	{%- set platform = block.catalogue.platform in platform_ids
+	{%- set default_platform = platforms | first -%}
+	{%- set platform = block.catalogue.platform in ( platforms | map( item => item.id ) )
 		? block.catalogue.platform
-		: platform_ids | first
+		: default_platform.id
 	-%}
 	{%- set package = catalogue.package( platform, block.catalogue.package | default( '' ) )
 		?? ( catalogue.packages( platform ) | first )
 	-%}
+	{%- set accepted = package.moduleIds | default( [] ) -%}
 	{%- set composition = catalogue.compose( platform, package.code, [] ) -%}
-	{%- set firm = composition.total.mode == 'ferme' -%}
 	{%- set labels = {
 		package: __( 'Package', 'agencecinq' ),
 		from: _x( 'From', 'starting price', 'agencecinq' ),
@@ -53,23 +53,6 @@
 		] | join( ' ' )
 	-%}
 
-	{%- set steps = [
-		{
-			id: 'platform',
-			title: block.steps.platform_title,
-		},
-		{
-			id: 'package',
-			title: block.steps.package_title,
-			text: block.steps.package_text,
-		},
-		{
-			id: 'modules',
-			title: block.steps.modules_title,
-			text: block.steps.modules_text,
-		},
-	] -%}
-
 	<section id="{{ block.id }}" aria-label="{{ block.result.title }}">
 		<div class="container">
 			<cinq-configurator
@@ -84,112 +67,126 @@
 					class="flex flex-col gap-14 lg:flex-row lg:items-start"
 				>
 					<div class="min-w-0 flex-1 space-y-12">
-						{%- for step in steps -%}
-							<fieldset class="min-w-0">
-								<legend class="float-left w-full">
-									<span class="text-label text-stone block uppercase">
-										{{ __( 'Step %02d', 'agencecinq' ) | format( loop.index ) }}
-									</span>
-									<span class="text-title-md text-cream mt-2.5 block">{{- step.title -}}</span>
-								</legend>
+						<fieldset class="min-w-0">
+							<legend class="float-left w-full">
+								<span class="text-label text-stone block uppercase">
+									{{- __( 'Step %02d', 'agencecinq' ) | format( 1 ) -}}
+								</span>
+								<span class="text-title-md text-cream mt-2.5 block">
+									{{- block.steps.platform_title -}}
+								</span>
+							</legend>
 
-								{%- if step.id == 'platform' -%}
-									<div class="clear-left flex flex-wrap gap-3 pt-5">
-										{%- for item in platforms -%}
-											<label class="{{ chip_classes }}">
-												<input
-													type="radio"
-													name="plateforme"
-													value="{{ item.id }}"
-													class="sr-only"
-													data-dom="platform"
-													{{ item.id == platform ? 'checked' }}
-												/>
-												<span>{{- item.label -}}</span>
-											</label>
-										{%- endfor -%}
-									</div>
-								{%- elseif step.id == 'package' -%}
-									{%- if step.text -%}
-										<p class="text-taupe clear-left pt-2 text-sm">
-											{{- step.text -}}
-										</p>
-									{%- endif -%}
+							<div class="clear-left flex flex-wrap gap-3 pt-5">
+								{%- for item in platforms -%}
+									<label class="{{ chip_classes }}">
+										<input
+											type="radio"
+											name="plateforme"
+											value="{{ item.id }}"
+											class="sr-only"
+											data-dom="platform"
+											{{ item.id == platform ? 'checked' }}
+										/>
+										<span>{{- item.label -}}</span>
+									</label>
+								{%- endfor -%}
+							</div>
+						</fieldset>
 
-									<div class="clear-left flex flex-wrap gap-3 pt-5">
-										{%- for item in catalogue.packages() -%}
-											<label
-												class="{{ chip_classes }}"
-												{{ item.category.id != platform ? 'hidden' }}
-											>
-												<input
-													type="radio"
-													name="socle"
-													value="{{ item.category.id }}:{{ item.code }}"
-													class="sr-only"
-													data-dom="package"
-													data-platform="{{ item.category.id }}"
-													data-name="{{ item.name }}"
-													data-price="{{ item.priceExclVat }}"
-													data-mode="{{ catalogue.mode( item ) }}"
-													data-label="{{ catalogue.price( item, true ) }}"
-													data-modules="{{ item.moduleIds | join( ',' ) }}"
-													{{ item.id == package.id ? 'checked' }}
-												/>
-												<span>{{- item.name }} · {{ catalogue.price( item, true ) -}}</span>
-											</label>
-										{%- endfor -%}
-									</div>
-								{% else %}
-									{%- set accepted = package.moduleIds | default( [] ) -%}
+						<fieldset class="min-w-0">
+							<legend class="float-left w-full">
+								<span class="text-label text-stone block uppercase">
+									{{- __( 'Step %02d', 'agencecinq' ) | format( 2 ) -}}
+								</span>
+								<span class="text-title-md text-cream mt-2.5 block">
+									{{- block.steps.package_title -}}
+								</span>
+							</legend>
 
-									{%- if step.text -%}
-										<p
-											class="text-taupe clear-left pt-2 text-sm"
-											data-dom="modules-text"
-											data-template="{{ step.text | e( 'html_attr' ) }}"
-											{{ accepted is empty ? 'hidden' }}
-										>
-											{{- step.text | replace( { '{package}': package.name } ) -}}
-										</p>
-									{%- endif -%}
+							{%- if block.steps.package_text -%}
+								<p class="text-taupe clear-left pt-2 text-sm">
+									{{- block.steps.package_text -}}
+								</p>
+							{%- endif -%}
 
-									<p
-										class="text-taupe clear-left pt-2 text-sm"
-										data-dom="modules-empty"
-										{{ accepted is not empty ? 'hidden' }}
-									>
-										{{- block.steps.modules_empty -}}
-									</p>
+							<div class="clear-left flex flex-wrap gap-3 pt-5">
+								{%- for item in catalogue.packages() -%}
+									<label class="{{ chip_classes }}" {{ item.category.id != platform ? 'hidden' }}>
+										<input
+											type="radio"
+											name="socle"
+											value="{{ item.category.id }}:{{ item.code }}"
+											class="sr-only"
+											data-dom="package"
+											data-platform="{{ item.category.id }}"
+											data-name="{{ item.name }}"
+											data-price="{{ item.priceExclVat }}"
+											data-mode="{{ catalogue.mode( item ) }}"
+											data-label="{{ catalogue.price( item, true ) }}"
+											data-modules="{{ item.moduleIds | join( ',' ) }}"
+											{{ item.id == package.id ? 'checked' }}
+										/>
+										<span>{{- item.name }} · {{ catalogue.price( item, true ) -}}</span>
+									</label>
+								{%- endfor -%}
+							</div>
+						</fieldset>
 
-									<div
-										class="clear-left flex flex-wrap gap-3 pt-5"
-										data-dom="modules"
-										{{ accepted is empty ? 'hidden' }}
-									>
-										{%- for item in catalogue.modules() -%}
-											{%- set eligible = item.id in accepted -%}
-											<label class="{{ chip_classes }}" {{ not eligible ? 'hidden' }}>
-												<input
-													type="checkbox"
-													name="modules[]"
-													value="{{ item.id }}"
-													class="sr-only"
-													data-dom="module"
-													data-platform="{{ item.category.id }}"
-													data-name="{{ item.name }}"
-													data-price="{{ item.priceExclVat }}"
-													data-mode="{{ catalogue.mode( item ) }}"
-													data-label="{{ catalogue.price( item, true ) }}"
-													{{ not eligible ? 'disabled' }}
-												/>
-												<span>{{- item.name }} · {{ catalogue.price( item, true ) -}}</span>
-											</label>
-										{%- endfor -%}
-									</div>
-								{%- endif -%}
-							</fieldset>
-						{%- endfor -%}
+						<fieldset class="min-w-0">
+							<legend class="float-left w-full">
+								<span class="text-label text-stone block uppercase">
+									{{- __( 'Step %02d', 'agencecinq' ) | format( 3 ) -}}
+								</span>
+								<span class="text-title-md text-cream mt-2.5 block">
+									{{- block.steps.modules_title -}}
+								</span>
+							</legend>
+
+							{%- if block.steps.modules_text -%}
+								<p
+									class="text-taupe clear-left pt-2 text-sm"
+									data-dom="modules-text"
+									data-template="{{ block.steps.modules_text | e( 'html_attr' ) }}"
+									{{ accepted is empty ? 'hidden' }}
+								>
+									{{- block.steps.modules_text | replace( { '{package}': package.name } ) -}}
+								</p>
+							{%- endif -%}
+
+							<p
+								class="text-taupe clear-left pt-2 text-sm"
+								data-dom="modules-empty"
+								{{ accepted is not empty ? 'hidden' }}
+							>
+								{{- block.steps.modules_empty -}}
+							</p>
+
+							<div
+								class="clear-left flex flex-wrap gap-3 pt-5"
+								data-dom="modules"
+								{{ accepted is empty ? 'hidden' }}
+							>
+								{%- for item in catalogue.modules() -%}
+									<label class="{{ chip_classes }}" {{ item.id not in accepted ? 'hidden' }}>
+										<input
+											type="checkbox"
+											name="modules[]"
+											value="{{ item.id }}"
+											class="sr-only"
+											data-dom="module"
+											data-platform="{{ item.category.id }}"
+											data-name="{{ item.name }}"
+											data-price="{{ item.priceExclVat }}"
+											data-mode="{{ catalogue.mode( item ) }}"
+											data-label="{{ catalogue.price( item, true ) }}"
+											{{ item.id not in accepted ? 'disabled' }}
+										/>
+										<span>{{- item.name }} · {{ catalogue.price( item, true ) -}}</span>
+									</label>
+								{%- endfor -%}
+							</div>
+						</fieldset>
 					</div>
 
 					<aside
@@ -227,9 +224,9 @@
 								data-dom="total"
 								aria-live="polite"
 							>
-								{%- if composition.total.mode == 'sur_devis' -%}
+								{%- if composition.total.mode == constant( 'QUOTE', catalogue ) -%}
 									{{- labels.quote -}}
-								{%- elseif composition.total.mode == 'a_partir_de' -%}
+								{%- elseif composition.total.mode == constant( 'FROM', catalogue ) -%}
 									{{- labels.from }} {{ catalogue.amount( composition.total.amount ) -}}
 								{% else %}
 									{{- catalogue.amount( composition.total.amount ) -}}
@@ -245,7 +242,7 @@
 							<p
 								class="{{ mention_classes }} before:bg-pistachio"
 								data-dom="firm"
-								{{ not firm ? 'hidden' }}
+								{{ composition.total.mode != constant( 'FIRM', catalogue ) ? 'hidden' }}
 							>
 								{{- block.result.firm_text -}}
 							</p>
@@ -255,7 +252,7 @@
 							<p
 								class="{{ mention_classes }} before:bg-stone"
 								data-dom="open"
-								{{ firm ? 'hidden' }}
+								{{ composition.total.mode == constant( 'FIRM', catalogue ) ? 'hidden' }}
 							>
 								{{- block.result.open_text -}}
 							</p>

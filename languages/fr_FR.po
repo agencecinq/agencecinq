@@ -3103,12 +3103,14 @@ msgstr "Sur devis"
 msgid "The submission failed. Please check your connection and try again."
 msgstr "L’envoi n’a pas abouti. Vérifiez votre connexion, puis réessayez."
 
-#: views/blocks/configurator.html.twig:91
+#: views/blocks/configurator.html.twig:73
+#: views/blocks/configurator.html.twig:100
+#: views/blocks/configurator.html.twig:139
 #, php-format
 msgid "Step %02d"
 msgstr "Étape %02d"
 
-#: views/blocks/configurator.html.twig:325
+#: views/blocks/configurator.html.twig:322
 msgid "Privacy policy"
 msgstr "Politique de confidentialité"
 
