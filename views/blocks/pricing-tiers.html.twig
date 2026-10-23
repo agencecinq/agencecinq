@@ -10,7 +10,7 @@
 		'blocks/_layout.html.twig',
 		{
 			paddings: block.layout.paddings,
-			id: block.id
+			id: block.id,
 		}
 	)
 -}}
@@ -19,7 +19,7 @@
 	{%- set catalogue = catalogue() -%}
 	{%- set items = [] -%}
 
-	{%- for package in catalogue ? catalogue.packages(block.catalogue.platform) : [] -%}
+	{%- for package in catalogue ? catalogue.packages( block.catalogue.platform ) : [] -%}
 		{%- set featured = package.code == block.catalogue.featured -%}
 		{%- set items =
 			items | merge(
@@ -74,11 +74,10 @@
 			<ul
 				class="{{
 					html_classes(
-						'grid grid-cols-1 items-start gap-y-8 lg:gap-x-6',
+						'grid grid-cols-1 gap-y-8 md:grid-cols-2 md:gap-x-6',
 						{
-							'lg:grid-cols-2': ( items | length ) == 2,
 							'lg:grid-cols-3': ( items | length ) == 3,
-							'lg:grid-cols-4': ( items | length ) >= 4,
+							'xl:grid-cols-4': ( items | length ) >= 4,
 						}
 					)
 				}}"
@@ -96,8 +95,9 @@
 									features: item.features,
 									featured: item.featured,
 									badge: item.badge,
+									reserve_badge: reserve_badge,
 								},
-								with_context = false
+								with_context: false
 							)
 						-}}
 					</li>

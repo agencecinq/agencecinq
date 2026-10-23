@@ -15,17 +15,17 @@
 {%- if title or price or badge or ( features | length ) -%}
 	<article
 		class="{{
-		html_classes(
-			'rounded-8 flex w-full flex-col space-y-3 border p-8',
-			featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black',
-			reserve_badge and not badge ? 'lg:pt-18'
-		)
+			html_classes(
+				'rounded-8 flex w-full flex-col space-y-3 border p-8',
+				featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black',
+				reserve_badge and not badge ? 'md:pt-18'
+			)
 		}}"
 	>
 		{%- if badge or title or price -%}
 			<div class="{{ html_classes( badge ? 'space-y-4' ) }}">
 				{%- if badge -%}
-					<p class="text-badge bg-pistachio text-off-black rounded-3 inline-block px-2 py-1">
+					<p class="text-badge bg-pistachio text-off-black rounded-3 block w-fit px-2 py-1">
 						{{- badge -}}
 					</p>
 				{%- endif -%}
