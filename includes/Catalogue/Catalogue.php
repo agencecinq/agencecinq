@@ -315,19 +315,21 @@ class Catalogue {
 	}
 
 	/**
-	 * Monthly price of a retainer: « €390 excl. VAT per month », « From €1,200 excl. VAT per month ».
+	 * Monthly price of a retainer: « €390 excl. VAT per month », « from €1,200 excl. VAT per month ».
 	 *
 	 * @param array<string, mixed> $retainer Retainer.
 	 * @return string
 	 */
 	public static function retainer_price( array $retainer ): string {
-		$amount = sprintf(
-			/* translators: %s: monthly amount, e.g. « €390 ». */
-			_x( '%s excl. VAT per month', 'retainer price', 'agencecinq' ),
-			self::amount( (float) ( $retainer['monthlyPriceExclVat'] ?? 0 ) )
-		);
+		$amount = self::amount( (float) ( $retainer['monthlyPriceExclVat'] ?? 0 ) );
 
-		return self::FROM === self::mode( $retainer ) ? _x( 'From ', 'price long label', 'agencecinq' ) . $amount : $amount;
+		if ( self::FROM === self::mode( $retainer ) ) {
+			/* translators: %s: monthly amount, e.g. « €1,200 ». */
+			return sprintf( _x( 'from %s excl. VAT per month', 'retainer price', 'agencecinq' ), $amount );
+		}
+
+		/* translators: %s: monthly amount, e.g. « €390 ». */
+		return sprintf( _x( '%s excl. VAT per month', 'retainer price', 'agencecinq' ), $amount );
 	}
 
 	/**
@@ -346,7 +348,13 @@ class Catalogue {
 		$text = $short ? self::amount( $amount ) : self::amount_excl_vat( $amount );
 
 		if ( self::FROM === $mode ) {
-			return ( $short ? _x( 'From ', 'price short label', 'agencecinq' ) : _x( 'From ', 'price long label', 'agencecinq' ) ) . $text;
+			$from = $short
+				/* translators: %s: amount, e.g. « €6,000 ». */
+				? _x( 'From %s', 'price short label', 'agencecinq' )
+				/* translators: %s: amount excluding VAT, e.g. « €6,000 excl. VAT ». */
+				: _x( 'From %s', 'price long label', 'agencecinq' );
+
+			return sprintf( $from, $text );
 		}
 
 		return $text;

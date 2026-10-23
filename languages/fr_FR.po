@@ -38,26 +38,37 @@ msgctxt "price long label"
 msgid "%s excl. VAT"
 msgstr "%s HT"
 
+#. translators: %s: monthly amount, e.g. « €1,200 ».
+#: includes/Catalogue/Catalogue.php:328
+#, php-format
+msgctxt "retainer price"
+msgid "from %s excl. VAT per month"
+msgstr "à partir de %s HT par mois"
+
 #. translators: %s: monthly amount, e.g. « €390 ».
-#: includes/Catalogue/Catalogue.php:326
+#: includes/Catalogue/Catalogue.php:332
 #, php-format
 msgctxt "retainer price"
 msgid "%s excl. VAT per month"
 msgstr "%s HT par mois"
 
-#: includes/Catalogue/Catalogue.php:330 includes/Catalogue/Catalogue.php:349
-msgctxt "price long label"
-msgid "From "
-msgstr "À partir de "
-
-#: includes/Catalogue/Catalogue.php:343
+#: includes/Catalogue/Catalogue.php:345
 msgid "On quote"
 msgstr "Sur devis"
 
-#: includes/Catalogue/Catalogue.php:349
+#. translators: %s: amount, e.g. « €6,000 ».
+#: includes/Catalogue/Catalogue.php:353
+#, php-format
 msgctxt "price short label"
-msgid "From "
-msgstr "Dès "
+msgid "From %s"
+msgstr "Dès %s"
+
+#. translators: %s: amount excluding VAT, e.g. « €6,000 excl. VAT ».
+#: includes/Catalogue/Catalogue.php:355
+#, php-format
+msgctxt "price long label"
+msgid "From %s"
+msgstr "À partir de %s"
 
 #. translators: 1: category, 2: package name, 3: price.
 #: includes/Catalogue/Composition.php:106
@@ -66,14 +77,14 @@ msgctxt "composition package line"
 msgid "%1$s · Package %2$s: %3$s"
 msgstr "%1$s · Socle %2$s : %3$s"
 
-#. translators: 1: category, 2: package name, 3: price. */ _x( '%1$s · Package %2$s: %3$s', 'composition package line', 'agencecinq' ), $package['category']['label'] ?? '', $package['name'] ?? '', Catalogue::price( $package ) ), ); foreach ( $composition['modules'] as $module ) { $lines[] = sprintf( /* translators: 1: module name, 2: price.
+#. translators: 1: module name, 2: price.
 #: includes/Catalogue/Composition.php:116
 #, php-format
 msgctxt "composition module line"
 msgid "%1$s: %2$s"
 msgstr "%1$s : %2$s"
 
-#. translators: 1: module name, 2: price. */ _x( '%1$s: %2$s', 'composition module line', 'agencecinq' ), $module['name'] ?? '', Catalogue::price( $module ) ); } $lines[] = sprintf( /* translators: %s: total price.
+#. translators: %s: total price.
 #: includes/Catalogue/Composition.php:124
 #, php-format
 msgctxt "composition total line"
@@ -149,25 +160,28 @@ msgctxt "quote email subject"
 msgid "Your %1$s estimate: %2$s"
 msgstr "Votre estimation %1$s : %2$s"
 
-#. translators: 1: site name, 2: estimate total. */ _x( 'Your %1$s estimate: %2$s', 'quote email subject', 'agencecinq' ), $from, $total ), $body, array( 'Reply-To: ' . self::recipient() ) ); if ( $sent ) { wp_mail( self::recipient(), sprintf( /* translators: 1: visitor email address, 2: estimate total.
+#. translators: 1: visitor email address, 2: estimate total.
 #: includes/Catalogue/QuoteRequest.php:206
 #, php-format
 msgctxt "quote notification subject"
 msgid "Estimate sent from the estimator: %1$s, %2$s"
 msgstr "Estimation envoyée depuis l’estimateur : %1$s, %2$s"
 
+#. translators: %s: visitor email address.
 #: includes/Catalogue/QuoteRequest.php:214
 #, php-format
 msgctxt "quote notification"
 msgid "Email: %s"
 msgstr "E-mail : %s"
 
+#. translators: %s: page URL.
 #: includes/Catalogue/QuoteRequest.php:217
 #, php-format
 msgctxt "quote notification"
 msgid "Page: %s"
 msgstr "Page : %s"
 
+#. translators: %s: booking URL.
 #: includes/Catalogue/QuoteRequest.php:219
 #, php-format
 msgctxt "quote notification"
@@ -382,6 +396,7 @@ msgstr ""
 msgid "Main heading for the posts archive hero."
 msgstr ""
 
+#. Template Name of the theme
 #: includes/Plugins/ACF/IncludeFields/BlocksFields.php:131
 #: includes/Plugins/ACF/IncludeFields/BlocksFields.php:133
 msgid "Blocks"
@@ -3011,6 +3026,7 @@ msgstr ""
 msgid "No Vite Manifest exists. Should hot server be running?"
 msgstr ""
 
+#. translators: %s: asset path
 #: includes/Vite.php:148
 #, php-format
 msgid "Unknown Vite build asset: %s"
@@ -3110,12 +3126,12 @@ msgstr "Sur devis"
 msgid "The submission failed. Please check your connection and try again."
 msgstr "L’envoi n’a pas abouti. Vérifiez votre connexion, puis réessayez."
 
-#: views/blocks/configurator.html.twig:92
+#: views/blocks/configurator.html.twig:91
 #, php-format
 msgid "Step %02d"
 msgstr "Étape %02d"
 
-#: views/blocks/configurator.html.twig:326
+#: views/blocks/configurator.html.twig:325
 msgid "Privacy policy"
 msgstr "Politique de confidentialité"
 
