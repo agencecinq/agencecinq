@@ -115,6 +115,7 @@ class Enqueue implements Service {
 	public function enqueue_styles(): void {
 		$filename = Vite::asset( 'src/stylesheets/styles.css' );
 
+		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Vite hashes the filename.
 		wp_enqueue_style( get_theme_text_domain() . '-main', $filename, array(), null );
 	}
 
@@ -158,7 +159,7 @@ class Enqueue implements Service {
 		);
 
 		// We register an empty feature script to attach inline scripts to.
-		wp_register_script( get_theme_text_domain() . '-feature', false );
+		wp_register_script( get_theme_text_domain() . '-feature', false, array(), null, false ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- No file to version.
 		// These no-touch and no-js classes are added by default in the <html> tag by WordPress. We
 		// replace them with touch/js classes when appropriate.
 		wp_add_inline_script( get_theme_text_domain() . '-feature', '!function(e,n,o){("ontouchstart"in e||e.DocumentTouch&&n instanceof DocumentTouch||o.MaxTouchPoints>0||o.msMaxTouchPoints>0)&&(n.documentElement.className=n.documentElement.className.replace(/\bno-touch\b/,"touch")),n.documentElement.className=n.documentElement.className.replace(/\bno-js\b/,"js")}(window,document,navigator);' );
