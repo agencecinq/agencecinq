@@ -32,7 +32,6 @@ class Enqueue implements Service {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'script_module_data_' . get_theme_text_domain() . '-main', array( $this, 'script_module_data' ) );
 
-		add_action( 'wp_head', array( $this, 'preload_wp_scripts' ) );
 		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
 		add_filter( 'wp_preload_resources', array( $this, 'preload_resources' ) );
 		add_filter( 'wp_speculation_rules_configuration', array( $this, 'speculation_rules_configuration' ) );
@@ -177,35 +176,6 @@ class Enqueue implements Service {
 		$data['rest_nonce'] = wp_create_nonce( 'wp_rest' );
 
 		return $data;
-	}
-
-
-	/**
-	 * Preload scripts
-	 *
-	 * We add preload links for our scripts for faster loading.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function preload_wp_scripts(): void {
-		global $wp_scripts;
-
-		foreach ( $wp_scripts->queue as $handle ) {
-			if ( ! isset( $wp_scripts->registered[ $handle ] ) ) {
-				continue;
-			}
-			$script = $wp_scripts->registered[ $handle ];
-
-			if ( substr( $script->handle, 0, strlen( get_theme_text_domain() ) ) !== get_theme_text_domain() ) {
-				continue;
-			}
-
-			if ( isset( $script->extra['group'] ) && 1 === $script->extra['group'] ) {
-				$href = $script->src . ( $script->ver ? "?ver={$script->ver}" : '' );
-				echo '<link rel="preload" as="script" href="' . esc_attr( $href ) . '">';
-			}
-		}
 	}
 
 
