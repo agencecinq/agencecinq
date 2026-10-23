@@ -1,10 +1,11 @@
 {#
  # Pricing tier: name, price, included lines.
- # Takes a catalogue package, or a tier typed in the block with the same fields.
+ # Takes a catalogue package, retainer or module, or a tier typed in the block with the same fields.
  # Featured variant uses pistachio chrome. Badge is independent of featured.
  #
  # @param string name The tier name.
  # @param float|null priceExclVat The price, null on quote.
+ # @param float|null monthlyPriceExclVat The monthly price of a retainer, instead of priceExclVat.
  # @param array priceMode The price mode, { id }.
  # @param array included The included lines, as strings.
  # @param bool featured Whether this tier is highlighted.
@@ -14,6 +15,8 @@
 
 {%- set included = included | default( [] ) -%}
 {%- set quote = priceMode.id == constant( 'AgenceCinq\\Catalogue\\Catalogue::QUOTE' ) -%}
+{%- set monthly = monthlyPriceExclVat is defined -%}
+{%- set amount = monthly ? monthlyPriceExclVat : priceExclVat -%}
 
 <article
 	class="{{
@@ -38,19 +41,21 @@
 				</h3>
 			{%- endif -%}
 
-			{%- if priceExclVat is not empty or quote -%}
-				{%- set price =
-					{
-						priceExclVat: priceExclVat,
+			{%- if amount is not empty or quote -%}
+				{%- set price = monthly
+					? {
+						monthlyPriceExclVat: amount,
+						priceMode: priceMode,
+					} | retainer_price
+					: {
+						priceExclVat: amount,
 						priceMode: priceMode,
 					} | price
 				-%}
 
 				<p class="text-title-lg text-cream">
-					{%- if priceExclVat is not empty -%}
-						<data itemprop="price" value="{{ priceExclVat }}">
-							{{- price -}}
-						</data>
+					{%- if amount is not empty -%}
+						<data itemprop="price" value="{{ amount }}">{{- price -}}</data>
 					{%- else -%}
 						{{- price -}}
 					{%- endif -%}
