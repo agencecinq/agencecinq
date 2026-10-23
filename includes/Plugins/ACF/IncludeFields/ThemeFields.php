@@ -2,7 +2,7 @@
 /**
  * Theme Fields
  *
- * Registers ACF field group for the theme options page (Réglages > Thème).
+ * Registers ACF field group for the theme options page (Settings > Theme).
  *
  * @package WordPress
  * @subpackage AgenceCinq/Plugins/ACF/IncludeFields
@@ -89,6 +89,82 @@ class ThemeFields implements Service {
 								'return_format' => 'array',
 								'instructions'  => __( 'Enter the contact or CTA link URL.', 'agencecinq' ) . ' <em>(' . __( 'Optional', 'agencecinq' ) . ')</em>.',
 							),
+							array(
+								'key'          => 'field_' . $key . '_theme_contact_locations',
+								'label'        => __( 'Locations', 'agencecinq' ),
+								'name'         => 'locations',
+								'aria-label'   => __( 'Locations', 'agencecinq' ),
+								'type'         => 'repeater',
+								'layout'       => 'table',
+								'button_label' => __( 'Add Location', 'agencecinq' ),
+								'instructions' => __( 'Cities listed in the footer and in the Form + Info block.', 'agencecinq' ),
+								'sub_fields'   => array(
+									array(
+										'key'             => 'field_' . $key . '_theme_contact_locations_title',
+										'label'           => __( 'Title', 'agencecinq' ),
+										'name'            => 'title',
+										'aria-label'      => __( 'Title', 'agencecinq' ),
+										'type'            => 'text',
+										'placeholder'     => __( 'e.g. Paris', 'agencecinq' ),
+										'parent_repeater' => 'field_' . $key . '_theme_contact_locations',
+									),
+								),
+							),
+							array(
+								'key'           => 'field_' . $key . '_theme_contact_email',
+								'label'         => __( 'Email', 'agencecinq' ),
+								'name'          => 'email',
+								'aria-label'    => __( 'Email', 'agencecinq' ),
+								'type'          => 'email',
+								'default_value' => 'contact@agencecinq.com',
+								'placeholder'   => __( 'Enter the contact email', 'agencecinq' ),
+							),
+							array(
+								'key'           => 'field_' . $key . '_theme_contact_phone',
+								'label'         => __( 'Phone', 'agencecinq' ),
+								'name'          => 'phone',
+								'aria-label'    => __( 'Phone', 'agencecinq' ),
+								'type'          => 'text',
+								'default_value' => '06 73 77 86 08',
+								'placeholder'   => __( 'Enter the phone number', 'agencecinq' ),
+							),
+							array(
+								'key'           => 'field_' . $key . '_theme_contact_phone_note',
+								'label'         => __( 'Phone note', 'agencecinq' ),
+								'name'          => 'phone_note',
+								'aria-label'    => __( 'Phone note', 'agencecinq' ),
+								'type'          => 'text',
+								'default_value' => __( 'Joachim, founder', 'agencecinq' ),
+								'placeholder'   => __( 'e.g. Joachim, founder', 'agencecinq' ),
+								'instructions'  => __( 'Shown after the number. Optional.', 'agencecinq' ),
+							),
+						),
+					),
+					array(
+						'key'        => 'field_' . $key . '_theme_footer_tab',
+						'label'      => __( 'Footer', 'agencecinq' ),
+						'name'       => 'footer_tab',
+						'aria-label' => __( 'Footer', 'agencecinq' ),
+						'type'       => 'tab',
+					),
+					array(
+						'key'        => 'field_' . $key . '_theme_footer',
+						'label'      => __( 'Footer', 'agencecinq' ),
+						'name'       => 'footer',
+						'aria-label' => __( 'Footer', 'agencecinq' ),
+						'type'       => 'group',
+						'layout'     => 'block',
+						'sub_fields' => array(
+							array(
+								'key'           => 'field_' . $key . '_footer_text',
+								'label'         => __( 'Text', 'agencecinq' ),
+								'name'          => 'text',
+								'aria-label'    => __( 'Text', 'agencecinq' ),
+								'type'          => 'text',
+								'default_value' => __( 'A website is an asset. Not a liability you replace every three years.', 'agencecinq' ),
+								'placeholder'   => __( 'Enter the text under the logo', 'agencecinq' ),
+								'instructions'  => __( 'Short line under the logo.', 'agencecinq' ) . ' <em>(' . __( 'Optional', 'agencecinq' ) . ')</em>.',
+							),
 						),
 					),
 					array(
@@ -113,7 +189,7 @@ class ThemeFields implements Service {
 								'name'          => 'overline',
 								'aria-label'    => __( 'Overline', 'agencecinq' ),
 								'type'          => 'text',
-								'default_value' => __( 'Erreur 404', 'agencecinq' ),
+								'default_value' => __( 'Error 404', 'agencecinq' ),
 								'placeholder'   => __( 'Enter the overline of the 404 page', 'agencecinq' ),
 								'instructions'  => __( 'Uppercase mono label above the title.', 'agencecinq' ),
 							),
@@ -123,7 +199,7 @@ class ThemeFields implements Service {
 								'name'          => 'title',
 								'aria-label'    => __( 'Title', 'agencecinq' ),
 								'type'          => 'text',
-								'default_value' => __( 'Cette page n\'existe pas.', 'agencecinq' ),
+								'default_value' => __( 'This page does not exist.', 'agencecinq' ),
 								'placeholder'   => __( 'Enter the title of the 404 page', 'agencecinq' ),
 								'instructions'  => __( 'Main heading of the 404 page. Always rendered as an H1.', 'agencecinq' ),
 							),
@@ -135,7 +211,7 @@ class ThemeFields implements Service {
 								'type'          => 'textarea',
 								'rows'          => 3,
 								'new_lines'     => 'br',
-								'default_value' => __( 'Elle a peut-être été déplacée, ou le lien qui vous a mené ici était déjà cassé. Voilà par où reprendre.', 'agencecinq' ),
+								'default_value' => __( 'It may have been moved, or the link that brought you here was already broken. Here is where to pick up.', 'agencecinq' ),
 								'placeholder'   => __( 'Enter the lead text of the 404 page', 'agencecinq' ),
 								'instructions'  => __( 'Lead paragraph under the title.', 'agencecinq' ),
 							),
@@ -147,7 +223,7 @@ class ThemeFields implements Service {
 								'type'          => 'link',
 								'return_format' => 'array',
 								'default_value' => array(
-									'title'  => __( 'Retour à l\'accueil', 'agencecinq' ),
+									'title'  => __( 'Back to home', 'agencecinq' ),
 									'url'    => '',
 									'target' => '',
 								),

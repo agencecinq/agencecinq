@@ -95,7 +95,7 @@ class Estimation implements Service {
 			return $components;
 		}
 
-		$legend = implode( "\n", array( 'Estimation du configurateur', ...Composition::lines( $composition ) ) );
+		$legend = implode( "\n", array( __( 'Configurator estimate', 'agencecinq' ), ...Composition::lines( $composition ) ) );
 
 		$components['body'] .= $mail->get( 'use_html' )
 			? '<p>' . nl2br( esc_html( $legend ) ) . '</p>'

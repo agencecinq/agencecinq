@@ -15,7 +15,7 @@
 
 {%- set catalogue = catalogue() -%}
 {%- set day_rate = catalogue and catalogue.ad_hoc_day_rate()
-	? catalogue.amount( catalogue.ad_hoc_day_rate() ) ~ '&nbsp;HT'
+	? catalogue.amount_excl_vat( catalogue.ad_hoc_day_rate() )
 	: ''
 -%}
 

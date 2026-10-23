@@ -103,7 +103,7 @@ class EntryPoints {
 							'name'            => 'price',
 							'aria-label'      => __( 'Price', 'agencecinq' ),
 							'type'            => 'text',
-							'placeholder'     => __( 'e.g. 490 € HT', 'agencecinq' ),
+							'placeholder'     => __( 'e.g. 490 € excl. VAT', 'agencecinq' ),
 							'parent_repeater' => 'field_' . $key . '_entry_points_items',
 						),
 						array(

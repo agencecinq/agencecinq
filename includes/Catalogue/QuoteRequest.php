@@ -101,17 +101,17 @@ class QuoteRequest implements Service {
 	 */
 	public function handle( WP_REST_Request $request ) {
 		if ( ! wp_verify_nonce( (string) $request->get_header( 'x_wp_nonce' ), self::NONCE_ACTION ) ) {
-			return new WP_Error( 'cinq_quote_expired', 'La page a expiré : rechargez-la, votre composition sera à refaire.', array( 'status' => 403 ) );
+			return new WP_Error( 'cinq_quote_expired', _x( 'The page has expired: please reload it, your selection will have to be redone.', 'quote expired', 'agencecinq' ), array( 'status' => 403 ) );
 		}
 
 		$email = sanitize_email( (string) $request->get_param( 'email' ) );
 
 		if ( ! is_email( $email ) ) {
-			return new WP_Error( 'cinq_quote_email', 'Cette adresse e-mail semble incomplète. Exemple : nom@entreprise.fr', array( 'status' => 400 ) );
+			return new WP_Error( 'cinq_quote_email', _x( 'This e-mail address seems incomplete. Example: name@company.fr', 'quote email', 'agencecinq' ), array( 'status' => 400 ) );
 		}
 
 		if ( ! self::within_rate_limit() ) {
-			return new WP_Error( 'cinq_quote_rate', 'Trop d’envois depuis cette connexion. Réessayez dans une heure.', array( 'status' => 429 ) );
+			return new WP_Error( 'cinq_quote_rate', _x( 'Too many submissions from this connection. Please try again in an hour.', 'quote rate', 'agencecinq' ), array( 'status' => 429 ) );
 		}
 
 		$composition = Composition::from_choice(
@@ -120,7 +120,7 @@ class QuoteRequest implements Service {
 		);
 
 		if ( null === $composition ) {
-			return new WP_Error( 'cinq_quote_composition', 'Cette offre n’est plus au catalogue : rechargez la page.', array( 'status' => 422 ) );
+			return new WP_Error( 'cinq_quote_composition', _x( 'This offer is no longer in the catalogue: please reload the page.', 'quote composition', 'agencecinq' ), array( 'status' => 422 ) );
 		}
 
 		$booking = self::booking_url( (string) $request->get_param( 'booking' ), $composition );
@@ -130,7 +130,15 @@ class QuoteRequest implements Service {
 		// Honeypot: a bot gets the same answer, and nothing is sent.
 		if ( '' === (string) $request->get_param( 'website' ) ) {
 			if ( ! self::send( $email, $composition, $booking, $source ) ) {
-				return new WP_Error( 'cinq_quote_mail', 'L’envoi a échoué de notre côté. Réessayez, ou écrivez-nous à ' . self::recipient() . '.', array( 'status' => 500 ) );
+				return new WP_Error(
+					'cinq_quote_mail',
+					sprintf(
+						/* translators: %s: contact email address. */
+						_x( 'The sending failed on our side. Please try again, or write to us at %s.', 'quote mail', 'agencecinq' ),
+						self::recipient()
+					),
+					array( 'status' => 500 )
+				);
 			}
 
 			Central::queue( Central::payload( $email, $composition, $source ) );
@@ -163,12 +171,16 @@ class QuoteRequest implements Service {
 			"\n\n",
 			array_filter(
 				array(
-					'Bonjour,',
-					sprintf( 'Voici votre estimation %s, telle que vous l’avez composée sur notre site.', $from ),
+					_x( 'Hello,', 'quote email greeting', 'agencecinq' ),
+					sprintf(
+						/* translators: %s: site name. */
+						_x( 'Here is your %s estimate, as you put it together on our website.', 'quote email intro', 'agencecinq' ),
+						$from
+					),
 					$lines,
-					'Cette estimation reprend votre configuration ligne par ligne. Le prix ferme est établi après le diagnostic, sur un périmètre écrit.'
-						. ( Composition::is_firm( $composition ) ? '' : ' Les lignes « à partir de » et « sur devis » se chiffrent en rendez-vous.' ),
-					$booking ? "Pour en parler, réservez 30 minutes :\n" . $booking : '',
+					_x( 'This estimate lists your configuration line by line. The firm price is set after the assessment, based on a written scope.', 'quote email disclaimer', 'agencecinq' )
+						. ( Composition::is_firm( $composition ) ? '' : ' ' . _x( 'Lines marked “From” or “On quote” are priced during a meeting.', 'quote email disclaimer', 'agencecinq' ) ),
+					$booking ? _x( 'To discuss it, book a 30-minute call:', 'quote email booking', 'agencecinq' ) . "\n" . $booking : '',
 					$from,
 				)
 			)
@@ -176,7 +188,12 @@ class QuoteRequest implements Service {
 
 		$sent = wp_mail(
 			$email,
-			sprintf( 'Votre estimation %s : %s', $from, $total ),
+			sprintf(
+				/* translators: 1: site name, 2: estimate total. */
+				_x( 'Your %1$s estimate: %2$s', 'quote email subject', 'agencecinq' ),
+				$from,
+				$total
+			),
 			$body,
 			array( 'Reply-To: ' . self::recipient() )
 		);
@@ -184,8 +201,24 @@ class QuoteRequest implements Service {
 		if ( $sent ) {
 			wp_mail(
 				self::recipient(),
-				sprintf( 'Estimation envoyée depuis l’estimateur : %s, %s', $email, $total ),
-				implode( "\n\n", array( 'E-mail : ' . $email, $lines, 'Page : ' . $source, $booking ? 'Lien de réservation : ' . $booking : '' ) ),
+				sprintf(
+					/* translators: 1: visitor email address, 2: estimate total. */
+					_x( 'Estimate sent from the estimator: %1$s, %2$s', 'quote notification subject', 'agencecinq' ),
+					$email,
+					$total
+				),
+				implode(
+					"\n\n",
+					array(
+						/* translators: %s: visitor email address. */
+						sprintf( _x( 'Email: %s', 'quote notification', 'agencecinq' ), $email ),
+						$lines,
+						/* translators: %s: page URL. */
+						sprintf( _x( 'Page: %s', 'quote notification', 'agencecinq' ), $source ),
+						/* translators: %s: booking URL. */
+						$booking ? sprintf( _x( 'Booking link: %s', 'quote notification', 'agencecinq' ), $booking ) : '',
+					)
+				),
 				array( 'Reply-To: ' . $email )
 			);
 		}

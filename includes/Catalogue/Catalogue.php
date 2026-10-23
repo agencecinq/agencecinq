@@ -3,7 +3,6 @@
  * Catalogue
  *
  * Read model and pricing rules of the public catalogue (catalogue.v2).
- * Pure PHP: no WordPress call outside instance(), so the rules can be tested alone.
  *
  * @see https://github.com/agencecinq/central-v3/blob/main/docs/api-catalogue-public.md
  *
@@ -18,7 +17,7 @@ namespace AgenceCinq\Catalogue;
  * Catalogue.
  *
  * Amounts are in euros excluding VAT. A null price is never shown as 0 €.
- * Labels are French on purpose: the API serves French values, these are the agency's words.
+ * Labels and amounts follow the language of the site.
  */
 class Catalogue {
 
@@ -28,13 +27,6 @@ class Catalogue {
 	public const FIRM  = 'ferme';
 	public const FROM  = 'a_partir_de';
 	public const QUOTE = 'sur_devis';
-
-	/**
-	 * Narrow no-break space (thousands) and no-break space (before €),
-	 * the same characters Intl.NumberFormat( 'fr-FR' ) writes in the browser.
-	 */
-	private const THOUSANDS = "\u{202F}";
-	private const NBSP      = "\u{00A0}";
 
 	/**
 	 * Memoized instance for the request.
@@ -250,7 +242,7 @@ class Catalogue {
 	}
 
 	/**
-	 * Formats an amount: « 24 900 € ».
+	 * Formats an amount in the language of the site: « €24,900 ».
 	 *
 	 * @param float $amount Amount in euros.
 	 * @return string
@@ -258,13 +250,31 @@ class Catalogue {
 	public static function amount( float $amount ): string {
 		$decimals = floor( $amount ) === $amount ? 0 : 2;
 
-		return number_format( $amount, $decimals, ',', self::THOUSANDS ) . self::NBSP . '€';
+		return sprintf(
+			/* translators: %s: amount with the separators of the language, e.g. « 24,900 ». */
+			_x( '€%s', 'amount in euros', 'agencecinq' ),
+			number_format_i18n( $amount, $decimals )
+		);
+	}
+
+	/**
+	 * Formats an amount excluding VAT: « €24,900 excl. VAT ».
+	 *
+	 * @param float $amount Amount in euros.
+	 * @return string
+	 */
+	public static function amount_excl_vat( float $amount ): string {
+		return sprintf(
+			/* translators: %s: amount, e.g. « €14,900 ». */
+			_x( '%s excl. VAT', 'price long label', 'agencecinq' ),
+			self::amount( $amount )
+		);
 	}
 
 	/**
 	 * Displayed price of a line.
-	 * Long: « 14 900 € HT », « À partir de 6 000 € HT », « Sur devis ».
-	 * Short: « 14 900 € », « Dès 6 000 € », « Sur devis ».
+	 * Long: fixed price « €14,900 excl. VAT », starting price « From €6,000 excl. VAT », on quote « On quote ».
+	 * Short: fixed price « €14,900 », starting price « From €6,000 », on quote « On quote ».
 	 *
 	 * @param array<string, mixed> $line  Package or module.
 	 * @param bool                 $short Short form, for chips and lists.
@@ -305,15 +315,21 @@ class Catalogue {
 	}
 
 	/**
-	 * Monthly price of a retainer: « 390 € HT par mois », « à partir de 1 200 € HT par mois ».
+	 * Monthly price of a retainer: « €390 excl. VAT per month », « from €1,200 excl. VAT per month ».
 	 *
 	 * @param array<string, mixed> $retainer Retainer.
 	 * @return string
 	 */
 	public static function retainer_price( array $retainer ): string {
-		$amount = self::amount( (float) ( $retainer['monthlyPriceExclVat'] ?? 0 ) ) . self::NBSP . 'HT par mois';
+		$amount = self::amount( (float) ( $retainer['monthlyPriceExclVat'] ?? 0 ) );
 
-		return self::FROM === self::mode( $retainer ) ? 'à partir de ' . $amount : $amount;
+		if ( self::FROM === self::mode( $retainer ) ) {
+			/* translators: %s: monthly amount, e.g. « €1,200 ». */
+			return sprintf( _x( 'from %s excl. VAT per month', 'retainer price', 'agencecinq' ), $amount );
+		}
+
+		/* translators: %s: monthly amount, e.g. « €390 ». */
+		return sprintf( _x( '%s excl. VAT per month', 'retainer price', 'agencecinq' ), $amount );
 	}
 
 	/**
@@ -326,13 +342,19 @@ class Catalogue {
 	 */
 	private static function label( ?float $amount, string $mode, bool $short ): string {
 		if ( null === $amount || self::QUOTE === $mode ) {
-			return 'Sur devis';
+			return __( 'On quote', 'agencecinq' );
 		}
 
-		$text = self::amount( $amount ) . ( $short ? '' : self::NBSP . 'HT' );
+		$text = $short ? self::amount( $amount ) : self::amount_excl_vat( $amount );
 
 		if ( self::FROM === $mode ) {
-			return ( $short ? 'Dès ' : 'À partir de ' ) . $text;
+			$from = $short
+				/* translators: %s: amount, e.g. « €6,000 ». */
+				? _x( 'From %s', 'price short label', 'agencecinq' )
+				/* translators: %s: amount excluding VAT, e.g. « €6,000 excl. VAT ». */
+				: _x( 'From %s', 'price long label', 'agencecinq' );
+
+			return sprintf( $from, $text );
 		}
 
 		return $text;

@@ -38,10 +38,10 @@
 	{%- set composition = catalogue.compose( platform, package.code, [] ) -%}
 	{%- set firm = composition.total.mode == 'ferme' -%}
 	{%- set labels = {
-		package: 'Socle',
-		from: 'À partir de',
-		quote: 'Sur devis',
-		error: 'L’envoi n’a pas abouti. Vérifiez votre connexion, puis réessayez.',
+		package: __( 'Package', 'agencecinq' ),
+		from: _x( 'From', 'starting price', 'agencecinq' ),
+		quote: __( 'On request', 'agencecinq' ),
+		error: __( 'The submission failed. Please check your connection and try again.', 'agencecinq' ),
 	} -%}
 
 	{%- set chip_classes =
@@ -88,7 +88,7 @@
 							<fieldset class="min-w-0">
 								<legend class="float-left w-full">
 									<span class="text-label text-stone block uppercase">
-										Étape {{ '%02d' | format( loop.index ) }}
+										{{ __( 'Step %02d', 'agencecinq' ) | format( loop.index ) }}
 									</span>
 									<span class="text-title-md text-cream mt-2.5 block">{{- step.title -}}</span>
 								</legend>
@@ -322,7 +322,7 @@
 											href="{{ privacy_policy_url }}"
 											class="text-cream underline underline-offset-2"
 										>
-											Politique de confidentialité
+											{{ __( 'Privacy policy', 'agencecinq' ) }}
 										</a>
 									{%- endif -%}
 								</p>

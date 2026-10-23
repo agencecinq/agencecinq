@@ -186,7 +186,7 @@ class PricingTiers {
 							'name'            => 'price',
 							'aria-label'      => __( 'Price', 'agencecinq' ),
 							'type'            => 'text',
-							'placeholder'     => __( 'e.g. 14 900 € HT', 'agencecinq' ),
+							'placeholder'     => __( 'e.g. 14 900 € excl. VAT', 'agencecinq' ),
 							'instructions'    => __( 'Firm global price only. Do not show a day rate or a number of days.', 'agencecinq' ),
 							'parent_repeater' => 'field_' . $key . '_pricing_tiers_items',
 						),

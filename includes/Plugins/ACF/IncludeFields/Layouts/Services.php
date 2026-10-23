@@ -195,7 +195,7 @@ class Services {
 							'name'        => 'aside',
 							'aria-label'  => __( 'Aside', 'agencecinq' ),
 							'type'        => 'text',
-							'placeholder' => __( 'e.g. Fallback sur', 'agencecinq' ),
+							'placeholder' => __( 'e.g. Falls back to', 'agencecinq' ),
 							'wrapper'     => array(
 								'width' => 4 * 100 / 12,
 							),

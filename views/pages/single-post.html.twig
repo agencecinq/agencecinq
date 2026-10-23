@@ -22,9 +22,7 @@
 							{%- endfor -%}
 							{%- if post.reading_time -%}
 								<span aria-hidden="true">·</span>
-								<span>
-									{{- __( '%d min de lecture', 'agencecinq' ) | format( post.reading_time ) -}}
-								</span>
+								<span>{{- __( '%d min read', 'agencecinq' ) | format( post.reading_time ) -}}</span>
 								<meta itemprop="timeRequired" content="PT{{ post.reading_time }}M" />
 							{%- endif -%}
 						</p>
@@ -51,7 +49,7 @@
 							itemscope
 							itemtype="https://schema.org/Person"
 						>
-							{{- __( 'Par %s', 'agencecinq' ) | format( post.author.name ) | upper -}}
+							{{- __( 'By %s', 'agencecinq' ) | format( post.author.name ) | upper -}}
 							<meta itemprop="name" content="{{ post.author.name | e( 'html_attr' ) }}" />
 						</p>
 					{%- endif -%}
@@ -112,7 +110,7 @@
 			>
 				<div class="container space-y-10">
 					<h2 id="related-cases-title" class="text-title-lg" itemprop="name">
-						{{- __( 'À lire aussi', 'agencecinq' ) -}}
+						{{- __( 'Read also', 'agencecinq' ) -}}
 					</h2>
 
 					<meta itemprop="numberOfItems" content="{{ related_items | length }}" />
@@ -151,7 +149,7 @@
 		{%- if cta_link.url is defined and cta_link.url -%}
 			{%- set cta_link =
 				cta_link | merge( {
-					title: cta_link.title | default( __( 'Réserver 30 minutes', 'agencecinq' ) ),
+					title: cta_link.title | default( __( 'Book 30 minutes', 'agencecinq' ) ),
 				} )
 			-%}
 		{%- endif -%}
@@ -163,10 +161,10 @@
 					block: {
 						id: 'post-closing-cta',
 						content: {
-							title: __( 'On commence par 30 minutes.', 'agencecinq' ),
+							title: __( "Let's start with 30 minutes.", 'agencecinq' ),
 							heading: 'h2',
 							text: __(
-								"On regarde votre site en direct, on vous dit si on est le bon interlocuteur, et on vous donne un ordre de grandeur. Le diagnostic, s'il a du sens, se décide à la fin de l'appel.",
+								'We look at your site live, tell you whether we are the right people for it, and give you an order of magnitude. The diagnostic, if it makes sense, is decided at the end of the call.',
 								'agencecinq'
 							),
 							link: cta_link,

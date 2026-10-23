@@ -49,22 +49,22 @@ class Configurator {
 					'type'       => 'group',
 					'layout'     => 'block',
 					'sub_fields' => array(
-						self::text( $prefix . '_steps', 'platform_title', __( 'Platform title', 'agencecinq' ), 'Votre plateforme' ),
-						self::text( $prefix . '_steps', 'package_title', __( 'Package title', 'agencecinq' ), 'Votre socle' ),
-						self::text( $prefix . '_steps', 'package_text', __( 'Package help', 'agencecinq' ), 'Le socle fixe le prix de base et le périmètre.' ),
-						self::text( $prefix . '_steps', 'modules_title', __( 'Modules title', 'agencecinq' ), 'Vos modules' ),
+						self::text( $prefix . '_steps', 'platform_title', __( 'Platform title', 'agencecinq' ), __( 'Your platform', 'agencecinq' ) ),
+						self::text( $prefix . '_steps', 'package_title', __( 'Package title', 'agencecinq' ), __( 'Your package', 'agencecinq' ) ),
+						self::text( $prefix . '_steps', 'package_text', __( 'Package help', 'agencecinq' ), __( 'The package sets the base price and the scope.', 'agencecinq' ) ),
+						self::text( $prefix . '_steps', 'modules_title', __( 'Modules title', 'agencecinq' ), __( 'Your modules', 'agencecinq' ) ),
 						self::text(
 							$prefix . '_steps',
 							'modules_text',
 							__( 'Modules help', 'agencecinq' ),
-							'Les modules que le socle {package} accepte. Chaque prix s’ajoute tel quel, sans majoration ni plafond.',
+							__( 'The modules the {package} package accepts. Each price is added as is, with no markup and no cap.', 'agencecinq' ),
 							__( '{package} is replaced by the name of the chosen package.', 'agencecinq' )
 						),
 						self::text(
 							$prefix . '_steps',
 							'modules_empty',
 							__( 'No modules', 'agencecinq' ),
-							'Les modules de ce socle se choisissent avec nous, pendant l’appel.',
+							__( 'The modules of this package are chosen with us, during the call.', 'agencecinq' ),
 							__( 'Shown instead of the modules when Central lists none for the package yet.', 'agencecinq' )
 						),
 					),
@@ -83,21 +83,21 @@ class Configurator {
 					'type'       => 'group',
 					'layout'     => 'block',
 					'sub_fields' => array(
-						self::text( $prefix . '_result', 'title', __( 'Title', 'agencecinq' ), 'Votre estimation' ),
-						self::text( $prefix . '_result', 'total_label', __( 'Total label', 'agencecinq' ), 'Total estimé, HT' ),
+						self::text( $prefix . '_result', 'title', __( 'Title', 'agencecinq' ), __( 'Your estimate', 'agencecinq' ) ),
+						self::text( $prefix . '_result', 'total_label', __( 'Total label', 'agencecinq' ), __( 'Estimated total, excl. VAT', 'agencecinq' ) ),
 						self::text(
 							$prefix . '_result',
 							'firm_text',
 							__( 'Firm price mention', 'agencecinq' ),
-							'Prix ferme, périmètre écrit',
+							__( 'Firm price, written scope', 'agencecinq' ),
 							__( 'Shown while every line has a firm price.', 'agencecinq' )
 						),
 						self::text(
 							$prefix . '_result',
 							'open_text',
 							__( 'Open price mention', 'agencecinq' ),
-							'Une partie se chiffre en rendez-vous',
-							__( 'Shown when a line is « from » or « on quote »: the total is then a floor or a quote.', 'agencecinq' )
+							__( 'Some items are priced in a meeting', 'agencecinq' ),
+							__( 'Shown when a line is “from” or “on request”: the total is then a floor or a quote.', 'agencecinq' )
 						),
 						array(
 							'key'           => $prefix . '_result_notice',
@@ -107,18 +107,18 @@ class Configurator {
 							'type'          => 'textarea',
 							'rows'          => 3,
 							'new_lines'     => 'br',
-							'default_value' => 'Ceci est une estimation, pas un devis. Le prix ferme est établi après le diagnostic, sur un périmètre écrit.',
+							'default_value' => __( 'This is an estimate, not a quote. The firm price is set after the diagnostic, on a written scope.', 'agencecinq' ),
 						),
-						self::text( $prefix . '_result', 'email_label', __( 'E-mail label', 'agencecinq' ), 'Votre e-mail' ),
-						self::text( $prefix . '_result', 'email_placeholder', __( 'E-mail example', 'agencecinq' ), 'nom@entreprise.fr' ),
+						self::text( $prefix . '_result', 'email_label', __( 'E-mail label', 'agencecinq' ), __( 'Your e-mail', 'agencecinq' ) ),
+						self::text( $prefix . '_result', 'email_placeholder', __( 'E-mail example', 'agencecinq' ), __( 'name@company.com', 'agencecinq' ) ),
 						self::text(
 							$prefix . '_result',
 							'email_error',
 							__( 'E-mail error', 'agencecinq' ),
-							'Cette adresse e-mail semble incomplète. Exemple : nom@entreprise.fr',
+							__( 'This e-mail address looks incomplete. Example: name@company.com', 'agencecinq' ),
 							__( 'Name the field and say how to fix it, with an example (RGAA 11.11).', 'agencecinq' )
 						),
-						self::text( $prefix . '_result', 'button_label', __( 'Button label', 'agencecinq' ), 'Recevoir mon estimation' ),
+						self::text( $prefix . '_result', 'button_label', __( 'Button label', 'agencecinq' ), __( 'Get my estimate', 'agencecinq' ) ),
 						array(
 							'key'           => $prefix . '_result_privacy',
 							'label'         => __( 'Privacy notice', 'agencecinq' ),
@@ -127,7 +127,7 @@ class Configurator {
 							'type'          => 'textarea',
 							'rows'          => 3,
 							'new_lines'     => '',
-							'default_value' => 'Votre e-mail sert à vous envoyer cette estimation et à revenir vers vous au sujet de votre projet. Pas de newsletter, pas de revente. Conservé 3 ans, effacé sur simple demande.',
+							'default_value' => __( 'Your e-mail is used to send you this estimate and to get back to you about your project. No newsletter, no resale. Kept for 3 years, deleted on request.', 'agencecinq' ),
 							'instructions'  => __( 'Followed by a link to the privacy policy page (Settings › Privacy). Say every use of the address: no checkbox is needed while it only serves this estimate and the follow-up on the project.', 'agencecinq' ),
 						),
 						array(
@@ -157,8 +157,8 @@ class Configurator {
 					'layout'       => 'block',
 					'instructions' => __( 'The dialog shown once the estimate is sent. In the message, {total} is the total and {email} the address typed.', 'agencecinq' ),
 					'sub_fields'   => array(
-						self::text( $prefix . '_modal', 'eyebrow', __( 'Eyebrow', 'agencecinq' ), 'Estimation envoyée' ),
-						self::text( $prefix . '_modal', 'title', __( 'Title', 'agencecinq' ), 'C’est dans votre boîte mail.' ),
+						self::text( $prefix . '_modal', 'eyebrow', __( 'Eyebrow', 'agencecinq' ), __( 'Estimate sent', 'agencecinq' ) ),
+						self::text( $prefix . '_modal', 'title', __( 'Title', 'agencecinq' ), __( 'It is in your inbox.', 'agencecinq' ) ),
 						array(
 							'key'           => $prefix . '_modal_message',
 							'label'         => __( 'Message', 'agencecinq' ),
@@ -167,11 +167,11 @@ class Configurator {
 							'type'          => 'textarea',
 							'rows'          => 3,
 							'new_lines'     => '',
-							'default_value' => 'Votre estimation de {total} vient de partir à {email}. Gardez-la : elle reprend chaque ligne de votre configuration, c’est votre base de discussion.',
+							'default_value' => __( 'Your estimate of {total} has just been sent to {email}. Keep it: it lists every line of your configuration and is the basis of our discussion.', 'agencecinq' ),
 						),
-						self::text( $prefix . '_modal', 'help', __( 'Help', 'agencecinq' ), 'Rien reçu d’ici 5 minutes ? Regardez dans les indésirables.' ),
-						self::text( $prefix . '_modal', 'next_eyebrow', __( 'Next step eyebrow', 'agencecinq' ), 'La suite, si vous voulez' ),
-						self::text( $prefix . '_modal', 'next_title', __( 'Next step title', 'agencecinq' ), '30 minutes, montre en main.' ),
+						self::text( $prefix . '_modal', 'help', __( 'Help', 'agencecinq' ), __( 'Nothing within 5 minutes? Check your spam folder.', 'agencecinq' ) ),
+						self::text( $prefix . '_modal', 'next_eyebrow', __( 'Next step eyebrow', 'agencecinq' ), __( 'What comes next, if you like', 'agencecinq' ) ),
+						self::text( $prefix . '_modal', 'next_title', __( 'Next step title', 'agencecinq' ), __( '30 minutes, on the clock.', 'agencecinq' ) ),
 						array(
 							'key'           => $prefix . '_modal_next_text',
 							'label'         => __( 'Next step text', 'agencecinq' ),
@@ -180,10 +180,10 @@ class Configurator {
 							'type'          => 'textarea',
 							'rows'          => 3,
 							'new_lines'     => '',
-							'default_value' => 'On regarde votre site en direct, on vous dit si on est le bon interlocuteur, et on part de votre estimation : rien à réexpliquer.',
+							'default_value' => __( 'We look at your site live, tell you whether we are the right people for it, and start from your estimate: nothing to explain twice.', 'agencecinq' ),
 						),
-						self::text( $prefix . '_modal', 'button_label', __( 'Button label', 'agencecinq' ), 'Réserver 30 minutes' ),
-						self::text( $prefix . '_modal', 'note', __( 'Note', 'agencecinq' ), 'Pas de présentation d’agence : on parle de votre projet.' ),
+						self::text( $prefix . '_modal', 'button_label', __( 'Button label', 'agencecinq' ), __( 'Book 30 minutes', 'agencecinq' ) ),
+						self::text( $prefix . '_modal', 'note', __( 'Note', 'agencecinq' ), __( 'No agency pitch: we talk about your project.', 'agencecinq' ) ),
 					),
 				),
 				array(

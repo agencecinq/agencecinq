@@ -141,7 +141,7 @@ class PricingRules {
 									'name'            => 'text',
 									'aria-label'      => __( 'Text', 'agencecinq' ),
 									'type'            => 'text',
-									'placeholder'     => __( 'e.g. Shopify Standard only: 27 888 € HT', 'agencecinq' ),
+									'placeholder'     => __( 'e.g. Shopify Standard only: 27 888 € excl. VAT', 'agencecinq' ),
 									'parent_repeater' => 'field_' . $key . '_pricing_rules_examples_items',
 								),
 							),
