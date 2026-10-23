@@ -33,7 +33,7 @@
 				<div
 					class="absolute inset-x-0 top-0 z-3 m-2.5 flex flex-wrap justify-end gap-2.5 lg:m-5"
 					role="region"
-					aria-label="Post categories"
+					aria-label="{{ __( 'Post categories', 'agencecinq' ) }}"
 				>
 					{%- for category in post.categories -%}
 						{{- include( 'components/tag.html.twig', { title: category.name } ) -}}

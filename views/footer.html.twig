@@ -30,9 +30,11 @@
 					}}
 				</a>
 
-				<p class="text-taupe text-sm">
-					Un site est un actif. Pas un passif qu’on change tous les trois ans.
-				</p>
+				{%- if theme.footer.text -%}
+					<p class="text-taupe text-sm">
+						{{- theme.footer.text -}}
+					</p>
+				{%- endif -%}
 
 				<div class="space-y-1">
 					<p>
@@ -42,7 +44,9 @@
 						<a href="mailto:contact@agencecinq.com">contact@agencecinq.com</a>
 					</p>
 					<p class="text-pistachio">
-						<a href="tel:0673778608">06 73 77 86 08</a>, Joachim, fondateur
+						<a href="tel:0673778608">06 73 77 86 08</a>, {{
+							__( 'Joachim, founder', 'agencecinq' )
+						}}
 					</p>
 				</div>
 			</div>

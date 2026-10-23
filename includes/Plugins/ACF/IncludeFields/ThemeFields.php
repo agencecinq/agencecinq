@@ -2,7 +2,7 @@
 /**
  * Theme Fields
  *
- * Registers ACF field group for the theme options page (Réglages > Thème).
+ * Registers ACF field group for the theme options page (Settings > Theme).
  *
  * @package WordPress
  * @subpackage AgenceCinq/Plugins/ACF/IncludeFields
@@ -88,6 +88,33 @@ class ThemeFields implements Service {
 								'type'          => 'link',
 								'return_format' => 'array',
 								'instructions'  => __( 'Enter the contact or CTA link URL.', 'agencecinq' ) . ' <em>(' . __( 'Optional', 'agencecinq' ) . ')</em>.',
+							),
+						),
+					),
+					array(
+						'key'        => 'field_' . $key . '_theme_footer_tab',
+						'label'      => __( 'Footer', 'agencecinq' ),
+						'name'       => 'footer_tab',
+						'aria-label' => __( 'Footer', 'agencecinq' ),
+						'type'       => 'tab',
+					),
+					array(
+						'key'        => 'field_' . $key . '_theme_footer',
+						'label'      => __( 'Footer', 'agencecinq' ),
+						'name'       => 'footer',
+						'aria-label' => __( 'Footer', 'agencecinq' ),
+						'type'       => 'group',
+						'layout'     => 'block',
+						'sub_fields' => array(
+							array(
+								'key'           => 'field_' . $key . '_footer_text',
+								'label'         => __( 'Text', 'agencecinq' ),
+								'name'          => 'text',
+								'aria-label'    => __( 'Text', 'agencecinq' ),
+								'type'          => 'text',
+								'default_value' => __( 'A website is an asset. Not a liability you replace every three years.', 'agencecinq' ),
+								'placeholder'   => __( 'Enter the text under the logo', 'agencecinq' ),
+								'instructions'  => __( 'Short line under the logo.', 'agencecinq' ) . ' <em>(' . __( 'Optional', 'agencecinq' ) . ')</em>.',
 							),
 						),
 					),
