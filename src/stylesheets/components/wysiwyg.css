@@ -155,7 +155,7 @@
 
 	/* Pre / code block */
 	.wysiwyg pre {
-		@apply overflow-x-auto rounded-10 border border-cream-soft bg-gray p-5 font-mono text-sm text-cream;
+		@apply scrollbar-hidden overflow-x-auto rounded-10 border border-cream-soft bg-gray p-5 font-mono text-sm text-cream;
 
 		margin-top: 1.5rem;
 		margin-bottom: 1.5rem;
