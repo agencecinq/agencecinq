@@ -12,7 +12,7 @@
 
 {%- set catalogue = catalogue() -%}
 {%- set platforms = catalogue
-	? catalogue.platforms() | filter( platform => catalogue.packages( platform.id ) | length )
+	? catalogue.platforms() | filter( item => catalogue.packages( item.id ) | length )
 	: []
 -%}
 
@@ -27,13 +27,15 @@
 		)
 	-}}
 
+	{%- set default_platform = platforms | first -%}
 	{%- set platform = block.catalogue.platform in ( platforms | map( item => item.id ) )
 		? block.catalogue.platform
-		: platforms | first.id
+		: default_platform.id
 	-%}
 	{%- set package = catalogue.package( platform, block.catalogue.package | default( '' ) )
 		?? ( catalogue.packages( platform ) | first )
 	-%}
+	{%- set accepted = package.moduleIds | default( [] ) -%}
 	{%- set composition = catalogue.compose( platform, package.code, [] ) -%}
 	{%- set labels = {
 		package: __( 'Package', 'agencecinq' ),
@@ -141,8 +143,6 @@
 								</span>
 							</legend>
 
-							{%- set accepted = package.moduleIds | default( [] ) -%}
-
 							{%- if block.steps.modules_text -%}
 								<p
 									class="text-taupe clear-left pt-2 text-sm"
@@ -224,9 +224,9 @@
 								data-dom="total"
 								aria-live="polite"
 							>
-								{%- if composition.total.mode == 'sur_devis' -%}
+								{%- if composition.total.mode == constant( 'QUOTE', catalogue ) -%}
 									{{- labels.quote -}}
-								{%- elseif composition.total.mode == 'a_partir_de' -%}
+								{%- elseif composition.total.mode == constant( 'FROM', catalogue ) -%}
 									{{- labels.from }} {{ catalogue.amount( composition.total.amount ) -}}
 								{% else %}
 									{{- catalogue.amount( composition.total.amount ) -}}
@@ -242,7 +242,7 @@
 							<p
 								class="{{ mention_classes }} before:bg-pistachio"
 								data-dom="firm"
-								{{ composition.total.mode != 'ferme' ? 'hidden' }}
+								{{ composition.total.mode != constant( 'FIRM', catalogue ) ? 'hidden' }}
 							>
 								{{- block.result.firm_text -}}
 							</p>
@@ -252,7 +252,7 @@
 							<p
 								class="{{ mention_classes }} before:bg-stone"
 								data-dom="open"
-								{{ composition.total.mode == 'ferme' ? 'hidden' }}
+								{{ composition.total.mode == constant( 'FIRM', catalogue ) ? 'hidden' }}
 							>
 								{{- block.result.open_text -}}
 							</p>
