@@ -1,8 +1,4 @@
 @layer components {
-	.wysiwyg {
-		@apply text-taupe text-base;
-	}
-
 	.wysiwyg > *:first-child {
 		@apply mt-0;
 	}
@@ -12,8 +8,6 @@
 	}
 
 	.wysiwyg p {
-		@apply text-base;
-
 		margin-bottom: 1.25rem;
 	}
 
@@ -125,8 +119,6 @@
 	/* Lists */
 	.wysiwyg ul,
 	.wysiwyg ol {
-		@apply text-base;
-
 		margin-top: 1rem;
 		margin-bottom: 1rem;
 		padding-left: 1.5rem;
