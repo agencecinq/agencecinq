@@ -8,7 +8,7 @@ WordPress theme for [agencecinq.com](https://agencecinq.com) (Timber/Twig, Vite,
 - **Build**: Vite (`pnpm dev` / `pnpm build`), `laravel-vite-plugin`. Entries: `src/stylesheets/styles.css`, `src/scripts/app.js`. Output in `dist/` (gitignored).
 - **CSS**: Tailwind CSS v4 in pure CSS. Design tokens live in `@theme` (`src/stylesheets/theme.css`).
 - **Fonts**: Inter and JetBrains Mono are self-hosted (latin woff2 in `src/fonts/`, `@font-face` in `src/stylesheets/base/font-face.css`), preloaded from `Enqueue::preload_resources()`. No request to Google Fonts.
-- **JS**: TypeScript components in `src/scripts/components/`, mounted via `piecesjs`. Global `cinq` object injected from PHP (`includes/Setup/Enqueue.php`).
+- **JS**: TypeScript components in `src/scripts/components/`, mounted via `piecesjs`. Data from PHP (`Enqueue::script_module_data()`) read by `src/scripts/theme.ts`.
 - **Packages**: `@agencecinq/accordion`, `@agencecinq/drawer`, `@agencecinq/modal`, `@agencecinq/utils`.
 - **PHP**: OOP, PSR-4 (`AgenceCinq\` → `includes/`), WordPress Coding Standards (`phpcs.xml`).
 - **Fields**: ACF groups in PHP under `includes/Plugins/ACF/IncludeFields/` (layouts in `Layouts/`).

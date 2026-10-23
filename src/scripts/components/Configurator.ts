@@ -1,6 +1,8 @@
 import { Piece } from 'piecesjs';
 import { EVENTS } from '@agencecinq/utils';
 
+import theme from '../theme';
+
 type Mode = 'ferme' | 'a_partir_de' | 'sur_devis';
 
 interface Labels {
@@ -26,9 +28,6 @@ interface QuoteError {
 interface ModalElement extends HTMLElement {
 	show(): boolean;
 }
-
-/** Localized by Setup/Enqueue.php. */
-declare const cinq: { api_url: string; rest_nonce: string };
 
 /** Asks for a dot in the domain: « nom@entreprise » is refused. */
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -95,9 +94,9 @@ class Configurator extends Piece {
 		this.#setStatus( '' );
 
 		try {
-			const response = await fetch( `${ cinq.api_url }/cinq/v1/quote`, {
+			const response = await fetch( `${ theme.api_url }/cinq/v1/quote`, {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': cinq.rest_nonce },
+				headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': theme.rest_nonce },
 				body: JSON.stringify( {
 					email: this.#email.value.trim(),
 					socle: pkg.value,

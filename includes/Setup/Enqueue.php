@@ -30,6 +30,7 @@ class Enqueue implements Service {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_filter( 'script_module_data_' . get_theme_text_domain() . '-main', array( $this, 'script_module_data' ) );
 
 		add_action( 'wp_head', array( $this, 'preload_wp_scripts' ) );
 		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
@@ -158,35 +159,24 @@ class Enqueue implements Service {
 			null
 		);
 
-		// We register an empty feature script to attach inline scripts to.
-		wp_register_script( get_theme_text_domain() . '-feature', false, array(), null, false ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- No file to version.
-
-		$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
-		$current_url = is_singular() ? get_permalink() : ( $request_uri ? esc_url_raw( home_url( $request_uri ) ) : home_url() );
-
-		$data = array(
-			'template_directory_uri' => get_template_directory_uri(),
-			'base_url'               => site_url(),
-			'home_url'               => home_url( '/' ),
-			'ajax_url'               => admin_url( 'admin-ajax.php' ),
-			'api_url'                => home_url( 'wp-json' ),
-			'current_url'            => $current_url,
-			'nonce'                  => wp_create_nonce( 'security' ),
-			'rest_nonce'             => wp_create_nonce( 'wp_rest' ),
-			'text_domain'            => get_theme_text_domain(),
-		);
-
-		// @TODO doesn't work with wp_enqueue_script_module so we use wp_add_inline_script attached to the feature script.
-		wp_add_inline_script(
-			get_theme_text_domain() . '-feature',
-			'var cinq = ' . wp_json_encode(
-				$data
-			),
-			'before'
-		);
-
-		wp_enqueue_script( get_theme_text_domain() . '-feature' );
 		wp_enqueue_script_module( get_theme_text_domain() . '-main' );
+	}
+
+
+	/**
+	 * Data of the main module, read by src/scripts/theme.ts.
+	 *
+	 * A script module takes no inline script: WordPress prints this data as JSON
+	 * in the footer, in script#wp-script-module-data-agencecinq-main.
+	 *
+	 * @param array $data Data of the module.
+	 * @return array
+	 */
+	public function script_module_data( array $data ): array {
+		$data['api_url']    = home_url( 'wp-json' );
+		$data['rest_nonce'] = wp_create_nonce( 'wp_rest' );
+
+		return $data;
 	}
 
 

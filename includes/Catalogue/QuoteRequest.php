@@ -34,7 +34,7 @@ class QuoteRequest implements Service {
 	private const RATE_LIMIT = 5;
 
 	/**
-	 * Nonce action, localized as cinq.rest_nonce (Setup/Enqueue.php) and sent as X-WP-Nonce.
+	 * Nonce action, passed to the scripts as rest_nonce (Setup/Enqueue.php) and sent as X-WP-Nonce.
 	 * The REST one: for a logged-in visitor WordPress checks it and keeps the user,
 	 * without it the request would run logged out and no nonce made for the user would hold.
 	 */
