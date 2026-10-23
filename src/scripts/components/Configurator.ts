@@ -70,11 +70,7 @@ class Configurator extends Piece {
 		super( 'Configurator' );
 	}
 
-	#onChange = ( event: Event ): void => {
-		if ( this.#platforms.includes( event.target as HTMLInputElement ) ) {
-			this.#selectPlatform();
-		}
-
+	#onChange = (): void => {
 		this.#update();
 	};
 
@@ -85,7 +81,7 @@ class Configurator extends Piece {
 			return;
 		}
 
-		const pkg = this.#checked( this.#packages );
+		const pkg = this.#package();
 
 		if ( ! pkg || ! this.#email ) {
 			return;
@@ -216,23 +212,17 @@ class Configurator extends Piece {
 	}
 
 	/**
-	 * Shows the packages of the chosen platform, and keeps one of them checked.
+	 * The package of the chosen platform: each platform keeps its own package checked,
+	 * and CSS only shows the packages and modules of the chosen one.
 	 */
-	#selectPlatform(): void {
+	#package(): HTMLInputElement | undefined {
 		const platform = this.#checked( this.#platforms )?.value;
-		const packages = this.#packages.filter( ( input ) => input.value.startsWith( `${ platform }:` ) );
 
-		this.#packages.forEach( ( input ) => {
-			input.disabled = ! packages.includes( input );
-		} );
-
-		if ( ! packages.some( ( input ) => input.checked ) && packages[ 0 ] ) {
-			packages[ 0 ].checked = true;
-		}
+		return this.#packages.find( ( input ) => input.checked && input.value.startsWith( `${ platform }:` ) );
 	}
 
 	#update(): void {
-		const pkg = this.#checked( this.#packages );
+		const pkg = this.#package();
 
 		if ( ! pkg ) {
 			return;
@@ -378,7 +368,6 @@ class Configurator extends Piece {
 		document.documentElement.addEventListener( EVENTS.MODAL_CLOSE, this.#onModalClose );
 
 		// The browser may restore checked inputs on back navigation.
-		this.#selectPlatform();
 		this.#update();
 	}
 

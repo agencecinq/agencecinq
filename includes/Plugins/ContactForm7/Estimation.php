@@ -19,7 +19,8 @@ use WPCF7_Submission;
  * Contact Form 7 Estimation
  *
  * Carries the composition chosen in the configurator block to the booking form.
- * The block sends it as a GET (?socle=shopify:standard&modules[]=…). Every form gets a
+ * The block sends it as a GET (?plateforme=shopify&socle[shopify]=shopify:standard&modules[]=…),
+ * one package per platform, of which only the chosen platform's is read. Every form gets a
  * hidden cinq_estimation field holding it once checked against the catalogue, and the
  * mail to the site gets the priced composition. Prices are always read from the
  * catalogue: the browser only says what was chosen, never how much it costs.
@@ -52,11 +53,16 @@ class Estimation implements Service {
 	 */
 	public function hidden_fields( array $fields ): array {
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only, public choice, checked against the catalogue.
-		$package = isset( $_GET['socle'] ) ? sanitize_text_field( wp_unslash( $_GET['socle'] ) ) : '';
-		$modules = isset( $_GET['modules'] ) ? array_map( 'sanitize_text_field', (array) wp_unslash( $_GET['modules'] ) ) : array();
+		$platform = isset( $_GET['plateforme'] ) ? sanitize_key( wp_unslash( $_GET['plateforme'] ) ) : '';
+		$packages = isset( $_GET['socle'] ) ? wp_unslash( $_GET['socle'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized once the package of the platform is picked.
+		$modules  = isset( $_GET['modules'] ) ? array_map( 'sanitize_text_field', (array) wp_unslash( $_GET['modules'] ) ) : array();
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-		if ( '' === $package ) {
+		// The booking link of the estimate mail (QuoteRequest) carries a single socle.
+		$package = is_array( $packages ) ? ( $packages[ $platform ] ?? '' ) : $packages;
+		$package = is_string( $package ) ? sanitize_text_field( $package ) : '';
+
+		if ( '' === $package || ( '' !== $platform && ! str_starts_with( $package, $platform . ':' ) ) ) {
 			return $fields;
 		}
 
