@@ -352,7 +352,9 @@ class Configurator extends Piece {
 		this.#submit = this.#one<HTMLButtonElement>( 'submit' );
 		this.#status = this.#one<HTMLElement>( 'status' );
 		this.#modal = this.dataset.modal ? document.getElementById( this.dataset.modal ) as ModalElement | null : null;
-		this.#format = new Intl.NumberFormat( this.lang || document.documentElement.lang || undefined, {
+		const locale = this.closest<HTMLElement>( '[lang]' )?.lang || undefined;
+
+		this.#format = new Intl.NumberFormat( locale, {
 			style: 'currency',
 			currency: 'EUR',
 			minimumFractionDigits: 0,
