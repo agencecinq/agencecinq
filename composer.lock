@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7bcdf94ea07d12a5197a2c0547e318ae",
+    "content-hash": "dd7a6dd16e3246bb4e1f81e679368ecd",
     "packages": [
         {
             "name": "19h47/wp-form-controls",
