@@ -46,7 +46,7 @@
 			<div class="space-y-2.5">
 				{%- if post.reading_time -%}
 					<p class="text-label uppercase">
-						{{- __( '%d min de lecture', 'agencecinq' ) | format( post.reading_time ) -}}
+						{{- __( '%d min read', 'agencecinq' ) | format( post.reading_time ) -}}
 						<meta itemprop="timeRequired" content="PT{{ post.reading_time }}M" />
 					</p>
 				{%- endif -%}

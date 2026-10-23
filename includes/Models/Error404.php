@@ -36,11 +36,11 @@ class Error404 {
 		$link      = ! empty( $theme_404['link'] ) && is_array( $theme_404['link'] ) ? $theme_404['link'] : array();
 
 		return array(
-			'overline' => ! empty( $theme_404['overline'] ) ? $theme_404['overline'] : __( 'Erreur 404', 'agencecinq' ),
+			'overline' => ! empty( $theme_404['overline'] ) ? $theme_404['overline'] : __( 'Error 404', 'agencecinq' ),
 			'title'    => isset( $theme_404['title'] ) ? $theme_404['title'] : __( 'This page does not exist.', 'agencecinq' ),
 			'text'     => isset( $theme_404['text'] ) ? $theme_404['text'] : __( 'It may have been moved, or the link that brought you here was already broken. Here is where to pick up.', 'agencecinq' ),
 			'link'     => array(
-				'title'  => ! empty( $link['title'] ) ? $link['title'] : __( 'Retour à l\'accueil', 'agencecinq' ),
+				'title'  => ! empty( $link['title'] ) ? $link['title'] : __( 'Back to home', 'agencecinq' ),
 				'url'    => ! empty( $link['url'] ) ? $link['url'] : home_url( '/' ),
 				'target' => isset( $link['target'] ) ? $link['target'] : '',
 			),
