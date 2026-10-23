@@ -36,19 +36,45 @@
 					</p>
 				{%- endif -%}
 
-				<div class="space-y-1">
-					<p>
-						Paris · Tours · Marseille
-					</p>
-					<p class="text-pistachio">
-						<a href="mailto:contact@agencecinq.com">contact@agencecinq.com</a>
-					</p>
-					<p class="text-pistachio">
-						<a href="tel:0673778608">06 73 77 86 08</a>, {{
-							__( 'Joachim, founder', 'agencecinq' )
-						}}
-					</p>
-				</div>
+				{%- set contact = theme.contact | default( {} ) -%}
+				{%- set locations =
+					contact.locations | default( [] ) | filter( location => location.title )
+				-%}
+
+				{%- if ( locations | length ) or contact.email or contact.phone -%}
+					<div class="space-y-1">
+						{%- if locations | length -%}
+							<p>
+								{{- locations | map( location => location.title ) | join( ' · ' ) -}}
+							</p>
+						{%- endif -%}
+
+						{%- if contact.email -%}
+							<p class="text-pistachio">
+								<a href="mailto:{{ contact.email }}">{{- contact.email -}}</a>
+							</p>
+						{%- endif -%}
+
+						{%- if contact.phone -%}
+							<p class="text-pistachio">
+								<a
+									href="tel:{{
+										contact.phone | replace( {
+											' ': '',
+											'.': '',
+											'-': '',
+										} )
+									}}"
+								>
+									{{- contact.phone -}}
+								</a>
+								{%- if contact.phone_note -%}
+									{{- ', ' ~ contact.phone_note -}}
+								{%- endif -%}
+							</p>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
 			</div>
 			{%- if nav_menus.footer.get_items() -%}
 				<nav
