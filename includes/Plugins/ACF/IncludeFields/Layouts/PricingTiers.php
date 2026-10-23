@@ -160,7 +160,6 @@ class PricingTiers {
 							'choices'           => CatalogueChoices::modules(),
 							'layout'            => 'vertical',
 							'return_format'     => 'value',
-							'required'          => 1,
 							'instructions'      => __( 'Up to four modules of the platform to show.', 'agencecinq' ),
 							'conditional_logic' => self::when_source( $key, 'modules' ),
 						),
