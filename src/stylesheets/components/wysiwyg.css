@@ -1,6 +1,4 @@
 @layer components {
-	.wysiwyg {}
-
 	.wysiwyg > *:first-child {
 		@apply mt-0;
 	}
@@ -10,38 +8,30 @@
 	}
 
 	.wysiwyg p {
-		@apply text-sm;
-
-		margin-bottom: 1em;
+		margin-bottom: 1.25rem;
 	}
 
 	.wysiwyg p:empty {
 		@apply hidden;
 	}
 
-	.wysiwyg h1 {
-		@apply text-title-xl;
-
-		margin-top: 0;
-		margin-bottom: 1.25rem;
-	}
-
+	.wysiwyg h1,
 	.wysiwyg h2 {
-		@apply text-title-lg;
+		@apply text-title-xl text-cream;
 
-		margin-top: 3.75rem;
-		margin-bottom: 1.25rem;
+		margin-top: 2.5rem;
+		margin-bottom: 2rem;
 	}
 
 	.wysiwyg h3 {
 		@apply text-title-lg text-cream;
 
-		margin-top: 1.25rem;
-		margin-bottom: 1.25rem;
+		margin-top: 2.5rem;
+		margin-bottom: 1rem;
 	}
 
 	.wysiwyg h4 {
-		@apply text-xl;
+		@apply text-xl text-cream;
 
 		margin-top: 1.25rem;
 		margin-bottom: 0.75rem;
@@ -57,11 +47,12 @@
 
 	/* Inline */
 	.wysiwyg a {
-		@apply underline underline-offset-2;
+		@apply text-pistachio underline underline-offset-2;
 	}
 
-	.wysiwyg a:has(> code) {
-		@apply no-underline;
+	.wysiwyg a code,
+	.wysiwyg a mark {
+		@apply text-inherit;
 	}
 
 	.wysiwyg strong,
@@ -75,7 +66,7 @@
 	}
 
 	.wysiwyg mark {
-		@apply bg-pistachio-soft px-0.5;
+		@apply bg-pistachio-soft px-0.5 text-cream;
 	}
 
 	.wysiwyg code {
@@ -119,8 +110,6 @@
 	/* Lists */
 	.wysiwyg ul,
 	.wysiwyg ol {
-		@apply text-sm;
-
 		margin-top: 1rem;
 		margin-bottom: 1rem;
 		padding-left: 1.5rem;
@@ -152,7 +141,7 @@
 
 	/* Horizontal rule */
 	.wysiwyg hr {
-		@apply my-6 border-0 border-t border-cream-soft/25;
+		@apply my-6 border-0 border-t border-cream-soft;
 	}
 
 	/* Pre / code block */
@@ -177,20 +166,20 @@
 
 	.wysiwyg th,
 	.wysiwyg td {
-		@apply border border-cream-soft/25 px-4 py-3 text-left;
+		@apply border border-cream-soft px-4 py-3 text-left;
 	}
 
 	.wysiwyg th {
-		@apply bg-gray/10 font-semibold;
+		@apply bg-cream-faint font-semibold;
 	}
 
 	.wysiwyg tr:hover td {
-		@apply bg-gray/5;
+		@apply bg-cream-faint;
 	}
 
 	/* Figure */
 	.wysiwyg figure {
-		@apply my-6;
+		@apply my-6 max-w-full;
 	}
 
 	.wysiwyg figure img, .wysiwyg p img {
