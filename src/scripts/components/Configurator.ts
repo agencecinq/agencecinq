@@ -61,6 +61,7 @@ class Configurator extends Piece {
 	#submit: HTMLButtonElement | null = null;
 	#status: HTMLElement | null = null;
 	#modal: ModalElement | null = null;
+	#booking = '';
 	#sending = false;
 	#labels: Labels = { package: '', from: '', quote: '', error: '' };
 	#format!: Intl.NumberFormat;
@@ -101,7 +102,7 @@ class Configurator extends Piece {
 					email: this.#email.value.trim(),
 					socle: pkg.value,
 					modules: this.#modules.filter( ( input ) => input.checked ).map( ( input ) => input.value ),
-					booking: this.dataset.booking ?? '',
+					booking: this.#booking,
 					source: window.location.href,
 					website: this.#website?.value ?? '',
 				} ),
@@ -199,7 +200,7 @@ class Configurator extends Piece {
 		const title = this.#modal.querySelector<HTMLElement>( '[data-dom="title"]' );
 
 		if ( booking ) {
-			booking.href = data.booking || this.dataset.booking || '#';
+			booking.href = data.booking || this.#booking || '#';
 		}
 
 		this.#modal.show();
@@ -219,9 +220,11 @@ class Configurator extends Piece {
 	 */
 	#selectPlatform(): void {
 		const platform = this.#checked( this.#platforms )?.value;
-		const packages = this.#packages.filter( ( input ) => input.dataset.platform === platform );
+		const packages = this.#packages.filter( ( input ) => input.value.startsWith( `${ platform }:` ) );
 
-		this.#packages.forEach( ( input ) => this.#toggle( input, packages.includes( input ) ) );
+		this.#packages.forEach( ( input ) => {
+			input.disabled = ! packages.includes( input );
+		} );
 
 		if ( ! packages.some( ( input ) => input.checked ) && packages[ 0 ] ) {
 			packages[ 0 ].checked = true;
@@ -240,7 +243,6 @@ class Configurator extends Piece {
 		this.#modules.forEach( ( input ) => {
 			const eligible = accepted.includes( input.value );
 
-			this.#toggle( input, eligible );
 			input.disabled = ! eligible;
 
 			if ( ! eligible ) {
@@ -253,10 +255,10 @@ class Configurator extends Piece {
 		this.#modulesEmpty?.toggleAttribute( 'hidden', !! accepted.length );
 
 		if ( this.#modulesText ) {
-			this.#modulesText.textContent = ( this.#modulesText.dataset.template ?? '' ).replace(
-				'{package}',
-				pkg.dataset.name ?? ''
-			);
+			const template = this.#modulesText.dataset.template ?? '';
+			const name = this.#chip( pkg, 'name' );
+
+			this.#modulesText.textContent = template.replace( '{package}', name );
 		}
 
 		const modules = this.#modules.filter( ( input ) => input.checked );
@@ -272,10 +274,10 @@ class Configurator extends Piece {
 
 		const rows = lines.map( ( input ) => {
 			const row = this.#line!.content.cloneNode( true ) as DocumentFragment;
-			const name = input === pkg ? `${ this.#labels.package } ${ input.dataset.name }` : input.dataset.name;
+			const name = this.#chip( input, 'name' );
 
-			row.querySelector( 'dt' )!.textContent = name ?? '';
-			row.querySelector( 'dd' )!.textContent = input.dataset.label ?? '';
+			row.querySelector( 'dt' )!.textContent = input === pkg ? `${ this.#labels.package } ${ name }` : name;
+			row.querySelector( 'dd' )!.textContent = this.#chip( input, 'price' );
 
 			return row;
 		} );
@@ -328,12 +330,16 @@ class Configurator extends Piece {
 		return inputs.find( ( input ) => input.checked );
 	}
 
-	#toggle( input: HTMLInputElement, visible: boolean ): void {
-		input.closest( 'label' )?.toggleAttribute( 'hidden', ! visible );
+	/**
+	 * The name or the price written in the chip of an input.
+	 */
+	#chip( input: HTMLInputElement, slug: 'name' | 'price' ): string {
+		return input.closest( 'label' )?.querySelector( `[data-dom="${ slug }"]` )?.textContent ?? '';
 	}
 
 	mount() {
 		this.#form = this.querySelector( 'form' );
+		this.#booking = this.#form?.getAttribute( 'action' ) ?? '';
 		this.#platforms = this.domAttrAll<HTMLInputElement>( 'platform' );
 		this.#packages = this.domAttrAll<HTMLInputElement>( 'package' );
 		this.#modules = this.domAttrAll<HTMLInputElement>( 'module' );
@@ -350,7 +356,7 @@ class Configurator extends Piece {
 		this.#website = this.#one<HTMLInputElement>( 'website' );
 		this.#submit = this.#one<HTMLButtonElement>( 'submit' );
 		this.#status = this.#one<HTMLElement>( 'status' );
-		this.#modal = this.dataset.modal ? document.getElementById( this.dataset.modal ) as ModalElement | null : null;
+		this.#modal = this.querySelector<ModalElement>( 'cinq-modal' );
 		const locale = this.closest<HTMLElement>( '[lang]' )?.lang || undefined;
 
 		this.#format = new Intl.NumberFormat( locale, {

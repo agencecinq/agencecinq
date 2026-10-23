@@ -10,6 +10,55 @@
  # is a plain GET to that booking page.
  #}
 
+{% macro chip( args = {} ) %}
+	{%- set args =
+		{
+			type: 'radio',
+			name: '',
+			value: '',
+			text: '',
+			price: '',
+			attributes: {},
+			checked: false,
+			disabled: false,
+		} | merge( args )
+	-%}
+
+	<label
+		class="{{
+			[
+				'border-cream-soft bg-gray text-label text-taupe inline-flex cursor-pointer items-center gap-2.5 rounded-full border px-4.5 py-3 uppercase transition-colors',
+				'hover:text-cream has-checked:border-pistachio has-checked:bg-pistachio-soft has-checked:text-cream',
+				'has-focus-visible:outline-pistachio has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
+				'before:bg-stone has-checked:before:bg-pistachio before:size-1.75 before:shrink-0 before:rounded-full',
+				'has-disabled:hidden',
+			] | join( ' ' )
+		}}"
+	>
+		<input
+			type="{{ args.type }}"
+			name="{{ args.name }}"
+			value="{{ args.value }}"
+			class="sr-only"
+			{{
+				html_attr(
+					args.attributes,
+					{
+						checked: args.checked,
+						disabled: args.disabled,
+					}
+				)
+			}}
+		/>
+		<span>
+			<span data-dom="name">{{- args.text -}}</span>
+			{%- if args.price %}
+				· <span data-dom="price">{{- args.price -}}</span>
+			{%- endif -%}
+		</span>
+	</label>
+{%- endmacro %}
+
 {%- set catalogue = catalogue() -%}
 {%- set platforms = catalogue
 	? catalogue.platforms() | filter( item => catalogue.packages( item.id ) | length )
@@ -44,23 +93,9 @@
 		error: __( 'The submission failed. Please check your connection and try again.', 'agencecinq' ),
 	} -%}
 
-	{%- set chip_classes =
-		[
-			'border-cream-soft bg-gray text-label text-taupe inline-flex cursor-pointer items-center gap-2.5 rounded-full border px-4.5 py-3 uppercase transition-colors',
-			'hover:text-cream has-checked:border-pistachio has-checked:bg-pistachio-soft has-checked:text-cream',
-			'has-focus-visible:outline-pistachio has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
-			'before:bg-stone before:size-1.75 before:shrink-0 before:rounded-full has-checked:before:bg-pistachio',
-		] | join( ' ' )
-	-%}
-
 	<section id="{{ block.id }}" aria-label="{{ block.result.title }}">
 		<div class="container">
-			<cinq-configurator
-				class="block"
-				data-labels="{{ labels | json_encode | e( 'html_attr' ) }}"
-				data-booking="{{ block.result.page }}"
-				data-modal="{{ block.id }}-sent"
-			>
+			<cinq-configurator class="block" data-labels="{{ labels | json_encode | e( 'html_attr' ) }}">
 				<form
 					method="get"
 					action="{{ block.result.page }}"
@@ -79,17 +114,15 @@
 
 							<div class="clear-left flex flex-wrap gap-3 pt-5">
 								{%- for item in platforms -%}
-									<label class="{{ chip_classes }}">
-										<input
-											type="radio"
-											name="plateforme"
-											value="{{ item.id }}"
-											class="sr-only"
-											data-dom="platform"
-											{{ item.id == platform ? 'checked' }}
-										/>
-										<span>{{- item.label -}}</span>
-									</label>
+									{{-
+										_self.chip( {
+											name: 'plateforme',
+											value: item.id,
+											text: item.label,
+											attributes: { 'data-dom': 'platform' },
+											checked: item.id == platform,
+										} )
+									-}}
 								{%- endfor -%}
 							</div>
 						</fieldset>
@@ -112,23 +145,22 @@
 
 							<div class="clear-left flex flex-wrap gap-3 pt-5">
 								{%- for item in catalogue.packages() -%}
-									<label class="{{ chip_classes }}" {{ item.category.id != platform ? 'hidden' }}>
-										<input
-											type="radio"
-											name="socle"
-											value="{{ item.category.id }}:{{ item.code }}"
-											class="sr-only"
-											data-dom="package"
-											data-platform="{{ item.category.id }}"
-											data-name="{{ item.name }}"
-											data-price="{{ item.priceExclVat }}"
-											data-mode="{{ catalogue.mode( item ) }}"
-											data-label="{{ catalogue.price( item, true ) }}"
-											data-modules="{{ item.moduleIds | join( ',' ) }}"
-											{{ item.id == package.id ? 'checked' }}
-										/>
-										<span>{{- item.name }} · {{ catalogue.price( item, true ) -}}</span>
-									</label>
+									{{-
+										_self.chip( {
+											name: 'socle',
+											value: item.category.id ~ ':' ~ item.code,
+											text: item.name,
+											price: catalogue.price( item, true ),
+											attributes: {
+												'data-dom': 'package',
+												'data-price': item.priceExclVat,
+												'data-mode': catalogue.mode( item ),
+												'data-modules': item.moduleIds | join( ',' ),
+											},
+											disabled: item.category.id != platform,
+											checked: item.id == package.id,
+										} )
+									-}}
 								{%- endfor -%}
 							</div>
 						</fieldset>
@@ -168,29 +200,28 @@
 								{{ accepted is empty ? 'hidden' }}
 							>
 								{%- for item in catalogue.modules() -%}
-									<label class="{{ chip_classes }}" {{ item.id not in accepted ? 'hidden' }}>
-										<input
-											type="checkbox"
-											name="modules[]"
-											value="{{ item.id }}"
-											class="sr-only"
-											data-dom="module"
-											data-platform="{{ item.category.id }}"
-											data-name="{{ item.name }}"
-											data-price="{{ item.priceExclVat }}"
-											data-mode="{{ catalogue.mode( item ) }}"
-											data-label="{{ catalogue.price( item, true ) }}"
-											{{ item.id not in accepted ? 'disabled' }}
-										/>
-										<span>{{- item.name }} · {{ catalogue.price( item, true ) -}}</span>
-									</label>
+									{{-
+										_self.chip( {
+											type: 'checkbox',
+											name: 'modules[]',
+											value: item.id,
+											text: item.name,
+											price: catalogue.price( item, true ),
+											attributes: {
+												'data-dom': 'module',
+												'data-price': item.priceExclVat,
+												'data-mode': catalogue.mode( item ),
+											},
+											disabled: item.id not in accepted,
+										} )
+									-}}
 								{%- endfor -%}
 							</div>
 						</fieldset>
 					</div>
 
 					<aside
-						class="bg-gray border-pistachio rounded-8 w-full border p-8 lg:sticky lg:inset-x-0 lg:top-[calc(var(--header-height)+--spacing(20))] lg:w-105 lg:shrink-0"
+						class="bg-gray border-pistachio rounded-8 w-full border p-8 lg:sticky lg:inset-x-0 lg:top-[calc(var(--header-height)+(--spacing(20)))] lg:w-105 lg:shrink-0"
 						aria-labelledby="{{ block.id }}-result"
 					>
 						<h2 id="{{ block.id }}-result" class="text-eyebrow text-pistachio">
@@ -199,9 +230,7 @@
 
 						<dl class="mt-6" data-dom="lines">
 							<div class="border-cream-faint flex items-center justify-between gap-4 border-t py-3">
-								<dt class="text-taupe text-sm">
-									{{ labels.package }} {{ package.name }}
-								</dt>
+								<dt class="text-taupe text-sm">{{ labels.package }} {{ package.name }}</dt>
 								<dd class="text-label text-cream whitespace-nowrap">
 									{{- catalogue.price( package, true ) -}}
 								</dd>
@@ -216,9 +245,7 @@
 						</template>
 
 						<dl class="border-cream-faint flex items-center justify-between gap-4 border-t py-3">
-							<dt class="text-title-md text-cream">
-								{{- block.result.total_label -}}
-							</dt>
+							<dt class="text-title-md text-cream">{{- block.result.total_label -}}</dt>
 							<dd
 								class="text-title-lg text-pistachio text-right"
 								data-dom="total"
@@ -270,7 +297,7 @@
 									autocomplete="email"
 									inputmode="email"
 									placeholder="{{ block.result.email_placeholder }}"
-									class="border-cream-soft bg-dark-gray text-cream placeholder:text-taupe rounded-3 focus:border-pistachio aria-invalid:border-coral w-full border px-3.5 py-3 text-base transition-colors duration-300 ease-out focus:outline-none"
+									class="border-cream-soft bg-dark-gray text-cream placeholder:text-taupe rounded-3 focus:border-pistachio aria-invalid:border-coral w-full border px-3.5 py-3 text-base transition-colors duration-300 ease-out focus:outline-hidden"
 									data-dom="email"
 								/>
 								<p

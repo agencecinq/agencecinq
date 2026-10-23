@@ -3086,31 +3086,31 @@ msgstr ""
 msgid "Copy"
 msgstr "Copier"
 
-#: views/blocks/configurator.html.twig:41
+#: views/blocks/configurator.html.twig:90
 msgid "Package"
 msgstr "Socle"
 
-#: views/blocks/configurator.html.twig:42
+#: views/blocks/configurator.html.twig:91
 msgctxt "starting price"
 msgid "From"
 msgstr "À partir de"
 
-#: views/blocks/configurator.html.twig:43
+#: views/blocks/configurator.html.twig:92
 msgid "On request"
 msgstr "Sur devis"
 
-#: views/blocks/configurator.html.twig:44
+#: views/blocks/configurator.html.twig:93
 msgid "The submission failed. Please check your connection and try again."
 msgstr "L’envoi n’a pas abouti. Vérifiez votre connexion, puis réessayez."
 
-#: views/blocks/configurator.html.twig:73
-#: views/blocks/configurator.html.twig:100
-#: views/blocks/configurator.html.twig:139
+#: views/blocks/configurator.html.twig:108
+#: views/blocks/configurator.html.twig:133
+#: views/blocks/configurator.html.twig:171
 #, php-format
 msgid "Step %02d"
 msgstr "Étape %02d"
 
-#: views/blocks/configurator.html.twig:322
+#: views/blocks/configurator.html.twig:349
 msgid "Privacy policy"
 msgstr "Politique de confidentialité"
 
