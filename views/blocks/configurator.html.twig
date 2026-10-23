@@ -7,7 +7,8 @@
  # the total. « Receive my estimate » posts the e-mail and the choice to /wp-json/cinq/v1/quote
  # (Catalogue/QuoteRequest.php), then opens the confirmation, which links to the booking page
  # with the choice attached (Plugins/ContactForm7/Estimation.php). Without JavaScript the form
- # is a plain GET to that booking page.
+ # is a plain GET to that booking page: each platform has its own package group, socle[platform],
+ # and CSS only shows the packages and modules of the checked platform.
  #}
 
 {% macro chip( args = {} ) %}
@@ -18,6 +19,7 @@
 			value: '',
 			text: '',
 			price: '',
+			platform: '',
 			attributes: {},
 			checked: false,
 			disabled: false,
@@ -34,6 +36,7 @@
 				'has-disabled:hidden',
 			] | join( ' ' )
 		}}"
+		{{ html_attr( { 'data-platform': args.platform ?: false } ) }}
 	>
 		<input
 			type="{{ args.type }}"
@@ -84,6 +87,15 @@
 	{%- set package = catalogue.package( platform, block.catalogue.package | default( '' ) )
 		?? ( catalogue.packages( platform ) | first )
 	-%}
+	{#- The package checked in each platform group: the chosen one, else the first of the platform. -#}
+	{%- set defaults = {} -%}
+	{%- for item in platforms -%}
+		{%- set defaults =
+			defaults | merge( {
+				( item.id ): item.id == platform ? package : catalogue.packages( item.id ) | first,
+			} )
+		-%}
+	{%- endfor -%}
 	{%- set accepted = package.moduleIds | default( [] ) -%}
 	{%- set composition = catalogue.compose( platform, package.code, [] ) -%}
 	{%- set labels = {
@@ -92,6 +104,16 @@
 		quote: __( 'On request', 'agencecinq' ),
 		error: __( 'The submission failed. Please check your connection and try again.', 'agencecinq' ),
 	} -%}
+
+	{# prettier-ignore-start #}
+	<style>
+		{%- for item in platforms %}
+			#{{ block.id }}:has([name="plateforme"][value="{{ item.id }}"]:checked) [data-platform]:not([data-platform="{{ item.id }}"]) {
+				display: none;
+			}
+		{%- endfor %}
+	</style>
+	{# prettier-ignore-end #}
 
 	<section id="{{ block.id }}" aria-label="{{ block.result.title }}">
 		<div class="container">
@@ -148,18 +170,18 @@
 								{%- for item in catalogue.packages() -%}
 									{{-
 										_self.chip( {
-											name: 'socle',
+											name: 'socle[' ~ item.category.id ~ ']',
 											value: item.category.id ~ ':' ~ item.code,
 											text: item.name,
 											price: catalogue.price( item, true ),
+											platform: item.category.id,
 											attributes: {
 												'data-dom': 'package',
 												'data-price': item.priceExclVat,
 												'data-mode': catalogue.mode( item ),
 												'data-modules': item.moduleIds | join( ',' ),
 											},
-											disabled: item.category.id != platform,
-											checked: item.id == package.id,
+											checked: item.id == ( defaults[ item.category.id ].id | default( '' ) ),
 										} )
 									-}}
 								{%- endfor -%}
@@ -208,12 +230,14 @@
 											value: item.id,
 											text: item.name,
 											price: catalogue.price( item, true ),
+											platform: item.category.id,
 											attributes: {
 												'data-dom': 'module',
 												'data-price': item.priceExclVat,
 												'data-mode': catalogue.mode( item ),
 											},
-											disabled: item.id not in accepted,
+											disabled: item.id
+												not in ( defaults[ item.category.id ].moduleIds | default( [] ) ),
 										} )
 									-}}
 								{%- endfor -%}
