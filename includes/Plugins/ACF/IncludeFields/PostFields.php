@@ -79,7 +79,7 @@ class PostFields implements Service {
 						'name'            => 'text',
 						'aria-label'      => __( 'Text', 'agencecinq' ),
 						'type'            => 'text',
-						'placeholder'     => __( 'site public + configurateur produit', 'agencecinq' ),
+						'placeholder'     => __( 'public site + product configurator', 'agencecinq' ),
 						'instructions'    => __( 'Short description after the platform. Optional.', 'agencecinq' ),
 						'parent_repeater' => 'field_' . $key . '_related_cases',
 					),

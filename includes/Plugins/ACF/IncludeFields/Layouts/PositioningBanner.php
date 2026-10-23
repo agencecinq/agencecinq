@@ -59,7 +59,7 @@ class PositioningBanner {
 									'name'            => 'text',
 									'aria-label'      => __( 'Text', 'agencecinq' ),
 									'type'            => 'text',
-									'placeholder'     => __( 'e.g. Prix ferme', 'agencecinq' ),
+									'placeholder'     => __( 'e.g. Firm price', 'agencecinq' ),
 									'parent_repeater' => 'field_' . $key . '_positioning_banner_content_items',
 								),
 								array(

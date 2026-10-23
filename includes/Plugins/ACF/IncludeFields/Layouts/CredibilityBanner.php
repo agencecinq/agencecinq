@@ -61,7 +61,7 @@ class CredibilityBanner {
 									'name'            => 'text',
 									'aria-label'      => __( 'Text', 'agencecinq' ),
 									'type'            => 'text',
-									'placeholder'     => __( 'e.g. Prix ferme inscrit au contrat', 'agencecinq' ),
+									'placeholder'     => __( 'e.g. Firm price written into the contract', 'agencecinq' ),
 									'parent_repeater' => 'field_' . $key . '_credibility_banner_content_items',
 								),
 							),

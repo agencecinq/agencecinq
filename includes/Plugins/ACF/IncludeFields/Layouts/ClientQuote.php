@@ -51,7 +51,7 @@ class ClientQuote {
 							'type'         => 'textarea',
 							'rows'         => 3,
 							'new_lines'    => 'br',
-							'placeholder'  => __( 'On savait ce qu\'on payait, et quand le site serait en ligne. Les deux ont été tenus.', 'agencecinq' ),
+							'placeholder'  => __( 'We knew what we were paying, and when the site would go live. Both promises were kept.', 'agencecinq' ),
 							'instructions' => __( 'Real client verbatim. Do not add quotation marks: guillemets are rendered automatically. Recommended paddings: 136px top and bottom.', 'agencecinq' ),
 						),
 						array(
@@ -69,7 +69,7 @@ class ClientQuote {
 							'name'        => 'role',
 							'aria-label'  => __( 'Role', 'agencecinq' ),
 							'type'        => 'text',
-							'placeholder' => __( 'Directrice e-commerce', 'agencecinq' ),
+							'placeholder' => __( 'E-commerce director', 'agencecinq' ),
 							'wrapper'     => array(
 								'width' => 6 * 100 / 12,
 							),
