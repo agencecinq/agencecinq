@@ -87,7 +87,7 @@
 		) {
 		@apply border-cream-soft bg-gray text-cream placeholder:text-taupe rounded-3 w-full border px-3.5 py-3 text-base;
 		@apply transition-colors duration-300 ease-out;
-		@apply focus:border-pistachio focus:ring-0 focus:outline-none;
+		@apply focus:border-pistachio focus:ring-0 focus:outline-hidden;
 	}
 
 	.block-form .wpcf7 .wpcf7-form textarea {
