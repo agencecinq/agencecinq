@@ -22,8 +22,9 @@ class FormatValue implements Service {
 	 */
 	public function run(): void {
 		add_filter( 'acf/format_value/name=blocks', array( $this, 'format_value_blocks' ), 10, 3 );
-		add_filter( 'acf/format_value/name=included', array( $this, 'format_value_included' ) );
-		add_filter( 'acf/format_value/name=priceMode', array( $this, 'format_value_price_mode' ) );
+		add_filter( 'acf/format_value/key=field_blocks_pricing_tiers_items_included', array( $this, 'format_value_included' ) );
+		add_filter( 'acf/format_value/key=field_blocks_pricing_tiers_items_priceMode', array( $this, 'format_value_price_mode' ) );
+		add_filter( 'acf/format_value/key=field_blocks_subscriptions_items_retainers_priceMode', array( $this, 'format_value_price_mode' ) );
 	}
 
 	/**
