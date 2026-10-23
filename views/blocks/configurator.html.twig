@@ -19,7 +19,6 @@
 			text: '',
 			price: '',
 			attributes: {},
-			hidden: false,
 			checked: false,
 			disabled: false,
 		} | merge( args )
@@ -35,7 +34,6 @@
 				'has-disabled:hidden',
 			] | join( ' ' )
 		}}"
-		{{ html_attr( { hidden: args.hidden } ) }}
 	>
 		<input
 			type="{{ args.type }}"
@@ -159,7 +157,7 @@
 												'data-mode': catalogue.mode( item ),
 												'data-modules': item.moduleIds | join( ',' ),
 											},
-											hidden: item.category.id != platform,
+											disabled: item.category.id != platform,
 											checked: item.id == package.id,
 										} )
 									-}}
