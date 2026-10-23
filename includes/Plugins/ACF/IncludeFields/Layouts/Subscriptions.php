@@ -9,6 +9,7 @@
 
 namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 
+use AgenceCinq\Catalogue\Catalogue;
 use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 use AgenceCinq\Plugins\ACF\IncludeFields\CatalogueChoices;
 
@@ -104,9 +105,9 @@ class Subscriptions {
 							'parent_repeater' => 'field_' . $key . '_subscriptions_items',
 						),
 						array(
-							'key'             => 'field_' . $key . '_subscriptions_items_title',
+							'key'             => 'field_' . $key . '_subscriptions_items_range',
 							'label'           => __( 'Title', 'agencecinq' ),
-							'name'            => 'title',
+							'name'            => 'range',
 							'aria-label'      => __( 'Title', 'agencecinq' ),
 							'type'            => 'text',
 							'placeholder'     => __( 'Enter the name of the plan', 'agencecinq' ),
@@ -136,12 +137,12 @@ class Subscriptions {
 							'parent_repeater' => 'field_' . $key . '_subscriptions_items',
 						),
 						array(
-							'key'               => 'field_' . $key . '_subscriptions_items_prices',
+							'key'               => 'field_' . $key . '_subscriptions_items_retainers',
 							'label'             => __( 'Prices', 'agencecinq' ),
-							'name'              => 'prices',
+							'name'              => 'retainers',
 							'aria-label'        => __( 'Prices', 'agencecinq' ),
 							'type'              => 'repeater',
-							'layout'            => 'block',
+							'layout'            => 'table',
 							'max'               => 3,
 							'button_label'      => __( 'Add Price', 'agencecinq' ),
 							'instructions'      => __( 'Up to three monthly amounts, shown side by side.', 'agencecinq' ),
@@ -156,13 +157,35 @@ class Subscriptions {
 							),
 							'sub_fields'        => array(
 								array(
-									'key'             => 'field_' . $key . '_subscriptions_items_prices_text',
-									'label'           => __( 'Text', 'agencecinq' ),
-									'name'            => 'text',
-									'aria-label'      => __( 'Text', 'agencecinq' ),
+									'key'             => 'field_' . $key . '_subscriptions_items_retainers_name',
+									'label'           => __( 'Tier', 'agencecinq' ),
+									'name'            => 'name',
+									'aria-label'      => __( 'Tier', 'agencecinq' ),
 									'type'            => 'text',
-									'placeholder'     => __( 'e.g. 690 € per month', 'agencecinq' ),
-									'parent_repeater' => 'field_' . $key . '_subscriptions_items_prices',
+									'placeholder'     => __( 'e.g. Essential', 'agencecinq' ),
+									'parent_repeater' => 'field_' . $key . '_subscriptions_items_retainers',
+								),
+								array(
+									'key'             => 'field_' . $key . '_subscriptions_items_retainers_monthlyPriceExclVat',
+									'label'           => __( 'Monthly Price', 'agencecinq' ),
+									'name'            => 'monthlyPriceExclVat',
+									'aria-label'      => __( 'Monthly Price', 'agencecinq' ),
+									'type'            => 'number',
+									'min'             => 0,
+									'placeholder'     => __( 'e.g. 690', 'agencecinq' ),
+									'append'          => __( '€ excl. VAT', 'agencecinq' ),
+									'parent_repeater' => 'field_' . $key . '_subscriptions_items_retainers',
+								),
+								array(
+									'key'             => 'field_' . $key . '_subscriptions_items_retainers_priceMode',
+									'label'           => __( 'Price Mode', 'agencecinq' ),
+									'name'            => 'priceMode',
+									'aria-label'      => __( 'Price Mode', 'agencecinq' ),
+									'type'            => 'select',
+									'choices'         => CatalogueChoices::price_modes(),
+									'default_value'   => Catalogue::FIRM,
+									'return_format'   => 'value',
+									'parent_repeater' => 'field_' . $key . '_subscriptions_items_retainers',
 								),
 							),
 						),

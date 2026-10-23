@@ -2,7 +2,7 @@
  # Blocks: Pricing Tiers
  # Title, intro, then the pricing cards. One card can be featured.
  # Source « catalogue »: every package of a platform, from Central, with its first four included lines.
- # Source « manual »: up to three cards typed in the block.
+ # Source « manual »: up to three cards typed in the block, with the fields of a package.
  #}
 
 {{-
@@ -24,13 +24,11 @@
 		{%- set items =
 			items | merge(
 				[
-					{
-						title: package.name,
-						price: catalogue.price( package ),
-						features: package.included | slice( 0, 4 ) | map( text => { text: text } ),
+					package | merge( {
+						included: package.included | default( [] ) | slice( 0, 4 ),
 						featured: featured,
 						badge: featured ? block.catalogue.badge : '',
-					},
+					} ),
 				]
 			)
 		-%}
@@ -39,7 +37,7 @@
 	{%- set items =
 		block.items
 			| default( [] )
-			| filter( item => item.title or item.price or item.badge or item.features )
+			| filter( item => item.name or item.priceExclVat is not empty or item.badge or item.included )
 	-%}
 {%- endif -%}
 
@@ -85,19 +83,7 @@
 			>
 				{%- for item in items -%}
 					<li class="flex" itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer">
-						{{-
-							include(
-								'components/pricing-tier.html.twig',
-								{
-									title: item.title,
-									price: item.price,
-									features: item.features,
-									featured: item.featured,
-									badge: item.badge,
-								},
-								with_context: false
-							)
-						-}}
+						{{- include( 'components/pricing-tier.html.twig', item, with_context: false ) -}}
 					</li>
 				{%- endfor -%}
 			</ul>
