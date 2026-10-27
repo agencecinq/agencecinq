@@ -52,9 +52,7 @@
 							<div class="flex w-full flex-col items-center space-y-6">
 								<header class="flex flex-col items-center space-y-5">
 									{%- if post.overline -%}
-										<p class="text-eyebrow text-stone">
-											{{- post.overline -}}
-										</p>
+										<p class="text-eyebrow text-stone">{{- post.overline -}}</p>
 									{%- endif -%}
 
 									{%- if post.title -%}
@@ -63,9 +61,7 @@
 								</header>
 
 								{%- if post.text -%}
-									<p class="text-taupe max-w-130 text-lg">
-										{{- post.text | raw -}}
-									</p>
+									<p class="text-taupe max-w-130 text-lg">{{- post.text | raw -}}</p>
 								{%- endif -%}
 							</div>
 

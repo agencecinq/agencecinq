@@ -161,9 +161,7 @@
 							</legend>
 
 							{%- if block.steps.package_text -%}
-								<p class="text-taupe clear-left pt-2 text-sm">
-									{{- block.steps.package_text -}}
-								</p>
+								<p class="text-taupe clear-left pt-2 text-sm">{{- block.steps.package_text -}}</p>
 							{%- endif -%}
 
 							<div class="clear-left flex flex-wrap gap-3 pt-5">
@@ -381,9 +379,7 @@
 						</div>
 
 						{%- if block.result.notice -%}
-							<p class="text-taupe mt-5 text-sm">
-								{{- block.result.notice | raw -}}
-							</p>
+							<p class="text-taupe mt-5 text-sm">{{- block.result.notice | raw -}}</p>
 						{%- endif -%}
 					</aside>
 				</form>

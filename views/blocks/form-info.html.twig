@@ -38,9 +38,7 @@
 			-}}
 
 			{%- if block.content.notice -%}
-				<p class="text-stone">
-					{{- block.content.notice -}}
-				</p>
+				<p class="text-stone">{{- block.content.notice -}}</p>
 			{%- endif -%}
 		</div>
 
@@ -54,9 +52,7 @@
 				{%- if locations | length -%}
 					<div class="{{ node_rule }}">
 						{%- if info.locations_overline -%}
-							<p class="text-label text-stone uppercase">
-								{{- info.locations_overline -}}
-							</p>
+							<p class="text-label text-stone uppercase">{{- info.locations_overline -}}</p>
 						{%- endif -%}
 
 						<ul class="space-y-2">
@@ -77,9 +73,7 @@
 				{%- if contact.email or contact.phone -%}
 					<div class="{{ node_rule }}">
 						{%- if info.contact_overline -%}
-							<p class="text-label text-stone uppercase">
-								{{- info.contact_overline -}}
-							</p>
+							<p class="text-label text-stone uppercase">{{- info.contact_overline -}}</p>
 						{%- endif -%}
 
 						<div class="space-y-2">
