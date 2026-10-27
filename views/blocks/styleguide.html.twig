@@ -527,9 +527,7 @@
 
 	<section class="text-cream my-8 flex flex-col gap-14 bg-black p-5 lg:p-20">
 		<header class="flex max-w-180 flex-col gap-3">
-			<p class="text-eyebrow text-taupe">
-				● Foundations
-			</p>
+			<p class="text-eyebrow text-taupe">● Foundations</p>
 			<h2 class="text-title-xl">Colors</h2>
 			<p class="text-taupe text-sm">
 				Single-theme site (dark). Depth comes from stacked blacks and grays, not extra hues.
@@ -539,9 +537,7 @@
 
 		{% for group in color_groups %}
 			<div class="flex flex-col gap-6">
-				<p class="text-eyebrow text-taupe">
-					{{ group.label }}
-				</p>
+				<p class="text-eyebrow text-taupe">{{ group.label }}</p>
 				<div class="{{ html_classes( 'grid grid-cols-1 gap-6 sm:grid-cols-2', group.columns ) }}">
 					{% for swatch in group.swatches %}
 						<div class="flex flex-col gap-3">
@@ -549,15 +545,9 @@
 								class="{{ html_classes( 'border-cream-soft h-33 rounded-lg border', swatch.bg ) }}"
 							></div>
 							<div class="flex flex-col gap-1">
-								<p class="text-title-md">
-									{{ swatch.name }}
-								</p>
-								<p class="text-label text-pistachio">
-									--color-{{ swatch.token }}
-								</p>
-								<p class="text-taupe text-sm">
-									{{ swatch.description }}
-								</p>
+								<p class="text-title-md">{{ swatch.name }}</p>
+								<p class="text-label text-pistachio">--color-{{ swatch.token }}</p>
+								<p class="text-taupe text-sm">{{ swatch.description }}</p>
 							</div>
 						</div>
 					{% endfor %}
@@ -566,9 +556,7 @@
 		{% endfor %}
 
 		<div class="border-pistachio flex flex-col gap-3.5 border-l-2 pl-6">
-			<p class="text-title-md">
-				text/stone must not be used on bg/gray
-			</p>
+			<p class="text-title-md">text/stone must not be used on bg/gray</p>
 			<p class="text-taupe max-w-225 text-sm">
 				On bg/black it scores 4.75:1, just above the AA threshold. On bg/gray (#141614) it drops to
 				4.34:1 and falls below. On a card, the secondary text level is therefore text/taupe (6.6:1).
@@ -577,14 +565,10 @@
 		</div>
 
 		<div class="flex flex-col gap-2">
-			<p class="text-label text-stone">
-				Measured Ratios
-			</p>
+			<p class="text-label text-stone">Measured Ratios</p>
 			{% for item in contrast_ratios %}
 				<div class="flex flex-col gap-1 sm:flex-row sm:gap-6">
-					<p class="text-taupe w-full text-sm sm:w-90">
-						{{ item.pair }}
-					</p>
+					<p class="text-taupe w-full text-sm sm:w-90">{{ item.pair }}</p>
 					<p
 						class="{{ html_classes( 'text-label', item.fails ? 'text-cream' : 'text-pistachio' ) }}"
 					>
@@ -750,9 +734,7 @@
 
 	<section class="text-cream my-8 flex flex-col gap-16 bg-black p-5 lg:p-20">
 		<header class="flex max-w-215 flex-col gap-3">
-			<p class="text-eyebrow text-taupe">
-				Fondations
-			</p>
+			<p class="text-eyebrow text-taupe">Fondations</p>
 			<h2 class="text-title-xl">Typographie</h2>
 			<p class="text-taupe text-sm">
 				Deux familles Google Fonts. Inter porte les titres et le texte courant ; JetBrains Mono
@@ -763,33 +745,21 @@
 
 		{% for group in type_groups %}
 			<div>
-				<p class="text-eyebrow text-taupe">
-					{{ group.label }}
-				</p>
+				<p class="text-eyebrow text-taupe">{{ group.label }}</p>
 				{% for style in group.styles %}
 					<div class="border-cream-faint flex flex-col gap-6 border-t py-6 lg:flex-row lg:gap-10">
 						<div class="flex w-full shrink-0 flex-col gap-1.5 whitespace-nowrap lg:w-55">
-							<p class="text-title-md">
-								{{ style.name }}
-							</p>
-							<p class="text-label text-stone">
-								{{ style.specs }}
-							</p>
+							<p class="text-title-md">{{ style.name }}</p>
+							<p class="text-label text-stone">{{ style.specs }}</p>
 							{%- if style.mobile_specs -%}
-								<p class="text-label text-stone">
-									{{ style.mobile_specs }}
-								</p>
+								<p class="text-label text-stone">{{ style.mobile_specs }}</p>
 							{%- endif -%}
 							<code class="text-label text-stone">.{{ style.class }}</code>
 						</div>
 						<div class="flex min-w-0 flex-1 flex-col gap-4 overflow-x-auto">
-							<p class="{{ style.desktop_class }}">
-								{{ style.sample }}
-							</p>
+							<p class="{{ style.desktop_class }}">{{ style.sample }}</p>
 							{%- if style.mobile_class -%}
-								<p class="{{ style.mobile_class }}">
-									{{ style.sample }}
-								</p>
+								<p class="{{ style.mobile_class }}">{{ style.sample }}</p>
 							{%- endif -%}
 						</div>
 					</div>

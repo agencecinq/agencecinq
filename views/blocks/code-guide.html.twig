@@ -48,9 +48,7 @@
 						{%- endif -%}
 
 						{%- if block.content.text -%}
-							<p class="text-taupe text-lg">
-								{{- block.content.text | raw -}}
-							</p>
+							<p class="text-taupe text-lg">{{- block.content.text | raw -}}</p>
 						{%- endif -%}
 					</header>
 				{%- endif -%}
@@ -60,19 +58,13 @@
 						class="border-pistachio-soft bg-pistachio-soft rounded-15 w-full max-w-82.5 shrink-0 space-y-2.5 border p-6"
 					>
 						{%- if aside.label -%}
-							<p class="text-eyebrow text-pistachio uppercase">
-								{{- aside.label -}}
-							</p>
+							<p class="text-eyebrow text-pistachio uppercase">{{- aside.label -}}</p>
 						{%- endif -%}
 						{%- if aside.title -%}
-							<p class="text-title-lg text-cream font-mono">
-								{{- aside.title -}}
-							</p>
+							<p class="text-title-lg text-cream font-mono">{{- aside.title -}}</p>
 						{%- endif -%}
 						{%- if aside.text -%}
-							<p class="text-taupe text-sm">
-								{{- aside.text | raw -}}
-							</p>
+							<p class="text-taupe text-sm">{{- aside.text | raw -}}</p>
 						{%- endif -%}
 					</aside>
 				{%- endif -%}
@@ -94,9 +86,7 @@
 							<div class="flex items-center justify-between gap-4">
 								<div class="space-y-1.5">
 									{%- if framed and column.overline -%}
-										<p class="text-eyebrow text-pistachio uppercase">
-											{{- column.overline -}}
-										</p>
+										<p class="text-eyebrow text-pistachio uppercase">{{- column.overline -}}</p>
 									{%- endif -%}
 									<div class="flex items-center gap-3">
 										{%- if column.index and not framed -%}
@@ -108,9 +98,7 @@
 									</div>
 								</div>
 								{%- if column.meta -%}
-									<p class="text-label text-taupe shrink-0">
-										{{- column.meta -}}
-									</p>
+									<p class="text-label text-taupe shrink-0">{{- column.meta -}}</p>
 								{%- endif -%}
 							</div>
 						{%- endif -%}
@@ -151,9 +139,7 @@
 									<span class="min-w-0">{{- column.note | raw -}}</span>
 								</p>
 							{%- else -%}
-								<p class="text-taupe text-sm">
-									{{- column.note | raw -}}
-								</p>
+								<p class="text-taupe text-sm">{{- column.note | raw -}}</p>
 							{%- endif -%}
 						{%- endif -%}
 					</li>

@@ -31,9 +31,7 @@
 				</a>
 
 				{%- if theme.footer.text -%}
-					<p class="text-taupe text-sm">
-						{{- theme.footer.text -}}
-					</p>
+					<p class="text-taupe text-sm">{{- theme.footer.text -}}</p>
 				{%- endif -%}
 
 				{%- set contact = theme.contact | default( {} ) -%}
@@ -44,9 +42,7 @@
 				{%- if ( locations | length ) or contact.email or contact.phone -%}
 					<div class="space-y-1">
 						{%- if locations | length -%}
-							<p>
-								{{- locations | map( location => location.title ) | join( ' · ' ) -}}
-							</p>
+							<p>{{- locations | map( location => location.title ) | join( ' · ' ) -}}</p>
 						{%- endif -%}
 
 						{%- if contact.email -%}
@@ -79,9 +75,7 @@
 								class="col-span-2 space-y-3 lg:col-span-1"
 							>
 								{%- if item.children -%}
-									<p class="text-eyebrow" itemprop="name">
-										{{- item.title -}}
-									</p>
+									<p class="text-eyebrow" itemprop="name">{{- item.title -}}</p>
 									<ul class="space-y-3">
 										{%- for child in item.children -%}
 											<li itemscope itemtype="https://schema.org/SiteNavigationElement">

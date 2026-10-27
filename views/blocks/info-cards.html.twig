@@ -71,9 +71,7 @@
 								<h3 class="text-title-md">{{- item.title -}}</h3>
 							{%- endif -%}
 							{%- if item.text -%}
-								<p class="text-taupe text-sm">
-									{{- item.text | raw -}}
-								</p>
+								<p class="text-taupe text-sm">{{- item.text | raw -}}</p>
 							{%- endif -%}
 						</div>
 					</li>
@@ -84,14 +82,10 @@
 		{%- if footer.left or footer.right -%}
 			<div class="text-cta flex flex-wrap items-center justify-between gap-3">
 				{%- if footer.left -%}
-					<p class="text-stone">
-						{{- footer.left -}}
-					</p>
+					<p class="text-stone">{{- footer.left -}}</p>
 				{%- endif -%}
 				{%- if footer.right -%}
-					<p class="text-pistachio uppercase">
-						{{- footer.right -}}
-					</p>
+					<p class="text-pistachio uppercase">{{- footer.right -}}</p>
 				{%- endif -%}
 			</div>
 		{%- endif -%}

@@ -60,24 +60,18 @@
 											{%- endif -%}
 
 											{%- if item.price -%}
-												<p class="text-title-lg" itemprop="price">
-													{{- item.price -}}
-												</p>
+												<p class="text-title-lg" itemprop="price">{{- item.price -}}</p>
 											{%- endif -%}
 										</div>
 									{%- endif -%}
 
 									{%- if item.label -%}
-										<p class="text-label text-pistachio uppercase">
-											{{- item.label -}}
-										</p>
+										<p class="text-label text-pistachio uppercase">{{- item.label -}}</p>
 									{%- endif -%}
 								</div>
 
 								{%- if item.text -%}
-									<p class="text-taupe text-sm" itemprop="description">
-										{{- item.text | raw -}}
-									</p>
+									<p class="text-taupe text-sm" itemprop="description">{{- item.text | raw -}}</p>
 								{%- endif -%}
 							</div>
 

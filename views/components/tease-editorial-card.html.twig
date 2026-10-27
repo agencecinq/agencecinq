@@ -23,9 +23,7 @@
 	>
 		<div class="space-y-3">
 			{%- if overline -%}
-				<p class="text-eyebrow text-pistachio uppercase">
-					{{- overline -}}
-				</p>
+				<p class="text-eyebrow text-pistachio uppercase">{{- overline -}}</p>
 			{%- endif -%}
 
 			{%- if title -%}
@@ -36,9 +34,7 @@
 		</div>
 
 		{%- if figure -%}
-			<p class="text-title-xxl text-pistachio py-8 tabular-nums lg:py-10">
-				{{- figure -}}
-			</p>
+			<p class="text-title-xxl text-pistachio py-8 tabular-nums lg:py-10">{{- figure -}}</p>
 		{%- elseif flow_input or flow_output -%}
 			<div class="text-label flex flex-wrap items-center gap-4.5 py-8 uppercase lg:py-10">
 				{%- if flow_input -%}
@@ -63,9 +59,7 @@
 		{%- endif -%}
 
 		{%- if text -%}
-			<p class="text-taupe text-sm">
-				{{- text | raw -}}
-			</p>
+			<p class="text-taupe text-sm">{{- text | raw -}}</p>
 		{%- endif -%}
 	</article>
 {%- endif -%}

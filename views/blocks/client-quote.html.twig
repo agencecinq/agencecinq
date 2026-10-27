@@ -38,9 +38,7 @@
 						itemtype="https://schema.org/Person"
 					>
 						{%- if block.content.name -%}
-							<p class="text-sm wrap-break-word" itemprop="name">
-								{{- block.content.name -}}
-							</p>
+							<p class="text-sm wrap-break-word" itemprop="name">{{- block.content.name -}}</p>
 						{%- endif -%}
 
 						{%- if block.content.role or block.content.company -%}

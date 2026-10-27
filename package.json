@@ -21,7 +21,7 @@
 	"devDependencies": {
 		"@tailwindcss/postcss": "^4.3.3",
 		"@tailwindcss/vite": "^4.3.3",
-		"@zackad/prettier-plugin-twig": "github:agencecinq/prettier-plugin-twig#v1.1.0",
+		"@zackad/prettier-plugin-twig": "github:agencecinq/prettier-plugin-twig#v1.2.1",
 		"laravel-vite-plugin": "^3.2.0",
 		"postcss": "^8.5.31",
 		"prettier": "^3.9.10",

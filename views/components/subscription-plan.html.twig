@@ -29,9 +29,7 @@
 				{%- if overline or range -%}
 					<header class="space-y-3">
 						{%- if overline -%}
-							<p class="text-eyebrow text-stone" itemprop="serviceType">
-								{{- overline -}}
-							</p>
+							<p class="text-eyebrow text-stone" itemprop="serviceType">{{- overline -}}</p>
 						{%- endif -%}
 
 						{%- if range -%}
@@ -43,9 +41,7 @@
 				{%- endif -%}
 
 				{%- if text -%}
-					<p class="text-taupe text-sm" itemprop="description">
-						{{- text | raw -}}
-					</p>
+					<p class="text-taupe text-sm" itemprop="description">{{- text | raw -}}</p>
 				{%- endif -%}
 			</div>
 
