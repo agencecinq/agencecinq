@@ -909,6 +909,8 @@ msgid "Aside"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:98
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:132
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:134
 msgid "Label"
 msgstr ""
 
@@ -1588,6 +1590,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:135
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:190
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:213
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:145
 msgid "Add Line"
 msgstr ""
 
@@ -3377,4 +3380,51 @@ msgstr ""
 msgid ""
 "The levels down to the page, from Yoast SEO. Place it first, above the Page "
 "header. Recommended paddings: 24px top, 0 bottom."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:29
+msgid "Diff columns"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:52
+msgid "What changes"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:60
+msgid "What changes on your site"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:70
+msgid "The 6 points of the diagnostic, before and after the redesign."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:86
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:87
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:140
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:142
+msgid "Lines"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:97
+msgid ""
+"Specific to the page. On a case study, only findings checked and approved by "
+"the client."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:101
+#: views/blocks/diff-columns.html.twig:52
+msgid "today"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:113
+#: views/blocks/diff-columns.html.twig:63
+msgid "after the redesign"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:101
+msgid "e.g. Slow on mobile"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:113
+msgid "e.g. Speed measured at launch"
 msgstr ""

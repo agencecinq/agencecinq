@@ -19,6 +19,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\DiffColumns;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FeatureCards;
@@ -65,6 +66,7 @@ class BlocksFields implements Service {
 		Configurator::class,
 		CredibilityBanner::class,
 		Cta::class,
+		DiffColumns::class,
 		EditorialCards::class,
 		EditorialProse::class,
 		FeatureCards::class,

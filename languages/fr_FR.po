@@ -920,6 +920,8 @@ msgid "Aside"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:98
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:132
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:134
 msgid "Label"
 msgstr "Libellé"
 
@@ -1610,6 +1612,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:135
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:190
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:213
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:145
 msgid "Add Line"
 msgstr ""
 
@@ -3473,3 +3476,52 @@ msgid ""
 msgstr ""
 "Les niveaux jusqu’à la page, tirés de Yoast SEO. À placer en premier, au-"
 "dessus de l’en-tête de page. Marges recommandées : 24 px en haut, 0 en bas."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:29
+msgid "Diff columns"
+msgstr "Colonnes de diff"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:52
+msgid "What changes"
+msgstr "Ce qui change"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:60
+msgid "What changes on your site"
+msgstr "Ce qui change sur votre site"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:70
+msgid "The 6 points of the diagnostic, before and after the redesign."
+msgstr "Les 6 points du diagnostic, avant et après la refonte."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:86
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:87
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:140
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:142
+msgid "Lines"
+msgstr "Lignes"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:97
+msgid ""
+"Specific to the page. On a case study, only findings checked and approved by "
+"the client."
+msgstr ""
+"Propres à la page. Sur un cas client, uniquement des constats vérifiés et "
+"validés par le client."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:101
+#: views/blocks/diff-columns.html.twig:52
+msgid "today"
+msgstr "aujourd’hui"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:113
+#: views/blocks/diff-columns.html.twig:63
+msgid "after the redesign"
+msgstr "après la refonte"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:101
+msgid "e.g. Slow on mobile"
+msgstr "ex. Lent sur mobile"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:113
+msgid "e.g. Speed measured at launch"
+msgstr "ex. Vitesse mesurée à la mise en ligne"

@@ -1,0 +1,72 @@
+{#
+ # Blocks: Diff columns
+ #
+ # Figma Section/Diff columns: the Section heading, then two Diff blocks side by side from lg on six columns
+ # each, stacked on mobile: the lines that go under « today », then the lines that come in under « after the
+ # redesign ». Each line reads « Before: » or « After: ».
+ #}
+
+{%- set removed =
+	block.before.lines | default( [] ) | map( line => line.text ) | filter( text => text )
+-%}
+{%- set added =
+	block.after.lines | default( [] ) | map( line => line.text ) | filter( text => text )
+-%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if ( removed | length ) or ( added | length ) -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="layout-grid container items-start gap-y-4">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: block.content.heading | default( 'h2' ),
+						id: title_id,
+						classes: [ 'col-span-full mb-4 lg:mb-10' ],
+					},
+					with_context: false
+				)
+			-}}
+			{{-
+				include(
+					'components/diff-block.html.twig',
+					{
+						address: block.before.label | default( __( 'today', 'agencecinq' ) ),
+						removed: removed,
+						classes: [ 'col-span-full lg:col-span-6' ],
+					},
+					with_context: false
+				)
+			-}}
+			{{-
+				include(
+					'components/diff-block.html.twig',
+					{
+						address: block.after.label | default( __( 'after the redesign', 'agencecinq' ) ),
+						added: added,
+						classes: [ 'col-span-full lg:col-span-6' ],
+					},
+					with_context: false
+				)
+			-}}
+		</div>
+	</section>
+{%- endif -%}
