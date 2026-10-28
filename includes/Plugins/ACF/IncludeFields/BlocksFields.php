@@ -17,7 +17,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Crosslinks;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
@@ -28,6 +27,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ImageCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkGrid;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkRow;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LogoWall;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ModuleCatalog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
@@ -62,7 +62,6 @@ class BlocksFields implements Service {
 		Comparison::class,
 		Configurator::class,
 		CredibilityBanner::class,
-		Crosslinks::class,
 		Cta::class,
 		EditorialCards::class,
 		EditorialProse::class,
@@ -73,6 +72,7 @@ class BlocksFields implements Service {
 		InfoCards::class,
 		LatestPosts::class,
 		LinkGrid::class,
+		LinkRow::class,
 		LogoWall::class,
 		ModuleCatalog::class,
 		NumberedList::class,

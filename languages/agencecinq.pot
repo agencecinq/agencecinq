@@ -435,10 +435,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:37
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:44
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:35
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:40
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:42
 msgid "Content"
 msgstr ""
 
@@ -512,8 +508,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:210
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:312
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:317
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:87
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:89
 msgid "Text"
 msgstr ""
 
@@ -773,8 +767,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:190
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:357
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:360
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:48
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:50
 msgid "Overline"
 msgstr ""
 
@@ -821,8 +813,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:245
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:247
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:381
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:78
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:80
 msgid "Link"
 msgstr ""
 
@@ -840,7 +830,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:51
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:52
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:53
 msgid "Enter the overline of the block"
 msgstr ""
 
@@ -1302,15 +1291,10 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:73
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:75
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:60
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:61
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:66
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:68
 msgid "Links"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:240
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:73
 msgid "Add Link"
 msgstr ""
 
@@ -2431,7 +2415,7 @@ msgstr ""
 msgid "Privacy policy"
 msgstr ""
 
-#: views/pages/404.html.twig:91 views/blocks/crosslinks.html.twig:23
+#: views/pages/404.html.twig:91
 msgid "Related links"
 msgstr ""
 
@@ -3366,24 +3350,20 @@ msgstr ""
 msgid "Answer"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:29
-msgid "Crosslinks"
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkRow.php:29
+msgid "Link row"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:52
-msgid "Go further"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:54
-msgid "Eyebrow label above the cards."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:74
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkRow.php:45
 msgid ""
-"Sibling pages at the end of a platform page. The link title is the visible "
-"label and the SEO anchor: use an explicit wording, never Learn more."
+"End of page links to sibling pages. Recommended paddings: 80px top and "
+"bottom."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:91
-msgid "Enter the short description of the page"
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkRow.php:53
+msgid "See also"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkRow.php:76
+msgid "Up to four links, in a row on desktop. Each label reads on its own."
 msgstr ""
