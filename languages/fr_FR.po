@@ -3382,3 +3382,11 @@ msgstr "Désactivé"
 #: views/components/switch.html.twig
 msgid "On"
 msgstr "Activé"
+
+#: views/components/diff-line.html.twig
+msgid "After:"
+msgstr "Après :"
+
+#: views/components/diff-line.html.twig
+msgid "Before:"
+msgstr "Avant :"

@@ -3360,3 +3360,11 @@ msgstr ""
 #: views/components/switch.html.twig
 msgid "On"
 msgstr ""
+
+#: views/components/diff-line.html.twig
+msgid "After:"
+msgstr ""
+
+#: views/components/diff-line.html.twig
+msgid "Before:"
+msgstr ""

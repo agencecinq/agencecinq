@@ -1,0 +1,43 @@
+{#
+ # Components: Diff line
+ #
+ # A li of a diff: a line that goes, struck through in a del, or comes in, in an ins. The − or + sign
+ # and the strike carry the meaning with the colour, and a hidden « Before: » or « After: » gives it
+ # to screen readers.
+ #
+ # @param string text
+ # @param string type 'removed' or 'added'.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set added = type == 'added' -%}
+
+<li
+	class="{{
+		html_classes(
+			'flex items-center gap-3.5 px-4.5 py-2.5 text-base',
+			added ? 'bg-diff-plus-soft' : 'bg-diff-minus-soft',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<span
+		class="{{
+			html_classes( 'shrink-0 font-mono font-medium', added ? 'text-diff-plus' : 'text-diff-minus' )
+		}}"
+		aria-hidden="true"
+	>
+		{{- added ? '+' : '−' -}}
+	</span>
+	{%- if added -%}
+		<ins class="text-primary min-w-0 flex-1 no-underline">
+			<span class="sr-only">{{- __( 'After:', 'agencecinq' ) }} </span>
+			{{- text -}}
+		</ins>
+	{%- else -%}
+		<del class="text-body min-w-0 flex-1">
+			<span class="sr-only">{{- __( 'Before:', 'agencecinq' ) }} </span>
+			{{- text -}}
+		</del>
+	{%- endif -%}
+</li>
