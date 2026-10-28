@@ -34,14 +34,17 @@
 				-}}
 
 				<cinq-modal-button class="block shrink-0">
-					<button
-						type="button"
-						aria-controls="{{ id }}"
-						class="border-default text-primary focus-visible:outline-focus-ring flex size-11 items-center justify-center rounded-full border text-xl transition-colors hover:border-(--text-color-primary) focus-visible:outline-2 focus-visible:outline-offset-2"
-					>
-						<span aria-hidden="true">×</span>
-						<span class="sr-only">{{ __( 'Close', 'agencecinq' ) }}</span>
-					</button>
+					{{-
+						include(
+							'components/icon-button.html.twig',
+							{
+								label: __( 'Close', 'agencecinq' ),
+								icon: 'close',
+								attributes: { 'aria-controls': id },
+							},
+							with_context: false
+						)
+					-}}
 				</cinq-modal-button>
 			</div>
 

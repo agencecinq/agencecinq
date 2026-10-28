@@ -10,22 +10,17 @@
 		<cinq-modal-button
 			class="absolute top-0 right-0 left-0 z-2 mx-auto block w-fit lg:left-auto lg:mx-0"
 		>
-			<button
-				aria-controls="{{ id }}"
-				type="button"
-				class="bg-accent-default flex size-8.75 items-center justify-center rounded-full"
-			>
-				{{-
-					include(
-						'svg/use.html.twig',
-						{
-							icon: 'close',
-							classes: [ 'size-8.75 pointer-events-none' ],
-						},
-						with_context: false
-					)
-				-}}
-			</button>
+			{{-
+				include(
+					'components/icon-button.html.twig',
+					{
+						label: __( 'Close', 'agencecinq' ),
+						icon: 'close',
+						attributes: { 'aria-controls': id },
+					},
+					with_context: false
+				)
+			-}}
 		</cinq-modal-button>
 
 		<div class="bg-default relative z-1 rounded-lg p-7.5">

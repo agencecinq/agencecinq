@@ -89,7 +89,7 @@
 			{{-
 				include(
 					'components/button.html.twig',
-					theme.contact.link | default( {} ) | merge( { variant: 'tertiary' } ),
+					theme.contact.link | default( {} ),
 					with_context: false
 				)
 			-}}
@@ -101,30 +101,36 @@
 					include(
 						'svg/use.html.twig',
 						{
-							classes: [ 'size-5', 'block group-aria-expanded/drawer-button:hidden' ],
+							classes: [ 'size-6 block group-aria-expanded/drawer-button:hidden' ],
 							icon: 'menu',
-						}
+							attributes: { 'aria-hidden': 'true' },
+						},
+						with_context: false
 					)
 				-}}
 				{{-
 					include(
 						'svg/use.html.twig',
 						{
-							classes: [ 'size-5', 'hidden group-aria-expanded/drawer-button:block' ],
+							classes: [ 'size-6 hidden group-aria-expanded/drawer-button:block' ],
 							icon: 'close',
-						}
+							attributes: { 'aria-hidden': 'true' },
+						},
+						with_context: false
 					)
 				-}}
 			{% endset %}
 			{{-
 				include(
-					'components/button.html.twig',
+					'components/icon-button.html.twig',
 					{
+						label: __( 'Menu', 'agencecinq' ),
 						icon_html: icon_html,
-						attributes: { 'aria-controls': 'menu-drawer' },
-						title: '<span class="sr-only">' ~ __( 'Menu', 'agencecinq' ) ~ '</span>',
+						attributes: {
+							'aria-controls': 'menu-drawer',
+							'aria-expanded': 'false',
+						},
 						classes: [ 'group/drawer-button' ],
-						variant: 'quaternary',
 					},
 					with_context: false
 				)
