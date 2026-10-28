@@ -342,20 +342,20 @@ msgid "Title"
 msgstr ""
 
 #. Template Name of the theme
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:158
 #: includes/Plugins/ACF/IncludeFields/BlocksFields.php:160
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:162
 msgid "Blocks"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:162
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:164
 msgid "Add and arrange blocks to build the page content."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:164
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:166
 msgid "Add Block"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:172
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:174
 msgid "Blocks Fields"
 msgstr ""
 
@@ -3513,4 +3513,25 @@ msgstr ""
 
 #: views/pages/single-post.html.twig:115
 msgid "Read next"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkColumns.php:29
+msgid "Link columns"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkColumns.php:34
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkColumns.php:35
+#: views/blocks/link-columns.html.twig:27
+msgid "Sitemap"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkColumns.php:37
+msgid ""
+"Shows the Sitemap Menu, in Appearance › Menus: its top-level items are the "
+"rubrics, their children the links. Recommended paddings: 56px top, 104px "
+"bottom."
+msgstr ""
+
+#: includes/WPSettings.php:67
+msgid "Sitemap Menu"
 msgstr ""

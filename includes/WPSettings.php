@@ -64,6 +64,7 @@ class WPSettings implements Service {
 				'secondary' => __( 'Secondary Menu', 'agencecinq' ),
 				'footer'    => __( 'Footer Menu', 'agencecinq' ),
 				'legals'    => __( 'Legals Menu', 'agencecinq' ),
+				'sitemap'   => __( 'Sitemap Menu', 'agencecinq' ),
 			)
 		);
 	}

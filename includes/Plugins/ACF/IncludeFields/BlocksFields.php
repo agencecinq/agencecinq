@@ -29,6 +29,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ImageCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkColumns;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkRow;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ListingHeader;
@@ -82,6 +83,7 @@ class BlocksFields implements Service {
 		ImageCards::class,
 		InfoCards::class,
 		LatestPosts::class,
+		LinkColumns::class,
 		LinkGrid::class,
 		LinkRow::class,
 		ListingHeader::class,
