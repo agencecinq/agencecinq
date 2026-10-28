@@ -1,0 +1,286 @@
+{#
+ # Styleguide page
+ #
+ # Assign the "Styleguide" page template in WordPress. No ACF fields.
+ # Developer catalog of the Figma foundations, data from StyleguidePage.
+ #
+ # @package AgenceCinq
+ #}
+
+{% extends 'index.html.twig' %}
+
+{%- block content -%}
+	<main id="content" role="main">
+		{{-
+			include(
+				'components/page-hero.html.twig',
+				{
+					id: 'page-hero',
+					overline: 'Developer map',
+					title: post.title | default( 'Styleguide' ),
+					text: 'Internal catalog of the theme tokens, from the Foundations page of the Figma file « CINQ · Site · Conception 2027 ». Not a marketing page.',
+					heading: 'h1',
+					classes: [ 'pt-26', 'pb-20' ],
+				},
+				with_context: false
+			)
+		-}}
+
+		<div class="container space-y-26 pb-26">
+			<nav
+				aria-label="Styleguide"
+				class="border-default bg-surface space-y-6 rounded-lg border p-6"
+			>
+				{%- for group in post.toc -%}
+					<div class="space-y-3">
+						<p class="text-eyebrow text-muted">{{ group.title }}</p>
+						<ul class="flex flex-wrap gap-x-5 gap-y-2">
+							{%- for item in group.items -%}
+								<li itemscope itemtype="https://schema.org/SiteNavigationElement">
+									<a
+										href="{{ item.href }}"
+										itemprop="url"
+										class="text-button hover:text-accent-default underline underline-offset-2 transition-colors"
+									>
+										<span itemprop="name">{{ item.title }}</span>
+									</a>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				{%- endfor -%}
+			</nav>
+
+			<section class="space-y-14" aria-labelledby="styleguide-colors">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Foundations</p>
+					<h2 id="styleguide-colors" class="text-title-xl">Colour</h2>
+					<p class="text-muted text-sm">
+						Roles of the Figma Colors collection, declared in src/stylesheets/theme.css as
+						light-dark(Light, Dark). The page is Dark; a section switches to Light with scheme-light
+						bg-default text-primary and keeps its color classes. Values are read from the rendered
+						swatches.
+					</p>
+				</header>
+
+				{%- for group in post.colors -%}
+					<div class="space-y-6">
+						<h3 class="text-title-md">{{ group.title }}</h3>
+						<ul class="layout-grid gap-y-10">
+							{%- for role in group.roles -%}
+								<li class="col-span-4 space-y-3 lg:col-span-3">
+									<div class="grid grid-cols-2 gap-2">
+										{%- for scheme, label in {
+											'scheme-dark': 'Dark',
+											'scheme-light': 'Light',
+										} -%}
+											<figure class="space-y-1.5">
+												<div
+													class="{{
+														html_classes(
+															scheme,
+															'border-default bg-default overflow-hidden rounded-md border'
+														)
+													}}"
+												>
+													<div
+														class="aspect-square"
+														style="background-color: var({{ role.variable }})"
+														data-swatch
+													></div>
+												</div>
+												<figcaption class="text-mono text-subtle flex flex-col">
+													<span>{{ label }}</span>
+													<output></output>
+												</figcaption>
+											</figure>
+										{%- endfor -%}
+									</div>
+									<div class="space-y-1 wrap-anywhere">
+										<p class="text-button">{{ role.name }}</p>
+										<p class="text-mono text-muted">.{{ role.class }}</p>
+										<p class="text-mono text-subtle">{{ role.variable }}</p>
+										<p class="text-subtle text-sm">{{ role.usage }}</p>
+									</div>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				{%- endfor -%}
+
+				<script type="module">
+					for (const swatch of document.querySelectorAll("[data-swatch]")) {
+						const output = swatch.closest("figure").querySelector("output");
+						const color = getComputedStyle(swatch).backgroundColor;
+						const [red, green, blue, alpha = 1] = color.match(/[\d.]+/g).map(Number);
+						const bytes = alpha < 1 ? [red, green, blue, Math.round(alpha * 255)] : [red, green, blue];
+
+						output.value = `#${bytes.map((byte) => byte.toString(16).padStart(2, "0")).join("")}`;
+					}
+				</script>
+			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-type">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Foundations</p>
+					<h2 id="styleguide-type" class="text-title-xl">Type</h2>
+					<p class="text-muted text-sm">
+						Text styles of the Figma Typography board. Templates use the public class: it switches
+						from Mobile to Desktop at lg (1024 px), labels and data keep one size. Decoration is a
+						utility, not a style. Measures are read from the rendered samples: family, weight, size
+						/ line height / letter spacing.
+					</p>
+				</header>
+
+				{%- for group in post.type_scale -%}
+					<div class="space-y-6">
+						<h3 class="text-title-md">{{ group.title }}</h3>
+						<ul class="divide-default border-default divide-y border-t">
+							{%- for style in group.styles -%}
+								<li class="layout-grid gap-y-6 py-8">
+									<p class="text-button col-span-4 wrap-anywhere">.{{ style.class }}</p>
+									<div class="col-span-4 min-w-0 space-y-8 lg:col-span-8">
+										{%- for name, class in style.variants -%}
+											<figure class="space-y-3">
+												<p class="{{ class }}" data-type-sample>
+													{{- style.sample | default( group.sample ) -}}
+												</p>
+												<figcaption class="text-mono text-subtle flex flex-col">
+													<span>{{ name }} · .{{ class }}</span>
+													<output></output>
+												</figcaption>
+											</figure>
+										{%- endfor -%}
+									</div>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				{%- endfor -%}
+
+				<script type="module">
+					for (const sample of document.querySelectorAll("[data-type-sample]")) {
+						const output = sample.closest("figure").querySelector("output");
+						const style = getComputedStyle(sample);
+						const family = style.fontFamily.split(",")[0].replaceAll('"', "");
+						const size = parseFloat(style.fontSize);
+						const lineHeight = Math.round((parseFloat(style.lineHeight) / size) * 100);
+						const letterSpacing = +((parseFloat(style.letterSpacing) || 0) / size * 100).toFixed(1);
+
+						output.value = `${family} ${style.fontWeight} · ${size} / ${lineHeight}% / ${letterSpacing}%`;
+					}
+				</script>
+			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-space">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Foundations</p>
+					<h2 id="styleguide-space" class="text-title-xl">Space</h2>
+					<p class="text-muted text-sm">
+						Spacing, radius and dimensions of the Figma Spacing board. Spacing variables are named
+						after the multiplier of --spacing (4 px): spacing/6 is 24 px and writes gap-6 or p-6.
+						Page gutters (rhythm) and dimensions follow the same scale. Values are read from the
+						rendered samples.
+					</p>
+				</header>
+
+				{%- for group in post.spacing -%}
+					<div class="space-y-6">
+						<h3 class="text-title-md">{{ group.title }}</h3>
+						<ul class="divide-default border-default divide-y border-t">
+							{%- for item in group.items -%}
+								<li class="layout-grid items-center gap-y-3 py-4">
+									<div class="col-span-2 space-y-1 lg:col-span-3">
+										<p class="text-button">{{ item.name }}</p>
+										<p class="text-mono text-subtle">{{ item.code }}</p>
+									</div>
+									<output class="text-mono text-muted col-span-2 lg:col-span-1"></output>
+									<div class="col-span-4 lg:col-span-8">
+										<div
+											class="{{
+												html_classes(
+													group.sample | default( '' ),
+													item.sample,
+													'border-accent bg-accent-soft border'
+												)
+											}}"
+											data-measure="{{ item.property | default( group.property ) }}"
+										></div>
+									</div>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				{%- endfor -%}
+
+				<script type="module">
+					for (const sample of document.querySelectorAll("[data-measure]")) {
+						const output = sample.closest("li").querySelector("output");
+						const value = parseFloat(getComputedStyle(sample).getPropertyValue(sample.dataset.measure));
+
+						output.value = value > 10000 ? "full" : `${value}px`;
+					}
+				</script>
+			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-grid">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Foundations</p>
+					<h2 id="styleguide-grid" class="text-title-xl">Grid</h2>
+					<p class="text-muted text-sm">
+						Grid styles of the Figma Grids board. Pages lay out with container and layout-grid:
+						Mobile/Columns below lg (1024 px), Desktop/Columns above. Values are read from the live
+						grid below and follow the window width. Press G on any page to toggle the grid overlay.
+					</p>
+				</header>
+
+				<figure class="space-y-3">
+					<div class="layout-grid h-40" data-grid>
+						{%- for column in 1..12 -%}
+							<div
+								class="{{
+									html_classes(
+										'bg-accent-soft text-mono text-accent-default flex items-end justify-center pb-2',
+										column > 4 ? 'max-lg:hidden'
+									)
+								}}"
+							>
+								{{- column -}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<figcaption class="space-y-2">
+						<p class="text-button">
+							<span class="lg:hidden">Mobile/Columns</span>
+							<span class="max-lg:hidden">Desktop/Columns</span>
+						</p>
+						<dl class="text-mono text-subtle flex flex-wrap gap-x-6 gap-y-1">
+							{%- for measure in [ 'columns', 'margin', 'gutter', 'content' ] -%}
+								<div class="flex gap-2">
+									<dt>{{ measure }}</dt>
+									<dd><output data-grid-measure="{{ measure }}"></output></dd>
+								</div>
+							{%- endfor -%}
+						</dl>
+					</figcaption>
+				</figure>
+
+				<script type="module">
+					const grid = document.querySelector("[data-grid]");
+					const container = grid.closest(".container");
+					const output = (name) => document.querySelector(`[data-grid-measure="${name}"]`);
+
+					new ResizeObserver(() => {
+						const style = getComputedStyle(grid);
+						const margin = parseFloat(getComputedStyle(container).paddingInlineStart);
+
+						output("columns").value = style.gridTemplateColumns.split(" ").length;
+						output("margin").value = `${margin}px`;
+						output("gutter").value = `${parseFloat(style.columnGap)}px`;
+						output("content").value = `${container.clientWidth - margin * 2}px`;
+					}).observe(grid);
+				</script>
+			</section>
+		</div>
+	</main>
+{%- endblock -%}

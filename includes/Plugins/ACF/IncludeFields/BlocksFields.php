@@ -33,7 +33,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\References;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\RelatedCases;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Services;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Styleguide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\VerticalPipeline;
@@ -76,7 +75,6 @@ class BlocksFields implements Service {
 		RelatedCases::class,
 		Services::class,
 		Stats::class,
-		Styleguide::class,
 		Subscriptions::class,
 		Team::class,
 		VerticalPipeline::class,

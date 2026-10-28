@@ -48,6 +48,10 @@ class PostStates implements Service {
 			$post_states[] = __( 'Blocks Page', 'agencecinq' );
 		}
 
+		if ( 'page-templates/styleguide-page.php' === $template ) {
+			$post_states[] = __( 'Styleguide Page', 'agencecinq' );
+		}
+
 		return $post_states;
 	}
 }

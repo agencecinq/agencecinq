@@ -55,6 +55,11 @@ class PageFields implements Service {
 					'operator' => '!=',
 					'value'    => 'page-templates/blocks-page.php',
 				),
+				array(
+					'param'    => 'page_template',
+					'operator' => '!=',
+					'value'    => 'page-templates/styleguide-page.php',
+				),
 			),
 		);
 

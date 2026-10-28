@@ -11,7 +11,7 @@ namespace AgenceCinq\Setup;
 
 use AgenceCinq\Service;
 use Timber\{Timber, Site, Post };
-use AgenceCinq\Models\{ CategoryArchive, FrontPage, Home, SinglePost, CaseStudy };
+use AgenceCinq\Models\{ CategoryArchive, FrontPage, Home, SinglePost, CaseStudy, StyleguidePage };
 use WP_Post;
 
 /**
@@ -106,7 +106,11 @@ class Context extends Site implements Service {
 	 */
 	public function add_post_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			'page'       => function ( WP_Post $post ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Reserved for future use.
+			'page'       => function ( WP_Post $post ) {
+				if ( 'page-templates/styleguide-page.php' === get_page_template_slug( $post ) ) {
+					return StyleguidePage::class;
+				}
+
 				if ( is_home() ) {
 					return Home::class;
 				}

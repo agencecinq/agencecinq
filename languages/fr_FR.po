@@ -2339,10 +2339,6 @@ msgstr ""
 msgid "e.g. of fixes with no quote and no meter across everything we built"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Styleguide.php:26
-msgid "Styleguide"
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:31
 msgid "Subscriptions"
 msgstr ""
@@ -3010,6 +3006,10 @@ msgstr ""
 
 #: includes/Template/PostStates.php:48
 msgid "Blocks Page"
+msgstr ""
+
+#: includes/Template/PostStates.php:52
+msgid "Styleguide Page"
 msgstr ""
 
 #: includes/Vite.php:103

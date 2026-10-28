@@ -51,7 +51,6 @@ Layouts are registered in `BlocksFields` and rendered via `views/blocks/blocks.h
 | Related Cases      | `related-cases.html.twig`      |
 | Services           | `services.html.twig`           |
 | Stats              | `stats.html.twig`              |
-| Styleguide         | `styleguide.html.twig`         |
 | Subscriptions      | `subscriptions.html.twig`      |
 | Team               | `team.html.twig`               |
 | Vertical Pipeline  | `vertical-pipeline.html.twig`  |
@@ -64,6 +63,7 @@ Layouts are registered in `BlocksFields` and rendered via `views/blocks/blocks.h
 - **Case studies**: CPT + dedicated hero fields (`CaseStudyFields`), template `views/pages/single-case-study.html.twig`.
 - **Default pages**: `components/page-hero.html.twig` (overline + title + excerpt + CTAs via `PageFields`), WordPress editor for the body, optional flexible blocks. Richer layouts use the **Blocks** page template (same Page Hero component as a flexible block).
 - **Blog archive**: options in `ArchivePostsFields`.
+- **Styleguide**: page template `page-templates/styleguide-page.php` (`noindex`, no ACF fields), a live catalog of the Figma foundations rendered by `views/pages/styleguide-page.html.twig` from `includes/Models/StyleguidePage.php`. Inline scripts print the rendered values of the samples (colour, type, space, grid), so `theme.css` stays their only source.
 
 
 
