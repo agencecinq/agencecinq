@@ -282,28 +282,27 @@
 				</script>
 			</section>
 
+			{%- set schemes = {
+				'scheme-dark': 'Dark',
+				'scheme-light': 'Light',
+			} -%}
+			{%- set panel = 'border-default bg-default text-primary rounded-md border p-8' -%}
+
 			<section class="space-y-14" aria-labelledby="styleguide-fundamentals">
 				<header class="max-w-180 space-y-3">
 					<p class="text-eyebrow text-muted">Components</p>
 					<h2 id="styleguide-fundamentals" class="text-title-xl">Fundamentals</h2>
 					<p class="text-muted text-sm">
-						Logo, icons, badge and avatar of the Figma Components page. Each sample renders in Dark,
-						then in a scheme-light panel: colors follow the mode.
+						Logo, icons, badge and avatar of the Figma Components page. Every component renders in a
+						Dark panel, then in a scheme-light one: colors follow the mode.
 					</p>
 				</header>
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Logo</h3>
-					<div class="grid grid-cols-2 gap-2">
-						{%- for scheme in [ 'scheme-dark', 'scheme-light' ] -%}
-							<div
-								class="{{
-									html_classes(
-										scheme,
-										'border-default bg-default text-primary rounded-md border p-8'
-									)
-								}}"
-							>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
 								{{-
 									include(
 										'svg/use.html.twig',
@@ -317,49 +316,43 @@
 							</div>
 						{%- endfor -%}
 					</div>
-					<p class="text-mono text-subtle">Logo/CINQ · icon: 'logo' · text-primary</p>
+					<p class="text-mono text-subtle">Logo/CINQ · icon: 'logo'</p>
 				</div>
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Icons</h3>
-					<ul class="layout-grid gap-y-6">
-						{%- for name, icon in post.icons -%}
-							<li class="col-span-2 space-y-3">
-								<div
-									class="border-default bg-surface flex h-20 items-center justify-center rounded-md border"
-								>
-									{{-
-										include(
-											'svg/use.html.twig',
-											{
-												icon: icon,
-												classes: [ 'size-6' ],
-											},
-											with_context: false
-										)
-									-}}
-								</div>
-								<div class="space-y-1 wrap-anywhere">
-									<p class="text-button">{{ name }}</p>
-									<p class="text-mono text-subtle">icon: '{{ icon }}'</p>
-								</div>
-							</li>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<ul
+								class="{{ html_classes( scheme, panel, 'grid grid-cols-2 gap-6 sm:grid-cols-4' ) }}"
+							>
+								{%- for name, icon in post.icons -%}
+									<li class="flex flex-col items-start gap-2 wrap-anywhere">
+										{{-
+											include(
+												'svg/use.html.twig',
+												{
+													icon: icon,
+													classes: [ 'size-6' ],
+												},
+												with_context: false
+											)
+										-}}
+										<span class="text-sm">{{ name }}</span>
+										<span class="text-mono text-subtle">'{{ icon }}'</span>
+									</li>
+								{%- endfor -%}
+							</ul>
 						{%- endfor -%}
-					</ul>
+					</div>
+					<p class="text-mono text-subtle">svg/use.html.twig · icon: '…'</p>
 				</div>
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Badge</h3>
-					<div class="grid grid-cols-2 gap-2">
-						{%- for scheme in [ 'scheme-dark', 'scheme-light' ] -%}
-							<div
-								class="{{
-									html_classes(
-										scheme,
-										'border-default bg-default text-primary flex flex-wrap gap-3 rounded-md border p-8'
-									)
-								}}"
-							>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'flex flex-wrap gap-3' ) }}">
 								{{-
 									include(
 										'components/badge.html.twig',
@@ -385,12 +378,319 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Avatar</h3>
-					<div class="flex items-center gap-6">
-						{{- include( 'components/avatar.html.twig', with_context: false ) -}}
-						{{- include( 'components/avatar.html.twig', { size: 'large' }, with_context: false ) -}}
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'flex items-center gap-6' ) }}">
+								{{- include( 'components/avatar.html.twig', with_context: false ) -}}
+								{{-
+									include( 'components/avatar.html.twig', { size: 'large' }, with_context: false )
+								-}}
+							</div>
+						{%- endfor -%}
 					</div>
 					<p class="text-mono text-subtle">
 						components/avatar.html.twig · image, size: 'small' | 'large', alt (empty by default)
+					</p>
+				</div>
+			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-actions">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Components</p>
+					<h2 id="styleguide-actions" class="text-title-xl">Actions & navigation</h2>
+					<p class="text-muted text-sm">
+						Buttons, links and navigation entries of the Figma Components page, in a Dark panel then
+						a scheme-light one. States follow the markup: aria-current marks the current page,
+						aria-expanded an open submenu. Hover and focus show on interaction.
+					</p>
+				</header>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Button</h3>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'flex flex-wrap items-center gap-4' ) }}">
+								{%- for variant in [ 'primary', 'secondary', 'text' ] -%}
+									{{-
+										include(
+											'components/button.html.twig',
+											{
+												title: 'Réserver 30 minutes',
+												url: '#styleguide-actions',
+												variant: variant,
+											},
+											with_context: false
+										)
+									-}}
+								{%- endfor -%}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/button.html.twig · title, url, variant: 'primary' | 'secondary' | 'text',
+						arrow, type, disabled
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Icon button</h3>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'flex gap-2' ) }}">
+								{{-
+									include(
+										'components/icon-button.html.twig',
+										{
+											label: 'Menu',
+											icon: 'menu',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/icon-button.html.twig',
+										{
+											label: 'Close',
+											icon: 'close',
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/icon-button.html.twig · label (required), icon, icon_html
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Link item</h3>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/link-item.html.twig',
+										{
+											title: 'Diagnostic',
+											url: '#styleguide-actions',
+											text: '6 points vérifiés, 750 € HT, rendu en 5 jours ouvrés.',
+											classes: [ 'max-w-80' ],
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">components/link-item.html.twig · title, url, text</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Nav link and Menu link</h3>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'space-y-4' ) }}">
+								<div class="flex flex-wrap items-center gap-6">
+									{{-
+										include(
+											'components/nav-link.html.twig',
+											{
+												title: 'Approche',
+												url: '#styleguide-actions',
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/nav-link.html.twig',
+											{
+												title: 'Réalisations',
+												url: '#styleguide-actions',
+												current: true,
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/nav-link.html.twig',
+											{
+												title: 'Offres',
+												controls: 'styleguide-submenu-' ~ scheme,
+												expanded: true,
+											},
+											with_context: false
+										)
+									-}}
+								</div>
+								<div id="styleguide-submenu-{{ scheme }}" class="max-w-80">
+									{{-
+										include(
+											'components/menu-link.html.twig',
+											{
+												title: 'Site resté à l’ancienne',
+												url: '#styleguide-actions',
+												text: 'Un site vitrine qui ne vous ressemble plus.',
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/menu-link.html.twig',
+											{
+												title: 'Boutique en panne',
+												url: '#styleguide-actions',
+											},
+											with_context: false
+										)
+									-}}
+								</div>
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/nav-link.html.twig · title, url | controls, expanded, current ·
+						components/menu-link.html.twig · title, url, text, current
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Drawer link and sublink</h3>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/drawer-link.html.twig',
+										{
+											title: 'Approche',
+											url: '#styleguide-actions',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/drawer-link.html.twig',
+										{
+											title: 'Réalisations',
+											url: '#styleguide-actions',
+											current: true,
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/drawer-link.html.twig',
+										{
+											title: 'Offres',
+											controls: 'styleguide-sublinks-' ~ scheme,
+											expanded: true,
+										},
+										with_context: false
+									)
+								-}}
+								<div id="styleguide-sublinks-{{ scheme }}">
+									{{-
+										include(
+											'components/drawer-sublink.html.twig',
+											{
+												title: 'Création de boutique',
+												url: '#styleguide-actions',
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/drawer-sublink.html.twig',
+											{
+												title: 'Refonte de boutique',
+												url: '#styleguide-actions',
+												current: true,
+											},
+											with_context: false
+										)
+									-}}
+								</div>
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/drawer-link.html.twig · title, url | controls, expanded, current ·
+						components/drawer-sublink.html.twig · title, url, current
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Breadcrumb</h3>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/breadcrumb.html.twig',
+										{
+											items: [
+												{
+													url: '#styleguide-actions',
+													text: 'Accueil',
+												},
+												{
+													url: '#styleguide-actions',
+													text: 'Shopify',
+												},
+												{
+													url: '#styleguide-actions',
+													text: 'Migration',
+												},
+												{
+													url: '#styleguide-actions',
+													text: 'Depuis PrestaShop',
+												},
+											],
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/breadcrumb.html.twig · items (Yoast SEO by default)
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Pagination</h3>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/pagination.html.twig',
+										{
+											pagination: {
+												current: 2,
+												total: 3,
+												prev: { link: '#styleguide-actions' },
+												next: { link: '#styleguide-actions' },
+											},
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/pagination.html.twig · pagination (Timber), prev_title, next_title, anchor
 					</p>
 				</div>
 			</section>

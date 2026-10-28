@@ -53,6 +53,10 @@ class StyleguidePage extends Post {
 						'title' => 'Fundamentals',
 						'href'  => '#styleguide-fundamentals',
 					),
+					array(
+						'title' => 'Actions & navigation',
+						'href'  => '#styleguide-actions',
+					),
 				),
 			),
 		);
