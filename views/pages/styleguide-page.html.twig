@@ -286,7 +286,9 @@
 				'scheme-dark': 'Dark',
 				'scheme-light': 'Light',
 			} -%}
-			{%- set panel = 'border-default bg-default text-primary rounded-md border p-8' -%}
+			{%- set panel =
+				'border-default bg-default text-primary col-span-full rounded-md border p-8 lg:col-span-6'
+			-%}
 
 			<section class="space-y-14" aria-labelledby="styleguide-fundamentals">
 				<header class="max-w-180 space-y-3">
@@ -300,7 +302,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Logo</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel ) }}">
 								{{-
@@ -321,7 +323,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Icons</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<ul
 								class="{{ html_classes( scheme, panel, 'grid grid-cols-2 gap-6 sm:grid-cols-4' ) }}"
@@ -350,7 +352,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Badge</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel, 'flex flex-wrap gap-3' ) }}">
 								{{-
@@ -378,7 +380,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Avatar</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel, 'flex items-center gap-6' ) }}">
 								{{- include( 'components/avatar.html.twig', with_context: false ) -}}
@@ -407,7 +409,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Button</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel, 'flex flex-wrap items-center gap-4' ) }}">
 								{%- for variant in [ 'primary', 'secondary', 'text' ] -%}
@@ -434,7 +436,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Icon button</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel, 'flex gap-2' ) }}">
 								{{-
@@ -467,7 +469,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Link item</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel ) }}">
 								{{-
@@ -490,7 +492,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Nav link and Menu link</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel, 'space-y-4' ) }}">
 								<div class="flex flex-wrap items-center gap-6">
@@ -561,7 +563,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Drawer link and sublink</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel ) }}">
 								{{-
@@ -630,7 +632,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Breadcrumb</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel ) }}">
 								{{-
@@ -669,7 +671,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Pagination</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel ) }}">
 								{{-
@@ -709,7 +711,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Input</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel, 'grid gap-8 sm:grid-cols-2' ) }}">
 								{{-
@@ -762,7 +764,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Checkbox</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel ) }}">
 								{{-
@@ -805,7 +807,7 @@
 
 				<div class="space-y-6">
 					<h3 class="text-title-md">Switch</h3>
-					<div class="grid gap-2 lg:grid-cols-2">
+					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<div class="{{ html_classes( scheme, panel ) }}">
 								{{-
