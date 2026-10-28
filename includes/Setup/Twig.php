@@ -152,12 +152,12 @@ class Twig implements Service {
 		$twig->addFilter( new TwigFilter( 'retainer_tier', array( Catalogue::class, 'retainer_tier' ) ) );
 		$twig->addFilter( new TwigFilter( 'retainer_price', array( Catalogue::class, 'retainer_price' ) ) );
 
-		// Add Yoast Breadcrumbs function.
+		// Breadcrumb levels ({ url, text }) of the current page, from Yoast SEO.
 		$twig->addFunction(
 			new TwigFunction(
-				'yoast_breadcrumb',
-				function ( $before = '<div class="text-xs">', $after = '</div>', $display = false ) {
-					return function_exists( 'yoast_breadcrumb' ) ? yoast_breadcrumb( $before, $after, $display ) : '';
+				'breadcrumbs',
+				function (): array {
+					return function_exists( 'YoastSEO' ) ? YoastSEO()->meta->for_current_page()->breadcrumbs : array();
 				}
 			)
 		);

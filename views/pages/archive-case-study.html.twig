@@ -12,7 +12,7 @@
 			<div class="layout-grid container gap-y-5 pt-5 pb-20 lg:pt-12.5">
 				<div class="col-span-full space-y-15 text-center lg:col-span-10 lg:col-start-2">
 					<div class="space-y-5">
-						{{- yoast_breadcrumb() -}}
+						{{- include( 'components/breadcrumb.html.twig', with_context: false ) -}}
 						<h1 class="text-title-xl text-accent-default">
 							{{- title | default( __( 'Case studies', 'agencecinq' ) ) -}}
 						</h1>
@@ -70,8 +70,10 @@
 					include(
 						'components/pagination.html.twig',
 						{
-							classes: [ 'col-span-full', 'mx-auto' ],
-							pagination: posts.pagination( { mid_size: 1 } ),
+							classes: [ 'col-span-full' ],
+							pagination: posts.pagination(),
+							prev_title: __( 'Newer case studies', 'agencecinq' ),
+							next_title: __( 'Older case studies', 'agencecinq' ),
 						}
 					)
 				-}}

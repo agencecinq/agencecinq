@@ -1,111 +1,55 @@
 {#
  # Components: Pagination
  #
- # @param {object} pagination
+ # Previous page as a Text button, next page as a Secondary button, then the position.
+ #
+ # @param object pagination Timber pagination, e.g. posts.pagination().
+ # @param string prev_title Optional. Defaults to "Newer posts".
+ # @param string next_title Optional. Defaults to "Older posts".
+ # @param string anchor Optional fragment appended to the links.
+ # @param array classes Optional extra classes.
  #}
 
-{%- if ( pagination.pages | length ) > 0 -%}
+{%- if pagination.total > 1 -%}
 	<nav
-		role="navigation"
+		aria-label="{{ __( 'Pagination', 'agencecinq' ) }}"
 		class="{{
-			html_classes(
-				'inline-flex items-center gap-7.5 text-xl',
-				classes | default( [] ) | join( ' ' )
-			)
+			html_classes( 'flex flex-wrap items-center gap-4', classes | default( [] ) | join( ' ' ) )
 		}}"
 	>
-		{% if pagination.prev %}
-			<a
-				href="{{ pagination.prev.link }}{{ anchor | default( '' ) }}"
-				class="hover:border-accent hover:bg-accent-default flex size-12.5 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out lg:size-17"
-				aria-label="{{ __( 'Previous', 'agencecinq' ) }}"
-			>
-				{{-
-					include(
-						'svg/use.html.twig',
-						{
-							icon: 'arrow',
-							classes: [ 'size-4 -scale-x-100 lg:size-5' ],
-						}
-					)
-				-}}
-			</a>
-		{% else %}
-			<span
-				class="flex size-12.5 shrink-0 cursor-not-allowed items-center justify-center rounded-full border opacity-50 lg:size-17"
-			>
-				{{-
-					include(
-						'svg/use.html.twig',
-						{
-							icon: 'arrow',
-							classes: [ 'size-4 -scale-x-100 lg:size-5' ],
-						}
-					)
-				-}}
-			</span>
-		{% endif %}
+		{%- if pagination.prev -%}
+			{{-
+				include(
+					'components/button.html.twig',
+					{
+						title: prev_title | default( __( 'Newer posts', 'agencecinq' ) ),
+						url: pagination.prev.link ~ ( anchor | default( '' ) ),
+						variant: 'text',
+						arrow: false,
+					},
+					with_context: false
+				)
+			-}}
+		{%- endif -%}
 
-		<ul class="flex flex-wrap justify-center">
-			{% for page in pagination.pages %}
-				<li>
-					{% if page.link %}
-						<a
-							href="{{ page.link }}{{ anchor | default( '' ) }}"
-							class="{{
-								page.class
-							}} hover:bg-accent-default flex size-10 items-center justify-center rounded-full transition-colors duration-300 ease-out lg:size-12.5"
-						>
-							{{- page.title -}}
-						</a>
-					{% else %}
-						<span
-							class="{{
-								html_classes(
-									'flex size-10 items-center justify-center rounded-full lg:size-12.5',
-									page.class,
-									'current' in ( page.class | split( ' ' ) ) ? 'bg-accent-default' : ''
-								)
-							}}"
-							{{ 'current' in ( page.class | split( ' ' ) ) ? 'aria-current="page"' : '' }}
-						>
-							{{- page.title -}}
-						</span>
-					{% endif %}
-				</li>
-			{% endfor %}
-		</ul>
+		{%- if pagination.next -%}
+			{{-
+				include(
+					'components/button.html.twig',
+					{
+						title: next_title | default( __( 'Older posts', 'agencecinq' ) ),
+						url: pagination.next.link ~ ( anchor | default( '' ) ),
+						variant: 'secondary',
+					},
+					with_context: false
+				)
+			-}}
+		{%- endif -%}
 
-		{% if pagination.next %}
-			<a
-				href="{{ pagination.next.link }}{{ anchor | default( '' ) }}"
-				class="hover:bg-accent-default hover:border-accent flex size-12.5 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out lg:size-17"
-				aria-label="{{ __( 'Next', 'agencecinq' ) }}"
-			>
-				{{-
-					include(
-						'svg/use.html.twig',
-						{
-							icon: 'arrow',
-							classes: [ 'size-4 lg:size-5' ],
-						}
-					)
-				-}}
-			</a>
-		{% else %}
-			<span
-				class="flex size-12.5 shrink-0 cursor-not-allowed items-center justify-center rounded-full border opacity-50 lg:size-17"
-			>
-				{{-
-					include(
-						'svg/use.html.twig',
-						{
-							icon: 'arrow',
-							classes: [ 'size-4 lg:size-5' ],
-						}
-					)
-				-}}
-			</span>
-		{% endif %}
+		<p class="text-muted text-sm">
+			{{-
+				__( 'Page %1$s of %2$s', 'agencecinq' ) | format( pagination.current, pagination.total )
+			-}}
+		</p>
 	</nav>
 {%- endif -%}

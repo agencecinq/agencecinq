@@ -3154,16 +3154,36 @@ msgstr ""
 msgid "See all"
 msgstr ""
 
-#: views/components/modal-quote-sent.html.twig:43
+#: views/components/modal-quote-sent.html.twig views/components/modal.html.twig
 msgid "Close"
 msgstr ""
 
-#: views/components/pagination.html.twig:21
-msgid "Previous"
+#: views/components/breadcrumb.html.twig
+msgid "Breadcrumb"
 msgstr ""
 
-#: views/components/pagination.html.twig:83
-msgid "Next"
+#: views/components/pagination.html.twig
+msgid "Pagination"
+msgstr ""
+
+#: views/components/pagination.html.twig
+msgid "Newer posts"
+msgstr ""
+
+#: views/components/pagination.html.twig
+msgid "Older posts"
+msgstr ""
+
+#: views/components/pagination.html.twig
+msgid "Page %1$s of %2$s"
+msgstr ""
+
+#: views/pages/archive-case-study.html.twig
+msgid "Newer case studies"
+msgstr ""
+
+#: views/pages/archive-case-study.html.twig
+msgid "Older case studies"
 msgstr ""
 
 #: views/components/skip-links.html.twig:10

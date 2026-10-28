@@ -3176,17 +3176,37 @@ msgstr "Retour"
 msgid "See all"
 msgstr "Voir tout"
 
-#: views/components/modal-quote-sent.html.twig:43
+#: views/components/modal-quote-sent.html.twig views/components/modal.html.twig
 msgid "Close"
 msgstr "Fermer"
 
-#: views/components/pagination.html.twig:21
-msgid "Previous"
-msgstr "Précédent"
+#: views/components/breadcrumb.html.twig
+msgid "Breadcrumb"
+msgstr "Fil d’Ariane"
 
-#: views/components/pagination.html.twig:83
-msgid "Next"
-msgstr "Suivant"
+#: views/components/pagination.html.twig
+msgid "Pagination"
+msgstr "Pagination"
+
+#: views/components/pagination.html.twig
+msgid "Newer posts"
+msgstr "Articles plus récents"
+
+#: views/components/pagination.html.twig
+msgid "Older posts"
+msgstr "Articles plus anciens"
+
+#: views/components/pagination.html.twig
+msgid "Page %1$s of %2$s"
+msgstr "Page %1$s sur %2$s"
+
+#: views/pages/archive-case-study.html.twig
+msgid "Newer case studies"
+msgstr "Réalisations plus récentes"
+
+#: views/pages/archive-case-study.html.twig
+msgid "Older case studies"
+msgstr "Réalisations plus anciennes"
 
 #: views/components/skip-links.html.twig:10
 msgid "Skip to content"
