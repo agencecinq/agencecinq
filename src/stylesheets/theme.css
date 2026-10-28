@@ -164,16 +164,9 @@
 	--radius-md: 0.5rem;
 	--radius-lg: 0.75rem;
 
-	--animate-marquee-y: marquee-y 25s linear infinite;
 	--animate-marquee-x: marquee-x 50s linear infinite;
 
 	--shadow-overlay: 0 1rem 3rem rgb(0 0 0 / 0.45);
-
-	@keyframes marquee-y {
-		to {
-			transform: translateY(-50%);
-		}
-	}
 
 	@keyframes marquee-x {
 		0% {

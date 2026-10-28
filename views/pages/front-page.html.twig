@@ -1,6 +1,9 @@
 {#
  # Front page
  #
+ # Figma Section/Hero, Visual=Diff: the text and its two buttons on eight columns, the paragraph on seven,
+ # the diff of a site on the last four.
+ #
  # @package AgenceCinq
  #}
 
@@ -9,149 +12,65 @@
 {%- block content -%}
 	{%- set hero = post.meta( 'hero' ) | default( {} ) -%}
 	{%- set content = hero.content | default( {} ) -%}
-	{%- set quote = hero.quote | default( {} ) -%}
-	{%- set link = quote.link | default( {} ) -%}
-	{%- set repositories = post.repositories | default( [] ) -%}
-	{%- set quote_text =
-		quote.text
-			| default( '' )
-			| replace( {
-				'&laquo;': '',
-				'&raquo;': '',
-				'«': '',
-				'»': '',
-			} )
-			| trim
+	{%- set links =
+		content.links | default( [] ) | filter( link => link.title | default( false ) )
 	-%}
+	{%- set diff = hero.diff | default( {} ) -%}
+	{%- set removed =
+		diff.removed | default( [] ) | map( line => line.text ) | filter( text => text )
+	-%}
+	{%- set added = diff.added | default( [] ) | map( line => line.text ) | filter( text => text ) -%}
 
 	<main id="content" role="main">
-		<section class="py-16 lg:py-24" aria-labelledby="hero-home-title">
-			<div class="layout-grid container items-center gap-y-14">
-				<div class="col-span-full space-y-14 lg:col-span-9">
-					<header class="space-y-5.5">
-						{%- if content.overline -%}
-							<p class="text-eyebrow text-muted">{{- content.overline -}}</p>
-						{%- endif -%}
+		<section class="py-14 lg:pt-34 lg:pb-26" aria-labelledby="hero-home-title">
+			<div class="layout-grid container items-start gap-y-10">
+				<div class="col-span-full grid grid-cols-subgrid gap-y-6 lg:col-span-8 lg:gap-y-8">
+					{%- if content.eyebrow -%}
+						<p class="text-eyebrow text-muted col-span-full">{{- content.eyebrow -}}</p>
+					{%- endif -%}
 
-						<h1 id="hero-home-title" class="text-title-3xl">
-							{{- content.title | default( post.title ) | raw -}}
-						</h1>
-					</header>
+					<h1 id="hero-home-title" class="text-title-3xl text-primary col-span-full">
+						{{- content.title | default( post.title ) | raw -}}
+					</h1>
 
-					{%- if quote_text or quote.attribution or link.title -%}
-						<div class="max-w-160 space-y-6">
-							{%- if quote_text or quote.attribution -%}
-								<figure class="space-y-2" itemscope itemtype="https://schema.org/Quotation">
-									{%- if quote_text -%}
-										<blockquote class="text-lg" itemprop="text">
-											<p>
-												{{- '&laquo;&nbsp;' | raw -}}
-												{{- quote_text | raw -}}
-												{{- '&nbsp;&raquo;' | raw -}}
-											</p>
-										</blockquote>
-									{%- endif -%}
+					{%- if content.text -%}
+						<p class="text-body col-span-full text-xl lg:col-span-7">{{- content.text -}}</p>
+					{%- endif -%}
 
-									{%- if quote.attribution -%}
-										<figcaption
-											class="text-eyebrow text-muted"
-											itemprop="author"
-											itemscope
-											itemtype="https://schema.org/Person"
-										>
-											<span itemprop="name">{{- quote.attribution -}}</span>
-										</figcaption>
-									{%- endif -%}
-								</figure>
-							{%- endif -%}
-
-							{{-
-								include(
-									'components/button.html.twig',
-									link | default( {} ) | merge( { variant: 'primary' } ),
-									with_context: false
-								)
-							-}}
+					{%- if links | length -%}
+						<div class="col-span-full flex flex-wrap gap-4">
+							{%- for link in links -%}
+								{{-
+									include(
+										'components/button.html.twig',
+										link | merge( {
+											variant: loop.first ? 'primary' : 'secondary',
+											arrow: loop.first,
+										} ),
+										with_context: false
+									)
+								-}}
+							{%- endfor -%}
 						</div>
 					{%- endif -%}
 				</div>
 
-				{%- if repositories | length -%}
-					<aside
-						class="group/repos before:from-default after:from-default relative col-span-full h-107.5 overflow-hidden before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:z-1 before:h-16 before:bg-linear-to-b before:to-transparent after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-1 after:h-16 after:bg-linear-to-t after:to-transparent lg:col-span-3 lg:col-start-10"
-						aria-label="{{ __( 'Recent repositories', 'agencecinq' ) }}"
-					>
-						<div
-							class="animate-marquee-y flex flex-col group-hover/repos:[animation-play-state:paused] motion-reduce:animate-none"
-							style="animation-duration: {{ ( repositories | length ) * 5 }}s"
-						>
-							{%- for clone in [ false, true ] -%}
-								<ul {{ clone ? 'aria-hidden="true"' }}>
-									{%- for repo in repositories -%}
-										{%- if repo.name or repo.language or repo.pushed_at -%}
-											<li
-												class="border-default space-y-2 border-b py-4.5"
-												{{ not clone
-													? 'itemscope itemtype="https://schema.org/SoftwareSourceCode"' }}
-											>
-												<div
-													class="flex items-center gap-3 before:size-2.25 before:shrink-0 before:rounded-full before:bg-(--text-color-subtle)"
-												>
-													{%- if repo.name -%}
-														<p class="text-title-md" itemprop="name">{{- repo.name -}}</p>
-													{%- endif -%}
-
-													{{-
-														include(
-															'components/badge.html.twig',
-															{
-																title: repo.private
-																	? __( 'Private', 'agencecinq' )
-																	: __( 'Public', 'agencecinq' ),
-															},
-															with_context: false
-														)
-													-}}
-												</div>
-
-												{%- if repo.language or repo.pushed_at -%}
-													<p class="text-subtle text-sm">
-														{%- if repo.language -%}
-															<span itemprop="programmingLanguage">{{- repo.language -}}</span>
-														{%- endif -%}
-														{%- if repo.language and repo.pushed_at -%}
-															{{- ' · ' -}}
-														{%- endif -%}
-														{%- if repo.pushed_at -%}
-															<time datetime="{{ repo.pushed_at }}">
-																{{-
-																	__( '%s ago', 'agencecinq' ) | format(
-																		function( 'human_time_diff', repo.pushed_at | date( 'U' ) )
-																	)
-																-}}
-															</time>
-														{%- endif -%}
-													</p>
-												{%- endif -%}
-											</li>
-										{%- endif -%}
-									{%- endfor -%}
-								</ul>
-							{%- endfor -%}
-						</div>
-					</aside>
+				{%- if ( removed | length ) or ( added | length ) -%}
+					{{-
+						include(
+							'components/diff-block.html.twig',
+							{
+								address: diff.address,
+								note: diff.note,
+								removed: removed,
+								added: added,
+								link: diff.link,
+								classes: [ 'col-span-full lg:col-span-4' ],
+							},
+							with_context: false
+						)
+					-}}
 				{%- endif -%}
-
-				{{-
-					include(
-						'components/client-logos.html.twig',
-						{
-							items: hero.logos | default( [] ),
-							classes: [ 'col-span-full' ],
-						},
-						with_context: false
-					)
-				-}}
 			</div>
 		</section>
 

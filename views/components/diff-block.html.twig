@@ -9,7 +9,7 @@
  # @param string note Optional, e.g. « exemple ».
  # @param array removed Texts of the lines that go.
  # @param array added Texts of the lines that come in.
- # @param object link Optional. { title, url } under the lines.
+ # @param object link Optional. { title, url, target } under the lines.
  # @param array classes Optional extra classes.
  #}
 
@@ -60,8 +60,17 @@
 	{%- if link.url | default( false ) -%}
 		<p class="px-4.5 py-3.5">
 			<a
-				href="{{ link.url }}"
 				class="text-button text-accent-default focus-visible:outline-focus-ring underline focus-visible:outline-2 focus-visible:outline-offset-2"
+				{{
+					html_attr(
+						{ href: link.url },
+						( link.target | default( false ) ) == '_blank'
+							? {
+								target: '_blank',
+								rel: 'noopener noreferrer',
+							}
+					)
+				}}
 			>
 				{{- link.title -}}
 			</a>

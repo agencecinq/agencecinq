@@ -894,13 +894,6 @@ msgstr ""
 msgid "Clones Fields"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:57
-msgid ""
-"Homepage hero. Asymmetric layout towards the quote. The title is always an "
-"H1 and stays a single colour. Do not highlight a word, do not center the "
-"title, and do not add a row of keywords."
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:76
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:78
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:48
@@ -939,14 +932,6 @@ msgstr ""
 msgid "Overline"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:80
-msgid "Agency Shopify and WordPress"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:81
-msgid "Small label above the title."
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:91
 msgid "Your site should be an asset."
 msgstr ""
@@ -977,19 +962,6 @@ msgstr ""
 msgid ""
 "Real client verbatim. Do not add quotation marks: guillemets are rendered "
 "automatically."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:123
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:125
-msgid "Attribution"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:127
-msgid "First Last · Role, client company"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:128
-msgid "One line: name, then role and company."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:132
@@ -1025,25 +997,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:87
 #: views/pages/single-post.html.twig:155
 msgid "Book 30 minutes"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:142
-msgid ""
-"Primary CTA under the quote. Default label: Book 30 minutes. The diagnostic "
-"is never a first click."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:148
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:149
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:154
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:156
-msgid "Logos"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:158
-msgid ""
-"Client marks under the hero. SVG or PNG on a transparent background. Up to 8 "
-"logos."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:175
@@ -2109,7 +2062,9 @@ msgid "€ excl. VAT"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:193
-msgid "Global price, without a day rate or a number of days. Leave it empty on quote."
+msgid ""
+"Global price, without a day rate or a number of days. Leave it empty on "
+"quote."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:199
@@ -3113,10 +3068,6 @@ msgstr ""
 msgid "No posts found"
 msgstr ""
 
-#: views/components/client-logos.html.twig:16
-msgid "Clients"
-msgstr ""
-
 #: views/components/code-block.html.twig:15
 msgid "Copied"
 msgstr ""
@@ -3268,18 +3219,6 @@ msgstr ""
 msgid "News and updates from Agence Cinq"
 msgstr ""
 
-#: views/pages/front-page.html.twig:93
-msgid "Recent repositories"
-msgstr ""
-
-#: views/pages/front-page.html.twig:129
-msgid "Private"
-msgstr ""
-
-#: views/pages/front-page.html.twig:131
-msgid "Public"
-msgstr ""
-
 #: views/pages/front-page.html.twig:147
 #, php-format
 msgid "%s ago"
@@ -3294,24 +3233,36 @@ msgstr ""
 msgid "Article content"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:95 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:91 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:144 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:146
+#: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:95
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:91
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:144
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:146
 msgid "Packages"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:96 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:92
+#: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:96
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:92
 msgid "Retainers"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:97 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:93 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:156 includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:158
+#: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:97
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:93
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:156
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:158
 msgid "Modules"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:98
-msgid "Packages, Retainers, Modules: the cards, prices, badges and included lines come from Central and follow its changes within the minute. Manual: for an offer outside the catalogue."
+msgid ""
+"Packages, Retainers, Modules: the cards, prices, badges and included lines "
+"come from Central and follow its changes within the minute. Manual: for an "
+"offer outside the catalogue."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:117
-msgid "In the order of the catalogue, with the first four included lines. A package shows its lead time, a retainer its response time, a module its benefit."
+msgid ""
+"In the order of the catalogue, with the first four included lines. A package "
+"shows its lead time, a retainer its response time, a module its benefit."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:129
@@ -3323,7 +3274,8 @@ msgid "Shown on the featured card, instead of its lead time or response time."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:151
-msgid "Packages of the platform to show. None ticked: every package of the platform."
+msgid ""
+"Packages of the platform to show. None ticked: every package of the platform."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:164
@@ -3391,4 +3343,71 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php
 msgid "Company after the © and the year. The site name otherwise."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:57
+msgid ""
+"Homepage hero: the text and its two buttons on the left, the diff of a site "
+"on the right. The title is always an H1 and stays a single colour. Do not "
+"highlight a word, do not center the title, and do not add a row of keywords."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:80
+msgid "For companies whose site has stayed old-fashioned"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:81
+msgid "Who the page speaks to, above the title."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:103
+msgid "One paragraph under the title, four lines at most on desktop."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:137
+msgid "Optional outlined button next to the primary CTA."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:148
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:149
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:154
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:156
+msgid "Diff"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:159
+msgid ""
+"The diff of a site: what goes, then what comes in. The figures of a real "
+"client show only with their consent, otherwise keep the note « example »."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:163
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:165
+msgid "Address"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:178
+msgid "example"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:185
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:187
+msgid "Lines that go"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:208
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:210
+msgid "Lines that come in"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:201
+msgid "e.g. WordPress 3 versions behind"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:224
+msgid "e.g. WordPress up to date, checked every month"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:236
+msgid "Optional link under the lines, e.g. to the diagnostic."
 msgstr ""
