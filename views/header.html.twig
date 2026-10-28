@@ -3,7 +3,8 @@
  #
  # Figma Section/Header: the logo, the main navigation, a secondary and a primary action. A Nav link with
  # children is a <cinq-disclosure-button> that opens its Submenu, which cinq-navigation also opens on
- # hover and closes with Escape or when the focus leaves it. Below lg, the menu button opens the drawer.
+ # hover and closes with Escape or when the focus leaves it. Below xl, where the whole navigation does not
+ # fit, the menu button opens the drawer.
  #
  # @package AgenceCinq
  #}
@@ -20,7 +21,7 @@
 		html_classes( 'border-default bg-default border-b', classes | default( [] ) | join( ' ' ) )
 	}}"
 >
-	<div class="container flex items-center justify-between gap-6 py-3 lg:py-4">
+	<div class="container flex items-center justify-between gap-6 py-3 xl:py-4">
 		<a
 			href="{{ site.link }}"
 			class="focus-visible:outline-focus-ring block h-6 w-20 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2"
@@ -40,7 +41,7 @@
 		</a>
 
 		{%- if items | length -%}
-			<cinq-navigation class="hidden lg:block">
+			<cinq-navigation class="hidden xl:block">
 				<nav aria-label="{{ __( 'Main navigation', 'agencecinq' ) }}">
 					<ul class="flex items-center gap-6">
 						{%- for item in items -%}
@@ -100,7 +101,7 @@
 							target: item.is_target_blank ? '_blank',
 							variant: 'secondary',
 							arrow: false,
-							classes: [ 'max-lg:hidden' ],
+							classes: [ 'max-xl:hidden' ],
 						},
 						with_context: false
 					)
@@ -116,7 +117,7 @@
 				-}}
 			{%- endif -%}
 
-			<cinq-drawer-button class="block lg:hidden">
+			<cinq-drawer-button class="block xl:hidden">
 				{{-
 					include(
 						'components/icon-button.html.twig',
