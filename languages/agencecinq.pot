@@ -1023,7 +1023,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:185
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:90
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:87
-#: views/pages/single-post.html.twig:155
+#: views/pages/single-post.html.twig:165
 msgid "Book 30 minutes"
 msgstr ""
 
@@ -1124,7 +1124,7 @@ msgid "Call to action"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:52
-#: views/pages/single-post.html.twig:167
+#: views/pages/single-post.html.twig:177
 msgid "Let's start with 30 minutes."
 msgstr ""
 
@@ -1135,7 +1135,7 @@ msgid ""
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:74
-#: views/pages/single-post.html.twig:169
+#: views/pages/single-post.html.twig:179
 msgid ""
 "We look at your site live, tell you whether we are the right people for it, "
 "and give you an order of magnitude. The diagnostic, if it makes sense, is "
@@ -2164,7 +2164,7 @@ msgid "Related Cases"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:61
-#: views/pages/single-post.html.twig:116
+#: views/pages/single-post.html.twig:126
 msgid "Read also"
 msgstr ""
 
@@ -3191,7 +3191,7 @@ msgstr ""
 
 #: views/components/tease-post-column.html.twig:52
 #: views/components/tease-post.html.twig:49
-#: views/pages/single-post.html.twig:25
+#: views/pages/single-post.html.twig:35
 #, php-format
 msgid "%d min read"
 msgstr ""
@@ -3265,12 +3265,17 @@ msgstr ""
 msgid "%s ago"
 msgstr ""
 
-#: views/pages/single-post.html.twig:52
+#: views/pages/single-post.html.twig:23
+#, php-format
+msgid "Updated on %s"
+msgstr ""
+
+#: views/pages/single-post.html.twig:62
 #, php-format
 msgid "By %s"
 msgstr ""
 
-#: views/pages/single-post.html.twig:88
+#: views/pages/single-post.html.twig:98
 msgid "Article content"
 msgstr ""
 
