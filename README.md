@@ -97,6 +97,8 @@ Activate required plugins (ACF, etc.) in WordPress.
 
 The single post reads its reading time from the [`cinq-wp-reading-time`](https://github.com/agencecinq/cinq-wp-reading-time) mu-plugin: copy (or symlink) `cinq-wp-reading-time.php` into `wp-content/mu-plugins/`. Without it the post renders without reading time.
 
+The block editor and the block styles are turned off by the [`cinq-wp-classic-editor`](https://github.com/agencecinq/cinq-wp-classic-editor) mu-plugin: copy (or symlink) `cinq-wp-classic-editor.php` into `wp-content/mu-plugins/` on every environment, and remove the Classic Editor plugin it replaces. Without it the front end loads `wp-block-library`, the global styles and the classic theme styles: the theme does not remove them itself.
+
 In Yoast SEO, enable **Settings → Advanced → Crawl optimization → Remove emoji scripts** on every environment: the theme does not remove them itself.
 
 ### Asset caching

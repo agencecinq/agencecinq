@@ -141,14 +141,14 @@ class Enqueue implements Service {
 	/**
 	 * Dequeue styles
 	 *
-	 * Remove styles that are not needed since we don't use the Gutenberg block styles.
+	 * Remove the Contact Form 7 styles: the theme styles its forms. Block styles are removed by the
+	 * cinq-wp-classic-editor mu-plugin.
 	 *
 	 * @access public
 	 * @return void
 	 */
 	public function dequeue_styles(): void {
 
-		wp_dequeue_style( 'wp-block-library' );
 		wp_dequeue_style( 'contact-form-7' );
 		wp_dequeue_style( 'contact-form-7-rtl' );
 	}
