@@ -43,7 +43,7 @@
 				{%- endif -%}
 
 				{%- if block.content.text -%}
-					<p class="text-taupe max-w-175 text-lg">{{- block.content.text | raw -}}</p>
+					<p class="text-muted max-w-175 text-lg">{{- block.content.text | raw -}}</p>
 				{%- endif -%}
 			</header>
 		{%- endif -%}
@@ -51,7 +51,7 @@
 		{%- if cards | length -%}
 			{%- set card_span = ( cards | length ) == 1
 				? 'lg:col-span-8'
-				: ( cards | length ) == 2 ? 'md:col-span-6' : 'md:col-span-6 xl:col-span-4'
+				: ( cards | length ) == 2 ? 'md:col-span-2' : 'md:col-span-2 xl:col-span-4'
 			-%}
 			<ul class="layout-grid gap-y-6" itemscope itemtype="https://schema.org/ItemList">
 				{%- if block.content.title -%}

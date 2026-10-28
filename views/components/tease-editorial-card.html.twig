@@ -16,14 +16,14 @@
 	<article
 		class="{{
 			html_classes(
-				'border-cream-soft bg-gray rounded-15 flex h-full min-h-82.5 flex-col justify-between border p-8',
+				'border-default bg-surface flex h-full min-h-82.5 flex-col justify-between rounded-lg border p-8',
 				classes | default( [] ) | join( ' ' )
 			)
 		}}"
 	>
 		<div class="space-y-3">
 			{%- if overline -%}
-				<p class="text-eyebrow text-pistachio uppercase">{{- overline -}}</p>
+				<p class="text-eyebrow text-accent-default">{{- overline -}}</p>
 			{%- endif -%}
 
 			{%- if title -%}
@@ -34,24 +34,24 @@
 		</div>
 
 		{%- if figure -%}
-			<p class="text-title-xxl text-pistachio py-8 tabular-nums lg:py-10">{{- figure -}}</p>
+			<p class="text-title-xxl text-accent-default py-8 tabular-nums lg:py-10">{{- figure -}}</p>
 		{%- elseif flow_input or flow_output -%}
-			<div class="text-label flex flex-wrap items-center gap-4.5 py-8 uppercase lg:py-10">
+			<div class="text-eyebrow flex flex-wrap items-center gap-4.5 py-8 lg:py-10">
 				{%- if flow_input -%}
-					<span class="text-taupe normal-case">{{- flow_input -}}</span>
+					<span class="text-muted">{{- flow_input -}}</span>
 				{%- endif -%}
 				{{-
 					include(
 						'svg/use.html.twig',
 						{
 							icon: 'arrow-right',
-							classes: [ 'size-5.5 fill-current text-stone' ],
+							classes: [ 'size-5.5 fill-current text-subtle' ],
 						},
 						with_context: false
 					)
 				-}}
 				{%- if flow_output -%}
-					<span class="bg-pistachio-soft text-pistachio rounded-8 px-3.5 py-2.5 normal-case">
+					<span class="bg-accent-soft text-accent-default rounded-md px-3.5 py-2.5">
 						{{- flow_output -}}
 					</span>
 				{%- endif -%}
@@ -59,7 +59,7 @@
 		{%- endif -%}
 
 		{%- if text -%}
-			<p class="text-taupe text-sm">{{- text | raw -}}</p>
+			<p class="text-muted text-sm">{{- text | raw -}}</p>
 		{%- endif -%}
 	</article>
 {%- endif -%}

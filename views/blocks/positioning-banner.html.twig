@@ -20,7 +20,7 @@
 		)
 	-}}
 
-	<div id="{{ block.id }}" class="border-cream-soft bg-dark-gray text-label border-y py-4">
+	<div id="{{ block.id }}" class="border-default bg-elevated border-y py-4 text-sm">
 		<div class="container">
 			<ul class="scrollbar-hidden flex items-center justify-center-safe gap-x-6 overflow-x-auto">
 				{%- for item in items -%}
@@ -29,25 +29,25 @@
 					{%- set label = item.text | default( link.title ) -%}
 
 					<li
-						class="after:text-stone flex items-center gap-6 after:content-['·'] last:gap-0 last:after:hidden"
+						class="after:text-subtle flex items-center gap-6 after:content-['·'] last:gap-0 last:after:hidden"
 					>
 						{%- if url -%}
 							<a
 								href="{{ url }}"
 								{{ link.target ? 'target="' ~ link.target ~ '"' }}
 								{{ link.target == '_blank' ? 'rel="noopener noreferrer"' }}
-								class="text-cream hover:text-pistachio whitespace-nowrap underline"
+								class="text-primary hover:text-accent-default whitespace-nowrap underline"
 							>
 								{{- label -}}
 							</a>
 						{%- elseif item.status -%}
 							<span
-								class="text-cream before:bg-pistachio flex items-center gap-2 whitespace-nowrap before:size-1.75 before:shrink-0 before:rounded-full"
+								class="text-primary before:bg-accent-default flex items-center gap-2 whitespace-nowrap before:size-1.75 before:shrink-0 before:rounded-full"
 							>
 								{{- label -}}
 							</span>
 						{% else %}
-							<span class="text-taupe whitespace-nowrap">{{- label -}}</span>
+							<span class="text-muted whitespace-nowrap">{{- label -}}</span>
 						{%- endif -%}
 					</li>
 				{%- endfor -%}

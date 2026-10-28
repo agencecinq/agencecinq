@@ -24,7 +24,7 @@
 
 	<section
 		id="{{ block.id }}"
-		class="bg-dark-gray text-cream"
+		class="bg-elevated text-primary"
 		{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 		{{ items | length ? 'itemscope itemtype="https://schema.org/ItemList"' }}
 	>
@@ -59,18 +59,16 @@
 					{%- if
 						block.content.aside_label or block.content.aside_title or block.content.aside_text -%}
 						<aside
-							class="border-pistachio-soft bg-pistachio-soft rounded-15 w-full max-w-82.5 space-y-2 border p-5.5"
+							class="border-accent-soft bg-accent-soft w-full max-w-82.5 space-y-2 rounded-lg border p-5.5"
 						>
 							{%- if block.content.aside_label -%}
-								<p class="text-eyebrow text-pistachio uppercase">
-									{{- block.content.aside_label -}}
-								</p>
+								<p class="text-eyebrow text-accent-default">{{- block.content.aside_label -}}</p>
 							{%- endif -%}
 							{%- if block.content.aside_title -%}
-								<p class="text-cream font-mono text-lg">{{- block.content.aside_title -}}</p>
+								<p class="text-primary text-lg">{{- block.content.aside_title -}}</p>
 							{%- endif -%}
 							{%- if block.content.aside_text -%}
-								<p class="text-taupe text-sm">{{- block.content.aside_text -}}</p>
+								<p class="text-muted text-sm">{{- block.content.aside_text -}}</p>
 							{%- endif -%}
 						</aside>
 					{%- endif -%}
@@ -81,7 +79,7 @@
 				<ul class="layout-grid gap-y-14">
 					{%- for item in items -%}
 						<li
-							class="col-span-full md:col-span-6 lg:col-span-3"
+							class="col-span-full md:col-span-2 lg:col-span-3"
 							itemprop="itemListElement"
 							itemscope
 							itemtype="https://schema.org/ListItem"

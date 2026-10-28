@@ -17,13 +17,13 @@
 	-}}
 
 	{%- set item_span = ( items | length ) == 2
-		? 'col-span-full md:col-span-6'
+		? 'col-span-full md:col-span-2'
 		: 'col-span-full lg:col-span-4'
 	-%}
 
 	<section
 		id="{{ block.id }}"
-		class="bg-dark-gray"
+		class="bg-elevated"
 		{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 		itemscope
 		itemtype="https://schema.org/ItemList"

@@ -8,7 +8,7 @@
  #}
 <article itemscope itemtype="https://schema.org/BlogPosting">
 	<div class="space-y-3.75 lg:space-y-5">
-		<div class="bg-gray/30 rounded-15 relative aspect-square overflow-hidden">
+		<div class="bg-media relative aspect-square overflow-hidden rounded-lg">
 			<a
 				href="{{- post.link -}}"
 				itemprop="url"
@@ -45,7 +45,7 @@
 		<div class="space-y-5 lg:space-y-3.75">
 			<div class="space-y-2.5">
 				{%- if post.reading_time -%}
-					<p class="text-label uppercase">
+					<p class="text-eyebrow">
 						{{- __( '%d min read', 'agencecinq' ) | format( post.reading_time ) -}}
 						<meta itemprop="timeRequired" content="PT{{ post.reading_time }}M" />
 					</p>
@@ -64,7 +64,7 @@
 			<a
 				href="{{- post.link -}}"
 				itemprop="url"
-				class="text-cta uppercase underline"
+				class="text-button underline"
 				aria-label="{{ __( 'Discover: %s', 'agencecinq' ) | format( post.title ) }}"
 			>
 				{{- __( 'Discover', 'agencecinq' ) -}}

@@ -21,7 +21,7 @@
 		<div class="space-y-8">
 			{%- if block.content.badge -%}
 				<p
-					class="border-pistachio-soft bg-pistachio-soft text-eyebrow text-pistachio inline-flex rounded-full border px-3.5 py-2.5 uppercase"
+					class="border-accent-soft bg-accent-soft text-eyebrow text-accent-default inline-flex rounded-full border px-3.5 py-2.5"
 				>
 					{{- block.content.badge -}}
 				</p>
@@ -48,23 +48,23 @@
 						{%- endif -%}
 
 						{%- if block.content.text -%}
-							<p class="text-taupe text-lg">{{- block.content.text | raw -}}</p>
+							<p class="text-muted text-lg">{{- block.content.text | raw -}}</p>
 						{%- endif -%}
 					</header>
 				{%- endif -%}
 
 				{%- if aside.label or aside.title or aside.text -%}
 					<aside
-						class="border-pistachio-soft bg-pistachio-soft rounded-15 w-full max-w-82.5 shrink-0 space-y-2.5 border p-6"
+						class="border-accent-soft bg-accent-soft w-full max-w-82.5 shrink-0 space-y-2.5 rounded-lg border p-6"
 					>
 						{%- if aside.label -%}
-							<p class="text-eyebrow text-pistachio uppercase">{{- aside.label -}}</p>
+							<p class="text-eyebrow text-accent-default">{{- aside.label -}}</p>
 						{%- endif -%}
 						{%- if aside.title -%}
-							<p class="text-title-lg text-cream font-mono">{{- aside.title -}}</p>
+							<p class="text-title-lg text-primary">{{- aside.title -}}</p>
 						{%- endif -%}
 						{%- if aside.text -%}
-							<p class="text-taupe text-sm">{{- aside.text | raw -}}</p>
+							<p class="text-muted text-sm">{{- aside.text | raw -}}</p>
 						{%- endif -%}
 					</aside>
 				{%- endif -%}
@@ -78,19 +78,17 @@
 					{%- set framed = column.style == 'framed' -%}
 
 					<li
-						class="{{ framed
-							? 'border-cream-soft rounded-15 border p-7'
-							: '' }} flex flex-col gap-6"
+						class="{{ framed ? 'border-default rounded-lg border p-7' : '' }} flex flex-col gap-6"
 					>
 						{%- if column.title or column.index or column.meta -%}
 							<div class="flex items-center justify-between gap-4">
 								<div class="space-y-1.5">
 									{%- if framed and column.overline -%}
-										<p class="text-eyebrow text-pistachio uppercase">{{- column.overline -}}</p>
+										<p class="text-eyebrow text-accent-default">{{- column.overline -}}</p>
 									{%- endif -%}
 									<div class="flex items-center gap-3">
 										{%- if column.index and not framed -%}
-											<span class="text-label text-pistachio uppercase">{{- column.index -}}</span>
+											<span class="text-eyebrow text-accent-default">{{- column.index -}}</span>
 										{%- endif -%}
 										{%- if column.title -%}
 											<h3 class="text-title-md">{{- column.title -}}</h3>
@@ -98,7 +96,7 @@
 									</div>
 								</div>
 								{%- if column.meta -%}
-									<p class="text-label text-taupe shrink-0">{{- column.meta -}}</p>
+									<p class="text-muted shrink-0 text-sm">{{- column.meta -}}</p>
 								{%- endif -%}
 							</div>
 						{%- endif -%}
@@ -123,14 +121,14 @@
 
 						{%- if column.note -%}
 							{%- if column.note_icon -%}
-								<p class="bg-dark-gray text-taupe rounded-8 flex items-start gap-3 p-4.5 text-sm">
+								<p class="bg-elevated text-muted flex items-start gap-3 rounded-md p-4.5 text-sm">
 									{{-
 										include(
 											'svg/use.html.twig',
 											{
 												icon: column.note_icon,
 												classes: [
-													'mt-0.5 size-4.75 shrink-0 fill-none stroke-current text-pistachio',
+													'mt-0.5 size-4.75 shrink-0 fill-none stroke-current text-accent-default',
 												],
 											},
 											with_context: false
@@ -139,7 +137,7 @@
 									<span class="min-w-0">{{- column.note | raw -}}</span>
 								</p>
 							{%- else -%}
-								<p class="text-taupe text-sm">{{- column.note | raw -}}</p>
+								<p class="text-muted text-sm">{{- column.note | raw -}}</p>
 							{%- endif -%}
 						{%- endif -%}
 					</li>

@@ -14,7 +14,7 @@
 	}
 
 	.wpcf7-spinner {
-		@apply bg-stone relative mx-6 inline-block size-6 rounded-full opacity-75;
+		@apply relative mx-6 inline-block size-6 rounded-full bg-(--text-color-subtle) opacity-75;
 
 		visibility: hidden;
 	}
@@ -24,7 +24,7 @@
 	}
 
 	.wpcf7-spinner::before {
-		@apply bg-cream absolute top-1 left-1 size-1.5 rounded-full content-[''];
+		@apply absolute top-1 left-1 size-1.5 rounded-full bg-(--text-color-primary) content-[''];
 
 		transform-origin: 0.5rem 0.5rem;
 		animation: wpcf7-spin 1000ms linear infinite;
@@ -69,7 +69,7 @@
 	}
 
 	.block-form .wpcf7 .wpcf7-form label {
-		@apply text-eyebrow text-stone flex w-full flex-col items-start gap-2 uppercase;
+		@apply text-eyebrow text-subtle flex w-full flex-col items-start gap-2;
 	}
 
 	/* Fields */
@@ -85,9 +85,9 @@
 			select,
 			textarea
 		) {
-		@apply border-cream-soft bg-gray text-cream placeholder:text-taupe rounded-3 w-full border px-3.5 py-3 text-base;
+		@apply border-control bg-surface text-primary placeholder:text-muted w-full rounded-sm border px-3.5 py-3 text-base;
 		@apply transition-colors duration-300 ease-out;
-		@apply focus:border-pistachio focus:ring-0 focus:outline-hidden;
+		@apply focus:outline-focus-ring focus:outline-2 focus:outline-offset-2;
 	}
 
 	.block-form .wpcf7 .wpcf7-form textarea {
@@ -118,29 +118,29 @@
 
 	/* Validation / messages */
 	.block-form .wpcf7 .wpcf7-form .wpcf7-not-valid {
-		@apply border-cream;
+		@apply border-status-error;
 	}
 
 	.block-form .wpcf7 .wpcf7-not-valid-tip {
-		@apply text-cream mt-2 block font-sans text-xs font-normal tracking-normal normal-case;
+		@apply text-status-error mt-2 block text-sm;
 	}
 
 	.block-form .wpcf7 .wpcf7-response-output {
-		@apply rounded-3 border-cream-soft bg-gray text-cream col-span-full border px-3.5 py-3 text-sm;
+		@apply border-default bg-surface text-primary col-span-full rounded-sm border px-3.5 py-3 text-sm;
 	}
 
 	.block-form .wpcf7 form.sent .wpcf7-response-output {
-		@apply border-pistachio;
+		@apply border-accent;
 	}
 
 	.block-form .wpcf7 form.invalid .wpcf7-response-output,
 	.block-form .wpcf7 form.unaccepted .wpcf7-response-output {
-		@apply border-stone;
+		@apply border-status-error;
 	}
 
 	/* Submit (same look as primary button) */
 	.block-form .wpcf7 .wpcf7-submit {
-		@apply bg-pistachio text-cta text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio relative col-span-full inline-flex w-auto items-center justify-center gap-2 justify-self-start rounded-full px-6 py-3.5 whitespace-nowrap transition-colors duration-300 ease-out;
+		@apply bg-accent-default text-button text-on-accent hover:bg-accent-hover focus-visible:bg-accent-hover relative col-span-full inline-flex w-auto items-center justify-center gap-2 justify-self-start rounded-full px-6 py-3.5 whitespace-nowrap transition-colors duration-300 ease-out;
 	}
 
 	.block-form .wpcf7 .wpcf7-submit[disabled] {
@@ -167,9 +167,8 @@
 		}
 
 		.wpcf7-list-item-label::before {
-			@apply h-3.75 border;
+			@apply h-3.75 rounded-sm border;
 
-			border-radius: 0.3125rem;
 			display: block;
 			content: "";
 			flex-shrink: 0;
@@ -187,7 +186,7 @@
 	}
 
 	.block-form .wpcf7 .wpcf7-form legend {
-		@apply text-eyebrow text-stone mb-3 p-0;
+		@apply text-eyebrow text-subtle mb-3 p-0;
 	}
 
 	.block-form .wpcf7 .wpcf7-form fieldset > p {
@@ -199,7 +198,7 @@
 	}
 
 	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item label {
-		@apply text-taupe cursor-pointer flex-row items-start font-sans text-base tracking-normal normal-case;
+		@apply text-muted cursor-pointer flex-row items-start text-base;
 	}
 
 	.block-form .wpcf7 .wpcf7-acceptance .wpcf7-list-item label {
@@ -211,7 +210,7 @@
 	}
 
 	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item-label::before {
-		@apply border-stone mt-1.25 size-4 transition-colors duration-300 ease-out;
+		@apply border-control mt-1.25 size-4 transition-colors duration-300 ease-out;
 	}
 
 	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item input[type="radio"] {
@@ -223,11 +222,11 @@
 	}
 
 	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item input:checked ~ .wpcf7-list-item-label::before {
-		@apply border-pistachio bg-pistachio;
+		@apply border-accent bg-accent-default;
 	}
 
 	.block-form .wpcf7 .wpcf7-radio .wpcf7-list-item input:checked ~ .wpcf7-list-item-label::before {
-		@apply shadow-[inset_0_0_0_3px_var(--color-black)];
+		@apply shadow-[inset_0_0_0_3px_var(--background-color-default)];
 	}
 
 	.block-form
@@ -236,6 +235,6 @@
 		.wpcf7-list-item
 		input:focus-visible
 		~ .wpcf7-list-item-label::before {
-		@apply outline-pistachio outline-2 outline-offset-2;
+		@apply outline-focus-ring outline-2 outline-offset-2;
 	}
 }

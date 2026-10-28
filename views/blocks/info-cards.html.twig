@@ -18,7 +18,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="bg-dark-gray"
+	class="bg-elevated"
 	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 >
 	<div class="container space-y-13">
@@ -47,11 +47,11 @@
 			<ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
 				{%- for item in items -%}
 					<li
-						class="border-cream-soft bg-off-black rounded-15 flex min-h-52.5 flex-col justify-between border p-6"
+						class="border-default bg-default flex min-h-52.5 flex-col justify-between rounded-lg border p-6"
 					>
 						{%- if item.icon -%}
 							<span
-								class="bg-pistachio-soft text-pistachio rounded-8 flex size-10.5 items-center justify-center"
+								class="bg-accent-soft text-accent-default flex size-10.5 items-center justify-center rounded-md"
 							>
 								{{-
 									include(
@@ -71,7 +71,7 @@
 								<h3 class="text-title-md">{{- item.title -}}</h3>
 							{%- endif -%}
 							{%- if item.text -%}
-								<p class="text-taupe text-sm">{{- item.text | raw -}}</p>
+								<p class="text-muted text-sm">{{- item.text | raw -}}</p>
 							{%- endif -%}
 						</div>
 					</li>
@@ -80,12 +80,12 @@
 		{%- endif -%}
 
 		{%- if footer.left or footer.right -%}
-			<div class="text-cta flex flex-wrap items-center justify-between gap-3">
+			<div class="text-button flex flex-wrap items-center justify-between gap-3">
 				{%- if footer.left -%}
-					<p class="text-stone">{{- footer.left -}}</p>
+					<p class="text-subtle">{{- footer.left -}}</p>
 				{%- endif -%}
 				{%- if footer.right -%}
-					<p class="text-pistachio uppercase">{{- footer.right -}}</p>
+					<p class="text-accent-default">{{- footer.right -}}</p>
 				{%- endif -%}
 			</div>
 		{%- endif -%}

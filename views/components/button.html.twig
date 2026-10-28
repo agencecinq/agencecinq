@@ -4,7 +4,7 @@
  # @param string title The button text.
  # @param string url The URL the link points to. Can be empty if the button is not a link. If the url is given, the button will be rendered as a a tag instead of a button tag.
  # @param string target The target attribute for the link, either '_self' or '_blank'. Only applicable if url is provided.
- # @param string variant Variant of the button: 'primary' (pistachio pill + arrow), 'secondary' (underline), 'tertiary' (nav pill) or 'quaternary' (utility).
+ # @param string variant Variant of the button: 'primary' (accent pill + arrow), 'secondary' (underline), 'tertiary' (nav pill) or 'quaternary' (utility).
  # @param bool disabled
  # @param string icon Icon name, used by the quaternary variant.
  # @param string icon_html Optional raw icon markup, used instead of `icon`.
@@ -44,20 +44,20 @@
 			html_classes(
 				classes | default( [] ) | join( ' ' ),
 				'button inline-flex items-center whitespace-nowrap transition-colors duration-300 ease-out',
-				'focus-visible:outline-pistachio focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50',
+				'focus-visible:outline-focus-ring focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50',
 				'button--' ~ variant,
 				disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : '',
 				variant == 'primary'
-					? 'bg-pistachio text-cta text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio gap-2 rounded-full px-6 py-3.5'
+					? 'bg-accent-default text-button text-on-accent hover:bg-accent-hover focus-visible:bg-accent-hover gap-2 rounded-full px-6 py-3.5'
 					: '',
 				variant == 'secondary'
-					? 'border-stone text-cta text-cream hover:border-pistachio hover:text-pistachio focus-visible:border-pistachio focus-visible:text-pistachio border-b pb-0.75'
+					? 'text-button text-primary hover:border-accent hover:text-accent-default focus-visible:border-accent focus-visible:text-accent-default border-b border-(--text-color-subtle) pb-0.75'
 					: '',
 				variant == 'tertiary'
-					? 'bg-pistachio text-label text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio rounded-full px-4.5 py-2.5'
+					? 'bg-accent-default text-button text-on-accent hover:bg-accent-hover focus-visible:bg-accent-hover rounded-full px-4.5 py-2.5'
 					: '',
 				variant == 'quaternary'
-					? 'text-cta text-cream hover:text-pistachio focus-visible:text-pistachio gap-0.75'
+					? 'text-button text-primary hover:text-accent-default focus-visible:text-accent-default gap-0.75'
 					: ''
 			)
 		}}"

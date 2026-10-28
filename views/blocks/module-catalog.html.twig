@@ -36,7 +36,7 @@
 				{%- endif -%}
 
 				{%- if block.content.text -%}
-					<p class="text-taupe max-w-180 text-base">{{- block.content.text | raw -}}</p>
+					<p class="text-muted max-w-180 text-base">{{- block.content.text | raw -}}</p>
 				{%- endif -%}
 			</header>
 		{%- endif -%}
@@ -55,7 +55,7 @@
 						>
 							<h3
 								id="{{ block.id }}-{{ platform.id }}"
-								class="text-eyebrow text-stone"
+								class="text-eyebrow text-subtle"
 								itemprop="name"
 							>
 								{{- platform.label -}}
@@ -64,13 +64,13 @@
 							<ul>
 								{%- for module in modules -%}
 									<li
-										class="border-cream-faint flex items-center justify-between gap-4 border-t py-3"
+										class="border-subtle flex items-center justify-between gap-4 border-t py-3"
 										itemprop="itemListElement"
 										itemscope
 										itemtype="https://schema.org/Offer"
 									>
-										<span class="text-taupe text-sm" itemprop="name">{{- module.name -}}</span>
-										<span class="text-label text-cream whitespace-nowrap">
+										<span class="text-muted text-sm" itemprop="name">{{- module.name -}}</span>
+										<span class="text-primary text-sm whitespace-nowrap">
 											{{- catalogue.price( module, true ) -}}
 										</span>
 									</li>

@@ -18,7 +18,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="bg-dark-gray relative overflow-hidden"
+	class="bg-elevated relative overflow-hidden"
 	{{ html_attr( block.content.title ? { 'aria-labelledby': block.id ~ '-title' } ) }}
 >
 	<div class="pointer-events-none absolute inset-x-0 top-0 mx-auto max-w-360" aria-hidden="true">
@@ -28,7 +28,7 @@
 					'svg/use.html.twig',
 					{
 						icon: 'mark',
-						classes: [ 'fill-cream h-70 w-125' ],
+						classes: [ 'fill-(--text-color-primary) h-70 w-125' ],
 					},
 					with_context: false
 				)
@@ -60,7 +60,7 @@
 
 		{%- if steps | length -%}
 			<cinq-vertical-pipeline
-				class="before:bg-cream-soft after:bg-pistachio relative block before:pointer-events-none before:absolute before:inset-y-0 before:inset-s-0 before:z-1 before:my-13.25 before:ms-[0.40625rem] before:w-0.5 after:pointer-events-none after:absolute after:inset-y-0 after:inset-s-0 after:z-1 after:my-13.25 after:ms-[0.40625rem] after:w-0.5 after:origin-top after:scale-y-(--progress) after:transition-transform after:duration-300 after:ease-linear before:lg:my-22.75 before:lg:ms-7.5 after:lg:my-22.75 after:lg:ms-7.5"
+				class="after:bg-accent-default relative block before:pointer-events-none before:absolute before:inset-y-0 before:inset-s-0 before:z-1 before:my-13.25 before:ms-[0.40625rem] before:w-0.5 before:bg-(--border-color-default) after:pointer-events-none after:absolute after:inset-y-0 after:inset-s-0 after:z-1 after:my-13.25 after:ms-[0.40625rem] after:w-0.5 after:origin-top after:scale-y-(--progress) after:transition-transform after:duration-300 after:ease-linear before:lg:my-22.75 before:lg:ms-7.5 after:lg:my-22.75 after:lg:ms-7.5"
 				style="--progress: 0"
 				itemscope
 				itemtype="https://schema.org/ItemList"
@@ -74,7 +74,7 @@
 					{%- for step in steps -%}
 						<li
 							data-dom="item"
-							class="before:bg-stone [&.is-active]:before:bg-pistachio relative z-2 flex flex-col gap-3 py-8 before:absolute before:inset-y-0 before:inset-s-0 before:mt-11.5 before:size-3.75 before:rounded-full before:ring-4 before:ring-black before:transition-colors before:duration-300 lg:flex-row lg:items-start lg:gap-14 lg:px-20 lg:py-10 before:lg:ms-[1.46875rem] before:lg:mt-[5.21875rem]"
+							class="[&.is-active]:before:bg-accent-default relative z-2 flex flex-col gap-3 py-8 before:absolute before:inset-y-0 before:inset-s-0 before:mt-11.5 before:size-3.75 before:rounded-full before:bg-(--text-color-subtle) before:ring-4 before:ring-(--background-color-default) before:transition-colors before:duration-300 lg:flex-row lg:items-start lg:gap-14 lg:px-20 lg:py-10 before:lg:ms-[1.46875rem] before:lg:mt-[5.21875rem]"
 							itemprop="itemListElement"
 							itemscope
 							itemtype="https://schema.org/ListItem"
@@ -82,10 +82,10 @@
 							<meta itemprop="position" content="{{ loop.index }}" />
 
 							<div class="relative flex items-end gap-1 pl-8 lg:w-50 lg:shrink-0 lg:pl-0">
-								<span class="text-pipeline-number" aria-hidden="true">
+								<span class="text-number-lg lg:text-number-xl" aria-hidden="true">
 									{{- '%02d' | format( loop.index ) -}}
 								</span>
-								<span class="text-label text-stone" aria-hidden="true">/{{- total -}}</span>
+								<span class="text-subtle text-sm" aria-hidden="true">/{{- total -}}</span>
 							</div>
 
 							<div class="flex flex-col gap-3 pl-8 lg:min-w-px lg:flex-1 lg:pt-6 lg:pl-0">
@@ -93,7 +93,7 @@
 									<h3 class="text-title-lg" itemprop="name">{{- step.title -}}</h3>
 								{%- endif -%}
 								{%- if step.text -%}
-									<p class="text-taupe text-sm" itemprop="description">{{- step.text | raw -}}</p>
+									<p class="text-muted text-sm" itemprop="description">{{- step.text | raw -}}</p>
 								{%- endif -%}
 							</div>
 						</li>

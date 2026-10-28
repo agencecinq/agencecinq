@@ -17,7 +17,7 @@
 		{% if pagination.prev %}
 			<a
 				href="{{ pagination.prev.link }}{{ anchor | default( '' ) }}"
-				class="hover:border-pistachio hover:bg-pistachio flex size-12.5 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out lg:size-17"
+				class="hover:border-accent hover:bg-accent-default flex size-12.5 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out lg:size-17"
 				aria-label="{{ __( 'Previous', 'agencecinq' ) }}"
 			>
 				{{-
@@ -54,7 +54,7 @@
 							href="{{ page.link }}{{ anchor | default( '' ) }}"
 							class="{{
 								page.class
-							}} hover:bg-pistachio flex size-10 items-center justify-center rounded-full transition-colors duration-300 ease-out lg:size-12.5"
+							}} hover:bg-accent-default flex size-10 items-center justify-center rounded-full transition-colors duration-300 ease-out lg:size-12.5"
 						>
 							{{- page.title -}}
 						</a>
@@ -64,7 +64,7 @@
 								html_classes(
 									'flex size-10 items-center justify-center rounded-full lg:size-12.5',
 									page.class,
-									'current' in ( page.class | split( ' ' ) ) ? 'bg-pistachio' : ''
+									'current' in ( page.class | split( ' ' ) ) ? 'bg-accent-default' : ''
 								)
 							}}"
 							{{ 'current' in ( page.class | split( ' ' ) ) ? 'aria-current="page"' : '' }}
@@ -79,7 +79,7 @@
 		{% if pagination.next %}
 			<a
 				href="{{ pagination.next.link }}{{ anchor | default( '' ) }}"
-				class="hover:bg-pistachio hover:border-pistachio flex size-12.5 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out lg:size-17"
+				class="hover:bg-accent-default hover:border-accent flex size-12.5 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ease-out lg:size-17"
 				aria-label="{{ __( 'Next', 'agencecinq' ) }}"
 			>
 				{{-

@@ -39,7 +39,7 @@
 				{%- endif -%}
 
 				{%- if block.content.text -%}
-					<p class="text-taupe max-w-180 text-base" itemprop="description">
+					<p class="text-muted max-w-180 text-base" itemprop="description">
 						{{- block.content.text | raw -}}
 					</p>
 				{%- endif -%}
@@ -50,13 +50,13 @@
 			<ul class="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:gap-x-6">
 				{%- for item in items -%}
 					<li class="flex" itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer">
-						<article class="border-cream-soft bg-gray rounded-8 flex flex-col border p-8">
+						<article class="border-default bg-surface flex flex-col rounded-md border p-8">
 							<div class="space-y-5">
 								<div class="space-y-3">
 									{%- if item.title or item.price -%}
 										<div class="space-y-2.5">
 											{%- if item.title -%}
-												<h3 class="text-title-md text-taupe" itemprop="name">{{- item.title -}}</h3>
+												<h3 class="text-title-md text-muted" itemprop="name">{{- item.title -}}</h3>
 											{%- endif -%}
 
 											{%- if item.price -%}
@@ -66,12 +66,12 @@
 									{%- endif -%}
 
 									{%- if item.label -%}
-										<p class="text-label text-pistachio uppercase">{{- item.label -}}</p>
+										<p class="text-eyebrow text-accent-default">{{- item.label -}}</p>
 									{%- endif -%}
 								</div>
 
 								{%- if item.text -%}
-									<p class="text-taupe text-sm" itemprop="description">{{- item.text | raw -}}</p>
+									<p class="text-muted text-sm" itemprop="description">{{- item.text | raw -}}</p>
 								{%- endif -%}
 							</div>
 

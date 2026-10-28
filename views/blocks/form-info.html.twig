@@ -17,7 +17,7 @@
 {%- set contact = theme.contact | default( {} ) -%}
 {%- set locations = contact.locations | default( [] ) | filter( location => location.title ) -%}
 {%- set node_rule =
-	'relative space-y-3.5 pt-8 before:absolute before:top-1.5 before:right-0 before:left-1.5 before:h-px before:bg-cream-soft  after:absolute after:top-1.5 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:bg-cream after:ring-4 after:ring-black '
+	'relative space-y-3.5 pt-8 before:absolute before:top-1.5 before:right-0 before:left-1.5 before:h-px before:bg-(--border-color-default)  after:absolute after:top-1.5 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:bg-(--text-color-primary) after:ring-4 after:ring-(--background-color-default) '
 -%}
 
 <section
@@ -38,7 +38,7 @@
 			-}}
 
 			{%- if block.content.notice -%}
-				<p class="text-stone">{{- block.content.notice -}}</p>
+				<p class="text-subtle">{{- block.content.notice -}}</p>
 			{%- endif -%}
 		</div>
 
@@ -52,13 +52,13 @@
 				{%- if locations | length -%}
 					<div class="{{ node_rule }}">
 						{%- if info.locations_overline -%}
-							<p class="text-label text-stone uppercase">{{- info.locations_overline -}}</p>
+							<p class="text-eyebrow text-subtle">{{- info.locations_overline -}}</p>
 						{%- endif -%}
 
 						<ul class="space-y-2">
 							{%- for location in locations -%}
 								<li
-									class="text-taupe text-base"
+									class="text-muted text-base"
 									itemprop="location"
 									itemscope
 									itemtype="https://schema.org/Place"
@@ -73,7 +73,7 @@
 				{%- if contact.email or contact.phone -%}
 					<div class="{{ node_rule }}">
 						{%- if info.contact_overline -%}
-							<p class="text-label text-stone uppercase">{{- info.contact_overline -}}</p>
+							<p class="text-eyebrow text-subtle">{{- info.contact_overline -}}</p>
 						{%- endif -%}
 
 						<div class="space-y-2">
@@ -81,7 +81,7 @@
 								<p>
 									<a
 										href="mailto:{{ contact.email }}"
-										class="text-title-md text-cream hover:text-pistachio"
+										class="text-title-md text-primary hover:text-accent-default"
 										itemprop="email"
 									>
 										{{- contact.email -}}
@@ -90,10 +90,10 @@
 							{%- endif -%}
 
 							{%- if contact.phone -%}
-								<p class="text-title-md text-cream">
+								<p class="text-title-md text-primary">
 									<a
 										href="tel:{{ contact.phone | tel }}"
-										class="hover:text-pistachio"
+										class="hover:text-accent-default"
 										itemprop="telephone"
 									>
 										{{- contact.phone -}}

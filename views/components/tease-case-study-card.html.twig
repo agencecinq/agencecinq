@@ -44,7 +44,7 @@
 
 					<div class="flex items-center justify-between gap-3">
 						{%- if platform or year -%}
-							<p class="text-label text-stone min-w-0 truncate">
+							<p class="text-subtle min-w-0 truncate text-sm">
 								{%- if platform -%}
 									{{- platform -}}
 								{%- endif -%}
@@ -57,7 +57,7 @@
 							</p>
 						{%- endif -%}
 
-						<p class="text-label text-taupe group-hover:text-cream shrink-0 transition-colors">
+						<p class="text-muted group-hover:text-primary shrink-0 text-sm transition-colors">
 							{{- __( 'View the case', 'agencecinq' ) ~ ' →' -}}
 						</p>
 					</div>

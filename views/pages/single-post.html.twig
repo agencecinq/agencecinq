@@ -12,7 +12,7 @@
 			<div class="layout-grid container items-center gap-y-10 lg:gap-x-20">
 				<div class="col-span-full space-y-8 lg:col-span-6">
 					<header class="space-y-6">
-						<p class="text-label text-taupe uppercase">
+						<p class="text-eyebrow text-muted">
 							<time datetime="{{ post.date( 'c' ) }}" itemprop="datePublished">
 								{{- post.date( 'j F Y' ) | upper -}}
 							</time>
@@ -29,7 +29,7 @@
 
 						<h1
 							id="post-title"
-							class="text-title-xxl text-cream lg:text-title-xl"
+							class="text-title-xxl text-primary lg:text-title-xl"
 							itemprop="headline"
 						>
 							{{- post.title -}}
@@ -37,12 +37,12 @@
 					</header>
 
 					{%- if post.post_excerpt -%}
-						<p class="text-taupe text-xl" itemprop="description">{{- post.post_excerpt -}}</p>
+						<p class="text-muted text-xl" itemprop="description">{{- post.post_excerpt -}}</p>
 					{%- endif -%}
 
 					{%- if post.author.name -%}
 						<p
-							class="text-label text-stone uppercase"
+							class="text-eyebrow text-subtle"
 							itemprop="author"
 							itemscope
 							itemtype="https://schema.org/Person"
@@ -56,7 +56,7 @@
 				{%- if post.thumbnail -%}
 					<div class="col-span-full lg:col-span-6">
 						<div
-							class="border-cream-soft rounded-8 lg:rounded-10 aspect-40/21 overflow-hidden border lg:aspect-4/3"
+							class="border-default aspect-40/21 overflow-hidden rounded-md border lg:aspect-4/3"
 						>
 							{{-
 								include(
@@ -86,7 +86,7 @@
 				aria-label="{{ __( 'Article content', 'agencecinq' ) }}"
 			>
 				<div class="container">
-					<div class="wysiwyg text-taupe max-w-180 text-base" itemprop="articleBody">
+					<div class="wysiwyg text-muted max-w-180 text-base" itemprop="articleBody">
 						{{- post.content -}}
 					</div>
 				</div>
@@ -96,12 +96,12 @@
 		{%- set related_items = post.meta( 'related_cases' ) | default( [] ) -%}
 		{%- if related_items | length -%}
 			{%- set item_span = ( related_items | length ) == 2
-				? 'col-span-full md:col-span-6'
+				? 'col-span-full md:col-span-2'
 				: 'col-span-full lg:col-span-4'
 			-%}
 
 			<section
-				class="bg-dark-gray py-18 lg:py-26"
+				class="bg-elevated py-18 lg:py-26"
 				aria-labelledby="related-cases-title"
 				itemscope
 				itemtype="https://schema.org/ItemList"

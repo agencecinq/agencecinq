@@ -17,21 +17,21 @@
 
 	.wysiwyg h1,
 	.wysiwyg h2 {
-		@apply text-title-xl text-cream;
+		@apply text-title-xl text-primary;
 
 		margin-top: 2.5rem;
 		margin-bottom: 2rem;
 	}
 
 	.wysiwyg h3 {
-		@apply text-title-lg text-cream;
+		@apply text-title-lg text-primary;
 
 		margin-top: 2.5rem;
 		margin-bottom: 1rem;
 	}
 
 	.wysiwyg h4 {
-		@apply text-xl text-cream;
+		@apply text-xl text-primary;
 
 		margin-top: 1.25rem;
 		margin-bottom: 0.75rem;
@@ -47,7 +47,7 @@
 
 	/* Inline */
 	.wysiwyg a {
-		@apply text-pistachio underline underline-offset-2;
+		@apply text-accent-default underline underline-offset-2;
 	}
 
 	.wysiwyg a code,
@@ -66,11 +66,11 @@
 	}
 
 	.wysiwyg mark {
-		@apply bg-pistachio-soft px-0.5 text-cream;
+		@apply bg-accent-soft px-0.5 text-primary;
 	}
 
 	.wysiwyg code {
-		@apply rounded-5 bg-medium-gray px-1.5 py-0.5 font-mono text-sm text-cream;
+		@apply rounded-sm bg-surface px-1.5 py-0.5 text-mono text-primary;
 	}
 
 	.wysiwyg sub,
@@ -93,7 +93,7 @@
 
 	/* Blockquote · article pull quote */
 	.wysiwyg blockquote {
-		@apply border-pistachio border-l-2 pl-6 text-title-lg not-italic text-cream;
+		@apply border-accent border-l-2 pl-6 text-title-lg not-italic text-primary;
 
 		margin-top: 2.5rem;
 		margin-bottom: 2.5rem;
@@ -104,7 +104,7 @@
 	}
 
 	.wysiwyg blockquote cite {
-		@apply mt-2 block not-italic text-xs text-taupe;
+		@apply mt-2 block not-italic text-sm text-muted;
 	}
 
 	/* Lists */
@@ -141,12 +141,12 @@
 
 	/* Horizontal rule */
 	.wysiwyg hr {
-		@apply my-6 border-0 border-t border-cream-soft;
+		@apply my-6 border-0 border-t border-default;
 	}
 
 	/* Pre / code block */
 	.wysiwyg pre {
-		@apply overflow-x-auto rounded-10 border border-cream-soft bg-gray p-5 font-mono text-sm text-cream;
+		@apply overflow-x-auto rounded-md border border-default bg-surface p-5 text-mono text-body;
 
 		margin-top: 1.5rem;
 		margin-bottom: 1.5rem;
@@ -166,15 +166,15 @@
 
 	.wysiwyg th,
 	.wysiwyg td {
-		@apply border border-cream-soft px-4 py-3 text-left;
+		@apply border border-default px-4 py-3 text-left;
 	}
 
 	.wysiwyg th {
-		@apply bg-cream-faint font-semibold;
+		@apply bg-surface font-semibold;
 	}
 
 	.wysiwyg tr:hover td {
-		@apply bg-cream-faint;
+		@apply bg-surface;
 	}
 
 	/* Figure */
@@ -183,7 +183,7 @@
 	}
 
 	.wysiwyg figure img, .wysiwyg p img {
-		@apply max-w-full rounded-10 align-middle;
+		@apply max-w-full rounded-md align-middle;
 
 		margin-top: 0!important;
 		margin-left: auto!important;
@@ -196,6 +196,6 @@
 	}
 
 	.wysiwyg figcaption {
-		@apply mt-2 text-xs text-taupe;
+		@apply mt-2 text-sm text-muted;
 	}
 }

@@ -6,7 +6,7 @@ WordPress theme for [agencecinq.com](https://agencecinq.com) (Timber/Twig, Vite,
 
 - **Templating**: Timber 2 + Twig. Root `*.php` files are WordPress routers that load a Timber context and render `views/pages/`.
 - **Build**: Vite (`pnpm dev` / `pnpm build`), `laravel-vite-plugin`. Entries: `src/stylesheets/styles.css`, `src/scripts/app.js`. Output in `dist/` (gitignored).
-- **CSS**: Tailwind CSS v4 in pure CSS. Design tokens live in `@theme` (`src/stylesheets/theme.css`).
+- **CSS**: Tailwind CSS v4 in pure CSS. Design tokens live in `@theme` (`src/stylesheets/theme.css`), with the code syntax of the variables on the Fondations page of the Figma file « CINQ · Site · Conception 2027 ».
 - **Fonts**: Inter and JetBrains Mono are self-hosted (latin woff2 in `src/fonts/`, `@font-face` in `src/stylesheets/base/font-face.css`), preloaded from `Enqueue::preload_resources()`. No request to Google Fonts.
 - **JS**: TypeScript components in `src/scripts/components/`, mounted via `piecesjs`. Data from PHP (`Enqueue::script_module_data()`) read by `src/scripts/theme.ts`.
 - **Packages**: `@agencecinq/accordion`, `@agencecinq/drawer`, `@agencecinq/modal`, `@agencecinq/utils`.
@@ -102,6 +102,10 @@ In Yoast SEO, enable **Settings → Advanced → Crawl optimization → Remove e
 ### Asset caching
 
 `.htaccess` serves `dist/` with `Cache-Control: public, max-age=31536000, immutable`: Vite puts a content hash in every file name there. Apache only (`mod_headers` + `AllowOverride`); on Nginx, set the header in the server config.
+
+### Color modes
+
+The site is dark (`<meta name="color-scheme" content="dark">`). Each color role is written `light-dark(Light, Dark)` with the values of the Figma file, so a section switches to Light with `scheme-light bg-default text-primary` and keeps its color classes. `vite.config.js` keeps `light-dark()` out of Lightning CSS: its polyfill resolves the color once on `:root`, and a Light section would stay dark.
 
 ### Page navigation
 

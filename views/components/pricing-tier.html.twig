@@ -1,7 +1,7 @@
 {#
  # Pricing tier: name, price, included lines.
  # Takes a catalogue package, retainer or module, or a tier typed in the block with the same fields.
- # Featured variant uses pistachio chrome. Badge is independent of featured.
+ # Featured variant uses accent chrome. Badge is independent of featured.
  #
  # @param string name The tier name.
  # @param float|null priceExclVat The price, null on quote.
@@ -22,15 +22,15 @@
 	<article
 		class="{{
 			html_classes(
-				'rounded-8 flex w-full flex-col space-y-3 border p-8',
-				featured ? 'border-pistachio bg-pistachio-soft' : 'border-cream-soft bg-black',
+				'flex w-full flex-col space-y-3 rounded-md border p-8',
+				featured ? 'border-accent bg-accent-soft' : 'border-default bg-default',
 				reserve_badge and not badge ? 'md:pt-18'
 			)
 		}}"
 	>
 		<div class="{{ html_classes( badge ? 'space-y-4' ) }}">
 			{%- if badge -%}
-				<p class="text-badge bg-pistachio text-off-black rounded-3 block w-fit px-2 py-1">
+				<p class="text-eyebrow bg-accent-default text-on-accent block w-fit rounded-sm px-2 py-1">
 					{{- badge -}}
 				</p>
 			{%- endif -%}
@@ -38,7 +38,7 @@
 			{%- if name or amount or quote -%}
 				<div class="space-y-2.5">
 					{%- if name -%}
-						<h3 class="text-title-md text-taupe wrap-break-word hyphens-auto" itemprop="name">
+						<h3 class="text-title-md text-muted wrap-break-word hyphens-auto" itemprop="name">
 							{{- name -}}
 						</h3>
 					{%- endif -%}
@@ -55,7 +55,7 @@
 							} | price
 						-%}
 
-						<p class="text-title-lg text-cream">
+						<p class="text-title-lg text-primary">
 							{%- if amount is not empty -%}
 								<data itemprop="price" value="{{ amount }}">{{- price -}}</data>
 							{%- else -%}
@@ -68,13 +68,13 @@
 		</div>
 
 		{%- if included | length -%}
-			<ul class="border-cream-soft space-y-3 border-t pt-6">
+			<ul class="border-default space-y-3 border-t pt-6">
 				{%- for line in included -%}
 					<li
 						class="{{
 							html_classes(
-								'text-taupe flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full',
-								featured ? 'before:bg-pistachio' : 'before:bg-taupe'
+								'text-muted flex gap-2.5 text-sm before:mt-1.5 before:size-1.25 before:shrink-0 before:rounded-full',
+								featured ? 'before:bg-accent-default' : 'before:bg-(--text-color-muted)'
 							)
 						}}"
 					>

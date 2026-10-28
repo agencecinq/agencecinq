@@ -14,12 +14,7 @@
 		)
 	-}}
 
-	<figure
-		id="{{ block.id }}"
-		class="bg-dark-gray"
-		itemscope
-		itemtype="https://schema.org/Quotation"
-	>
+	<figure id="{{ block.id }}" class="bg-elevated" itemscope itemtype="https://schema.org/Quotation">
 		<div class="container flex flex-col items-center">
 			<div class="flex w-full max-w-225 flex-col items-center space-y-8 text-center">
 				<blockquote class="text-title-lg wrap-break-word" itemprop="text">
@@ -42,7 +37,7 @@
 						{%- endif -%}
 
 						{%- if block.content.role or block.content.company -%}
-							<p class="text-label text-stone wrap-break-word">
+							<p class="text-subtle text-sm wrap-break-word">
 								{%- if block.content.role -%}
 									<span itemprop="jobTitle">{{- block.content.role -}}</span>
 								{%- endif -%}

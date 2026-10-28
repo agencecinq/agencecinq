@@ -17,7 +17,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="bg-dark-gray"
+	class="bg-elevated"
 	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 >
 	<div class="container space-y-16">
@@ -41,7 +41,7 @@
 				{%- endif -%}
 
 				{%- if block.content.text -%}
-					<p class="text-taupe max-w-175 text-lg">{{- block.content.text | raw -}}</p>
+					<p class="text-muted max-w-175 text-lg">{{- block.content.text | raw -}}</p>
 				{%- endif -%}
 			</header>
 		{%- endif -%}
@@ -49,7 +49,7 @@
 		{%- if images | length -%}
 			<ul class="grid grid-cols-1 gap-5 lg:grid-cols-3">
 				{%- for image in images -%}
-					<li class="rounded-15 overflow-hidden">
+					<li class="overflow-hidden rounded-lg">
 						{{-
 							include(
 								'components/image.html.twig',

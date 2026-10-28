@@ -1,37 +1,52 @@
 ---
-description: Conventions pour les tokens de design Tailwind v4 dans theme.css (couleurs nommées par teinte en anglais, typo aux noms Figma, sizes en rem, pas de valeurs en dur).
+description: Conventions pour les tokens de design Tailwind v4 dans theme.css (rôles de couleur du Figma en namespaces Tailwind, modes Dark et Light, typo aux noms Figma, espacements sur le multiplicateur, sizes en rem, pas de valeurs en dur).
 globs: src/stylesheets/theme.css,**/*.twig
 alwaysApply: false
 ---
 
 # Design tokens (`theme.css`)
 
+Source: Figma « CINQ · Site · Conception 2027 », page Fondations. Each Figma variable carries its CSS code syntax: it is the theme property.
+
 ## Declare in `@theme`, never in Twig utilities
 
 - Colors, radii, typography scales, and background images belong in `src/stylesheets/theme.css` inside `@theme`.
 - Do not use arbitrary Tailwind values in Twig or CSS utilities for design tokens: no `bg-[#102345]`, no `bg-[linear-gradient(...)]`, no `[background:...]`.
-- Use the generated utilities instead (`bg-black`, `text-pistachio`, `rounded-25`, etc.).
+- Use the generated utilities instead (`bg-default`, `text-muted`, `rounded-md`, etc.).
 - Prefer Tailwind v4 native syntax over an equivalent arbitrary value: `aspect-4/5`, not `aspect-[4/5]`.
 
-## Color tokens are named by hue
+## Colors are Figma roles, in Tailwind namespaces
 
-Color custom properties are named after the **hue in English** (kebab-case), not the UI role (`page`, `accent`, `primary`) and not French (`fond-page`, `gris-foncé`).
+Templates only use **roles** (Figma collection Colors). A role names a level or a function, never a component, so it fits wherever that level or function appears: `bg/surface` is any object on the background (card, field, button, code block), `border/control` the 3:1 outline of any control (field, checkbox, switch, filter).
 
-```css
-/* GOOD — hue in English */
---color-black: #08090a;
---color-dark-gray: #0d0f0e;
---color-pistachio: #b3fca4;
---color-cream: #f1f0ea;
+The Figma group picks the Tailwind namespace:
 
-/* BAD — UI role or French */
---color-page: #08090a;
---color-accent: #b3fca4;
---color-fond-page: #08090a;
---color-gris-fonce: #0d0f0e;
+| Figma | CSS property | Class |
+| --- | --- | --- |
+| `bg/default` | `--background-color-default` | `bg-default` |
+| `text/muted` | `--text-color-muted` | `text-muted` |
+| `border/default` | `--border-color-default` | `border-default`, `divide-default` |
+| `accent/default`, `focus/ring`, `status/error`, `overlay/scrim`, `diff/plus` | `--color-{group}-{name}` | `bg-accent-default`, `outline-focus-ring`, `text-diff-plus` |
+
+- Figma **primitives** (`black/900`, `cream/100`…) stay in Figma: each role writes their Light and Dark values directly, `light-dark(#f1f0ea, #08090a)`. When a primitive changes in Figma, update every role that reads it.
+- A role painting another property than its own uses the variable shorthand: a 1 px separator drawn with a background is `before:bg-(--border-color-default)`, a bullet `before:bg-(--text-color-subtle)`. Do not add a token for it.
+- Prefer roles over opacity modifiers (`text-muted`, not `text-primary/60`).
+- Do not add CSS aliases that map old class names onto the new tokens.
+
+## Dark and Light modes
+
+Each role is `light-dark(Light, Dark)`. The page is dark (`<meta name="color-scheme" content="dark">` in `views/index.html.twig`); a Light section adds `scheme-light`, and keeps its color classes.
+
+```twig
+<section class="scheme-light bg-default text-primary">
 ```
 
-Typography and radius suffixes still follow the **Figma design system** (kebab-case). Do not keep legacy names (`h0`, `text-l`).
+- `color` is inherited already resolved: a section that changes scheme sets its text color again (`text-primary`), like its background (`bg-default`).
+- `vite.config.js` excludes `light-dark()` from Lightning CSS: its polyfill resolves the color once on `:root`, so a Light section would stay dark.
+
+## Typography and radius follow Figma names
+
+Typography and radius suffixes follow the **Figma design system** (kebab-case). Do not keep legacy names (`h0`, `text-l`).
 
 ```css
 /* GOOD — same names as Figma */
@@ -42,9 +57,27 @@ Typography and radius suffixes still follow the **Figma design system** (kebab-c
 --text-h0: 6rem;
 ```
 
-- The Tailwind class mirrors the token suffix: `--color-black` → `bg-black`, `--text-title-xxl` → `text-title-xxl`.
-- Do not add CSS aliases that map old class names onto the new tokens.
-- Prefer named tokens over opacity modifiers on another token (`text-taupe`, not `text-cream/60`; `bg-pistachio-soft`, not `bg-pistachio/20`).
+- The Tailwind class mirrors the token suffix: `--text-title-xxl` → `text-title-xxl`, `--radius-md` → `rounded-md`. `radius/full` is Tailwind's `rounded-full`.
+- Label and Data groups drop their prefix: `Label/eyebrow` → `text-eyebrow`, `Label/button` → `text-button`, `Data/mono` → `text-mono`, `Data/number-xl` → `text-number-xl`.
+- Decoration is a utility, not a style: `Label/link` is `text-button underline`, `Desktop/text-base-strikethrough` is `text-base line-through`.
+- `text-mono` (JetBrains Mono) is for code only: diff signs, the team log, file names. Never for a label, a price, a badge or a button.
+
+## Spacing on the Tailwind multiplier
+
+Figma spacing variables are named after the multiplier of `--spacing` (4 px): `spacing/6` is 24 px and writes `gap-6`, `p-6`. No `--spacing-*` token.
+
+| Figma | px | Class |
+| --- | --- | --- |
+| `spacing/1` … `spacing/4` | 4 … 16 | `*-1` … `*-4` |
+| `spacing/6`, `spacing/8` | 24, 32 | `*-6`, `*-8` |
+| `spacing/14`, `spacing/20` | 56, 80 | `*-14`, `*-20` |
+| `spacing/26`, `spacing/34` | 104, 136 | `*-26`, `*-34` |
+| `rhythm/gutter-mobile`, `rhythm/gutter-desktop` | 20, 100 | `px-5`, `lg:px-25` (`container`) |
+| `dimension/container` | 1240 | `container` (`max-w-360` with its gutters) |
+| `dimension/text-measure` | 720 | `max-w-180` |
+| `dimension/nav-height` | 72 | `h-18` |
+
+Grids: `layout-grid` is 4 columns with 12 px gutters below `lg`, 12 columns with 24 px gutters above (Figma Mobile/Columns and Desktop/Columns). Spans below `lg` count on 4 columns (`col-span-2` is half).
 
 ## Responsive type scale
 
@@ -90,7 +123,7 @@ If a value is reused, add a token in `@theme` rather than repeating em arbitrary
 
 ## Checklist when adding a token
 
-1. Color: hue in English. Type/radius: Figma kebab-case suffix in `@theme`.
+1. Color: a Figma role in its Tailwind namespace, its Light and Dark values from Figma in `light-dark()`. Type/radius: Figma kebab-case suffix in `@theme`. Same code syntax on the Figma variable.
 2. Used via a utility class in Twig/CSS, not an arbitrary value.
 3. Sizes in rem or spacing scale, letter-spacing in em (see above).
 4. `pnpm build` passes.

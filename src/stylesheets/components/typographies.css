@@ -14,8 +14,8 @@
 	@apply text-title-lg-mobile lg:text-title-lg-desktop;
 }
 
-@utility text-pipeline-number {
-	@apply text-pipeline-number-mobile lg:text-pipeline-number-desktop;
+@utility text-quote {
+	@apply text-quote-mobile lg:text-quote-desktop;
 }
 
 @utility text-xl {
@@ -26,26 +26,14 @@
 	@apply text-lg-mobile lg:text-lg-desktop;
 }
 
+@utility text-base {
+	@apply text-base-mobile lg:text-base-desktop;
+}
+
 @utility text-sm {
 	@apply text-sm-mobile lg:text-sm-desktop;
 }
 
-@utility text-xs {
-	@apply text-xs-mobile lg:text-xs-desktop;
-}
-
-@utility text-eyebrow {
-	@apply font-mono uppercase;
-}
-
-@utility text-label {
+@utility text-mono {
 	@apply font-mono;
-}
-
-@utility text-cta {
-	@apply font-mono;
-}
-
-@utility text-badge {
-	@apply font-mono uppercase;
 }

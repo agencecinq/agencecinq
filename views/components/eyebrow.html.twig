@@ -1,8 +1,8 @@
 {#
- # Eyebrow: brand mark + uppercase mono label.
+ # Eyebrow: brand mark + label.
  #
  # @param string title The eyebrow label.
- # @param string tone Optional. 'neutral' (default) or 'accent' (pistachio label and mark).
+ # @param string tone Optional. 'neutral' (default) or 'accent' (accent label and mark).
  # @param array classes Optional extra classes.
  #}
 
@@ -13,7 +13,7 @@
 		class="{{
 			html_classes(
 				'text-eyebrow flex items-center gap-2',
-				accent ? 'text-pistachio' : 'text-taupe',
+				accent ? 'text-accent-default' : 'text-muted',
 				classes | default( [] ) | join( ' ' )
 			)
 		}}"
@@ -23,7 +23,7 @@
 				'svg/use.html.twig',
 				{
 					icon: 'mark',
-					classes: [ accent ? 'text-pistachio' : 'text-stone', 'h-[0.35rem] w-2.5 shrink-0' ],
+					classes: [ accent ? 'text-accent-default' : 'text-subtle', 'h-[0.35rem] w-2.5 shrink-0' ],
 				},
 				with_context: false
 			)

@@ -20,10 +20,11 @@
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="dark" />
 		{{ function( 'wp_head' ) }}
 	</head>
 
-	<body {{ body_class( 'text-cream bg-black antialiased' ) }}>
+	<body {{ body_class( 'text-primary bg-default antialiased' ) }}>
 		{{- function( 'wp_body_open ' ) -}}
 
 		{%- block header -%}
@@ -51,7 +52,7 @@
 				{%- if post.content -%}
 					<section class="py-26" aria-label="{{ __( 'Page content', 'agencecinq' ) }}">
 						<div class="container">
-							<div class="wysiwyg text-taupe max-w-180 text-base">
+							<div class="wysiwyg text-muted max-w-180 text-base">
 								{{- post.content -}}
 							</div>
 						</div>

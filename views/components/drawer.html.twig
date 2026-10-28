@@ -47,7 +47,7 @@
 >
 	<div
 		data-dom="overlay"
-		class="absolute inset-0 z-1 size-full bg-black/30 opacity-0 transition-opacity duration-300 ease-out group-open:opacity-100"
+		class="bg-overlay-scrim absolute inset-0 z-1 size-full opacity-0 transition-opacity duration-300 ease-out group-open:opacity-100"
 	></div>
 	<div
 		role="dialog"
@@ -55,7 +55,7 @@
 		{{ aria_label ? 'aria-label="' ~ aria_label ~ '"' : '' }}
 		class="{{
 			html_classes(
-				'bg-black px-2.5 pt-[4.575rem] pb-2.5 transition-transform duration-300 ease-out',
+				'bg-default px-2.5 pt-[4.575rem] pb-2.5 transition-transform duration-300 ease-out',
 				translate,
 				'max-h-full',
 				background,

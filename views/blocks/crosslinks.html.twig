@@ -19,7 +19,7 @@
 
 <nav
 	id="{{ block.id }}"
-	class="bg-dark-gray"
+	class="bg-elevated"
 	aria-label="{{ block.content.overline | default( __( 'Related links', 'agencecinq' ) ) }}"
 >
 	<div class="container space-y-10">
@@ -35,7 +35,7 @@
 			<ul class="layout-grid gap-y-6">
 				{%- for item in items -%}
 					<li
-						class="col-span-full md:col-span-6 lg:col-span-3"
+						class="col-span-full md:col-span-2 lg:col-span-3"
 						itemscope
 						itemtype="https://schema.org/SiteNavigationElement"
 					>

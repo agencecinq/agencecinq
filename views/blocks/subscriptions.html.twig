@@ -38,7 +38,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="bg-dark-gray"
+	class="bg-elevated"
 	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 >
 	<div class="container space-y-14">
@@ -54,7 +54,7 @@
 				{%- endif -%}
 
 				{%- if block.content.text -%}
-					<p class="text-taupe max-w-180 text-base">
+					<p class="text-muted max-w-180 text-base">
 						{{- block.content.text | replace( { '{day_rate}': day_rate } ) | raw -}}
 					</p>
 				{%- endif -%}

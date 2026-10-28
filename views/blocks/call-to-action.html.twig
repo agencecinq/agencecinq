@@ -4,7 +4,7 @@
 
 <section
 	id="{{ block.id }}"
-	class="border-cream-soft border-t pt-31.5 pb-39 lg:pt-42 lg:pb-52"
+	class="border-default border-t pt-31.5 pb-39 lg:pt-42 lg:pb-52"
 	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 >
 	<div class="container flex flex-col items-center">
@@ -21,7 +21,7 @@
 					{%- endif -%}
 
 					{%- if block.content.text -%}
-						<p class="text-taupe max-w-140 text-lg">{{- block.content.text | raw -}}</p>
+						<p class="text-muted max-w-140 text-lg">{{- block.content.text | raw -}}</p>
 					{%- endif -%}
 				</header>
 			{%- endif -%}

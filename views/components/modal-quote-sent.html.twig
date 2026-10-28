@@ -15,10 +15,10 @@
 <cinq-modal id="{{ id }}" class="block">
 	<dialog
 		aria-labelledby="{{ id }}-title"
-		class="text-cream backdrop:bg-scrim m-auto max-h-[calc(100dvh-(--spacing(10)))] w-[calc(100vw-(--spacing(5)))] max-w-140 bg-transparent p-0"
+		class="text-primary backdrop:bg-overlay-scrim m-auto max-h-[calc(100dvh-(--spacing(10)))] w-[calc(100vw-(--spacing(5)))] max-w-140 bg-transparent p-0"
 	>
 		<div
-			class="bg-dark-gray border-cream-soft rounded-10 max-h-[inherit] overflow-y-auto border p-6 lg:p-14"
+			class="bg-elevated border-default max-h-[inherit] overflow-y-auto rounded-md border p-6 lg:p-14"
 		>
 			<div class="flex items-center gap-4">
 				{{-
@@ -37,7 +37,7 @@
 					<button
 						type="button"
 						aria-controls="{{ id }}"
-						class="border-cream-soft text-cream hover:border-cream focus-visible:outline-pistachio flex size-11 items-center justify-center rounded-full border text-xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
+						class="border-default text-primary focus-visible:outline-focus-ring flex size-11 items-center justify-center rounded-full border text-xl transition-colors hover:border-(--text-color-primary) focus-visible:outline-2 focus-visible:outline-offset-2"
 					>
 						<span aria-hidden="true">×</span>
 						<span class="sr-only">{{ __( 'Close', 'agencecinq' ) }}</span>
@@ -55,18 +55,18 @@
 			</h2>
 
 			<p
-				class="text-taupe mt-3 text-base"
+				class="text-muted mt-3 text-base"
 				role="status"
 				data-dom="message"
 				data-template="{{ modal.message | e( 'html_attr' ) }}"
 			></p>
 
 			{%- if modal.help -%}
-				<p class="text-taupe mt-2 text-sm">{{- modal.help -}}</p>
+				<p class="text-muted mt-2 text-sm">{{- modal.help -}}</p>
 			{%- endif -%}
 
 			<div
-				class="before:bg-cream-soft after:bg-stone after:ring-dark-gray relative mt-7 h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 lg:mt-9"
+				class="relative mt-7 h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px before:bg-(--border-color-default) after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:bg-(--text-color-subtle) after:ring-4 after:ring-(--background-color-elevated) lg:mt-9"
 				aria-hidden="true"
 			></div>
 
@@ -86,7 +86,7 @@
 			{%- endif -%}
 
 			{%- if modal.next_text -%}
-				<p class="text-taupe mt-2 text-base">{{- modal.next_text -}}</p>
+				<p class="text-muted mt-2 text-base">{{- modal.next_text -}}</p>
 			{%- endif -%}
 
 			{%- if modal.button_label -%}
@@ -107,7 +107,7 @@
 			{%- endif -%}
 
 			{%- if modal.note -%}
-				<p class="text-taupe mt-4 text-sm">{{- modal.note -}}</p>
+				<p class="text-muted mt-4 text-sm">{{- modal.note -}}</p>
 			{%- endif -%}
 		</div>
 	</dialog>

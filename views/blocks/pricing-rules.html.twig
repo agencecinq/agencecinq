@@ -63,7 +63,7 @@
 
 		{%- if block.examples.title or ( examples_items | length ) -%}
 			<aside
-				class="border-pistachio space-y-3 border-l-2 pl-6"
+				class="border-accent space-y-3 border-l-2 pl-6"
 				{{ block.examples.title ? 'aria-labelledby="' ~ block.id ~ '-examples-title"' }}
 			>
 				{%- if block.examples.title -%}
@@ -75,7 +75,7 @@
 				{%- if examples_items | length -%}
 					<ul class="space-y-3">
 						{%- for item in examples_items -%}
-							<li class="text-label text-taupe">{{- item.text -}}</li>
+							<li class="text-muted text-sm">{{- item.text -}}</li>
 						{%- endfor -%}
 					</ul>
 				{%- endif -%}

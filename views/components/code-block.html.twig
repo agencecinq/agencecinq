@@ -18,28 +18,28 @@
 	<cinq-copy
 		class="{{
 			html_classes(
-				'border-cream-soft bg-gray rounded-15 block overflow-hidden border shadow-[0_1.25rem_3.75rem_rgba(0,0,0,0.4)]',
+				'border-default bg-surface block overflow-hidden rounded-md border',
 				classes | default( [] ) | join( ' ' )
 			)
 		}}"
 		data-copied="{{ copied_label | e( 'html_attr' ) }}"
 	>
-		<div class="bg-medium-gray flex items-center justify-between px-4 py-3">
+		<div class="flex items-center justify-between px-4 py-3">
 			<div class="flex items-center gap-2.5">
 				<span
-					class="after:bg-stone before:bg-stone relative h-1.75 w-8.25 shrink-0 before:absolute before:top-0 before:left-0 before:size-1.75 before:rounded-full after:absolute after:top-0 after:left-3.25 after:size-1.75 after:rounded-full after:shadow-[1rem_0_0_var(--color-stone)]"
+					class="relative h-1.75 w-8.25 shrink-0 before:absolute before:top-0 before:left-0 before:size-1.75 before:rounded-full before:bg-(--text-color-subtle) after:absolute after:top-0 after:left-3.25 after:size-1.75 after:rounded-full after:bg-(--text-color-subtle) after:shadow-[1rem_0_0_var(--text-color-subtle)]"
 					aria-hidden="true"
 				>
 				</span>
 				{%- if language -%}
-					<span class="text-label text-taupe uppercase">{{- language -}}</span>
+					<span class="text-mono text-muted">{{- language -}}</span>
 				{%- endif -%}
 			</div>
 
 			<button
 				type="button"
 				data-dom="copy"
-				class="text-label text-taupe hover:text-cream focus-visible:text-cream inline-flex items-center gap-1.75 uppercase transition-colors"
+				class="text-button text-muted hover:text-primary focus-visible:text-primary inline-flex items-center gap-1.75 transition-colors"
 			>
 				{{-
 					include(
@@ -56,7 +56,7 @@
 		</div>
 
 		<pre class="overflow-x-auto p-5.5">
-			<code data-dom="source" class="text-cream font-mono text-sm leading-[1.8] whitespace-pre">
+			<code data-dom="source" class="text-body text-mono whitespace-pre">
 				{{- code -}}
 			</code>
 		</pre>

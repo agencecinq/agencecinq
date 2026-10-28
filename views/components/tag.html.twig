@@ -4,7 +4,7 @@
 
 <button
 	type="button"
-	class="bg-pistachio text-cream rounded-5 flex items-center gap-0.75 px-1.5 py-0.5 text-xs"
+	class="bg-accent-default text-on-accent text-eyebrow flex items-center gap-0.75 rounded-sm px-1.5 py-0.5"
 	{{ attributes
 		? attributes
 			| map( ( value, key ) => value == '' ? key : "#{ key }=\"#{ value }\"" )

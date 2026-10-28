@@ -33,7 +33,7 @@
 			<ul>
 				{% for item in items %}
 					<li
-						class="border-cream-faint border-b"
+						class="border-subtle border-b"
 						itemscope
 						itemtype="https://schema.org/SiteNavigationElement"
 					>
@@ -42,16 +42,16 @@
 								type="button"
 								data-dom="open-sub"
 								data-open-sub="{{ item.id }}"
-								class="text-title-md text-cream flex w-full items-center justify-between py-4.5 text-left"
+								class="text-title-md text-primary flex w-full items-center justify-between py-4.5 text-left"
 								aria-expanded="false"
 								aria-controls="mobile-sub-{{ item.id }}"
 							>
 								<span itemprop="name">{{- item.title -}}</span>
-								<span class="text-pistachio text-lg" aria-hidden="true">→</span>
+								<span class="text-accent-default text-lg" aria-hidden="true">→</span>
 							</button>
 						{% else %}
 							<a
-								class="text-title-md text-cream block py-4.5"
+								class="text-title-md text-primary block py-4.5"
 								href="{{ item.url }}"
 								itemprop="url"
 								{{ item.is_target_blank or item.is_external
@@ -80,14 +80,14 @@
 			aria-hidden="true"
 			style="display: none;"
 		>
-			<div class="border-cream/11 flex h-16 shrink-0 items-center justify-between border-b">
+			<div class="border-default flex h-16 shrink-0 items-center justify-between border-b">
 				<button
 					type="button"
 					data-dom="back-to-main"
-					class="text-title-md text-cream flex items-center gap-2.5"
+					class="text-title-md text-primary flex items-center gap-2.5"
 					aria-label="{{ __( 'Back to menu', 'agencecinq' ) }}"
 				>
-					<span class="text-pistachio text-lg" aria-hidden="true">←</span>
+					<span class="text-accent-default text-lg" aria-hidden="true">←</span>
 					{{- __( 'Back', 'agencecinq' ) -}}
 				</button>
 			</div>
@@ -96,7 +96,7 @@
 				<ul>
 					{%- for child in item.children -%}
 						<li
-							class="border-cream-faint border-b"
+							class="border-subtle border-b"
 							itemscope
 							itemtype="https://schema.org/SiteNavigationElement"
 						>
@@ -104,14 +104,14 @@
 								<a
 									href="{{ child.url }}"
 									itemprop="url"
-									class="text-title-md text-cream block py-4.5"
+									class="text-title-md text-primary block py-4.5"
 									{{ child.is_target_blank or child.is_external
 										? 'target="' ~ child.target ~ '" rel="noopener noreferrer"' }}
 								>
 									<span itemprop="name">{{- child.title -}}</span>
 								</a>
 							{%- else -%}
-								<span class="text-title-md text-cream block py-4.5" itemprop="name">
+								<span class="text-title-md text-primary block py-4.5" itemprop="name">
 									{{- child.title -}}
 								</span>
 							{%- endif -%}
@@ -121,7 +121,7 @@
 					<li>
 						<a
 							href="{{ item.url }}"
-							class="text-title-md text-cream border-cream-faint block border-b py-4.5"
+							class="text-title-md text-primary border-subtle block border-b py-4.5"
 						>
 							{{- __( 'See all', 'agencecinq' ) -}}
 						</a>

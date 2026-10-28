@@ -16,14 +16,14 @@
 		)
 	-}}
 
-	<div id="{{ block.id }}" class="border-cream-soft bg-dark-gray text-taupe border-y py-10 text-sm">
+	<div id="{{ block.id }}" class="border-default bg-elevated text-muted border-y py-10 text-sm">
 		<div class="container">
 			<ul
-				class="divide-cream-soft flex flex-col max-lg:divide-y lg:flex-row lg:items-start lg:divide-x"
+				class="divide-default flex flex-col max-lg:divide-y lg:flex-row lg:items-start lg:divide-x"
 			>
 				{%- for item in items -%}
 					<li
-						class="before:bg-taupe flex min-w-0 flex-1 items-center gap-3 py-4 wrap-break-word before:size-1.75 before:shrink-0 before:rounded-full first:pt-0 last:pb-0 lg:px-8 lg:py-0 lg:first:pl-0"
+						class="flex min-w-0 flex-1 items-center gap-3 py-4 wrap-break-word before:size-1.75 before:shrink-0 before:rounded-full before:bg-(--text-color-muted) first:pt-0 last:pb-0 lg:px-8 lg:py-0 lg:first:pl-0"
 					>
 						{{- item.text -}}
 					</li>

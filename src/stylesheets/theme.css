@@ -1,40 +1,44 @@
 @theme {
-	--default-font-family: "Inter", sans-serif;
 	--font-sans: "Inter", sans-serif;
-	--font-heading: "Inter", sans-serif;
 	--font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-	/* Colors · named by hue */
+	/* Colors · Figma roles, light-dark(Light, Dark) */
 	--color-*: initial;
 
-	--color-black: #08090a;
-	--color-off-black: #0a0c0a;
-	--color-dark-gray: #0d0f0e;
-	--color-gray: #141614;
-	--color-medium-gray: #1c201c;
+	--background-color-default: light-dark(#f1f0ea, #08090a);
+	--background-color-elevated: light-dark(#e6e4dc, #0d0f0e);
+	--background-color-surface: light-dark(#e6e4dc, #141614);
+	--background-color-surface-hover: light-dark(#d3d1c7, #1c201c);
+	--background-color-media: light-dark(#d3d1c7, #1c201c);
 
-	--color-cream: #f1f0ea;
-	--color-cream-soft: #f1f0ea1c;
-	--color-cream-faint: #f1f0ea0f;
-	--color-taupe: #9a988d;
-	--color-stone: #7e7c71;
+	--text-color-primary: light-dark(#08090a, #f1f0ea);
+	--text-color-body: light-dark(#2b2a26, #d3d1c7);
+	--text-color-muted: light-dark(#55544c, #9a988d);
+	--text-color-subtle: light-dark(#6b6a61, #7e7c71);
+	--text-color-on-accent: light-dark(#f1f0ea, #0a0c0a);
 
-	--color-pistachio: #b3fca4;
-	--color-light-pistachio: #c7ffbb;
-	--color-pistachio-soft: #b3fca424;
+	--border-color-default: light-dark(#08090a24, #f1f0ea1c);
+	--border-color-subtle: light-dark(#08090a12, #f1f0ea0f);
+	--border-color-accent: light-dark(#08090a, #b3fca4);
+	--border-color-control: light-dark(#7d7a72, #74726b);
 
-	--color-cyan: #67daf9;
-	--color-orange: #ff5d01;
-	--color-coral: #ff8f7a;
-	--color-scrim: #050505b8;
-	--color-indigo: #4f5d95;
-	--color-yellow: #f1e05a;
-	--color-blue: #3178c6;
+	--color-accent-default: light-dark(#08090a, #b3fca4);
+	--color-accent-hover: light-dark(#141614, #c7ffbb);
+	--color-accent-soft: light-dark(#08090a12, #b3fca424);
+
+	--color-focus-ring: light-dark(#08090a, #b3fca4);
+	--color-status-error: light-dark(#b3381f, #ff8f7a);
+	--color-overlay-scrim: #050505b8;
+
+	--color-diff-minus: light-dark(#b42318, #ff8a7a);
+	--color-diff-minus-soft: light-dark(#b4231812, #ff8a7a14);
+	--color-diff-plus: light-dark(#1f6b2a, #b3fca4);
+	--color-diff-plus-soft: light-dark(#1f6b2a14, #b3fca417);
 
 	/* Typographies */
 	--text-*: initial;
 
-	/* Headings · Inter Medium */
+	/* Titles · Inter Medium */
 	--text-title-3xl-desktop: 6rem;
 	--text-title-3xl-desktop--font-weight: 500;
 	--text-title-3xl-desktop--line-height: 0.96;
@@ -77,18 +81,19 @@
 
 	--text-title-md: 1.25rem;
 	--text-title-md--font-weight: 500;
-	--text-title-md--line-height: 1.15;
+	--text-title-md--line-height: 1.2;
 	--text-title-md--letter-spacing: -0.01em;
 
-	--text-pipeline-number-desktop: 7.5rem;
-	--text-pipeline-number-desktop--font-weight: 500;
-	--text-pipeline-number-desktop--line-height: 0.85;
-	--text-pipeline-number-desktop--letter-spacing: -0.04em;
+	/* Quote · Inter Regular */
+	--text-quote-desktop: 2rem;
+	--text-quote-desktop--font-weight: 400;
+	--text-quote-desktop--line-height: 1.3;
+	--text-quote-desktop--letter-spacing: -0.01em;
 
-	--text-pipeline-number-mobile: 3.75rem;
-	--text-pipeline-number-mobile--font-weight: 500;
-	--text-pipeline-number-mobile--line-height: 0.85;
-	--text-pipeline-number-mobile--letter-spacing: -0.04em;
+	--text-quote-mobile: 1.375rem;
+	--text-quote-mobile--font-weight: 400;
+	--text-quote-mobile--line-height: 1.35;
+	--text-quote-mobile--letter-spacing: -0.005em;
 
 	/* Text · Inter Regular */
 	--text-xl-desktop: 1.375rem;
@@ -107,9 +112,13 @@
 	--text-lg-mobile--font-weight: 400;
 	--text-lg-mobile--line-height: 1.6;
 
-	--text-base: 1rem;
-	--text-base--font-weight: 400;
-	--text-base--line-height: 1.6;
+	--text-base-desktop: 1.0625rem;
+	--text-base-desktop--font-weight: 400;
+	--text-base-desktop--line-height: 1.6;
+
+	--text-base-mobile: 1rem;
+	--text-base-mobile--font-weight: 400;
+	--text-base-mobile--line-height: 1.6;
 
 	--text-sm-desktop: 0.9375rem;
 	--text-sm-desktop--font-weight: 400;
@@ -119,47 +128,41 @@
 	--text-sm-mobile--font-weight: 400;
 	--text-sm-mobile--line-height: 1.55;
 
-	--text-xs-desktop: 0.875rem;
-	--text-xs-desktop--font-weight: 400;
-	--text-xs-desktop--line-height: 1.5;
+	/* Labels · Inter */
+	--text-eyebrow: 0.875rem;
+	--text-eyebrow--font-weight: 500;
+	--text-eyebrow--line-height: 1.4;
 
-	--text-xs-mobile: 0.8125rem;
-	--text-xs-mobile--font-weight: 400;
-	--text-xs-mobile--line-height: 1.5;
+	--text-nav: 0.9375rem;
+	--text-nav--font-weight: 400;
+	--text-nav--line-height: 1.4;
 
-	/* Meta · JetBrains Mono */
-	--text-eyebrow: 0.6875rem;
-	--text-eyebrow--font-weight: 400;
-	--text-eyebrow--line-height: 1.6;
-	--text-eyebrow--letter-spacing: 0.18em;
+	--text-button: 0.9375rem;
+	--text-button--font-weight: 500;
+	--text-button--line-height: 1.4;
 
-	--text-label: 0.75rem;
-	--text-label--font-weight: 400;
-	--text-label--line-height: calc(19/12);
-	--text-label--letter-spacing: 0.1em;
+	/* Data */
+	--text-mono: 0.8125rem;
+	--text-mono--font-weight: 400;
+	--text-mono--line-height: 1.55;
+	--text-mono--letter-spacing: 0.02em;
 
-	--text-cta: 0.8125rem;
-	--text-cta--font-weight: 500;
-	--text-cta--line-height: 1.6;
-	--text-cta--letter-spacing: 0.02em;
+	--text-number-xl: 7.5rem;
+	--text-number-xl--font-weight: 500;
+	--text-number-xl--line-height: 0.85;
+	--text-number-xl--letter-spacing: -0.04em;
 
-	--text-badge: 0.625rem;
-	--text-badge--font-weight: 400;
-	--text-badge--line-height: 1.6;
-	--text-badge--letter-spacing: 0.1em;
+	--text-number-lg: 3.75rem;
+	--text-number-lg--font-weight: 500;
+	--text-number-lg--line-height: 0.85;
+	--text-number-lg--letter-spacing: -0.04em;
 
 	--radius-*: initial;
 
-	--radius-3: --spacing(0.75);
-	--radius-5: --spacing(1.25);
-	--radius-6: --spacing(1.5);
-	--radius-8: --spacing(2);
-	--radius-10: --spacing(2.5);
-	--radius-15: --spacing(3.75);
-	--radius-20: --spacing(5);
-	--radius-25: --spacing(6.25);
-	--radius-35: --spacing(8.75);
-	--radius-50: --spacing(12.5);
+	--radius-xs: 0.125rem;
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 0.75rem;
 
 	--animate-marquee-y: marquee-y 25s linear infinite;
 	--animate-marquee-x: marquee-x 50s linear infinite;

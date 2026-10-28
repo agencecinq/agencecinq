@@ -25,19 +25,19 @@
 			href="{{ post.link }}"
 			class="{{
 				html_classes(
-					'border-cream-soft bg-gray hover:border-pistachio group rounded-8 flex h-full flex-col space-y-2 border p-6 transition-colors',
+					'border-default bg-surface hover:border-accent group flex h-full flex-col space-y-2 rounded-md border p-6 transition-colors',
 					classes | default( [] ) | join( ' ' )
 				)
 			}}"
 			itemprop="url"
 		>
-			<span class="text-title-md text-cream group-hover:text-pistachio transition-colors">
+			<span class="text-title-md text-primary group-hover:text-accent-default transition-colors">
 				<span itemprop="headline">{{- client -}}</span>
 				<span aria-hidden="true">{{ ' →' }}</span>
 			</span>
 
 			{%- if description -%}
-				<span class="text-taupe text-sm" itemprop="description">{{- description -}}</span>
+				<span class="text-muted text-sm" itemprop="description">{{- description -}}</span>
 			{%- endif -%}
 		</a>
 	</article>

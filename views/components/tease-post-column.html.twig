@@ -34,12 +34,12 @@
 		itemprop="item"
 	>
 		<div
-			class="before:bg-cream-soft after:bg-cream group-hover/tease-post:after:bg-pistachio relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:ring-4 after:ring-black after:transition-[background-color,transform] after:duration-300 after:ease-out group-hover/tease-post:after:scale-125"
+			class="group-hover/tease-post:after:bg-accent-default relative h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px before:bg-(--border-color-default) after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:bg-(--text-color-primary) after:ring-4 after:ring-(--background-color-default) after:transition-[background-color,transform] after:duration-300 after:ease-out group-hover/tease-post:after:scale-125"
 			aria-hidden="true"
 		></div>
 
 		<div class="flex flex-col space-y-3">
-			<p class="text-label text-stone uppercase">
+			<p class="text-eyebrow text-subtle">
 				<time datetime="{{ post.date( 'c' ) }}" itemprop="datePublished">
 					{{- post.date( 'j F Y' ) | upper -}}
 				</time>
@@ -54,18 +54,18 @@
 				{%- endif -%}
 			</p>
 
-			<h3 class="text-title-md text-cream" itemprop="headline">
+			<h3 class="text-title-md text-primary" itemprop="headline">
 				<a href="{{ post.link }}" class="after:absolute after:inset-0" itemprop="url">
 					{{- post.title -}}
 				</a>
 			</h3>
 
 			{%- if excerpt | trim -%}
-				<p class="text-taupe text-sm" itemprop="description">{{- excerpt -}}</p>
+				<p class="text-muted text-sm" itemprop="description">{{- excerpt -}}</p>
 			{%- endif -%}
 		</div>
 
-		<p class="text-label text-cream pointer-events-none inline-flex items-center gap-1.5">
+		<p class="text-primary pointer-events-none inline-flex items-center gap-1.5 text-sm">
 			{{- __( 'Read the article', 'agencecinq' ) -}}
 			{{-
 				include(

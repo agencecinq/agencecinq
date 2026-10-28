@@ -1,13 +1,13 @@
 {#
  # Components: Info frame
- # Optional framed meta row: leading icon + mono label, body text, trailing aside.
+ # Optional framed meta row: leading icon + label, body text, trailing aside.
  #
  # @param string icon Leading sprite icon name.
- # @param string label Mono label next to the leading icon.
+ # @param string label Label next to the leading icon.
  # @param string text Main description.
  # @param string aside_icon Trailing sprite icon name.
  # @param string aside Trailing description.
- # @param string aside_code Optional mono suffix after the aside text.
+ # @param string aside_code Optional code suffix after the aside text.
  # @param array classes Extra classes for the frame.
  #}
 
@@ -15,7 +15,7 @@
 	<aside
 		class="{{
 			html_classes(
-				'border-cream-soft bg-gray rounded-15 flex flex-col gap-4 border p-6 lg:flex-row lg:items-center lg:gap-6',
+				'border-default bg-surface flex flex-col gap-4 rounded-lg border p-6 lg:flex-row lg:items-center lg:gap-6',
 				classes | default( [] ) | join( ' ' )
 			)
 		}}"
@@ -26,8 +26,8 @@
 					<p
 						class="{{
 							html_classes(
-								'text-cream flex shrink-0 items-center gap-2.5 font-mono text-sm',
-								text ? 'sm:border-cream-soft sm:border-e sm:pe-6'
+								'text-primary flex shrink-0 items-center gap-2.5 text-sm',
+								text ? 'sm:border-default sm:border-e sm:pe-6'
 							)
 						}}"
 					>
@@ -37,7 +37,7 @@
 									'svg/use.html.twig',
 									{
 										icon: icon,
-										classes: [ 'size-4.5 shrink-0 fill-none stroke-current text-pistachio' ],
+										classes: [ 'size-4.5 shrink-0 fill-none stroke-current text-accent-default' ],
 									},
 									with_context: false
 								)
@@ -51,20 +51,20 @@
 				{%- endif -%}
 
 				{%- if text -%}
-					<p class="text-taupe min-w-0 flex-1 text-sm">{{- text | raw -}}</p>
+					<p class="text-muted min-w-0 flex-1 text-sm">{{- text | raw -}}</p>
 				{%- endif -%}
 			</div>
 		{%- endif -%}
 
 		{%- if aside_icon or aside or aside_code -%}
-			<p class="text-taupe flex shrink-0 items-center gap-2.5 text-sm">
+			<p class="text-muted flex shrink-0 items-center gap-2.5 text-sm">
 				{%- if aside_icon -%}
 					{{-
 						include(
 							'svg/use.html.twig',
 							{
 								icon: aside_icon,
-								classes: [ 'size-4.5 shrink-0 fill-none stroke-current text-pistachio' ],
+								classes: [ 'size-4.5 shrink-0 fill-none stroke-current text-accent-default' ],
 							},
 							with_context: false
 						)
@@ -79,7 +79,7 @@
 						{{- ' ' -}}
 					{%- endif -%}
 					{%- if aside_code -%}
-						<span class="text-cream font-mono">{{- aside_code -}}</span>
+						<span class="text-primary text-mono">{{- aside_code -}}</span>
 					{%- endif -%}
 				</span>
 			</p>

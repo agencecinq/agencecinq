@@ -29,10 +29,10 @@
 	<label
 		class="{{
 			[
-				'border-cream-soft bg-gray text-label text-taupe inline-flex cursor-pointer items-center gap-2.5 rounded-full border px-4.5 py-3 uppercase transition-colors',
-				'hover:text-cream has-checked:border-pistachio has-checked:bg-pistachio-soft has-checked:text-cream',
-				'has-focus-visible:outline-pistachio has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
-				'before:bg-stone has-checked:before:bg-pistachio before:size-1.75 before:shrink-0 before:rounded-full',
+				'border-control bg-surface text-eyebrow text-muted inline-flex cursor-pointer items-center gap-2.5 rounded-full border px-4.5 py-3 transition-colors',
+				'hover:text-primary has-checked:border-accent has-checked:bg-accent-soft has-checked:text-primary',
+				'has-focus-visible:outline-focus-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
+				'has-checked:before:bg-accent-default before:size-1.75 before:shrink-0 before:rounded-full before:bg-(--text-color-subtle)',
 				'has-disabled:hidden',
 			] | join( ' ' )
 		}}"
@@ -127,10 +127,10 @@
 					<div class="min-w-0 flex-1 space-y-12">
 						<fieldset class="min-w-0">
 							<legend class="float-left w-full">
-								<span class="text-label text-stone block uppercase">
+								<span class="text-eyebrow text-subtle block">
 									{{- __( 'Step %02d', 'agencecinq' ) | format( 1 ) -}}
 								</span>
-								<span class="text-title-md text-cream mt-2.5 block">
+								<span class="text-title-md text-primary mt-2.5 block">
 									{{- block.steps.platform_title -}}
 								</span>
 							</legend>
@@ -152,16 +152,16 @@
 
 						<fieldset class="min-w-0">
 							<legend class="float-left w-full">
-								<span class="text-label text-stone block uppercase">
+								<span class="text-eyebrow text-subtle block">
 									{{- __( 'Step %02d', 'agencecinq' ) | format( 2 ) -}}
 								</span>
-								<span class="text-title-md text-cream mt-2.5 block">
+								<span class="text-title-md text-primary mt-2.5 block">
 									{{- block.steps.package_title -}}
 								</span>
 							</legend>
 
 							{%- if block.steps.package_text -%}
-								<p class="text-taupe clear-left pt-2 text-sm">{{- block.steps.package_text -}}</p>
+								<p class="text-muted clear-left pt-2 text-sm">{{- block.steps.package_text -}}</p>
 							{%- endif -%}
 
 							<div class="clear-left flex flex-wrap gap-3 pt-5">
@@ -188,17 +188,17 @@
 
 						<fieldset class="min-w-0">
 							<legend class="float-left w-full">
-								<span class="text-label text-stone block uppercase">
+								<span class="text-eyebrow text-subtle block">
 									{{- __( 'Step %02d', 'agencecinq' ) | format( 3 ) -}}
 								</span>
-								<span class="text-title-md text-cream mt-2.5 block">
+								<span class="text-title-md text-primary mt-2.5 block">
 									{{- block.steps.modules_title -}}
 								</span>
 							</legend>
 
 							{%- if block.steps.modules_text -%}
 								<p
-									class="text-taupe clear-left pt-2 text-sm"
+									class="text-muted clear-left pt-2 text-sm"
 									data-dom="modules-text"
 									data-template="{{ block.steps.modules_text | e( 'html_attr' ) }}"
 									{{ accepted is empty ? 'hidden' }}
@@ -208,7 +208,7 @@
 							{%- endif -%}
 
 							<p
-								class="text-taupe clear-left pt-2 text-sm"
+								class="text-muted clear-left pt-2 text-sm"
 								data-dom="modules-empty"
 								{{ accepted is not empty ? 'hidden' }}
 							>
@@ -244,33 +244,33 @@
 					</div>
 
 					<aside
-						class="bg-gray border-pistachio rounded-8 w-full border p-8 lg:sticky lg:inset-x-0 lg:top-[calc(var(--header-height)+(--spacing(20)))] lg:w-105 lg:shrink-0"
+						class="bg-surface border-accent w-full rounded-md border p-8 lg:sticky lg:inset-x-0 lg:top-[calc(var(--header-height)+(--spacing(20)))] lg:w-105 lg:shrink-0"
 						aria-labelledby="{{ block.id }}-result"
 					>
-						<h2 id="{{ block.id }}-result" class="text-eyebrow text-pistachio">
+						<h2 id="{{ block.id }}-result" class="text-eyebrow text-accent-default">
 							{{- block.result.title -}}
 						</h2>
 
 						<dl class="mt-6" data-dom="lines">
-							<div class="border-cream-faint flex items-center justify-between gap-4 border-t py-3">
-								<dt class="text-taupe text-sm">{{ labels.package }} {{ package.name }}</dt>
-								<dd class="text-label text-cream whitespace-nowrap">
+							<div class="border-subtle flex items-center justify-between gap-4 border-t py-3">
+								<dt class="text-muted text-sm">{{ labels.package }} {{ package.name }}</dt>
+								<dd class="text-primary text-sm whitespace-nowrap">
 									{{- catalogue.price( package, true ) -}}
 								</dd>
 							</div>
 						</dl>
 
 						<template data-dom="line">
-							<div class="border-cream-faint flex items-center justify-between gap-4 border-t py-3">
-								<dt class="text-taupe text-sm"></dt>
-								<dd class="text-label text-cream whitespace-nowrap"></dd>
+							<div class="border-subtle flex items-center justify-between gap-4 border-t py-3">
+								<dt class="text-muted text-sm"></dt>
+								<dd class="text-primary text-sm whitespace-nowrap"></dd>
 							</div>
 						</template>
 
-						<dl class="border-cream-faint flex items-center justify-between gap-4 border-t py-3">
-							<dt class="text-title-md text-cream">{{- block.result.total_label -}}</dt>
+						<dl class="border-subtle flex items-center justify-between gap-4 border-t py-3">
+							<dt class="text-title-md text-primary">{{- block.result.total_label -}}</dt>
 							<dd
-								class="text-title-lg text-pistachio text-right"
+								class="text-title-lg text-accent-default text-right"
 								data-dom="total"
 								aria-live="polite"
 							>
@@ -285,12 +285,12 @@
 						</dl>
 
 						{%- set mention_classes =
-							'text-label text-taupe mt-5 flex items-center gap-2.5 uppercase before:size-1.75 before:shrink-0 before:rounded-full'
+							'text-eyebrow text-muted mt-5 flex items-center gap-2.5 before:size-1.75 before:shrink-0 before:rounded-full'
 						-%}
 
 						{%- if block.result.firm_text -%}
 							<p
-								class="{{ mention_classes }} before:bg-pistachio"
+								class="{{ mention_classes }} before:bg-accent-default"
 								data-dom="firm"
 								{{ composition.total.mode != constant( 'FIRM', catalogue ) ? 'hidden' }}
 							>
@@ -300,7 +300,7 @@
 
 						{%- if block.result.open_text -%}
 							<p
-								class="{{ mention_classes }} before:bg-stone"
+								class="{{ mention_classes }} before:bg-(--text-color-subtle)"
 								data-dom="open"
 								{{ composition.total.mode == constant( 'FIRM', catalogue ) ? 'hidden' }}
 							>
@@ -311,7 +311,7 @@
 						{#- The e-mail has no name: without JavaScript the form still goes to the booking page, never with the address in the URL. -#}
 						<div class="mt-7 space-y-3">
 							<div class="space-y-2">
-								<label for="{{ block.id }}-email" class="text-eyebrow text-stone block">
+								<label for="{{ block.id }}-email" class="text-eyebrow text-subtle block">
 									{{- block.result.email_label -}}
 								</label>
 								<input
@@ -322,17 +322,17 @@
 									autocomplete="email"
 									inputmode="email"
 									placeholder="{{ block.result.email_placeholder }}"
-									class="border-cream-soft bg-dark-gray text-cream placeholder:text-taupe rounded-3 focus:not-user-invalid:border-pistachio user-invalid:border-coral w-full border px-3.5 py-3 text-base transition-colors duration-300 ease-out focus:outline-hidden"
+									class="border-control bg-elevated text-primary placeholder:text-muted user-invalid:border-status-error focus:outline-focus-ring w-full rounded-sm border px-3.5 py-3 text-base transition-colors duration-300 ease-out focus:outline-2 focus:outline-offset-2"
 									data-dom="email"
 								/>
 								<p
 									id="{{ block.id }}-email-error"
-									class="text-coral flex items-start gap-2 text-sm"
+									class="text-status-error flex items-start gap-2 text-sm"
 									data-dom="email-error"
 									hidden
 								>
 									<span
-										class="border-coral mt-[0.2em] flex size-4 shrink-0 items-center justify-center rounded-full border text-[0.625rem] leading-none"
+										class="border-status-error mt-[0.2em] flex size-4 shrink-0 items-center justify-center rounded-full border text-[0.625rem] leading-none"
 										aria-hidden="true"
 									>
 										!
@@ -361,15 +361,15 @@
 								-}}
 							{%- endif -%}
 
-							<p class="text-coral text-sm" data-dom="status" role="alert" hidden></p>
+							<p class="text-status-error text-sm" data-dom="status" role="alert" hidden></p>
 
 							{%- if block.result.privacy -%}
-								<p class="text-taupe text-xs">
+								<p class="text-muted text-sm">
 									{{- block.result.privacy -}}
 									{%- if privacy_policy_url %}
 										<a
 											href="{{ privacy_policy_url }}"
-											class="text-cream underline underline-offset-2"
+											class="text-primary underline underline-offset-2"
 										>
 											{{ __( 'Privacy policy', 'agencecinq' ) }}
 										</a>
@@ -379,7 +379,7 @@
 						</div>
 
 						{%- if block.result.notice -%}
-							<p class="text-taupe mt-5 text-sm">{{- block.result.notice | raw -}}</p>
+							<p class="text-muted mt-5 text-sm">{{- block.result.notice | raw -}}</p>
 						{%- endif -%}
 					</aside>
 				</form>

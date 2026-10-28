@@ -8,7 +8,7 @@
 	role="banner"
 	class="{{
 		html_classes(
-			'text-label border-cream/11 border-b bg-black py-[0.78125rem] lg:py-0',
+			'border-default bg-default border-b py-[0.78125rem] text-sm lg:py-0',
 			classes | default( [] ) | join( ' ' )
 		)
 	}}"
@@ -47,10 +47,10 @@
 										item.current
 											or 'current-menu-parent' in item.classes
 											or 'current-page-ancestor' in item.classes
-											? 'text-pistachio'
+											? 'text-accent-default'
 											: '',
 										item.classes | default( [] ) | join( ' ' ),
-										'hover:text-pistachio group-hover:text-pistachio text-cream/65 focus:text-pistachio group-focus-within:text-pistachio block'
+										'hover:text-accent-default group-hover:text-accent-default text-muted focus:text-accent-default group-focus-within:text-accent-default block'
 									)
 								}}"
 								{{ item.children | length ? 'aria-haspopup="true"' }}
@@ -62,14 +62,14 @@
 
 							{%- if item.children | length -%}
 								<ul
-									class="border-gray/11 bg-gray rounded-b-8 invisible absolute inset-s-0 top-full z-20 w-72 space-y-6 border px-5 py-4.5 opacity-0 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
+									class="border-subtle bg-surface invisible absolute inset-s-0 top-full z-20 w-72 space-y-6 rounded-b-md border px-5 py-4.5 opacity-0 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
 								>
 									{% for child in item.children %}
 										<li itemscope itemtype="https://schema.org/SiteNavigationElement">
 											<a
 												href="{{ child.url }}"
 												itemprop="url"
-												class="text-cream hover:text-pistachio focus:text-pistachio font-sans text-base transition-colors"
+												class="text-primary hover:text-accent-default focus:text-accent-default font-sans text-base transition-colors"
 												{{ child.is_target_blank or child.is_external
 													? 'target="' ~ child.target ~ '" rel="noopener noreferrer"' }}
 											>

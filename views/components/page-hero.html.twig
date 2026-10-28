@@ -3,7 +3,7 @@
  # Inner-page hero: overline, title, lead, CTAs, optional meta and image.
  #
  # @param string id Section id (also used for the title element id suffix).
- # @param string overline Uppercase mono label above the title.
+ # @param string overline Eyebrow above the title.
  # @param string title Main heading text.
  # @param string text Lead paragraph (excerpt or ACF text).
  # @param array links Link arrays (title, url, target). First = primary, next = secondary.
@@ -30,7 +30,7 @@
 						{%- if overline or title -%}
 							<header class="space-y-6">
 								{%- if overline -%}
-									<p class="text-label text-taupe uppercase">{{- overline -}}</p>
+									<p class="text-eyebrow text-muted">{{- overline -}}</p>
 								{%- endif -%}
 
 								{%- if title -%}
@@ -42,7 +42,7 @@
 						{%- endif -%}
 
 						{%- if text -%}
-							<p class="text-taupe max-w-190 text-xl">{{- text | raw -}}</p>
+							<p class="text-muted max-w-190 text-xl">{{- text | raw -}}</p>
 						{%- endif -%}
 					</div>
 				{%- endif -%}
@@ -64,12 +64,10 @@
 						{%- endif -%}
 
 						{%- if meta_items | length -%}
-							<ul
-								class="text-label text-stone flex flex-wrap items-center gap-x-4.5 gap-y-2 uppercase"
-							>
+							<ul class="text-eyebrow text-subtle flex flex-wrap items-center gap-x-4.5 gap-y-2">
 								{%- for item in meta_items -%}
 									<li
-										class="after:bg-cream-soft flex items-center after:ms-4.5 after:h-3.5 after:w-px last:after:hidden"
+										class="flex items-center after:ms-4.5 after:h-3.5 after:w-px after:bg-(--border-color-default) last:after:hidden"
 									>
 										{{- item.text -}}
 									</li>

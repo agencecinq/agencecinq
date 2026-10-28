@@ -19,7 +19,7 @@
 
 {%- if overline or range or text or ( retainers | length ) -%}
 	<article
-		class="border-cream-soft rounded-8 flex w-full flex-col border bg-black p-8"
+		class="border-default bg-default flex w-full flex-col rounded-md border p-8"
 		itemscope
 		itemtype="https://schema.org/Service"
 		itemprop="item"
@@ -29,11 +29,11 @@
 				{%- if overline or range -%}
 					<header class="space-y-3">
 						{%- if overline -%}
-							<p class="text-eyebrow text-stone" itemprop="serviceType">{{- overline -}}</p>
+							<p class="text-eyebrow text-subtle" itemprop="serviceType">{{- overline -}}</p>
 						{%- endif -%}
 
 						{%- if range -%}
-							<{{ heading }} class="text-title-lg text-cream" itemprop="name">
+							<{{ heading }} class="text-title-lg text-primary" itemprop="name">
 								{{- range -}}
 							</{{ heading }}>
 						{%- endif -%}
@@ -41,7 +41,7 @@
 				{%- endif -%}
 
 				{%- if text -%}
-					<p class="text-taupe text-sm" itemprop="description">{{- text | raw -}}</p>
+					<p class="text-muted text-sm" itemprop="description">{{- text | raw -}}</p>
 				{%- endif -%}
 			</div>
 
@@ -49,7 +49,7 @@
 				<ul class="flex flex-wrap gap-x-6 gap-y-2">
 					{%- for retainer in retainers -%}
 						<li
-							class="text-label text-pistachio"
+							class="text-accent-default text-sm"
 							itemprop="offers"
 							itemscope
 							itemtype="https://schema.org/Offer"
