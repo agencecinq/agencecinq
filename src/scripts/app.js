@@ -16,3 +16,4 @@ load("cinq-snake", async () => {
 load("cinq-copy", () => import("./components/Copy.ts"));
 load("cinq-configurator", () => import("./components/Configurator.ts"));
 load("cinq-navigation", () => import("./components/Navigation.ts"));
+load("cinq-scheme", () => import("./components/Scheme.ts"));

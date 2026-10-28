@@ -16,7 +16,11 @@
 {%- set columns = block.columns | default( [] ) -%}
 {%- set aside = block.aside | default( {} ) -%}
 
-<section id="{{ block.id }}" {{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}>
+<section
+	id="{{ block.id }}"
+	data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
 	<div class="container space-y-17">
 		<div class="space-y-8">
 			{%- if block.content.badge -%}

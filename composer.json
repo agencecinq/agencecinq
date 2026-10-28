@@ -22,6 +22,7 @@
 		},
 		"files": [
 			"./includes/helpers.php",
+			"./includes/schemes.php",
 			"./vendor/19h47/wp-get-theme/wp-get-theme.php",
 			"./vendor/19h47/wp-form-controls/wp-form-controls.php"
 		]

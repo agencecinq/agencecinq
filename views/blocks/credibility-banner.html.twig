@@ -16,7 +16,11 @@
 		)
 	-}}
 
-	<div id="{{ block.id }}" class="border-default bg-elevated text-muted border-y py-10 text-sm">
+	<div
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		class="border-default bg-elevated text-muted border-y py-10 text-sm"
+	>
 		<div class="container">
 			<ul
 				class="divide-default flex flex-col max-lg:divide-y lg:flex-row lg:items-start lg:divide-x"

@@ -22,7 +22,11 @@
 	: []
 -%}
 
-<section id="{{ block.id }}" {{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}>
+<section
+	id="{{ block.id }}"
+	data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
 	<div class="container space-y-14">
 		{%- if block.content.title or block.content.text -%}
 			<header class="space-y-6">

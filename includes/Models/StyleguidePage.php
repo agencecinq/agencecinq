@@ -99,189 +99,86 @@ class StyleguidePage extends Post {
 	}
 
 	/**
-	 * Color roles of theme.css, grouped as in the Figma Colors collection.
-	 *
-	 * No values here: the styleguide reads them from the rendered swatches, so theme.css stays their only source.
+	 * Color roles, grouped as in the Figma Colors collection, with their class, their use and their value
+	 * in each scheme. Names, primitives and values come from includes/schemes.php.
 	 *
 	 * @return array<int, array<string, mixed>>
 	 */
 	public function colors(): array {
-		return array(
-			array(
-				'title' => 'Background',
-				'roles' => array(
-					array(
-						'name'     => 'bg/default',
-						'class'    => 'bg-default',
-						'variable' => '--background-color-default',
-						'usage'    => 'Base of the page and of each section.',
-					),
-					array(
-						'name'     => 'bg/elevated',
-						'class'    => 'bg-elevated',
-						'variable' => '--background-color-elevated',
-						'usage'    => 'Band raised from the base: footer, banner, modal.',
-					),
-					array(
-						'name'     => 'bg/surface',
-						'class'    => 'bg-surface',
-						'variable' => '--background-color-surface',
-						'usage'    => 'Object on the background: card, field, button, code block.',
-					),
-					array(
-						'name'     => 'bg/surface-hover',
-						'class'    => 'bg-surface-hover',
-						'variable' => '--background-color-surface-hover',
-						'usage'    => 'Surface under the pointer.',
-					),
-					array(
-						'name'     => 'bg/media',
-						'class'    => 'bg-media',
-						'variable' => '--background-color-media',
-						'usage'    => 'Slot behind an image or a video.',
-					),
-				),
+		$groups = array(
+			'Background' => array(
+				'background-color-default'       => array( 'bg-default', 'Base of the page and of each section.' ),
+				'background-color-elevated'      => array( 'bg-elevated', 'Band raised from the base: footer, banner, modal.' ),
+				'background-color-surface'       => array( 'bg-surface', 'Object on the background: card, field, button, code block.' ),
+				'background-color-surface-hover' => array( 'bg-surface-hover', 'Surface under the pointer.' ),
+				'background-color-media'         => array( 'bg-media', 'Slot behind an image or a video.' ),
 			),
-			array(
-				'title' => 'Text',
-				'roles' => array(
-					array(
-						'name'     => 'text/primary',
-						'class'    => 'text-primary',
-						'variable' => '--text-color-primary',
-						'usage'    => 'Titles and default text.',
-					),
-					array(
-						'name'     => 'text/body',
-						'class'    => 'text-body',
-						'variable' => '--text-color-body',
-						'usage'    => 'Running text.',
-					),
-					array(
-						'name'     => 'text/muted',
-						'class'    => 'text-muted',
-						'variable' => '--text-color-muted',
-						'usage'    => 'Secondary text, eyebrows, captions.',
-					),
-					array(
-						'name'     => 'text/subtle',
-						'class'    => 'text-subtle',
-						'variable' => '--text-color-subtle',
-						'usage'    => 'Mentions on bg/default only: below 4.5:1 on bg/media.',
-					),
-					array(
-						'name'     => 'text/on-accent',
-						'class'    => 'text-on-accent',
-						'variable' => '--text-color-on-accent',
-						'usage'    => 'Text on accent/default.',
-					),
-				),
+			'Text'       => array(
+				'text-color-primary'   => array( 'text-primary', 'Titles and default text.' ),
+				'text-color-body'      => array( 'text-body', 'Running text.' ),
+				'text-color-muted'     => array( 'text-muted', 'Secondary text, eyebrows, captions.' ),
+				'text-color-subtle'    => array( 'text-subtle', 'Mentions on bg/default only: below 4.5:1 on bg/media.' ),
+				'text-color-on-accent' => array( 'text-on-accent', 'Text on accent/default.' ),
 			),
-			array(
-				'title' => 'Border',
-				'roles' => array(
-					array(
-						'name'     => 'border/default',
-						'class'    => 'border-default',
-						'variable' => '--border-color-default',
-						'usage'    => 'Decorative separators (1.3:1), never a control outline.',
-					),
-					array(
-						'name'     => 'border/subtle',
-						'class'    => 'border-subtle',
-						'variable' => '--border-color-subtle',
-						'usage'    => 'Separators inside a surface.',
-					),
-					array(
-						'name'     => 'border/accent',
-						'class'    => 'border-accent',
-						'variable' => '--border-color-accent',
-						'usage'    => 'Highlighted or hovered outline.',
-					),
-					array(
-						'name'     => 'border/control',
-						'class'    => 'border-control',
-						'variable' => '--border-color-control',
-						'usage'    => 'Outline of a control (field, checkbox, switch, filter), 3:1.',
-					),
-				),
+			'Border'     => array(
+				'border-color-default' => array( 'border-default', 'Decorative separators (1.3:1), never a control outline.' ),
+				'border-color-subtle'  => array( 'border-subtle', 'Separators inside a surface.' ),
+				'border-color-accent'  => array( 'border-accent', 'Highlighted or hovered outline.' ),
+				'border-color-control' => array( 'border-control', 'Outline of a control (field, checkbox, switch, filter), 3:1.' ),
 			),
-			array(
-				'title' => 'Accent',
-				'roles' => array(
-					array(
-						'name'     => 'accent/default',
-						'class'    => 'bg-accent-default',
-						'variable' => '--color-accent-default',
-						'usage'    => 'Primary action. As text, large text only.',
-					),
-					array(
-						'name'     => 'accent/hover',
-						'class'    => 'bg-accent-hover',
-						'variable' => '--color-accent-hover',
-						'usage'    => 'Primary action under the pointer.',
-					),
-					array(
-						'name'     => 'accent/soft',
-						'class'    => 'bg-accent-soft',
-						'variable' => '--color-accent-soft',
-						'usage'    => 'Tinted background behind an accent.',
-					),
-				),
+			'Accent'     => array(
+				'color-accent-default' => array( 'bg-accent-default', 'Primary action. As text, large text only.' ),
+				'color-accent-hover'   => array( 'bg-accent-hover', 'Primary action under the pointer.' ),
+				'color-accent-soft'    => array( 'bg-accent-soft', 'Tinted background behind an accent.' ),
 			),
-			array(
-				'title' => 'State',
-				'roles' => array(
-					array(
-						'name'     => 'focus/ring',
-						'class'    => 'outline-focus-ring',
-						'variable' => '--color-focus-ring',
-						'usage'    => 'Keyboard focus outline, 3:1 on every background.',
-					),
-					array(
-						'name'     => 'status/error',
-						'class'    => 'text-status-error',
-						'variable' => '--color-status-error',
-						'usage'    => 'Error message and outline of an invalid field.',
-					),
-					array(
-						'name'     => 'overlay/scrim',
-						'class'    => 'bg-overlay-scrim',
-						'variable' => '--color-overlay-scrim',
-						'usage'    => 'Backdrop of a modal or a drawer.',
-					),
-				),
+			'State'      => array(
+				'color-focus-ring'    => array( 'outline-focus-ring', 'Keyboard focus outline, 3:1 on every background.' ),
+				'color-status-error'  => array( 'text-status-error', 'Error message and outline of an invalid field.' ),
+				'color-overlay-scrim' => array( 'bg-overlay-scrim', 'Backdrop of a modal or a drawer.' ),
 			),
-			array(
-				'title' => 'Diff',
-				'roles' => array(
-					array(
-						'name'     => 'diff/minus',
-						'class'    => 'text-diff-minus',
-						'variable' => '--color-diff-minus',
-						'usage'    => 'Sign and text of a removed line.',
-					),
-					array(
-						'name'     => 'diff/minus-soft',
-						'class'    => 'bg-diff-minus-soft',
-						'variable' => '--color-diff-minus-soft',
-						'usage'    => 'Background of a removed line.',
-					),
-					array(
-						'name'     => 'diff/plus',
-						'class'    => 'text-diff-plus',
-						'variable' => '--color-diff-plus',
-						'usage'    => 'Sign of an added line.',
-					),
-					array(
-						'name'     => 'diff/plus-soft',
-						'class'    => 'bg-diff-plus-soft',
-						'variable' => '--color-diff-plus-soft',
-						'usage'    => 'Background of an added line.',
-					),
-				),
+			'Diff'       => array(
+				'color-diff-minus'      => array( 'text-diff-minus', 'Sign and text of a removed line.' ),
+				'color-diff-minus-soft' => array( 'bg-diff-minus-soft', 'Background of a removed line.' ),
+				'color-diff-plus'       => array( 'text-diff-plus', 'Sign of an added line.' ),
+				'color-diff-plus-soft'  => array( 'bg-diff-plus-soft', 'Background of an added line.' ),
 			),
 		);
+
+		$names   = cinq_scheme_roles();
+		$schemes = cinq_schemes();
+		$colors  = array();
+
+		foreach ( $groups as $title => $roles ) {
+			$items = array();
+
+			foreach ( $roles as $role => list( $class, $usage ) ) {
+				$values = array();
+
+				foreach ( $schemes as $slug => $scheme ) {
+					$values[] = array(
+						'scheme'    => $slug,
+						'label'     => $scheme['label'],
+						'primitive' => $scheme['colors'][ $role ] ?? '',
+						'value'     => cinq_scheme_color( $slug, $role ),
+					);
+				}
+
+				$items[] = array(
+					'name'     => $names[ $role ],
+					'class'    => $class,
+					'variable' => '--' . $role,
+					'usage'    => $usage,
+					'values'   => $values,
+				);
+			}
+
+			$colors[] = array(
+				'title' => $title,
+				'roles' => $items,
+			);
+		}
+
+		return $colors;
 	}
 
 	/**

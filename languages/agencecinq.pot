@@ -2571,11 +2571,11 @@ msgstr ""
 msgid "Mode"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:347
+#: includes/schemes.php:116
 msgid "Dark"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:348
+#: includes/schemes.php:146
 msgid "Light"
 msgstr ""
 
@@ -3697,4 +3697,14 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/FeatureCards.php:106
 msgid "e.g. maquettes.fig"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:49
+msgid "Color scheme"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:53
+msgid ""
+"Colors of the section, the Figma modes: Dark like the page, or Light to set "
+"it apart."
 msgstr ""

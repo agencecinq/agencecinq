@@ -148,6 +148,11 @@ class Twig implements Service {
 			)
 		);
 
+		// Colors from includes/schemes.php, for the styleguide and the scheme easter egg.
+		$twig->addFunction( new TwigFunction( 'cinq_palette', 'cinq_palette' ) );
+		$twig->addFunction( new TwigFunction( 'cinq_scheme_roles', 'cinq_scheme_roles' ) );
+		$twig->addFunction( new TwigFunction( 'cinq_schemes', 'cinq_schemes' ) );
+
 		// Repositories of the organization, last pushed first, and the weeks of commits of their default branch.
 		$twig->addFunction( new TwigFunction( 'github_activity', array( Activity::class, 'get' ) ) );
 

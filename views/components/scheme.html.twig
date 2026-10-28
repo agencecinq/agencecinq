@@ -1,0 +1,14 @@
+{#
+ # Components: Scheme
+ #
+ # Easter egg: press C to advance every `[data-scheme]` to the next scheme in the list. Opt out with
+ # `data-scheme-ignore` on the element or an ancestor (styleguide samples). No visible UI.
+ #
+ # @package AgenceCinq
+ # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
+ #}
+
+<cinq-scheme
+	hidden
+	data-schemes="{{ cinq_schemes() | keys | json_encode | e( 'html_attr' ) }}"
+></cinq-scheme>

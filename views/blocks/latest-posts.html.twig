@@ -13,7 +13,11 @@
 	)
 -}}
 
-<section id="{{ block.id }}" {{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}>
+<section
+	id="{{ block.id }}"
+	data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
 	<div class="container space-y-18">
 		{%- if block.content.overline or block.content.title -%}
 			<header class="space-y-6">

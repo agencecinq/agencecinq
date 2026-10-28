@@ -16,7 +16,11 @@
 {%- set items = block.items | default( [] ) | filter( item => item.title or item.text ) -%}
 {%- set examples_items = block.examples.items | default( [] ) | filter( item => item.text ) -%}
 
-<section id="{{ block.id }}" {{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}>
+<section
+	id="{{ block.id }}"
+	data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
 	<div class="container space-y-14">
 		{%- if block.content.title -%}
 			<header>

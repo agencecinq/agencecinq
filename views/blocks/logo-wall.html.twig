@@ -18,7 +18,7 @@
 		)
 	-}}
 
-	<section id="{{ block.id }}">
+	<section id="{{ block.id }}" data-scheme="{{ block.layout.color_scheme | default( '' ) }}">
 		<div class="container flex flex-col gap-6">
 			{%- if block.content.eyebrow -%}
 				<p id="{{ block.id }}-eyebrow" class="text-eyebrow text-muted">

@@ -56,12 +56,30 @@
 					<p class="text-eyebrow text-muted">Foundations</p>
 					<h2 id="styleguide-colors" class="text-title-xl">Colour</h2>
 					<p class="text-muted text-sm">
-						Roles of the Figma Colors collection, declared in src/stylesheets/theme.css as
-						light-dark(Light, Dark). The page is Dark; a section switches to Light with scheme-light
-						bg-default text-primary and keeps its color classes. Values are read from the rendered
-						swatches.
+						Declared in includes/schemes.php, as in Figma: the primitives, then the roles, valued in
+						each scheme, the Figma modes. The page is Dark; a section takes Light with data-scheme,
+						set by its block. Tailwind only knows the role names. Press C to cycle the schemes of
+						the page.
 					</p>
 				</header>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Primitives</h3>
+					<ul class="layout-grid gap-y-6">
+						{%- for slug, color in cinq_palette() -%}
+							<li class="col-span-2 space-y-2">
+								<div
+									class="border-default aspect-square rounded-md border"
+									style="background-color: var(--color-{{ slug }})"
+								></div>
+								<div class="wrap-anywhere">
+									<p class="text-button">{{- color.label -}}</p>
+									<p class="text-mono text-subtle">{{- color.value -}}</p>
+								</div>
+							</li>
+						{%- endfor -%}
+					</ul>
+				</div>
 
 				{%- for group in post.colors -%}
 					<div class="space-y-6">
@@ -70,28 +88,22 @@
 							{%- for role in group.roles -%}
 								<li class="col-span-4 space-y-3 lg:col-span-3">
 									<div class="grid grid-cols-2 gap-2">
-										{%- for scheme, label in {
-											'scheme-dark': 'Dark',
-											'scheme-light': 'Light',
-										} -%}
+										{%- for value in role.values -%}
 											<figure class="space-y-1.5">
 												<div
-													class="{{
-														html_classes(
-															scheme,
-															'border-default bg-default overflow-hidden rounded-md border'
-														)
-													}}"
+													class="border-default overflow-hidden rounded-md border"
+													data-scheme="{{ value.scheme }}"
+													data-scheme-ignore
 												>
 													<div
 														class="aspect-square"
 														style="background-color: var({{ role.variable }})"
-														data-swatch
 													></div>
 												</div>
-												<figcaption class="text-mono text-subtle flex flex-col">
-													<span>{{ label }}</span>
-													<output></output>
+												<figcaption class="text-mono text-subtle flex flex-col wrap-anywhere">
+													<span>{{- value.label -}}</span>
+													<span>{{- value.primitive -}}</span>
+													<span>{{- value.value -}}</span>
 												</figcaption>
 											</figure>
 										{%- endfor -%}
@@ -107,17 +119,6 @@
 						</ul>
 					</div>
 				{%- endfor -%}
-
-				<script type="module">
-					for (const swatch of document.querySelectorAll("[data-swatch]")) {
-						const output = swatch.closest("figure").querySelector("output");
-						const color = getComputedStyle(swatch).backgroundColor;
-						const [red, green, blue, alpha = 1] = color.match(/[\d.]+/g).map(Number);
-						const bytes = alpha < 1 ? [red, green, blue, Math.round(alpha * 255)] : [red, green, blue];
-
-						output.value = `#${bytes.map((byte) => byte.toString(16).padStart(2, "0")).join("")}`;
-					}
-				</script>
 			</section>
 
 			<section class="space-y-14" aria-labelledby="styleguide-type">
@@ -282,13 +283,12 @@
 				</script>
 			</section>
 
-			{%- set schemes = {
-				'scheme-dark': 'Dark',
-				'scheme-light': 'Light',
-			} -%}
-			{%- set panel =
-				'border-default bg-default text-primary col-span-full rounded-md border p-8 lg:col-span-6'
-			-%}
+			{#- Panels: one per scheme, keyed for the ids, out of the C easter egg. -#}
+			{%- set schemes = {} -%}
+			{%- for slug in cinq_schemes() | keys -%}
+				{%- set schemes = schemes | merge( { ( slug ?: 'default' ): slug } ) -%}
+			{%- endfor -%}
+			{%- set panel = 'border-default col-span-full rounded-md border p-8 lg:col-span-6' -%}
 
 			<section class="space-y-14" aria-labelledby="styleguide-fundamentals">
 				<header class="max-w-180 space-y-3">
@@ -296,7 +296,7 @@
 					<h2 id="styleguide-fundamentals" class="text-title-xl">Fundamentals</h2>
 					<p class="text-muted text-sm">
 						Logo, icons, badge and avatar of the Figma Components page. Every component renders in a
-						Dark panel, then in a scheme-light one: colors follow the mode.
+						Dark panel, then in a Light one, set with data-scheme: colors follow the scheme.
 					</p>
 				</header>
 
@@ -304,7 +304,11 @@
 					<h3 class="text-title-md">Logo</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'svg/use.html.twig',
@@ -326,7 +330,9 @@
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<ul
-								class="{{ html_classes( scheme, panel, 'grid grid-cols-2 gap-6 sm:grid-cols-4' ) }}"
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'grid grid-cols-2 gap-6 sm:grid-cols-4' ) }}"
 							>
 								{%- for name, icon in post.icons -%}
 									<li class="flex flex-col items-start gap-2 wrap-anywhere">
@@ -354,7 +360,11 @@
 					<h3 class="text-title-md">Badge</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'flex flex-wrap gap-3' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'flex flex-wrap gap-3' ) }}"
+							>
 								{{-
 									include(
 										'components/badge.html.twig',
@@ -382,7 +392,11 @@
 					<h3 class="text-title-md">Avatar</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'flex items-center gap-6' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'flex items-center gap-6' ) }}"
+							>
 								{{- include( 'components/avatar.html.twig', with_context: false ) -}}
 								{{-
 									include( 'components/avatar.html.twig', { size: 'large' }, with_context: false )
@@ -402,7 +416,7 @@
 					<h2 id="styleguide-actions" class="text-title-xl">Actions & navigation</h2>
 					<p class="text-muted text-sm">
 						Buttons, links and navigation entries of the Figma Components page, in a Dark panel then
-						a scheme-light one. States follow the markup: aria-current marks the current page,
+						a Light one. States follow the markup: aria-current marks the current page,
 						aria-expanded an open submenu. Hover and focus show on interaction.
 					</p>
 				</header>
@@ -411,7 +425,11 @@
 					<h3 class="text-title-md">Button</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'flex flex-wrap items-center gap-4' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'flex flex-wrap items-center gap-4' ) }}"
+							>
 								{%- for variant in [ 'primary', 'secondary', 'text' ] -%}
 									{{-
 										include(
@@ -438,7 +456,11 @@
 					<h3 class="text-title-md">Icon button</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'flex gap-2' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'flex gap-2' ) }}"
+							>
 								{{-
 									include(
 										'components/icon-button.html.twig',
@@ -471,7 +493,11 @@
 					<h3 class="text-title-md">Link item</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/link-item.html.twig',
@@ -494,7 +520,11 @@
 					<h3 class="text-title-md">Nav link and Menu link</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'space-y-4' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'space-y-4' ) }}"
+							>
 								<div class="flex flex-wrap items-center gap-6">
 									{{-
 										include(
@@ -565,7 +595,11 @@
 					<h3 class="text-title-md">Drawer link and sublink</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/drawer-link.html.twig',
@@ -634,7 +668,11 @@
 					<h3 class="text-title-md">Breadcrumb</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/breadcrumb.html.twig',
@@ -673,7 +711,11 @@
 					<h3 class="text-title-md">Pagination</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/pagination.html.twig',
@@ -702,10 +744,10 @@
 					<p class="text-eyebrow text-muted">Components</p>
 					<h2 id="styleguide-forms" class="text-title-xl">Forms</h2>
 					<p class="text-muted text-sm">
-						Fields of the Figma Components page, in a Dark panel then a scheme-light one. States
-						follow the markup: aria-invalid marks an error, disabled fades the field, aria-checked
-						holds the state of a switch. Focus shows on interaction. Contact Form 7 fields share
-						these styles (components/wpcf7.css).
+						Fields of the Figma Components page, in a Dark panel then a Light one. States follow the
+						markup: aria-invalid marks an error, disabled fades the field, aria-checked holds the
+						state of a switch. Focus shows on interaction. Contact Form 7 fields share these styles
+						(components/wpcf7.css).
 					</p>
 				</header>
 
@@ -713,7 +755,11 @@
 					<h3 class="text-title-md">Input</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'grid gap-8 sm:grid-cols-2' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'grid gap-8 sm:grid-cols-2' ) }}"
+							>
 								{{-
 									include(
 										'components/input.html.twig',
@@ -766,7 +812,11 @@
 					<h3 class="text-title-md">Checkbox</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/checkbox.html.twig',
@@ -809,7 +859,11 @@
 					<h3 class="text-title-md">Switch</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/switch.html.twig',
@@ -853,8 +907,8 @@
 					<h2 id="styleguide-content" class="text-title-xl">Content</h2>
 					<p class="text-muted text-sm">
 						Headings, lists, prices, contacts, diffs, log entries and media frames of the Figma
-						Components page, in a Dark panel then a scheme-light one. Blockquote and Code block are
-						the rich text of the editor (wysiwyg.css), with the Default list item.
+						Components page, in a Dark panel then a Light one. Blockquote and Code block are the
+						rich text of the editor (wysiwyg.css), with the Default list item.
 					</p>
 				</header>
 
@@ -862,7 +916,11 @@
 					<h3 class="text-title-md">Section heading</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/section-heading.html.twig',
@@ -887,7 +945,11 @@
 					<h3 class="text-title-md">List item</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'space-y-8' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'space-y-8' ) }}"
+							>
 								{%- for type in [ 'compact', 'default', 'divided', 'check' ] -%}
 									<ul>
 										{%- for text in [
@@ -919,7 +981,11 @@
 					<h3 class="text-title-md">Numbered item</h3>
 					<div class="space-y-3">
 						{%- for scheme in schemes | keys -%}
-							<ol class="{{ html_classes( scheme, panel ) }}">
+							<ol
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{%- for item in [
 									{
 										title: 'Un prix fixe, pas une fourchette',
@@ -953,7 +1019,11 @@
 					<h3 class="text-title-md">Price line</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<dl class="{{ html_classes( scheme, panel ) }}">
+							<dl
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/price-line.html.twig',
@@ -986,7 +1056,11 @@
 					<h3 class="text-title-md">Contact item</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'grid gap-4' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'grid gap-4' ) }}"
+							>
 								{{-
 									include(
 										'components/contact-item.html.twig',
@@ -1025,7 +1099,11 @@
 					<h3 class="text-title-md">Diff line and Diff block</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'space-y-6' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'space-y-6' ) }}"
+							>
 								<ul>
 									{{-
 										include(
@@ -1085,7 +1163,11 @@
 					<h3 class="text-title-md">Activity entry</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<ul class="{{ html_classes( scheme, panel, 'space-y-6' ) }}">
+							<ul
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'space-y-6' ) }}"
+							>
 								{{-
 									include(
 										'components/activity-entry.html.twig',
@@ -1120,7 +1202,11 @@
 					<h3 class="text-title-md">Browser frame</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/browser-frame.html.twig',
@@ -1147,7 +1233,11 @@
 					<h3 class="text-title-md">Window splitter</h3>
 					<div class="space-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/window-splitter.html.twig',
@@ -1179,7 +1269,9 @@
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
 							<ul
-								class="{{ html_classes( scheme, panel, 'grid grid-cols-2 gap-3 sm:grid-cols-4' ) }}"
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'grid grid-cols-2 gap-3 sm:grid-cols-4' ) }}"
 							>
 								{%- for name in [ 'L’Arbre Vert', 'Olmagi', 'Eigrene', 'Milia Matcha' ] -%}
 									{{-
@@ -1198,7 +1290,11 @@
 					<h3 class="text-title-md">Accordion item</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
 								{{-
 									include(
 										'components/accordion-group.html.twig',
@@ -1231,7 +1327,11 @@
 					<h3 class="text-title-md">Rich text: list, blockquote, code block</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'wysiwyg text-body text-lg' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'wysiwyg text-body text-lg' ) }}"
+							>
 								<p>Un thème du commerce se modifie mal, et chaque mise à jour le remet à zéro.</p>
 								<ul>
 									<li>Thème construit sur notre starter</li>
@@ -1347,9 +1447,9 @@
 					<p class="text-eyebrow text-muted">Components</p>
 					<h2 id="styleguide-cards" class="text-title-xl">Cards</h2>
 					<p class="text-muted text-sm">
-						Cards of the Figma Components page, in a Dark panel then a scheme-light one. Article and
-						Link cards are one link stretched over the card: hover and focus show on interaction.
-						The others hold their own button or link, if any.
+						Cards of the Figma Components page, in a Dark panel then a Light one. Article and Link
+						cards are one link stretched over the card: hover and focus show on interaction. The
+						others hold their own button or link, if any.
 					</p>
 				</header>
 
@@ -1358,7 +1458,11 @@
 						<h3 class="text-title-md">{{- name -}}</h3>
 						<div class="layout-grid gap-y-3">
 							{%- for scheme in schemes | keys -%}
-								<div class="{{ html_classes( scheme, panel ) }}">
+								<div
+									data-scheme="{{ schemes[ scheme ] }}"
+									data-scheme-ignore
+									class="{{ html_classes( panel ) }}"
+								>
 									{{-
 										include(
 											'components/' ~ card.template ~ '.html.twig',
@@ -1379,7 +1483,11 @@
 					<h3 class="text-title-md">Step card and Check card</h3>
 					<div class="layout-grid gap-y-3">
 						{%- for scheme in schemes | keys -%}
-							<div class="{{ html_classes( scheme, panel, 'space-y-6' ) }}">
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'space-y-6' ) }}"
+							>
 								<ol>
 									{{-
 										include(

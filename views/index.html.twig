@@ -24,7 +24,7 @@
 		{{ function( 'wp_head' ) }}
 	</head>
 
-	<body {{ body_class( 'text-primary bg-default antialiased' ) }}>
+	<body {{ body_class( 'antialiased' ) }} data-scheme="">
 		{{- function( 'wp_body_open ' ) -}}
 
 		{%- block header -%}
@@ -74,5 +74,6 @@
 		</div>
 
 		{{- include( 'components/grid.html.twig' ) -}}
+		{{- include( 'components/scheme.html.twig' ) -}}
 	</body>
 </html>

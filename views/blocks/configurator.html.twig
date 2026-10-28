@@ -115,7 +115,11 @@
 	</style>
 	{# prettier-ignore-end #}
 
-	<section id="{{ block.id }}" aria-label="{{ block.result.title }}">
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		aria-label="{{ block.result.title }}"
+	>
 		<div class="container">
 			<cinq-configurator class="block" data-labels="{{ labels | json_encode | e( 'html_attr' ) }}">
 				<form

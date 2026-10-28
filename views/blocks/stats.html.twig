@@ -24,6 +24,7 @@
 
 	<section
 		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
 		class="bg-elevated text-primary"
 		{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 		{{ items | length ? 'itemscope itemtype="https://schema.org/ItemList"' }}

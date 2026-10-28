@@ -39,6 +39,7 @@
 
 	<section
 		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
 		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
 	>
 		<div class="container flex flex-col gap-8 lg:gap-14">

@@ -45,6 +45,18 @@ class ClonesFields implements Service {
 				'layout'       => 'block',
 				'sub_fields'   => array(
 					array(
+						'key'           => 'field_' . $key . '_layout_color_scheme',
+						'label'         => __( 'Color scheme', 'agencecinq' ),
+						'name'          => 'color_scheme',
+						'aria-label'    => __( 'Color scheme', 'agencecinq' ),
+						'type'          => 'button_group',
+						'instructions'  => __( 'Colors of the section, the Figma modes: Dark like the page, or Light to set it apart.', 'agencecinq' ),
+						'choices'       => wp_list_pluck( cinq_schemes(), 'label' ),
+						'default_value' => '',
+						'return_format' => 'value',
+						'layout'        => 'horizontal',
+					),
+					array(
 						'key'          => 'field_' . $key . '_layout_paddings',
 						'label'        => __( 'Paddings', 'agencecinq' ),
 						'name'         => 'paddings',

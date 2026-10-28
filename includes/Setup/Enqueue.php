@@ -133,8 +133,13 @@ class Enqueue implements Service {
 	public function enqueue_styles(): void {
 		$filename = Vite::asset( 'src/stylesheets/styles.css' );
 
+		// Color variables from includes/schemes.php, inline only (no file).
+		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Inline only.
+		wp_register_style( get_theme_text_domain() . '-colors', false, array(), null );
+		wp_add_inline_style( get_theme_text_domain() . '-colors', cinq_colors_css() );
+
 		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Vite hashes the filename.
-		wp_enqueue_style( get_theme_text_domain() . '-main', $filename, array(), null );
+		wp_enqueue_style( get_theme_text_domain() . '-main', $filename, array( get_theme_text_domain() . '-colors' ), null );
 	}
 
 

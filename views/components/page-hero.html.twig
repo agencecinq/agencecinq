@@ -10,6 +10,7 @@
  # @param array meta Optional label items with a text key.
  # @param array|int image Optional right-hand image.
  # @param string heading Heading tag. Defaults to h1.
+ # @param string scheme Optional. Color scheme of the section (includes/schemes.php), the page's by default.
  # @param array classes Extra classes for the section.
  #}
 
@@ -20,6 +21,7 @@
 {%- if overline or title or text or ( link_items | length ) or image -%}
 	<section
 		id="{{ id | default( 'page-hero' ) }}"
+		data-scheme="{{ scheme | default( '' ) }}"
 		class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}"
 		{{ title ? 'aria-labelledby="' ~ title_id ~ '"' }}
 	>

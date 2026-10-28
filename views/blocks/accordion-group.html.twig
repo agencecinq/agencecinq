@@ -12,7 +12,11 @@
 	)
 -}}
 
-<section id="{{ block.id }}" {{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}>
+<section
+	id="{{ block.id }}"
+	data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+	{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+>
 	<div class="layout-grid container gap-y-14">
 		{%- if block.content.overline or block.content.title -%}
 			<header class="col-span-full space-y-6 lg:col-span-8">

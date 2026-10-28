@@ -19,6 +19,7 @@
 
 <nav
 	id="{{ block.id }}"
+	data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
 	class="bg-elevated"
 	aria-label="{{ block.content.overline | default( __( 'Related links', 'agencecinq' ) ) }}"
 >

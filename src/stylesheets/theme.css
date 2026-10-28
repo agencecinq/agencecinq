@@ -2,38 +2,8 @@
 	--font-sans: "Inter", sans-serif;
 	--font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-	/* Colors · Figma roles, light-dark(Light, Dark) */
+	/* Colors · roles from includes/schemes.php, below in @theme reference */
 	--color-*: initial;
-
-	--background-color-default: light-dark(#f1f0ea, #08090a);
-	--background-color-elevated: light-dark(#e6e4dc, #0d0f0e);
-	--background-color-surface: light-dark(#e6e4dc, #141614);
-	--background-color-surface-hover: light-dark(#d3d1c7, #1c201c);
-	--background-color-media: light-dark(#d3d1c7, #1c201c);
-
-	--text-color-primary: light-dark(#08090a, #f1f0ea);
-	--text-color-body: light-dark(#2b2a26, #d3d1c7);
-	--text-color-muted: light-dark(#55544c, #9a988d);
-	--text-color-subtle: light-dark(#6b6a61, #7e7c71);
-	--text-color-on-accent: light-dark(#f1f0ea, #0a0c0a);
-
-	--border-color-default: light-dark(#08090a24, #f1f0ea1c);
-	--border-color-subtle: light-dark(#08090a12, #f1f0ea0f);
-	--border-color-accent: light-dark(#08090a, #b3fca4);
-	--border-color-control: light-dark(#7d7a72, #74726b);
-
-	--color-accent-default: light-dark(#08090a, #b3fca4);
-	--color-accent-hover: light-dark(#141614, #c7ffbb);
-	--color-accent-soft: light-dark(#08090a12, #b3fca424);
-
-	--color-focus-ring: light-dark(#08090a, #b3fca4);
-	--color-status-error: light-dark(#b3381f, #ff8f7a);
-	--color-overlay-scrim: #050505b8;
-
-	--color-diff-minus: light-dark(#b42318, #ff8a7a);
-	--color-diff-minus-soft: light-dark(#b4231812, #ff8a7a14);
-	--color-diff-plus: light-dark(#1f6b2a, #b3fca4);
-	--color-diff-plus-soft: light-dark(#1f6b2a14, #b3fca417);
 
 	/* Typographies */
 	--text-*: initial;
@@ -176,4 +146,33 @@
 			transform: translate(-50%);
 		}
 	}
+}
+
+/* Colors · Figma roles. Tailwind knows their names; their values come from includes/schemes.php,
+   printed in the head for :root and each [data-scheme]. */
+@theme reference {
+	--background-color-default: var(--background-color-default);
+	--background-color-elevated: var(--background-color-elevated);
+	--background-color-surface: var(--background-color-surface);
+	--background-color-surface-hover: var(--background-color-surface-hover);
+	--background-color-media: var(--background-color-media);
+	--text-color-primary: var(--text-color-primary);
+	--text-color-body: var(--text-color-body);
+	--text-color-muted: var(--text-color-muted);
+	--text-color-subtle: var(--text-color-subtle);
+	--text-color-on-accent: var(--text-color-on-accent);
+	--color-accent-default: var(--color-accent-default);
+	--color-accent-hover: var(--color-accent-hover);
+	--color-accent-soft: var(--color-accent-soft);
+	--border-color-default: var(--border-color-default);
+	--border-color-subtle: var(--border-color-subtle);
+	--border-color-accent: var(--border-color-accent);
+	--border-color-control: var(--border-color-control);
+	--color-focus-ring: var(--color-focus-ring);
+	--color-status-error: var(--color-status-error);
+	--color-overlay-scrim: var(--color-overlay-scrim);
+	--color-diff-minus: var(--color-diff-minus);
+	--color-diff-minus-soft: var(--color-diff-minus-soft);
+	--color-diff-plus: var(--color-diff-plus);
+	--color-diff-plus-soft: var(--color-diff-plus-soft);
 }

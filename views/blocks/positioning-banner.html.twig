@@ -20,7 +20,11 @@
 		)
 	-}}
 
-	<div id="{{ block.id }}" class="border-default bg-elevated border-y py-4 text-sm">
+	<div
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		class="border-default bg-elevated border-y py-4 text-sm"
+	>
 		<div class="container">
 			<ul class="scrollbar-hidden flex items-center justify-center-safe gap-x-6 overflow-x-auto">
 				{%- for item in items -%}
