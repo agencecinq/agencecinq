@@ -352,10 +352,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:94
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:96
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:50
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:52
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:177
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:179
 msgid "Title"
 msgstr ""
 
@@ -459,10 +455,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:42
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:36
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:37
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:42
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:44
 msgid "Content"
 msgstr ""
 
@@ -477,8 +469,6 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:87
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:89
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:109
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:111
 msgid "Platform"
 msgstr ""
 
@@ -542,10 +532,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:105
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:87
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:89
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:68
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:70
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:223
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:225
 msgid "Text"
 msgstr ""
 
@@ -709,8 +695,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:65
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:67
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:58
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:60
 msgid "Heading"
 msgstr ""
 
@@ -896,7 +880,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:61
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:54
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:61
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:54
 msgid "Enter the title of the block"
 msgstr ""
 
@@ -960,10 +943,6 @@ msgid "Code Guide"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:48
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:132
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:134
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:167
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:169
 msgid "Badge"
 msgstr ""
 
@@ -1325,9 +1304,6 @@ msgstr "Pas de présentation d’agence : on parle de votre projet."
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:80
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:129
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:131
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:91
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:100
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:102
 msgid "Catalogue"
 msgstr ""
 
@@ -1439,7 +1415,6 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:73
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:74
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:74
 msgid "Enter the introductory text of the block"
 msgstr ""
 
@@ -1671,7 +1646,6 @@ msgid "Totals"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:135
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:217
 msgid "Add Line"
 msgstr ""
 
@@ -1684,14 +1658,11 @@ msgid "e.g. Shopify Standard only: 27 888 € excl. VAT"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:176
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:192
 msgid "€ excl. VAT"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:181
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:183
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:199
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:201
 msgid "Price Mode"
 msgstr ""
 
@@ -2674,25 +2645,18 @@ msgid "Article content"
 msgstr "Contenu de l’article"
 
 #: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:95
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:91
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:144
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:146
 msgid "Packages"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:96
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:92
 msgid "Retainers"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:97
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:93
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:156
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:158
 msgid "Modules"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:151
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTable.php:160
 msgid ""
 "Packages of the platform to show. None ticked: every package of the platform."
 msgstr ""
@@ -3451,6 +3415,42 @@ msgstr ""
 "Une carte par page enfant, trois par ligne sur ordinateur : le libellé du "
 "lien est le titre de la carte, toute la carte mène à la page."
 
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTable.php:30
+msgid "Pricing table"
+msgstr "Tableau de prix"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTable.php:53
+msgid "Pricing"
+msgstr "Tarifs"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTable.php:61
+msgid "Shopify store creation"
+msgstr "Création de boutique Shopify"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTable.php:89
+msgid ""
+"Public prices, excluding tax. The Figma file and the code are in your name."
+msgstr "Prix publics, hors taxes. Le Figma et le code sont à votre nom."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTable.php:90
+msgid "Line under the cards."
+msgstr "Ligne sous les cartes."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTable.php:121
+msgid ""
+"The cards, their price, lead time or response time and three included lines "
+"come from Central, which is authoritative: check it before publishing. Three "
+"per row on desktop."
+msgstr ""
+"Les cartes, leur prix, leur délai ou leur temps de réponse et trois lignes "
+"incluses viennent de Central, qui fait foi : le relire avant de publier. "
+"Trois par ligne sur ordinateur."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTable.php:125
+#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTable.php:127
+msgid "Range"
+msgstr "Gamme"
+
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:29
 msgid "Accordion Group"
 msgstr ""
@@ -3483,109 +3483,4 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:91
 msgid "Enter the short description of the page"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:186
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:188
-msgid "Price"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:31
-msgid "Pricing Tiers"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:80
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:81
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:144
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:146
-msgid "Tiers"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:86
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:88
-msgid "Source"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:92
-msgid "Manual"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:120
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:122
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:157
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:159
-msgid "Featured"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:136
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:171
-msgid "e.g. Most chosen"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:151
-msgid "Add Tier"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:152
-msgid "Three pricing cards in a row. Highlight at most one tier."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:162
-msgid "Highlight this tier (pistachio border and soft fill)."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:172
-msgid "Optional uppercase mono label. Independent of the featured highlight."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:181
-msgid "Enter the name of the tier"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:191
-msgid "e.g. 14900"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:193
-msgid ""
-"Global price, without a day rate or a number of days. Leave it empty on "
-"quote."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:211
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:213
-msgid "Included"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:218
-msgid "Up to four included lines."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:227
-msgid "Enter the included line"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:98
-msgid ""
-"Packages, Retainers, Modules: the cards, prices, badges and included lines "
-"come from Central and follow its changes within the minute. Manual: for an "
-"offer outside the catalogue."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:117
-msgid ""
-"In the order of the catalogue, with the first four included lines. A package "
-"shows its lead time, a retainer its response time, a module its benefit."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:129
-msgid "Card to highlight (pistachio border and soft fill)."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:139
-msgid "Shown on the featured card, instead of its lead time or response time."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:164
-msgid "Up to four modules of the platform to show."
 msgstr ""

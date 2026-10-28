@@ -35,7 +35,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingRules;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTable;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
@@ -80,7 +80,7 @@ class BlocksFields implements Service {
 		PortraitGrid::class,
 		PositioningBanner::class,
 		PricingRules::class,
-		PricingTiers::class,
+		PricingTable::class,
 		Quote::class,
 		Stats::class,
 		Subscriptions::class,

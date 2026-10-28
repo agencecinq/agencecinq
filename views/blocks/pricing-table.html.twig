@@ -1,0 +1,86 @@
+{#
+ # Blocks: Pricing table
+ #
+ # Figma Section/Pricing table: the Section heading, then one Pricing card per package or retainer of a
+ # platform, from Central, three per row from lg on four columns each: its name, its price, its lead time or
+ # response time and three included lines. Below, the note and the primary button. Without Central, the
+ # section is not shown.
+ #}
+
+{%- set catalogue = catalogue() -%}
+{%- set settings = block.catalogue | default( {} ) -%}
+{%- set source = settings.source | default( 'catalogue' ) -%}
+{%- set lines = catalogue ? catalogue.tiers( source, settings ) : [] -%}
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if lines | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col items-start gap-8 lg:gap-14">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: heading,
+						id: title_id,
+					},
+					with_context: false
+				)
+			-}}
+
+			<ul class="layout-grid w-full gap-y-4">
+				{%- for line in lines -%}
+					<li class="col-span-full flex lg:col-span-4">
+						{{-
+							include(
+								'components/pricing-card.html.twig',
+								{
+									name: line.name,
+									price: 'retainers' == source ? line | retainer_price : line | price,
+									duration: line.badge,
+									items: line.included | slice( 0, 3 ),
+									heading: {
+										h1: 'h2',
+										h2: 'h3',
+										h3: 'h4',
+									}[ heading ],
+									classes: [ 'w-full' ],
+								},
+								with_context: false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+
+			{%- if block.content.note -%}
+				<p class="text-muted text-sm">{{- block.content.note -}}</p>
+			{%- endif -%}
+
+			{{-
+				include(
+					'components/button.html.twig',
+					block.content.link | default( {} ) | merge( { variant: 'primary' } ),
+					with_context: false
+				)
+			-}}
+		</div>
+	</section>
+{%- endif -%}
