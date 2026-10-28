@@ -5,7 +5,8 @@
  # title and the text.
  #
  # @param string number Two digits, e.g. '%02d' | format( loop.index ).
- # @param string who Optional, e.g. « Personne » or « IA ».
+ # @param string who Optional, e.g. « Personne » or « Agent IA ».
+ # @param bool dot Optional. Accent dot before who, for the steps held by a person.
  # @param string title
  # @param string text
  # @param string heading Optional. Tag of the title, 'h3' by default.
@@ -29,7 +30,7 @@
 				'components/badge.html.twig',
 				{
 					title: who | default( '' ),
-					dot: true,
+					dot: dot | default( false ),
 				},
 				with_context: false
 			)

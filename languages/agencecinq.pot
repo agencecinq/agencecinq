@@ -328,6 +328,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:118
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:120
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:55
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:57
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:109
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:111
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:109
@@ -437,6 +441,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:42
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:34
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:35
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:40
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:36
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:37
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:42
@@ -506,6 +514,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:128
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:130
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:63
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:65
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:118
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:120
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:68
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:70
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:118
@@ -679,6 +691,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:76
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:65
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:67
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:73
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:75
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:60
 msgid "Heading"
@@ -888,6 +902,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:80
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:70
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:69
 msgid "Enter the lead text of the block"
 msgstr ""
 
@@ -1007,6 +1022,9 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:41
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:46
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:48
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:29
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:85
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:87
 msgid "Steps"
 msgstr ""
 
@@ -1218,6 +1236,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:50
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:48
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:50
 msgid "Eyebrow"
 msgstr ""
 
@@ -3530,4 +3550,46 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:172
 msgid "The scope is negotiable, the price follows from it."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:59
+msgid "AI produces, the team reviews."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:90
+msgid "Add Step"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:91
+msgid ""
+"One step per row, numbered in its order. Who holds it shows in a badge, and "
+"the legend lists the ones used."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:95
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:97
+msgid "Who"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:100
+#: views/blocks/steps.html.twig:11
+msgid "Person"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:101
+#: views/blocks/steps.html.twig:16
+msgid "AI agent"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:102
+#: views/blocks/steps.html.twig:21 views/blocks/steps.html.twig:22
+msgid "You"
+msgstr ""
+
+#: views/blocks/steps.html.twig:12
+msgid "A person from the team"
+msgstr ""
+
+#: views/blocks/steps.html.twig:17
+msgid "An AI agent, reviewed afterwards"
 msgstr ""

@@ -43,6 +43,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTable;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\RichText;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Steps;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
 use AgenceCinq\Service;
 
@@ -93,6 +94,7 @@ class BlocksFields implements Service {
 		Quote::class,
 		RichText::class,
 		Stats::class,
+		Steps::class,
 		Subscriptions::class,
 	);
 

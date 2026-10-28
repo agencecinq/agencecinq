@@ -1,0 +1,105 @@
+{#
+ # Blocks: Steps
+ #
+ # Figma Section/Steps, on bg/elevated: the Section heading, the legend of who holds the steps, then the
+ # steps as Step cards, numbered in their order, on three columns each from lg. Who holds a step is written
+ # in its badge, the dot marking the steps held by a person.
+ #}
+
+{%- set actors = {
+	person: {
+		label: __( 'Person', 'agencecinq' ),
+		legend: __( 'A person from the team', 'agencecinq' ),
+		dot: true,
+	},
+	ai: {
+		label: __( 'AI agent', 'agencecinq' ),
+		legend: __( 'An AI agent, reviewed afterwards', 'agencecinq' ),
+		dot: false,
+	},
+	you: {
+		label: __( 'You', 'agencecinq' ),
+		legend: __( 'You', 'agencecinq' ),
+		dot: false,
+	},
+} -%}
+{%- set steps = block.steps | default( [] ) | filter( step => step.title ) -%}
+{%- set used = steps | map( step => step.who | default( 'person' ) ) -%}
+{%- set legend = actors | filter( ( actor, key ) => key in used ) -%}
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if steps | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		class="bg-elevated"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-8 lg:gap-14">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: heading,
+						id: title_id,
+					},
+					with_context: false
+				)
+			-}}
+			<ul class="flex flex-wrap gap-x-4 gap-y-2">
+				{%- for actor in legend -%}
+					<li>
+						{{-
+							include(
+								'components/badge.html.twig',
+								{
+									title: actor.legend,
+									dot: actor.dot,
+								},
+								with_context: false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+			<ol class="layout-grid gap-y-4">
+				{%- for step in steps -%}
+					{%- set actor = actors[ step.who | default( 'person' ) ] | default( actors.person ) -%}
+					{{-
+						include(
+							'components/step-card.html.twig',
+							{
+								number: '%02d' | format( loop.index ),
+								who: actor.label,
+								dot: actor.dot,
+								title: step.title,
+								text: step.text,
+								heading: {
+									h1: 'h2',
+									h2: 'h3',
+									h3: 'h4',
+								}[ heading ],
+								classes: [ 'col-span-full lg:col-span-3' ],
+							},
+							with_context: false
+						)
+					-}}
+				{%- endfor -%}
+			</ol>
+		</div>
+	</section>
+{%- endif -%}
