@@ -46,6 +46,37 @@ class StyleguidePage extends Post {
 					),
 				),
 			),
+			array(
+				'title' => 'Components',
+				'items' => array(
+					array(
+						'title' => 'Fundamentals',
+						'href'  => '#styleguide-fundamentals',
+					),
+				),
+			),
+		);
+	}
+
+	/**
+	 * Icons of the Figma Components page, by sprite id (src/icons/).
+	 *
+	 * @return array<string, string>
+	 */
+	public function icons(): array {
+		return array(
+			'Icon/Asterisk'      => 'asterisk',
+			'Icon/Arrow'         => 'arrow',
+			'Icon/Close'         => 'close',
+			'Icon/Menu'          => 'menu',
+			'Icon/Chevron down'  => 'chevron-down',
+			'Icon/Chevron up'    => 'chevron-up',
+			'Icon/Chevron left'  => 'chevron-left',
+			'Icon/Chevron right' => 'chevron-right',
+			'Icon/Check'         => 'check',
+			'Icon/Plus'          => 'plus',
+			'Icon/Minus'         => 'minus',
+			'Icon/External'      => 'external',
 		);
 	}
 
