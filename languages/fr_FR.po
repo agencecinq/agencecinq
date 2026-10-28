@@ -348,10 +348,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:306
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:365
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:368
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:57
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:59
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:94
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:96
 msgid "Title"
 msgstr ""
 
@@ -447,10 +443,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:37
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:44
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:35
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:40
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:40
@@ -528,8 +520,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:210
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:312
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:317
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:103
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:105
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:87
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:89
 msgid "Text"
@@ -693,8 +683,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:67
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:60
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:65
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:67
 msgid "Heading"
 msgstr ""
 
@@ -793,8 +781,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:190
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:357
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:360
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:48
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:50
 msgid "Overline"
@@ -862,13 +848,11 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:51
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:52
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:53
 msgid "Enter the overline of the block"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:52
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:53
 msgid "Eyebrow label shown above the title."
 msgstr ""
 
@@ -879,21 +863,15 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:61
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:54
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:61
 msgid "Enter the title of the block"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:50
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:77
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:78
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:83
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:85
 msgid "Items"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:53
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:88
 msgid "Add Item"
 msgstr ""
 
@@ -3451,17 +3429,31 @@ msgstr ""
 msgid "Range"
 msgstr "Gamme"
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:29
-msgid "Accordion Group"
-msgstr ""
+#: includes/Plugins/ACF/IncludeFields/Layouts/Accordion.php:29
+msgid "Accordion"
+msgstr "Accordéon"
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:90
-msgid "Each row is an accordion panel. The first item opens by default."
-msgstr ""
+#: includes/Plugins/ACF/IncludeFields/Layouts/Accordion.php:52
+msgid "Questions"
+msgstr "Questions"
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:98
-msgid "Enter the title of the item"
-msgstr ""
+#: includes/Plugins/ACF/IncludeFields/Layouts/Accordion.php:60
+msgid "Before choosing Continu"
+msgstr "Avant de choisir Continu"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Accordion.php:99
+msgid "One question per row, the first one open."
+msgstr "Une question par ligne, la première ouverte."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Accordion.php:103
+#: includes/Plugins/ACF/IncludeFields/Layouts/Accordion.php:105
+msgid "Question"
+msgstr "Question"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Accordion.php:112
+#: includes/Plugins/ACF/IncludeFields/Layouts/Accordion.php:114
+msgid "Answer"
+msgstr "Réponse"
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:29
 msgid "Crosslinks"

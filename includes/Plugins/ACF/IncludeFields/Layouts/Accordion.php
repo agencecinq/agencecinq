@@ -1,6 +1,6 @@
 <?php
 /**
- * ACF layout: Accordion Group
+ * ACF layout: Accordion
  *
  * @package WordPress
  * @subpackage AgenceCinq/Plugins/ACF/IncludeFields/Layouts
@@ -12,31 +12,31 @@ namespace AgenceCinq\Plugins\ACF\IncludeFields\Layouts;
 use AgenceCinq\Plugins\ACF\IncludeFields\AcfFieldHelpers;
 
 /**
- * Accordion Group block layout.
+ * Accordion block layout.
  */
-class AccordionGroup {
+class Accordion {
 
 	/**
-	 * Returns the layout array for the Accordion Group block.
+	 * Returns the layout array for the Accordion block.
 	 *
-	 * @param string $key The field key prefix (e.g. 'blocks' or 'archive_posts').
+	 * @param string $key The field key prefix (e.g. 'blocks').
 	 * @return array<string, mixed>
 	 */
 	public static function get_layout( string $key ): array {
 		return array(
-			'key'        => 'layout_' . $key . '_accordion_group',
-			'name'       => 'accordion_group',
-			'label'      => __( 'Accordion Group', 'agencecinq' ),
+			'key'        => 'layout_' . $key . '_accordion',
+			'name'       => 'accordion',
+			'label'      => __( 'Accordion', 'agencecinq' ),
 			'display'    => 'block',
 			'sub_fields' => array(
 				array(
-					'key'        => 'field_' . $key . '_accordion_group_content_tab',
+					'key'        => 'field_' . $key . '_accordion_tab_content',
 					'label'      => __( 'Content', 'agencecinq' ),
 					'aria-label' => __( 'Content', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
-					'key'        => 'field_' . $key . '_accordion_group_content',
+					'key'        => 'field_' . $key . '_accordion_content',
 					'label'      => __( 'Content', 'agencecinq' ),
 					'name'       => 'content',
 					'aria-label' => __( 'Content', 'agencecinq' ),
@@ -44,24 +44,33 @@ class AccordionGroup {
 					'layout'     => 'block',
 					'sub_fields' => array(
 						array(
-							'key'          => 'field_' . $key . '_accordion_group_content_overline',
-							'label'        => __( 'Overline', 'agencecinq' ),
-							'name'         => 'overline',
-							'aria-label'   => __( 'Overline', 'agencecinq' ),
-							'type'         => 'text',
-							'placeholder'  => __( 'Enter the overline of the block', 'agencecinq' ),
-							'instructions' => __( 'Eyebrow label shown above the title.', 'agencecinq' ),
+							'key'         => 'field_' . $key . '_accordion_content_eyebrow',
+							'label'       => __( 'Eyebrow', 'agencecinq' ),
+							'name'        => 'eyebrow',
+							'aria-label'  => __( 'Eyebrow', 'agencecinq' ),
+							'type'        => 'text',
+							'placeholder' => __( 'Questions', 'agencecinq' ),
 						),
 						array(
-							'key'         => 'field_' . $key . '_accordion_group_content_title',
+							'key'         => 'field_' . $key . '_accordion_content_title',
 							'label'       => __( 'Title', 'agencecinq' ),
 							'name'        => 'title',
 							'aria-label'  => __( 'Title', 'agencecinq' ),
 							'type'        => 'text',
-							'placeholder' => __( 'Enter the title of the block', 'agencecinq' ),
+							'placeholder' => __( 'Before choosing Continu', 'agencecinq' ),
 						),
 						array(
-							'key'        => 'field_' . $key . '_accordion_group_content_heading',
+							'key'         => 'field_' . $key . '_accordion_content_text',
+							'label'       => __( 'Text', 'agencecinq' ),
+							'name'        => 'text',
+							'aria-label'  => __( 'Text', 'agencecinq' ),
+							'type'        => 'textarea',
+							'rows'        => 3,
+							'new_lines'   => '',
+							'placeholder' => __( 'Enter the lead text of the block', 'agencecinq' ),
+						),
+						array(
+							'key'        => 'field_' . $key . '_accordion_content_heading',
 							'label'      => __( 'Heading', 'agencecinq' ),
 							'name'       => 'heading',
 							'aria-label' => __( 'Heading', 'agencecinq' ),
@@ -73,13 +82,13 @@ class AccordionGroup {
 					),
 				),
 				array(
-					'key'        => 'field_' . $key . '_accordion_group_tab_items',
+					'key'        => 'field_' . $key . '_accordion_tab_items',
 					'label'      => __( 'Items', 'agencecinq' ),
 					'aria-label' => __( 'Items', 'agencecinq' ),
 					'type'       => 'tab',
 				),
 				array(
-					'key'          => 'field_' . $key . '_accordion_group_items',
+					'key'          => 'field_' . $key . '_accordion_items',
 					'label'        => __( 'Items', 'agencecinq' ),
 					'name'         => 'items',
 					'aria-label'   => __( 'Items', 'agencecinq' ),
@@ -87,31 +96,31 @@ class AccordionGroup {
 					'layout'       => 'block',
 					'button_label' => __( 'Add Item', 'agencecinq' ),
 					'min'          => 1,
-					'instructions' => __( 'Each row is an accordion panel. The first item opens by default.', 'agencecinq' ),
+					'instructions' => __( 'One question per row, the first one open.', 'agencecinq' ),
 					'sub_fields'   => array(
 						array(
-							'key'             => 'field_' . $key . '_accordion_group_items_title',
-							'label'           => __( 'Title', 'agencecinq' ),
+							'key'             => 'field_' . $key . '_accordion_items_title',
+							'label'           => __( 'Question', 'agencecinq' ),
 							'name'            => 'title',
-							'aria-label'      => __( 'Title', 'agencecinq' ),
+							'aria-label'      => __( 'Question', 'agencecinq' ),
 							'type'            => 'text',
-							'placeholder'     => __( 'Enter the title of the item', 'agencecinq' ),
-							'parent_repeater' => 'field_' . $key . '_accordion_group_items',
+							'required'        => 1,
+							'parent_repeater' => 'field_' . $key . '_accordion_items',
 						),
 						array(
-							'key'             => 'field_' . $key . '_accordion_group_items_text',
-							'label'           => __( 'Text', 'agencecinq' ),
+							'key'             => 'field_' . $key . '_accordion_items_text',
+							'label'           => __( 'Answer', 'agencecinq' ),
 							'name'            => 'text',
-							'aria-label'      => __( 'Text', 'agencecinq' ),
+							'aria-label'      => __( 'Answer', 'agencecinq' ),
 							'type'            => 'wysiwyg',
 							'tabs'            => 'visual',
 							'toolbar'         => 'basic',
 							'media_upload'    => 0,
-							'parent_repeater' => 'field_' . $key . '_accordion_group_items',
+							'parent_repeater' => 'field_' . $key . '_accordion_items',
 						),
 					),
 				),
-				...AcfFieldHelpers::settings( $key . '_accordion_group' ),
+				...AcfFieldHelpers::settings( $key . '_accordion' ),
 			),
 		);
 	}

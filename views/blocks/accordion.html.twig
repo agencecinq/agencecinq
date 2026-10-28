@@ -1,0 +1,55 @@
+{#
+ # Blocks: Accordion
+ #
+ # Figma Section/Accordion: the Section heading on four columns, then the questions of an Accordion group,
+ # the first one open, on seven columns from the sixth.
+ #}
+
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if block.items | default( [] ) | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="layout-grid container items-start gap-y-8">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: heading,
+						id: title_id,
+						classes: [ 'col-span-full lg:col-span-4' ],
+					},
+					with_context: false
+				)
+			-}}
+			{{-
+				include(
+					'components/accordion-group.html.twig',
+					{
+						id: block.id,
+						items: block.items,
+						classes: [ 'col-span-full block lg:col-span-7 lg:col-start-6' ],
+					},
+					with_context: false
+				)
+			-}}
+		</div>
+	</section>
+{%- endif -%}
