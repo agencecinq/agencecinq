@@ -3525,3 +3525,47 @@ msgstr "Code ouvert mis à jour"
 #: views/blocks/activity-log.html.twig:87
 msgid "Releases, last 6 months"
 msgstr "Mises en ligne, 6 derniers mois"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:29
+msgid "Logo wall"
+msgstr "Mur de logos"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:45
+msgid ""
+"One tile per client, all the same size: two per row on mobile, eight on "
+"desktop. Recommended paddings: 56px top and bottom."
+msgstr ""
+"Une case par client, toutes de même taille : deux par ligne sur mobile, huit "
+"sur ordinateur. Marges recommandées : 56 px en haut et en bas."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:53
+msgid "They trust us with their site"
+msgstr "Ils nous confient leur site"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:59
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:61
+msgid "Logos"
+msgstr "Logos"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:64
+msgid "Add Logo"
+msgstr "Ajouter un logo"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:65
+msgid ""
+"Only with the written consent of each client. The logo takes the muted text "
+"colour: one colour on a transparent background, SVG, PNG or WebP. Without a "
+"logo, the tile shows the name."
+msgstr ""
+"Uniquement avec l’accord écrit de chaque client. Le logo prend la couleur du "
+"texte atténué : une seule couleur sur fond transparent, en SVG, PNG ou WebP. "
+"Sans logo, la case affiche le nom."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:74
+msgid "Client name, also the alternative of the logo."
+msgstr "Nom du client, qui sert aussi d’alternative au logo."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:79
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:81
+msgid "Logo"
+msgstr "Logo"

@@ -3492,3 +3492,42 @@ msgstr ""
 #: views/blocks/activity-log.html.twig:87
 msgid "Releases, last 6 months"
 msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:29
+msgid "Logo wall"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:45
+msgid ""
+"One tile per client, all the same size: two per row on mobile, eight on "
+"desktop. Recommended paddings: 56px top and bottom."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:53
+msgid "They trust us with their site"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:59
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:61
+msgid "Logos"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:64
+msgid "Add Logo"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:65
+msgid ""
+"Only with the written consent of each client. The logo takes the muted text "
+"colour: one colour on a transparent background, SVG, PNG or WebP. Without a "
+"logo, the tile shows the name."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:74
+msgid "Client name, also the alternative of the logo."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:79
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:81
+msgid "Logo"
+msgstr ""
