@@ -2,7 +2,8 @@
  # Components: Person card
  #
  # A black and white portrait, then the first name and the role. The name follows the portrait, so its
- # alternative is empty.
+ # alternative is empty. The slot only fills without a portrait: a cut-out one lets the section show
+ # through.
  #
  # @param mixed image Portrait from the media library.
  # @param string name First name.
@@ -12,7 +13,9 @@
  #}
 
 <figure class="{{ html_classes( 'flex flex-col gap-2', classes | default( [] ) | join( ' ' ) ) }}">
-	<div class="bg-media aspect-square overflow-hidden rounded-md">
+	<div
+		class="{{ html_classes( 'aspect-square overflow-hidden rounded-md', not image ? 'bg-media' ) }}"
+	>
 		{%- if image -%}
 			{{-
 				include(

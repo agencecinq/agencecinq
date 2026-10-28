@@ -2246,41 +2246,6 @@ msgstr ""
 msgid "e.g. 690"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:47
-msgid "Team"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:85
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:86
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:91
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:93
-msgid "Members"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:96
-msgid "Add Member"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:97
-msgid ""
-"Each row is a team portrait. Four photos with the same crop (800 × 1000, "
-"4:5) on a transparent background work best."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:108
-msgid ""
-"Vertical portrait, 800 × 1000 recommended. Use a transparent PNG with the "
-"same framing for every member."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:117
-msgid "Enter the name of the member"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:126
-msgid "Enter the role of the member"
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/LockContentFields.php:56
 #: includes/Plugins/ACF/IncludeFields/LockContentFields.php:58
 #: includes/Plugins/ACF/IncludeFields/LockContentFields.php:72
@@ -3711,4 +3676,52 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:89
 msgid "L'Arbre Vert"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:29
+msgid "Portrait grid"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:52
+msgid "Who does the work"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:60
+msgid "A tight team, not a floor."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:86
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:87
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:92
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:94
+msgid "People"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:97
+msgid "Add Person"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:98
+msgid ""
+"Four per row on desktop, two on mobile, over the CINQ band. Black and white "
+"portraits, square: the first name follows, so the portrait needs no "
+"alternative."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:102
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:104
+msgid "Portrait"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:112
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:114
+msgid "First name"
+msgstr ""
+
+#: views/blocks/portrait-grid.html.twig:53
+msgid "Pause the scrolling"
+msgstr ""
+
+#: views/blocks/portrait-grid.html.twig:55
+msgid "Pause"
 msgstr ""

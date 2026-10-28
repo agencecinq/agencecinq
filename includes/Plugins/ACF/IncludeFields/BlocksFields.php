@@ -32,13 +32,13 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ModuleCatalog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHero;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingRules;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Services;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
 use AgenceCinq\Service;
 
 /**
@@ -77,13 +77,13 @@ class BlocksFields implements Service {
 		NumberedList::class,
 		PageHero::class,
 		PositioningBanner::class,
+		PortraitGrid::class,
 		PricingRules::class,
 		PricingTiers::class,
 		Quote::class,
 		Services::class,
 		Stats::class,
 		Subscriptions::class,
-		Team::class,
 	);
 
 	/**
