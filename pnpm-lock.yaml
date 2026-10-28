@@ -12,8 +12,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0(@agencecinq/utils@7.10.0)
       '@agencecinq/drawer':
-        specifier: ^7.0.1
-        version: 7.0.1(@agencecinq/utils@7.10.0)
+        specifier: ^8.0.0
+        version: 8.0.0(@agencecinq/utils@7.10.0)
       '@agencecinq/modal':
         specifier: ^4.0.1
         version: 4.0.1(@agencecinq/utils@7.10.0)
@@ -77,11 +77,11 @@ packages:
     peerDependencies:
       '@agencecinq/utils': '*'
 
-  '@agencecinq/drawer@7.0.1':
-    resolution: {integrity: sha512-q55mb0z2UAy3FP37PbrAj73vwlxYbdkz1cWJX+8+W3YMhjuNdTJLgiGra5WQNjLU3yt+JIFb4p+kGH4Z6cCcYQ==}
+  '@agencecinq/drawer@8.0.0':
+    resolution: {integrity: sha512-6NtDIobg/9e6Pg2sYtkDMpCZYgW5Nb8UVxj74nMhESm/JBYasn1AFmTjfRrraN47BCuZm/6maVQK85sZvSMllw==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@agencecinq/utils': '>=7.0.0'
+      '@agencecinq/utils': '>=7.7.0'
 
   '@agencecinq/modal@4.0.1':
     resolution: {integrity: sha512-NF6fBORh7hOvDMCNhe7q0sGbkbidOJiNnZyOH/XaK5HwQhmzMX0swfAJuSIokCPVDPSQDhNUD8Tu+6mkGD3zQw==}
@@ -1239,7 +1239,7 @@ snapshots:
     dependencies:
       '@agencecinq/utils': 7.10.0
 
-  '@agencecinq/drawer@7.0.1(@agencecinq/utils@7.10.0)':
+  '@agencecinq/drawer@8.0.0(@agencecinq/utils@7.10.0)':
     dependencies:
       '@agencecinq/utils': 7.10.0
 

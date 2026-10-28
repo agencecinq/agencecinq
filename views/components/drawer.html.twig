@@ -1,70 +1,31 @@
 {#
  # Components: Drawer
  #
- # @param {string} id - The drawer ID. Required.
- # @param {string} content - The drawer content. Required.
- # @param {string} [direction] - The direction the drawer will open from. Possible values are 'from-left' and 'from-right'. Default is ''.
- # @param {string} [classes] - Additional classes to apply to the drawer. Optional.
- # @param {string} [margin_top] - The top margin of the drawer. Optional. Default is '0rem'.
- # @param {string} [background] - The background color of the drawer. Optional. Default is ''.
- # @param {string} [aria_label] - Accessible name for the dialog (required for accessibility). Optional.
+ # CINQ UI Drawer on a native modal <dialog>, full screen: the page behind is inert, Escape closes it
+ # and the focus goes back to its button. The [autofocus] element takes the focus on open. It fades
+ # from CSS, without animation for reduced motion.
+ #
+ # @param string id Id that the drawer buttons control.
+ # @param string aria_label Name of the dialog.
+ # @param array classes Optional extra classes on the dialog.
  #
  # @example
- # {{ include( 'components/drawer.html.twig', { id: 'drawer1', direction: 'from-left', aria_label: 'Menu' } ) }}
-#}
+ # {% embed 'components/drawer.html.twig' with { id: 'menu-drawer', aria_label: 'Menu' } only %}
+ #	{% block content %}…{% endblock %}
+ # {% endembed %}
+ #}
 
-{% set direction = direction | default( '' ) %}
-{% set aria_label = aria_label | default( '' ) %}
-{% set translate =
-	'inset-0 max-w-full group-open:opacity-100 opacity-0 duration-300 ease-out transition-opacity'
-%}
-{% set margin_top = margin_top | default( '0rem' ) %}
-{% set background = background | default( '' ) %}
-
-{% if direction == 'from-left' %}
-	{% set translate =
-		'-translate-x-full left-0 group-open:translate-x-0 w-148.75 max-w-full inset-y-0'
-	%}
-{% endif %}
-
-{% if direction == 'from-bottom' %}
-	{% set translate = 'translate-y-full bottom-0 group-open:translate-y-0 inset-x-0' %}
-{% endif %}
-
-{% if direction == 'from-right' %}
-	{% set translate =
-		'translate-x-full right-0 group-open:translate-x-0 w-97.5 max-w-full transition-transform duration-300 ease-out'
-	%}
-{% endif %}
-
-<cinq-drawer
-	id="{{ id }}"
-	cid="{{ id }}"
-	class="{{ html_classes( 'group fixed inset-0 z-5 block w-full', classes | default( '' ) ) }}"
-	style="opacity: 0; visibility: hidden; height: calc(100% - {{ margin_top }}); margin-top: {{
-		margin_top
-	}};"
->
-	<div
-		data-dom="overlay"
-		class="bg-overlay-scrim absolute inset-0 z-1 size-full opacity-0 transition-opacity duration-300 ease-out group-open:opacity-100"
-	></div>
-	<div
-		role="dialog"
-		aria-modal="true"
-		{{ aria_label ? 'aria-label="' ~ aria_label ~ '"' : '' }}
+<cinq-drawer id="{{ id }}">
+	<dialog
 		class="{{
 			html_classes(
-				'bg-default px-2.5 pt-[4.575rem] pb-2.5 transition-transform duration-300 ease-out',
-				translate,
-				'max-h-full',
-				background,
-				'absolute z-2'
+				'bg-default text-primary m-0 size-full max-h-none max-w-none overflow-y-auto overscroll-contain border-0 px-5 pb-6',
+				'opacity-0 transition-[opacity,display,overlay] transition-discrete duration-300 ease-out open:opacity-100 motion-reduce:transition-none starting:open:opacity-0',
+				classes | default( [] ) | join( ' ' )
 			)
 		}}"
+		aria-label="{{ aria_label }}"
 	>
-		<div class="scrollbar-hidden h-full overflow-y-auto scroll-smooth">
-			{%- block content -%}{%- endblock -%}
-		</div>
-	</div>
+		{%- block content -%}{%- endblock -%}
+	</dialog>
 </cinq-drawer>
