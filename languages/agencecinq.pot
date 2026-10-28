@@ -3388,3 +3388,15 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php
 msgid "Secondary button of the header and the mobile menu, next to the contact link, e.g. the diagnostic."
 msgstr ""
+
+#: views/footer.html.twig
+msgid "Legal information"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php
+msgid "Copyright"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php
+msgid "Company after the © and the year. The site name otherwise."
+msgstr ""

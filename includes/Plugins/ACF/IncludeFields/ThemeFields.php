@@ -188,6 +188,15 @@ class ThemeFields implements Service {
 								'placeholder'   => __( 'Enter the text under the logo', 'agencecinq' ),
 								'instructions'  => __( 'Short line under the logo.', 'agencecinq' ) . ' <em>(' . __( 'Optional', 'agencecinq' ) . ')</em>.',
 							),
+							array(
+								'key'           => 'field_' . $key . '_footer_copyright',
+								'label'         => __( 'Copyright', 'agencecinq' ),
+								'name'          => 'copyright',
+								'aria-label'    => __( 'Copyright', 'agencecinq' ),
+								'type'          => 'text',
+								'default_value' => 'CINQ · SAS · Clichy',
+								'instructions'  => __( 'Company after the © and the year. The site name otherwise.', 'agencecinq' ) . ' <em>(' . __( 'Optional', 'agencecinq' ) . ')</em>.',
+							),
 						),
 					),
 					array(
