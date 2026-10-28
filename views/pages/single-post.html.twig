@@ -1,176 +1,142 @@
 {#
  # Single post
  #
+ # Figma T14 · Article: the Post header, the breadcrumb, the title in H1, the lede, the author and the date,
+ # then the image; the post as Rich text; the Profile of the author; the Post row of the posts to read next,
+ # from its categories; then the Signup form of the page for posts.
+ #
  # @package AgenceCinq
  #}
 
 {% extends 'index.html.twig' %}
 
 {%- block content -%}
-	<main id="content" role="main" itemscope itemtype="https://schema.org/BlogPosting">
-		<section class="pt-18 pb-14 lg:pt-26 lg:pb-20" aria-labelledby="post-title">
-			<div class="layout-grid container items-center gap-y-10 lg:gap-x-20">
-				<div class="col-span-full space-y-8 lg:col-span-6">
-					<header class="space-y-6">
-						<p class="text-eyebrow text-muted">
-							<time datetime="{{ post.date( 'c' ) }}" itemprop="datePublished">
-								{{- post.date( 'j F Y' ) | upper -}}
-							</time>
-							{%- for category in post.categories | default( [] ) -%}
-								<span aria-hidden="true">·</span>
-								<span itemprop="articleSection">{{- category.name | upper -}}</span>
-							{%- endfor -%}
-							{%- if post.reading_time -%}
-								<span aria-hidden="true">·</span>
-								<span>{{- __( '%d min read', 'agencecinq' ) | format( post.reading_time ) -}}</span>
-								<meta itemprop="timeRequired" content="PT{{ post.reading_time }}M" />
-							{%- endif -%}
-						</p>
+	{%- set author = post.author -%}
+	{%- set byline = [ author.name, author.meta( 'job' ) ] | filter( part => part ) | join( ', ' ) -%}
+	{%- set related = post.related -%}
+	{%- set signup = post.signup_form -%}
 
-						<h1
-							id="post-title"
-							class="text-title-xxl text-primary lg:text-title-xl"
-							itemprop="headline"
-						>
-							{{- post.title -}}
-						</h1>
-					</header>
-
+	<main id="content" role="main">
+		<article aria-labelledby="post-title">
+			<header class="container flex flex-col gap-6 pt-10 pb-8 lg:gap-8 lg:pt-20 lg:pb-14">
+				<div class="flex max-w-205 flex-col gap-5">
+					{{- include( 'components/breadcrumb.html.twig', with_context: false ) -}}
+					<h1 id="post-title" class="text-title-xxl text-primary">{{- post.title -}}</h1>
 					{%- if post.post_excerpt -%}
-						<p class="text-muted text-xl" itemprop="description">{{- post.post_excerpt -}}</p>
+						<p class="text-body text-xl">{{- post.post_excerpt -}}</p>
 					{%- endif -%}
-
-					{%- if post.author.name -%}
-						<p
-							class="text-eyebrow text-subtle"
-							itemprop="author"
-							itemscope
-							itemtype="https://schema.org/Person"
-						>
-							{{- __( 'By %s', 'agencecinq' ) | format( post.author.name ) | upper -}}
-							<meta itemprop="name" content="{{ post.author.name | e( 'html_attr' ) }}" />
+					<div class="flex items-center gap-3">
+						{{-
+							include(
+								'components/avatar.html.twig',
+								{ image: author.meta( 'portrait' ) },
+								with_context: false
+							)
+						-}}
+						<p class="flex flex-col gap-0.5">
+							{%- if byline -%}
+								<span class="text-button text-primary">{{- byline -}}</span>
+							{%- endif -%}
+							<span class="text-muted text-sm">
+								<time datetime="{{ post.date( 'c' ) }}">{{- post.date -}}</time>
+								{%- if post.reading_time -%}
+									{{- ' · '
+										~ ( __( '%d min read', 'agencecinq' ) | format( post.reading_time ) ) -}}
+								{%- endif -%}
+							</span>
 						</p>
-					{%- endif -%}
+					</div>
 				</div>
-
 				{%- if post.thumbnail -%}
-					<div class="col-span-full lg:col-span-6">
-						<div
-							class="border-default aspect-40/21 overflow-hidden rounded-md border lg:aspect-4/3"
-						>
-							{{-
-								include(
-									'components/image.html.twig',
-									{
-										image: post.thumbnail,
-										classes: [ 'size-full object-cover object-center' ],
-										sizes: '(min-width: 64rem) 50vw, 100vw',
-										loading: 'eager',
-										attributes: {
-											itemprop: 'image',
-											fetchpriority: 'high',
-										},
-									},
-									with_context: false
-								)
-							-}}
-						</div>
+					<div class="bg-media aspect-16/10 overflow-hidden rounded-md lg:aspect-31/14">
+						{{-
+							include(
+								'components/image.html.twig',
+								{
+									image: post.thumbnail,
+									sizes: '(min-width: 90rem) 77.5rem, (min-width: 64rem) calc(100vw - 12.5rem), calc(100vw - 2.5rem)',
+									loading: 'eager',
+									classes: [ 'size-full object-cover' ],
+									attributes: { fetchpriority: 'high' },
+								},
+								with_context: false
+							)
+						-}}
 					</div>
 				{%- endif -%}
-			</div>
-		</section>
+			</header>
 
-		{%- if post.content -%}
-			<section
-				class="py-18 lg:pt-20 lg:pb-26"
-				aria-label="{{ __( 'Article content', 'agencecinq' ) }}"
-			>
-				<div class="container">
-					<div class="wysiwyg text-muted max-w-180 text-base" itemprop="articleBody">
+			{%- if post.content -%}
+				<div class="container py-10 lg:py-20">
+					<div class="wysiwyg text-body max-w-180 text-lg">
 						{{- post.content -}}
 					</div>
 				</div>
-			</section>
-		{%- endif -%}
+			{%- endif -%}
 
-		{%- set related_items = post.meta( 'related_cases' ) | default( [] ) -%}
-		{%- if related_items | length -%}
-			{%- set item_span = ( related_items | length ) == 2
-				? 'col-span-full md:col-span-2'
-				: 'col-span-full lg:col-span-4'
-			-%}
-
-			<section
-				class="bg-elevated py-18 lg:py-26"
-				aria-labelledby="related-cases-title"
-				itemscope
-				itemtype="https://schema.org/ItemList"
-			>
-				<div class="container space-y-10">
-					<h2 id="related-cases-title" class="text-title-lg" itemprop="name">
-						{{- __( 'Read also', 'agencecinq' ) -}}
-					</h2>
-
-					<meta itemprop="numberOfItems" content="{{ related_items | length }}" />
-
-					<ul class="layout-grid gap-y-4 lg:gap-y-6">
-						{%- for item in related_items -%}
-							{%- set case = get_post( item.case_study ) -%}
-
-							{%- if case -%}
-								<li
-									class="{{ item_span }}"
-									itemprop="itemListElement"
-									itemscope
-									itemtype="https://schema.org/ListItem"
-								>
-									<meta itemprop="position" content="{{ loop.index }}" />
-									{{-
-										include(
-											'components/tease-related-case.html.twig',
-											{
-												post: case,
-												text: item.text,
-											},
-											with_context: false
-										)
-									-}}
-								</li>
+			{%- if author -%}
+				<footer class="container py-8 lg:py-14">
+					<div class="border-default flex max-w-205 flex-col gap-6 border-t py-8 lg:flex-row">
+						{{-
+							include(
+								'components/avatar.html.twig',
+								{
+									image: author.meta( 'portrait' ),
+									size: 'large',
+								},
+								with_context: false
+							)
+						-}}
+						<div class="flex flex-col items-start gap-2">
+							<p class="text-title-md text-primary">{{- author.name -}}</p>
+							{%- if author.description -%}
+								<p class="text-body text-base">{{- author.description -}}</p>
 							{%- endif -%}
+							<a
+								href="{{ author.link }}"
+								class="text-button text-primary focus-visible:outline-focus-ring underline focus-visible:outline-2 focus-visible:outline-offset-2"
+							>
+								{{-
+									__( 'All posts by %s', 'agencecinq' ) | format(
+										author.first_name | default( author.name )
+									)
+								-}}
+							</a>
+						</div>
+					</div>
+				</footer>
+			{%- endif -%}
+		</article>
+
+		{%- if related | length -%}
+			<section class="border-default border-t py-14 lg:py-26" aria-labelledby="post-row-title">
+				<div class="container flex flex-col gap-6 lg:gap-10">
+					<h2 id="post-row-title" class="text-title-xl text-primary">
+						{{- __( 'Read next', 'agencecinq' ) -}}
+					</h2>
+					<ul class="layout-grid gap-y-8">
+						{%- for item in related -%}
+							<li class="col-span-full lg:col-span-4">
+								{{-
+									include(
+										'components/article-card.html.twig',
+										{
+											post: item,
+											heading: 'h3',
+											sizes: '(min-width: 90rem) 24.8rem, (min-width: 64rem) calc((100vw - 15.5rem) / 3), calc(100vw - 2.5rem)',
+										},
+										with_context: false
+									)
+								-}}
+							</li>
 						{%- endfor -%}
 					</ul>
 				</div>
 			</section>
 		{%- endif -%}
 
-		{%- set cta_link = theme.contact.link | default( {} ) -%}
-		{%- if cta_link.url is defined and cta_link.url -%}
-			{%- set cta_link =
-				cta_link | merge( {
-					title: cta_link.title | default( __( 'Book 30 minutes', 'agencecinq' ) ),
-				} )
-			-%}
+		{%- if signup -%}
+			{{- include( 'blocks/signup-form.html.twig', { block: signup } ) -}}
 		{%- endif -%}
-
-		{{-
-			include(
-				'blocks/call-to-action.html.twig',
-				{
-					block: {
-						id: 'post-closing-cta',
-						content: {
-							title: __( "Let's start with 30 minutes.", 'agencecinq' ),
-							heading: 'h2',
-							text: __(
-								'We look at your site live, tell you whether we are the right people for it, and give you an order of magnitude. The diagnostic, if it makes sense, is decided at the end of the call.',
-								'agencecinq'
-							),
-							link: cta_link,
-						},
-					},
-				},
-				with_context: false
-			)
-		-}}
 	</main>
 {%- endblock -%}

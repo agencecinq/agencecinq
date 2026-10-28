@@ -514,8 +514,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:70
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:118
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:120
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:78
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:80
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:160
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:162
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:208
@@ -817,7 +815,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:185
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:157
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:97
-#: views/pages/single-post.html.twig:155
 msgid "Book 30 minutes"
 msgstr ""
 
@@ -854,15 +851,7 @@ msgid "Add Item"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:54
-#: views/pages/single-post.html.twig:167
 msgid "Let's start with 30 minutes."
-msgstr ""
-
-#: views/pages/single-post.html.twig:169
-msgid ""
-"We look at your site live, tell you whether we are the right people for it, "
-"and give you an order of magnitude. The diagnostic, if it makes sense, is "
-"decided at the end of the call."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:69
@@ -1588,23 +1577,6 @@ msgstr ""
 msgid "Case studies"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:48
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:50
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:55
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:57
-msgid "Related Cases"
-msgstr ""
-
-#: views/pages/single-post.html.twig:116
-msgid "Read also"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:62
-msgid "Add Case Study"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:67
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:69
 #: includes/Post/CaseStudy.php:168
 msgid "Case study"
 msgstr ""
@@ -1765,24 +1737,6 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:79
 msgid "Optional."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:63
-msgid ""
-"Two or three related cases at the end of the article. The link anchor is the "
-"client name, never See also."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:82
-msgid "public site + product configurator"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:83
-msgid "Short description after the platform. Optional."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/PostFields.php:95
-msgid "Post Fields"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:55
@@ -2170,7 +2124,7 @@ msgid "Category"
 msgstr ""
 
 #: includes/Taxonomy/CaseStudyCategory.php:49
-#: views/blocks/listing-header.html.twig:44
+#: views/blocks/listing-header.html.twig:45
 msgid "Categories"
 msgstr ""
 
@@ -2450,7 +2404,7 @@ msgid "Skip to content"
 msgstr ""
 
 #: views/components/tease-post-column.html.twig:52
-#: views/pages/single-post.html.twig:25
+#: views/pages/single-post.html.twig:44
 #, php-format
 msgid "%d min read"
 msgstr ""
@@ -2487,22 +2441,13 @@ msgstr ""
 msgid "Replay"
 msgstr ""
 
-#: views/blocks/listing-header.html.twig:51
+#: views/blocks/listing-header.html.twig:52
 msgid "All posts"
 msgstr ""
 
 #: views/pages/front-page.html.twig:147
 #, php-format
 msgid "%s ago"
-msgstr ""
-
-#: views/pages/single-post.html.twig:52
-#, php-format
-msgid "By %s"
-msgstr ""
-
-#: views/pages/single-post.html.twig:88
-msgid "Article content"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CatalogueChoices.php:95
@@ -3115,6 +3060,8 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:102
 #: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:104
+#: includes/Plugins/ACF/IncludeFields/UserFields.php:59
+#: includes/Plugins/ACF/IncludeFields/UserFields.php:61
 msgid "Portrait"
 msgstr ""
 
@@ -3565,13 +3512,6 @@ msgstr ""
 msgid "Listing header"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:45
-msgid ""
-"On the page for posts: the title and the text of the blog, then the "
-"categories as filters. On a category, its name and its description replace "
-"them. Recommended paddings: 104px top, 56px bottom."
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:54
 msgid "The blog"
 msgstr ""
@@ -3616,4 +3556,43 @@ msgstr ""
 
 #: views/blocks/signup-form.html.twig:59
 msgid "See the privacy policy"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/UserFields.php:50
+#: includes/Plugins/ACF/IncludeFields/UserFields.php:52
+msgid "Job"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/UserFields.php:54
+msgid "e.g. head of the agency"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/UserFields.php:55
+msgid "After the name, at the top of the posts."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/UserFields.php:66
+msgid ""
+"Square, in black and white, at the top and the end of the posts. The name is "
+"written next to it, so it needs no alternative text."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/UserFields.php:74
+msgid "Author"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:45
+msgid ""
+"On the page for posts: the title and the text of the blog, then the "
+"categories as filters. On a category or an author, their name and their "
+"description replace them. Recommended paddings: 104px top, 56px bottom."
+msgstr ""
+
+#: views/pages/single-post.html.twig:100
+#, php-format
+msgid "All posts by %s"
+msgstr ""
+
+#: views/pages/single-post.html.twig:115
+msgid "Read next"
 msgstr ""

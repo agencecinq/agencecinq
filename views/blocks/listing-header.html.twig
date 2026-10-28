@@ -1,14 +1,15 @@
 {#
  # Blocks: Listing header
  #
- # Figma Section/Listing header, on the blog and its categories: the title in H1 and the text, the category's
- # name and description on a category, then the categories as filters, links in a nav, the current one with
- # aria-current. They wrap on mobile rather than scroll sideways.
+ # Figma Section/Listing header, on the blog, its categories and its authors: the title in H1 and the text,
+ # the name and description of the category or of the author on their archive, then the categories as
+ # filters, links in a nav, the current one with aria-current. They wrap on mobile rather than scroll sideways.
  #}
 
 {%- set category = term | default( null ) -%}
-{%- set title = category ? category.name : block.content.title -%}
-{%- set text = category ? category.description : block.content.text -%}
+{%- set subject = category ?: author | default( null ) -%}
+{%- set title = subject ? subject.name : block.content.title -%}
+{%- set text = subject ? subject.description : block.content.text -%}
 {%- set categories =
 	get_terms( {
 		taxonomy: 'category',
@@ -50,7 +51,7 @@
 									{
 										title: __( 'All posts', 'agencecinq' ),
 										url: posts_url,
-										active: not category,
+										active: not subject,
 									},
 									with_context: false
 								)

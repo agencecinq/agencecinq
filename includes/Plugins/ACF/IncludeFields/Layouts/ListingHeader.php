@@ -42,7 +42,7 @@ class ListingHeader {
 					'aria-label'   => __( 'Content', 'agencecinq' ),
 					'type'         => 'group',
 					'layout'       => 'block',
-					'instructions' => __( 'On the page for posts: the title and the text of the blog, then the categories as filters. On a category, its name and its description replace them. Recommended paddings: 104px top, 56px bottom.', 'agencecinq' ),
+					'instructions' => __( 'On the page for posts: the title and the text of the blog, then the categories as filters. On a category or an author, their name and their description replace them. Recommended paddings: 104px top, 56px bottom.', 'agencecinq' ),
 					'sub_fields'   => array(
 						array(
 							'key'         => 'field_' . $key . '_listing_header_content_title',
