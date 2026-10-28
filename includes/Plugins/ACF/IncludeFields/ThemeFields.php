@@ -138,32 +138,6 @@ class ThemeFields implements Service {
 						),
 					),
 					array(
-						'key'        => 'field_' . $key . '_theme_header_tab',
-						'label'      => __( 'Header', 'agencecinq' ),
-						'name'       => 'header_tab',
-						'aria-label' => __( 'Header', 'agencecinq' ),
-						'type'       => 'tab',
-					),
-					array(
-						'key'        => 'field_' . $key . '_theme_header',
-						'label'      => __( 'Header', 'agencecinq' ),
-						'name'       => 'header',
-						'aria-label' => __( 'Header', 'agencecinq' ),
-						'type'       => 'group',
-						'layout'     => 'block',
-						'sub_fields' => array(
-							array(
-								'key'           => 'field_' . $key . '_theme_header_link',
-								'label'         => __( 'Secondary link', 'agencecinq' ),
-								'name'          => 'link',
-								'aria-label'    => __( 'Secondary link', 'agencecinq' ),
-								'type'          => 'link',
-								'return_format' => 'array',
-								'instructions'  => __( 'Secondary button of the header and the mobile menu, next to the contact link, e.g. the diagnostic.', 'agencecinq' ) . ' <em>(' . __( 'Optional', 'agencecinq' ) . ')</em>.',
-							),
-						),
-					),
-					array(
 						'key'        => 'field_' . $key . '_theme_footer_tab',
 						'label'      => __( 'Footer', 'agencecinq' ),
 						'name'       => 'footer_tab',

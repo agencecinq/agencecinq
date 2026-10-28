@@ -3403,14 +3403,6 @@ msgstr "CINQ, accueil"
 msgid "Open the menu"
 msgstr "Ouvrir le menu"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php
-msgid "Header"
-msgstr "En-tête"
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php
-msgid "Secondary button of the header and the mobile menu, next to the contact link, e.g. the diagnostic."
-msgstr "Bouton secondaire du header et du menu mobile, à côté du lien de contact, par exemple le diagnostic."
-
 #: views/footer.html.twig
 msgid "Legal information"
 msgstr "Informations légales"

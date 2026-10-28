@@ -6,8 +6,8 @@
  # groups, each one keeps its name above its links, as in the Submenu.
  #
  # @param array items Main menu items.
+ # @param array secondary Optional. Secondary menu items.
  # @param object contact Contact options: link, phone.
- # @param object secondary Optional. Secondary link of the header.
  #}
 
 <div class="flex min-h-full flex-col">
@@ -144,19 +144,22 @@
 				)
 			-}}
 		{%- endif -%}
-		{%- if secondary -%}
+		{%- for item in secondary | default( [] ) -%}
 			{{-
 				include(
 					'components/button.html.twig',
-					secondary | merge( {
+					{
+						title: item.title,
+						url: item.url,
+						target: item.is_target_blank ? '_blank',
 						variant: 'secondary',
 						arrow: false,
 						classes: [ 'w-full justify-center' ],
-					} ),
+					},
 					with_context: false
 				)
 			-}}
-		{%- endif -%}
+		{%- endfor -%}
 		{%- if contact.phone | default( false ) -%}
 			<a
 				href="tel:{{ contact.phone | tel }}"

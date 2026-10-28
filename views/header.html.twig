@@ -9,6 +9,10 @@
  #}
 
 {%- set items = nav_menus.main is defined ? nav_menus.main.get_items() | default( [] ) : [] -%}
+{%- set secondary = nav_menus.secondary is defined
+	? nav_menus.secondary.get_items() | default( [] )
+	: []
+-%}
 
 <header
 	role="banner"
@@ -86,19 +90,22 @@
 		{%- endif -%}
 
 		<div class="flex items-center gap-3">
-			{%- if theme.header.link | default( false ) -%}
+			{%- for item in secondary -%}
 				{{-
 					include(
 						'components/button.html.twig',
-						theme.header.link | merge( {
+						{
+							title: item.title,
+							url: item.url,
+							target: item.is_target_blank ? '_blank',
 							variant: 'secondary',
 							arrow: false,
 							classes: [ 'max-lg:hidden' ],
-						} ),
+						},
 						with_context: false
 					)
 				-}}
-			{%- endif -%}
+			{%- endfor -%}
 			{%- if theme.contact.link | default( false ) -%}
 				{{-
 					include(
@@ -134,6 +141,7 @@
 		id: 'menu-drawer',
 		aria_label: __( 'Menu', 'agencecinq' ),
 		items: items,
+		secondary: secondary,
 		theme: theme,
 	} only
 %}
@@ -143,8 +151,8 @@
 				'components/mobile-menu.html.twig',
 				{
 					items: items,
+					secondary: secondary,
 					contact: theme.contact | default( {} ),
-					secondary: theme.header.link | default( null ),
 				},
 				with_context: false
 			)
