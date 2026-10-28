@@ -2340,26 +2340,6 @@ msgstr ""
 msgid "Enter the role of the member"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:28
-msgid "Vertical Pipeline"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:87
-msgid "Add Step"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:89
-msgid "Each row is a pipeline step. The index is generated automatically."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:97
-msgid "Enter the title of the step"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:108
-msgid "Enter the description of the step"
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/LockContentFields.php:56
 #: includes/Plugins/ACF/IncludeFields/LockContentFields.php:58
 #: includes/Plugins/ACF/IncludeFields/LockContentFields.php:72
@@ -3739,3 +3719,23 @@ msgstr ""
 "Capture du site livré, en 16:10 (1600×1000 recommandé). Sans barre de "
 "navigateur ni bandeau de cookies. Son texte alternatif, dans la médiathèque, "
 "nomme le client et dit ce que montre l’image."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/NumberedList.php:29
+msgid "Numbered list"
+msgstr "Liste numérotée"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/NumberedList.php:52
+msgid "What we commit to"
+msgstr "Ce qu’on engage"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/NumberedList.php:60
+msgid "What is decided before we start"
+msgstr "Ce qui est décidé avant de commencer"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/NumberedList.php:98
+msgid ""
+"Numbered in order, from 01. Write numbers as figures: « 30 days », not "
+"« Thirty days »."
+msgstr ""
+"Numérotés dans l’ordre, à partir de 01. Écrire les nombres en chiffres : "
+"« 30 jours », pas « Trente jours »."

@@ -29,6 +29,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LogoWall;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ModuleCatalog;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHero;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingRules;
@@ -37,7 +38,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Services;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\VerticalPipeline;
 use AgenceCinq\Service;
 
 /**
@@ -73,6 +73,7 @@ class BlocksFields implements Service {
 		LatestPosts::class,
 		LogoWall::class,
 		ModuleCatalog::class,
+		NumberedList::class,
 		PageHero::class,
 		PositioningBanner::class,
 		PricingRules::class,
@@ -81,7 +82,6 @@ class BlocksFields implements Service {
 		Stats::class,
 		Subscriptions::class,
 		Team::class,
-		VerticalPipeline::class,
 	);
 
 	/**

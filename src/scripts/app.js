@@ -13,7 +13,6 @@ load("cinq-snake", async () => {
 	await import("@agencecinq/snake");
 	await import("./components/Snake.ts");
 });
-load("cinq-vertical-pipeline", () => import("./components/VerticalPipeline.ts"));
 load("cinq-copy", () => import("./components/Copy.ts"));
 load("cinq-configurator", () => import("./components/Configurator.ts"));
 load("cinq-navigation", () => import("./components/Navigation.ts"));
