@@ -115,7 +115,7 @@ Pages cross-fade with the browser's view transition (`src/stylesheets/utilities/
 
 ### SVG sprite
 
-Icons in `src/icons/` are compiled to `public/sprite.svg` on build. Use `views/svg/use.html.twig`:
+Icons in `src/icons/` are compiled to `public/sprite.svg` on build. The icons of the Figma Components page keep their Figma name (`asterisk`, `arrow`, `close`, `menu`, `chevron-*`, `check`, `plus`, `minus`, `external`, `logo`): shapes without color, filled with the text color like every icon of the sprite. Use `views/svg/use.html.twig`:
 
 ```twig
 {{
