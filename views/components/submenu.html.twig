@@ -1,0 +1,62 @@
+{#
+ # Components: Submenu
+ #
+ # Region of a Nav link, under the header so it never covers the link that opens it. One column of Menu
+ # links with their description, or one column per group when the children have their own children,
+ # each under the name of its group.
+ #
+ # @param string id Id that the Nav link controls.
+ # @param array items Children of the menu item.
+ #}
+
+{%- set grouped = items | filter( item => item.children | length ) | length -%}
+
+<div id="{{ id }}" class="absolute top-full left-0 z-20 pt-7.5" hidden>
+	<div class="border-default bg-elevated shadow-overlay flex gap-4 rounded-lg border p-4">
+		{%- if grouped -%}
+			{%- for group in items -%}
+				<div class="flex w-60 flex-col gap-1">
+					<p id="{{ id }}-{{ group.id }}" class="text-eyebrow text-muted px-4 py-2">
+						{{- group.title -}}
+					</p>
+					<ul class="flex flex-col gap-1" aria-labelledby="{{ id }}-{{ group.id }}">
+						{%- for item in group.children -%}
+							<li>
+								{{-
+									include(
+										'components/menu-link.html.twig',
+										{
+											title: item.title,
+											url: item.url,
+											current: item.current,
+										},
+										with_context: false
+									)
+								-}}
+							</li>
+						{%- endfor -%}
+					</ul>
+				</div>
+			{%- endfor -%}
+		{%- else -%}
+			<ul class="flex w-80 flex-col gap-1">
+				{%- for item in items -%}
+					<li>
+						{{-
+							include(
+								'components/menu-link.html.twig',
+								{
+									title: item.title,
+									url: item.url,
+									text: item.description,
+									current: item.current,
+								},
+								with_context: false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+		{%- endif -%}
+	</div>
+</div>

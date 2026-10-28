@@ -11,6 +11,9 @@ importers:
       '@agencecinq/accordion':
         specifier: ^4.0.0
         version: 4.0.0(@agencecinq/utils@7.10.0)
+      '@agencecinq/disclosure-button':
+        specifier: ^3.0.1
+        version: 3.0.1(@agencecinq/utils@7.10.0)
       '@agencecinq/drawer':
         specifier: ^8.0.0
         version: 8.0.0(@agencecinq/utils@7.10.0)
@@ -74,6 +77,11 @@ packages:
 
   '@agencecinq/accordion@4.0.0':
     resolution: {integrity: sha512-/bHZRXWLrCyfxCzznHcHZxibIxV2o0fbt0gnWO+gD83Us99RvDWG1UcgIYiGVUeTDbNA+yefqqPx4vL48RMuJw==}
+    peerDependencies:
+      '@agencecinq/utils': '*'
+
+  '@agencecinq/disclosure-button@3.0.1':
+    resolution: {integrity: sha512-xk2vdku2doDwaQOHfWJmBqEFPoLByXpBE2xWFjNFQr/K29fyKToEgytESS4a+oK1QR2igvY6aeQYjHbLHwMAWQ==}
     peerDependencies:
       '@agencecinq/utils': '*'
 
@@ -1236,6 +1244,10 @@ packages:
 snapshots:
 
   '@agencecinq/accordion@4.0.0(@agencecinq/utils@7.10.0)':
+    dependencies:
+      '@agencecinq/utils': 7.10.0
+
+  '@agencecinq/disclosure-button@3.0.1(@agencecinq/utils@7.10.0)':
     dependencies:
       '@agencecinq/utils': 7.10.0
 

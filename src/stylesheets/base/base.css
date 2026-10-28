@@ -7,7 +7,15 @@
 }
 
 @layer base {
-	/* Anchors land below the sticky header. */
+	/* Height of the sticky header (Figma Section/Header): anchors land below it. */
+	:root {
+		--header-height: 4.625rem;
+
+		@variant lg {
+			--header-height: 5.25rem;
+		}
+	}
+
 	html {
 		scroll-padding-top: var(--header-height);
 	}

@@ -3372,3 +3372,19 @@ msgstr ""
 #: views/components/window-splitter.html.twig
 msgid "Compare before and after"
 msgstr ""
+
+#: views/header.html.twig
+msgid "CINQ, home"
+msgstr ""
+
+#: views/header.html.twig
+msgid "Open the menu"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php
+msgid "Header"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php
+msgid "Secondary button of the header and the mobile menu, next to the contact link, e.g. the diagnostic."
+msgstr ""

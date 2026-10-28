@@ -167,7 +167,7 @@
 	--animate-marquee-y: marquee-y 25s linear infinite;
 	--animate-marquee-x: marquee-x 50s linear infinite;
 
-	--header-height: 4rem;
+	--shadow-overlay: 0 1rem 3rem rgb(0 0 0 / 0.45);
 
 	@keyframes marquee-y {
 		to {

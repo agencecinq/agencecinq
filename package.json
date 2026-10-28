@@ -33,6 +33,7 @@
 	},
 	"dependencies": {
 		"@agencecinq/accordion": "^4.0.0",
+		"@agencecinq/disclosure-button": "^3.0.1",
 		"@agencecinq/drawer": "^8.0.0",
 		"@agencecinq/modal": "^4.0.1",
 		"@agencecinq/snake": "^1.0.0",

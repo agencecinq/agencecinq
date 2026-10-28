@@ -1,159 +1,153 @@
 {#
  # Header
  #
+ # Figma Section/Header: the logo, the main navigation, a secondary and a primary action. A Nav link with
+ # children is a <cinq-disclosure-button> that opens its Submenu, which cinq-navigation also opens on
+ # hover and closes with Escape or when the focus leaves it. Below lg, the menu button opens the drawer.
+ #
  # @package AgenceCinq
  #}
+
+{%- set items = nav_menus.main is defined ? nav_menus.main.get_items() | default( [] ) : [] -%}
 
 <header
 	role="banner"
 	class="{{
-		html_classes(
-			'border-default bg-default border-b py-[0.78125rem] text-sm lg:py-0',
-			classes | default( [] ) | join( ' ' )
-		)
+		html_classes( 'border-default bg-default border-b', classes | default( [] ) | join( ' ' ) )
 	}}"
 >
-	<div class="container flex items-center gap-4 lg:gap-6">
-		<div class="flex-1 lg:me-auto">
-			<a href="{{ site.link }}" class="block h-[1.190625rem] w-16" aria-label="{{ site.name }}">
-				{{-
-					include(
-						'svg/use.html.twig',
-						{
-							icon: 'logo',
-							classes: [ 'size-full' ],
-						}
-					)
-				-}}
-				<span class="sr-only">{{- site.name -}}</span>
-			</a>
-		</div>
-
-		{%- if nav_menus.main.get_items -%}
-			<nav aria-label="{{ __( 'Main navigation', 'agencecinq' ) }}" class="hidden flex-1 lg:block">
-				<ul class="flex">
-					{% for item in nav_menus.main.get_items() %}
-						<li
-							class="group relative"
-							itemscope
-							itemtype="https://schema.org/SiteNavigationElement"
-						>
-							<a
-								href="{{ item.url }}"
-								itemprop="url"
-								class="{{
-									html_classes(
-										'px-4 pt-[1.40625rem] pb-[1.34375rem]',
-										item.current
-											or 'current-menu-parent' in item.classes
-											or 'current-page-ancestor' in item.classes
-											? 'text-accent-default'
-											: '',
-										item.classes | default( [] ) | join( ' ' ),
-										'hover:text-accent-default group-hover:text-accent-default text-muted focus:text-accent-default group-focus-within:text-accent-default block'
-									)
-								}}"
-								{{ item.children | length ? 'aria-haspopup="true"' }}
-								{{ item.is_target_blank or item.is_external
-									? 'target="' ~ item.target ~ '" rel="noopener noreferrer"' }}
-							>
-								<span itemprop="name">{{- item.title -}}</span>
-							</a>
-
-							{%- if item.children | length -%}
-								<ul
-									class="border-subtle bg-surface invisible absolute inset-s-0 top-full z-20 w-72 space-y-6 rounded-b-md border px-5 py-4.5 opacity-0 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
-								>
-									{% for child in item.children %}
-										<li itemscope itemtype="https://schema.org/SiteNavigationElement">
-											<a
-												href="{{ child.url }}"
-												itemprop="url"
-												class="text-primary hover:text-accent-default focus:text-accent-default font-sans text-base transition-colors"
-												{{ child.is_target_blank or child.is_external
-													? 'target="' ~ child.target ~ '" rel="noopener noreferrer"' }}
-											>
-												<span itemprop="name">{{- child.title -}}</span>
-											</a>
-										</li>
-									{% endfor %}
-								</ul>
-							{%- endif -%}
-						</li>
-					{% endfor %}
-				</ul>
-			</nav>
-		{%- endif -%}
-
-		<div class="flex flex-1 justify-end lg:ms-auto">
+	<div class="container flex items-center justify-between gap-6 py-3 lg:py-4">
+		<a
+			href="{{ site.link }}"
+			class="focus-visible:outline-focus-ring block h-6 w-20 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2"
+			aria-label="{{ __( 'CINQ, home', 'agencecinq' ) }}"
+		>
 			{{-
 				include(
-					'components/button.html.twig',
-					theme.contact.link | default( {} ),
-					with_context: false
-				)
-			-}}
-		</div>
-
-		<cinq-drawer-button class="block lg:hidden">
-			{% set icon_html %}
-				{{-
-					include(
-						'svg/use.html.twig',
-						{
-							classes: [ 'size-6 block group-aria-expanded/drawer-button:hidden' ],
-							icon: 'menu',
-							attributes: { 'aria-hidden': 'true' },
-						},
-						with_context: false
-					)
-				-}}
-				{{-
-					include(
-						'svg/use.html.twig',
-						{
-							classes: [ 'size-6 hidden group-aria-expanded/drawer-button:block' ],
-							icon: 'close',
-							attributes: { 'aria-hidden': 'true' },
-						},
-						with_context: false
-					)
-				-}}
-			{% endset %}
-			{{-
-				include(
-					'components/icon-button.html.twig',
+					'svg/use.html.twig',
 					{
-						label: __( 'Menu', 'agencecinq' ),
-						icon_html: icon_html,
-						attributes: {
-							'aria-controls': 'menu-drawer',
-							'aria-expanded': 'false',
-						},
-						classes: [ 'group/drawer-button' ],
+						icon: 'logo',
+						classes: [ 'size-full' ],
+						attributes: { 'aria-hidden': 'true' },
 					},
 					with_context: false
 				)
 			-}}
-		</cinq-drawer-button>
+		</a>
+
+		{%- if items | length -%}
+			<cinq-navigation class="hidden lg:block">
+				<nav aria-label="{{ __( 'Main navigation', 'agencecinq' ) }}">
+					<ul class="flex items-center gap-6">
+						{%- for item in items -%}
+							<li class="relative" data-dom="item">
+								{%- if item.children | length -%}
+									<cinq-disclosure-button>
+										{{-
+											include(
+												'components/nav-link.html.twig',
+												{
+													title: item.title,
+													controls: 'submenu-' ~ item.id,
+													current: item.current or item.current_item_ancestor,
+												},
+												with_context: false
+											)
+										-}}
+									</cinq-disclosure-button>
+									{{-
+										include(
+											'components/submenu.html.twig',
+											{
+												id: 'submenu-' ~ item.id,
+												items: item.children,
+											},
+											with_context: false
+										)
+									-}}
+								{%- else -%}
+									{{-
+										include(
+											'components/nav-link.html.twig',
+											{
+												title: item.title,
+												url: item.url,
+												current: item.current,
+											},
+											with_context: false
+										)
+									-}}
+								{%- endif -%}
+							</li>
+						{%- endfor -%}
+					</ul>
+				</nav>
+			</cinq-navigation>
+		{%- endif -%}
+
+		<div class="flex items-center gap-3">
+			{%- if theme.header.link | default( false ) -%}
+				{{-
+					include(
+						'components/button.html.twig',
+						theme.header.link | merge( {
+							variant: 'secondary',
+							arrow: false,
+							classes: [ 'max-lg:hidden' ],
+						} ),
+						with_context: false
+					)
+				-}}
+			{%- endif -%}
+			{%- if theme.contact.link | default( false ) -%}
+				{{-
+					include(
+						'components/button.html.twig',
+						theme.contact.link | merge( { arrow: false } ),
+						with_context: false
+					)
+				-}}
+			{%- endif -%}
+
+			<cinq-drawer-button class="block lg:hidden">
+				{{-
+					include(
+						'components/icon-button.html.twig',
+						{
+							label: __( 'Open the menu', 'agencecinq' ),
+							icon: 'menu',
+							attributes: {
+								'aria-controls': 'menu-drawer',
+								'aria-expanded': 'false',
+							},
+						},
+						with_context: false
+					)
+				-}}
+			</cinq-drawer-button>
+		</div>
 	</div>
 </header>
 
 {% embed 'components/drawer.html.twig'
 	with {
 		id: 'menu-drawer',
-		classes: [],
 		aria_label: __( 'Menu', 'agencecinq' ),
-	}
+		items: items,
+		theme: theme,
+	} only
 %}
 	{% block content %}
-		<cinq-mobile-menu class="relative block h-full">
-			{{-
-				include(
-					'components/mobile-menu.html.twig',
-					{ items: nav_menus.main is defined ? nav_menus.main.get_items() | default( [] ) : [] }
-				)
-			-}}
-		</cinq-mobile-menu>
+		{{-
+			include(
+				'components/mobile-menu.html.twig',
+				{
+					items: items,
+					contact: theme.contact | default( {} ),
+					secondary: theme.header.link | default( null ),
+				},
+				with_context: false
+			)
+		-}}
 	{% endblock %}
 {% endembed %}
