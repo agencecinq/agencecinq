@@ -3676,3 +3676,25 @@ msgid ""
 "Numbered in order, from 01. Write numbers as figures: « 30 days », not "
 "« Thirty days »."
 msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/FeatureCards.php:29
+msgid "Feature cards"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/FeatureCards.php:52
+msgid "What comes back to you"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/FeatureCards.php:60
+msgid "You change providers without changing sites."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/FeatureCards.php:98
+msgid ""
+"One card per thing handed over, four per row on desktop: the file name in "
+"monospace, then what it is."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/FeatureCards.php:106
+msgid "e.g. maquettes.fig"
+msgstr ""

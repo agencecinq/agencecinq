@@ -22,6 +22,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Crosslinks;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FeatureCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FormInfo;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ImageCards;
@@ -66,6 +67,7 @@ class BlocksFields implements Service {
 		Crosslinks::class,
 		EditorialCards::class,
 		EditorialProse::class,
+		FeatureCards::class,
 		FormInfo::class,
 		Gallery::class,
 		ImageCards::class,
