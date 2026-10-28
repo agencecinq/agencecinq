@@ -310,36 +310,27 @@
 
 						{#- The e-mail has no name: without JavaScript the form still goes to the booking page, never with the address in the URL. -#}
 						<div class="mt-7 space-y-3">
-							<div class="space-y-2">
-								<label for="{{ block.id }}-email" class="text-eyebrow text-subtle block">
-									{{- block.result.email_label -}}
-								</label>
-								<input
-									id="{{ block.id }}-email"
-									type="email"
-									pattern="[^@\s]+@[^@\s]+\.[^@\s]{2,}"
-									required
-									autocomplete="email"
-									inputmode="email"
-									placeholder="{{ block.result.email_placeholder }}"
-									class="border-control bg-elevated text-primary placeholder:text-muted user-invalid:border-status-error focus:outline-focus-ring w-full rounded-sm border px-3.5 py-3 text-base transition-colors duration-300 ease-out focus:outline-2 focus:outline-offset-2"
-									data-dom="email"
-								/>
-								<p
-									id="{{ block.id }}-email-error"
-									class="text-status-error flex items-start gap-2 text-sm"
-									data-dom="email-error"
-									hidden
-								>
-									<span
-										class="border-status-error mt-[0.2em] flex size-4 shrink-0 items-center justify-center rounded-full border text-[0.625rem] leading-none"
-										aria-hidden="true"
-									>
-										!
-									</span>
-									<span>{{- block.result.email_error -}}</span>
-								</p>
-							</div>
+							{{-
+								include(
+									'components/input.html.twig',
+									{
+										id: block.id ~ '-email',
+										label: block.result.email_label,
+										type: 'email',
+										error: block.result.email_error,
+										invalid: false,
+										attributes: {
+											pattern: '[^@\\s]+@[^@\\s]+\\.[^@\\s]{2,}',
+											required: true,
+											autocomplete: 'email',
+											inputmode: 'email',
+											placeholder: block.result.email_placeholder,
+											'data-dom': 'email',
+										},
+									},
+									with_context: false
+								)
+							-}}
 
 							{#- Honeypot: hidden from people and assistive technologies, filled by bots. -#}
 							<div class="sr-only" aria-hidden="true">

@@ -69,10 +69,10 @@
 	}
 
 	.block-form .wpcf7 .wpcf7-form label {
-		@apply text-eyebrow text-subtle flex w-full flex-col items-start gap-2;
+		@apply text-button text-primary flex w-full flex-col items-start gap-2;
 	}
 
-	/* Fields */
+	/* Fields · Figma Input */
 	.block-form
 		.wpcf7
 		.wpcf7-form
@@ -85,9 +85,9 @@
 			select,
 			textarea
 		) {
-		@apply border-control bg-surface text-primary placeholder:text-muted w-full rounded-sm border px-3.5 py-3 text-base;
-		@apply transition-colors duration-300 ease-out;
-		@apply focus:outline-focus-ring focus:outline-2 focus:outline-offset-2;
+		@apply border-control bg-surface text-primary placeholder:text-muted w-full rounded-sm border px-4 py-3.5 text-base;
+		@apply aria-invalid:border-status-error aria-invalid:inset-ring-status-error aria-invalid:inset-ring;
+		@apply focus:outline-focus-ring focus:outline-2 focus:-outline-offset-2;
 	}
 
 	.block-form .wpcf7 .wpcf7-form textarea {
@@ -117,12 +117,14 @@
 	}
 
 	/* Validation / messages */
-	.block-form .wpcf7 .wpcf7-form .wpcf7-not-valid {
-		@apply border-status-error;
+	.block-form .wpcf7 .wpcf7-not-valid-tip {
+		@apply text-status-error mt-2 flex gap-2 text-sm;
 	}
 
-	.block-form .wpcf7 .wpcf7-not-valid-tip {
-		@apply text-status-error mt-2 block text-sm;
+	.block-form .wpcf7 .wpcf7-not-valid-tip::before {
+		@apply text-button;
+
+		content: "!" / "";
 	}
 
 	.block-form .wpcf7 .wpcf7-response-output {
@@ -151,42 +153,13 @@
 		@apply m-0 align-middle;
 	}
 
-	.wpcf7 .wpcf7-form .wpcf7-list-item {
-		margin: 0 !important;
-
-		input[type="checkbox"] {
-			position: absolute;
-			opacity: 0;
-			cursor: pointer;
-			height: 0;
-			width: 0;
-		}
-
-		.wpcf7-list-item-label {
-			@apply flex gap-2;
-		}
-
-		.wpcf7-list-item-label::before {
-			@apply h-3.75 rounded-sm border;
-
-			display: block;
-			content: "";
-			flex-shrink: 0;
-			width: calc(13.83 / 16 * 1rem);
-		}
-
-		input[type="checkbox"]:checked ~ .wpcf7-list-item-label::before {
-			@apply bg-current;
-		}
-	}
-
 	/* Choice groups · <fieldset><legend> around radios */
 	.block-form .wpcf7 .wpcf7-form fieldset {
 		@apply m-0 border-0 p-0;
 	}
 
 	.block-form .wpcf7 .wpcf7-form legend {
-		@apply text-eyebrow text-subtle mb-3 p-0;
+		@apply text-button text-primary mb-3 p-0;
 	}
 
 	.block-form .wpcf7 .wpcf7-form fieldset > p {
@@ -197,44 +170,57 @@
 		@apply flex flex-wrap gap-x-6 gap-y-3;
 	}
 
-	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item label {
-		@apply text-muted cursor-pointer flex-row items-start text-base;
+	/* Checkboxes and radios · Figma Checkbox: the box is drawn before the label of a hidden input. */
+	.wpcf7 .wpcf7-list-item {
+		@apply relative m-0;
 	}
 
-	.block-form .wpcf7 .wpcf7-acceptance .wpcf7-list-item label {
-		@apply text-sm;
-	}
-
-	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item-label {
-		@apply gap-3;
-	}
-
-	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item-label::before {
-		@apply border-control mt-1.25 size-4 transition-colors duration-300 ease-out;
-	}
-
-	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item input[type="radio"] {
+	.wpcf7 .wpcf7-list-item input {
 		@apply sr-only;
 	}
 
-	.block-form .wpcf7 .wpcf7-radio .wpcf7-list-item-label::before {
+	.wpcf7 .wpcf7-form .wpcf7-list-item label {
+		@apply text-primary cursor-pointer flex-row text-base;
+	}
+
+	.wpcf7 .wpcf7-acceptance .wpcf7-list-item label {
+		@apply text-sm;
+	}
+
+	.wpcf7 .wpcf7-list-item-label {
+		@apply relative flex gap-3;
+	}
+
+	.wpcf7 .wpcf7-list-item-label::before {
+		@apply border-control bg-surface size-5 shrink-0 rounded-sm border-[1.5px] content-[''];
+
+		margin-block: calc((1lh - 1.25rem) / 2);
+	}
+
+	.wpcf7 :is(.wpcf7-checkbox, .wpcf7-acceptance) .wpcf7-list-item-label::after {
+		@apply invisible absolute top-0 left-0.5 size-4 bg-(--text-color-on-accent) content-[''];
+
+		margin-block: calc((1lh - 1rem) / 2);
+		mask: url("../../icons/check.svg") center / contain no-repeat;
+	}
+
+	.wpcf7 .wpcf7-list-item input:checked ~ .wpcf7-list-item-label::before {
+		@apply border-accent-default bg-accent-default;
+	}
+
+	.wpcf7 .wpcf7-list-item input:checked ~ .wpcf7-list-item-label::after {
+		@apply visible;
+	}
+
+	.wpcf7 .wpcf7-list-item input:focus-visible ~ .wpcf7-list-item-label::before {
+		@apply outline-focus-ring outline-2 outline-offset-2;
+	}
+
+	.wpcf7 .wpcf7-radio .wpcf7-list-item-label::before {
 		@apply rounded-full;
 	}
 
-	.block-form .wpcf7 .wpcf7-form .wpcf7-list-item input:checked ~ .wpcf7-list-item-label::before {
-		@apply border-accent bg-accent-default;
-	}
-
-	.block-form .wpcf7 .wpcf7-radio .wpcf7-list-item input:checked ~ .wpcf7-list-item-label::before {
-		@apply shadow-[inset_0_0_0_3px_var(--background-color-default)];
-	}
-
-	.block-form
-		.wpcf7
-		.wpcf7-form
-		.wpcf7-list-item
-		input:focus-visible
-		~ .wpcf7-list-item-label::before {
-		@apply outline-focus-ring outline-2 outline-offset-2;
+	.wpcf7 .wpcf7-radio .wpcf7-list-item input:checked ~ .wpcf7-list-item-label::before {
+		@apply shadow-[inset_0_0_0_3px_var(--background-color-surface)];
 	}
 }

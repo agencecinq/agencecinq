@@ -342,7 +342,7 @@ class Configurator extends Piece {
 		this.#firm = this.#one<HTMLElement>( 'firm' );
 		this.#open = this.#one<HTMLElement>( 'open' );
 		this.#email = this.#one<HTMLInputElement>( 'email' );
-		this.#emailError = this.#one<HTMLElement>( 'email-error' );
+		this.#emailError = this.#email && document.getElementById( `${ this.#email.id }-error` );
 		this.#website = this.#one<HTMLInputElement>( 'website' );
 		this.#submit = this.#one<HTMLButtonElement>( 'submit' );
 		this.#status = this.#one<HTMLElement>( 'status' );
