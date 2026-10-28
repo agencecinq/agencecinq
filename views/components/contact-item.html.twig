@@ -7,7 +7,7 @@
  # @param string label
  # @param string value
  # @param string url Optional. tel: or mailto: link of the value.
- # @param object button Optional. { title, url } of the action, which replaces the link.
+ # @param object button Optional. { title, url, target } of the action, which replaces the link.
  # @param array classes Optional extra classes.
  #}
 
@@ -31,15 +31,6 @@
 		<p class="text-title-md text-primary">{{- value -}}</p>
 	{%- endif -%}
 	{%- if button -%}
-		{{-
-			include(
-				'components/button.html.twig',
-				{
-					title: button.title,
-					url: button.url,
-				},
-				with_context: false
-			)
-		-}}
+		{{- include( 'components/button.html.twig', button, with_context: false ) -}}
 	{%- endif -%}
 </div>

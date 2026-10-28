@@ -314,6 +314,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:162
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:86
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:161
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:55
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:57
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:56
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:110
@@ -387,6 +389,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:42
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:34
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:35
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:40
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/CredibilityBanner.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/CredibilityBanner.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/CredibilityBanner.php:40
@@ -471,6 +477,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:122
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:75
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:110
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:63
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:65
 #: includes/Plugins/ACF/IncludeFields/Layouts/CredibilityBanner.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/CredibilityBanner.php:62
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:74
@@ -643,6 +651,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:175
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:177
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:66
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:73
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:75
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:64
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:66
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:60
@@ -855,6 +865,7 @@ msgstr ""
 "et on vous donne un ordre de grandeur. Le diagnostic, s'il a du sens, se "
 "décide à la fin de l'appel."
 
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:80
 msgid "Enter the lead text of the block"
 msgstr ""
@@ -949,6 +960,8 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:203
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:186
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:95
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:97
 msgid "Note"
 msgstr ""
 
@@ -1180,6 +1193,8 @@ msgid "Estimate sent"
 msgstr "Estimation envoyée"
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:160
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:48
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:50
 msgid "Eyebrow"
 msgstr ""
 
@@ -1798,6 +1813,7 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:115
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:117
+#: views/blocks/contact-details.html.twig:42
 #: views/components/form-newsletter.html.twig:54
 msgid "Email"
 msgstr "E-mail"
@@ -1808,8 +1824,9 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:124
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:126
+#: views/blocks/contact-details.html.twig:29
 msgid "Phone"
-msgstr ""
+msgstr "Téléphone"
 
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:129
 msgid "Enter the phone number"
@@ -3467,3 +3484,37 @@ msgid ""
 msgstr ""
 "Colonne de lecture de 720 px. Intertitres en Titre 2, puis en Titre 3, sans "
 "sauter de niveau. Une citation en Citation, du code en Préformaté."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:29
+msgid "Contact details"
+msgstr "Coordonnées"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:59
+msgid "3 ways to reach us"
+msgstr "3 façons de nous joindre"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:85
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:87
+msgid "Booking"
+msgstr "Rendez-vous"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:91
+msgid ""
+"Shows the 30-minute call first, its button being the Contact link of the "
+"theme options. The phone and the email come from the theme options too."
+msgstr ""
+"Affiche d’abord le rendez-vous de 30 minutes, son bouton étant le lien "
+"Contact des options du thème. Le téléphone et l’e-mail viennent aussi des "
+"options du thème."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:99
+msgid "e.g. Head office: 7 rue de Paris, 92110 Clichy."
+msgstr "ex. Siège : 7 rue de Paris, 92110 Clichy."
+
+#: views/blocks/contact-details.html.twig:16
+msgid "Appointment"
+msgstr "Rendez-vous"
+
+#: views/blocks/contact-details.html.twig:17
+msgid "30 minutes by video"
+msgstr "30 minutes en visio"
