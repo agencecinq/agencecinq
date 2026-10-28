@@ -14,6 +14,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Accordion;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActionCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Breadcrumb;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\BulletList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
@@ -36,7 +37,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingRules;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTable;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
@@ -61,6 +61,7 @@ class BlocksFields implements Service {
 		ActionCards::class,
 		ActivityLog::class,
 		Breadcrumb::class,
+		BulletList::class,
 		CodeGuide::class,
 		Comparison::class,
 		Configurator::class,
@@ -83,7 +84,6 @@ class BlocksFields implements Service {
 		PageHeader::class,
 		PortraitGrid::class,
 		PositioningBanner::class,
-		PricingRules::class,
 		PricingTable::class,
 		Quote::class,
 		Stats::class,

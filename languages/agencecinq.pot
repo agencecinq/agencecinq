@@ -318,12 +318,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:49
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:51
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:48
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:50
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:86
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:88
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:122
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:124
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:57
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:118
@@ -423,10 +417,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:42
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:35
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:40
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:40
@@ -490,10 +480,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:60
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:95
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:97
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:140
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:142
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:128
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:130
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:68
@@ -663,8 +649,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:66
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:57
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:59
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:56
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:65
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:67
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:58
@@ -841,7 +825,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:53
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:61
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:54
 msgid "Enter the title of the block"
@@ -1544,62 +1527,10 @@ msgstr ""
 msgid "Optional. When set, the item is rendered as an underlined cream link."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:29
-msgid "Pricing Rules"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:68
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:69
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:74
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:76
-msgid "Rules"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:81
-msgid "Add Rule"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:82
-msgid "Up to three columns. The index (01/03) is generated automatically."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:90
-msgid "Enter the title of the rule"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:101
-msgid "Enter the description of the rule"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:108
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:109
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:114
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:116
-msgid "Examples"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:126
-msgid "Enter the title of the examples"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:130
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:132
-msgid "Totals"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:135
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:190
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:213
 #: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:145
 msgid "Add Line"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:136
-msgid "Each line is a real quote total, shown in monospace under the title."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:144
-msgid "e.g. Shopify Standard only: 27 888 € excl. VAT"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:176
@@ -3427,4 +3358,20 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:113
 msgid "e.g. Speed measured at launch"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/BulletList.php:29
+msgid "Bullet list"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/BulletList.php:52
+msgid "Rules of the game"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/BulletList.php:60
+msgid "What holds for all our offers"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/BulletList.php:92
+msgid "One rule per row, under a rule each, on bg/elevated."
 msgstr ""
