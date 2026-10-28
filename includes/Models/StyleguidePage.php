@@ -65,6 +65,10 @@ class StyleguidePage extends Post {
 						'title' => 'Content',
 						'href'  => '#styleguide-content',
 					),
+					array(
+						'title' => 'Cards',
+						'href'  => '#styleguide-cards',
+					),
 				),
 			),
 		);

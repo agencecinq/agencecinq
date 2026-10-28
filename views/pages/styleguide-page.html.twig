@@ -1248,6 +1248,174 @@
 					<p class="text-mono text-subtle">.wysiwyg ul, blockquote, pre (components/wysiwyg.css)</p>
 				</div>
 			</section>
+
+			{%- set article =
+				get_posts( {
+					posts_per_page: 1,
+					meta_key: '_thumbnail_id',
+				} ) | first
+			-%}
+			{%- set cards = {
+				'Article card': {
+					template: 'article-card',
+					params: {
+						post: article,
+						heading: 'h4',
+					},
+					doc: "post, heading ('h2'), sizes · one link stretched over the card",
+				},
+				'Link card': {
+					template: 'link-card',
+					params: {
+						title: 'Création de boutique',
+						url: '#styleguide-cards',
+						text: 'Socles Express, Standard et Signature, de 14 900 à 39 900 € HT.',
+						heading: 'h4',
+					},
+					doc: "title, url, text, heading ('h3') · one link stretched over the card",
+				},
+				'Action card': {
+					template: 'action-card',
+					params: {
+						title: 'Votre site vitrine est resté à l’ancienne',
+						text: 'Un site Elementor ou un CMS d’agence, des modifications facturées une par une, un référencement qui stagne.',
+						offer: 'Refonte WordPress',
+						price: 'dès 12 900 € HT',
+						link: {
+							title: 'Voir cette situation',
+							url: '#styleguide-cards',
+						},
+						heading: 'h4',
+					},
+					doc: "title, text, offer, price, link { title, url }, heading ('h3')",
+				},
+				'Image card': {
+					template: 'image-card',
+					params: {
+						image: 10,
+						alt: 'Le nouveau site de Nexiode',
+						badge: 'Groupe multi-marques · socle commun',
+						title: 'Nexiode',
+						text: 'Un site en 3 langues, conçu pour être repris sur les autres marques du groupe Agora Makers.',
+						link: {
+							title: 'Lire le cas Nexiode',
+							url: '#styleguide-cards',
+						},
+						heading: 'h4',
+					},
+					doc: "image, alt, badge, title, text, link { title, url }, heading ('h3'), sizes",
+				},
+				'Pricing card': {
+					template: 'pricing-card',
+					params: {
+						name: 'Express',
+						price: '14 900 € HT',
+						duration: '6 semaines',
+						items: [
+							'Thème construit sur notre starter',
+							'Redirections 301 comprises',
+							'Connexion logistique officielle comprise',
+						],
+						heading: 'h4',
+					},
+					doc: "name, price, duration, items, heading ('h3')",
+				},
+				'Feature card': {
+					template: 'feature-card',
+					params: {
+						file: 'maquettes.fig',
+						title: 'Le fichier Figma',
+						text: 'Remis à la livraison, avec toutes les pages et les composants.',
+						heading: 'h4',
+					},
+					doc: "file, title, text, heading ('h3')",
+				},
+				'Person card': {
+					template: 'person-card',
+					params: {
+						image: 11,
+						name: 'Joachim',
+						role: 'Directeur de l’agence',
+						classes: [ 'max-w-73' ],
+					},
+					doc: 'image, name, role, sizes',
+				},
+			} -%}
+
+			<section class="space-y-14" aria-labelledby="styleguide-cards">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Components</p>
+					<h2 id="styleguide-cards" class="text-title-xl">Cards</h2>
+					<p class="text-muted text-sm">
+						Cards of the Figma Components page, in a Dark panel then a scheme-light one. Article and
+						Link cards are one link stretched over the card: hover and focus show on interaction.
+						The others hold their own button or link, if any.
+					</p>
+				</header>
+
+				{%- for name, card in cards -%}
+					<div class="space-y-6">
+						<h3 class="text-title-md">{{- name -}}</h3>
+						<div class="layout-grid gap-y-3">
+							{%- for scheme in schemes | keys -%}
+								<div class="{{ html_classes( scheme, panel ) }}">
+									{{-
+										include(
+											'components/' ~ card.template ~ '.html.twig',
+											card.params,
+											with_context: false
+										)
+									-}}
+								</div>
+							{%- endfor -%}
+						</div>
+						<p class="text-mono text-subtle">
+							components/{{ card.template }}.html.twig · {{ card.doc }}
+						</p>
+					</div>
+				{%- endfor -%}
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Step card and Check card</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'space-y-6' ) }}">
+								<ol>
+									{{-
+										include(
+											'components/step-card.html.twig',
+											{
+												number: '01',
+												who: 'Personne',
+												title: 'Cadrage',
+												text: 'On décide avec vous ce qu’on garde et ce qu’on refait.',
+												heading: 'h4',
+											},
+											with_context: false
+										)
+									-}}
+								</ol>
+								<ul>
+									{{-
+										include(
+											'components/check-card.html.twig',
+											{
+												title: '01 · Retard de versions',
+												text: 'Votre CMS et vos extensions ont-ils plus d’un an de retard sur leur dernière version ?',
+											},
+											with_context: false
+										)
+									-}}
+								</ul>
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/step-card.html.twig · number, who, title, text, heading ('h3') · in an ol ·
+						components/check-card.html.twig · title, text · in a ul
+					</p>
+				</div>
+			</section>
 		</div>
 	</main>
 {%- endblock -%}
