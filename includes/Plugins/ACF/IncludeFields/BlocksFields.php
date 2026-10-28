@@ -38,6 +38,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PriceBreakdown;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTable;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\RichText;
@@ -87,6 +88,7 @@ class BlocksFields implements Service {
 		PageHeader::class,
 		PortraitGrid::class,
 		PositioningBanner::class,
+		PriceBreakdown::class,
 		PricingTable::class,
 		Quote::class,
 		RichText::class,

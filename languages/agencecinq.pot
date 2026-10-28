@@ -322,6 +322,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:49
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:51
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:55
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:57
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:57
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:118
@@ -425,6 +427,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:42
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:34
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:35
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:40
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:34
@@ -492,6 +498,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:60
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:64
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:66
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:96
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:98
 #: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:128
@@ -665,6 +675,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:66
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:57
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:59
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:74
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:76
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:65
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:67
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:58
@@ -806,6 +818,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:124
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:77
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:79
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:151
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:153
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:81
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:83
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:85
@@ -820,6 +834,7 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:138
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:185
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:157
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:87
 #: views/pages/single-post.html.twig:155
 msgid "Book 30 minutes"
@@ -853,6 +868,7 @@ msgid "Items"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:53
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:91
 msgid "Add Item"
 msgstr ""
 
@@ -871,9 +887,11 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:80
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:70
 msgid "Enter the lead text of the block"
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:161
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:91
 msgid ""
 "Primary CTA. Default label: Book 30 minutes. The diagnostic is never a first "
@@ -901,6 +919,8 @@ msgid "Code Guide"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:48
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:112
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:114
 msgid "Badge"
 msgstr ""
 
@@ -913,6 +933,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:98
 #: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:132
 #: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:134
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:131
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:133
 msgid "Label"
 msgstr ""
 
@@ -1194,6 +1216,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:160
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:50
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:48
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:50
 msgid "Eyebrow"
 msgstr ""
 
@@ -1549,6 +1573,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:190
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:213
 #: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:145
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:125
 msgid "Add Line"
 msgstr ""
 
@@ -3190,6 +3215,8 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:95
 #: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:97
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:168
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:170
 msgid "Detail"
 msgstr ""
 
@@ -3357,6 +3384,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:87
 #: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:140
 #: includes/Plugins/ACF/IncludeFields/Layouts/DiffColumns.php:142
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:120
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:122
 msgid "Lines"
 msgstr ""
 
@@ -3462,4 +3491,43 @@ msgstr ""
 msgid ""
 "One point per row, numbered in its order: what to check, then the question "
 "to ask."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:29
+msgid "Price breakdown"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:60
+msgid "WordPress redesign"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:86
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:88
+msgid "Included"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:92
+msgid "What the price includes, one point per row, with a decorative check."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:106
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:107
+msgid "Price"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:116
+msgid "Public prices"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:127
+msgid "One price per row: what it covers, then the amount and the duration."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:140
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:142
+msgid "Value"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:172
+msgid "The scope is negotiable, the price follows from it."
 msgstr ""
