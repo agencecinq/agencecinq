@@ -35,15 +35,13 @@
 			<main id="content" role="main">
 				{{-
 					include(
-						'components/page-hero.html.twig',
+						'components/page-header.html.twig',
 						{
-							id: 'page-hero',
-							overline: post.meta( 'overline' ),
+							eyebrow: post.meta( 'overline' ),
 							title: post.title,
 							text: post.post_excerpt,
 							links: post.meta( 'links' ),
-							heading: 'h1',
-							classes: [ 'pt-26', 'pb-20' ],
+							classes: [ 'pt-14 pb-10 lg:pt-34 lg:pb-20' ],
 						},
 						with_context: false
 					)

@@ -16,10 +16,10 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Crosslinks;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FeatureCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FormInfo;
@@ -30,9 +30,9 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LogoWall;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ModuleCatalog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHero;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingRules;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
@@ -61,9 +61,9 @@ class BlocksFields implements Service {
 		CodeGuide::class,
 		Comparison::class,
 		Configurator::class,
-		Cta::class,
 		CredibilityBanner::class,
 		Crosslinks::class,
+		Cta::class,
 		EditorialCards::class,
 		EditorialProse::class,
 		FeatureCards::class,
@@ -75,9 +75,9 @@ class BlocksFields implements Service {
 		LogoWall::class,
 		ModuleCatalog::class,
 		NumberedList::class,
-		PageHero::class,
-		PositioningBanner::class,
+		PageHeader::class,
 		PortraitGrid::class,
+		PositioningBanner::class,
 		PricingRules::class,
 		PricingTiers::class,
 		Quote::class,
