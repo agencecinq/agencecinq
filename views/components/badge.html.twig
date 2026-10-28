@@ -1,0 +1,24 @@
+{#
+ # Components: Badge
+ #
+ # Data label (status, duration, situation) in Label/eyebrow.
+ # The dot never carries information alone (RGAA 3.1): the label says it.
+ #
+ # @param string title The badge label.
+ # @param bool dot Optional. Accent dot before the label.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- if title -%}
+	<span
+		class="{{
+			html_classes(
+				'border-default text-eyebrow text-muted inline-flex items-center gap-2 rounded-sm border px-2 py-1',
+				dot ? 'before:bg-accent-default before:size-1.5 before:shrink-0 before:rounded-full',
+				classes | default( [] ) | join( ' ' )
+			)
+		}}"
+	>
+		{{- title -}}
+	</span>
+{%- endif -%}

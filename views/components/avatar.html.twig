@@ -1,0 +1,35 @@
+{#
+ # Components: Avatar
+ #
+ # Round portrait, decorative when the name is written next to it (empty alt).
+ # Without an image, an empty bg-media disc keeps the place.
+ #
+ # @param array|int image Optional. Image object, attachment ID or placeholder array (see components/image.html.twig).
+ # @param string size Optional. 'small' (40 px, default) or 'large' (88 px).
+ # @param string alt Optional. Defaults to empty: the name is written next to the avatar.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set classes =
+	[
+		'bg-media shrink-0 rounded-full',
+		( size | default( 'small' ) ) == 'large' ? 'size-22' : 'size-10',
+	] | merge( classes | default( [] ) )
+-%}
+
+{%- if image -%}
+	{{-
+		include(
+			'components/image.html.twig',
+			{
+				image: image,
+				alt: alt | default( '' ),
+				size: 'medium',
+				classes: classes | merge( [ 'object-cover' ] ),
+			},
+			with_context: false
+		)
+	-}}
+{%- else -%}
+	<span class="{{ html_classes( classes | join( ' ' ) ) }}" aria-hidden="true"></span>
+{%- endif -%}

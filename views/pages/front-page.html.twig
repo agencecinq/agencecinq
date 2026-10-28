@@ -101,15 +101,17 @@
 														<p class="text-title-md" itemprop="name">{{- repo.name -}}</p>
 													{%- endif -%}
 
-													<span
-														class="text-eyebrow text-subtle border-default rounded-full border px-2 py-0.75"
-													>
-														{%- if repo.private -%}
-															{{- __( 'Private', 'agencecinq' ) -}}
-														{%- else -%}
-															{{- __( 'Public', 'agencecinq' ) -}}
-														{%- endif -%}
-													</span>
+													{{-
+														include(
+															'components/badge.html.twig',
+															{
+																title: repo.private
+																	? __( 'Private', 'agencecinq' )
+																	: __( 'Public', 'agencecinq' ),
+															},
+															with_context: false
+														)
+													-}}
 												</div>
 
 												{%- if repo.language or repo.pushed_at -%}

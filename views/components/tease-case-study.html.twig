@@ -36,7 +36,16 @@
 					aria-label="{{ __( 'Categories', 'agencecinq' ) }}"
 				>
 					{%- for category in post.categories -%}
-						{{- include( 'components/tag.html.twig', { title: category.name } ) -}}
+						{{-
+							include(
+								'components/badge.html.twig',
+								{
+									title: category.name,
+									classes: [ 'bg-default' ],
+								},
+								with_context: false
+							)
+						-}}
 					{%- endfor -%}
 				</div>
 			{%- endif -%}
