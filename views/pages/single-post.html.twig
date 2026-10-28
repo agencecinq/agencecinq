@@ -16,6 +16,16 @@
 							<time datetime="{{ post.date( 'c' ) }}" itemprop="datePublished">
 								{{- post.date( 'j F Y' ) | upper -}}
 							</time>
+							{%- if post.modified_date( 'Y-m-d' ) != post.date( 'Y-m-d' ) -%}
+								<span aria-hidden="true">·</span>
+								<time datetime="{{ post.modified_date( 'c' ) }}" itemprop="dateModified">
+									{{-
+										__( 'Updated on %s', 'agencecinq' ) | format( post.modified_date( 'j F Y' ) )
+									-}}
+								</time>
+							{%- else -%}
+								<meta itemprop="dateModified" content="{{ post.modified_date( 'c' ) }}" />
+							{%- endif -%}
 							{%- for category in post.categories | default( [] ) -%}
 								<span aria-hidden="true">·</span>
 								<span itemprop="articleSection">{{- category.name | upper -}}</span>
