@@ -1,6 +1,11 @@
 {#
  # 404
  #
+ # Figma T20 · Not found, Section/Status message over the snake: the title in H1, the text, the link to the
+ # sitemap and the one back to the home page on seven columns, then on the last four the diff of the address
+ # that no longer exists, decorative since the text says it. The snake plays behind, with a keyboard, its
+ # canvas hidden on touch screens.
+ #
  # @package WordPress
  # @subpackage AgenceCinq
  #}
@@ -33,77 +38,55 @@
 					</button>
 				</div>
 				<div
-					class="pointer-events-none relative z-2 container flex flex-col items-center space-y-8 py-31.5 text-center lg:py-42"
+					class="layout-grid pointer-events-none relative z-2 container items-start gap-y-10 py-20 lg:py-34"
 				>
-					<div class="flex w-full flex-col items-center space-y-8">
-						{{-
-							include(
-								'svg/use.html.twig',
-								{
-									icon: 'asterisk',
-									classes: [ 'text-accent-default h-[1.959rem] w-14' ],
-									attributes: { 'aria-hidden': 'true' },
-								},
-								with_context: false
-							)
-						-}}
-
-						<div class="flex w-full flex-col items-center space-y-12">
-							<div class="flex w-full flex-col items-center space-y-6">
-								<header class="flex flex-col items-center space-y-5">
-									{%- if post.overline -%}
-										<p class="text-eyebrow text-subtle">{{- post.overline -}}</p>
-									{%- endif -%}
-
-									{%- if post.title -%}
-										<h1 id="error-title" class="text-title-xxl text-balance">{{- post.title -}}</h1>
-									{%- endif -%}
-								</header>
-
-								{%- if post.text -%}
-									<p class="text-muted max-w-130 text-lg">{{- post.text | raw -}}</p>
-								{%- endif -%}
-							</div>
-
+					<div class="col-span-full flex flex-col items-start gap-5 lg:col-span-7">
+						<h1 id="error-title" class="text-title-xxl text-primary">{{- post.title -}}</h1>
+						{%- if post.text -%}
+							<p class="text-body text-lg">{{- post.text -}}</p>
+						{%- endif -%}
+						<div class="flex flex-wrap items-center gap-4">
+							{%- if post.link.url -%}
+								{{-
+									include(
+										'components/button.html.twig',
+										post.link | merge( {
+											variant: 'primary',
+											classes: [ 'pointer-events-auto' ],
+										} ),
+										with_context: false
+									)
+								-}}
+							{%- endif -%}
 							{{-
 								include(
 									'components/button.html.twig',
-									post.link
-										| default( {} )
-										| merge( {
-											variant: 'primary',
-											classes: 'pointer-events-auto',
-										} ),
+									{
+										title: __( 'Back to home', 'agencecinq' ),
+										url: home_url,
+										variant: 'text',
+										arrow: false,
+										classes: [ 'pointer-events-auto' ],
+									},
 									with_context: false
 								)
 							-}}
 						</div>
 					</div>
-
-					{%- set items =
-						post.items | default( [] ) | filter( item => item.link.url and item.link.title )
-					-%}
-					{%- if items | length -%}
-						<nav aria-label="{{ __( 'Related links', 'agencecinq' ) }}">
-							<ul
-								class="text-muted flex flex-wrap items-start justify-center gap-x-6 gap-y-3 text-sm"
-							>
-								{%- for item in items -%}
-									<li itemscope itemtype="https://schema.org/SiteNavigationElement">
-										<a
-											href="{{ item.link.url }}"
-											itemprop="url"
-											class="hover:text-accent-default transition-colors"
-											{{ item.link.target == '_blank'
-												? 'target="_blank" rel="noopener noreferrer"' }}
-										>
-											<span itemprop="name">{{- item.link.title -}}</span>
-										</a>
-									</li>
-								{%- endfor -%}
-							</ul>
-						</nav>
-					{%- endif -%}
+					<div class="col-span-full lg:col-span-4 lg:col-start-9" aria-hidden="true">
+						{{-
+							include(
+								'components/diff-block.html.twig',
+								{
+									address: post.host,
+									note: __( 'error 404', 'agencecinq' ),
+									removed: [ post.removed ],
+									added: post.added ? [ post.added ] : [],
+								},
+								with_context: false
+							)
+						-}}
+					</div>
 				</div>
 			</cinq-snake>
 		</section>

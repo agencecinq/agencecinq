@@ -189,27 +189,7 @@ msgctxt "quote notification"
 msgid "Booking link: %s"
 msgstr "Lien de réservation : %s"
 
-#: includes/Models/Error404.php:39
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:192
-msgid "Error 404"
-msgstr "Erreur 404"
-
-#: includes/Models/Error404.php:40
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:202
-msgid "This page does not exist."
-msgstr "Cette page n'existe pas."
-
-#: includes/Models/Error404.php:41
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:214
-msgid ""
-"It may have been moved, or the link that brought you here was already "
-"broken. Here is where to pick up."
-msgstr ""
-"Elle a peut-être été déplacée, ou le lien qui vous a mené ici était déjà "
-"cassé. Voilà par où reprendre."
-
-#: includes/Models/Error404.php:43
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:226
+#: views/pages/404.html.twig:65
 msgid "Back to home"
 msgstr "Retour à l'accueil"
 
@@ -226,8 +206,6 @@ msgid "Select a menu"
 msgstr ""
 
 #: includes/Plugins/ACF/FieldTypes/MenuItemSelect.php:117
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:260
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:262
 #: views/header.html.twig:125 views/header.html.twig:140
 msgid "Menu"
 msgstr ""
@@ -338,14 +316,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:109
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:111
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:104
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:106
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:198
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:200
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:303
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:306
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:365
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:368
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:101
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:103
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:194
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:196
 msgid "Title"
 msgstr ""
 
@@ -518,12 +492,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:70
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:118
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:120
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:160
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:162
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:208
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:210
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:312
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:317
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:157
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:159
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:204
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:206
 msgid "Text"
 msgstr ""
 
@@ -533,7 +505,6 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:137
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:139
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:373
 msgid "Image"
 msgstr ""
 
@@ -755,10 +726,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:101
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:74
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:76
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:188
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:190
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:357
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:360
 msgid "Overline"
 msgstr ""
 
@@ -804,13 +771,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:153
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:91
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:93
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:85
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:87
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:220
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:222
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:245
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:247
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:381
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:82
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:84
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:216
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:218
 msgid "Link"
 msgstr ""
 
@@ -1326,7 +1290,6 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:240
 msgid "Add Link"
 msgstr ""
 
@@ -1415,10 +1378,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:113
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:114
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:119
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:145
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:147
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:152
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:154
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:142
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:144
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:149
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:151
 msgid "Footer"
 msgstr ""
 
@@ -1455,7 +1418,6 @@ msgid "Page Hero"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:79
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:194
 msgid "Uppercase mono label above the title."
 msgstr ""
 
@@ -1681,213 +1643,120 @@ msgstr ""
 msgid "Optional."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:55
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:57
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:62
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:64
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:52
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:54
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:59
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:61
 #: includes/Plugins/ACF/Init.php:75
 msgid "Theme"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:70
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:72
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:77
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:79
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:67
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:69
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:74
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:76
 msgid "Contact"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:90
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:87
 msgid "Enter the contact or CTA link URL."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:90
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:166
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:298
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:307
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:318
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:327
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:337
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:353
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:87
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:163
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:172
 msgid "Optional"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:94
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:96
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:91
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:93
 msgid "Locations"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:99
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:96
 msgid "Add Location"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:100
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:97
 msgid "Cities listed in the footer and in the Form + Info block."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:108
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:105
 msgid "e.g. Paris"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:115
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:117
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:112
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:114
 #: views/blocks/contact-details.html.twig:42
 msgid "Email"
 msgstr "E-mail"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:120
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:117
 msgid "Enter the contact email"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:124
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:126
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:121
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:123
 #: views/blocks/contact-details.html.twig:29
 msgid "Phone"
 msgstr "Téléphone"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:129
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:126
 msgid "Enter the phone number"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:133
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:135
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:130
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:132
 msgid "Phone note"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:137
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:134
 msgid "Joachim, founder"
 msgstr "Joachim, fondateur"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:138
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:135
 msgid "e.g. Joachim, founder"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:139
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:136
 msgid "Shown after the number. Optional."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:164
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:161
 msgid "A website is an asset. Not a liability you replace every three years."
 msgstr "Un site est un actif. Pas un passif qu’on change tous les trois ans."
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:165
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:162
 msgid "Enter the text under the logo"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:166
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:163
 msgid "Short line under the logo."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:172
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:174
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:178
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:180
 msgid "404"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:184
-msgid ""
-"Branded 404 with fallback links to the pages that matter, never a dead end."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:193
-msgid "Enter the overline of the 404 page"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:203
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:199
 msgid "Enter the title of the 404 page"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:204
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:200
 msgid "Main heading of the 404 page. Always rendered as an H1."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:215
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:211
 msgid "Enter the lead text of the 404 page"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:216
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:212
 msgid "Lead paragraph under the title."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:230
-msgid "Primary CTA back to the home page."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:234
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:236
-msgid "Fallback links"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:241
-msgid ""
-"Shortcut links under the CTA (Shopify, WordPress, work, contact). Use "
-"explicit labels, never Learn more."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:267
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:269
-msgid "Menus"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:275
 #: includes/WPSettings.php:63
 msgid "Main Menu"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:282
-msgid "Submenu"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:286
-msgid ""
-"Add submenu items. Each can have a menu, title, text, link title, and pushes."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:287
-msgid "Add Submenu Item"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:291
-msgid "Menu Item"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:296
-msgid "Select a menu to attach to this submenu"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:298
-msgid "Select the menu to attach to this submenu."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:307
-msgid "Submenu heading."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:318
-msgid "Short description."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:323
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:326
-msgid "Link Title"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:327
-msgid "Button or link label."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:332
-msgid "Pushes"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:337
-msgid "Add up to 3 push items (overline, title, image, link)."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:339
-msgid "Add Push"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:343
-msgid "Mode"
 msgstr ""
 
 #: includes/schemes.php:116
@@ -1898,11 +1767,7 @@ msgstr "Sombre"
 msgid "Light"
 msgstr "Clair"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:353
-msgid "Select the mode for the push."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:401
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:238
 msgid "Theme Fields"
 msgstr ""
 
@@ -2285,10 +2150,6 @@ msgstr "Étape %02d"
 msgid "Privacy policy"
 msgstr "Politique de confidentialité"
 
-#: views/pages/404.html.twig:91
-msgid "Related links"
-msgstr "Liens associés"
-
 #: views/blocks/latest-posts.html.twig:63
 msgid "No posts found"
 msgstr "Aucun article trouvé"
@@ -2366,15 +2227,15 @@ msgstr "Fait avec soin"
 msgid "Main navigation"
 msgstr "Navigation principale"
 
-#: views/pages/404.html.twig:17
+#: views/pages/404.html.twig:22
 msgid "Snake. Arrow keys to move."
 msgstr "Snake. Déplacez-vous avec les flèches du clavier."
 
-#: views/pages/404.html.twig:23
+#: views/pages/404.html.twig:28
 msgid "Score"
 msgstr ""
 
-#: views/pages/404.html.twig:32
+#: views/pages/404.html.twig:37
 msgid "Replay"
 msgstr "Rejouer"
 
@@ -2459,11 +2320,12 @@ msgstr "Ouvrir le menu"
 msgid "Legal information"
 msgstr "Informations légales"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:167
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:169
 msgid "Copyright"
 msgstr "Copyright"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:172
 msgid "Company after the © and the year. The site name otherwise."
 msgstr "Société après le © et l’année. Le nom du site sinon."
 
@@ -3660,3 +3522,42 @@ msgstr ""
 #: includes/WPSettings.php:67
 msgid "Sitemap Menu"
 msgstr "Menu du plan du site"
+
+#: includes/Models/Error404.php:43
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:198
+msgid "This page does not exist, or no longer does."
+msgstr "Cette page n’existe pas, ou plus."
+
+#: includes/Models/Error404.php:44
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:210
+msgid ""
+"If you come from an old link, the page has most likely changed address. The "
+"sitemap lists them all."
+msgstr ""
+"Si vous arrivez d’un ancien lien, la page a sans doute changé d’adresse. Le "
+"plan du site les liste toutes."
+
+#: includes/Models/Error404.php:46
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:222
+msgid "See the sitemap"
+msgstr "Voir le plan du site"
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:190
+msgid ""
+"The 404 over the snake: the title, the text and the link to the sitemap, "
+"then a link back to the home page, next to the diff of the address that no "
+"longer exists."
+msgstr ""
+"La 404 au-dessus du snake : le titre, le texte et le lien vers le plan du "
+"site, puis un lien de retour à l’accueil, à côté du diff de l’adresse qui "
+"n’existe plus."
+
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:226
+msgid "Primary CTA, to the sitemap: its address is the new line of the diff."
+msgstr ""
+"Bouton principal, vers le plan du site : son adresse est la nouvelle ligne "
+"du diff."
+
+#: views/pages/404.html.twig:82
+msgid "error 404"
+msgstr "erreur 404"
