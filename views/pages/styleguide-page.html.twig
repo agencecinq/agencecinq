@@ -846,6 +846,408 @@
 					</p>
 				</div>
 			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-content">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Components</p>
+					<h2 id="styleguide-content" class="text-title-xl">Content</h2>
+					<p class="text-muted text-sm">
+						Headings, lists, prices, contacts, diffs, log entries and media frames of the Figma
+						Components page, in a Dark panel then a scheme-light one. Blockquote and Code block are
+						the rich text of the editor (wysiwyg.css), with the Default list item.
+					</p>
+				</header>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Section heading</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/section-heading.html.twig',
+										{
+											eyebrow: 'La méthode',
+											title: 'L’IA produit, l’équipe relit.',
+											text: 'Les maquettes et le code sont produits par des agents IA, ce qui raccourcit la production. Chaque étape qui décide est tenue par une personne de l’équipe.',
+											heading: 'h4',
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/section-heading.html.twig · title, eyebrow, text, heading ('h2'), id
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">List item</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'space-y-8' ) }}">
+								{%- for type in [ 'compact', 'default', 'divided', 'check' ] -%}
+									<ul>
+										{%- for text in [
+											'Thème construit sur notre starter',
+											'Mises à jour de WordPress et des extensions',
+										] -%}
+											{{-
+												include(
+													'components/list-item.html.twig',
+													{
+														text: text,
+														type: type,
+													},
+													with_context: false
+												)
+											-}}
+										{%- endfor -%}
+									</ul>
+								{%- endfor -%}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/list-item.html.twig · text, type: 'compact' | 'default' | 'divided' | 'check'
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Numbered item</h3>
+					<div class="space-y-3">
+						{%- for scheme in schemes | keys -%}
+							<ol class="{{ html_classes( scheme, panel ) }}">
+								{%- for item in [
+									{
+										title: 'Un prix fixe, pas une fourchette',
+										text: 'Le montant du socle est arrêté avant de commencer. Ce qui sort du périmètre est chiffré à part et validé par vous.',
+									},
+									{
+										title: 'Une seule équipe',
+										text: 'Celle qui conçoit le site le développe et le maintient.',
+									},
+								] -%}
+									{{-
+										include(
+											'components/numbered-item.html.twig',
+											item | merge( {
+												number: '%02d' | format( loop.index ),
+												heading: 'h4',
+											} ),
+											with_context: false
+										)
+									-}}
+								{%- endfor -%}
+							</ol>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/numbered-item.html.twig · number, title, text, heading ('h3') · in an ol
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Price line</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<dl class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/price-line.html.twig',
+										{
+											label: 'Refonte',
+											value: '4 900 € HT',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/price-line.html.twig',
+										{
+											label: 'Maintenance',
+											value: '190 € HT par mois',
+										},
+										with_context: false
+									)
+								-}}
+							</dl>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/price-line.html.twig · label, value · in a dl
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Contact item</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'grid gap-4' ) }}">
+								{{-
+									include(
+										'components/contact-item.html.twig',
+										{
+											label: 'Téléphone',
+											value: '06 73 77 86 08',
+											url: 'tel:+33673778608',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/contact-item.html.twig',
+										{
+											label: 'Rendez-vous',
+											value: '30 minutes en visio',
+											button: {
+												title: 'Réserver 30 minutes',
+												url: '#styleguide-content',
+											},
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/contact-item.html.twig · label, value, url (tel: or mailto:) | button {
+						title, url }
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Diff line and Diff block</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'space-y-6' ) }}">
+								<ul>
+									{{-
+										include(
+											'components/diff-line.html.twig',
+											{
+												text: 'Thème verrouillé chez le prestataire',
+												type: 'removed',
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/diff-line.html.twig',
+											{
+												text: 'Code et Figma à votre nom',
+												type: 'added',
+											},
+											with_context: false
+										)
+									-}}
+								</ul>
+								{{-
+									include(
+										'components/diff-block.html.twig',
+										{
+											address: 'votre-site.fr',
+											note: 'exemple',
+											removed: [
+												'WordPress 3 versions en retard',
+												'14 extensions, dont 6 abandonnées',
+												'4,8 s pour s’afficher sur mobile',
+											],
+											added: [
+												'WordPress à jour, vérifié chaque mois',
+												'5 extensions, toutes maintenues',
+												'1,6 s sur mobile',
+											],
+											link: {
+												title: 'Faire le diagnostic de mon site, 750 € HT',
+												url: '#styleguide-content',
+											},
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/diff-line.html.twig · text, type: 'removed' | 'added' · in a ul ·
+						components/diff-block.html.twig · address, note, removed, added, link { title, url }
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Activity entry</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<ul class="{{ html_classes( scheme, panel, 'space-y-6' ) }}">
+								{{-
+									include(
+										'components/activity-entry.html.twig',
+										{
+											project: 'Milia Matcha',
+											action: 'Thème Shopify mis à jour',
+											date: '-11 hours',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/activity-entry.html.twig',
+										{
+											project: 'Olmagi',
+											action: 'Extensions WordPress mises à jour',
+											date: '-3 days',
+										},
+										with_context: false
+									)
+								-}}
+							</ul>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/activity-entry.html.twig · project, action, date · in a ul
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Browser frame</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/browser-frame.html.twig',
+										{
+											media: {
+												type: 'image',
+												image: 10,
+											},
+											badge: 'Après · 2026',
+											alt: '',
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/browser-frame.html.twig · media, badge, alt, sizes, loading · block screen
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Window splitter</h3>
+					<div class="space-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/window-splitter.html.twig',
+										{
+											id: 'styleguide-splitter-' ~ scheme,
+											before: {
+												image: 9,
+												label: 'Avant · 2023',
+											},
+											after: {
+												image: 10,
+												label: 'Après · 2026',
+											},
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/window-splitter.html.twig · id, before { image, label }, after { image, label
+						}, sizes · CINQ UI &lt;cinq-windowsplitter data-mode="clip"&gt;
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Logo tile</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<ul
+								class="{{ html_classes( scheme, panel, 'grid grid-cols-2 gap-3 sm:grid-cols-4' ) }}"
+							>
+								{%- for name in [ 'L’Arbre Vert', 'Olmagi', 'Eigrene', 'Milia Matcha' ] -%}
+									{{-
+										include( 'components/logo-tile.html.twig', { name: name }, with_context: false )
+									-}}
+								{%- endfor -%}
+							</ul>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/logo-tile.html.twig · name, image · in a ul
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Accordion item</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/accordion-group.html.twig',
+										{
+											id: 'styleguide-accordion-' ~ scheme,
+											items: [
+												{
+													title: 'Quelle différence avec le socle Express ?',
+													text: '<p>L’Express refait une boutique pour 14 900 € HT, sans accompagnement imposé.</p>',
+												},
+												{
+													title: 'Qui garde le code ?',
+													text: '<p>Vous. Le code et le Figma sont à votre nom dès la livraison.</p>',
+												},
+											],
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/accordion-item.html.twig · id, question, answer, open, heading ('h3') ·
+						components/accordion-group.html.twig · id, items · CINQ UI &lt;cinq-accordion&gt;
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Rich text: list, blockquote, code block</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'wysiwyg text-body text-lg' ) }}">
+								<p>Un thème du commerce se modifie mal, et chaque mise à jour le remet à zéro.</p>
+								<ul>
+									<li>Thème construit sur notre starter</li>
+									<li>Mises à jour de <strong>WordPress</strong> et des extensions</li>
+								</ul>
+								<blockquote>
+									<p>« Un thème modifié ne reçoit plus de mises à jour. »</p>
+								</blockquote>
+								<pre
+								><code>{% verbatim %}{% render 'product-card', product: product %}{% endverbatim %}</code></pre>
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">.wysiwyg ul, blockquote, pre (components/wysiwyg.css)</p>
+				</div>
+			</section>
 		</div>
 	</main>
 {%- endblock -%}
