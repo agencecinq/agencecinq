@@ -301,6 +301,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:111
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:85
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:87
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:55
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:57
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:95
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:97
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:104
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:162
@@ -377,6 +381,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:63
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:68
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:70
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:34
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:35
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:40
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:40
@@ -467,6 +475,8 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:120
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:122
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:63
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:65
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:75
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:110
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:63
@@ -642,6 +652,8 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:175
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:177
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:73
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:75
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:66
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:73
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:75
@@ -790,6 +802,8 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:132
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:134
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:122
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:124
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:77
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:79
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:81
@@ -854,6 +868,7 @@ msgid ""
 "decided at the end of the call."
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:80
 msgid "Enter the lead text of the block"
@@ -1174,6 +1189,8 @@ msgstr ""
 msgid "Estimate sent"
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:48
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:160
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:50
@@ -1282,6 +1299,8 @@ msgstr ""
 msgid "e.g. Firm price written into the contract"
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:114
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:116
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:73
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:75
 msgid "Links"
@@ -1489,6 +1508,8 @@ msgstr ""
 msgid "Uppercase mono label above the title."
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:133
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:135
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:98
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:100
 msgid "Secondary link"
@@ -2623,6 +2644,7 @@ msgid "One paragraph under the title, four lines at most on desktop."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:137
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:138
 msgid "Optional outlined button next to the primary CTA."
 msgstr ""
 
@@ -3281,6 +3303,8 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Accordion.php:103
 #: includes/Plugins/ACF/IncludeFields/Layouts/Accordion.php:105
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:104
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:106
 msgid "Question"
 msgstr ""
 
@@ -3415,4 +3439,27 @@ msgstr ""
 
 #: views/blocks/contact-details.html.twig:17
 msgid "30 minutes by video"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:29
+msgid "Checklist"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:59
+msgid "6 points to tell whether your site is an asset."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:85
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:87
+msgid "Points"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:90
+msgid "Add Point"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:91
+msgid ""
+"One point per row, numbered in its order: what to check, then the question "
+"to ask."
 msgstr ""

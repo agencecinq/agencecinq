@@ -15,6 +15,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActionCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Breadcrumb;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\BulletList;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Checklist;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
@@ -63,6 +64,7 @@ class BlocksFields implements Service {
 		ActivityLog::class,
 		Breadcrumb::class,
 		BulletList::class,
+		Checklist::class,
 		CodeGuide::class,
 		Comparison::class,
 		Configurator::class,
