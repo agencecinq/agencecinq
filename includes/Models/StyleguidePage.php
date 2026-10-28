@@ -57,6 +57,10 @@ class StyleguidePage extends Post {
 						'title' => 'Actions & navigation',
 						'href'  => '#styleguide-actions',
 					),
+					array(
+						'title' => 'Forms',
+						'href'  => '#styleguide-forms',
+					),
 				),
 			),
 		);

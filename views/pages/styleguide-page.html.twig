@@ -694,6 +694,156 @@
 					</p>
 				</div>
 			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-forms">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Components</p>
+					<h2 id="styleguide-forms" class="text-title-xl">Forms</h2>
+					<p class="text-muted text-sm">
+						Fields of the Figma Components page, in a Dark panel then a scheme-light one. States
+						follow the markup: aria-invalid marks an error, disabled fades the field, aria-checked
+						holds the state of a switch. Focus shows on interaction. Contact Form 7 fields share
+						these styles (components/wpcf7.css).
+					</p>
+				</header>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Input</h3>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel, 'grid gap-8 sm:grid-cols-2' ) }}">
+								{{-
+									include(
+										'components/input.html.twig',
+										{
+											id: 'styleguide-input-' ~ scheme,
+											label: 'Adresse de votre site',
+											type: 'url',
+											attributes: { placeholder: 'https://votre-site.fr' },
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/input.html.twig',
+										{
+											id: 'styleguide-input-error-' ~ scheme,
+											label: 'Adresse de votre site',
+											type: 'url',
+											error: 'Adresse incomplète : elle doit finir par .fr, .com ou une autre extension. Exemple : https://eigrene.fr',
+											attributes: { value: 'https://eigrene' },
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/input.html.twig',
+										{
+											id: 'styleguide-input-disabled-' ~ scheme,
+											label: 'Adresse de votre site',
+											type: 'url',
+											attributes: {
+												placeholder: 'https://votre-site.fr',
+												disabled: true,
+											},
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/input.html.twig · id, label, type, error, invalid, attributes
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Checkbox</h3>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/checkbox.html.twig',
+										{
+											id: 'styleguide-checkbox-' ~ scheme,
+											label: 'Mesure d’audience',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/checkbox.html.twig',
+										{
+											id: 'styleguide-checkbox-checked-' ~ scheme,
+											label: 'Mesure d’audience',
+											attributes: { checked: true },
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/checkbox.html.twig',
+										{
+											id: 'styleguide-checkbox-disabled-' ~ scheme,
+											label: 'Mesure d’audience',
+											attributes: { disabled: true },
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">components/checkbox.html.twig · id, label, attributes</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Switch</h3>
+					<div class="grid gap-2 lg:grid-cols-2">
+						{%- for scheme in schemes | keys -%}
+							<div class="{{ html_classes( scheme, panel ) }}">
+								{{-
+									include(
+										'components/switch.html.twig',
+										{ label: 'Mesure d’audience' },
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/switch.html.twig',
+										{
+											label: 'Mesure d’audience',
+											checked: true,
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/switch.html.twig',
+										{
+											label: 'Cookies nécessaires',
+											always_on: true,
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/switch.html.twig · label, checked, always_on, name, value · CINQ UI
+						&lt;cinq-switch&gt;
+					</p>
+				</div>
+			</section>
 		</div>
 	</main>
 {%- endblock -%}
