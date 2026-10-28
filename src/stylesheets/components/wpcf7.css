@@ -46,35 +46,20 @@
 		}
 	}
 
-	/* Layout · first four fields in two columns, the rest full width. */
-	.block-form .wpcf7 .wpcf7-form {
-		@apply flex flex-col gap-5;
-	}
-
-	.block-form .wpcf7 .wpcf7-form > p {
-		@apply m-0 grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2;
-	}
-
-	.block-form .wpcf7 .wpcf7-form br {
+	/* Fields · Figma Input, in every form */
+	.wpcf7 .wpcf7-form br {
 		@apply hidden;
 	}
 
-	.block-form .wpcf7 .wpcf7-form > p > label:nth-child(n + 5 of label),
-	.block-form .wpcf7 .wpcf7-form > .wpcf7-response-output {
-		@apply col-span-full;
-	}
-
-	.block-form .wpcf7 .wpcf7-form .wpcf7-form-control-wrap {
+	.wpcf7 .wpcf7-form .wpcf7-form-control-wrap {
 		@apply relative block w-full font-sans text-base;
 	}
 
-	.block-form .wpcf7 .wpcf7-form label {
+	.wpcf7 .wpcf7-form label {
 		@apply text-button text-primary flex w-full flex-col items-start gap-2;
 	}
 
-	/* Fields · Figma Input */
-	.block-form
-		.wpcf7
+	.wpcf7
 		.wpcf7-form
 		:is(
 			input[type="text"],
@@ -90,11 +75,11 @@
 		@apply focus:outline-focus-ring focus:outline-2 focus:-outline-offset-2;
 	}
 
-	.block-form .wpcf7 .wpcf7-form textarea {
+	.wpcf7 .wpcf7-form textarea {
 		@apply h-27 resize-none;
 	}
 
-	.block-form .wpcf7 .wpcf7-form select {
+	.wpcf7 .wpcf7-form select {
 		@apply pr-10;
 
 		appearance: none;
@@ -110,64 +95,74 @@
 		background-repeat: no-repeat;
 	}
 
-	/* Long-form fields and acceptances always take the full row. */
-	.block-form .wpcf7 .wpcf7-form > p > label:has(textarea),
-	.block-form .wpcf7 .wpcf7-form > p > .wpcf7-form-control-wrap:has(.wpcf7-acceptance) {
-		@apply col-span-full;
-	}
-
 	/* Validation / messages */
-	.block-form .wpcf7 .wpcf7-not-valid-tip {
+	.wpcf7 .wpcf7-not-valid-tip {
 		@apply text-status-error mt-2 flex gap-2 text-sm;
 	}
 
-	.block-form .wpcf7 .wpcf7-not-valid-tip::before {
+	.wpcf7 .wpcf7-not-valid-tip::before {
 		@apply text-button;
 
 		content: "!" / "";
 	}
 
-	.block-form .wpcf7 .wpcf7-response-output {
-		@apply border-default bg-surface text-primary col-span-full rounded-sm border px-3.5 py-3 text-sm;
+	.wpcf7 .wpcf7-response-output {
+		@apply border-default bg-surface text-primary rounded-sm border px-3.5 py-3 text-sm;
 	}
 
-	.block-form .wpcf7 form.sent .wpcf7-response-output {
+	.wpcf7 form.sent .wpcf7-response-output {
 		@apply border-accent;
 	}
 
-	.block-form .wpcf7 form.invalid .wpcf7-response-output,
-	.block-form .wpcf7 form.unaccepted .wpcf7-response-output {
+	.wpcf7 form.invalid .wpcf7-response-output,
+	.wpcf7 form.unaccepted .wpcf7-response-output {
 		@apply border-status-error;
 	}
 
 	/* Submit (same look as primary button) */
-	.block-form .wpcf7 .wpcf7-submit {
-		@apply bg-accent-default text-button text-on-accent hover:bg-accent-hover focus-visible:bg-accent-hover relative col-span-full inline-flex w-auto items-center justify-center gap-2 justify-self-start rounded-full px-6 py-3.5 whitespace-nowrap transition-colors duration-300 ease-out;
+	.wpcf7 .wpcf7-submit {
+		@apply bg-accent-default text-button text-on-accent hover:bg-accent-hover focus-visible:bg-accent-hover relative inline-flex w-auto items-center justify-center gap-2 justify-self-start rounded-full px-6 py-3.5 whitespace-nowrap transition-colors duration-300 ease-out;
 	}
 
-	.block-form .wpcf7 .wpcf7-submit[disabled] {
+	.wpcf7 .wpcf7-submit[disabled] {
 		@apply pointer-events-none cursor-not-allowed opacity-50;
 	}
 
-	.block-form .wpcf7 .wpcf7-spinner {
+	.wpcf7 .wpcf7-spinner {
 		@apply m-0 align-middle;
 	}
 
 	/* Choice groups · <fieldset><legend> around radios */
-	.block-form .wpcf7 .wpcf7-form fieldset {
+	.wpcf7 .wpcf7-form fieldset {
 		@apply m-0 border-0 p-0;
 	}
 
-	.block-form .wpcf7 .wpcf7-form legend {
+	.wpcf7 .wpcf7-form legend {
 		@apply text-button text-primary mb-3 p-0;
 	}
 
-	.block-form .wpcf7 .wpcf7-form fieldset > p {
+	.wpcf7 .wpcf7-form fieldset > p {
 		@apply m-0;
 	}
 
-	.block-form .wpcf7 .wpcf7-radio {
+	.wpcf7 .wpcf7-radio {
 		@apply flex flex-wrap gap-x-6 gap-y-3;
+	}
+
+	/* Layout · Form info: the first four fields in two columns, the rest full width. */
+	.block-form .wpcf7 .wpcf7-form {
+		@apply flex flex-col gap-5;
+	}
+
+	.block-form .wpcf7 .wpcf7-form > p {
+		@apply m-0 grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2;
+	}
+
+	.block-form .wpcf7 .wpcf7-form > p > label:nth-child(n + 5 of label),
+	.block-form .wpcf7 .wpcf7-form > p > label:has(textarea),
+	.block-form .wpcf7 .wpcf7-form > p > .wpcf7-form-control-wrap:has(.wpcf7-acceptance),
+	.block-form .wpcf7 .wpcf7-submit {
+		@apply col-span-full;
 	}
 
 	/* Checkboxes and radios · Figma Checkbox: the box is drawn before the label of a hidden input. */
