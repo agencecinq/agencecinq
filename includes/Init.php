@@ -52,7 +52,6 @@ class Init {
 			Plugins\ACF\SavePost::class,
 			Plugins\ACF\FormatValue::class,
 			Plugins\ACF\Input\AdminEnqueueScripts::class,
-			Plugins\ACF\IncludeFields\ArchivePostsFields::class,
 			Plugins\ACF\IncludeFields\BlocksFields::class,
 			Plugins\ACF\IncludeFields\PageFields::class,
 			Plugins\ACF\IncludeFields\FrontPageFields::class,

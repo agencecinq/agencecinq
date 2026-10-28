@@ -32,16 +32,19 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkRow;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ListingHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LogoWall;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ModuleCatalog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PostGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PriceBreakdown;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTable;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\RichText;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\SignupForm;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Steps;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
@@ -83,16 +86,19 @@ class BlocksFields implements Service {
 		LatestPosts::class,
 		LinkGrid::class,
 		LinkRow::class,
+		ListingHeader::class,
 		LogoWall::class,
 		ModuleCatalog::class,
 		NumberedList::class,
 		PageHeader::class,
 		PortraitGrid::class,
 		PositioningBanner::class,
+		PostGrid::class,
 		PriceBreakdown::class,
 		PricingTable::class,
 		Quote::class,
 		RichText::class,
+		SignupForm::class,
 		Stats::class,
 		Steps::class,
 		Subscriptions::class,
@@ -130,6 +136,13 @@ class BlocksFields implements Service {
 					'param'    => 'page_template',
 					'operator' => '==',
 					'value'    => 'page-templates/blocks-page.php',
+				),
+			),
+			array(
+				array(
+					'param'    => 'page_type',
+					'operator' => '==',
+					'value'    => 'posts_page',
 				),
 			),
 			array(

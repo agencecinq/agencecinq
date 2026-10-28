@@ -72,16 +72,6 @@ class Init implements Service {
 	public function add_options_pages(): void {
 		acf_add_options_page(
 			array(
-				'page_title'  => __( 'Archive', 'agencecinq' ),
-				'menu_slug'   => 'archive-post',
-				'parent_slug' => 'edit.php',
-				'position'    => '',
-				'redirect'    => false,
-			)
-		);
-
-		acf_add_options_page(
-			array(
 				'page_title'  => __( 'Theme', 'agencecinq' ),
 				'menu_slug'   => 'options-theme',
 				'parent_slug' => 'options-general.php',

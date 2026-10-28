@@ -1,12 +1,8 @@
 <?php
 /**
- * Home template file for the AgenceCinq WordPress theme.
+ * Home template file
  *
- * This template is used to display the homepage. home.php in WordPress is the page that
- * is set to display the latest posts.
- *
- * To setup your homepage, go into the WordPress admin panel, navigate to Settings > Reading,
- * and select "Your latest posts" for the homepage display option.
+ * The page for posts, set in Settings > Reading: shows its blocks, which list the posts.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -16,7 +12,9 @@
 
 use Timber\{ Timber };
 
-$templates = array( 'pages/archive-post.html.twig' );
-$data      = Timber::context();
+$page_id      = absint( get_option( 'page_for_posts' ) );
+$templates    = array( 'pages/blocks-page.html.twig' );
+$data         = Timber::context();
+$data['post'] = $page_id ? Timber::get_post( $page_id ) : null;
 
 Timber::render( $templates, $data );

@@ -1,0 +1,49 @@
+{#
+ # Blocks: Post grid
+ #
+ # Figma Section/Post grid, on the blog and its categories: the posts of the archive as Article cards, their
+ # titles in H2, three per row from lg on four columns each, then the pagination. Elsewhere it shows nothing.
+ #}
+
+{%- set items = posts | default( [] ) -%}
+
+{%- if items | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<div id="{{ block.id }}" data-scheme="{{ block.layout.color_scheme | default( '' ) }}">
+		<div class="container flex flex-col items-start gap-8 lg:gap-14">
+			<ul class="layout-grid w-full gap-y-8 lg:gap-y-14">
+				{%- for item in items -%}
+					<li class="col-span-full lg:col-span-4">
+						{{-
+							include(
+								'components/article-card.html.twig',
+								{
+									post: item,
+									heading: 'h2',
+									sizes: '(min-width: 90rem) 24.8rem, (min-width: 64rem) calc((100vw - 15.5rem) / 3), calc(100vw - 2.5rem)',
+								},
+								with_context: false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+			{{-
+				include(
+					'components/pagination.html.twig',
+					{ pagination: items.pagination() },
+					with_context: false
+				)
+			-}}
+		</div>
+	</div>
+{%- endif -%}

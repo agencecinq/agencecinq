@@ -288,14 +288,6 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:52
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:54
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:86
-msgid "Archive Posts"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:60
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:62
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:53
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:55
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:53
@@ -303,8 +295,6 @@ msgstr ""
 msgid "Hero"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:68
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:70
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:109
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:111
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:85
@@ -328,10 +318,14 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:95
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:56
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:58
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:49
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:51
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:49
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:51
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:55
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:57
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:48
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:57
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:118
@@ -355,29 +349,21 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:72
-msgid "Enter the title of the hero"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:73
-msgid "Main heading for the posts archive hero."
-msgstr ""
-
 #. Template Name of the theme
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:131
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:133
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:160
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:162
 msgid "Blocks"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:135
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:164
 msgid "Add and arrange blocks to build the page content."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:137
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:166
 msgid "Add Block"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:145
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:174
 msgid "Blocks Fields"
 msgstr ""
 
@@ -425,6 +411,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:39
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:41
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:34
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:35
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:40
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:36
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:41
@@ -439,6 +429,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:35
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:34
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:35
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:40
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:40
@@ -504,6 +498,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:146
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:102
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:58
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:67
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:58
@@ -514,6 +510,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:98
 #: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:42
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:57
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:128
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:130
 #: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:63
@@ -661,6 +659,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:74
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:76
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:67
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:65
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:67
 #: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:73
@@ -759,8 +759,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:99
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:101
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:64
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:66
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:74
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:76
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:188
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:190
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:357
@@ -808,8 +808,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:79
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:151
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:153
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:81
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:83
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:91
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:93
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:85
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:87
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:220
@@ -824,7 +824,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:138
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:185
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:157
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:87
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:97
 #: views/pages/single-post.html.twig:155
 msgid "Book 30 minutes"
 msgstr "Réserver 30 minutes"
@@ -879,14 +879,16 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:80
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:64
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:70
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:63
 #: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:69
 msgid "Enter the lead text of the block"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:148
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:161
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:91
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:101
 msgid ""
 "Primary CTA. Default label: Book 30 minutes. The diagnostic is never a first "
 "click."
@@ -982,6 +984,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:186
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:95
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:97
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:91
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:93
 msgid "Note"
 msgstr ""
 
@@ -1337,8 +1341,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:132
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:114
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:116
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:73
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:75
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:83
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:85
 msgid "Links"
 msgstr ""
 
@@ -1409,6 +1413,8 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:49
 #: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:51
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:79
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:81
 msgid "Form"
 msgstr ""
 
@@ -1535,11 +1541,11 @@ msgid ""
 "Central. Leave empty for every platform."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:116
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:126
 msgid "Page Hero"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:69
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:79
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:194
 msgid "Uppercase mono label above the title."
 msgstr ""
@@ -1548,12 +1554,12 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:157
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:133
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:135
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:98
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:100
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:108
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:110
 msgid "Secondary link"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:103
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:113
 msgid "Optional underlined link next to the primary CTA."
 msgstr ""
 
@@ -1775,11 +1781,11 @@ msgstr ""
 msgid "When locked, Claude must not contribute or edit this content."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:68
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:78
 msgid "Enter the overline of the page"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/PageFields.php:69
+#: includes/Plugins/ACF/IncludeFields/PageFields.php:79
 msgid "Optional."
 msgstr ""
 
@@ -1805,7 +1811,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:57
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:62
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:64
-#: includes/Plugins/ACF/Init.php:85
+#: includes/Plugins/ACF/Init.php:75
 msgid "Theme"
 msgstr ""
 
@@ -1852,7 +1858,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:115
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:117
 #: views/blocks/contact-details.html.twig:42
-#: views/components/form-newsletter.html.twig:54
 msgid "Email"
 msgstr "E-mail"
 
@@ -2028,10 +2033,6 @@ msgstr ""
 msgid "Theme Fields"
 msgstr ""
 
-#: includes/Plugins/ACF/Init.php:75
-msgid "Archive"
-msgstr ""
-
 #: includes/Plugins/ContactForm7/Estimation.php:98
 msgid "Configurator estimate"
 msgstr "Estimation du configurateur"
@@ -2191,6 +2192,7 @@ msgid "Category"
 msgstr ""
 
 #: includes/Taxonomy/CaseStudyCategory.php:49
+#: views/blocks/listing-header.html.twig:44
 msgid "Categories"
 msgstr "Catégories"
 
@@ -2422,23 +2424,6 @@ msgstr "Aucun article trouvé"
 msgid "Copied"
 msgstr "Copié"
 
-#: views/components/form-newsletter.html.twig:28
-msgid "Newsletter form"
-msgstr "Formulaire d’inscription à la newsletter"
-
-#: views/components/form-newsletter.html.twig:43
-msgid "Your email"
-msgstr "Votre e-mail"
-
-#: views/components/form-newsletter.html.twig:62
-#: views/components/form-newsletter.html.twig:64
-msgid "Submit"
-msgstr "Envoyer"
-
-#: views/components/form-newsletter.html.twig:88
-msgid "I agree to receive the AgenceCinq newsletter and offers"
-msgstr "J’accepte de recevoir la newsletter et les offres d’AgenceCinq"
-
 #: views/components/mobile-menu.html.twig:30
 msgid "Mobile navigation"
 msgstr "Navigation mobile"
@@ -2486,19 +2471,7 @@ msgstr "Page %1$s sur %2$s"
 msgid "Skip to content"
 msgstr "Aller au contenu"
 
-#: views/components/tease-post.html.twig:16
-#: views/components/tease-post.html.twig:70
-#, php-format
-msgid "Discover: %s"
-msgstr "Découvrir : %s"
-
-#: views/components/tease-post.html.twig:19
-#: views/components/tease-post.html.twig:72
-msgid "Discover"
-msgstr "Découvrir"
-
 #: views/components/tease-post-column.html.twig:52
-#: views/components/tease-post.html.twig:49
 #: views/pages/single-post.html.twig:25
 #, php-format
 msgid "%d min read"
@@ -2507,10 +2480,6 @@ msgstr "%d min de lecture"
 #: views/components/tease-post-column.html.twig:71
 msgid "Read the article"
 msgstr "Lire l’article"
-
-#: views/components/tease-post.html.twig:36
-msgid "Post categories"
-msgstr "Catégories de l’article"
 
 #: views/footer.html.twig:72
 msgid "Footer navigation"
@@ -2540,17 +2509,9 @@ msgstr ""
 msgid "Replay"
 msgstr "Rejouer"
 
-#: views/pages/archive-post.html.twig:29
+#: views/blocks/listing-header.html.twig:51
 msgid "All posts"
 msgstr "Tous les articles"
-
-#: views/pages/archive-post.html.twig:75
-msgid "Subscribe to our newsletter"
-msgstr "Inscrivez-vous à notre newsletter"
-
-#: views/pages/archive-post.html.twig:78
-msgid "News and updates from Agence Cinq"
-msgstr "Les actualités et nouveautés d’Agence Cinq"
 
 #: views/pages/front-page.html.twig:147
 #, php-format
@@ -3713,3 +3674,69 @@ msgstr "En ligne : %s"
 #: views/pages/single-case-study.html.twig:36
 msgid "Client case"
 msgstr "Cas client"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:29
+msgid "Listing header"
+msgstr "En-tête de liste"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:45
+msgid ""
+"On the page for posts: the title and the text of the blog, then the "
+"categories as filters. On a category, its name and its description replace "
+"them. Recommended paddings: 104px top, 56px bottom."
+msgstr ""
+"Sur la page des articles : le titre et le texte du blog, puis les catégories "
+"en filtres. Sur une catégorie, son nom et sa description les remplacent. "
+"Marges recommandées : 104 px en haut, 56 px en bas."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ListingHeader.php:54
+msgid "The blog"
+msgstr "Le blog"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PostGrid.php:29
+msgid "Post grid"
+msgstr "Grille d’articles"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PostGrid.php:34
+#: includes/Plugins/ACF/IncludeFields/Layouts/PostGrid.php:35
+msgid "Posts"
+msgstr "Articles"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/PostGrid.php:37
+msgid ""
+"On the page for posts: the posts of the blog or of the category, as many per "
+"page as set in Settings › Reading, then the pagination. Elsewhere, the block "
+"shows nothing. Recommended paddings: 24px top, 104px bottom."
+msgstr ""
+"Sur la page des articles : les articles du blog ou de la catégorie, autant "
+"par page que réglé dans Réglages › Lecture, puis la pagination. Ailleurs, le "
+"bloc n’affiche rien. Marges recommandées : 24 px en haut, 104 px en bas."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:29
+msgid "Signup form"
+msgstr "Formulaire d’inscription"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:53
+msgid "The CINQ letter"
+msgstr "La lettre de CINQ"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:87
+msgid ""
+"Select the Contact Form 7 form: the email with its visible label, then the "
+"submit. Its message on success says what happens next."
+msgstr ""
+"Choisissez le formulaire Contact Form 7 : l’e-mail avec son libellé visible, "
+"puis le bouton d’envoi. Son message de réussite dit ce qui se passe ensuite."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:95
+msgid "Your address is only used to send the letter."
+msgstr "Votre adresse ne sert qu’à envoyer la lettre."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:96
+msgid "Under the form, followed by the link to the privacy policy."
+msgstr ""
+"Sous le formulaire, suivi du lien vers la politique de confidentialité."
+
+#: views/blocks/signup-form.html.twig:59
+msgid "See the privacy policy"
+msgstr "Voir la politique de confidentialité"

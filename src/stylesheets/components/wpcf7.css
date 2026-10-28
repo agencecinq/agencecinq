@@ -165,6 +165,20 @@
 		@apply col-span-full;
 	}
 
+	/* Layout · Signup form: the field on its row, the submit and its spinner under it. */
+	.block-signup .wpcf7 .wpcf7-form {
+		@apply flex flex-col gap-4;
+	}
+
+	.block-signup .wpcf7 .wpcf7-form > p {
+		@apply m-0 flex flex-wrap items-center gap-4;
+	}
+
+	/* Figma Signup form: the submit without its arrow */
+	.block-signup .wpcf7 .wpcf7-submit > [aria-hidden="true"] {
+		@apply hidden;
+	}
+
 	/* Checkboxes and radios · Figma Checkbox: the box is drawn before the label of a hidden input. */
 	.wpcf7 .wpcf7-list-item {
 		@apply relative m-0;

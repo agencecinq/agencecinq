@@ -11,7 +11,7 @@ namespace AgenceCinq\Setup;
 
 use AgenceCinq\Service;
 use Timber\{Timber, Site, Post };
-use AgenceCinq\Models\{ CategoryArchive, Home, SinglePost, CaseStudy, StyleguidePage };
+use AgenceCinq\Models\{ SinglePost, CaseStudy, StyleguidePage };
 use WP_Post;
 
 /**
@@ -33,7 +33,6 @@ class Context extends Site implements Service {
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'timber/context', array( $this, 'add_menus_to_context' ) );
 		add_filter( 'timber/post/classmap', array( $this, 'add_post_classmap' ) );
-		add_filter( 'timber/term/classmap', array( $this, 'add_term_classmap' ) );
 	}
 
 
@@ -110,34 +109,10 @@ class Context extends Site implements Service {
 					return StyleguidePage::class;
 				}
 
-				if ( is_home() ) {
-					return Home::class;
-				}
-
 				return Post::class;
 			},
 			'post'       => SinglePost::class,
 			'case-study' => CaseStudy::class,
-		);
-
-		return array_merge( $classmap, $custom_classmap );
-	}
-
-
-	/**
-	 * Add term classmap
-	 *
-	 * Add custom term classmap.
-	 *
-	 * @param array $classmap Classmap.
-	 *
-	 * @see https://timber.github.io/docs/v2/guides/class-maps/#the-term-class-map
-	 *
-	 * @return array
-	 */
-	public function add_term_classmap( array $classmap ): array {
-		$custom_classmap = array(
-			'category' => CategoryArchive::class,
 		);
 
 		return array_merge( $classmap, $custom_classmap );
