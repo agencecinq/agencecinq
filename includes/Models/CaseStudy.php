@@ -71,89 +71,21 @@ class CaseStudy extends Post {
 	}
 
 	/**
-	 * Returns the screenshot of the hero, or the poster of its video.
+	 * Returns the screenshot of the delivered site, the after of the hero.
 	 *
 	 * @return int Attachment ID, 0 without one.
 	 */
 	public function screenshot(): int {
-		$media = $this->media();
-
-		return (int) ( $media['image'] ?? $media['poster']['ID'] ?? 0 );
+		return (int) ( $this->hero()['image'] ?? 0 );
 	}
 
 	/**
-	 * Returns the hero media payload for the browser frame (image or video).
+	 * Returns the screenshot of the site before, the before of the hero.
 	 *
-	 * @return array{type: string, image?: int, video?: array<string, mixed>, poster?: array<string, mixed>}|null
+	 * @return int Attachment ID, 0 without one.
 	 */
-	public function media(): ?array {
-		$hero = $this->hero();
-		$type = isset( $hero['media_type'] ) ? (string) $hero['media_type'] : 'image';
-
-		if ( ! in_array( $type, array( 'image', 'video' ), true ) ) {
-			$type = 'image';
-		}
-
-		if ( 'video' === $type ) {
-			$video = $this->normalize_media_array( $hero['video'] ?? null );
-
-			if ( null === $video ) {
-				return null;
-			}
-
-			$media = array(
-				'type'  => 'video',
-				'video' => $video,
-			);
-
-			$poster = $this->normalize_media_array( $hero['poster'] ?? null );
-
-			if ( null !== $poster ) {
-				$media['poster'] = $poster;
-			}
-
-			return $media;
-		}
-
-		$id = isset( $hero['image'] ) ? (int) $hero['image'] : 0;
-
-		if ( $id <= 0 ) {
-			return null;
-		}
-
-		return array(
-			'type'  => 'image',
-			'image' => $id,
-		);
-	}
-
-	/**
-	 * Normalizes an ACF file/image value to an array with a url key.
-	 *
-	 * @param mixed $value ACF array, attachment ID, or URL string.
-	 * @return array<string, mixed>|null
-	 */
-	private function normalize_media_array( $value ): ?array {
-		if ( is_array( $value ) && ! empty( $value['url'] ) ) {
-			return $value;
-		}
-
-		if ( is_numeric( $value ) ) {
-			$url = wp_get_attachment_url( (int) $value );
-
-			return $url ? array(
-				'ID'  => (int) $value,
-				'url' => $url,
-			) : null;
-		}
-
-		if ( is_string( $value ) && '' !== $value ) {
-			return array(
-				'url' => $value,
-			);
-		}
-
-		return null;
+	public function before(): int {
+		return (int) ( $this->hero()['before'] ?? 0 );
 	}
 
 	/**

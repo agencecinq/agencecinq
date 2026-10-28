@@ -236,8 +236,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:40
 #: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:46
 #: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:48
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:132
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:133
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:171
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:172
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:92
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:94
 msgid "Media"
@@ -371,12 +371,6 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/BlocksFields.php:145
 msgid "Blocks Fields"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:57
-msgid ""
-"Case study opening: meta, title, lead, then the delivered site in a browser "
-"frame."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:62
@@ -537,53 +531,23 @@ msgstr ""
 msgid "Enter the lead of the case study"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:138
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:140
-msgid "Type"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:142
-msgid "Choose whether the browser frame shows a screenshot or a video."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:144
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:137
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:139
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:373
 msgid "Image"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:145
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:173
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:175
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:101
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:103
 msgid "Video"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:153
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:155
-msgid "Screenshot"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:177
-msgid ""
-"Delivered site capture as video, 16:10. Supported formats: mp4, webm, ogv. "
-"No browser chrome and no cookie banner."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:193
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:195
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:124
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:126
 msgid "Poster"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:197
-msgid "Optional still frame shown before the video plays (same 16:10 ratio)."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:219
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:242
 msgid "Case Study"
 msgstr ""
 
@@ -826,6 +790,8 @@ msgid ""
 "automatically."
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:138
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:140
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:132
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:134
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:122
@@ -846,6 +812,7 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:144
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:138
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:185
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:157
@@ -906,6 +873,7 @@ msgstr ""
 msgid "Enter the lead text of the block"
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:148
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:161
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:91
 msgid ""
@@ -1343,6 +1311,8 @@ msgstr ""
 msgid "e.g. Firm price written into the contract"
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:130
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:132
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:114
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:116
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:73
@@ -1552,6 +1522,8 @@ msgstr ""
 msgid "Uppercase mono label above the title."
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:155
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:157
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:133
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:135
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:98
@@ -2671,6 +2643,7 @@ msgstr ""
 msgid "One paragraph under the title, four lines at most on desktop."
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:160
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:137
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:138
 msgid "Optional outlined button next to the primary CTA."
@@ -2857,12 +2830,16 @@ msgstr ""
 msgid "Captures"
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:177
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:179
 #: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:92
 #: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:94
 #: views/blocks/comparison.html.twig:57
 msgid "Before"
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:191
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:193
 #: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:105
 #: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:107
 #: views/blocks/comparison.html.twig:63
@@ -3015,50 +2992,43 @@ msgstr ""
 msgid "Read the %s case"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:215
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:217
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:207
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:209
 msgid "Card"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:220
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:212
 msgid ""
 "The case in an Image card, after the screenshot of the hero and the client."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:224
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:226
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:216
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:218
 msgid "Situation"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:228
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:220
 msgid "e.g. B2B service · site left on Elementor"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:229
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:221
 msgid ""
 "The situation the client started from, in the badge: not the technology nor "
 "the year."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:233
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:235
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:225
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:227
 msgid "Summary"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:239
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:231
 msgid ""
 "e.g. A site organised by sector and company size, with a savings calculator."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:240
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:232
 msgid "One sentence on what the site does now."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:157
-msgid ""
-"Delivered site capture, 16:10 (1600×1000 recommended). No browser chrome and "
-"no cookie banner. Its alternative text, in the media library, names the "
-"client and says what the image shows."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/NumberedList.php:29
@@ -3589,4 +3559,43 @@ msgstr ""
 msgid ""
 "The case study archive shows the blocks of this page, which uses the Blocks "
 "template."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:57
+msgid ""
+"Case study opening, as a Page header: « Client case », the title, the lead, "
+"the client line, the buttons, then the site before and after."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:181
+msgid ""
+"The site before, same framing as the after, shown in greys above it. Its "
+"alternative text, in the media library, describes the page before."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:195
+msgid ""
+"The delivered site, 16:10 (1600×1000 recommended), without browser chrome "
+"nor cookie banner: the after of the Page header and the image of the Image "
+"card. Its alternative text, in the media library, names the client and says "
+"what the image shows."
+msgstr ""
+
+#: views/pages/single-case-study.html.twig:16
+#, php-format
+msgid "Client: %s"
+msgstr ""
+
+#: views/pages/single-case-study.html.twig:17
+#, php-format
+msgid "Platform: %s"
+msgstr ""
+
+#: views/pages/single-case-study.html.twig:18
+#, php-format
+msgid "Live: %s"
+msgstr ""
+
+#: views/pages/single-case-study.html.twig:36
+msgid "Client case"
 msgstr ""

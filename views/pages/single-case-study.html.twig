@@ -1,78 +1,50 @@
 {#
  # Single case study
  #
+ # Figma T11 · Case study: the breadcrumb, then the Page header of the case from its hero, « Client case »,
+ # the title, the lead, the client line, the buttons and the site before and after, then its blocks.
+ #
  # @package AgenceCinq
  #}
 
 {% extends 'index.html.twig' %}
 
 {%- block content -%}
-	<main id="content" role="main" itemscope itemtype="https://schema.org/Article">
-		{%- if
-			post.meta( 'hero' ).content.client
-				or post.meta( 'hero' ).content.platform
-				or post.meta( 'hero' ).content.year
-				or post.meta( 'hero' ).content.title
-				or post.meta( 'hero' ).content.text
-				or post.media
-				or post.title -%}
-			<section class="py-18 lg:py-26" aria-labelledby="case-hero-title">
-				<div class="container space-y-18">
-					<div class="space-y-8">
-						<header class="space-y-6">
-							{%- if
-								post.meta( 'hero' ).content.client
-									or post.meta( 'hero' ).content.platform
-									or post.meta( 'hero' ).content.year -%}
-								<p class="text-eyebrow text-muted">
-									{%- if post.meta( 'hero' ).content.client -%}
-										<span itemprop="about" itemscope itemtype="https://schema.org/Organization">
-											<span itemprop="name">{{- post.meta( 'hero' ).content.client -}}</span>
-										</span>
-									{%- endif -%}
-									{%- if post.meta( 'hero' ).content.platform -%}
-										{{- post.meta( 'hero' ).content.client ? ' · ' -}}
-										<span>{{- post.meta( 'hero' ).content.platform -}}</span>
-									{%- endif -%}
-									{%- if post.meta( 'hero' ).content.year -%}
-										{{- post.meta( 'hero' ).content.client or post.meta( 'hero' ).content.platform
-											? ' · ' -}}
-										<time datetime="{{ post.meta( 'hero' ).content.year }}" itemprop="dateCreated">
-											{{- post.meta( 'hero' ).content.year -}}
-										</time>
-									{%- endif -%}
-								</p>
-							{%- endif -%}
+	{%- set hero = post.meta( 'hero' ).content | default( {} ) -%}
+	{%- set meta =
+		[
+			__( 'Client: %s', 'agencecinq' ) | format( post.client ),
+			post.platform ? __( 'Platform: %s', 'agencecinq' ) | format( post.platform ),
+			post.year ? __( 'Live: %s', 'agencecinq' ) | format( post.year ),
+		]
+			| filter( part => part )
+			| join( ' · ' )
+	-%}
 
-							<h1 id="case-hero-title" class="text-title-xxl max-w-250" itemprop="headline">
-								{{- post.meta( 'hero' ).content.title | default( post.title ) | raw -}}
-							</h1>
-						</header>
-
-						{%- if post.meta( 'hero' ).content.text -%}
-							<p class="text-muted max-w-190 text-xl" itemprop="description">
-								{{- post.meta( 'hero' ).content.text | raw -}}
-							</p>
-						{%- endif -%}
-					</div>
-					{%- if post.media -%}
-						{{-
-							include(
-								'components/browser-frame.html.twig',
-								{
-									media: post.media,
-									classes: [ 'w-full' ],
-									loading: 'eager',
-									fetchpriority: 'high',
-									attributes: { itemprop: 'image' },
-								},
-								with_context: false
-							)
-						-}}
-					{%- endif -%}
-				</div>
-			</section>
-		{%- endif -%}
+	<main id="content" role="main">
+		{{-
+			include(
+				'components/breadcrumb.html.twig',
+				{ classes: [ 'container pt-4 lg:pt-6' ] },
+				with_context: false
+			)
+		-}}
+		{{-
+			include(
+				'components/page-header.html.twig',
+				{
+					eyebrow: __( 'Client case', 'agencecinq' ),
+					title: hero.title | default( post.title ),
+					text: hero.text,
+					meta: meta,
+					links: hero.links,
+					before: { image: post.before },
+					after: { image: post.screenshot },
+					classes: [ 'pt-14 pb-10 lg:pt-34 lg:pb-20' ],
+				},
+				with_context: false
+			)
+		-}}
 
 		{{- include( 'blocks/blocks.html.twig', { blocks: post.meta( 'blocks' ) } ) -}}
 	</main>
