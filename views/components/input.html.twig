@@ -15,7 +15,7 @@
  #}
 
 {%- set error_id = id ~ '-error' -%}
-{%- set invalid = error and invalid is not same as( false ) -%}
+{%- set invalid = error and ( invalid ?? true ) -%}
 
 <div
 	class="{{
