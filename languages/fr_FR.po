@@ -317,8 +317,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:56
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:110
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:48
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:54
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:54
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:95
@@ -397,10 +395,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:42
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:35
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:40
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:40
@@ -425,6 +419,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:42
+#: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:34
+#: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:40
@@ -480,14 +476,14 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:74
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:76
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:146
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:66
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:68
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:102
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:67
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:60
+#: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:40
+#: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:128
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:130
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:68
@@ -649,8 +645,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:66
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:64
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:66
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:56
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:64
@@ -830,7 +824,6 @@ msgid "Eyebrow label shown above the title."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:60
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:53
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:61
@@ -1348,16 +1341,6 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:136
 msgid "Flow output"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:29
-msgid "Editorial Prose"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:74
-msgid ""
-"Reading column (720px). Use Heading 3 for subtitles under the block title. "
-"This block carries SEO depth on platform, local, and legal pages."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:73
@@ -3472,3 +3455,15 @@ msgstr "Ce qui vaut pour toutes nos offres"
 #: includes/Plugins/ACF/IncludeFields/Layouts/BulletList.php:92
 msgid "One rule per row, under a rule each, on bg/elevated."
 msgstr "Une règle par ligne, chacune sous un filet, sur fond relevé."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:29
+msgid "Rich text"
+msgstr "Texte riche"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/RichText.php:47
+msgid ""
+"Reading column of 720 px. Subtitles in Heading 2, then Heading 3, without "
+"skipping a level. A quote in Blockquote, code in Preformatted."
+msgstr ""
+"Colonne de lecture de 720 px. Intertitres en Titre 2, puis en Titre 3, sans "
+"sauter de niveau. Une citation en Citation, du code en Préformaté."

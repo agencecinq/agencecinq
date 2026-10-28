@@ -22,7 +22,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\DiffColumns;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FeatureCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FormInfo;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
@@ -39,6 +38,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTable;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\RichText;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
 use AgenceCinq\Service;
@@ -69,7 +69,6 @@ class BlocksFields implements Service {
 		Cta::class,
 		DiffColumns::class,
 		EditorialCards::class,
-		EditorialProse::class,
 		FeatureCards::class,
 		FormInfo::class,
 		Gallery::class,
@@ -86,6 +85,7 @@ class BlocksFields implements Service {
 		PositioningBanner::class,
 		PricingTable::class,
 		Quote::class,
+		RichText::class,
 		Stats::class,
 		Subscriptions::class,
 	);
