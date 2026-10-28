@@ -1,0 +1,36 @@
+{#
+ # Components: Logo tile
+ #
+ # A li of a client grid, all tiles the same size: the logo, whose alternative is the client name, or
+ # the name when there is no logo.
+ #
+ # @param string name Client name.
+ # @param mixed image Optional. Logo from the media library.
+ # @param array classes Optional extra classes.
+ #}
+
+<li
+	class="{{
+		html_classes(
+			'border-subtle flex h-14 items-center justify-center rounded-md border px-4',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	{%- if image -%}
+		{{-
+			include(
+				'components/image.html.twig',
+				{
+					image: image,
+					size: 'medium',
+					alt: name,
+					classes: [ 'max-h-7 w-auto max-w-full object-contain' ],
+				},
+				with_context: false
+			)
+		-}}
+	{%- else -%}
+		<span class="text-button text-muted">{{- name -}}</span>
+	{%- endif -%}
+</li>

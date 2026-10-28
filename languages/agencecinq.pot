@@ -3368,3 +3368,7 @@ msgstr ""
 #: views/components/diff-line.html.twig
 msgid "Before:"
 msgstr ""
+
+#: views/components/window-splitter.html.twig
+msgid "Compare before and after"
+msgstr ""

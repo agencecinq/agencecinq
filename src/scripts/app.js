@@ -5,6 +5,7 @@ import "@agencecinq/drawer";
 load("cinq-modal", () => import("@agencecinq/modal"));
 load("cinq-accordion", () => import("@agencecinq/accordion"));
 load("cinq-switch", () => import("@agencecinq/switch"));
+load("cinq-windowsplitter", () => import("@agencecinq/windowsplitter"));
 load("cinq-grid", () => import("./components/Grid.ts"));
 load("cinq-hover-video", () => import("./components/HoverVideo.ts"));
 load("cinq-snake", async () => {

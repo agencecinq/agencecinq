@@ -1,0 +1,129 @@
+{#
+ # Components: Window splitter
+ #
+ # CINQ UI <cinq-windowsplitter data-mode="clip"> in the screen of a Browser frame: the site after fills
+ # it, and the site before, in grey, covers it up to the separator. The separator is a focusable
+ # role="separator" moved by the pointer, the arrows, Home, End and Enter; until the component loads,
+ # it stands in the middle.
+ #
+ # @param string id Prefix of the ids.
+ # @param object before { image, label } of the site before, e.g. label « Avant · 2023 ».
+ # @param object after { image, label } of the site after.
+ # @param string sizes Optional. Sizes attribute of the images.
+ # @param array classes Optional extra classes.
+ #}
+
+{% embed 'components/browser-frame.html.twig'
+	with {
+		classes: classes | default( [] ),
+		id: id,
+		before: before,
+		after: after,
+		sizes: sizes | default( null ),
+	} only
+%}
+	{% block screen %}
+		<cinq-windowsplitter
+			data-mode="clip"
+			class="bg-media relative block aspect-16/10 overflow-hidden"
+		>
+			<div class="absolute inset-0">
+				{%- if after.image | default( false ) -%}
+					{{-
+						include(
+							'components/image.html.twig',
+							{
+								image: after.image,
+								sizes: sizes,
+								classes: [ 'size-full object-cover object-top' ],
+							},
+							with_context: false
+						)
+					-}}
+				{%- endif -%}
+			</div>
+
+			<div
+				id="{{ id }}-before"
+				class="absolute inset-0 grayscale [cinq-windowsplitter:not(:defined)_&]:[clip-path:inset(0_50%_0_0)]"
+			>
+				{%- if before.image | default( false ) -%}
+					{{-
+						include(
+							'components/image.html.twig',
+							{
+								image: before.image,
+								sizes: sizes,
+								classes: [ 'size-full object-cover object-top' ],
+							},
+							with_context: false
+						)
+					-}}
+				{%- endif -%}
+			</div>
+
+			{{-
+				include(
+					'components/badge.html.twig',
+					{
+						title: before.label | default( '' ),
+						classes: [ 'bg-default absolute top-4 left-4' ],
+					},
+					with_context: false
+				)
+			-}}
+			{{-
+				include(
+					'components/badge.html.twig',
+					{
+						title: after.label | default( '' ),
+						classes: [ 'bg-default absolute top-4 right-4' ],
+					},
+					with_context: false
+				)
+			-}}
+
+			<div
+				role="separator"
+				tabindex="0"
+				aria-orientation="vertical"
+				aria-valuemin="0"
+				aria-valuemax="100"
+				aria-valuenow="50"
+				aria-controls="{{ id }}-before"
+				aria-label="{{ __( 'Compare before and after', 'agencecinq' ) }}"
+				class="group/separator absolute inset-y-0 left-0 -ml-5.5 w-11 cursor-ew-resize outline-none [cinq-windowsplitter:not(:defined)_&]:left-1/2"
+			>
+				<span
+					class="absolute inset-y-0 left-1/2 w-0.5 -translate-x-1/2 bg-(--text-color-primary)"
+				></span>
+				<span
+					class="group-focus-visible/separator:outline-focus-ring absolute top-1/2 left-1/2 flex size-11 -translate-1/2 items-center justify-center rounded-full bg-(--text-color-primary) text-(--background-color-default) group-focus-visible/separator:outline-2 group-focus-visible/separator:outline-offset-2"
+				>
+					{{-
+						include(
+							'svg/use.html.twig',
+							{
+								icon: 'chevron-left',
+								classes: [ '-me-1 size-4.5' ],
+								attributes: { 'aria-hidden': 'true' },
+							},
+							with_context: false
+						)
+					-}}
+					{{-
+						include(
+							'svg/use.html.twig',
+							{
+								icon: 'chevron-right',
+								classes: [ 'size-4.5' ],
+								attributes: { 'aria-hidden': 'true' },
+							},
+							with_context: false
+						)
+					-}}
+				</span>
+			</div>
+		</cinq-windowsplitter>
+	{% endblock %}
+{% endembed %}

@@ -3390,3 +3390,7 @@ msgstr "Après :"
 #: views/components/diff-line.html.twig
 msgid "Before:"
 msgstr "Avant :"
+
+#: views/components/window-splitter.html.twig
+msgid "Compare before and after"
+msgstr "Comparer avant et après"
