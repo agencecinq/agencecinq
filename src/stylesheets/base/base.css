@@ -7,6 +7,13 @@
 }
 
 @layer base {
+	/* Anchors land below the sticky header. */
+	html {
+		scroll-padding-top: var(--header-height);
+	}
+}
+
+@layer base {
 	/* A modal dialog keeps the page behind it still. */
 	html:has(dialog[open]:modal) {
 		overflow: hidden;
