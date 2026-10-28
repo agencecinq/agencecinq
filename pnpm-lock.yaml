@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@agencecinq/accordion':
-        specifier: ^3.0.0
-        version: 3.0.0(@agencecinq/utils@7.10.0)
+        specifier: ^4.0.0
+        version: 4.0.0(@agencecinq/utils@7.10.0)
       '@agencecinq/drawer':
         specifier: ^7.0.1
         version: 7.0.1(@agencecinq/utils@7.10.0)
@@ -72,8 +72,8 @@ importers:
 
 packages:
 
-  '@agencecinq/accordion@3.0.0':
-    resolution: {integrity: sha512-9+/DX10B7NL6g6RfP/C7HrsansCtIdDVOoJ4Pwo6CEWowL+LK0xf/zTWDqov8e0FkURp5ymtqp4B7e3p+SlLPw==}
+  '@agencecinq/accordion@4.0.0':
+    resolution: {integrity: sha512-/bHZRXWLrCyfxCzznHcHZxibIxV2o0fbt0gnWO+gD83Us99RvDWG1UcgIYiGVUeTDbNA+yefqqPx4vL48RMuJw==}
     peerDependencies:
       '@agencecinq/utils': '*'
 
@@ -1235,7 +1235,7 @@ packages:
 
 snapshots:
 
-  '@agencecinq/accordion@3.0.0(@agencecinq/utils@7.10.0)':
+  '@agencecinq/accordion@4.0.0(@agencecinq/utils@7.10.0)':
     dependencies:
       '@agencecinq/utils': 7.10.0
 
