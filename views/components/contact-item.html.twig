@@ -1,0 +1,45 @@
+{#
+ # Components: Contact item
+ #
+ # A way to reach us: a label, then the value as an underlined tel: or mailto: link, or as text with a
+ # Primary button.
+ #
+ # @param string label
+ # @param string value
+ # @param string url Optional. tel: or mailto: link of the value.
+ # @param object button Optional. { title, url } of the action, which replaces the link.
+ # @param array classes Optional extra classes.
+ #}
+
+<div
+	class="{{
+		html_classes(
+			'border-default bg-surface flex flex-col items-start gap-3 rounded-md border p-6 lg:p-8',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<p class="text-eyebrow text-muted">{{- label -}}</p>
+	{%- if url and not button -%}
+		<a
+			href="{{ url }}"
+			class="text-title-md text-primary focus-visible:outline-focus-ring underline focus-visible:outline-2 focus-visible:outline-offset-2"
+		>
+			{{- value -}}
+		</a>
+	{%- else -%}
+		<p class="text-title-md text-primary">{{- value -}}</p>
+	{%- endif -%}
+	{%- if button -%}
+		{{-
+			include(
+				'components/button.html.twig',
+				{
+					title: button.title,
+					url: button.url,
+				},
+				with_context: false
+			)
+		-}}
+	{%- endif -%}
+</div>

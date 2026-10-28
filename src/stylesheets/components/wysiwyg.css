@@ -91,36 +91,42 @@
 		@apply line-through opacity-80;
 	}
 
-	/* Blockquote · article pull quote */
+	/* Blockquote · Figma Blockquote */
 	.wysiwyg blockquote {
-		@apply border-accent border-l-2 pl-6 text-title-lg not-italic text-primary;
+		@apply border-accent-default text-quote text-primary flex flex-col gap-2 border-l-3 pl-6 not-italic;
 
 		margin-top: 2.5rem;
 		margin-bottom: 2.5rem;
 	}
 
-	.wysiwyg blockquote p:last-child {
+	.wysiwyg blockquote p {
 		margin-bottom: 0;
 	}
 
 	.wysiwyg blockquote cite {
-		@apply mt-2 block not-italic text-sm text-muted;
+		@apply text-muted text-sm not-italic;
 	}
 
-	/* Lists */
+	/* Lists · Figma List item, Type=Default: a decorative + before each item */
 	.wysiwyg ul,
 	.wysiwyg ol {
 		margin-top: 1rem;
 		margin-bottom: 1rem;
-		padding-left: 1.5rem;
-	}
-
-	.wysiwyg ul {
-		list-style-type: disc;
 	}
 
 	.wysiwyg ol {
+		padding-left: 1.5rem;
 		list-style-type: decimal;
+	}
+
+	.wysiwyg ul > li {
+		@apply relative pl-6;
+	}
+
+	.wysiwyg ul > li::before {
+		@apply text-diff-plus absolute left-0 font-mono font-medium;
+
+		content: "+" / "";
 	}
 
 	.wysiwyg li {
@@ -144,9 +150,9 @@
 		@apply my-6 border-0 border-t border-default;
 	}
 
-	/* Pre / code block */
+	/* Pre · Figma Code block, scrolls sideways (RGAA 10.11 exception) */
 	.wysiwyg pre {
-		@apply overflow-x-auto rounded-md border border-default bg-surface p-5 text-mono text-body;
+		@apply bg-surface text-mono text-body overflow-x-auto rounded-md px-5 py-4;
 
 		margin-top: 1.5rem;
 		margin-bottom: 1.5rem;
