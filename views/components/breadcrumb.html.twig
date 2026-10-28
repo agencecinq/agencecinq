@@ -1,8 +1,8 @@
 {#
  # Components: Breadcrumb
  #
- # Ordered list of the levels down to the current page: levels are underlined links, the current page
- # carries aria-current.
+ # Ordered list of the levels down to the current page: levels are underlined links, the current page is not
+ # one and carries aria-current. Separators are decorative; Yoast SEO prints the BreadcrumbList schema.
  #
  # @param array items Optional. Levels ({ url, text }), the Yoast SEO breadcrumb of the current page by default.
  # @param array classes Optional extra classes.
@@ -21,18 +21,16 @@
 					{%- if not loop.first -%}
 						<span class="text-muted" aria-hidden="true">/</span>
 					{%- endif -%}
-					<a
-						href="{{ item.url }}"
-						class="{{
-							html_classes(
-								'focus-visible:outline-focus-ring focus-visible:outline-2 focus-visible:outline-offset-2',
-								loop.last ? 'text-muted' : 'text-body underline'
-							)
-						}}"
-						{{ loop.last ? 'aria-current="page"' }}
-					>
-						{{- item.text -}}
-					</a>
+					{%- if loop.last -%}
+						<span class="text-muted" aria-current="page">{{- item.text -}}</span>
+					{%- else -%}
+						<a
+							href="{{ item.url }}"
+							class="text-body focus-visible:outline-focus-ring underline focus-visible:outline-2 focus-visible:outline-offset-2"
+						>
+							{{- item.text -}}
+						</a>
+					{%- endif -%}
 				</li>
 			{%- endfor -%}
 		</ol>

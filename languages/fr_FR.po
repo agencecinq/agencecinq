@@ -921,7 +921,7 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:98
 msgid "Label"
-msgstr ""
+msgstr "Libellé"
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:120
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:121
@@ -1608,6 +1608,8 @@ msgid "Totals"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:135
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:190
+#: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:213
 msgid "Add Line"
 msgstr ""
 
@@ -2487,6 +2489,9 @@ msgid "Close"
 msgstr "Fermer"
 
 #: views/components/breadcrumb.html.twig
+#: includes/Plugins/ACF/IncludeFields/Layouts/Breadcrumb.php:29
+#: includes/Plugins/ACF/IncludeFields/Layouts/Breadcrumb.php:34
+#: views/components/breadcrumb.html.twig:15
 msgid "Breadcrumb"
 msgstr "Fil d’Ariane"
 
@@ -3460,3 +3465,11 @@ msgid "Up to four links, in a row on desktop. Each label reads on its own."
 msgstr ""
 "Jusqu’à quatre liens, en rangée sur ordinateur. Chaque libellé se comprend "
 "seul."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Breadcrumb.php:37
+msgid ""
+"The levels down to the page, from Yoast SEO. Place it first, above the Page "
+"header. Recommended paddings: 24px top, 0 bottom."
+msgstr ""
+"Les niveaux jusqu’à la page, tirés de Yoast SEO. À placer en premier, au-"
+"dessus de l’en-tête de page. Marges recommandées : 24 px en haut, 0 en bas."

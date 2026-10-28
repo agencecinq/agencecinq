@@ -1,0 +1,27 @@
+{#
+ # Blocks: Breadcrumb
+ #
+ # Figma Section/Breadcrumb: the Yoast SEO levels down to the page, above the Page header of a silo page.
+ #}
+
+{%- if ( breadcrumbs() | length ) > 1 -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<div id="{{ block.id }}" data-scheme="{{ block.layout.color_scheme | default( '' ) }}">
+		{{-
+			include(
+				'components/breadcrumb.html.twig',
+				{ classes: [ 'container' ] },
+				with_context: false
+			)
+		-}}
+	</div>
+{%- endif -%}

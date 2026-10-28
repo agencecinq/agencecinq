@@ -13,6 +13,7 @@ namespace AgenceCinq\Plugins\ACF\IncludeFields;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Accordion;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActionCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Breadcrumb;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
@@ -58,6 +59,7 @@ class BlocksFields implements Service {
 		Accordion::class,
 		ActionCards::class,
 		ActivityLog::class,
+		Breadcrumb::class,
 		CodeGuide::class,
 		Comparison::class,
 		Configurator::class,
