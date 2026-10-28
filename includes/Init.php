@@ -65,6 +65,8 @@ class Init {
 			// Catalogue.
 			Catalogue\QuoteRequest::class,
 			Catalogue\Central::class,
+			// GitHub.
+			GitHub\Activity::class,
 			// Yoast.
 			Plugins\WordpressSeo\AdminInit::class,
 			Post\CaseStudy::class,

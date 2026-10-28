@@ -3411,3 +3411,84 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:236
 msgid "Optional link under the lines, e.g. to the diagnostic."
 msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:27
+msgid "Activity log"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:43
+msgid ""
+"The three repositories of the agency pushed last, then the commits of their "
+"main branch per day over six months, read from GitHub every hour. "
+"Recommended paddings: 56px top and bottom."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:51
+msgid "The team’s log"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:59
+msgid "What we shipped these last days, live from our repositories."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:75
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:76
+msgid "Projects"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:81
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:83
+msgid "Named projects"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:86
+msgid "Add Project"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:87
+msgid ""
+"Name a private repository only with the written consent of its client. "
+"Without a name, a private repository shows as « Private client », a public "
+"one under its GitHub name."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:91
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:93
+msgid "Repository"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:95
+msgid "e.g. milia-matcha"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:104
+msgid "e.g. Milia Matcha"
+msgstr ""
+
+#: views/blocks/activity-log.html.twig:18
+msgid "WordPress plugin updated"
+msgstr ""
+
+#: views/blocks/activity-log.html.twig:19
+msgid "WordPress theme updated"
+msgstr ""
+
+#: views/blocks/activity-log.html.twig:20
+msgid "Shopify theme updated"
+msgstr ""
+
+#: views/blocks/activity-log.html.twig:60
+msgid "Private client"
+msgstr ""
+
+#: views/blocks/activity-log.html.twig:63
+msgid "Code updated"
+msgstr ""
+
+#: views/blocks/activity-log.html.twig:64
+msgid "Open source code updated"
+msgstr ""
+
+#: views/blocks/activity-log.html.twig:87
+msgid "Releases, last 6 months"
+msgstr ""

@@ -11,6 +11,7 @@
 namespace AgenceCinq\Plugins\ACF\IncludeFields;
 
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\AccordionGroup;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CallToAction;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ClientQuote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
@@ -53,6 +54,7 @@ class BlocksFields implements Service {
 	 */
 	private static $layouts = array(
 		AccordionGroup::class,
+		ActivityLog::class,
 		CallToAction::class,
 		ClientQuote::class,
 		CodeGuide::class,

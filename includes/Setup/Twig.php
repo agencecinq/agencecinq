@@ -14,6 +14,7 @@ use Twig\Extra\Intl\{ IntlExtension };
 use Twig\{ TwigFilter, TwigFunction };
 use AgenceCinq\{ Service, Vite };
 use AgenceCinq\Catalogue\{ Catalogue };
+use AgenceCinq\GitHub\{ Activity };
 
 /**
  * Twig
@@ -146,6 +147,9 @@ class Twig implements Service {
 				}
 			)
 		);
+
+		// Repositories of the organization, last pushed first, and the weeks of commits of their default branch.
+		$twig->addFunction( new TwigFunction( 'github_activity', array( Activity::class, 'get' ) ) );
 
 		// Prices of a catalogue line, or of a manual item with the same fields, even when Central is unavailable.
 		$twig->addFilter( new TwigFilter( 'price', array( Catalogue::class, 'price' ) ) );

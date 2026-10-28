@@ -3439,3 +3439,89 @@ msgstr "ex. WordPress à jour, vérifié chaque mois"
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:236
 msgid "Optional link under the lines, e.g. to the diagnostic."
 msgstr "Lien facultatif sous les lignes, par exemple vers le diagnostic."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:27
+msgid "Activity log"
+msgstr "Journal d’activité"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:43
+msgid ""
+"The three repositories of the agency pushed last, then the commits of their "
+"main branch per day over six months, read from GitHub every hour. "
+"Recommended paddings: 56px top and bottom."
+msgstr ""
+"Les trois dépôts de l’agence poussés en dernier, puis les commits de leur "
+"branche principale par jour sur six mois, relus sur GitHub toutes les "
+"heures. Marges recommandées : 56 px en haut et en bas."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:51
+msgid "The team’s log"
+msgstr "Le journal de l’équipe"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:59
+msgid "What we shipped these last days, live from our repositories."
+msgstr "Ce qu’on a publié ces derniers jours, en direct de nos dépôts."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:75
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:76
+msgid "Projects"
+msgstr "Projets"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:81
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:83
+msgid "Named projects"
+msgstr "Projets nommés"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:86
+msgid "Add Project"
+msgstr "Ajouter un projet"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:87
+msgid ""
+"Name a private repository only with the written consent of its client. "
+"Without a name, a private repository shows as « Private client », a public "
+"one under its GitHub name."
+msgstr ""
+"Ne nommer un dépôt privé qu’avec l’accord écrit de son client. Sans nom, un "
+"dépôt privé s’affiche « Client privé », un dépôt public sous son nom GitHub."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:91
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:93
+msgid "Repository"
+msgstr "Dépôt"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:95
+msgid "e.g. milia-matcha"
+msgstr "ex. milia-matcha"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:104
+msgid "e.g. Milia Matcha"
+msgstr "ex. Milia Matcha"
+
+#: views/blocks/activity-log.html.twig:18
+msgid "WordPress plugin updated"
+msgstr "Extension WordPress mise à jour"
+
+#: views/blocks/activity-log.html.twig:19
+msgid "WordPress theme updated"
+msgstr "Thème WordPress mis à jour"
+
+#: views/blocks/activity-log.html.twig:20
+msgid "Shopify theme updated"
+msgstr "Thème Shopify mis à jour"
+
+#: views/blocks/activity-log.html.twig:60
+msgid "Private client"
+msgstr "Client privé"
+
+#: views/blocks/activity-log.html.twig:63
+msgid "Code updated"
+msgstr "Code mis à jour"
+
+#: views/blocks/activity-log.html.twig:64
+msgid "Open source code updated"
+msgstr "Code ouvert mis à jour"
+
+#: views/blocks/activity-log.html.twig:87
+msgid "Releases, last 6 months"
+msgstr "Mises en ligne, 6 derniers mois"
