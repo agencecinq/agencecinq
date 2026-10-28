@@ -29,7 +29,7 @@ class AcfFieldHelpers {
 	 * );
 	 * ```
 	 *
-	 * @param string $key The key prefix for the field (e.g. 'hero', 'page', 'services').
+	 * @param string $key The key prefix for the field (e.g. 'hero', 'page', 'link_grid').
 	 *
 	 * @return array<int, array<string, mixed>> Tab and clone field definitions.
 	 */
@@ -66,7 +66,7 @@ class AcfFieldHelpers {
 	 * ),
 	 * ```
 	 *
-	 * @param string $key The block key (e.g. 'hero', 'services', or 'blocks_hero' for unique keys).
+	 * @param string $key The block key (e.g. 'hero', 'link_grid', or 'blocks_hero' for unique keys).
 	 * @return array<int, array<string, mixed>>
 	 */
 	public static function settings( string $key = '' ): array {

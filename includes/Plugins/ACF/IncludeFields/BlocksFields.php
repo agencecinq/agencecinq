@@ -27,6 +27,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ImageCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LogoWall;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ModuleCatalog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
@@ -36,7 +37,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingRules;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Services;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
 use AgenceCinq\Service;
@@ -72,6 +72,7 @@ class BlocksFields implements Service {
 		ImageCards::class,
 		InfoCards::class,
 		LatestPosts::class,
+		LinkGrid::class,
 		LogoWall::class,
 		ModuleCatalog::class,
 		NumberedList::class,
@@ -81,7 +82,6 @@ class BlocksFields implements Service {
 		PricingRules::class,
 		PricingTiers::class,
 		Quote::class,
-		Services::class,
 		Stats::class,
 		Subscriptions::class,
 	);

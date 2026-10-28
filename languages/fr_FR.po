@@ -356,10 +356,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:177
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:179
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:57
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:59
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:105
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:107
 msgid "Title"
 msgstr ""
 
@@ -467,10 +463,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:37
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:44
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:35
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:40
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:42
 msgid "Content"
 msgstr ""
 
@@ -554,12 +546,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:70
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:223
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:225
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:75
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:77
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:114
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:116
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:174
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:176
 msgid "Text"
 msgstr ""
 
@@ -725,8 +711,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:67
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:60
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:65
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:67
 msgid "Heading"
 msgstr ""
 
@@ -829,8 +813,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:50
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:48
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:50
 msgid "Overline"
 msgstr ""
 
@@ -879,8 +861,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:381
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:78
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:80
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:125
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:127
 msgid "Link"
 msgstr ""
 
@@ -900,13 +880,11 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:53
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:52
 msgid "Enter the overline of the block"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:53
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:53
 msgid "Eyebrow label shown above the title."
 msgstr ""
 
@@ -919,7 +897,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:54
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:61
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:54
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:61
 msgid "Enter the title of the block"
 msgstr ""
 
@@ -953,7 +930,6 @@ msgstr ""
 "décide à la fin de l'appel."
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:80
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:81
 msgid "Enter the lead text of the block"
 msgstr ""
 
@@ -994,14 +970,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:85
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:86
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:91
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:194
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:196
 msgid "Aside"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:98
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:163
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:165
 msgid "Label"
 msgstr ""
 
@@ -1053,10 +1025,6 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:203
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:186
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:136
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:137
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:142
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:144
 msgid "Note"
 msgstr ""
 
@@ -1569,8 +1537,6 @@ msgid "Info Cards"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:87
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:151
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:153
 msgid "Icon"
 msgstr ""
 
@@ -1677,7 +1643,6 @@ msgid "Add Rule"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:82
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:101
 msgid "Up to three columns. The index (01/03) is generated automatically."
 msgstr ""
 
@@ -3466,6 +3431,26 @@ msgstr ""
 "au-dessus du nouveau, même cadrage. Chaque alternative, dans la médiathèque, "
 "décrit sa page."
 
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkGrid.php:29
+msgid "Link grid"
+msgstr "Grille de liens"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkGrid.php:52
+msgid "Shopify"
+msgstr "Shopify"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkGrid.php:60
+msgid "What we do on Shopify"
+msgstr "Ce qu’on fait sur Shopify"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/LinkGrid.php:92
+msgid ""
+"One card per child page, three per row on desktop: the label of the link is "
+"the title of the card, the whole card leads to the page."
+msgstr ""
+"Une carte par page enfant, trois par ligne sur ordinateur : le libellé du "
+"lien est le titre de la carte, toute la carte mène à la page."
+
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:29
 msgid "Accordion Group"
 msgstr ""
@@ -3578,77 +3563,6 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:227
 msgid "Enter the included line"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:29
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:87
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:88
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:93
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:95
-msgid "Services"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:100
-msgid "Add Service"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:109
-msgid "Enter the title of the service"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:120
-msgid "Enter the description of the service"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:147
-msgid ""
-"Optional framed meta row under the service columns. Leave empty to hide."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:155
-msgid "e.g. save"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:156
-msgid "Sprite icon name next to the label."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:167
-msgid "e.g. save_post"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:178
-msgid "Main description next to the label"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:182
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:184
-msgid "Aside icon"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:186
-msgid "e.g. refresh"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:187
-msgid "Sprite icon name for the trailing aside."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:198
-msgid "e.g. Falls back to"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:205
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:207
-msgid "Aside code"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:209
-msgid "e.g. post_content"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:210
-msgid "Optional mono suffix after the aside text."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:98
