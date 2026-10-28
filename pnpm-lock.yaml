@@ -15,8 +15,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(@agencecinq/utils@7.10.0)
       '@agencecinq/disclosure-navigation':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^2.0.0
+        version: 2.0.0
       '@agencecinq/drawer':
         specifier: ^8.0.0
         version: 8.0.0(@agencecinq/utils@7.10.0)
@@ -88,8 +88,8 @@ packages:
     peerDependencies:
       '@agencecinq/utils': '*'
 
-  '@agencecinq/disclosure-navigation@1.0.0':
-    resolution: {integrity: sha512-O+CAO+2GiqzhBt6aHkt1fsTEdEDJ/nDzJ83ABatukgUnZTVMLBOUnCy2bWG7EZcrk74Eve1ma1USFNNL7/iYPA==}
+  '@agencecinq/disclosure-navigation@2.0.0':
+    resolution: {integrity: sha512-a+SKpnRdmtY/RXogbv0EVfzcxU6T5qgWLGYY3gsyUppNeJ9fSDMhKPGjYHDIHByLkLFFNzCF+3yawjISsGpq5g==}
 
   '@agencecinq/drawer@8.0.0':
     resolution: {integrity: sha512-6NtDIobg/9e6Pg2sYtkDMpCZYgW5Nb8UVxj74nMhESm/JBYasn1AFmTjfRrraN47BCuZm/6maVQK85sZvSMllw==}
@@ -1257,7 +1257,7 @@ snapshots:
     dependencies:
       '@agencecinq/utils': 7.10.0
 
-  '@agencecinq/disclosure-navigation@1.0.0': {}
+  '@agencecinq/disclosure-navigation@2.0.0': {}
 
   '@agencecinq/drawer@8.0.0(@agencecinq/utils@7.10.0)':
     dependencies:
