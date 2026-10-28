@@ -9,7 +9,6 @@
 
 namespace AgenceCinq\Models;
 
-use AgenceCinq\Taxonomy\CaseStudyCategory;
 use Timber\Post;
 
 /**
@@ -18,19 +17,6 @@ use Timber\Post;
  * Custom Timber model for the case-study post type.
  */
 class CaseStudy extends Post {
-
-	/**
-	 * Returns the case study categories assigned to this post.
-	 *
-	 * @return mixed Term collection.
-	 */
-	public function categories() {
-		return $this->terms(
-			array(
-				'taxonomy' => CaseStudyCategory::TAXONOMY,
-			)
-		);
-	}
 
 	/**
 	 * Returns the client name, falling back to the post title.

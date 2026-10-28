@@ -85,7 +85,6 @@ class Context extends Site implements Service {
 		$context['privacy_policy_url'] = get_privacy_policy_url();
 		$context['posts_url']          = get_permalink( get_option( 'page_for_posts' ) );
 		$context['home_url']           = home_url( '/' );
-		$context['case_studies_url']   = get_post_type_archive_link( 'case-study' );
 
 		$context['theme'] = get_field( 'theme', 'option' );
 		$context['menus'] = get_field( 'menus', 'option' );

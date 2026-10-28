@@ -17,12 +17,105 @@ use AgenceCinq\Service;
 class CaseStudy implements Service {
 
 	/**
+	 * Option of the page whose blocks the archive shows, set in Settings > Reading like the page for posts.
+	 *
+	 * @var string
+	 */
+	public const PAGE_OPTION = 'page_for_case_studies';
+
+	/**
 	 * Runs initialization tasks.
 	 *
 	 * @access public
 	 */
 	public function run(): void {
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'admin_init', array( $this, 'register_page_setting' ) );
+		add_filter( 'display_post_states', array( $this, 'display_post_states' ), 10, 2 );
+		add_action( 'template_redirect', array( $this, 'redirect_page' ) );
+	}
+
+	/**
+	 * Returns the id of the page whose blocks the archive shows, 0 when none is set.
+	 *
+	 * @return int
+	 */
+	public static function page_id(): int {
+		return absint( get_option( self::PAGE_OPTION ) );
+	}
+
+	/**
+	 * Registers the case studies page in Settings > Reading, under the page for posts.
+	 *
+	 * @return void
+	 */
+	public function register_page_setting(): void {
+		register_setting(
+			'reading',
+			self::PAGE_OPTION,
+			array(
+				'type'              => 'integer',
+				'sanitize_callback' => 'absint',
+				'default'           => 0,
+			)
+		);
+
+		add_settings_field(
+			self::PAGE_OPTION,
+			__( 'Case studies page', 'agencecinq' ),
+			array( $this, 'render_page_setting' ),
+			'reading',
+			'default',
+			array( 'label_for' => self::PAGE_OPTION )
+		);
+	}
+
+	/**
+	 * Renders the case studies page setting.
+	 *
+	 * @return void
+	 */
+	public function render_page_setting(): void {
+		wp_dropdown_pages(
+			array(
+				'name'              => esc_attr( self::PAGE_OPTION ),
+				'id'                => esc_attr( self::PAGE_OPTION ),
+				'selected'          => absint( self::page_id() ),
+				'show_option_none'  => esc_html__( '&mdash; Select &mdash;', 'agencecinq' ),
+				'option_none_value' => '0',
+			)
+		);
+		printf(
+			'<p class="description">%s</p>',
+			esc_html__( 'The case study archive shows the blocks of this page, which uses the Blocks template.', 'agencecinq' )
+		);
+	}
+
+	/**
+	 * Marks the case studies page in the list of pages, as WordPress does for the page for posts.
+	 *
+	 * @param array<string, string> $states Post states.
+	 * @param \WP_Post              $post   Post.
+	 * @return array<string, string>
+	 */
+	public function display_post_states( array $states, \WP_Post $post ): array {
+		if ( self::page_id() === $post->ID ) {
+			$states[ self::PAGE_OPTION ] = __( 'Case studies page', 'agencecinq' );
+		}
+
+		return $states;
+	}
+
+	/**
+	 * Redirects the case studies page to the archive, its only address.
+	 *
+	 * @return void
+	 */
+	public function redirect_page(): void {
+		if ( self::page_id() && is_page( self::page_id() ) ) {
+			wp_safe_redirect( get_post_type_archive_link( 'case-study' ), 301 );
+			exit;
+		}
 	}
 
 	/**

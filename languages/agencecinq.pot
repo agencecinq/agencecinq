@@ -1606,7 +1606,7 @@ msgstr ""
 msgid "Price Mode"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:76 views/pages/archive-case-study.html.twig:17
+#: includes/Post/CaseStudy.php:169
 msgid "Case studies"
 msgstr ""
 
@@ -1627,7 +1627,7 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:67
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:69
-#: includes/Post/CaseStudy.php:75
+#: includes/Post/CaseStudy.php:168
 msgid "Case study"
 msgstr ""
 
@@ -2046,251 +2046,250 @@ msgstr ""
 msgid "Choose a domain"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:35
+#: includes/Post/CaseStudy.php:128
 msgctxt "Post type general name"
 msgid "Case studies"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:36
+#: includes/Post/CaseStudy.php:129
 msgctxt "Post type singular name"
 msgid "Case study"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:37
+#: includes/Post/CaseStudy.php:130
 msgctxt "Admin Menu text"
 msgid "Case studies"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:38
+#: includes/Post/CaseStudy.php:131
 msgctxt "Add New on Toolbar"
 msgid "Case study"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:39
+#: includes/Post/CaseStudy.php:132
 msgid "Add New"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:40
+#: includes/Post/CaseStudy.php:133
 msgid "Add New Case study"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:41
+#: includes/Post/CaseStudy.php:134
 msgid "New Case study"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:42
+#: includes/Post/CaseStudy.php:135
 msgid "Edit Case study"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:43
+#: includes/Post/CaseStudy.php:136
 msgid "View Case study"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:44
+#: includes/Post/CaseStudy.php:137
 msgid "View Case studies"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:45
+#: includes/Post/CaseStudy.php:138
 msgid "All Case studies"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:46
+#: includes/Post/CaseStudy.php:139
 msgid "Search Case studies"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:47
+#: includes/Post/CaseStudy.php:140
 msgid "Parent Case study:"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:48 views/pages/archive-case-study.html.twig:67
+#: includes/Post/CaseStudy.php:141
 msgid "No case studies found."
 msgstr ""
 
-#: includes/Post/CaseStudy.php:49
+#: includes/Post/CaseStudy.php:142
 msgid "No case studies found in Trash."
 msgstr ""
 
-#: includes/Post/CaseStudy.php:50
+#: includes/Post/CaseStudy.php:143
 msgid "Case study archives"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:51
+#: includes/Post/CaseStudy.php:144
 msgid "Case study attributes"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:52
+#: includes/Post/CaseStudy.php:145
 msgid "Insert into case study"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:53
+#: includes/Post/CaseStudy.php:146
 msgid "Uploaded to this case study"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:54
+#: includes/Post/CaseStudy.php:147
 msgid "Featured image"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:55
+#: includes/Post/CaseStudy.php:148
 msgid "Set featured image"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:56
+#: includes/Post/CaseStudy.php:149
 msgid "Remove featured image"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:57
+#: includes/Post/CaseStudy.php:150
 msgid "Use as featured image"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:58
+#: includes/Post/CaseStudy.php:151
 msgid "Filter case studies list"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:59
+#: includes/Post/CaseStudy.php:152
 msgid "Case studies list navigation"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:60
+#: includes/Post/CaseStudy.php:153
 msgid "Case studies list"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:61
+#: includes/Post/CaseStudy.php:154
 msgid "Case study published."
 msgstr ""
 
-#: includes/Post/CaseStudy.php:62
+#: includes/Post/CaseStudy.php:155
 msgid "Case study published privately."
 msgstr ""
 
-#: includes/Post/CaseStudy.php:63
+#: includes/Post/CaseStudy.php:156
 msgid "Case study reverted to draft."
 msgstr ""
 
-#: includes/Post/CaseStudy.php:64
+#: includes/Post/CaseStudy.php:157
 msgid "Case study trashed."
 msgstr ""
 
-#: includes/Post/CaseStudy.php:65
+#: includes/Post/CaseStudy.php:158
 msgid "Case study scheduled."
 msgstr ""
 
-#: includes/Post/CaseStudy.php:66
+#: includes/Post/CaseStudy.php:159
 msgid "Case study updated."
 msgstr ""
 
-#: includes/Post/CaseStudy.php:67
+#: includes/Post/CaseStudy.php:160
 msgid "Case study Link"
 msgstr ""
 
-#: includes/Post/CaseStudy.php:68
+#: includes/Post/CaseStudy.php:161
 msgid "A link to a case study."
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:62
+#: includes/Taxonomy/CaseStudyCategory.php:47
 msgctxt "taxonomy general name"
 msgid "Categories"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:63
+#: includes/Taxonomy/CaseStudyCategory.php:48
 msgctxt "taxonomy singular name"
 msgid "Category"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:64
-#: views/components/tease-case-study.html.twig:36
+#: includes/Taxonomy/CaseStudyCategory.php:49
 msgid "Categories"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:65
+#: includes/Taxonomy/CaseStudyCategory.php:50
 msgid "Search Categories"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:66
+#: includes/Taxonomy/CaseStudyCategory.php:51
 msgid "Popular Categories"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:67
+#: includes/Taxonomy/CaseStudyCategory.php:52
 msgid "All Categories"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:68
+#: includes/Taxonomy/CaseStudyCategory.php:53
 msgid "Parent Category"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:69
+#: includes/Taxonomy/CaseStudyCategory.php:54
 msgid "Parent Category:"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:70
+#: includes/Taxonomy/CaseStudyCategory.php:55
 msgid "Edit Category"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:71
+#: includes/Taxonomy/CaseStudyCategory.php:56
 msgid "View Category"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:72
+#: includes/Taxonomy/CaseStudyCategory.php:57
 msgid "Update Category"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:73
+#: includes/Taxonomy/CaseStudyCategory.php:58
 msgid "Add New Category"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:74
+#: includes/Taxonomy/CaseStudyCategory.php:59
 msgid "New Category Name"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:75
+#: includes/Taxonomy/CaseStudyCategory.php:60
 msgid "Separate categories with commas"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:76
+#: includes/Taxonomy/CaseStudyCategory.php:61
 msgid "Add or remove categories"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:77
+#: includes/Taxonomy/CaseStudyCategory.php:62
 msgid "Choose from the most used categories"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:78
+#: includes/Taxonomy/CaseStudyCategory.php:63
 msgid "No categories found."
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:79
+#: includes/Taxonomy/CaseStudyCategory.php:64
 msgid "No categories"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:80
+#: includes/Taxonomy/CaseStudyCategory.php:65
 msgid "Filter by category"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:81
+#: includes/Taxonomy/CaseStudyCategory.php:66
 msgid "Categories list navigation"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:82
+#: includes/Taxonomy/CaseStudyCategory.php:67
 msgid "Categories list"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:83
+#: includes/Taxonomy/CaseStudyCategory.php:68
 msgctxt "categories"
 msgid "Most Used"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:84
+#: includes/Taxonomy/CaseStudyCategory.php:69
 msgid "&larr; Go to Categories"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:85
+#: includes/Taxonomy/CaseStudyCategory.php:70
 msgid "Category Link"
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:86
+#: includes/Taxonomy/CaseStudyCategory.php:71
 msgid "A link to a category."
 msgstr ""
 
-#: includes/Taxonomy/CaseStudyCategory.php:94
+#: includes/Taxonomy/CaseStudyCategory.php:79
 msgid "Categories for case studies."
 msgstr ""
 
@@ -2489,28 +2488,16 @@ msgstr ""
 msgid "Page %1$s of %2$s"
 msgstr ""
 
-#: views/pages/archive-case-study.html.twig
-msgid "Newer case studies"
-msgstr ""
-
-#: views/pages/archive-case-study.html.twig
-msgid "Older case studies"
-msgstr ""
-
 #: views/components/skip-links.html.twig:10
 msgid "Skip to content"
 msgstr ""
 
-#: views/components/tease-case-study.html.twig:16
-#: views/components/tease-case-study.html.twig:64
 #: views/components/tease-post.html.twig:16
 #: views/components/tease-post.html.twig:70
 #, php-format
 msgid "Discover: %s"
 msgstr ""
 
-#: views/components/tease-case-study.html.twig:19
-#: views/components/tease-case-study.html.twig:66
 #: views/components/tease-post.html.twig:19
 #: views/components/tease-post.html.twig:72
 msgid "Discover"
@@ -2557,10 +2544,6 @@ msgstr ""
 
 #: views/pages/404.html.twig:32
 msgid "Replay"
-msgstr ""
-
-#: views/pages/archive-case-study.html.twig:30
-msgid "All case studies"
 msgstr ""
 
 #: views/pages/archive-post.html.twig:29
@@ -3592,4 +3575,18 @@ msgstr ""
 
 #: views/blocks/steps.html.twig:17
 msgid "An AI agent, reviewed afterwards"
+msgstr ""
+
+#: includes/Post/CaseStudy.php:65 includes/Post/CaseStudy.php:103
+msgid "Case studies page"
+msgstr ""
+
+#: includes/Post/CaseStudy.php:84
+msgid "&mdash; Select &mdash;"
+msgstr ""
+
+#: includes/Post/CaseStudy.php:90
+msgid ""
+"The case study archive shows the blocks of this page, which uses the Blocks "
+"template."
 msgstr ""
