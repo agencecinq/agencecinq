@@ -3531,3 +3531,94 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:81
 msgid "Logo"
 msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:29
+msgid "Comparison"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:52
+msgid "Before, after"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:60
+msgid "The same site, turned into an asset."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:86
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:87
+msgid "Captures"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:92
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:94
+#: views/blocks/comparison.html.twig:57
+msgid "Before"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:105
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:107
+#: views/blocks/comparison.html.twig:63
+msgid "After"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:97
+msgid ""
+"Capture of the former site, shown in greys. Its alternative text, in the "
+"media library, describes the page before."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:110
+msgid ""
+"Capture of the new site, same framing. Its alternative text, in the media "
+"library, describes the page after."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:118
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:120
+msgid "Legend"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:122
+msgid "Eigrene · B2B service · from an Elementor site to a custom WordPress"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:126
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:127
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:132
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:134
+msgid "Findings"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:137
+msgid ""
+"Written with the client after their interview: nothing invented. An empty "
+"finding is not shown."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:141
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:143
+#: views/blocks/comparison.html.twig:11
+msgid "What was blocking"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:150
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:152
+#: views/blocks/comparison.html.twig:12
+msgid "What we did"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:159
+#: includes/Plugins/ACF/IncludeFields/Layouts/Comparison.php:161
+#: views/blocks/comparison.html.twig:13
+msgid "What the client took back in hand"
+msgstr ""
+
+#: views/blocks/comparison.html.twig:56
+#, php-format
+msgid "Before · %s"
+msgstr ""
+
+#: views/blocks/comparison.html.twig:62
+#, php-format
+msgid "After · %s"
+msgstr ""

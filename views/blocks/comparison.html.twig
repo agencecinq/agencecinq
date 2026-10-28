@@ -1,0 +1,90 @@
+{#
+ # Blocks: Comparison
+ #
+ # Figma Section/Comparison: the Section heading, the Window splitter of the site before and after, at 9:7
+ # on mobile and 21:10 from lg, the findings written with the client, on four columns each, then the
+ # legend. A finding without text is not shown.
+ #}
+
+{%- set findings =
+	{
+		blocked: __( 'What was blocking', 'agencecinq' ),
+		done: __( 'What we did', 'agencecinq' ),
+		regained: __( 'What the client took back in hand', 'agencecinq' ),
+	} | filter( ( label, key ) => block.findings[ key ] | default( false ) )
+-%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if ( block.before.image | default( false ) ) or ( block.after.image | default( false ) ) -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-8 lg:gap-14">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: block.content.heading | default( 'h2' ),
+						id: title_id,
+					},
+					with_context: false
+				)
+			-}}
+
+			{{-
+				include(
+					'components/window-splitter.html.twig',
+					{
+						id: block.id ~ '-splitter',
+						before: {
+							image: block.before.image,
+							label: block.before.year
+								? __( 'Before · %s', 'agencecinq' ) | format( block.before.year )
+								: __( 'Before', 'agencecinq' ),
+						},
+						after: {
+							image: block.after.image,
+							label: block.after.year
+								? __( 'After · %s', 'agencecinq' ) | format( block.after.year )
+								: __( 'After', 'agencecinq' ),
+						},
+						sizes: '(min-width: 90rem) 77.5rem, (min-width: 64rem) calc(100vw - 12.5rem), calc(100vw - 2.5rem)',
+						aspect: 'aspect-9/7 lg:aspect-21/10',
+					},
+					with_context: false
+				)
+			-}}
+
+			{%- if findings | length -%}
+				<dl class="layout-grid gap-y-6">
+					{%- for key, label in findings -%}
+						<div
+							class="border-default col-span-full flex flex-col gap-2 border-t pt-5 lg:col-span-4"
+						>
+							<dt class="text-eyebrow text-muted">{{- label -}}</dt>
+							<dd class="text-body text-base">{{- block.findings[ key ] -}}</dd>
+						</div>
+					{%- endfor -%}
+				</dl>
+			{%- endif -%}
+
+			{%- if block.legend -%}
+				<p class="text-muted text-sm">{{- block.legend -}}</p>
+			{%- endif -%}
+		</div>
+	</section>
+{%- endif -%}

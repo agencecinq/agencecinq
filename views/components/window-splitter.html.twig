@@ -10,6 +10,7 @@
  # @param object before { image, label } of the site before, e.g. label « Avant · 2023 ».
  # @param object after { image, label } of the site after.
  # @param string sizes Optional. Sizes attribute of the images.
+ # @param string aspect Optional. Aspect ratio classes of the screen, 'aspect-16/10' by default.
  # @param array classes Optional extra classes.
  #}
 
@@ -20,12 +21,13 @@
 		before: before,
 		after: after,
 		sizes: sizes | default( null ),
+		aspect: aspect | default( 'aspect-16/10' ),
 	} only
 %}
 	{% block screen %}
 		<cinq-windowsplitter
 			data-mode="clip"
-			class="bg-media relative block aspect-16/10 overflow-hidden"
+			class="{{ html_classes( 'bg-media relative block overflow-hidden', aspect ) }}"
 		>
 			<div class="absolute inset-0">
 				{%- if after.image | default( false ) -%}

@@ -15,6 +15,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CallToAction;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ClientQuote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
@@ -59,6 +60,7 @@ class BlocksFields implements Service {
 		CallToAction::class,
 		ClientQuote::class,
 		CodeGuide::class,
+		Comparison::class,
 		Configurator::class,
 		CredibilityBanner::class,
 		Crosslinks::class,
