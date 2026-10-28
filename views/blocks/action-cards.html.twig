@@ -1,0 +1,74 @@
+{#
+ # Blocks: Action cards
+ #
+ # Figma Section/Action cards: the Section heading, then one Action card per situation, two per row from lg
+ # on six columns each. The offer price comes from the Central catalogue: its package as a starting
+ # price, or the package then its retainer per month; without Central, the card shows the offer alone.
+ #}
+
+{%- set cards = block.cards | default( [] ) | filter( card => card.title ) -%}
+{%- set catalogue = cards | length ? catalogue() -%}
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if cards | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-8 lg:gap-14">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: heading,
+						id: title_id,
+					},
+					with_context: false
+				)
+			-}}
+
+			<ul class="layout-grid gap-y-6">
+				{%- for card in cards -%}
+					{%- set package = catalogue and card.package ? catalogue.line( card.package ) -%}
+					{%- set retainer = package and card.retainer ? catalogue.line( card.retainer ) -%}
+					<li class="col-span-full flex lg:col-span-6">
+						{{-
+							include(
+								'components/action-card.html.twig',
+								{
+									id: block.id ~ '-card-' ~ loop.index,
+									title: card.title,
+									text: card.text,
+									offer: card.offer,
+									price: package ? package | offer_price( retainer ?: null ),
+									link: card.link,
+									heading: {
+										h1: 'h2',
+										h2: 'h3',
+										h3: 'h4',
+									}[ heading ],
+									classes: [ 'w-full' ],
+								},
+								with_context: false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+		</div>
+	</section>
+{%- endif -%}

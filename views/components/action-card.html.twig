@@ -1,18 +1,21 @@
 {#
  # Components: Action card
  #
- # Points to a page: title, text, the offer and its price, then a Text button, the only link.
+ # Points to a page: title, text, the offer and its price, then a Text button, the only link, whose
+ # accessible name ends with the title of the card (RGAA 6.1).
  #
  # @param string title
  # @param string text
  # @param string offer Optional.
  # @param string price Optional.
- # @param object link { title, url } of the button.
+ # @param object link { title, url, target } of the button.
  # @param string heading Optional. Tag of the title, 'h3' by default.
+ # @param string id Optional. Prefix of the ids of the title and the button, unique by default.
  # @param array classes Optional extra classes.
  #}
 
 {%- set heading = heading | default( 'h3' ) -%}
+{%- set id = id | default( 'action-card-' ~ uniqid() ) -%}
 
 <div
 	class="{{
@@ -22,7 +25,7 @@
 		)
 	}}"
 >
-	<{{ heading }} class="text-title-lg text-primary">
+	<{{ heading }} id="{{ id }}-title" class="text-title-lg text-primary">
 		{{- title -}}
 	</{{ heading }}>
 	{%- if text -%}
@@ -41,7 +44,12 @@
 				{
 					title: link.title,
 					url: link.url,
+					target: link.target | default( null ),
 					variant: 'text',
+					attributes: {
+						id: id ~ '-link',
+						'aria-labelledby': id ~ '-link ' ~ id ~ '-title',
+					},
 				},
 				with_context: false
 			)

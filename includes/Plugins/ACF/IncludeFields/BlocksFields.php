@@ -11,6 +11,7 @@
 namespace AgenceCinq\Plugins\ACF\IncludeFields;
 
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\AccordionGroup;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActionCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CallToAction;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ClientQuote;
@@ -21,7 +22,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Crosslinks;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EntryPoints;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FormInfo;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
@@ -56,6 +56,7 @@ class BlocksFields implements Service {
 	 */
 	private static $layouts = array(
 		AccordionGroup::class,
+		ActionCards::class,
 		ActivityLog::class,
 		CallToAction::class,
 		ClientQuote::class,
@@ -66,7 +67,6 @@ class BlocksFields implements Service {
 		Crosslinks::class,
 		EditorialCards::class,
 		EditorialProse::class,
-		EntryPoints::class,
 		FormInfo::class,
 		Gallery::class,
 		InfoCards::class,

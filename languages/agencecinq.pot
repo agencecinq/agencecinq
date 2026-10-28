@@ -1676,10 +1676,6 @@ msgid ""
 "This block carries SEO depth on platform, local, and legal pages."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:28
-msgid "Entry Points"
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:71
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:73
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:74
@@ -1687,46 +1683,11 @@ msgstr ""
 msgid "Enter the introductory text of the block"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:77
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:78
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:83
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:85
-msgid "Offers"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:88
-msgid "Add Offer"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:89
-msgid "Each row is an offer card. Up to two cards are displayed side by side."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:97
-msgid "Enter the title of the offer"
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:102
 #: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:104
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:186
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:188
 msgid "Price"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:106
-msgid "e.g. 490 € excl. VAT"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:115
-msgid "e.g. Written report"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:116
-msgid "Uppercase category shown in pistachio."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:127
-msgid "Enter the description of the offer"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:29
@@ -3621,4 +3582,67 @@ msgstr ""
 #: views/blocks/comparison.html.twig:62
 #, php-format
 msgid "After · %s"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:30
+msgid "Action cards"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:53
+msgid "Where to start"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:61
+msgid "Where does your site stand?"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:99
+msgid ""
+"One card per situation: the offer that answers it and its price, read from "
+"the Central catalogue. Two per row on desktop."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:108
+msgid "Your showcase site has stayed old-fashioned"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:123
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:125
+msgid "Offer"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:127
+msgid "e.g. WordPress redesign"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:142
+msgid "The offer starts at this package: « From » its price."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:150
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:152
+msgid "Retainer"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:157
+msgid ""
+"Optional. The monthly follow-up after the package: its price, then the price "
+"per month."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:171
+msgid "See this situation"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActionCards.php:175
+msgid ""
+"The page of the situation. Screen readers hear the title of the card after "
+"the label."
+msgstr ""
+
+#. translators: 1: price of the package, 2: monthly price of the retainer.
+#: includes/Catalogue/Catalogue.php:362
+#, php-format
+msgctxt "offer price"
+msgid "%1$s, then %2$s"
 msgstr ""

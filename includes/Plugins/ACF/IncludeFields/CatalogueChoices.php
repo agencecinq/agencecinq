@@ -55,6 +55,21 @@ class CatalogueChoices {
 	}
 
 	/**
+	 * Package ids, labelled with their platform, name and price, for a choice across platforms.
+	 *
+	 * @return array<string, string>
+	 */
+	public static function package_ids(): array {
+		$choices = array();
+
+		foreach ( self::catalogue()?->packages() ?? array() as $package ) {
+			$choices[ $package['id'] ] = sprintf( '%s · %s · %s', $package['category']['label'] ?? '', $package['name'] ?? '', Catalogue::price( $package, true ) );
+		}
+
+		return $choices;
+	}
+
+	/**
 	 * Retainer ids, labelled with their range and tier.
 	 *
 	 * @return array<string, string>

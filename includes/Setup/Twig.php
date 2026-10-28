@@ -155,6 +155,7 @@ class Twig implements Service {
 		$twig->addFilter( new TwigFilter( 'price', array( Catalogue::class, 'price' ) ) );
 		$twig->addFilter( new TwigFilter( 'retainer_tier', array( Catalogue::class, 'retainer_tier' ) ) );
 		$twig->addFilter( new TwigFilter( 'retainer_price', array( Catalogue::class, 'retainer_price' ) ) );
+		$twig->addFilter( new TwigFilter( 'offer_price', array( Catalogue::class, 'offer_price' ) ) );
 
 		// Breadcrumb levels ({ url, text }) of the current page, from Yoast SEO.
 		$twig->addFunction(

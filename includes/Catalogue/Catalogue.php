@@ -118,6 +118,22 @@ class Catalogue {
 	}
 
 	/**
+	 * A package or a retainer by id.
+	 *
+	 * @param string $id Line id.
+	 * @return array<string, mixed>|null
+	 */
+	public function line( string $id ): ?array {
+		foreach ( array( ...$this->packages(), ...$this->retainers() ) as $line ) {
+			if ( ( $line['id'] ?? '' ) === $id ) {
+				return $line;
+			}
+		}
+
+		return null;
+	}
+
+	/**
 	 * Modules, in the order of the API.
 	 *
 	 * @param string|null $platform Platform id, null for all.
@@ -329,6 +345,30 @@ class Catalogue {
 		$price = $line['priceExclVat'] ?? null;
 
 		return self::label( is_numeric( $price ) ? (float) $price : null, self::mode( $line ), $short );
+	}
+
+	/**
+	 * Price of an offer that starts at a package: « From €14,900 excl. VAT », or with the retainer that follows
+	 * it « €4,900 excl. VAT, then €1,200 excl. VAT per month ».
+	 *
+	 * @param array<string, mixed>      $package  Package the offer starts at.
+	 * @param array<string, mixed>|null $retainer Optional. Retainer after the package.
+	 * @return string
+	 */
+	public static function offer_price( array $package, ?array $retainer = null ): string {
+		if ( $retainer ) {
+			return sprintf(
+				/* translators: 1: price of the package, 2: monthly price of the retainer. */
+				_x( '%1$s, then %2$s', 'offer price', 'agencecinq' ),
+				self::price( $package ),
+				self::retainer_price( $retainer )
+			);
+		}
+
+		$price = $package['priceExclVat'] ?? null;
+		$mode  = self::QUOTE === self::mode( $package ) ? self::QUOTE : self::FROM;
+
+		return self::label( is_numeric( $price ) ? (float) $price : null, $mode, false );
 	}
 
 	/**
