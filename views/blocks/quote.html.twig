@@ -1,0 +1,40 @@
+{#
+ # Blocks: Quote
+ #
+ # Figma Section/Quote: one sentence of a client, centred in guillemets, then who says it on one line, the
+ # name, then the role and the company.
+ #}
+
+{%- set author =
+	[
+		block.content.name,
+		[ block.content.role, block.content.company ] | filter( part => part ) | join( ', ' ),
+	] | filter( part => part )
+-%}
+
+{%- if block.content.quote -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section id="{{ block.id }}" data-scheme="{{ block.layout.color_scheme | default( '' ) }}">
+		<div class="container">
+			<figure class="mx-auto flex max-w-220 flex-col items-center gap-6 text-center">
+				<blockquote class="text-quote text-primary wrap-break-word">
+					<p>{{- '«&nbsp;' ~ block.content.quote ~ '&nbsp;»' -}}</p>
+				</blockquote>
+				{%- if author | length -%}
+					<figcaption class="text-muted text-sm">
+						{{- author | join( ' · ' ) -}}
+					</figcaption>
+				{%- endif -%}
+			</figure>
+		</div>
+	</section>
+{%- endif -%}

@@ -1119,22 +1119,6 @@ msgid ""
 "click."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:29
-msgid "Client Quote"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:54
-msgid ""
-"We knew what we were paying, and when the site would go live. Both promises "
-"were kept."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:55
-msgid ""
-"Real client verbatim. Do not add quotation marks: guillemets are rendered "
-"automatically. Recommended paddings: 136px top and bottom."
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:61
 #: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:113
@@ -1142,32 +1126,11 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:63
-msgid "Camille Bertrand"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:64
-msgid "First and last name. No anonymous quotes."
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:68
 #: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:70
 #: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:122
 #: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:124
 msgid "Role"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:72
-msgid "E-commerce director"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:79
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:81
-msgid "Company"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:83
-msgid "L'Arbre Vert"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:29
@@ -3775,3 +3738,48 @@ msgid ""
 msgstr ""
 "Couleurs de la section, les modes Figma : Sombre comme la page, ou Clair "
 "pour la détacher."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:45
+msgid "Usually in the Light scheme, to set the section apart."
+msgstr "Le plus souvent en schéma Clair, pour détacher la section."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:55
+msgid ""
+"It was not only the delivery of a new site, but a real understanding of our "
+"business."
+msgstr ""
+"Ce n’était pas seulement la livraison d’un nouveau site, mais une véritable "
+"compréhension de notre activité."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:56
+msgid ""
+"Real client verbatim, one sentence, the most concrete. Do not add quotation "
+"marks: guillemets are rendered automatically."
+msgstr ""
+"Verbatim réel d’un client, une phrase, la plus concrète. Ne pas ajouter de "
+"guillemets : ils sont ajoutés automatiquement."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:78
+msgid "Optional. Check it with the client: a role changes."
+msgstr "Facultatif. À vérifier avec le client : un poste change."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:65
+msgid "Camille Bertrand"
+msgstr "Camille Bertrand"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:85
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:87
+msgid "Company"
+msgstr "Société"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:77
+msgid "E-commerce director"
+msgstr "Responsable e-commerce"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:66
+msgid "First and last name. No anonymous quotes."
+msgstr "Prénom et nom. Pas de citation anonyme."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:89
+msgid "L'Arbre Vert"
+msgstr "L’Arbre Vert"

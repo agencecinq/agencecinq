@@ -14,7 +14,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\AccordionGroup;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActionCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CallToAction;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ClientQuote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
@@ -35,6 +34,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHero;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingRules;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Services;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
@@ -59,7 +59,6 @@ class BlocksFields implements Service {
 		ActionCards::class,
 		ActivityLog::class,
 		CallToAction::class,
-		ClientQuote::class,
 		CodeGuide::class,
 		Comparison::class,
 		Configurator::class,
@@ -80,6 +79,7 @@ class BlocksFields implements Service {
 		PositioningBanner::class,
 		PricingRules::class,
 		PricingTiers::class,
+		Quote::class,
 		Services::class,
 		Stats::class,
 		Subscriptions::class,
