@@ -1,0 +1,29 @@
+{#
+ # Components: Menu link
+ #
+ # Submenu link: a title (the link) and an optional line of explanation. The whole area is clickable.
+ #
+ # @param string title The link text.
+ # @param string url The link URL.
+ # @param string text Optional explanation line.
+ # @param bool current Optional. Current page.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- if title and url -%}
+	<a
+		class="{{
+			html_classes(
+				'hover:bg-surface-hover focus-visible:outline-focus-ring block space-y-1 rounded-md px-4 py-3 transition-colors',
+				'focus-visible:outline-2 focus-visible:outline-offset-2',
+				classes | default( [] ) | join( ' ' )
+			)
+		}}"
+		{{ html_attr( { href: url }, current ? { 'aria-current': 'page' } ) }}
+	>
+		<span class="text-button text-primary block">{{- title -}}</span>
+		{%- if text -%}
+			<span class="text-muted block text-sm">{{- text -}}</span>
+		{%- endif -%}
+	</a>
+{%- endif -%}

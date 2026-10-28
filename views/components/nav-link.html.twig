@@ -1,0 +1,58 @@
+{#
+ # Components: Nav link
+ #
+ # Main navigation entry in Label/nav. With `controls`, a disclosure button (aria-expanded) that opens a
+ # submenu, to wrap in <cinq-disclosure-button>; otherwise a link. The underline marks the current page
+ # (aria-current) and the open submenu, not the color alone.
+ #
+ # @param string title The entry text.
+ # @param string url Optional. Link URL, without `controls`.
+ # @param string controls Optional. Id of the submenu the button opens.
+ # @param bool expanded Optional. Submenu open on load.
+ # @param bool current Optional. Current page.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set classes =
+	[
+		'text-nav text-primary relative inline-flex items-center gap-1 rounded-sm px-1 py-2.5',
+		'focus-visible:outline-focus-ring focus-visible:outline-2 focus-visible:outline-offset-2',
+		'after:absolute after:inset-x-1 after:bottom-0 after:h-0.5 hover:after:bg-(--text-color-muted)',
+		'aria-[current=page]:after:bg-accent-default aria-expanded:after:bg-accent-default',
+	]
+		| merge( classes | default( [] ) )
+		| join( ' ' )
+-%}
+
+{%- if controls -%}
+	<button
+		type="button"
+		class="{{ classes }} group/nav-link"
+		{{
+			html_attr(
+				{
+					'aria-expanded': expanded ? 'true' : 'false',
+					'aria-controls': controls,
+				},
+				current ? { 'aria-current': 'page' }
+			)
+		}}
+	>
+		{{- title -}}
+		{{-
+			include(
+				'svg/use.html.twig',
+				{
+					icon: 'chevron-down',
+					classes: [ 'size-4 shrink-0 group-aria-expanded/nav-link:rotate-180' ],
+					attributes: { 'aria-hidden': 'true' },
+				},
+				with_context: false
+			)
+		-}}
+	</button>
+{%- elseif url -%}
+	<a class="{{ classes }}" {{ html_attr( { href: url }, current ? { 'aria-current': 'page' } ) }}>
+		{{- title -}}
+	</a>
+{%- endif -%}
