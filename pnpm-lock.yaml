@@ -40,8 +40,8 @@ importers:
         specifier: ^4.3.3
         version: 4.3.3(vite@8.3.4(jiti@2.7.0))
       '@zackad/prettier-plugin-twig':
-        specifier: github:agencecinq/prettier-plugin-twig#v1.2.1
-        version: '@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/b43ffeab75b3267ce95edd7834a7f9249906429b'
+        specifier: github:agencecinq/prettier-plugin-twig#v1.2.2
+        version: '@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/1810614f1c571ac9aa1fc1a5a4d17ad6efa7f1bc'
       laravel-vite-plugin:
         specifier: ^3.2.0
         version: 3.2.0(vite@8.3.4(jiti@2.7.0))
@@ -56,7 +56,7 @@ importers:
         version: 3.9.10
       prettier-plugin-tailwindcss:
         specifier: ^0.8.1
-        version: 0.8.1(@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/b43ffeab75b3267ce95edd7834a7f9249906429b)(prettier@3.9.10)
+        version: 0.8.1(@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/1810614f1c571ac9aa1fc1a5a4d17ad6efa7f1bc)(prettier@3.9.10)
       vite:
         specifier: ^8.3.4
         version: 8.3.4(jiti@2.7.0)
@@ -86,9 +86,9 @@ packages:
     peerDependencies:
       '@agencecinq/utils': '>=7.0.0'
 
-  '@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/b43ffeab75b3267ce95edd7834a7f9249906429b':
-    resolution: {gitHosted: true, integrity: sha512-zvRIqF367mV+EkCX4KlSwtKXPC45Qjx1zLjA2pmUUuWfN+0FWa3z4fV8RQfQp1xNRH4FHc4N6LLWiXar1SPqWA==, tarball: https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/b43ffeab75b3267ce95edd7834a7f9249906429b}
-    version: 1.2.1
+  '@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/1810614f1c571ac9aa1fc1a5a4d17ad6efa7f1bc':
+    resolution: {gitHosted: true, integrity: sha512-IuHPv06ybtHIPvYGuSAd1j6rtiJhxLIBmTmhp+hwfUL1MjYjqzv6rhUskwXp81En0jmhMe6PAqVqu50cYHMacQ==, tarball: https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/1810614f1c571ac9aa1fc1a5a4d17ad6efa7f1bc}
+    version: 1.2.2
     engines: {node: '>=18'}
 
   '@agencecinq/snake@1.0.0':
@@ -1239,7 +1239,7 @@ snapshots:
     dependencies:
       '@agencecinq/utils': 7.10.0
 
-  '@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/b43ffeab75b3267ce95edd7834a7f9249906429b':
+  '@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/1810614f1c571ac9aa1fc1a5a4d17ad6efa7f1bc':
     dependencies:
       '@babel/template': 7.29.7
       '@babel/types': 7.29.8
@@ -1909,11 +1909,11 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.2
 
-  prettier-plugin-tailwindcss@0.8.1(@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/b43ffeab75b3267ce95edd7834a7f9249906429b)(prettier@3.9.10):
+  prettier-plugin-tailwindcss@0.8.1(@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/1810614f1c571ac9aa1fc1a5a4d17ad6efa7f1bc)(prettier@3.9.10):
     dependencies:
       prettier: 3.9.10
     optionalDependencies:
-      '@zackad/prettier-plugin-twig': '@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/b43ffeab75b3267ce95edd7834a7f9249906429b'
+      '@zackad/prettier-plugin-twig': '@agencecinq/prettier-plugin-twig@https://codeload.github.com/agencecinq/prettier-plugin-twig/tar.gz/1810614f1c571ac9aa1fc1a5a4d17ad6efa7f1bc'
 
   prettier@3.9.10: {}
 
