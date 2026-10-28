@@ -25,7 +25,6 @@ export default defineConfig({
 			input: [
 				"src/stylesheets/styles.css",
 				"src/scripts/app.js",
-				"src/img/svg/logo.svg",
 			],
 			refresh: ["**/*.php", "**/*.twig"],
 		}),
