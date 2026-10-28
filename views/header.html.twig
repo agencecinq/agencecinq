@@ -2,9 +2,9 @@
  # Header
  #
  # Figma Section/Header: the logo, the main navigation, a secondary and a primary action. A Nav link with
- # children is a <cinq-disclosure-button> that opens its Submenu, which cinq-navigation also opens on
- # hover and closes with Escape or when the focus leaves it. Below xl, where the whole navigation does not
- # fit, the menu button opens the drawer.
+ # children is a button that opens its Submenu: <cinq-disclosure-navigation> keeps one open at a time,
+ # opens it on hover too, and closes it with Escape or when the focus leaves it. Below xl, where the whole
+ # navigation does not fit, the menu button opens the drawer.
  #
  # @package AgenceCinq
  #}
@@ -41,25 +41,23 @@
 		</a>
 
 		{%- if items | length -%}
-			<cinq-navigation class="hidden xl:block">
+			<cinq-disclosure-navigation class="hidden xl:block" data-hover>
 				<nav aria-label="{{ __( 'Main navigation', 'agencecinq' ) }}">
 					<ul class="flex items-center gap-6">
 						{%- for item in items -%}
-							<li class="relative" data-dom="item">
+							<li class="relative">
 								{%- if item.children | length -%}
-									<cinq-disclosure-button>
-										{{-
-											include(
-												'components/nav-link.html.twig',
-												{
-													title: item.title,
-													controls: 'submenu-' ~ item.id,
-													current: item.current or item.current_item_ancestor,
-												},
-												with_context: false
-											)
-										-}}
-									</cinq-disclosure-button>
+									{{-
+										include(
+											'components/nav-link.html.twig',
+											{
+												title: item.title,
+												controls: 'submenu-' ~ item.id,
+												current: item.current or item.current_item_ancestor,
+											},
+											with_context: false
+										)
+									-}}
 									{{-
 										include(
 											'components/submenu.html.twig',
@@ -87,7 +85,7 @@
 						{%- endfor -%}
 					</ul>
 				</nav>
-			</cinq-navigation>
+			</cinq-disclosure-navigation>
 		{%- endif -%}
 
 		<div class="flex items-center gap-3">
