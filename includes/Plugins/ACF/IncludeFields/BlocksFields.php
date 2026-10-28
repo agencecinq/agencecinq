@@ -24,6 +24,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Crosslinks;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FormInfo;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ImageCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LogoWall;
@@ -32,8 +33,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHero;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingRules;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\References;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\RelatedCases;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Services;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
@@ -69,6 +68,7 @@ class BlocksFields implements Service {
 		EditorialProse::class,
 		FormInfo::class,
 		Gallery::class,
+		ImageCards::class,
 		InfoCards::class,
 		LatestPosts::class,
 		LogoWall::class,
@@ -77,8 +77,6 @@ class BlocksFields implements Service {
 		PositioningBanner::class,
 		PricingRules::class,
 		PricingTiers::class,
-		References::class,
-		RelatedCases::class,
 		Services::class,
 		Stats::class,
 		Subscriptions::class,

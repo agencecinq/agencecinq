@@ -67,6 +67,35 @@ class CaseStudy extends Post {
 	}
 
 	/**
+	 * Returns the situation the client started from, the badge of its Image card.
+	 *
+	 * @return string
+	 */
+	public function situation(): string {
+		return (string) ( $this->card()['situation'] ?? '' );
+	}
+
+	/**
+	 * Returns the sentence of its Image card on what the site does now.
+	 *
+	 * @return string
+	 */
+	public function summary(): string {
+		return (string) ( $this->card()['summary'] ?? '' );
+	}
+
+	/**
+	 * Returns the screenshot of the hero, or the poster of its video.
+	 *
+	 * @return int Attachment ID, 0 without one.
+	 */
+	public function screenshot(): int {
+		$media = $this->media();
+
+		return (int) ( $media['image'] ?? $media['poster']['ID'] ?? 0 );
+	}
+
+	/**
 	 * Returns the hero media payload for the browser frame (image or video).
 	 *
 	 * @return array{type: string, image?: int, video?: array<string, mixed>, poster?: array<string, mixed>}|null
@@ -150,6 +179,17 @@ class CaseStudy extends Post {
 		$hero = $this->meta( 'hero' );
 
 		return is_array( $hero ) ? $hero : array();
+	}
+
+	/**
+	 * Returns the card field group.
+	 *
+	 * @return array<string, mixed>
+	 */
+	private function card(): array {
+		$card = $this->meta( 'card' );
+
+		return is_array( $card ) ? $card : array();
 	}
 
 	/**

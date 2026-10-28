@@ -662,12 +662,6 @@ msgstr ""
 msgid "Screenshot"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:157
-msgid ""
-"Delivered site capture, 16:10 (1600×1000 recommended). No browser chrome and "
-"no cookie banner."
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:177
 msgid ""
 "Delivered site capture as video, 16:10. Supported formats: mp4, webm, ogv. "
@@ -2048,10 +2042,6 @@ msgstr ""
 msgid "Enter the included line"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:28
-msgid "References"
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/References.php:76
 #: includes/Plugins/ACF/IncludeFields/Layouts/References.php:77
 #: includes/Plugins/ACF/IncludeFields/Layouts/References.php:82
@@ -2062,13 +2052,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:86
 #: includes/Post/CaseStudy.php:76 views/pages/archive-case-study.html.twig:17
 msgid "Case studies"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:91
-msgid ""
-"The first case study is featured at full width. The following ones appear in "
-"the grid below. Drag to reorder. Each case study needs a screenshot or video "
-"(16:10, no browser chrome)."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:38
@@ -2089,26 +2072,12 @@ msgstr ""
 msgid "Add Case Study"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:92
-msgid ""
-"Two or three related cases at the end of a case study. The link anchor is "
-"the client name, never See also."
-msgstr ""
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:96
 #: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:98
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:67
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:69
 #: includes/Post/CaseStudy.php:75
 msgid "Case study"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:112
-msgid "public site and product configurator"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:113
-msgid "Short description shown after the platform. Do not repeat the platform."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:29
@@ -3102,10 +3071,6 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: views/components/tease-case-study-card.html.twig:63
-msgid "View the case"
-msgstr ""
-
 #: views/components/tease-case-study.html.twig:16
 #: views/components/tease-case-study.html.twig:64
 #: views/components/tease-post.html.twig:16
@@ -3645,4 +3610,71 @@ msgstr ""
 #, php-format
 msgctxt "offer price"
 msgid "%1$s, then %2$s"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ImageCards.php:29
+msgid "Image cards"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ImageCards.php:60
+msgid "They started from the same situation as you."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/ImageCards.php:93
+msgid ""
+"Three per row on desktop. None chosen: the three latest case studies, other "
+"than the current page. Only clients who gave their written consent. Each "
+"card shows the screenshot, the client, the situation and the summary of the "
+"case study."
+msgstr ""
+
+#: views/blocks/image-cards.html.twig:71
+#, php-format
+msgid "Read the %s case"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:215
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:217
+msgid "Card"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:220
+msgid ""
+"The case in an Image card, after the screenshot of the hero and the client."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:224
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:226
+msgid "Situation"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:228
+msgid "e.g. B2B service · site left on Elementor"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:229
+msgid ""
+"The situation the client started from, in the badge: not the technology nor "
+"the year."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:233
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:235
+msgid "Summary"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:239
+msgid ""
+"e.g. A site organised by sector and company size, with a savings calculator."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:240
+msgid "One sentence on what the site does now."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:157
+msgid ""
+"Delivered site capture, 16:10 (1600×1000 recommended). No browser chrome and "
+"no cookie banner. Its alternative text, in the media library, names the "
+"client and says what the image shows."
 msgstr ""
