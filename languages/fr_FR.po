@@ -2444,10 +2444,6 @@ msgstr "Fait avec soin"
 msgid "Main navigation"
 msgstr "Navigation principale"
 
-#: views/index.html.twig:52
-msgid "Page content"
-msgstr "Contenu de la page"
-
 #: views/pages/404.html.twig:17
 msgid "Snake. Arrow keys to move."
 msgstr "Snake. Déplacez-vous avec les flèches du clavier."

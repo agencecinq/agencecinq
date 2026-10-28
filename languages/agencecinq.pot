@@ -2425,10 +2425,6 @@ msgstr ""
 msgid "Main navigation"
 msgstr ""
 
-#: views/index.html.twig:52
-msgid "Page content"
-msgstr ""
-
 #: views/pages/404.html.twig:17
 msgid "Snake. Arrow keys to move."
 msgstr ""

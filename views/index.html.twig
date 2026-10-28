@@ -1,8 +1,8 @@
 {#
  # Index
  #
- # Document shell + default page layout (Page Hero component + editor content,
- # then optional flexible blocks).
+ # Document shell + default page layout, Figma T18 · Legal page: the Page header, then the editor content as
+ # Rich text, then optional flexible blocks.
  #
  # @package AgenceCinq
  # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
@@ -41,20 +41,18 @@
 							title: post.title,
 							text: post.post_excerpt,
 							links: post.meta( 'links' ),
-							classes: [ 'pt-14 pb-10 lg:pt-34 lg:pb-20' ],
+							classes: [ 'pt-20 pb-10 lg:pt-34 lg:pb-20' ],
 						},
 						with_context: false
 					)
 				-}}
 
 				{%- if post.content -%}
-					<section class="py-26" aria-label="{{ __( 'Page content', 'agencecinq' ) }}">
-						<div class="container">
-							<div class="wysiwyg text-muted max-w-180 text-base">
-								{{- post.content -}}
-							</div>
+					<div class="container py-10 lg:py-20">
+						<div class="wysiwyg text-body max-w-180 text-lg">
+							{{- post.content -}}
 						</div>
-					</section>
+					</div>
 				{%- endif -%}
 
 				{{- include( 'blocks/blocks.html.twig', { blocks: post.meta( 'blocks' ) } ) -}}
