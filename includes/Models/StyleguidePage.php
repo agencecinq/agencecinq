@@ -93,6 +93,8 @@ class StyleguidePage extends Post {
 			'Icon/Plus'          => 'plus',
 			'Icon/Minus'         => 'minus',
 			'Icon/External'      => 'external',
+			'Icon/Check box'     => 'check-box',
+			'Icon/Box'           => 'box',
 		);
 	}
 

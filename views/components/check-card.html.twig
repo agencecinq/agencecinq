@@ -16,8 +16,18 @@
 		)
 	}}"
 >
-	<span class="text-button grid h-lh shrink-0 place-items-center" aria-hidden="true">
-		<span class="border-accent bg-accent-soft size-5 rounded-sm border-[1.5px]"></span>
+	<span class="text-button grid h-lh shrink-0 place-items-center">
+		{{-
+			include(
+				'svg/use.html.twig',
+				{
+					icon: 'box',
+					classes: [ 'text-accent-default size-5' ],
+					attributes: { 'aria-hidden': 'true' },
+				},
+				with_context: false
+			)
+		-}}
 	</span>
 	<div class="flex min-w-0 flex-1 flex-col gap-2">
 		<p class="text-button text-primary">{{- title -}}</p>

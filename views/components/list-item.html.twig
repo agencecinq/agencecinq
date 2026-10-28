@@ -2,7 +2,7 @@
  # Components: List item
  #
  # A li with a decorative marker: + for compact (cards), default (in a text) and divided (with a rule),
- # a box for check (what is included). The marker sits on the first line.
+ # a checked box for check (what is included). The marker sits on the first line.
  #
  # @param string text
  # @param string type Optional. 'compact', 'default' (default), 'divided' or 'check'.
@@ -24,8 +24,18 @@
 	}}"
 >
 	{%- if type == 'check' -%}
-		<span class="grid h-lh shrink-0 place-items-center" aria-hidden="true">
-			<span class="border-accent bg-accent-soft size-5 rounded-sm border-[1.5px]"></span>
+		<span class="grid h-lh shrink-0 place-items-center">
+			{{-
+				include(
+					'svg/use.html.twig',
+					{
+						icon: 'check-box',
+						classes: [ 'text-accent-default size-5' ],
+						attributes: { 'aria-hidden': 'true' },
+					},
+					with_context: false
+				)
+			-}}
 		</span>
 	{%- else -%}
 		<span class="text-diff-plus shrink-0 font-mono font-medium" aria-hidden="true">+</span>
