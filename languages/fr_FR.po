@@ -3370,3 +3370,15 @@ msgstr[1] "%s semaines"
 msgctxt "retainer badge"
 msgid "Response: %s"
 msgstr "Prise en charge : %s"
+
+#: views/components/switch.html.twig
+msgid "Always on"
+msgstr "Toujours actif"
+
+#: views/components/switch.html.twig
+msgid "Off"
+msgstr "Désactivé"
+
+#: views/components/switch.html.twig
+msgid "On"
+msgstr "Activé"

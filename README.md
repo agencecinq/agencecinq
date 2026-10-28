@@ -9,7 +9,7 @@ WordPress theme for [agencecinq.com](https://agencecinq.com) (Timber/Twig, Vite,
 - **CSS**: Tailwind CSS v4 in pure CSS. Design tokens live in `@theme` (`src/stylesheets/theme.css`), with the code syntax of the variables on the Fondations page of the Figma file « CINQ · Site · Conception 2027 ».
 - **Fonts**: Inter and JetBrains Mono are self-hosted (latin woff2 in `src/fonts/`, `@font-face` in `src/stylesheets/base/font-face.css`), preloaded from `Enqueue::preload_resources()`. No request to Google Fonts.
 - **JS**: TypeScript components in `src/scripts/components/`, mounted via `piecesjs`. Data from PHP (`Enqueue::script_module_data()`) read by `src/scripts/theme.ts`.
-- **Packages**: `@agencecinq/accordion`, `@agencecinq/drawer`, `@agencecinq/modal`, `@agencecinq/utils`.
+- **Packages**: `@agencecinq/accordion`, `@agencecinq/drawer`, `@agencecinq/modal`, `@agencecinq/snake`, `@agencecinq/switch`, `@agencecinq/utils`.
 - **PHP**: OOP, PSR-4 (`AgenceCinq\` → `includes/`), WordPress Coding Standards (`phpcs.xml`).
 - **Fields**: ACF groups in PHP under `includes/Plugins/ACF/IncludeFields/` (layouts in `Layouts/`).
 - **i18n**: text domain `agencecinq`, files in `languages/`.

@@ -3348,3 +3348,15 @@ msgstr[1] ""
 msgctxt "retainer badge"
 msgid "Response: %s"
 msgstr ""
+
+#: views/components/switch.html.twig
+msgid "Always on"
+msgstr ""
+
+#: views/components/switch.html.twig
+msgid "Off"
+msgstr ""
+
+#: views/components/switch.html.twig
+msgid "On"
+msgstr ""

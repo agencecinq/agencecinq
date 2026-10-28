@@ -1,0 +1,57 @@
+{#
+ # Components: Switch
+ #
+ # CINQ UI <cinq-switch>: the whole row toggles and aria-checked is the state. The state is also written
+ # and the knob changes side, so colour never carries it alone. Always on is locked but stays focusable
+ # and submitted (aria-disabled), for necessary cookies.
+ #
+ # @param string label Stays the same in every state.
+ # @param bool checked Optional.
+ # @param bool always_on Optional.
+ # @param string name Optional. Submits the switch with its form.
+ # @param string value Optional. Submitted while on, "on" by default.
+ # @param array classes Optional extra classes.
+ #}
+
+<cinq-switch
+	class="{{
+		html_classes(
+			'group/switch flex cursor-pointer items-center gap-4 py-2.5 outline-none aria-disabled:cursor-default',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+	role="switch"
+	tabindex="0"
+	{{
+		html_attr(
+			{ 'aria-checked': checked or always_on ? 'true' : 'false' },
+			always_on ? { 'aria-disabled': 'true' },
+			name ? { name: name },
+			value ? { value: value }
+		)
+	}}
+>
+	<span class="flex-1 text-base">{{- label -}}</span>
+	<span class="text-muted text-sm" aria-hidden="true">
+		{%- if always_on -%}
+			{{- __( 'Always on', 'agencecinq' ) -}}
+		{%- else -%}
+			<span class="group-aria-checked/switch:hidden">{{- __( 'Off', 'agencecinq' ) -}}</span>
+			<span class="hidden group-aria-checked/switch:inline">{{- __( 'On', 'agencecinq' ) -}}</span>
+		{%- endif -%}
+	</span>
+	<span
+		class="{{
+			html_classes(
+				'border-control bg-surface flex h-6 w-11 shrink-0 items-center rounded-full border-[1.5px] p-0.75 transition-colors',
+				'group-aria-checked/switch:border-accent-default group-aria-checked/switch:bg-accent-default',
+				'group-focus-visible/switch:outline-focus-ring group-focus-visible/switch:outline-2 group-focus-visible/switch:outline-offset-2'
+			)
+		}}"
+		aria-hidden="true"
+	>
+		<span
+			class="size-4.5 rounded-full bg-(--text-color-muted) transition group-aria-checked/switch:translate-x-4.25 group-aria-checked/switch:bg-(--text-color-on-accent) motion-reduce:transition-none"
+		></span>
+	</span>
+</cinq-switch>
