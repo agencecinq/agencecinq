@@ -1,0 +1,63 @@
+{#
+ # Components: Image card
+ #
+ # An image at 16:10, a badge, title, text, then a Text button, the only link. The image carries
+ # information: write its alternative.
+ #
+ # @param mixed image Image from the media library.
+ # @param string alt Alternative of the image.
+ # @param string badge Optional.
+ # @param string title
+ # @param string text
+ # @param object link Optional. { title, url } of the button.
+ # @param string heading Optional. Tag of the title, 'h3' by default.
+ # @param string sizes Optional. Sizes attribute of the image.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set heading = heading | default( 'h3' ) -%}
+
+<div
+	class="{{
+		html_classes( 'flex flex-col items-start gap-4', classes | default( [] ) | join( ' ' ) )
+	}}"
+>
+	<div class="bg-media aspect-16/10 w-full overflow-hidden rounded-md">
+		{%- if image -%}
+			{{-
+				include(
+					'components/image.html.twig',
+					{
+						image: image,
+						alt: alt ?? null,
+						sizes: sizes | default( null ),
+						classes: [ 'size-full object-cover' ],
+					},
+					with_context: false
+				)
+			-}}
+		{%- endif -%}
+	</div>
+	{{-
+		include( 'components/badge.html.twig', { title: badge | default( '' ) }, with_context: false )
+	-}}
+	<{{ heading }} class="text-title-lg text-primary">
+		{{- title -}}
+	</{{ heading }}>
+	{%- if text -%}
+		<p class="text-body text-base">{{- text -}}</p>
+	{%- endif -%}
+	{%- if link.url | default( false ) -%}
+		{{-
+			include(
+				'components/button.html.twig',
+				{
+					title: link.title,
+					url: link.url,
+					variant: 'text',
+				},
+				with_context: false
+			)
+		-}}
+	{%- endif -%}
+</div>

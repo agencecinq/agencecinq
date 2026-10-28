@@ -1,0 +1,50 @@
+{#
+ # Components: Action card
+ #
+ # Points to a page: title, text, the offer and its price, then a Text button, the only link.
+ #
+ # @param string title
+ # @param string text
+ # @param string offer Optional.
+ # @param string price Optional.
+ # @param object link { title, url } of the button.
+ # @param string heading Optional. Tag of the title, 'h3' by default.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set heading = heading | default( 'h3' ) -%}
+
+<div
+	class="{{
+		html_classes(
+			'border-default bg-surface flex flex-col items-start gap-4 rounded-lg border p-6 lg:p-8',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<{{ heading }} class="text-title-lg text-primary">
+		{{- title -}}
+	</{{ heading }}>
+	{%- if text -%}
+		<p class="text-body text-base">{{- text -}}</p>
+	{%- endif -%}
+	{%- if offer or price -%}
+		<p class="border-default text-button flex w-full flex-col gap-1 border-t pt-4">
+			<span class="text-primary">{{- offer -}}</span>
+			<span class="text-muted">{{- price -}}</span>
+		</p>
+	{%- endif -%}
+	{%- if link.url | default( false ) -%}
+		{{-
+			include(
+				'components/button.html.twig',
+				{
+					title: link.title,
+					url: link.url,
+					variant: 'text',
+				},
+				with_context: false
+			)
+		-}}
+	{%- endif -%}
+</div>

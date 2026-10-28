@@ -1,0 +1,44 @@
+{#
+ # Components: Step card
+ #
+ # A li of an ol of steps: the number, decorative since the list counts, who does it in a badge, the
+ # title and the text.
+ #
+ # @param string number Two digits, e.g. '%02d' | format( loop.index ).
+ # @param string who Optional, e.g. « Personne » or « IA ».
+ # @param string title
+ # @param string text
+ # @param string heading Optional. Tag of the title, 'h3' by default.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set heading = heading | default( 'h3' ) -%}
+
+<li
+	class="{{
+		html_classes(
+			'border-accent bg-accent-soft flex flex-col gap-3 rounded-lg border p-6',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<div class="flex items-center justify-between gap-2">
+		<span class="text-mono text-muted" aria-hidden="true">{{- number -}}</span>
+		{{-
+			include(
+				'components/badge.html.twig',
+				{
+					title: who | default( '' ),
+					dot: true,
+				},
+				with_context: false
+			)
+		-}}
+	</div>
+	<{{ heading }} class="text-title-md text-primary">
+		{{- title -}}
+	</{{ heading }}>
+	{%- if text -%}
+		<p class="text-body text-sm">{{- text -}}</p>
+	{%- endif -%}
+</li>
