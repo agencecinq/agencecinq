@@ -319,8 +319,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:94
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:96
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:48
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:104
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:162
@@ -331,10 +329,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:110
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:50
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:47
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:49
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:93
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:95
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:54
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:54
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:95
@@ -354,10 +348,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:177
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:179
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:56
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:58
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:57
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:57
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:59
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:105
@@ -370,12 +360,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:109
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:111
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:75
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:77
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:56
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:58
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:93
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:95
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:104
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:106
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:198
@@ -431,14 +415,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:42
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:35
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:40
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:42
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:35
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:40
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:40
@@ -459,10 +435,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:42
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:33
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:39
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:41
 #: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:40
@@ -499,14 +471,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:37
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:44
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:33
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:39
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:41
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:43
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:44
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:49
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:51
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:40
@@ -519,14 +483,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:37
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:44
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:52
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:53
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:58
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:60
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:33
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:39
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:41
 msgid "Content"
 msgstr ""
 
@@ -571,8 +527,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:122
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:103
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:105
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:68
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:70
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:75
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:110
 #: includes/Plugins/ACF/IncludeFields/Layouts/CredibilityBanner.php:60
@@ -584,10 +538,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:146
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:66
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:68
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:65
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:67
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:121
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:123
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:69
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:102
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:67
@@ -606,8 +556,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:70
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:223
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:225
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:108
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:110
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:75
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:77
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:114
@@ -620,8 +568,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:70
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:118
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:120
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:102
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:104
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:78
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:80
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:160
@@ -651,8 +597,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:139
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:143
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:145
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:101
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:103
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:373
 msgid "Image"
 msgstr ""
@@ -780,15 +724,11 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:177
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:65
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:67
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:58
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:66
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:64
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:66
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:56
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:58
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:55
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:57
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:64
@@ -801,20 +741,12 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:60
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:64
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:66
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:66
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:68
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:65
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:67
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:65
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:67
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:58
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:60
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:33
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:35
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:64
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:66
 msgid "Heading"
 msgstr ""
 
@@ -913,18 +845,12 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:49
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:47
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:49
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:47
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:49
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:99
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:101
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:66
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:68
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:47
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:49
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:64
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:66
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:188
@@ -950,8 +876,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:106
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:112
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:114
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:48
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:50
 msgid "Quote"
 msgstr ""
 
@@ -968,12 +892,8 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:132
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:134
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:80
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:82
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:78
 #: includes/Plugins/ACF/IncludeFields/Layouts/Crosslinks.php:80
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:132
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:134
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:84
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:86
 #: includes/Plugins/ACF/IncludeFields/Layouts/PositioningBanner.php:77
@@ -993,7 +913,6 @@ msgid "Link"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:138
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:86
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:185
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:90
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:87
@@ -1014,40 +933,28 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:51
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:51
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:51
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:52
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:70
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:51
 msgid "Enter the overline of the block"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:53
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:52
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:53
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:71
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:52
 msgid "Eyebrow label shown above the title."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/AccordionGroup.php:61
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:53
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialProse.php:52
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:51
 #: includes/Plugins/ACF/IncludeFields/Layouts/LatestPosts.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:53
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:60
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingRules.php:52
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:54
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:60
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:62
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:61
 #: includes/Plugins/ACF/IncludeFields/Layouts/Stats.php:61
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:54
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:79
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:60
 msgid "Enter the title of the block"
 msgstr ""
 
@@ -1074,22 +981,11 @@ msgstr ""
 msgid "Enter the title of the item"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:29
-msgid "Call to action"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:52
+#: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:54
 #: views/pages/single-post.html.twig:167
 msgid "Let's start with 30 minutes."
 msgstr "On commence par 30 minutes."
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:54
-msgid ""
-"Giant heading. Keep it to about 18 characters per line so it wraps in two "
-"balanced lines."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:74
 #: views/pages/single-post.html.twig:169
 msgid ""
 "We look at your site live, tell you whether we are the right people for it, "
@@ -1100,18 +996,12 @@ msgstr ""
 "et on vous donne un ordre de grandeur. Le diagnostic, s'il a du sens, se "
 "décide à la fin de l'appel."
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:75
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:80
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:71
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:81
 msgid "Enter the lead text of the block"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:76
-msgid "Lead paragraph, about 46 characters wide."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/CallToAction.php:90
 #: includes/Plugins/ACF/IncludeFields/Layouts/PageHero.php:94
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:91
 msgid ""
@@ -1119,19 +1009,21 @@ msgid ""
 "click."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:59
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:61
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:113
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:115
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:69
+#: includes/Plugins/ACF/IncludeFields/Layouts/LogoWall.php:71
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:60
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:62
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:102
+#: includes/Plugins/ACF/IncludeFields/Layouts/ActivityLog.php:104
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:68
-#: includes/Plugins/ACF/IncludeFields/Layouts/ClientQuote.php:70
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:122
-#: includes/Plugins/ACF/IncludeFields/Layouts/Team.php:124
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:121
+#: includes/Plugins/ACF/IncludeFields/Layouts/PortraitGrid.php:123
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:73
+#: includes/Plugins/ACF/IncludeFields/Layouts/Quote.php:75
 msgid "Role"
-msgstr ""
+msgstr "Rôle"
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:29
 msgid "Code Guide"
@@ -1154,8 +1046,6 @@ msgid "Aside"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:98
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:111
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:113
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:163
 #: includes/Plugins/ACF/IncludeFields/Layouts/Services.php:165
 msgid "Label"
@@ -1234,10 +1124,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:41
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:46
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:48
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:76
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:77
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:82
-#: includes/Plugins/ACF/IncludeFields/Layouts/VerticalPipeline.php:84
 msgid "Steps"
 msgstr ""
 
@@ -1655,15 +1541,12 @@ msgid ""
 "This block carries SEO depth on platform, local, and legal pages."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:71
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:73
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:74
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:74
 msgid "Enter the introductory text of the block"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:102
-#: includes/Plugins/ACF/IncludeFields/Layouts/EntryPoints.php:104
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:186
 #: includes/Plugins/ACF/IncludeFields/Layouts/PricingTiers.php:188
 msgid "Price"
@@ -2027,19 +1910,10 @@ msgstr ""
 msgid "Enter the included line"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:76
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:77
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:82
-#: includes/Plugins/ACF/IncludeFields/Layouts/References.php:84
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:78
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:79
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:84
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:86
 #: includes/Post/CaseStudy.php:76 views/pages/archive-case-study.html.twig:17
 msgid "Case studies"
 msgstr "Réalisations"
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:38
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:48
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:50
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:55
@@ -2047,18 +1921,14 @@ msgstr "Réalisations"
 msgid "Related Cases"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:61
 #: views/pages/single-post.html.twig:116
 msgid "Read also"
 msgstr "À lire aussi"
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:91
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:62
 msgid "Add Case Study"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:96
-#: includes/Plugins/ACF/IncludeFields/Layouts/RelatedCases.php:98
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:67
 #: includes/Plugins/ACF/IncludeFields/PostFields.php:69
 #: includes/Post/CaseStudy.php:75
@@ -3799,3 +3669,37 @@ msgstr "Mettre en pause le défilement"
 #: views/blocks/portrait-grid.html.twig:55
 msgid "Pause"
 msgstr "Pause"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:29
+msgid "CTA"
+msgstr "Appel à l’action"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:45
+msgid ""
+"Write the title and the text for the page: the same call everywhere reads as "
+"if the page had not changed. Recommended paddings: 136px top and bottom."
+msgstr ""
+"Écrire le titre et le texte pour la page : le même appel partout donne "
+"l’impression de ne pas avoir changé de page. Marges recommandées : 136 px en "
+"haut et en bas."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:64
+msgid ""
+"We look at your site live, tell you whether we are the right people for it, "
+"and give you an order of magnitude."
+msgstr ""
+"On regarde votre site en direct, on vous dit si on est le bon interlocuteur, "
+"et on vous donne un ordre de grandeur."
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:95
+#: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:97
+msgid "Detail"
+msgstr "Détail"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:99
+msgid "30-minute video call · daytime slots, until 5 p.m."
+msgstr "Visio de 30 minutes · créneaux en journée, jusqu’à 17 h"
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Cta.php:100
+msgid "What the click leads to, under the button."
+msgstr "Ce qui suit le clic, sous le bouton."

@@ -13,10 +13,10 @@ namespace AgenceCinq\Plugins\ACF\IncludeFields;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\AccordionGroup;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActionCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CallToAction;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Crosslinks;
@@ -58,10 +58,10 @@ class BlocksFields implements Service {
 		AccordionGroup::class,
 		ActionCards::class,
 		ActivityLog::class,
-		CallToAction::class,
 		CodeGuide::class,
 		Comparison::class,
 		Configurator::class,
+		Cta::class,
 		CredibilityBanner::class,
 		Crosslinks::class,
 		EditorialCards::class,

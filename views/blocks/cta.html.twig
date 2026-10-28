@@ -1,0 +1,46 @@
+{#
+ # Blocks: CTA
+ #
+ # Figma Section/CTA, centred: the title of the page's call, balanced over two lines, the text, the primary
+ # button, then what the click leads to.
+ #}
+
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if block.content.title -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		aria-labelledby="{{ title_id }}"
+	>
+		<div class="container flex flex-col items-center gap-6 text-center">
+			<{{ heading }} id="{{ title_id }}" class="text-title-xxl text-primary max-w-205 text-balance">
+				{{- block.content.title -}}
+			</{{ heading }}>
+			{%- if block.content.text -%}
+				<p class="text-body max-w-160 text-lg">{{- block.content.text -}}</p>
+			{%- endif -%}
+			{{-
+				include(
+					'components/button.html.twig',
+					block.content.link | default( {} ) | merge( { variant: 'primary' } ),
+					with_context: false
+				)
+			-}}
+			{%- if block.content.detail -%}
+				<p class="text-muted text-sm">{{- block.content.detail -}}</p>
+			{%- endif -%}
+		</div>
+	</section>
+{%- endif -%}
