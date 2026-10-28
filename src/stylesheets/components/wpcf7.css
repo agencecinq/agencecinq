@@ -149,22 +149,6 @@
 		@apply flex flex-wrap gap-x-6 gap-y-3;
 	}
 
-	/* Layout · Form info: the first four fields in two columns, the rest full width. */
-	.block-form .wpcf7 .wpcf7-form {
-		@apply flex flex-col gap-5;
-	}
-
-	.block-form .wpcf7 .wpcf7-form > p {
-		@apply m-0 grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2;
-	}
-
-	.block-form .wpcf7 .wpcf7-form > p > label:nth-child(n + 5 of label),
-	.block-form .wpcf7 .wpcf7-form > p > label:has(textarea),
-	.block-form .wpcf7 .wpcf7-form > p > .wpcf7-form-control-wrap:has(.wpcf7-acceptance),
-	.block-form .wpcf7 .wpcf7-submit {
-		@apply col-span-full;
-	}
-
 	/* Layout · Signup form: the field on its row, the submit and its spinner under it. */
 	.block-signup .wpcf7 .wpcf7-form {
 		@apply flex flex-col gap-4;

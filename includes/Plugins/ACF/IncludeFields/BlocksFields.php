@@ -25,7 +25,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\DiffColumns;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FeatureCards;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FormInfo;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ImageCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
@@ -79,7 +78,6 @@ class BlocksFields implements Service {
 		DiffColumns::class,
 		EditorialCards::class,
 		FeatureCards::class,
-		FormInfo::class,
 		Gallery::class,
 		ImageCards::class,
 		InfoCards::class,

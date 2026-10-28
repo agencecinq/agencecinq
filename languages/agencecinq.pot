@@ -342,20 +342,20 @@ msgid "Title"
 msgstr ""
 
 #. Template Name of the theme
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:158
 #: includes/Plugins/ACF/IncludeFields/BlocksFields.php:160
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:162
 msgid "Blocks"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:164
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:162
 msgid "Add and arrange blocks to build the page content."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:166
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:164
 msgid "Add Block"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:174
+#: includes/Plugins/ACF/IncludeFields/BlocksFields.php:172
 msgid "Blocks Fields"
 msgstr ""
 
@@ -387,10 +387,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:40
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:42
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:34
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:35
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:40
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:42
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:34
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:35
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:40
@@ -1095,8 +1091,6 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:104
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:106
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:61
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:63
 msgid "Notice"
 msgstr ""
 
@@ -1367,80 +1361,9 @@ msgstr ""
 msgid "Enter the introductory text of the block"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:29
-msgid "Form + Info"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:45
-msgid ""
-"Contact page: two-column form on the left, coordinates on the right. "
-"Recommended paddings: 80px top, 104px bottom. The “your project in two "
-"lines” field must stay required in Contact Form 7."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:49
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:51
 #: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:79
 #: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:81
 msgid "Form"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:57
-msgid ""
-"Select the Contact Form 7 form. Expected fields, two per row then full "
-"width: name, email, phone (optional), project type, budget (optional), "
-"project (required), submit."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:67
-msgid "Reply within 24 hours. Your data stays with us, never sold."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:68
-msgid "Enter the notice shown under the submit button"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:69
-msgid ""
-"Mono line under the form. Privacy and response time, not a legal wall of "
-"text."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:75
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:76
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:81
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:83
-msgid "Info"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:86
-msgid "The cities, email and phone come from Settings › Theme › Contact."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:90
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:92
-msgid "Locations overline"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:94
-msgid "Where to find us"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:95
-msgid "Enter the overline above the cities"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:99
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:101
-msgid "Contact overline"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:103
-msgid "Or directly"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/Layouts/FormInfo.php:104
-msgid "Enter the overline above the email and phone"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Gallery.php:29
@@ -1751,7 +1674,6 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:72
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:77
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:79
-#: views/blocks/form-info.html.twig:26
 msgid "Contact"
 msgstr ""
 
