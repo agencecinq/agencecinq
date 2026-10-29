@@ -1013,7 +1013,7 @@ msgstr "Page %1$s sur %2$s"
 msgid "Skip to content"
 msgstr "Aller au contenu"
 
-#: views/pages/single-post.html.twig:44
+#: views/pages/single-post.html.twig:51
 #, php-format
 msgid "%d min read"
 msgstr "%d min de lecture"
@@ -2284,12 +2284,12 @@ msgstr ""
 "en filtres. Sur une catégorie ou un auteur, leur nom et leur description les "
 "remplacent. Marges recommandées : 104 px en haut, 56 px en bas."
 
-#: views/pages/single-post.html.twig:100
+#: views/pages/single-post.html.twig:107
 #, php-format
 msgid "All posts by %s"
 msgstr "Tous les articles de %s"
 
-#: views/pages/single-post.html.twig:115
+#: views/pages/single-post.html.twig:122
 msgid "Read next"
 msgstr "À lire ensuite"
 
@@ -2441,3 +2441,8 @@ msgstr "ancienne version du site"
 #: views/pages/maintenance.html.twig:62
 msgid "new version, live soon"
 msgstr "nouvelle version, bientôt en ligne"
+
+#: views/pages/single-post.html.twig:46
+#, php-format
+msgid "Updated on %s"
+msgstr "Mis à jour le %s"

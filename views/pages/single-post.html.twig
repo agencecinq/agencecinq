@@ -2,8 +2,9 @@
  # Single post
  #
  # Figma T14 · Article: the Post header, the breadcrumb, the title in H1, the lede, the author and the date,
- # then the image; the post as Rich text; the Profile of the author; the Post row of the posts to read next,
- # from its categories; then the Signup form of the page for posts.
+ # with the update date when the post changed another day, then the image; the post as Rich text; the
+ # Profile of the author; the Post row of the posts to read next, from its categories; then the Signup form
+ # of the page for posts.
  #
  # @package AgenceCinq
  #}
@@ -39,6 +40,12 @@
 							{%- endif -%}
 							<span class="text-muted text-sm">
 								<time datetime="{{ post.date( 'c' ) }}">{{- post.date -}}</time>
+								{%- if post.modified_date( 'Y-m-d' ) != post.date( 'Y-m-d' ) -%}
+									{{- ' · ' -}}
+									<time datetime="{{ post.modified_date( 'c' ) }}">
+										{{- __( 'Updated on %s', 'agencecinq' ) | format( post.modified_date ) -}}
+									</time>
+								{%- endif -%}
 								{%- if post.reading_time -%}
 									{{- ' · '
 										~ ( __( '%d min read', 'agencecinq' ) | format( post.reading_time ) ) -}}

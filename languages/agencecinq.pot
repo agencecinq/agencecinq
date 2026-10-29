@@ -1011,7 +1011,7 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: views/pages/single-post.html.twig:44
+#: views/pages/single-post.html.twig:51
 #, php-format
 msgid "%d min read"
 msgstr ""
@@ -2179,12 +2179,12 @@ msgid ""
 "description replace them. Recommended paddings: 104px top, 56px bottom."
 msgstr ""
 
-#: views/pages/single-post.html.twig:100
+#: views/pages/single-post.html.twig:107
 #, php-format
 msgid "All posts by %s"
 msgstr ""
 
-#: views/pages/single-post.html.twig:115
+#: views/pages/single-post.html.twig:122
 msgid "Read next"
 msgstr ""
 
@@ -2319,4 +2319,9 @@ msgstr ""
 
 #: views/pages/maintenance.html.twig:62
 msgid "new version, live soon"
+msgstr ""
+
+#: views/pages/single-post.html.twig:46
+#, php-format
+msgid "Updated on %s"
 msgstr ""
