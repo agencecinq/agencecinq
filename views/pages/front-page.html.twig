@@ -22,7 +22,7 @@
 	{%- set added = diff.added | default( [] ) | map( line => line.text ) | filter( text => text ) -%}
 
 	<main id="content" role="main">
-		<section class="py-14 lg:pt-34 lg:pb-26" aria-labelledby="hero-home-title">
+		<section class="pt-20 pb-14 lg:pt-34 lg:pb-26" aria-labelledby="hero-home-title">
 			<div class="layout-grid container items-start gap-y-10">
 				<div class="col-span-full grid grid-cols-subgrid gap-y-6 lg:col-span-8 lg:gap-y-8">
 					{%- if content.eyebrow -%}
