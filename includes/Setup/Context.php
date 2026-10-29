@@ -29,44 +29,9 @@ class Context extends Site implements Service {
 	 * @return void
 	 */
 	public function run(): void {
-		add_filter( 'timber/context', array( $this, 'add_socials_to_context' ) );
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'timber/context', array( $this, 'add_menus_to_context' ) );
 		add_filter( 'timber/post/classmap', array( $this, 'add_post_classmap' ) );
-	}
-
-
-	/**
-	 * Add socials to context
-	 *
-	 * Add socials and share links to the global context.
-	 *
-	 * Then you can access them in Twig via the `socials` and `shares` variables.
-	 *
-	 * @example
-	 * {% for social in socials %}
-	 *  <a href="{{ social.url }}">{{ social.name }}</a>
-	 * {% endfor %}
-	 *
-	 * @param array $context The global context.
-	 *
-	 * @return array
-	 */
-	public function add_socials_to_context( array $context ): array {
-		// Share and Socials links.
-		$socials = include get_template_directory() . '/includes/socials.php';
-
-		foreach ( $socials as $social ) {
-			if ( ! empty( $social['url'] ) ) {
-				$context['socials'][ $social['id'] ] = $social;
-			}
-
-			if ( ! empty( $social['link'] ) ) {
-				$context['shares'][ $social['id'] ] = $social;
-			}
-		}
-
-		return $context;
 	}
 
 

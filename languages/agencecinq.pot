@@ -13,15 +13,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: agencecinq\n"
 
-#: includes/Admin/Menu.php:42 includes/Admin/Menu.php:43
-#: includes/Admin/Menu.php:57
-msgid "Socials"
-msgstr ""
-
-#: includes/Admin/Menu.php:62
-msgid "Save Changes"
-msgstr ""
-
 #. translators: %s: amount with the separators of the language, e.g. « 24,900 ».
 #: includes/Catalogue/Catalogue.php:255
 #, php-format
@@ -1869,66 +1860,6 @@ msgstr ""
 
 #: includes/WPSettings.php:66
 msgid "Legals Menu"
-msgstr ""
-
-#: includes/socials.php:13
-msgid "Facebook"
-msgstr ""
-
-#: includes/socials.php:15
-msgid "Enter the Facebook URL here."
-msgstr ""
-
-#: includes/socials.php:17
-msgid "Share on Facebook"
-msgstr ""
-
-#: includes/socials.php:23
-msgid "Instagram"
-msgstr ""
-
-#: includes/socials.php:25
-msgid "Enter the Instagram URL here."
-msgstr ""
-
-#: includes/socials.php:31
-msgid "LinkedIn"
-msgstr ""
-
-#: includes/socials.php:33
-msgid "Enter the LinkedIn URL here."
-msgstr ""
-
-#: includes/socials.php:35
-msgid "Share on LinkedIn"
-msgstr ""
-
-#: includes/socials.php:41
-msgid "Vimeo"
-msgstr ""
-
-#: includes/socials.php:43
-msgid "Enter the Vimeo URL here."
-msgstr ""
-
-#: includes/socials.php:48
-msgid "X (Twitter)"
-msgstr ""
-
-#: includes/socials.php:50
-msgid "Enter the X URL here."
-msgstr ""
-
-#: includes/socials.php:53
-msgid "Share on X"
-msgstr ""
-
-#: includes/socials.php:57
-msgid "YouTube"
-msgstr ""
-
-#: includes/socials.php:59
-msgid "Enter the YouTube URL here."
 msgstr ""
 
 #: views/blocks/code-guide.html.twig:127

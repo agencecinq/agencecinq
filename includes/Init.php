@@ -27,9 +27,6 @@ class Init {
 	 */
 	public static function get_services(): array {
 		return array(
-			// Admin.
-			Admin\Init::class,
-			Admin\Menu::class,
 			// Setup.
 			Setup\Enqueue::class,
 			Setup\Context::class,
