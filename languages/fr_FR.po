@@ -2536,6 +2536,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:77
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:79
 #: views/blocks/form-info.html.twig:26
+#: views/pages/maintenance.html.twig:133
 msgid "Contact"
 msgstr ""
 
@@ -3094,6 +3095,10 @@ msgstr ""
 msgid "Enter the YouTube URL here."
 msgstr ""
 
+#: maintenance.php:18
+msgid "The site is under construction."
+msgstr "Le site est en travaux."
+
 #: views/blocks/code-guide.html.twig:127
 #: views/components/code-block.html.twig:14
 msgid "Copy"
@@ -3231,6 +3236,7 @@ msgid "Footer navigation"
 msgstr "Navigation du pied de page"
 
 #: views/footer.html.twig:132
+#: views/pages/maintenance.html.twig:182
 msgid "Made with care"
 msgstr "Fait avec soin"
 
@@ -3286,6 +3292,21 @@ msgstr ""
 #, php-format
 msgid "%s ago"
 msgstr "il y a %s"
+
+#: views/pages/maintenance.html.twig:68
+#, php-format
+msgid ""
+"A new version of agencecinq.com is going live. In the meantime, you can "
+"still reach us at %1$s, at %2$s, or on a 30-minute call."
+msgstr ""
+"Une nouvelle version d’agencecinq.com est en cours de mise en ligne. "
+"Pendant ce temps, on reste joignables au %1$s, à %2$s, ou sur un "
+"rendez-vous de 30 minutes."
+
+#: views/pages/maintenance.html.twig:90
+#, php-format
+msgid "Write to %s"
+msgstr "Écrire à %s"
 
 #: views/pages/single-post.html.twig:23
 #, php-format
