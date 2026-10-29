@@ -285,7 +285,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:104
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:162
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:86
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:161
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:160
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:55
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:57
 #: includes/Plugins/ACF/IncludeFields/Layouts/EditorialCards.php:56
@@ -780,7 +780,7 @@ msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:144
 #: includes/Plugins/ACF/IncludeFields/FrontPageFields.php:138
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:185
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:184
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:157
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:97
 msgid "Book 30 minutes"
@@ -927,7 +927,7 @@ msgid "Code"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:203
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:186
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:185
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:95
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:97
 #: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:91
@@ -1105,7 +1105,7 @@ msgid "Name the field and say how to fix it, with an example (RGAA 11.11)."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:121
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:185
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:184
 msgid "Button label"
 msgstr ""
 
@@ -1159,13 +1159,8 @@ msgid ""
 "total and {email} the address typed."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:160
-msgid "Estimate sent"
-msgstr "Estimation envoyée"
-
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:50
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:160
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:48
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:50
 #: includes/Plugins/ACF/IncludeFields/Layouts/PriceBreakdown.php:48
@@ -1175,16 +1170,16 @@ msgstr "Estimation envoyée"
 msgid "Eyebrow"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:161
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:160
 msgid "It is in your inbox."
 msgstr "C’est dans votre boîte mail."
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:164
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:166
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:163
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:165
 msgid "Message"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:170
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:169
 msgid ""
 "Your estimate of {total} has just been sent to {email}. Keep it: it lists "
 "every line of your configuration and is the basis of our discussion."
@@ -1192,36 +1187,36 @@ msgstr ""
 "Votre estimation de {total} vient de partir à {email}. Gardez-la : elle "
 "reprend chaque ligne de votre configuration, c’est votre base de discussion."
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:172
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:171
 msgid "Help"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:172
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:171
 msgid "Nothing within 5 minutes? Check your spam folder."
 msgstr "Rien reçu d’ici 5 minutes ? Regardez dans les indésirables."
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:173
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:172
 msgid "Next step eyebrow"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:173
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:172
 msgid "What comes next, if you like"
 msgstr "La suite, si vous voulez"
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:174
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:173
 msgid "30 minutes, on the clock."
 msgstr "30 minutes, montre en main."
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:174
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:173
 msgid "Next step title"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:177
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:179
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:176
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:178
 msgid "Next step text"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:183
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:182
 msgid ""
 "We look at your site live, tell you whether we are the right people for it, "
 "and start from your estimate: nothing to explain twice."
@@ -1229,14 +1224,14 @@ msgstr ""
 "On regarde votre site en direct, on vous dit si on est le bon interlocuteur, "
 "et on part de votre estimation : rien à réexpliquer."
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:186
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:185
 msgid "No agency pitch: we talk about your project."
 msgstr "Pas de présentation d’agence : on parle de votre projet."
 
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:190
 #: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:191
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:192
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:197
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:199
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:196
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:198
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:79
 #: includes/Plugins/ACF/IncludeFields/Layouts/ModuleCatalog.php:80
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:129
@@ -1244,17 +1239,17 @@ msgstr "Pas de présentation d’agence : on parle de votre projet."
 msgid "Catalogue"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:205
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:207
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:204
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:206
 msgid "Platform selected on load"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:216
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:218
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:215
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:217
 msgid "Package selected on load"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:223
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:222
 msgid "Defaults to the first package of the platform."
 msgstr ""
 
@@ -2174,8 +2169,7 @@ msgstr "Retour"
 msgid "See all"
 msgstr "Voir tout"
 
-#: views/components/modal-quote-sent.html.twig views/components/modal.html.twig
-#: views/components/toast.html.twig:41
+#: views/components/modal.html.twig:47 views/components/toast.html.twig:41
 msgid "Close"
 msgstr "Fermer"
 

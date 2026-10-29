@@ -1,30 +1,61 @@
-<cinq-modal
-	class="{{ html_classes( 'block', classes | default( [] ) | join( ' ' ) ) }}"
-	id="{{ id }}"
->
-	<dialog
-		role="dialog"
-		class="scrollbar-hidden backdrop:bg-overlay-scrim m-auto w-full max-w-[calc(100vw-(--spacing(5)))] bg-transparent pt-[1.09375rem] lg:w-114.75 lg:px-[1.09375rem]"
-		aria-labelledby=""
-	>
-		<cinq-modal-button
-			class="absolute top-0 right-0 left-0 z-2 mx-auto block w-fit lg:left-auto lg:mx-0"
-		>
-			{{-
-				include(
-					'components/icon-button.html.twig',
-					{
-						label: __( 'Close', 'agencecinq' ),
-						icon: 'close',
-						attributes: { 'aria-controls': id },
-					},
-					with_context: false
-				)
-			-}}
-		</cinq-modal-button>
+{#
+ # Components: Modal
+ #
+ # Figma Overlay/Dialog through <cinq-modal> (@agencecinq/modal 6): a native modal <dialog>, its title and the
+ # Close button in its header, then its content. A sheet anchored at the bottom on mobile, centered from sm,
+ # 560 px wide. A button opens it with commandfor="{id}" command="show-modal", a script with show(); Escape,
+ # the Close button and a click on the scrim close it, the focus going back to the opener. Embed it and fill
+ # the content block.
+ #
+ # @param string id Id of the <dialog>.
+ # @param string title
+ # @param string heading Optional. Tag of the title, 'h2' by default.
+ # @param bool focus_title Optional. Focus the title on open rather than the Close button, for a dialog that
+ # only informs.
+ #}
 
-		<div class="bg-default relative z-1 rounded-lg p-7.5">
-			{% block content %}{% endblock %}
+{%- set heading = heading | default( 'h2' ) -%}
+
+<cinq-modal>
+	<dialog
+		id="{{ id }}"
+		closedby="any"
+		aria-labelledby="{{ id }}-title"
+		class="bg-elevated border-default shadow-overlay text-primary backdrop:bg-overlay-scrim mx-0 mt-auto mb-0 max-h-[calc(100dvh-(--spacing(10)))] w-full max-w-none overflow-y-auto rounded-t-lg border px-5 pt-6 pb-8 sm:m-auto sm:w-140 sm:rounded-lg sm:px-8"
+	>
+		<div class="flex flex-col gap-5">
+			<div class="flex items-center gap-4">
+				<{{ heading }}
+					id="{{ id }}-title"
+					class="text-title-md flex-1 outline-none"
+					{{
+						html_attr(
+							focus_title ?? false
+								? {
+									tabindex: '-1',
+									autofocus: true,
+								}
+						)
+					}}
+				>
+					{{- title -}}
+				</{{ heading }}>
+				{{-
+					include(
+						'components/icon-button.html.twig',
+						{
+							label: __( 'Close', 'agencecinq' ),
+							icon: 'close',
+							attributes: {
+								commandfor: id,
+								command: 'request-close',
+							},
+						},
+						with_context: false
+					)
+				-}}
+			</div>
+			{%- block content -%}{%- endblock -%}
 		</div>
 	</dialog>
 </cinq-modal>

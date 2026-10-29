@@ -157,7 +157,6 @@ class Configurator {
 					'layout'       => 'block',
 					'instructions' => __( 'The dialog shown once the estimate is sent. In the message, {total} is the total and {email} the address typed.', 'agencecinq' ),
 					'sub_fields'   => array(
-						self::text( $prefix . '_modal', 'eyebrow', __( 'Eyebrow', 'agencecinq' ), __( 'Estimate sent', 'agencecinq' ) ),
 						self::text( $prefix . '_modal', 'title', __( 'Title', 'agencecinq' ), __( 'It is in your inbox.', 'agencecinq' ) ),
 						array(
 							'key'           => $prefix . '_modal_message',

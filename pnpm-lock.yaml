@@ -38,6 +38,9 @@ importers:
       '@agencecinq/windowsplitter':
         specifier: ^3.0.0
         version: 3.0.0(@agencecinq/utils@8.0.0)
+      invokers-polyfill:
+        specifier: ^1.0.4
+        version: 1.0.4
       piecesjs:
         specifier: ^0.5.7
         version: 0.5.7
@@ -705,6 +708,9 @@ packages:
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
+
+  invokers-polyfill@1.0.4:
+    resolution: {integrity: sha512-mgs5JuNbd9aQ++wL3Gk2poHfZejTN9N/UlH9IGOsfkEFnPiN3A72bYf4mL/62YF0htWtaJ0WqfGdS0V6xdwywg==}
 
   is-extglob@2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
@@ -1751,6 +1757,8 @@ snapshots:
       wrappy: 1.0.2
 
   inherits@2.0.4: {}
+
+  invokers-polyfill@1.0.4: {}
 
   is-extglob@2.1.1: {}
 

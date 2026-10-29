@@ -1,117 +1,67 @@
 {#
  # Modal: quote sent
- # Confirms the estimate left by e-mail, then offers the next step: booking 30 minutes.
- # Opened by cinq-configurator once /wp-json/cinq/v1/quote answers. Native <dialog> through
- # cinq-modal: focus kept inside, closed by Escape, the × button and a click on the scrim.
- # Centered: 560 px wide, the width of the screen minus the gutters on mobile.
  #
- # @param string id Modal id.
- # @param object modal Texts: eyebrow, title, message ({total}, {email}), help,
- #                     next_eyebrow, next_title, next_text, button_label, note.
+ # The Modal that confirms the estimate left by e-mail, then offers the next step: booking 30 minutes.
+ # Opened by cinq-configurator once /wp-json/cinq/v1/quote answers, its title focused since it only informs;
+ # the message is written once it is open, so its status region announces it.
+ #
+ # @param string id Id of the dialog.
+ # @param object modal Texts: title, message ({total}, {email}), help, next_eyebrow, next_title, next_text,
+ # button_label, note.
  #}
 
-{%- set modal = modal | default( {} ) -%}
-
-<cinq-modal id="{{ id }}" class="block">
-	<dialog
-		aria-labelledby="{{ id }}-title"
-		class="text-primary backdrop:bg-overlay-scrim m-auto max-h-[calc(100dvh-(--spacing(10)))] w-[calc(100vw-(--spacing(5)))] max-w-140 bg-transparent p-0"
-	>
-		<div
-			class="bg-elevated border-default max-h-[inherit] overflow-y-auto rounded-md border p-6 lg:p-14"
-		>
-			<div class="flex items-center gap-4">
-				{{-
-					include(
-						'components/eyebrow.html.twig',
-						{
-							title: modal.eyebrow,
-							tone: 'accent',
-							classes: [ 'flex-1' ],
-						},
-						with_context: false
-					)
-				-}}
-
-				<cinq-modal-button class="block shrink-0">
-					{{-
-						include(
-							'components/icon-button.html.twig',
-							{
-								label: __( 'Close', 'agencecinq' ),
-								icon: 'close',
-								attributes: { 'aria-controls': id },
-							},
-							with_context: false
-						)
-					-}}
-				</cinq-modal-button>
-			</div>
-
-			<h2
-				id="{{ id }}-title"
-				class="text-title-lg mt-5 outline-none lg:mt-7"
-				tabindex="-1"
-				data-dom="title"
-			>
-				{{- modal.title -}}
-			</h2>
-
+{%- embed 'components/modal.html.twig'
+	with {
+		id: id,
+		title: modal.title | default( '' ),
+		focus_title: true,
+		modal: modal | default( {} ),
+	} only
+-%}
+	{%- block content -%}
+		<div class="flex flex-col gap-2">
 			<p
-				class="text-muted mt-3 text-base"
+				class="text-body text-base"
 				role="status"
 				data-dom="message"
 				data-template="{{ modal.message | e( 'html_attr' ) }}"
 			></p>
-
 			{%- if modal.help -%}
-				<p class="text-muted mt-2 text-sm">{{- modal.help -}}</p>
+				<p class="text-muted text-sm">{{- modal.help -}}</p>
 			{%- endif -%}
+		</div>
 
-			<div
-				class="relative mt-7 h-3 w-full before:absolute before:top-1/2 before:right-0 before:left-1.5 before:h-px before:bg-(--border-color-default) after:absolute after:top-1/2 after:left-0 after:size-2.75 after:-translate-y-1/2 after:rounded-full after:bg-(--text-color-subtle) after:ring-4 after:ring-(--background-color-elevated) lg:mt-9"
-				aria-hidden="true"
-			></div>
-
+		<div class="border-default flex flex-col items-start gap-3 border-t pt-5">
 			{{-
 				include(
 					'components/eyebrow.html.twig',
-					{
-						title: modal.next_eyebrow,
-						classes: [ 'mt-5 lg:mt-7' ],
-					},
+					{ title: modal.next_eyebrow },
 					with_context: false
 				)
 			-}}
-
 			{%- if modal.next_title -%}
-				<h3 class="text-title-md mt-3">{{- modal.next_title -}}</h3>
+				<h3 class="text-title-md">{{- modal.next_title -}}</h3>
 			{%- endif -%}
-
 			{%- if modal.next_text -%}
-				<p class="text-muted mt-2 text-base">{{- modal.next_text -}}</p>
+				<p class="text-body text-base">{{- modal.next_text -}}</p>
 			{%- endif -%}
-
 			{%- if modal.button_label -%}
-				<div class="mt-5 lg:mt-6">
-					{{-
-						include(
-							'components/button.html.twig',
-							{
-								title: modal.button_label,
-								url: '#',
-								classes: [ 'w-full justify-center lg:w-auto' ],
-								attributes: { 'data-dom': 'booking' },
-							},
-							with_context: false
-						)
-					-}}
-				</div>
+				{{-
+					include(
+						'components/button.html.twig',
+						{
+							title: modal.button_label,
+							url: '#',
+							classes: [ 'w-full justify-center sm:w-auto' ],
+							attributes: { 'data-dom': 'booking' },
+						},
+						with_context: false
+					)
+				-}}
 			{%- endif -%}
-
 			{%- if modal.note -%}
-				<p class="text-muted mt-4 text-sm">{{- modal.note -}}</p>
+				<p class="text-muted text-sm">{{- modal.note -}}</p>
 			{%- endif -%}
 		</div>
-	</dialog>
-</cinq-modal>
+	{%- endblock -%}
+{%- endembed -%}

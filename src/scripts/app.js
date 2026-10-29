@@ -2,7 +2,14 @@ import { load } from "piecesjs";
 
 import "@agencecinq/drawer";
 
-load("cinq-modal", () => import("@agencecinq/modal"));
+load("cinq-modal", async () => {
+	// Invoker commands open and close the modal: Safari 26.2, Chrome 139 for request-close.
+	if (!("command" in HTMLButtonElement.prototype)) {
+		await import("invokers-polyfill");
+	}
+
+	await import("@agencecinq/modal");
+});
 load("cinq-accordion", () => import("@agencecinq/accordion"));
 load("cinq-disclosure-button", () => import("@agencecinq/disclosure-button"));
 load("cinq-disclosure-navigation", () => import("@agencecinq/disclosure-navigation"));

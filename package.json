@@ -42,6 +42,7 @@
 		"@agencecinq/toast": "^1.0.0",
 		"@agencecinq/utils": "^8.0.0",
 		"@agencecinq/windowsplitter": "^3.0.0",
+		"invokers-polyfill": "^1.0.4",
 		"piecesjs": "^0.5.7",
 		"tailwindcss": "^4.3.3"
 	}

@@ -1,5 +1,4 @@
 import { Piece } from 'piecesjs';
-import { EVENTS } from '@agencecinq/utils';
 
 import theme from '../theme';
 
@@ -24,9 +23,9 @@ interface QuoteError {
 	message?: string;
 }
 
-/** cinq-modal from @agencecinq/modal. */
+/** cinq-modal from @agencecinq/modal 6. */
 interface ModalElement extends HTMLElement {
-	show(): boolean;
+	show(): Promise<boolean>;
 }
 
 /**
@@ -131,8 +130,8 @@ class Configurator extends Piece {
 		}
 	};
 
-	#onModalClose = ( event: Event ): void => {
-		if ( ( event as CustomEvent<{ modal: string }> ).detail?.modal === this.#modal?.id ) {
+	#onModalToggle = ( event: Event ): void => {
+		if ( ( event as ToggleEvent ).newState === 'closed' ) {
 			this.#submit?.focus();
 		}
 	};
@@ -193,22 +192,19 @@ class Configurator extends Piece {
 
 		const message = this.#modal.querySelector<HTMLElement>( '[data-dom="message"]' );
 		const booking = this.#modal.querySelector<HTMLAnchorElement>( '[data-dom="booking"]' );
-		const title = this.#modal.querySelector<HTMLElement>( '[data-dom="title"]' );
 
 		if ( booking ) {
 			booking.href = data.booking || this.#booking || '#';
 		}
 
-		this.#modal.show();
+		await this.#modal.show();
 
-		// Written once open, so the status region announces it; focus starts on the title.
+		// Written once open, so the status region announces it; the title has the focus (autofocus).
 		if ( message ) {
 			message.textContent = ( message.dataset.template ?? '' )
 				.replace( '{total}', data.total )
 				.replace( '{email}', data.email );
 		}
-
-		title?.focus();
 	}
 
 	/**
@@ -365,7 +361,7 @@ class Configurator extends Piece {
 		this.#form?.addEventListener( 'change', this.#onChange );
 		this.#form?.addEventListener( 'submit', this.#onSubmit );
 		this.#email?.addEventListener( 'input', this.#onEmailInput );
-		document.documentElement.addEventListener( EVENTS.MODAL_CLOSE, this.#onModalClose );
+		this.#modal?.querySelector( 'dialog' )?.addEventListener( 'toggle', this.#onModalToggle );
 
 		// The browser may restore checked inputs on back navigation.
 		this.#update();
@@ -375,7 +371,7 @@ class Configurator extends Piece {
 		this.#form?.removeEventListener( 'change', this.#onChange );
 		this.#form?.removeEventListener( 'submit', this.#onSubmit );
 		this.#email?.removeEventListener( 'input', this.#onEmailInput );
-		document.documentElement.removeEventListener( EVENTS.MODAL_CLOSE, this.#onModalClose );
+		this.#modal?.querySelector( 'dialog' )?.removeEventListener( 'toggle', this.#onModalToggle );
 
 		this.#form = null;
 		this.#platforms = [];
