@@ -61,11 +61,11 @@ msgctxt "price long label"
 msgid "From %s"
 msgstr "À partir de %s"
 
-#: views/pages/404.html.twig:65
+#: views/pages/404.html.twig:53
 msgid "Back to home"
 msgstr "Retour à l'accueil"
 
-#: views/header.html.twig:125 views/header.html.twig:140
+#: views/header.html.twig:151
 msgid "Menu"
 msgstr ""
 
@@ -581,7 +581,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:69
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:74
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:76
-#: views/footer.html.twig:83
+#: views/footer.html.twig:90
 msgid "Contact"
 msgstr ""
 
@@ -1018,23 +1018,23 @@ msgstr "Aller au contenu"
 msgid "%d min read"
 msgstr "%d min de lecture"
 
-#: views/footer.html.twig:51
+#: views/footer.html.twig:58
 msgid "Footer navigation"
 msgstr "Navigation du pied de page"
 
-#: views/header.html.twig:33
+#: views/header.html.twig:52
 msgid "Main navigation"
 msgstr "Navigation principale"
 
-#: views/pages/404.html.twig:22
+#: views/pages/404.html.twig:21
 msgid "Snake. Arrow keys to move."
 msgstr "Snake. Déplacez-vous avec les flèches du clavier."
 
-#: views/pages/404.html.twig:28
+#: views/pages/404.html.twig:27
 msgid "Score"
 msgstr ""
 
-#: views/pages/404.html.twig:37
+#: views/pages/404.html.twig:36
 msgid "Replay"
 msgstr "Rejouer"
 
@@ -1101,15 +1101,15 @@ msgstr "Avant :"
 msgid "Compare before and after"
 msgstr "Comparer avant et après"
 
-#: views/footer.html.twig:30 views/header.html.twig
+#: views/footer.html.twig:37 views/header.html.twig:35
 msgid "CINQ, home"
 msgstr "CINQ, accueil"
 
-#: views/header.html.twig
+#: views/header.html.twig:131
 msgid "Open the menu"
 msgstr "Ouvrir le menu"
 
-#: views/footer.html.twig:136
+#: views/footer.html.twig:143
 msgid "Legal information"
 msgstr "Informations légales"
 
@@ -2352,7 +2352,7 @@ msgstr ""
 "Bouton principal, vers le plan du site : son adresse est la nouvelle ligne "
 "du diff."
 
-#: views/pages/404.html.twig:82
+#: views/pages/404.html.twig:62
 msgid "error 404"
 msgstr "erreur 404"
 
@@ -2402,3 +2402,42 @@ msgid ""
 msgstr ""
 "Vous pouvez changer d’avis à tout moment depuis le lien « Cookies » du pied "
 "de page."
+
+#: maintenance.php:27
+#, php-format
+msgid "Site under construction – %s"
+msgstr "Site en travaux – %s"
+
+#: views/pages/maintenance.html.twig:28
+#, php-format
+msgid "A new version of %s is going live."
+msgstr "Une nouvelle version d’%s est en cours de mise en ligne."
+
+#: views/pages/maintenance.html.twig:31
+#, php-format
+msgid ""
+"Meanwhile, we can still be reached at %1$s, at %2$s, or on a 30-minute call."
+msgstr ""
+"Pendant ce temps, on reste joignables au %1$s, à %2$s, ou sur un rendez-vous "
+"de 30 minutes."
+
+#: views/pages/maintenance.html.twig:46
+msgid "The site is under construction."
+msgstr "Le site est en travaux."
+
+#: views/pages/maintenance.html.twig:52
+#, php-format
+msgid "Write to %s"
+msgstr "Écrire à %s"
+
+#: views/pages/maintenance.html.twig:60
+msgid "going live"
+msgstr "mise en ligne en cours"
+
+#: views/pages/maintenance.html.twig:61
+msgid "former version of the site"
+msgstr "ancienne version du site"
+
+#: views/pages/maintenance.html.twig:62
+msgid "new version, live soon"
+msgstr "nouvelle version, bientôt en ligne"

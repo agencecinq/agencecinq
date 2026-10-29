@@ -59,11 +59,11 @@ msgctxt "price long label"
 msgid "From %s"
 msgstr ""
 
-#: views/pages/404.html.twig:65
+#: views/pages/404.html.twig:53
 msgid "Back to home"
 msgstr ""
 
-#: views/header.html.twig:125 views/header.html.twig:140
+#: views/header.html.twig:151
 msgid "Menu"
 msgstr ""
 
@@ -579,7 +579,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:69
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:74
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:76
-#: views/footer.html.twig:83
+#: views/footer.html.twig:90
 msgid "Contact"
 msgstr ""
 
@@ -1016,23 +1016,23 @@ msgstr ""
 msgid "%d min read"
 msgstr ""
 
-#: views/footer.html.twig:51
+#: views/footer.html.twig:58
 msgid "Footer navigation"
 msgstr ""
 
-#: views/header.html.twig:33
+#: views/header.html.twig:52
 msgid "Main navigation"
 msgstr ""
 
-#: views/pages/404.html.twig:22
+#: views/pages/404.html.twig:21
 msgid "Snake. Arrow keys to move."
 msgstr ""
 
-#: views/pages/404.html.twig:28
+#: views/pages/404.html.twig:27
 msgid "Score"
 msgstr ""
 
-#: views/pages/404.html.twig:37
+#: views/pages/404.html.twig:36
 msgid "Replay"
 msgstr ""
 
@@ -1099,15 +1099,15 @@ msgstr ""
 msgid "Compare before and after"
 msgstr ""
 
-#: views/footer.html.twig:30 views/header.html.twig
+#: views/footer.html.twig:37 views/header.html.twig:35
 msgid "CINQ, home"
 msgstr ""
 
-#: views/header.html.twig
+#: views/header.html.twig:131
 msgid "Open the menu"
 msgstr ""
 
-#: views/footer.html.twig:136
+#: views/footer.html.twig:143
 msgid "Legal information"
 msgstr ""
 
@@ -2237,7 +2237,7 @@ msgstr ""
 msgid "Primary CTA, to the sitemap: its address is the new line of the diff."
 msgstr ""
 
-#: views/pages/404.html.twig:82
+#: views/pages/404.html.twig:62
 msgid "error 404"
 msgstr ""
 
@@ -2282,4 +2282,41 @@ msgstr ""
 #: views/components/consent.html.twig:93
 msgid ""
 "You can change your mind at any time from the Cookies link of the footer."
+msgstr ""
+
+#: maintenance.php:27
+#, php-format
+msgid "Site under construction – %s"
+msgstr ""
+
+#: views/pages/maintenance.html.twig:28
+#, php-format
+msgid "A new version of %s is going live."
+msgstr ""
+
+#: views/pages/maintenance.html.twig:31
+#, php-format
+msgid ""
+"Meanwhile, we can still be reached at %1$s, at %2$s, or on a 30-minute call."
+msgstr ""
+
+#: views/pages/maintenance.html.twig:46
+msgid "The site is under construction."
+msgstr ""
+
+#: views/pages/maintenance.html.twig:52
+#, php-format
+msgid "Write to %s"
+msgstr ""
+
+#: views/pages/maintenance.html.twig:60
+msgid "going live"
+msgstr ""
+
+#: views/pages/maintenance.html.twig:61
+msgid "former version of the site"
+msgstr ""
+
+#: views/pages/maintenance.html.twig:62
+msgid "new version, live soon"
 msgstr ""

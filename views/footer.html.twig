@@ -4,18 +4,25 @@
  # Figma Section/Footer: the logo and its line, then one column per item of the footer menu that has
  # children, and a Contact column from the theme options, on the layout grid. Below, the copyright and
  # the legal menu, whose sitemap link is the second navigation system (RGAA 12.1), and whose item linked to
- # #cookies is a button that opens the cookie choices. Links underline on hover and focus.
+ # #cookies is a button that opens the cookie choices. Links underline on hover and focus. Without navigation,
+ # as on the maintenance page, the menus go and the Contact column stays.
+ #
+ # @param bool navigation Optional. True by default.
  #
  # @package AgenceCinq
  #}
 
+{%- set navigation = navigation ?? true -%}
 {%- set contact = theme.contact | default( {} ) -%}
 {%- set locations = contact.locations | default( [] ) | filter( location => location.title ) -%}
-{%- set columns = nav_menus.footer is defined
+{%- set columns = navigation and nav_menus.footer is defined
 	? nav_menus.footer.get_items() | filter( item => item.children | length )
 	: []
 -%}
-{%- set legals = nav_menus.legals is defined ? nav_menus.legals.get_items() | default( [] ) : [] -%}
+{%- set legals = navigation and nav_menus.legals is defined
+	? nav_menus.legals.get_items() | default( [] )
+	: []
+-%}
 {%- set link =
 	'text-primary focus-visible:outline-focus-ring hover:underline focus-visible:underline focus-visible:outline-2 focus-visible:outline-offset-2'
 -%}

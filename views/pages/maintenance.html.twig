@@ -1,0 +1,76 @@
+{#
+ # Maintenance
+ #
+ # Figma T21 · Maintenance, rendered by maintenance.php while the cinq-wp-maintenance plugin answers visitors
+ # with a 503: the Status message says that the new site is going live and how to reach us, between the
+ # header and the footer without navigation, since every other page answers the same 503. No toast nor cookie
+ # banner: the page has no form and measures nothing.
+ #
+ # @package AgenceCinq
+ #}
+
+{% extends 'index.html.twig' %}
+
+{%- block header -%}
+	{{-
+		include(
+			'header.html.twig',
+			{
+				classes: [ 'sticky top-0 z-10' ],
+				navigation: false,
+			}
+		)
+	-}}
+{%- endblock -%}
+
+{%- block content -%}
+	{%- set contact = theme.contact | default( {} ) -%}
+	{%- set text = __( 'A new version of %s is going live.', 'agencecinq' ) | format( host ) -%}
+	{%- if contact.phone and contact.email -%}
+		{%- set reach =
+			__(
+				'Meanwhile, we can still be reached at %1$s, at %2$s, or on a 30-minute call.',
+				'agencecinq'
+			)
+		-%}
+		{%- set text = text ~ ' ' ~ ( reach | format( contact.phone, contact.email ) ) -%}
+	{%- endif -%}
+
+	<main id="content" role="main">
+		<section aria-labelledby="maintenance-title">
+			{{-
+				include(
+					'components/status-message.html.twig',
+					{
+						id: 'maintenance-title',
+						title: __( 'The site is under construction.', 'agencecinq' ),
+						text: text,
+						links: [
+							contact.link.url | default( false ) ? contact.link | merge( { variant: 'primary' } ),
+							contact.email
+								? {
+									title: __( 'Write to %s', 'agencecinq' ) | format( contact.email ),
+									url: 'mailto:' ~ contact.email,
+									variant: 'text',
+									arrow: false,
+								},
+						] | filter( link => link ),
+						diff: {
+							address: host,
+							note: __( 'going live', 'agencecinq' ),
+							removed: [ __( 'former version of the site', 'agencecinq' ) ],
+							added: [ __( 'new version, live soon', 'agencecinq' ) ],
+						},
+					},
+					with_context: false
+				)
+			-}}
+		</section>
+	</main>
+{%- endblock -%}
+
+{%- block footer -%}
+	{{- include( 'footer.html.twig', { navigation: false } ) -}}
+{%- endblock -%}
+
+{%- block overlays -%}{%- endblock -%}

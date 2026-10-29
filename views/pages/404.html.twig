@@ -1,10 +1,9 @@
 {#
  # 404
  #
- # Figma T20 · Not found, Section/Status message over the snake: the title in H1, the text, the link to the
- # sitemap and the one back to the home page on seven columns, then on the last four the diff of the address
- # that no longer exists, decorative since the text says it. The snake plays behind, with a keyboard, its
- # canvas hidden on touch screens.
+ # Figma T20 · Not found, the Status message over the snake: the link to the sitemap, the one back to the
+ # home page, and the diff of the address that no longer exists. The snake plays behind, with a keyboard,
+ # its canvas hidden on touch screens.
  #
  # @package WordPress
  # @subpackage AgenceCinq
@@ -37,57 +36,38 @@
 						{{- __( 'Replay', 'agencecinq' ) -}}
 					</button>
 				</div>
-				<div
-					class="layout-grid pointer-events-none relative z-2 container items-start gap-y-10 py-20 lg:py-34"
-				>
-					<div class="col-span-full flex flex-col items-start gap-5 lg:col-span-7">
-						<h1 id="error-title" class="text-title-xxl text-primary">{{- post.title -}}</h1>
-						{%- if post.text -%}
-							<p class="text-body text-lg">{{- post.text -}}</p>
-						{%- endif -%}
-						<div class="flex flex-wrap items-center gap-4">
-							{%- if post.link.url -%}
-								{{-
-									include(
-										'components/button.html.twig',
-										post.link | merge( {
-											variant: 'primary',
-											classes: [ 'pointer-events-auto' ],
-										} ),
-										with_context: false
-									)
-								-}}
-							{%- endif -%}
-							{{-
-								include(
-									'components/button.html.twig',
-									{
-										title: __( 'Back to home', 'agencecinq' ),
-										url: home_url,
-										variant: 'text',
-										arrow: false,
+				{{-
+					include(
+						'components/status-message.html.twig',
+						{
+							id: 'error-title',
+							title: post.title,
+							text: post.text,
+							links: [
+								post.link.url
+									? post.link | merge( {
+										variant: 'primary',
 										classes: [ 'pointer-events-auto' ],
-									},
-									with_context: false
-								)
-							-}}
-						</div>
-					</div>
-					<div class="col-span-full lg:col-span-4 lg:col-start-9" aria-hidden="true">
-						{{-
-							include(
-								'components/diff-block.html.twig',
+									} ),
 								{
-									address: post.host,
-									note: __( 'error 404', 'agencecinq' ),
-									removed: [ post.removed ],
-									added: post.added ? [ post.added ] : [],
+									title: __( 'Back to home', 'agencecinq' ),
+									url: home_url,
+									variant: 'text',
+									arrow: false,
+									classes: [ 'pointer-events-auto' ],
 								},
-								with_context: false
-							)
-						-}}
-					</div>
-				</div>
+							] | filter( link => link ),
+							diff: {
+								address: post.host,
+								note: __( 'error 404', 'agencecinq' ),
+								removed: [ post.removed ],
+								added: post.added ? [ post.added ] : [],
+							},
+							classes: [ 'pointer-events-none relative z-2' ],
+						},
+						with_context: false
+					)
+				-}}
 			</cinq-snake>
 		</section>
 	</main>

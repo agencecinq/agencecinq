@@ -4,13 +4,20 @@
  # Figma Section/Header: the logo, the main navigation, a secondary and a primary action. A Nav link with
  # children is a button that opens its Submenu: <cinq-disclosure-navigation> keeps one open at a time,
  # opens it on hover too, and closes it with Escape or when the focus leaves it. Below xl, where the whole
- # navigation does not fit, the menu button opens the drawer.
+ # navigation does not fit, the menu button opens the drawer. Without navigation, as on the maintenance page,
+ # only the logo and the primary action stay.
+ #
+ # @param bool navigation Optional. True by default.
  #
  # @package AgenceCinq
  #}
 
-{%- set items = nav_menus.main is defined ? nav_menus.main.get_items() | default( [] ) : [] -%}
-{%- set secondary = nav_menus.secondary is defined
+{%- set navigation = navigation ?? true -%}
+{%- set items = navigation and nav_menus.main is defined
+	? nav_menus.main.get_items() | default( [] )
+	: []
+-%}
+{%- set secondary = navigation and nav_menus.secondary is defined
 	? nav_menus.secondary.get_items() | default( [] )
 	: []
 -%}
@@ -115,46 +122,50 @@
 				-}}
 			{%- endif -%}
 
-			<cinq-drawer-button class="block xl:hidden">
-				{{-
-					include(
-						'components/icon-button.html.twig',
-						{
-							label: __( 'Open the menu', 'agencecinq' ),
-							icon: 'menu',
-							attributes: {
-								'aria-controls': 'menu-drawer',
-								'aria-expanded': 'false',
+			{%- if navigation -%}
+				<cinq-drawer-button class="block xl:hidden">
+					{{-
+						include(
+							'components/icon-button.html.twig',
+							{
+								label: __( 'Open the menu', 'agencecinq' ),
+								icon: 'menu',
+								attributes: {
+									'aria-controls': 'menu-drawer',
+									'aria-expanded': 'false',
+								},
 							},
-						},
-						with_context: false
-					)
-				-}}
-			</cinq-drawer-button>
+							with_context: false
+						)
+					-}}
+				</cinq-drawer-button>
+			{%- endif -%}
 		</div>
 	</div>
 </header>
 
-{% embed 'components/drawer.html.twig'
-	with {
-		id: 'menu-drawer',
-		aria_label: __( 'Menu', 'agencecinq' ),
-		items: items,
-		secondary: secondary,
-		theme: theme,
-	} only
-%}
-	{% block content %}
-		{{-
-			include(
-				'components/mobile-menu.html.twig',
-				{
-					items: items,
-					secondary: secondary,
-					contact: theme.contact | default( {} ),
-				},
-				with_context: false
-			)
-		-}}
-	{% endblock %}
-{% endembed %}
+{%- if navigation -%}
+	{% embed 'components/drawer.html.twig'
+		with {
+			id: 'menu-drawer',
+			aria_label: __( 'Menu', 'agencecinq' ),
+			items: items,
+			secondary: secondary,
+			theme: theme,
+		} only
+	%}
+		{% block content %}
+			{{-
+				include(
+					'components/mobile-menu.html.twig',
+					{
+						items: items,
+						secondary: secondary,
+						contact: theme.contact | default( {} ),
+					},
+					with_context: false
+				)
+			-}}
+		{% endblock %}
+	{% endembed %}
+{%- endif -%}

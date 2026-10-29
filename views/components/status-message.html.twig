@@ -1,0 +1,40 @@
+{#
+ # Components: Status message
+ #
+ # Figma Section/Status message, for the 404 and the maintenance page: the title in H1, the text and the
+ # buttons on seven columns, then on the last four the diff of what changes, decorative since the text says
+ # it.
+ #
+ # @param string id Id of the title.
+ # @param string title
+ # @param string text Optional.
+ # @param array links Optional. Button parameters.
+ # @param object diff Diff block parameters: address, note, removed, added.
+ # @param array classes Optional extra classes.
+ #}
+
+<div
+	class="{{
+		html_classes(
+			'layout-grid container items-start gap-y-10 py-20 lg:py-34',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<div class="col-span-full flex flex-col items-start gap-5 lg:col-span-7">
+		<h1 id="{{ id }}" class="text-title-xxl text-primary">{{- title -}}</h1>
+		{%- if text -%}
+			<p class="text-body text-lg">{{- text -}}</p>
+		{%- endif -%}
+		{%- if links | default( [] ) | length -%}
+			<div class="flex flex-wrap items-center gap-x-4 gap-y-3">
+				{%- for link in links -%}
+					{{- include( 'components/button.html.twig', link, with_context: false ) -}}
+				{%- endfor -%}
+			</div>
+		{%- endif -%}
+	</div>
+	<div class="col-span-full lg:col-span-4 lg:col-start-9" aria-hidden="true">
+		{{- include( 'components/diff-block.html.twig', diff, with_context: false ) -}}
+	</div>
+</div>
