@@ -27,4 +27,5 @@ load("cinq-toast", async () => {
 	await import("./components/FormToast.ts");
 });
 load("cinq-configurator", () => import("./components/Configurator.ts"));
+load("cinq-consent", () => import("./components/Consent.ts"));
 load("cinq-scheme", () => import("./components/Scheme.ts"));

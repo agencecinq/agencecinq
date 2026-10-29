@@ -94,6 +94,14 @@
 			</div>
 		</div>
 
+		{{-
+			include(
+				'components/consent.html.twig',
+				{ privacy_policy_url: privacy_policy_url },
+				with_context: false
+			)
+		-}}
+
 		{{- include( 'components/grid.html.twig' ) -}}
 		{{- include( 'components/scheme.html.twig' ) -}}
 	</body>

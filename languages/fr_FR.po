@@ -1650,6 +1650,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:69
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:74
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:76
+#: views/footer.html.twig:83
 msgid "Contact"
 msgstr ""
 
@@ -2142,6 +2143,7 @@ msgid "Step %02d"
 msgstr "Étape %02d"
 
 #: views/blocks/configurator.html.twig:349
+#: views/components/consent.html.twig:41
 msgid "Privacy policy"
 msgstr "Politique de confidentialité"
 
@@ -2210,13 +2212,9 @@ msgstr "%d min de lecture"
 msgid "Read the article"
 msgstr "Lire l’article"
 
-#: views/footer.html.twig:72
+#: views/footer.html.twig:51
 msgid "Footer navigation"
 msgstr "Navigation du pied de page"
-
-#: views/footer.html.twig:132
-msgid "Made with care"
-msgstr "Fait avec soin"
 
 #: views/header.html.twig:33
 msgid "Main navigation"
@@ -2303,7 +2301,7 @@ msgstr "Avant :"
 msgid "Compare before and after"
 msgstr "Comparer avant et après"
 
-#: views/header.html.twig
+#: views/footer.html.twig:30 views/header.html.twig
 msgid "CINQ, home"
 msgstr "CINQ, accueil"
 
@@ -2311,7 +2309,7 @@ msgstr "CINQ, accueil"
 msgid "Open the menu"
 msgstr "Ouvrir le menu"
 
-#: views/footer.html.twig
+#: views/footer.html.twig:136
 msgid "Legal information"
 msgstr "Informations légales"
 
@@ -3556,3 +3554,50 @@ msgstr ""
 #: views/pages/404.html.twig:82
 msgid "error 404"
 msgstr "erreur 404"
+
+#: views/components/consent.html.twig:26
+msgid "Cookies"
+msgstr "Cookies"
+
+#: views/components/consent.html.twig:50
+msgid "Customise"
+msgstr "Personnaliser"
+
+#: views/components/consent.html.twig:62 views/components/consent.html.twig:124
+msgid "Reject all"
+msgstr "Tout refuser"
+
+#: views/components/consent.html.twig:63
+msgid "Accept all"
+msgstr "Tout accepter"
+
+#: views/components/consent.html.twig:87
+msgid "Your cookie choices"
+msgstr "Vos choix de cookies"
+
+#: views/components/consent.html.twig:104
+msgid "Necessary to run the site"
+msgstr "Nécessaires au fonctionnement"
+
+#: views/components/consent.html.twig:114
+msgid "Audience measurement"
+msgstr "Mesure d’audience"
+
+#: views/components/consent.html.twig:128
+msgid "Save my choices"
+msgstr "Enregistrer mes choix"
+
+#: views/components/consent.html.twig:30
+msgid ""
+"We measure the audience of the site to know which pages are useful. Nothing "
+"is set without your consent."
+msgstr ""
+"On mesure l’audience du site pour savoir quelles pages servent. Rien n’est "
+"déposé sans votre accord."
+
+#: views/components/consent.html.twig:93
+msgid ""
+"You can change your mind at any time from the Cookies link of the footer."
+msgstr ""
+"Vous pouvez changer d’avis à tout moment depuis le lien « Cookies » du pied "
+"de page."

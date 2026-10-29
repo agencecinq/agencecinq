@@ -3,8 +3,8 @@
  #
  # Figma Section/Footer: the logo and its line, then one column per item of the footer menu that has
  # children, and a Contact column from the theme options, on the layout grid. Below, the copyright and
- # the legal menu, whose sitemap link is the second navigation system (RGAA 12.1). Links underline on
- # hover and focus.
+ # the legal menu, whose sitemap link is the second navigation system (RGAA 12.1), and whose item linked to
+ # #cookies is a button that opens the cookie choices. Links underline on hover and focus.
  #
  # @package AgenceCinq
  #}
@@ -140,12 +140,23 @@
 							{%- if not loop.first -%}
 								<span aria-hidden="true">·</span>
 							{%- endif -%}
-							<a
-								class="focus-visible:outline-focus-ring hover:underline focus-visible:underline focus-visible:outline-2 focus-visible:outline-offset-2"
-								href="{{ item.url }}"
-							>
-								{{- item.title -}}
-							</a>
+							{%- if item.url ends with '#cookies' -%}
+								<button
+									type="button"
+									class="focus-visible:outline-focus-ring cursor-pointer hover:underline focus-visible:underline focus-visible:outline-2 focus-visible:outline-offset-2"
+									commandfor="cookie-preferences"
+									command="show-modal"
+								>
+									{{- item.title -}}
+								</button>
+							{%- else -%}
+								<a
+									class="focus-visible:outline-focus-ring hover:underline focus-visible:underline focus-visible:outline-2 focus-visible:outline-offset-2"
+									href="{{ item.url }}"
+								>
+									{{- item.title -}}
+								</a>
+							{%- endif -%}
 						</li>
 					{%- endfor -%}
 				</ul>

@@ -1633,6 +1633,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:69
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:74
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:76
+#: views/footer.html.twig:83
 msgid "Contact"
 msgstr ""
 
@@ -2125,6 +2126,7 @@ msgid "Step %02d"
 msgstr ""
 
 #: views/blocks/configurator.html.twig:349
+#: views/components/consent.html.twig:41
 msgid "Privacy policy"
 msgstr ""
 
@@ -2193,12 +2195,8 @@ msgstr ""
 msgid "Read the article"
 msgstr ""
 
-#: views/footer.html.twig:72
+#: views/footer.html.twig:51
 msgid "Footer navigation"
-msgstr ""
-
-#: views/footer.html.twig:132
-msgid "Made with care"
 msgstr ""
 
 #: views/header.html.twig:33
@@ -2286,7 +2284,7 @@ msgstr ""
 msgid "Compare before and after"
 msgstr ""
 
-#: views/header.html.twig
+#: views/footer.html.twig:30 views/header.html.twig
 msgid "CINQ, home"
 msgstr ""
 
@@ -2294,7 +2292,7 @@ msgstr ""
 msgid "Open the menu"
 msgstr ""
 
-#: views/footer.html.twig
+#: views/footer.html.twig:136
 msgid "Legal information"
 msgstr ""
 
@@ -3425,4 +3423,47 @@ msgstr ""
 
 #: views/pages/404.html.twig:82
 msgid "error 404"
+msgstr ""
+
+#: views/components/consent.html.twig:26
+msgid "Cookies"
+msgstr ""
+
+#: views/components/consent.html.twig:50
+msgid "Customise"
+msgstr ""
+
+#: views/components/consent.html.twig:62 views/components/consent.html.twig:124
+msgid "Reject all"
+msgstr ""
+
+#: views/components/consent.html.twig:63
+msgid "Accept all"
+msgstr ""
+
+#: views/components/consent.html.twig:87
+msgid "Your cookie choices"
+msgstr ""
+
+#: views/components/consent.html.twig:104
+msgid "Necessary to run the site"
+msgstr ""
+
+#: views/components/consent.html.twig:114
+msgid "Audience measurement"
+msgstr ""
+
+#: views/components/consent.html.twig:128
+msgid "Save my choices"
+msgstr ""
+
+#: views/components/consent.html.twig:30
+msgid ""
+"We measure the audience of the site to know which pages are useful. Nothing "
+"is set without your consent."
+msgstr ""
+
+#: views/components/consent.html.twig:93
+msgid ""
+"You can change your mind at any time from the Cookies link of the footer."
 msgstr ""
