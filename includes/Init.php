@@ -34,7 +34,6 @@ class Init {
 			Setup\Enqueue::class,
 			Setup\Context::class,
 			Setup\Twig::class,
-			Setup\QueryVars::class,
 			// WordPress integration.
 			WPImageEditor::class,
 			WPSettings::class,
@@ -49,7 +48,6 @@ class Init {
 			Vite::class,
 			// ACF.
 			Plugins\ACF\Init::class,
-			Plugins\ACF\SavePost::class,
 			Plugins\ACF\FormatValue::class,
 			Plugins\ACF\Input\AdminEnqueueScripts::class,
 			Plugins\ACF\IncludeFields\BlocksFields::class,

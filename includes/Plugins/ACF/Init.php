@@ -9,7 +9,6 @@
 
 namespace AgenceCinq\Plugins\ACF;
 
-use AgenceCinq\Plugins\ACF\FieldTypes\MenuItemSelect;
 use AgenceCinq\Service;
 
 /**
@@ -35,7 +34,6 @@ class Init implements Service {
 	 */
 	public function run(): void {
 		add_action( 'acf/init', array( $this, 'add_options_pages' ) );
-		add_action( 'acf/init', array( $this, 'register_menu_item_select_field' ) );
 		add_action( 'acf/include_fields', array( $this, 'switch_to_site_locale' ), 1 );
 		add_action( 'acf/include_fields', array( $this, 'restore_locale' ), PHP_INT_MAX );
 	}
@@ -79,16 +77,5 @@ class Init implements Service {
 				'redirect'    => false,
 			)
 		);
-	}
-
-	/**
-	 * Registers the custom ACF field type "Menu Item Select".
-	 *
-	 * @return void
-	 */
-	public function register_menu_item_select_field(): void {
-		if ( function_exists( 'acf_register_field_type' ) ) {
-			acf_register_field_type( MenuItemSelect::class );
-		}
 	}
 }

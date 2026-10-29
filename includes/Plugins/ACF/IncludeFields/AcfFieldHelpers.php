@@ -2,7 +2,7 @@
 /**
  * ACF Field Helpers
  *
- * Static helpers that return reusable ACF field arrays (media, settings, radius)
+ * Static helpers that return reusable ACF field arrays (settings)
  * and build layouts for flexible content. Use these inside field groups, not as field groups.
  *
  * @package AgenceCinq
@@ -17,43 +17,6 @@ namespace AgenceCinq\Plugins\ACF\IncludeFields;
  * Helper methods that return ACF field definitions for use in acf_add_local_field_group().
  */
 class AcfFieldHelpers {
-
-	/**
-	 * Returns the media fields (tab + clone) for a given key.
-	 *
-	 * Use with array_merge in your fields array:
-	 * ```php
-	 * 'sub_fields' => array_merge(
-	 *     AcfFieldHelpers::media( 'block_key' ),
-	 *     array( ... )
-	 * );
-	 * ```
-	 *
-	 * @param string $key The key prefix for the field (e.g. 'hero', 'page', 'link_grid').
-	 *
-	 * @return array<int, array<string, mixed>> Tab and clone field definitions.
-	 */
-	public static function media( string $key = '' ): array {
-		$tab = array(
-			'key'        => 'field_' . $key . '_tab_media',
-			'label'      => __( 'Media', 'agencecinq' ),
-			'aria-label' => __( 'Media', 'agencecinq' ),
-			'type'       => 'tab',
-		);
-
-		$field = array(
-			'key'        => 'field_' . $key . '_media',
-			'label'      => __( 'Media', 'agencecinq' ),
-			'name'       => 'media',
-			'aria-label' => __( 'Media', 'agencecinq' ),
-			'type'       => 'clone',
-			'clone'      => array( 'field_clones_media' ),
-			'display'    => 'seamless',
-			'layout'     => 'block',
-		);
-
-		return array( $tab, $field );
-	}
 
 	/**
 	 * Returns the settings fields for a block (tab + layout clone).
@@ -89,33 +52,6 @@ class AcfFieldHelpers {
 		);
 
 		return array( $tab, $field );
-	}
-
-	/**
-	 * Returns the radius (border radius) field for a block.
-	 *
-	 * @param string $key The full field key prefix (e.g. 'blocks_presentation' or 'archive_posts_grid').
-	 * @return array<string, mixed>
-	 */
-	public static function radius( string $key = '' ): array {
-		return array(
-			'key'           => 'field_' . $key . '_radius',
-			'label'         => __( 'Border Radius', 'agencecinq' ),
-			'name'          => 'radius',
-			'aria-label'    => __( 'Border Radius', 'agencecinq' ),
-			'type'          => 'select',
-			'choices'       => array(
-				'top'    => __( 'Top', 'agencecinq' ),
-				'bottom' => __( 'Bottom', 'agencecinq' ),
-				'y'      => __( 'Top and Bottom', 'agencecinq' ),
-				'none'   => __( 'None', 'agencecinq' ),
-			),
-			'default_value' => 'none',
-			'return_format' => 'value',
-			'wrapper'       => array(
-				'width' => 6 * 100 / 12,
-			),
-		);
 	}
 
 	/**

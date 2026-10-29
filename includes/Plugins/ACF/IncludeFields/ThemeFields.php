@@ -125,16 +125,6 @@ class ThemeFields implements Service {
 								'default_value' => '06 73 77 86 08',
 								'placeholder'   => __( 'Enter the phone number', 'agencecinq' ),
 							),
-							array(
-								'key'           => 'field_' . $key . '_theme_contact_phone_note',
-								'label'         => __( 'Phone note', 'agencecinq' ),
-								'name'          => 'phone_note',
-								'aria-label'    => __( 'Phone note', 'agencecinq' ),
-								'type'          => 'text',
-								'default_value' => __( 'Joachim, founder', 'agencecinq' ),
-								'placeholder'   => __( 'e.g. Joachim, founder', 'agencecinq' ),
-								'instructions'  => __( 'Shown after the number. Optional.', 'agencecinq' ),
-							),
 						),
 					),
 					array(

@@ -12,7 +12,7 @@ namespace AgenceCinq\Setup;
 use Twig\Extra\Html\{ HtmlExtension };
 use Twig\Extra\Intl\{ IntlExtension };
 use Twig\{ TwigFilter, TwigFunction };
-use AgenceCinq\{ Service, Vite };
+use AgenceCinq\Service;
 use AgenceCinq\Catalogue\{ Catalogue };
 use AgenceCinq\GitHub\{ Activity };
 
@@ -94,39 +94,7 @@ class Twig implements Service {
 			)
 		);
 
-		// Add get_extended function.
-		if ( function_exists( 'get_extended' ) ) {
-			$twig->addFunction(
-				new TwigFunction(
-					'get_extended',
-					function ( $content ) {
-						return get_extended( $content );
-					}
-				)
-			);
-		}
-
-		if ( function_exists( 'wp_get_document_title' ) ) {
-			$twig->addFunction(
-				new TwigFunction(
-					'wp_get_document_title',
-					function () {
-						return wp_get_document_title();
-					}
-				)
-			);
-		}
-
 		$twig->addFunction( new TwigFunction( 'uniqid', 'uniqid' ) );
-
-		$twig->addFunction(
-			new TwigFunction(
-				'asset',
-				function ( $asset ) {
-					return Vite::asset( $asset );
-				}
-			)
-		);
 
 		// Phone number of a tel: link: digits and the leading +.
 		$twig->addFilter(
@@ -150,7 +118,6 @@ class Twig implements Service {
 
 		// Colors from includes/schemes.php, for the styleguide and the scheme easter egg.
 		$twig->addFunction( new TwigFunction( 'cinq_palette', 'cinq_palette' ) );
-		$twig->addFunction( new TwigFunction( 'cinq_scheme_roles', 'cinq_scheme_roles' ) );
 		$twig->addFunction( new TwigFunction( 'cinq_schemes', 'cinq_schemes' ) );
 
 		// Repositories of the organization, last pushed first, and the weeks of commits of their default branch.
@@ -168,26 +135,6 @@ class Twig implements Service {
 				'breadcrumbs',
 				function (): array {
 					return function_exists( 'YoastSEO' ) ? YoastSEO()->meta->for_current_page()->breadcrumbs : array();
-				}
-			)
-		);
-
-		// @see https://developer.wordpress.org/reference/functions/get_search_form/
-		$twig->addFunction(
-			new TwigFunction(
-				'get_search_form',
-				function ( $args = array( 'echo' => false ) ) {
-					return get_search_form( $args );
-				}
-			)
-		);
-
-		// @see https://developer.wordpress.org/reference/functions/get_search_query/
-		$twig->addFunction(
-			new TwigFunction(
-				'get_search_query',
-				function () {
-					return get_search_query();
 				}
 			)
 		);

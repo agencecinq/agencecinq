@@ -193,77 +193,35 @@ msgstr "Lien de réservation : %s"
 msgid "Back to home"
 msgstr "Retour à l'accueil"
 
-#: includes/Plugins/ACF/FieldTypes/MenuItemSelect.php:36
-msgid "Menu Item Select"
-msgstr ""
-
-#: includes/Plugins/ACF/FieldTypes/MenuItemSelect.php:38
-msgid "Select a single entry from a WordPress navigation menu."
-msgstr ""
-
-#: includes/Plugins/ACF/FieldTypes/MenuItemSelect.php:108
-msgid "Select a menu"
-msgstr ""
-
-#: includes/Plugins/ACF/FieldTypes/MenuItemSelect.php:117
 #: views/header.html.twig:125 views/header.html.twig:140
 msgid "Menu"
 msgstr ""
 
-#: includes/Plugins/ACF/FieldTypes/MenuItemSelect.php:118
-msgid "Choose the menu from which to list items."
-msgstr ""
-
-#: includes/Plugins/ACF/FieldTypes/MenuItemSelect.php:135
-msgid "Menu Item Object"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:39
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:40
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:46
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:48
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:171
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:172
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:92
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:94
 msgid "Media"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:75
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:76
+#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:38
+#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:39
 msgid "Settings"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:82
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:84
+#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:45
+#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:47
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:40
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:42
 msgid "Layout"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:103
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:105
-msgid "Border Radius"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:108
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:58
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:60
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:70
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:72
 msgid "Top"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:109
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:73
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:75
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:85
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:87
 msgid "Bottom"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:110
-msgid "Top and Bottom"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/AcfFieldHelpers.php:111
-msgid "None"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:53
@@ -318,8 +276,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:111
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:101
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:103
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:194
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:196
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:184
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:186
 msgid "Title"
 msgstr ""
 
@@ -492,10 +450,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:70
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:118
 #: includes/Plugins/ACF/IncludeFields/Layouts/Subscriptions.php:120
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:157
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:159
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:204
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:206
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:147
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:149
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:194
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:196
 msgid "Text"
 msgstr ""
 
@@ -503,19 +461,7 @@ msgstr ""
 msgid "Enter the lead of the case study"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:137
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:139
 msgid "Image"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:101
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:103
-msgid "Video"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:124
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:126
-msgid "Poster"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:242
@@ -534,81 +480,35 @@ msgstr ""
 msgid "Layout settings for the block."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:49
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:51
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:61
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:63
 msgid "Paddings"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:53
-msgid ""
-"Don't forget to add extra padding on blocks that precede or follow by a "
-"rounded block."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:53
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:65
 msgid ""
 "Padding settings for the block on desktop. On mobile paddings are multiplied "
 "by 0.75."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:62
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:74
 msgid "Top padding in pixels"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:66
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:81
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:78
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:93
 msgid "px"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:77
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:89
 msgid "Bottom padding in pixels"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:96
-msgid "The video will take precedence over the image if both are filled."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:113
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:115
 msgid "File"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:117
-msgid "Supported formats: mp4, mpeg, avi, ogv, webm, and 3gp."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:128
-msgid "Poster image for the video."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:141
-msgid ""
-"If only one image is provided, it will be used for both desktop and mobile "
-"whatever the screen size. If both desktop and mobile images are provided, "
-"the desktop image will be used for screens larger than 1024px and the mobile "
-"image for screens smaller than 1024px."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:149
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:151
-msgid "Mobile"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:153
-msgid "Mobile image for the block."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:160
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:162
-msgid "Desktop"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:164
-msgid "Desktop image for the block."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:175
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:177
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:104
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:106
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:73
 #: includes/Plugins/ACF/IncludeFields/Layouts/Checklist.php:75
 #: includes/Plugins/ACF/IncludeFields/Layouts/CodeGuide.php:66
@@ -635,77 +535,33 @@ msgstr ""
 msgid "Heading"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:179
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:108
 msgid ""
 "Choose the heading level for the title of the block. It is important to use "
 "heading levels in a hierarchical way for accessibility and SEO reasons."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:181
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:110
 msgid "H1"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:182
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:111
 msgid "H2"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:183
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:112
 msgid "H3"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:190
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:192
-msgid "Title Style"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:193
-msgid "Visual style only; does not change the heading level."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:196
-msgid "title-3xl"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:197
-msgid "title-xxl"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:198
-msgid "title-xl"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:199
-msgid "title-lg"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:200
-msgid "title-md"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:207
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:209
-msgid "Text Alignment"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:211
-msgid "Choose the text alignment for the block."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:213
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:126
 msgid "Left"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:214
-msgid "Center"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:215
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:132
 msgid "Right"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:227
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:124
 msgid "Clones Fields"
 msgstr ""
 
@@ -773,8 +629,8 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/PageFields.php:93
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:82
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:84
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:216
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:218
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:206
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:208
 msgid "Link"
 msgstr ""
 
@@ -1373,10 +1229,10 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:113
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:114
 #: includes/Plugins/ACF/IncludeFields/Layouts/InfoCards.php:119
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:142
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:144
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:149
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:151
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:132
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:134
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:139
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:141
 msgid "Footer"
 msgstr ""
 
@@ -1642,7 +1498,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:54
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:59
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:61
-#: includes/Plugins/ACF/Init.php:75
+#: includes/Plugins/ACF/Init.php:73
 msgid "Theme"
 msgstr ""
 
@@ -1659,8 +1515,8 @@ msgid "Enter the contact or CTA link URL."
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:87
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:163
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:172
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:153
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:162
 msgid "Optional"
 msgstr ""
 
@@ -1701,53 +1557,36 @@ msgstr "Téléphone"
 msgid "Enter the phone number"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:130
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:132
-msgid "Phone note"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:134
-msgid "Joachim, founder"
-msgstr "Joachim, fondateur"
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:135
-msgid "e.g. Joachim, founder"
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:136
-msgid "Shown after the number. Optional."
-msgstr ""
-
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:161
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:151
 msgid "A website is an asset. Not a liability you replace every three years."
 msgstr "Un site est un actif. Pas un passif qu’on change tous les trois ans."
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:162
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:152
 msgid "Enter the text under the logo"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:163
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:153
 msgid "Short line under the logo."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:178
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:180
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:168
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:170
 msgid "404"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:199
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:189
 msgid "Enter the title of the 404 page"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:200
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:190
 msgid "Main heading of the 404 page. Always rendered as an H1."
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:211
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:201
 msgid "Enter the lead text of the 404 page"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:212
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:202
 msgid "Lead paragraph under the title."
 msgstr ""
 
@@ -1763,17 +1602,13 @@ msgstr "Sombre"
 msgid "Light"
 msgstr "Clair"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:238
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:228
 msgid "Theme Fields"
 msgstr ""
 
 #: includes/Plugins/ContactForm7/Estimation.php:98
 msgid "Configurator estimate"
 msgstr "Estimation du configurateur"
-
-#: includes/Plugins/ContactForm7/FormTag.php:101
-msgid "Choose a domain"
-msgstr "Choisissez un domaine"
 
 #: includes/Post/CaseStudy.php:128
 msgctxt "Post type general name"
@@ -2031,12 +1866,12 @@ msgstr ""
 msgid "Styleguide Page"
 msgstr ""
 
-#: includes/Vite.php:103
+#: includes/Vite.php:101
 msgid "No Vite Manifest exists. Should hot server be running?"
 msgstr ""
 
 #. translators: %s: asset path
-#: includes/Vite.php:148
+#: includes/Vite.php:146
 #, php-format
 msgid "Unknown Vite build asset: %s"
 msgstr ""
@@ -2313,12 +2148,12 @@ msgstr "Ouvrir le menu"
 msgid "Legal information"
 msgstr "Informations légales"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:167
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:169
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:157
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:159
 msgid "Copyright"
 msgstr "Copyright"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:172
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:162
 msgid "Company after the © and the year. The site name otherwise."
 msgstr "Société après le © et l’année. Le nom du site sinon."
 
@@ -2810,6 +2645,7 @@ msgid "e.g. maquettes.fig"
 msgstr "ex. maquettes.fig"
 
 #: includes/Plugins/ACF/IncludeFields/ClonesFields.php:49
+#: includes/Plugins/ACF/IncludeFields/ClonesFields.php:51
 msgid "Color scheme"
 msgstr "Schéma de couleur"
 
@@ -3517,12 +3353,12 @@ msgid "Sitemap Menu"
 msgstr "Menu du plan du site"
 
 #: includes/Models/Error404.php:43
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:198
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:188
 msgid "This page does not exist, or no longer does."
 msgstr "Cette page n’existe pas, ou plus."
 
 #: includes/Models/Error404.php:44
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:210
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:200
 msgid ""
 "If you come from an old link, the page has most likely changed address. The "
 "sitemap lists them all."
@@ -3531,11 +3367,11 @@ msgstr ""
 "plan du site les liste toutes."
 
 #: includes/Models/Error404.php:46
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:222
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:212
 msgid "See the sitemap"
 msgstr "Voir le plan du site"
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:190
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:180
 msgid ""
 "The 404 over the snake: the title, the text and the link to the sitemap, "
 "then a link back to the home page, next to the diff of the address that no "
@@ -3545,7 +3381,7 @@ msgstr ""
 "site, puis un lien de retour à l’accueil, à côté du diff de l’adresse qui "
 "n’existe plus."
 
-#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:226
+#: includes/Plugins/ACF/IncludeFields/ThemeFields.php:216
 msgid "Primary CTA, to the sitemap: its address is the new line of the diff."
 msgstr ""
 "Bouton principal, vers le plan du site : son adresse est la nouvelle ligne "

@@ -16,7 +16,6 @@ load("cinq-disclosure-navigation", () => import("@agencecinq/disclosure-navigati
 load("cinq-switch", () => import("@agencecinq/switch"));
 load("cinq-windowsplitter", () => import("@agencecinq/windowsplitter"));
 load("cinq-grid", () => import("./components/Grid.ts"));
-load("cinq-hover-video", () => import("./components/HoverVideo.ts"));
 load("cinq-snake", async () => {
 	await import("@agencecinq/snake");
 	await import("./components/Snake.ts");

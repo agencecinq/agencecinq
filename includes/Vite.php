@@ -51,7 +51,6 @@ class Vite implements Service {
 	 */
 	private static array $manifest = array();
 
-
 	/**
 	 * Bootstrap Vite (satisfies Service contract). Delegates to static boot().
 	 *
@@ -60,7 +59,6 @@ class Vite implements Service {
 	public function run(): void {
 		self::boot( null, true );
 	}
-
 
 	/**
 	 * Boot Vite (static entry point). Initializes state and optionally outputs the client script.
@@ -167,32 +165,5 @@ class Vite implements Service {
 	 */
 	private static function build_path(): string {
 		return implode( '/', array( get_stylesheet_directory(), static::$build_path ) );
-	}
-
-	/**
-	 * Return URI path to an image.
-	 *
-	 * @param string $img Image path.
-	 *
-	 * @return string|null
-	 * @throws Exception Exception.
-	 */
-	public static function img( string $img ): ?string {
-
-		try {
-
-			// set the asset path to the image.
-			$asset = 'src/img/' . ltrim( $img, '/' );
-
-			// if we're not running hot, return the asset.
-			return static::asset( $asset );
-
-		} catch ( Exception $e ) {
-
-			// handle the exception here or log it if needed.
-			// you can also return a default image or null in case of an error.
-			return $e->getMessage(); // Optionally, you can retrieve the error message.
-
-		}
 	}
 }
