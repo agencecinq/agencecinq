@@ -2175,6 +2175,7 @@ msgid "See all"
 msgstr "Voir tout"
 
 #: views/components/modal-quote-sent.html.twig views/components/modal.html.twig
+#: views/components/toast.html.twig:41
 msgid "Close"
 msgstr "Fermer"
 
