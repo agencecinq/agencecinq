@@ -20,7 +20,6 @@ load("cinq-snake", async () => {
 	await import("@agencecinq/snake");
 	await import("./components/Snake.ts");
 });
-load("cinq-copy", () => import("./components/Copy.ts"));
 load("cinq-toast", async () => {
 	await import("@agencecinq/toast");
 	await import("./components/FormToast.ts");

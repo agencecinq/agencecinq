@@ -16,19 +16,13 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Breadcrumb;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\BulletList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Checklist;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ContactDetails;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\DiffColumns;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FeatureCards;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ImageCards;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkColumns;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkRow;
@@ -38,14 +32,12 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ModuleCatalog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PostGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PriceBreakdown;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTable;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\RichText;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\SignupForm;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Steps;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
 use AgenceCinq\Service;
@@ -70,19 +62,13 @@ class BlocksFields implements Service {
 		Breadcrumb::class,
 		BulletList::class,
 		Checklist::class,
-		CodeGuide::class,
 		Comparison::class,
 		Configurator::class,
 		ContactDetails::class,
-		CredibilityBanner::class,
 		Cta::class,
 		DiffColumns::class,
-		EditorialCards::class,
 		FeatureCards::class,
-		Gallery::class,
 		ImageCards::class,
-		InfoCards::class,
-		LatestPosts::class,
 		LinkColumns::class,
 		LinkGrid::class,
 		LinkRow::class,
@@ -92,14 +78,12 @@ class BlocksFields implements Service {
 		NumberedList::class,
 		PageHeader::class,
 		PortraitGrid::class,
-		PositioningBanner::class,
 		PostGrid::class,
 		PriceBreakdown::class,
 		PricingTable::class,
 		Quote::class,
 		RichText::class,
 		SignupForm::class,
-		Stats::class,
 		Steps::class,
 		Subscriptions::class,
 	);
