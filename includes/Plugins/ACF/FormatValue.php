@@ -22,17 +22,6 @@ class FormatValue implements Service {
 	 */
 	public function run(): void {
 		add_filter( 'acf/format_value/name=blocks', array( $this, 'format_value_blocks' ), 10, 3 );
-		add_filter( 'acf/format_value/key=field_blocks_subscriptions_items_retainers_priceMode', array( $this, 'format_value_price_mode' ) );
-	}
-
-	/**
-	 * Formats the price mode typed in a block as the API serves it: { id }.
-	 *
-	 * @param mixed $value Price mode id.
-	 * @return array{id: string}|null
-	 */
-	public function format_value_price_mode( $value ): ?array {
-		return $value ? array( 'id' => (string) $value ) : null;
 	}
 
 	/**

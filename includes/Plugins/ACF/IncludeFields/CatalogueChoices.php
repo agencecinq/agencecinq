@@ -85,49 +85,6 @@ class CatalogueChoices {
 	}
 
 	/**
-	 * Module ids, labelled with their platform and price.
-	 *
-	 * @return array<string, string>
-	 */
-	public static function modules(): array {
-		$choices = array();
-
-		foreach ( self::catalogue()?->modules() ?? array() as $module ) {
-			$choices[ $module['id'] ] = sprintf( '%s · %s · %s', $module['category']['label'] ?? '', $module['name'] ?? '', Catalogue::price( $module, true ) );
-		}
-
-		return $choices;
-	}
-
-	/**
-	 * Packages (by code), retainers and modules (by id), grouped, for the featured card of a block.
-	 *
-	 * @return array<string, array<string, string>>
-	 */
-	public static function lines(): array {
-		return array_filter(
-			array(
-				__( 'Packages', 'agencecinq' )  => self::packages(),
-				__( 'Retainers', 'agencecinq' ) => self::retainers(),
-				__( 'Modules', 'agencecinq' )   => self::modules(),
-			)
-		);
-	}
-
-	/**
-	 * Price modes, for the prices typed in a block.
-	 *
-	 * @return array<string, string>
-	 */
-	public static function price_modes(): array {
-		return array(
-			Catalogue::FIRM  => __( 'Fixed price', 'agencecinq' ),
-			Catalogue::FROM  => __( 'Starting price', 'agencecinq' ),
-			Catalogue::QUOTE => __( 'On quote', 'agencecinq' ),
-		);
-	}
-
-	/**
 	 * The catalogue, in the admin only.
 	 *
 	 * @return Catalogue|null

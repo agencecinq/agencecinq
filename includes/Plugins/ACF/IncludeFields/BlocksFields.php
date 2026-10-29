@@ -17,7 +17,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Breadcrumb;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\BulletList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Checklist;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ContactDetails;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\DiffColumns;
@@ -28,7 +27,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkRow;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ListingHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LogoWall;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ModuleCatalog;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
@@ -39,7 +37,6 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\RichText;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\SignupForm;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Steps;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
 use AgenceCinq\Service;
 
 /**
@@ -63,7 +60,6 @@ class BlocksFields implements Service {
 		BulletList::class,
 		Checklist::class,
 		Comparison::class,
-		Configurator::class,
 		ContactDetails::class,
 		Cta::class,
 		DiffColumns::class,
@@ -74,7 +70,6 @@ class BlocksFields implements Service {
 		LinkRow::class,
 		ListingHeader::class,
 		LogoWall::class,
-		ModuleCatalog::class,
 		NumberedList::class,
 		PageHeader::class,
 		PortraitGrid::class,
@@ -85,7 +80,6 @@ class BlocksFields implements Service {
 		RichText::class,
 		SignupForm::class,
 		Steps::class,
-		Subscriptions::class,
 	);
 
 	/**

@@ -30,7 +30,6 @@ class Enqueue implements Service {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_filter( 'script_module_data_' . get_theme_text_domain() . '-main', array( $this, 'script_module_data' ) );
 
 		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
 		add_filter( 'wp_preload_resources', array( $this, 'preload_resources' ) );
@@ -182,23 +181,6 @@ class Enqueue implements Service {
 		);
 
 		wp_enqueue_script_module( get_theme_text_domain() . '-main' );
-	}
-
-
-	/**
-	 * Data of the main module, read by src/scripts/theme.ts.
-	 *
-	 * A script module takes no inline script: WordPress prints this data as JSON
-	 * in the footer, in script#wp-script-module-data-agencecinq-main.
-	 *
-	 * @param array $data Data of the module.
-	 * @return array
-	 */
-	public function script_module_data( array $data ): array {
-		$data['api_url']    = home_url( 'wp-json' );
-		$data['rest_nonce'] = wp_create_nonce( 'wp_rest' );
-
-		return $data;
 	}
 
 
