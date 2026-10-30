@@ -1,0 +1,40 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T02 · Silo hub",
+	"description": "Parent page of a platform silo, leading to its child pages. Example: /shopify/ · /wordpress/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=52-3967",
+	"sections": [
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Link grid",
+			"block": "link_grid"
+		},
+		{
+			"label": "Numbered list",
+			"block": "numbered_list"
+		},
+		{
+			"label": "Image cards",
+			"block": "image_cards"
+		},
+		{
+			"label": "Pricing table",
+			"block": "pricing_table"
+		},
+		{
+			"label": "Accordion",
+			"block": "accordion"
+		},
+		{
+			"label": "Link row",
+			"block": "link_row"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}

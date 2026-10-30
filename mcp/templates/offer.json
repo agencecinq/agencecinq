@@ -1,0 +1,44 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T07 · Offer",
+	"description": "One offer: its price, how it runs and what is handed over. Example: /shopify/continu/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=52-6574",
+	"sections": [
+		{
+			"label": "Breadcrumb",
+			"block": "breadcrumb"
+		},
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Price breakdown",
+			"block": "price_breakdown"
+		},
+		{
+			"label": "Steps",
+			"block": "steps"
+		},
+		{
+			"label": "Feature cards",
+			"block": "feature_cards"
+		},
+		{
+			"label": "Bullet list",
+			"block": "bullet_list"
+		},
+		{
+			"label": "Accordion",
+			"block": "accordion"
+		},
+		{
+			"label": "Link row",
+			"block": "link_row"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}

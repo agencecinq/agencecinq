@@ -1,0 +1,39 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T11 · Case study",
+	"description": "One case study. Its opening comes from the case study ACF group hero; the rest is blocks. Example: /cas/eigrene/.",
+	"postType": "case-study",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=53-5822",
+	"sections": [
+		{
+			"label": "Breadcrumb",
+			"status": "theme",
+			"note": "Rendered by the theme on every case study."
+		},
+		{
+			"label": "Page header",
+			"status": "theme",
+			"note": "Case study ACF group hero: client, platform, year, title, text, links, before and image, and the card. Set it through the fields argument."
+		},
+		{
+			"label": "Comparison",
+			"block": "comparison"
+		},
+		{
+			"label": "Diff columns",
+			"block": "diff_columns"
+		},
+		{
+			"label": "Quote",
+			"block": "quote"
+		},
+		{
+			"label": "Image cards",
+			"block": "image_cards"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}

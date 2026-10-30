@@ -1,0 +1,16 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T19 · Sitemap",
+	"description": "The sitemap, built from the Sitemap Menu. Example: /plan-du-site/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=53-8403",
+	"sections": [
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Link columns",
+			"block": "link_columns"
+		}
+	]
+}

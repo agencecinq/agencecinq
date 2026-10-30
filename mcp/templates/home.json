@@ -1,0 +1,53 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T01 · Home",
+	"description": "The front page. Example: /.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=52-2852",
+	"sections": [
+		{
+			"label": "Hero",
+			"status": "theme",
+			"note": "Front page ACF group hero: eyebrow, title, text, links and the diff of a site. Set it through the fields argument."
+		},
+		{
+			"label": "Activity log",
+			"block": "activity_log"
+		},
+		{
+			"label": "Logo wall",
+			"block": "logo_wall"
+		},
+		{
+			"label": "Comparison",
+			"block": "comparison"
+		},
+		{
+			"label": "Action cards",
+			"block": "action_cards"
+		},
+		{
+			"label": "Image cards",
+			"block": "image_cards"
+		},
+		{
+			"label": "Numbered list",
+			"block": "numbered_list"
+		},
+		{
+			"label": "Feature cards",
+			"block": "feature_cards"
+		},
+		{
+			"label": "Quote",
+			"block": "quote"
+		},
+		{
+			"label": "Portrait grid",
+			"block": "portrait_grid"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T15 · Approach",
+	"description": "How the agency works, and who works there. Example: /approche/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=53-7159",
+	"sections": [
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Steps",
+			"block": "steps"
+		},
+		{
+			"label": "Portrait grid",
+			"block": "portrait_grid"
+		},
+		{
+			"label": "Numbered list",
+			"block": "numbered_list"
+		},
+		{
+			"label": "Rich text",
+			"block": "rich_text"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}

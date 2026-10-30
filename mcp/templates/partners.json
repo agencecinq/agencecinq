@@ -1,0 +1,28 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T16 · Partners",
+	"description": "The agency for other agencies and freelancers. Example: /partenaires/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=53-7662",
+	"sections": [
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Rich text",
+			"block": "rich_text"
+		},
+		{
+			"label": "Numbered list",
+			"block": "numbered_list"
+		},
+		{
+			"label": "Bullet list",
+			"block": "bullet_list"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}

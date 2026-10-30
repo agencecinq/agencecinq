@@ -1,0 +1,20 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T17 · Contact",
+	"description": "How to reach the agency. No form and no closing CTA. Example: /contact/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=53-7967",
+	"sections": [
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Contact details",
+			"block": "contact_details"
+		},
+		{
+			"label": "Accordion",
+			"block": "accordion"
+		}
+	]
+}

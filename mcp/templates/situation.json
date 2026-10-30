@@ -1,0 +1,40 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T06 · Situation",
+	"description": "The situation a visitor starts from, and the offer that answers it. Example: /situations/site-vitrine-a-l-ancienne/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=52-5935",
+	"sections": [
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Checklist",
+			"block": "checklist"
+		},
+		{
+			"label": "Diff columns",
+			"block": "diff_columns"
+		},
+		{
+			"label": "Comparison",
+			"block": "comparison"
+		},
+		{
+			"label": "Price breakdown",
+			"block": "price_breakdown"
+		},
+		{
+			"label": "Image cards",
+			"block": "image_cards"
+		},
+		{
+			"label": "Accordion",
+			"block": "accordion"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}

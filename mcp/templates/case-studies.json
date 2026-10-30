@@ -1,0 +1,32 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T10 · Case studies",
+	"description": "The list of case studies. Example: /cas/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=52-8317",
+	"sections": [
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Image cards",
+			"block": "image_cards"
+		},
+		{
+			"label": "Comparison",
+			"block": "comparison"
+		},
+		{
+			"label": "Quote",
+			"block": "quote"
+		},
+		{
+			"label": "Logo wall",
+			"block": "logo_wall"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}

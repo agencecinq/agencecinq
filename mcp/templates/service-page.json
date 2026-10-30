@@ -1,0 +1,48 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T03 · Service page",
+	"description": "A service inside a silo. Example: /shopify/migration/prestashop/ and its child pages.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=52-4516",
+	"sections": [
+		{
+			"label": "Breadcrumb",
+			"block": "breadcrumb"
+		},
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Diff columns",
+			"block": "diff_columns"
+		},
+		{
+			"label": "Comparison",
+			"block": "comparison"
+		},
+		{
+			"label": "Pricing table",
+			"block": "pricing_table"
+		},
+		{
+			"label": "Bullet list",
+			"block": "bullet_list"
+		},
+		{
+			"label": "Image cards",
+			"block": "image_cards"
+		},
+		{
+			"label": "Accordion",
+			"block": "accordion"
+		},
+		{
+			"label": "Link row",
+			"block": "link_row"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}
