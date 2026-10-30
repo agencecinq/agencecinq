@@ -30,7 +30,6 @@ class Enqueue implements Service {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_filter( 'script_module_data_' . get_theme_text_domain() . '-main', array( $this, 'script_module_data' ) );
 
 		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
 		add_filter( 'wp_preload_resources', array( $this, 'preload_resources' ) );
@@ -133,22 +132,27 @@ class Enqueue implements Service {
 	public function enqueue_styles(): void {
 		$filename = Vite::asset( 'src/stylesheets/styles.css' );
 
+		// Color variables from includes/schemes.php, inline only (no file).
+		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Inline only.
+		wp_register_style( get_theme_text_domain() . '-colors', false, array(), null );
+		wp_add_inline_style( get_theme_text_domain() . '-colors', cinq_colors_css() );
+
 		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Vite hashes the filename.
-		wp_enqueue_style( get_theme_text_domain() . '-main', $filename, array(), null );
+		wp_enqueue_style( get_theme_text_domain() . '-main', $filename, array( get_theme_text_domain() . '-colors' ), null );
 	}
 
 
 	/**
 	 * Dequeue styles
 	 *
-	 * Remove styles that are not needed since we don't use the Gutenberg block styles.
+	 * Remove the Contact Form 7 styles: the theme styles its forms. Block styles are removed by the
+	 * cinq-wp-classic-editor mu-plugin.
 	 *
 	 * @access public
 	 * @return void
 	 */
 	public function dequeue_styles(): void {
 
-		wp_dequeue_style( 'wp-block-library' );
 		wp_dequeue_style( 'contact-form-7' );
 		wp_dequeue_style( 'contact-form-7-rtl' );
 	}
@@ -177,23 +181,6 @@ class Enqueue implements Service {
 		);
 
 		wp_enqueue_script_module( get_theme_text_domain() . '-main' );
-	}
-
-
-	/**
-	 * Data of the main module, read by src/scripts/theme.ts.
-	 *
-	 * A script module takes no inline script: WordPress prints this data as JSON
-	 * in the footer, in script#wp-script-module-data-agencecinq-main.
-	 *
-	 * @param array $data Data of the module.
-	 * @return array
-	 */
-	public function script_module_data( array $data ): array {
-		$data['api_url']    = home_url( 'wp-json' );
-		$data['rest_nonce'] = wp_create_nonce( 'wp_rest' );
-
-		return $data;
 	}
 
 

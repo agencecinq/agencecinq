@@ -1,0 +1,58 @@
+{#
+ # Blocks: Link columns
+ #
+ # Figma Section/Link columns, the sitemap, a second way to navigate (RGAA 12.1): the Sitemap Menu, its
+ # top-level items as rubrics in H2 and their children as underlined links, the rubrics side by side from lg.
+ #}
+
+{%- set rubrics = nav_menus.sitemap is defined
+	? nav_menus.sitemap.get_items() | filter( item => item.children | length )
+	: []
+-%}
+
+{%- if rubrics | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<nav
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		aria-label="{{ __( 'Sitemap', 'agencecinq' ) }}"
+	>
+		<div class="container grid gap-10 lg:auto-cols-fr lg:grid-flow-col lg:gap-x-8">
+			{%- for rubric in rubrics -%}
+				<div class="flex flex-col gap-3">
+					<h2 class="text-title-md text-primary">{{- rubric.title -}}</h2>
+					<ul class="flex flex-col gap-3">
+						{%- for item in rubric.children -%}
+							<li>
+								<a
+									href="{{ item.url }}"
+									class="text-body focus-visible:outline-focus-ring text-base underline focus-visible:outline-2 focus-visible:outline-offset-2"
+									{{
+										html_attr(
+											item.is_target_blank
+												? {
+													target: '_blank',
+													rel: 'noopener noreferrer',
+												}
+										)
+									}}
+								>
+									{{- item.title -}}
+								</a>
+							</li>
+						{%- endfor -%}
+					</ul>
+				</div>
+			{%- endfor -%}
+		</div>
+	</nav>
+{%- endif -%}

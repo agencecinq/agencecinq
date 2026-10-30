@@ -1,0 +1,34 @@
+{#
+ # Components: Link card
+ #
+ # A card that is one link to a page: the title holds it and stretches it over the card. Hover and
+ # focus lighten the card and turn the title to the accent, and focus rings it.
+ #
+ # @param string title
+ # @param string url
+ # @param string text Optional.
+ # @param string heading Optional. Tag of the title, 'h3' by default.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set heading = heading | default( 'h3' ) -%}
+
+<div
+	class="{{
+		html_classes(
+			'group border-default bg-surface relative flex flex-col gap-3 rounded-md border p-6 transition-colors',
+			'hover:bg-surface-hover has-focus-visible:bg-surface-hover',
+			'has-focus-visible:outline-focus-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<{{ heading }}
+		class="text-title-md text-primary group-hover:text-accent-default group-has-focus-visible:text-accent-default transition-colors"
+	>
+		<a href="{{ url }}" class="outline-none after:absolute after:inset-0">{{- title -}}</a>
+	</{{ heading }}>
+	{%- if text -%}
+		<p class="text-body text-sm">{{- text -}}</p>
+	{%- endif -%}
+</div>

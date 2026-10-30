@@ -1,0 +1,75 @@
+{#
+ # Blocks: Checklist
+ #
+ # Figma Section/Checklist: the Section heading, the points to check as Check cards, numbered in their order,
+ # on four columns each from lg, then the primary button and an optional secondary one.
+ #}
+
+{%- set points = block.points | default( [] ) | filter( point => point.title ) -%}
+{%- set links = block.links | default( [] ) | filter( link => link.title | default( false ) ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if points | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-8 lg:gap-14">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: block.content.heading | default( 'h2' ),
+						id: title_id,
+					},
+					with_context: false
+				)
+			-}}
+			<ul class="layout-grid gap-y-4">
+				{%- for point in points -%}
+					{{-
+						include(
+							'components/check-card.html.twig',
+							{
+								title: '%02d · %s' | format( loop.index, point.title ),
+								text: point.text,
+								classes: [ 'col-span-full lg:col-span-4' ],
+							},
+							with_context: false
+						)
+					-}}
+				{%- endfor -%}
+			</ul>
+			{%- if links | length -%}
+				<div class="flex flex-wrap gap-4">
+					{%- for link in links -%}
+						{{-
+							include(
+								'components/button.html.twig',
+								link | merge( {
+									variant: loop.first ? 'primary' : 'secondary',
+									arrow: loop.first,
+								} ),
+								with_context: false
+							)
+						-}}
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+		</div>
+	</section>
+{%- endif -%}

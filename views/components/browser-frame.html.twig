@@ -1,13 +1,15 @@
 {#
- # Browser Frame
- # Screenshot or video of the delivered site in a browser chrome (16:10).
- # Renders the chrome even when media is empty.
+ # Components: Browser frame
+ #
+ # Screenshot or video of a site under a decorative browser bar, at 16:10. Renders the frame even when
+ # media is empty. Embed it and override the screen block to put something else in the frame.
  #
  # A video poster goes through components/image.html.twig under the video
  # (srcset, WebP, lazy loading, fetch priority) instead of the poster attribute,
  # which takes a single URL. The video stays transparent until it plays.
  #
  # @param {object} [media] Media payload ({ type, image } or { type, video, poster }). Optional.
+ # @param {string} [badge] Badge at the end of the bar, e.g. « Avant · 2023 ».
  # @param {array} [classes] Extra classes on the figure.
  # @param {string} [loading] Loading attribute of the image or poster. Defaults to 'lazy'.
  # @param {string} [sizes] Sizes attribute of the image or poster.
@@ -26,51 +28,67 @@
 <figure
 	class="{{
 		html_classes(
-			'border-cream-soft bg-gray rounded-10 relative overflow-hidden border',
-			"before:bg-medium-gray before:block before:h-8 before:w-full before:content-['']",
-			"after:bg-stone after:pointer-events-none after:absolute after:top-4 after:left-3.5 after:z-1 after:size-2.25 after:-translate-y-1/2 after:rounded-full after:shadow-[1rem_0_0_var(--color-stone),2rem_0_0_var(--color-stone)] after:content-['']",
+			'border-default bg-surface overflow-hidden rounded-md border',
 			classes | default( [] ) | join( ' ' )
 		)
 	}}"
 >
-	<div class="bg-dark-gray relative aspect-16/10">
-		{%- if image -%}
-			{{-
-				include(
-					'components/image.html.twig',
-					{
-						image: image,
-						classes: [ 'size-full object-cover object-top' ],
-						loading: loading | default( 'lazy' ),
-						sizes: sizes | default( null ),
-						alt: video_url ? '' : alt ?? null,
-						attributes: ( video_url ? {} : attributes | default( {} ) ) | merge(
-							fetchpriority | default( false ) ? { fetchpriority: fetchpriority } : {}
-						),
-					},
-					with_context: false
-				)
-			-}}
-		{%- endif -%}
-
-		{%- if video_url -%}
-			<video
-				class="absolute inset-0 size-full object-cover object-top"
-				src="{{ video_url }}"
-				preload="{{ autoplay ? 'auto' : 'none' }}"
-				muted
-				loop
-				playsinline
-				{{
-					html_attr(
-						{
-							poster: poster_id ? null : media.poster.url | default( null ),
-							autoplay: autoplay ? true : false,
-						},
-						attributes | default( {} )
-					)
-				}}
-			></video>
-		{%- endif -%}
+	<div class="flex items-center gap-1.5 px-3 py-2.5">
+		{%- for i in 1..3 -%}
+			<span class="size-2 shrink-0 rounded-full bg-(--text-color-subtle)" aria-hidden="true"></span>
+		{%- endfor -%}
+		{{-
+			include(
+				'components/badge.html.twig',
+				{
+					title: badge | default( '' ),
+					classes: [ 'ms-auto' ],
+				},
+				with_context: false
+			)
+		-}}
 	</div>
+
+	{% block screen %}
+		<div class="bg-media relative aspect-16/10">
+			{%- if image -%}
+				{{-
+					include(
+						'components/image.html.twig',
+						{
+							image: image,
+							classes: [ 'size-full object-cover object-top' ],
+							loading: loading | default( 'lazy' ),
+							sizes: sizes | default( null ),
+							alt: video_url ? '' : alt ?? null,
+							attributes: ( video_url ? {} : attributes | default( {} ) ) | merge(
+								fetchpriority | default( false ) ? { fetchpriority: fetchpriority } : {}
+							),
+						},
+						with_context: false
+					)
+				-}}
+			{%- endif -%}
+
+			{%- if video_url -%}
+				<video
+					class="absolute inset-0 size-full object-cover object-top"
+					src="{{ video_url }}"
+					preload="{{ autoplay ? 'auto' : 'none' }}"
+					muted
+					loop
+					playsinline
+					{{
+						html_attr(
+							{
+								poster: poster_id ? null : media.poster.url | default( null ),
+								autoplay: autoplay ? true : false,
+							},
+							attributes | default( {} )
+						)
+					}}
+				></video>
+			{%- endif -%}
+		</div>
+	{% endblock %}
 </figure>

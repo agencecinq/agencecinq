@@ -2,19 +2,20 @@
 /**
  * Case study archive template file
  *
+ * Shows the blocks of the case studies page, set in Settings > Reading.
+ *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package AgenceCinq
  * @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  */
 
-use AgenceCinq\Taxonomy\CaseStudyCategory;
+use AgenceCinq\Post\CaseStudy;
 use Timber\{ Timber };
 
-$templates          = array( 'pages/archive-case-study.html.twig' );
-$data               = Timber::context();
-$data['title']      = post_type_archive_title( '', false );
-$data['categories'] = CaseStudyCategory::terms();
-$data['category']   = null;
+$page_id      = CaseStudy::page_id();
+$templates    = array( 'pages/blocks-page.html.twig' );
+$data         = Timber::context();
+$data['post'] = $page_id ? Timber::get_post( $page_id ) : null;
 
 Timber::render( $templates, $data );

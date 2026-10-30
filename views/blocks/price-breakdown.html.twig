@@ -1,0 +1,107 @@
+{#
+ # Blocks: Price breakdown
+ #
+ # Figma Section/Price breakdown, the price of an offer: the eyebrow, the title, the text and what is included
+ # on seven columns, then on the last five the price card, outlined with the accent, the only one of the
+ # screen: the badge, the price lines, the primary button and its detail. The checks are decorative.
+ #}
+
+{%- set included =
+	block.included | default( [] ) | map( item => item.text ) | filter( text => text )
+-%}
+{%- set lines = block.lines | default( [] ) | filter( line => line.label ) -%}
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if block.content.title -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		aria-labelledby="{{ title_id }}"
+	>
+		<div class="layout-grid container items-start gap-y-8">
+			<div class="col-span-full flex flex-col gap-4 lg:col-span-7">
+				{%- if block.content.eyebrow -%}
+					<p class="text-eyebrow text-muted">{{- block.content.eyebrow -}}</p>
+				{%- endif -%}
+				<{{ heading }} id="{{ title_id }}" class="text-title-xxl text-primary">
+					{{- block.content.title -}}
+				</{{ heading }}>
+				{%- if block.content.text -%}
+					<p class="text-body text-lg">{{- block.content.text -}}</p>
+				{%- endif -%}
+				{%- if included | length -%}
+					<ul class="flex flex-col gap-3 pt-4">
+						{%- for text in included -%}
+							{{-
+								include(
+									'components/list-item.html.twig',
+									{
+										text: text,
+										type: 'check',
+									},
+									with_context: false
+								)
+							-}}
+						{%- endfor -%}
+					</ul>
+				{%- endif -%}
+			</div>
+
+			{%- if lines | length -%}
+				<div
+					class="border-accent bg-surface col-span-full flex flex-col items-start rounded-lg border p-6 lg:col-span-5 lg:p-8"
+				>
+					{{-
+						include(
+							'components/badge.html.twig',
+							{
+								title: block.badge,
+								dot: true,
+							},
+							with_context: false
+						)
+					-}}
+					<dl class="self-stretch">
+						{%- for line in lines -%}
+							{{-
+								include(
+									'components/price-line.html.twig',
+									{
+										label: line.label,
+										value: line.value,
+									},
+									with_context: false
+								)
+							-}}
+						{%- endfor -%}
+					</dl>
+					{%- if ( block.link.title | default( false ) ) or block.detail -%}
+						<div class="flex flex-col items-start gap-3 self-stretch pt-6">
+							{{-
+								include(
+									'components/button.html.twig',
+									block.link | default( {} ) | merge( { variant: 'primary' } ),
+									with_context: false
+								)
+							-}}
+							{%- if block.detail -%}
+								<p class="text-muted text-sm">{{- block.detail -}}</p>
+							{%- endif -%}
+						</div>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+		</div>
+	</section>
+{%- endif -%}

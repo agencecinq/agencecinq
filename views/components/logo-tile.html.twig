@@ -1,0 +1,33 @@
+{#
+ # Components: Logo tile
+ #
+ # A li of a client grid, all tiles the same size: the logo, an image named after the client, or the name
+ # when there is no logo. The logo is a mask filled with the muted text colour, so that any one-colour
+ # logo follows the colour scheme; in forced colours it takes the text colour.
+ #
+ # @param string name Client name.
+ # @param int image Optional. Attachment ID of the logo, one colour on a transparent background.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set url = image ? function( 'wp_get_attachment_image_url', image, 'medium' ) -%}
+
+<li
+	class="{{
+		html_classes(
+			'border-subtle flex h-14 items-center justify-center rounded-md border px-4',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	{%- if url -%}
+		<span
+			class="block h-7 w-full bg-(--text-color-muted) mask-contain mask-center mask-no-repeat forced-color-adjust-none forced-colors:bg-[CanvasText]"
+			style="mask-image: url('{{ url }}')"
+			role="img"
+			aria-label="{{ name }}"
+		></span>
+	{%- else -%}
+		<span class="text-button text-muted">{{- name -}}</span>
+	{%- endif -%}
+</li>

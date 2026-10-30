@@ -7,6 +7,30 @@
 }
 
 @layer base {
+	/* An element of a color scheme paints its background and text: the body, then the sections that set
+	   one (includes/schemes.php). */
+	[data-scheme] {
+		background-color: var(--background-color-default);
+		color: var(--text-color-primary);
+	}
+}
+
+@layer base {
+	/* Height of the sticky header (Figma Section/Header): anchors land below it. */
+	:root {
+		--header-height: 4.625rem;
+
+		@variant xl {
+			--header-height: 5.25rem;
+		}
+	}
+
+	html {
+		scroll-padding-top: var(--header-height);
+	}
+}
+
+@layer base {
 	/* A modal dialog keeps the page behind it still. */
 	html:has(dialog[open]:modal) {
 		overflow: hidden;

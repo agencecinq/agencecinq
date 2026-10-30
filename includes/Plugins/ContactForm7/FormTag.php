@@ -26,7 +26,6 @@ class FormTag implements Service {
 	 * @return void
 	 */
 	public function run(): void {
-		add_filter( 'wpcf7_form_tag', array( $this, 'form_tag' ) );
 		add_filter( 'wpcf7_form_elements', array( $this, 'form_elements' ) );
 	}
 
@@ -56,77 +55,5 @@ class FormTag implements Service {
 			},
 			$content
 		);
-	}
-
-	/**
-	 * Form tag filter.
-	 *
-	 * Use [select domaine] in your form to populate the select with the choices from the theme options.
-	 *
-	 * @param array $tag The form tag (array in CF7 5.8+).
-	 * @return array The form tag.
-	 */
-	public function form_tag( array $tag ): array {
-		if ( 'select' !== ( $tag['basetype'] ?? '' ) || 'domaine' !== ( $tag['name'] ?? '' ) ) {
-			return $tag;
-		}
-
-		$theme   = get_field( 'theme', 'option' );
-		$choices = $theme['footer']['push']['choices'] ?? '';
-
-		if ( ! $choices ) {
-			return $tag;
-		}
-
-		$lines  = preg_split( "/\r\n|\r|\n/", $choices );
-		$values = array();
-		$labels = array();
-
-		foreach ( $lines as $line ) {
-			$line = trim( $line );
-
-			if ( '' === $line ) {
-				continue;
-			}
-
-			$labels[] = $line;
-			// Match the Twig |sanitize filter used for the footer radio values.
-			$values[] = sanitize_title( $line );
-		}
-
-		if ( empty( $values ) ) {
-			return $tag;
-		}
-
-		$placeholder = __( 'Choose a domain', 'agencecinq' );
-
-		array_unshift( $labels, $placeholder );
-		array_unshift( $values, '' );
-
-		$tag['values']     = $values;
-		$tag['labels']     = $labels;
-		$tag['raw_values'] = $values;
-
-		// Pre-select option from URL param (e.g. ?domaine=Value) using CF7 helper.
-		$parameter = '';
-
-		if ( function_exists( 'wpcf7_superglobal_get' ) ) {
-			$values = wpcf7_superglobal_get( 'domaine' );
-
-			if ( is_array( $values ) && isset( $values[0] ) ) {
-				$parameter = $values[0];
-			} elseif ( is_string( $values ) ) {
-				$parameter = $values;
-			}
-		}
-
-		$value = '' !== $parameter ? sanitize_title( $parameter ) : '';
-
-		if ( '' !== $value && in_array( $value, $tag['values'], true ) ) {
-			$tag['options']   = $tag['options'] ?? array();
-			$tag['options'][] = 'default:get';
-		}
-
-		return $tag;
 	}
 }

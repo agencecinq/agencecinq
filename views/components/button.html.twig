@@ -1,79 +1,60 @@
 {#
  # Components: Button
  #
+ # Link or button in Label/button. Primary: main action, one per section. Secondary: text/subtle outline.
+ # Text: underlined link. Primary and Secondary are not underlined: their shape identifies them.
+ #
  # @param string title The button text.
- # @param string url The URL the link points to. Can be empty if the button is not a link. If the url is given, the button will be rendered as a a tag instead of a button tag.
- # @param string target The target attribute for the link, either '_self' or '_blank'. Only applicable if url is provided.
- # @param string variant Variant of the button: 'primary' (pistachio pill + arrow), 'secondary' (underline), 'tertiary' (nav pill) or 'quaternary' (utility).
- # @param bool disabled
- # @param string icon Icon name, used by the quaternary variant.
- # @param string icon_html Optional raw icon markup, used instead of `icon`.
- # @param attributes Additional HTML attributes for the button element, passed as an associative array (e.g. { 'data-toggle': 'modal', 'aria-label': 'Open modal' }).
- # @param array classes Additional CSS classes to apply to the button, passed as an array (e.g. [ 'my-custom-class', 'another-class' ]).
+ # @param string url Optional. Renders an <a> when set, a <button> otherwise.
+ # @param string target Optional. For links: '_self' or '_blank'.
+ # @param string type Optional. Button type without url: 'button' (default) or 'submit'.
+ # @param string variant Optional. 'primary' (default), 'secondary' or 'text'.
+ # @param bool arrow Optional. Trailing arrow, true by default.
+ # @param bool disabled Optional.
+ # @param object attributes Optional extra HTML attributes.
+ # @param array classes Optional extra classes.
  #}
 
 {%- set variant = variant | default( 'primary' ) -%}
-{%- set disabled = disabled | default( false ) -%}
-{%- set icon = icon | default( '' ) -%}
 
-{%- if icon_html is not defined -%}
-	{%- set icon_html = '' -%}
-	{%- if variant == 'quaternary' and icon is not empty -%}
-		{%- set icon_html -%}
+{%- if title -%}
+	<{{ url ? 'a' : 'button' }}
+		class="{{
+			html_classes(
+				'text-button inline-flex items-center gap-2 whitespace-nowrap transition-colors duration-300 ease-out',
+				'focus-visible:outline-focus-ring focus-visible:outline-2 focus-visible:outline-offset-2',
+				variant == 'primary'
+					? 'bg-accent-default text-on-accent hover:bg-accent-hover rounded-full px-6 py-3.5',
+				variant == 'secondary'
+					? 'text-primary hover:bg-surface rounded-full border border-(--text-color-subtle) px-6 py-3.5',
+				variant == 'text' ? 'text-primary py-1 underline',
+				disabled ? 'pointer-events-none opacity-50',
+				classes | default( [] ) | join( ' ' )
+			)
+		}}"
+		{{
+			html_attr(
+				url ? { href: url } : { type: type | default( 'button' ) },
+				url and target ? { target: target },
+				url and target == '_blank' ? { rel: 'noopener noreferrer' },
+				disabled and not url ? { disabled: true },
+				attributes | default( {} )
+			)
+		}}
+	>
+		{{- title -}}
+		{%- if arrow ?? true -%}
 			{{-
 				include(
 					'svg/use.html.twig',
 					{
-						classes: [ 'size-2.5' ],
-						icon: icon,
-					}
+						icon: 'arrow',
+						classes: [ 'size-4 shrink-0' ],
+						attributes: { 'aria-hidden': 'true' },
+					},
+					with_context: false
 				)
 			-}}
-		{%- endset -%}
-	{%- endif -%}
-{%- endif -%}
-
-{%- set show_arrow = variant == 'primary' and icon_html is empty -%}
-
-{%- if title -%}
-	<{{ url ? 'a' : 'button' }}
-		{{ url ? "href=\"#{ url }\"" : "type=\"#{ type | default( 'button' ) }\"" }}
-		{{ url and target ? "target=\"#{ target }\"" : '' }}
-		{{ url and target == '_blank' ? 'rel="noopener noreferrer"' : '' }}
-		class="{{
-			html_classes(
-				classes | default( [] ) | join( ' ' ),
-				'button inline-flex items-center whitespace-nowrap transition-colors duration-300 ease-out',
-				'focus-visible:outline-pistachio focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50',
-				'button--' ~ variant,
-				disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : '',
-				variant == 'primary'
-					? 'bg-pistachio text-cta text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio gap-2 rounded-full px-6 py-3.5'
-					: '',
-				variant == 'secondary'
-					? 'border-stone text-cta text-cream hover:border-pistachio hover:text-pistachio focus-visible:border-pistachio focus-visible:text-pistachio border-b pb-0.75'
-					: '',
-				variant == 'tertiary'
-					? 'bg-pistachio text-label text-off-black hover:bg-light-pistachio focus-visible:bg-light-pistachio rounded-full px-4.5 py-2.5'
-					: '',
-				variant == 'quaternary'
-					? 'text-cta text-cream hover:text-pistachio focus-visible:text-pistachio gap-0.75'
-					: ''
-			)
-		}}"
-		{{ disabled ? 'disabled' }}
-		{{ attributes
-			? attributes
-				| map( ( value, key ) => value == '' ? key : "#{ key }=\"#{ value }\"" )
-				| join( ' ' )
-				| raw }}
-	>
-		{%- if icon_html is not empty -%}
-			{{- icon_html -}}
-		{%- endif -%}
-		<span>{{- title -}}</span>
-		{%- if show_arrow -%}
-			<span aria-hidden="true">→</span>
 		{%- endif -%}
 	</{{ url ? 'a' : 'button' }}>
 {%- endif -%}

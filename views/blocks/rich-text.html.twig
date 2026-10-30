@@ -1,0 +1,26 @@
+{#
+ # Blocks: Rich text
+ #
+ # Figma Section/Rich text: the text of the editor in a reading column of 720 px, its headings, lists,
+ # quotes and code set by components/wysiwyg.css.
+ #}
+
+{%- if block.text -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<div id="{{ block.id }}" data-scheme="{{ block.layout.color_scheme | default( '' ) }}">
+		<div class="container">
+			<div class="wysiwyg text-body max-w-180 text-lg">
+				{{- block.text -}}
+			</div>
+		</div>
+	</div>
+{%- endif -%}

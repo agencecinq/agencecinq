@@ -9,7 +9,6 @@
 
 namespace AgenceCinq\Models;
 
-use AgenceCinq\Taxonomy\CaseStudyCategory;
 use Timber\Post;
 
 /**
@@ -18,19 +17,6 @@ use Timber\Post;
  * Custom Timber model for the case-study post type.
  */
 class CaseStudy extends Post {
-
-	/**
-	 * Returns the case study categories assigned to this post.
-	 *
-	 * @return mixed Term collection.
-	 */
-	public function categories() {
-		return $this->terms(
-			array(
-				'taxonomy' => CaseStudyCategory::TAXONOMY,
-			)
-		);
-	}
 
 	/**
 	 * Returns the client name, falling back to the post title.
@@ -67,78 +53,39 @@ class CaseStudy extends Post {
 	}
 
 	/**
-	 * Returns the hero media payload for the browser frame (image or video).
+	 * Returns the situation the client started from, the badge of its Image card.
 	 *
-	 * @return array{type: string, image?: int, video?: array<string, mixed>, poster?: array<string, mixed>}|null
+	 * @return string
 	 */
-	public function media(): ?array {
-		$hero = $this->hero();
-		$type = isset( $hero['media_type'] ) ? (string) $hero['media_type'] : 'image';
-
-		if ( ! in_array( $type, array( 'image', 'video' ), true ) ) {
-			$type = 'image';
-		}
-
-		if ( 'video' === $type ) {
-			$video = $this->normalize_media_array( $hero['video'] ?? null );
-
-			if ( null === $video ) {
-				return null;
-			}
-
-			$media = array(
-				'type'  => 'video',
-				'video' => $video,
-			);
-
-			$poster = $this->normalize_media_array( $hero['poster'] ?? null );
-
-			if ( null !== $poster ) {
-				$media['poster'] = $poster;
-			}
-
-			return $media;
-		}
-
-		$id = isset( $hero['image'] ) ? (int) $hero['image'] : 0;
-
-		if ( $id <= 0 ) {
-			return null;
-		}
-
-		return array(
-			'type'  => 'image',
-			'image' => $id,
-		);
+	public function situation(): string {
+		return (string) ( $this->card()['situation'] ?? '' );
 	}
 
 	/**
-	 * Normalizes an ACF file/image value to an array with a url key.
+	 * Returns the sentence of its Image card on what the site does now.
 	 *
-	 * @param mixed $value ACF array, attachment ID, or URL string.
-	 * @return array<string, mixed>|null
+	 * @return string
 	 */
-	private function normalize_media_array( $value ): ?array {
-		if ( is_array( $value ) && ! empty( $value['url'] ) ) {
-			return $value;
-		}
+	public function summary(): string {
+		return (string) ( $this->card()['summary'] ?? '' );
+	}
 
-		if ( is_numeric( $value ) ) {
-			$url = wp_get_attachment_url( (int) $value );
+	/**
+	 * Returns the screenshot of the delivered site, the after of the hero.
+	 *
+	 * @return int Attachment ID, 0 without one.
+	 */
+	public function screenshot(): int {
+		return (int) ( $this->hero()['image'] ?? 0 );
+	}
 
-			return $url ? array(
-				'ID'  => (int) $value,
-				'url' => $url,
-			) : null;
-		}
-
-		if ( is_string( $value ) && '' !== $value ) {
-			return array(
-				'url' => $value,
-			);
-		}
-
-		return null;
+	/**
+	 * Returns the screenshot of the site before, the before of the hero.
+	 *
+	 * @return int Attachment ID, 0 without one.
+	 */
+	public function before(): int {
+		return (int) ( $this->hero()['before'] ?? 0 );
 	}
 
 	/**
@@ -150,6 +97,17 @@ class CaseStudy extends Post {
 		$hero = $this->meta( 'hero' );
 
 		return is_array( $hero ) ? $hero : array();
+	}
+
+	/**
+	 * Returns the card field group.
+	 *
+	 * @return array<string, mixed>
+	 */
+	private function card(): array {
+		$card = $this->meta( 'card' );
+
+		return is_array( $card ) ? $card : array();
 	}
 
 	/**

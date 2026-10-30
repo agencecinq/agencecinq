@@ -1,0 +1,79 @@
+{#
+ # Components: Diff block
+ #
+ # The diff of a site, signature of « Dépôt ouvert »: the lines that go, then the lines that come in,
+ # under the address of the site. The figures of a real client show only with their consent, otherwise
+ # the note says it is an example.
+ #
+ # @param string address
+ # @param string note Optional, e.g. « exemple ».
+ # @param array removed Texts of the lines that go.
+ # @param array added Texts of the lines that come in.
+ # @param object link Optional. { title, url, target } under the lines.
+ # @param array classes Optional extra classes.
+ #}
+
+<div
+	class="{{
+		html_classes(
+			'border-default bg-surface overflow-hidden rounded-md border',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<div
+		class="border-default text-muted flex items-center justify-between gap-4 border-b px-4.5 py-3.5"
+	>
+		<p class="text-mono min-w-0 truncate">{{- address -}}</p>
+		{%- if note -%}
+			<p class="shrink-0 text-sm">{{- note -}}</p>
+		{%- endif -%}
+	</div>
+
+	<ul>
+		{%- for text in removed | default( [] ) -%}
+			{{-
+				include(
+					'components/diff-line.html.twig',
+					{
+						text: text,
+						type: 'removed',
+					},
+					with_context: false
+				)
+			-}}
+		{%- endfor -%}
+		{%- for text in added | default( [] ) -%}
+			{{-
+				include(
+					'components/diff-line.html.twig',
+					{
+						text: text,
+						type: 'added',
+					},
+					with_context: false
+				)
+			-}}
+		{%- endfor -%}
+	</ul>
+
+	{%- if link.url | default( false ) -%}
+		<p class="px-4.5 py-3.5">
+			<a
+				class="text-button text-accent-default focus-visible:outline-focus-ring underline focus-visible:outline-2 focus-visible:outline-offset-2"
+				{{
+					html_attr(
+						{ href: link.url },
+						( link.target | default( false ) ) == '_blank'
+							? {
+								target: '_blank',
+								rel: 'noopener noreferrer',
+							}
+					)
+				}}
+			>
+				{{- link.title -}}
+			</a>
+		</p>
+	{%- endif -%}
+</div>

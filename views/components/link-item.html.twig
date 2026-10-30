@@ -1,0 +1,38 @@
+{#
+ # Components: Link item
+ #
+ # Standalone underlined link with a summary line, under a separator.
+ #
+ # @param string title The link text.
+ # @param string url The link URL.
+ # @param string target Optional. '_self' or '_blank'.
+ # @param string text Optional summary line.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- if title and url -%}
+	<div
+		class="{{
+			html_classes(
+				'border-default flex flex-col items-start gap-2 border-t pt-4',
+				classes | default( [] ) | join( ' ' )
+			)
+		}}"
+	>
+		<a
+			class="text-button text-primary focus-visible:outline-focus-ring underline focus-visible:outline-2 focus-visible:outline-offset-2"
+			{{
+				html_attr(
+					{ href: url },
+					target ? { target: target },
+					target == '_blank' ? { rel: 'noopener noreferrer' }
+				)
+			}}
+		>
+			{{- title -}}
+		</a>
+		{%- if text -%}
+			<p class="text-muted text-sm">{{- text -}}</p>
+		{%- endif -%}
+	</div>
+{%- endif -%}

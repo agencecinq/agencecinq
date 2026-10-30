@@ -1,4 +1,9 @@
 @layer components {
+	/* Flow · Figma Section/Rich text: 24 px between the blocks of the text */
+	.wysiwyg > * + * {
+		@apply mt-6;
+	}
+
 	.wysiwyg > *:first-child {
 		@apply mt-0;
 	}
@@ -7,47 +12,31 @@
 		@apply mb-0;
 	}
 
-	.wysiwyg p {
-		margin-bottom: 1.25rem;
-	}
-
 	.wysiwyg p:empty {
 		@apply hidden;
 	}
 
 	.wysiwyg h1,
 	.wysiwyg h2 {
-		@apply text-title-xl text-cream;
-
-		margin-top: 2.5rem;
-		margin-bottom: 2rem;
+		@apply text-title-lg text-primary;
 	}
 
 	.wysiwyg h3 {
-		@apply text-title-lg text-cream;
-
-		margin-top: 2.5rem;
-		margin-bottom: 1rem;
+		@apply text-title-md text-primary;
 	}
 
 	.wysiwyg h4 {
-		@apply text-xl text-cream;
-
-		margin-top: 1.25rem;
-		margin-bottom: 0.75rem;
+		@apply text-primary text-xl;
 	}
 
 	.wysiwyg h5,
 	.wysiwyg h6 {
 		@apply text-sm font-semibold;
-
-		margin-top: 1rem;
-		margin-bottom: 0.5rem;
 	}
 
 	/* Inline */
 	.wysiwyg a {
-		@apply text-pistachio underline underline-offset-2;
+		@apply text-primary focus-visible:outline-focus-ring underline focus-visible:outline-2 focus-visible:outline-offset-2;
 	}
 
 	.wysiwyg a code,
@@ -66,11 +55,11 @@
 	}
 
 	.wysiwyg mark {
-		@apply bg-pistachio-soft px-0.5 text-cream;
+		@apply bg-accent-soft text-primary px-0.5;
 	}
 
 	.wysiwyg code {
-		@apply rounded-5 bg-medium-gray px-1.5 py-0.5 font-mono text-sm text-cream;
+		@apply bg-surface text-mono text-primary rounded-sm px-1.5 py-0.5;
 	}
 
 	.wysiwyg sub,
@@ -91,65 +80,45 @@
 		@apply line-through opacity-80;
 	}
 
-	/* Blockquote · article pull quote */
+	/* Blockquote · Figma Blockquote */
 	.wysiwyg blockquote {
-		@apply border-pistachio border-l-2 pl-6 text-title-lg not-italic text-cream;
-
-		margin-top: 2.5rem;
-		margin-bottom: 2.5rem;
-	}
-
-	.wysiwyg blockquote p:last-child {
-		margin-bottom: 0;
+		@apply border-accent-default text-quote text-primary flex flex-col gap-2 border-l-3 pl-6 not-italic;
 	}
 
 	.wysiwyg blockquote cite {
-		@apply mt-2 block not-italic text-xs text-taupe;
+		@apply text-muted text-sm not-italic;
 	}
 
-	/* Lists */
-	.wysiwyg ul,
+	/* Lists · Figma List item, Type=Default: a decorative + before each item */
 	.wysiwyg ol {
-		margin-top: 1rem;
-		margin-bottom: 1rem;
 		padding-left: 1.5rem;
-	}
-
-	.wysiwyg ul {
-		list-style-type: disc;
-	}
-
-	.wysiwyg ol {
 		list-style-type: decimal;
 	}
 
-	.wysiwyg li {
-		margin-bottom: 0.375rem;
+	.wysiwyg ul > li {
+		@apply relative pl-6;
 	}
 
-	.wysiwyg li:last-child {
-		margin-bottom: 0;
+	.wysiwyg ul > li::before {
+		@apply text-diff-plus absolute left-0 font-mono font-medium;
+
+		content: "+" / "";
 	}
 
-	.wysiwyg ul ul,
-	.wysiwyg ol ol,
-	.wysiwyg ul ol,
-	.wysiwyg ol ul {
-		margin-top: 0.375rem;
-		margin-bottom: 0;
+	.wysiwyg li + li,
+	.wysiwyg li > ul,
+	.wysiwyg li > ol {
+		@apply mt-3;
 	}
 
 	/* Horizontal rule */
 	.wysiwyg hr {
-		@apply my-6 border-0 border-t border-cream-soft;
+		@apply border-default border-0 border-t;
 	}
 
-	/* Pre / code block */
+	/* Pre · Figma Code block: long lines wrap, keeping their indentation, rather than scroll sideways */
 	.wysiwyg pre {
-		@apply overflow-x-auto rounded-10 border border-cream-soft bg-gray p-5 font-mono text-sm text-cream;
-
-		margin-top: 1.5rem;
-		margin-bottom: 1.5rem;
+		@apply bg-surface text-mono text-body rounded-md px-5 py-4 wrap-break-word whitespace-pre-wrap;
 	}
 
 	.wysiwyg pre code {
@@ -159,36 +128,34 @@
 	/* Table */
 	.wysiwyg table {
 		@apply w-full border-collapse text-sm;
-
-		margin-top: 1.5rem;
-		margin-bottom: 1.5rem;
 	}
 
 	.wysiwyg th,
 	.wysiwyg td {
-		@apply border border-cream-soft px-4 py-3 text-left;
+		@apply border-default border px-4 py-3 text-left;
 	}
 
 	.wysiwyg th {
-		@apply bg-cream-faint font-semibold;
+		@apply bg-surface font-semibold;
 	}
 
 	.wysiwyg tr:hover td {
-		@apply bg-cream-faint;
+		@apply bg-surface;
 	}
 
 	/* Figure */
 	.wysiwyg figure {
-		@apply my-6 max-w-full;
+		@apply max-w-full;
 	}
 
-	.wysiwyg figure img, .wysiwyg p img {
-		@apply max-w-full rounded-10 align-middle;
+	.wysiwyg figure img,
+	.wysiwyg p img {
+		@apply max-w-full rounded-md align-middle;
 
-		margin-top: 0!important;
-		margin-left: auto!important;
-		margin-right: auto!important;
-		margin-bottom: 0!important;
+		margin-top: 0 !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		margin-bottom: 0 !important;
 	}
 
 	.wysiwyg p:has(> img) {
@@ -196,6 +163,6 @@
 	}
 
 	.wysiwyg figcaption {
-		@apply mt-2 text-xs text-taupe;
+		@apply text-muted mt-2 text-sm;
 	}
 }

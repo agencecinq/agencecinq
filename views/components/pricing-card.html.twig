@@ -1,0 +1,47 @@
+{#
+ # Components: Pricing card
+ #
+ # A price: name, amount, duration or rhythm, then what is included as compact List items.
+ #
+ # @param string name
+ # @param string price
+ # @param string duration Optional.
+ # @param array items Optional. What is included.
+ # @param string heading Optional. Tag of the name, 'h3' by default.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set heading = heading | default( 'h3' ) -%}
+
+<div
+	class="{{
+		html_classes(
+			'border-default bg-surface flex flex-col gap-4 rounded-md border p-6 lg:p-8',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<{{ heading }} class="text-title-md text-primary">
+		{{- name -}}
+	</{{ heading }}>
+	<p class="text-title-lg text-primary">{{- price -}}</p>
+	{%- if duration -%}
+		<p class="text-muted text-sm">{{- duration -}}</p>
+	{%- endif -%}
+	{%- if items | default( [] ) | length -%}
+		<ul class="border-default flex flex-col gap-2 border-t pt-4">
+			{%- for item in items -%}
+				{{-
+					include(
+						'components/list-item.html.twig',
+						{
+							text: item,
+							type: 'compact',
+						},
+						with_context: false
+					)
+				-}}
+			{%- endfor -%}
+		</ul>
+	{%- endif -%}
+</div>

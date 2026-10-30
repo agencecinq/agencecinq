@@ -51,9 +51,19 @@ class PageFields implements Service {
 					'value'    => 'front_page',
 				),
 				array(
+					'param'    => 'page_type',
+					'operator' => '!=',
+					'value'    => 'posts_page',
+				),
+				array(
 					'param'    => 'page_template',
 					'operator' => '!=',
 					'value'    => 'page-templates/blocks-page.php',
+				),
+				array(
+					'param'    => 'page_template',
+					'operator' => '!=',
+					'value'    => 'page-templates/styleguide-page.php',
 				),
 			),
 		);

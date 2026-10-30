@@ -2,7 +2,7 @@
 /**
  * Maintenance
  *
- * Loaded by the cinq-wp-maintenance plugin, which sends the 503.
+ * Loaded by the cinq-wp-maintenance plugin, which sends the 503 first.
  *
  * @link https://github.com/agencecinq/cinq-wp-maintenance
  *
@@ -15,12 +15,18 @@ use Timber\{ Timber };
 $templates = array( 'pages/maintenance.html.twig' );
 $data      = Timber::context();
 
-$data['title'] = __( 'The site is under construction.', 'agencecinq' );
+$data['host'] = (string) wp_parse_url( home_url(), PHP_URL_HOST );
 
-// After Yoast (15), whose title would name the requested page.
+/*
+ * After Yoast SEO, which titles the requested page, at 15.
+ */
 add_filter(
 	'pre_get_document_title',
-	fn () => $data['title'] . ' – ' . get_bloginfo( 'name' ),
+	static fn (): string => sprintf(
+		/* translators: %s: Site name. */
+		__( 'Site under construction – %s', 'agencecinq' ),
+		get_bloginfo( 'name' )
+	),
 	20
 );
 

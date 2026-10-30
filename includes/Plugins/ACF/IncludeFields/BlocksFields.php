@@ -10,33 +10,33 @@
 
 namespace AgenceCinq\Plugins\ACF\IncludeFields;
 
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\AccordionGroup;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CallToAction;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ClientQuote;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CodeGuide;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\CredibilityBanner;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialCards;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Crosslinks;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EditorialProse;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\EntryPoints;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FormInfo;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Gallery;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\InfoCards;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LatestPosts;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ModuleCatalog;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHero;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PositioningBanner;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingRules;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTiers;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\References;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\RelatedCases;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Services;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Stats;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Styleguide;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Subscriptions;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Team;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\VerticalPipeline;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Accordion;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActionCards;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ActivityLog;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Breadcrumb;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\BulletList;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Checklist;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ContactDetails;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\DiffColumns;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\FeatureCards;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ImageCards;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkColumns;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkGrid;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkRow;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ListingHeader;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LogoWall;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHeader;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PostGrid;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PriceBreakdown;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTable;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\RichText;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\SignupForm;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Steps;
 use AgenceCinq\Service;
 
 /**
@@ -53,33 +53,33 @@ class BlocksFields implements Service {
 	 * @var array<int, class-string>
 	 */
 	private static $layouts = array(
-		AccordionGroup::class,
-		CallToAction::class,
-		ClientQuote::class,
-		CodeGuide::class,
-		Configurator::class,
-		CredibilityBanner::class,
-		Crosslinks::class,
-		EditorialCards::class,
-		EditorialProse::class,
-		EntryPoints::class,
-		FormInfo::class,
-		Gallery::class,
-		InfoCards::class,
-		LatestPosts::class,
-		ModuleCatalog::class,
-		PageHero::class,
-		PositioningBanner::class,
-		PricingRules::class,
-		PricingTiers::class,
-		References::class,
-		RelatedCases::class,
-		Services::class,
-		Stats::class,
-		Styleguide::class,
-		Subscriptions::class,
-		Team::class,
-		VerticalPipeline::class,
+		Accordion::class,
+		ActionCards::class,
+		ActivityLog::class,
+		Breadcrumb::class,
+		BulletList::class,
+		Checklist::class,
+		Comparison::class,
+		ContactDetails::class,
+		Cta::class,
+		DiffColumns::class,
+		FeatureCards::class,
+		ImageCards::class,
+		LinkColumns::class,
+		LinkGrid::class,
+		LinkRow::class,
+		ListingHeader::class,
+		LogoWall::class,
+		NumberedList::class,
+		PageHeader::class,
+		PortraitGrid::class,
+		PostGrid::class,
+		PriceBreakdown::class,
+		PricingTable::class,
+		Quote::class,
+		RichText::class,
+		SignupForm::class,
+		Steps::class,
 	);
 
 	/**
@@ -114,6 +114,13 @@ class BlocksFields implements Service {
 					'param'    => 'page_template',
 					'operator' => '==',
 					'value'    => 'page-templates/blocks-page.php',
+				),
+			),
+			array(
+				array(
+					'param'    => 'page_type',
+					'operator' => '==',
+					'value'    => 'posts_page',
 				),
 			),
 			array(

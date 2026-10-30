@@ -1,0 +1,38 @@
+{#
+ # Components: Person card
+ #
+ # A black and white portrait, then the first name and the role. The name follows the portrait, so its
+ # alternative is empty. The slot only fills without a portrait: a cut-out one lets the section show
+ # through.
+ #
+ # @param mixed image Portrait from the media library.
+ # @param string name First name.
+ # @param string role
+ # @param string sizes Optional. Sizes attribute of the portrait.
+ # @param array classes Optional extra classes.
+ #}
+
+<figure class="{{ html_classes( 'flex flex-col gap-2', classes | default( [] ) | join( ' ' ) ) }}">
+	<div
+		class="{{ html_classes( 'aspect-square overflow-hidden rounded-md', not image ? 'bg-media' ) }}"
+	>
+		{%- if image -%}
+			{{-
+				include(
+					'components/image.html.twig',
+					{
+						image: image,
+						alt: '',
+						sizes: sizes | default( null ),
+						classes: [ 'size-full object-cover grayscale' ],
+					},
+					with_context: false
+				)
+			-}}
+		{%- endif -%}
+	</div>
+	<figcaption class="flex flex-col gap-2">
+		<span class="text-button text-primary">{{- name -}}</span>
+		<span class="text-muted text-sm">{{- role -}}</span>
+	</figcaption>
+</figure>

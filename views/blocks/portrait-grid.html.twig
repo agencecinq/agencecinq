@@ -1,0 +1,94 @@
+{#
+ # Blocks: Portrait grid
+ #
+ # Figma Section/Portrait grid: the Section heading, on the whole row from lg, and the Pause button, then the
+ # Person cards, four per row from lg on three columns each, over a band of « CINQ » that scrolls behind the
+ # faces, at 10 % and decorative. The Pause button is a native checkbox (RGAA 13.8): checked, it stops the
+ # band, with no script. With reduced motion the band stands still and the button goes.
+ #}
+
+{%- set people = block.people | default( [] ) | filter( person => person.name ) -%}
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if people | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		class="group/portraits"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-6 lg:gap-10">
+			<div class="flex items-end justify-between gap-6">
+				{{-
+					include(
+						'components/section-heading.html.twig',
+						{
+							eyebrow: block.content.eyebrow,
+							title: block.content.title,
+							text: block.content.text,
+							heading: heading,
+							id: title_id,
+							classes: [ 'lg:max-w-none' ],
+						},
+						with_context: false
+					)
+				-}}
+				<label
+					class="text-button text-primary hover:bg-surface has-focus-visible:outline-focus-ring has-checked:bg-surface inline-flex shrink-0 cursor-pointer items-center rounded-full border border-(--text-color-subtle) px-6 py-3.5 transition-colors duration-300 ease-out has-focus-visible:outline-2 has-focus-visible:outline-offset-2 motion-reduce:hidden"
+				>
+					<input
+						type="checkbox"
+						class="sr-only"
+						aria-label="{{ __( 'Pause the scrolling', 'agencecinq' ) }}"
+					/>
+					{{- __( 'Pause', 'agencecinq' ) -}}
+				</label>
+			</div>
+
+			<div class="relative overflow-hidden">
+				<div
+					class="text-title-3xl text-primary absolute inset-x-0 top-2.5 opacity-10 lg:top-5"
+					aria-hidden="true"
+				>
+					<div
+						class="animate-marquee-x flex w-max group-has-checked/portraits:[animation-play-state:paused] motion-reduce:animate-none"
+					>
+						{%- for i in 1..16 -%}
+							<span class="pe-6 lg:pe-12">CINQ</span>
+						{%- endfor -%}
+					</div>
+				</div>
+
+				<ul class="layout-grid relative gap-y-5 pt-17.5 lg:pt-15">
+					{%- for person in people -%}
+						<li class="col-span-2 lg:col-span-3">
+							{{-
+								include(
+									'components/person-card.html.twig',
+									{
+										image: person.image,
+										name: person.name,
+										role: person.role,
+										sizes: '(min-width: 90rem) 18.25rem, (min-width: 64rem) calc((100vw - 16.75rem) / 4), calc((100vw - 3.25rem) / 2)',
+									},
+									with_context: false
+								)
+							-}}
+						</li>
+					{%- endfor -%}
+				</ul>
+			</div>
+		</div>
+	</section>
+{%- endif -%}

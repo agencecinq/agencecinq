@@ -1,0 +1,16 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T18 · Legal page",
+	"description": "Legal notice and privacy policy. Example: /mentions-legales/ · /politique-de-confidentialite/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=53-8214",
+	"sections": [
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Rich text",
+			"block": "rich_text"
+		}
+	]
+}

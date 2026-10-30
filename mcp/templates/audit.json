@@ -1,0 +1,32 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T09 · Audit",
+	"description": "The diagnostic of a site: what is checked and what is handed over. Example: /diagnostic/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=52-7866",
+	"sections": [
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Checklist",
+			"block": "checklist"
+		},
+		{
+			"label": "Diff columns",
+			"block": "diff_columns"
+		},
+		{
+			"label": "Feature cards",
+			"block": "feature_cards"
+		},
+		{
+			"label": "Accordion",
+			"block": "accordion"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}

@@ -1,0 +1,1528 @@
+{#
+ # Styleguide page
+ #
+ # Assign the "Styleguide" page template in WordPress. No ACF fields.
+ # Developer catalog of the Figma foundations, data from StyleguidePage.
+ #
+ # @package AgenceCinq
+ #}
+
+{% extends 'index.html.twig' %}
+
+{%- block content -%}
+	<main id="content" role="main">
+		{{-
+			include(
+				'components/page-header.html.twig',
+				{
+					eyebrow: 'Developer map',
+					title: post.title | default( 'Styleguide' ),
+					text: 'Internal catalog of the theme tokens, from the Foundations page of the Figma file « CINQ · Site · Conception 2027 ». Not a marketing page.',
+					classes: [ 'pt-20 pb-10 lg:pt-34 lg:pb-20' ],
+				},
+				with_context: false
+			)
+		-}}
+
+		<div class="container space-y-26 pb-26">
+			<nav
+				aria-label="Styleguide"
+				class="border-default bg-surface space-y-6 rounded-lg border p-6"
+			>
+				{%- for group in post.toc -%}
+					<div class="space-y-3">
+						<p class="text-eyebrow text-muted">{{ group.title }}</p>
+						<ul class="flex flex-wrap gap-x-5 gap-y-2">
+							{%- for item in group.items -%}
+								<li itemscope itemtype="https://schema.org/SiteNavigationElement">
+									<a
+										href="{{ item.href }}"
+										itemprop="url"
+										class="text-button hover:text-accent-default underline underline-offset-2 transition-colors"
+									>
+										<span itemprop="name">{{ item.title }}</span>
+									</a>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				{%- endfor -%}
+			</nav>
+
+			<section class="space-y-14" aria-labelledby="styleguide-colors">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Foundations</p>
+					<h2 id="styleguide-colors" class="text-title-xl">Colour</h2>
+					<p class="text-muted text-sm">
+						Declared in includes/schemes.php, as in Figma: the primitives, then the roles, valued in
+						each scheme, the Figma modes. The page is Dark; a section takes Light with data-scheme,
+						set by its block. Tailwind only knows the role names. Press C to cycle the schemes of
+						the page.
+					</p>
+				</header>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Primitives</h3>
+					<ul class="layout-grid gap-y-6">
+						{%- for slug, color in cinq_palette() -%}
+							<li class="col-span-2 space-y-2">
+								<div
+									class="border-default aspect-square rounded-md border"
+									style="background-color: var(--color-{{ slug }})"
+								></div>
+								<div class="wrap-anywhere">
+									<p class="text-button">{{- color.label -}}</p>
+									<p class="text-mono text-subtle">{{- color.value -}}</p>
+								</div>
+							</li>
+						{%- endfor -%}
+					</ul>
+				</div>
+
+				{%- for group in post.colors -%}
+					<div class="space-y-6">
+						<h3 class="text-title-md">{{ group.title }}</h3>
+						<ul class="layout-grid gap-y-10">
+							{%- for role in group.roles -%}
+								<li class="col-span-4 space-y-3 lg:col-span-3">
+									<div class="grid grid-cols-2 gap-2">
+										{%- for value in role.values -%}
+											<figure class="space-y-1.5">
+												<div
+													class="border-default overflow-hidden rounded-md border"
+													data-scheme="{{ value.scheme }}"
+													data-scheme-ignore
+												>
+													<div
+														class="aspect-square"
+														style="background-color: var({{ role.variable }})"
+													></div>
+												</div>
+												<figcaption class="text-mono text-subtle flex flex-col wrap-anywhere">
+													<span>{{- value.label -}}</span>
+													<span>{{- value.primitive -}}</span>
+													<span>{{- value.value -}}</span>
+												</figcaption>
+											</figure>
+										{%- endfor -%}
+									</div>
+									<div class="space-y-1 wrap-anywhere">
+										<p class="text-button">{{ role.name }}</p>
+										<p class="text-mono text-muted">.{{ role.class }}</p>
+										<p class="text-mono text-subtle">{{ role.variable }}</p>
+										<p class="text-subtle text-sm">{{ role.usage }}</p>
+									</div>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				{%- endfor -%}
+			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-type">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Foundations</p>
+					<h2 id="styleguide-type" class="text-title-xl">Type</h2>
+					<p class="text-muted text-sm">
+						Text styles of the Figma Typography board. Templates use the public class: it switches
+						from Mobile to Desktop at lg (1024 px), labels and data keep one size. Decoration is a
+						utility, not a style. Measures are read from the rendered samples: family, weight, size
+						/ line height / letter spacing.
+					</p>
+				</header>
+
+				{%- for group in post.type_scale -%}
+					<div class="space-y-6">
+						<h3 class="text-title-md">{{ group.title }}</h3>
+						<ul class="divide-default border-default divide-y border-t">
+							{%- for style in group.styles -%}
+								<li class="layout-grid gap-y-6 py-8">
+									<p class="text-button col-span-4 wrap-anywhere">.{{ style.class }}</p>
+									<div class="col-span-4 min-w-0 space-y-8 lg:col-span-8">
+										{%- for name, class in style.variants -%}
+											<figure class="space-y-3">
+												<p class="{{ class }}" data-type-sample>
+													{{- style.sample | default( group.sample ) -}}
+												</p>
+												<figcaption class="text-mono text-subtle flex flex-col">
+													<span>{{ name }} · .{{ class }}</span>
+													<output></output>
+												</figcaption>
+											</figure>
+										{%- endfor -%}
+									</div>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				{%- endfor -%}
+
+				<script type="module">
+					for (const sample of document.querySelectorAll("[data-type-sample]")) {
+						const output = sample.closest("figure").querySelector("output");
+						const style = getComputedStyle(sample);
+						const family = style.fontFamily.split(",")[0].replaceAll('"', "");
+						const size = parseFloat(style.fontSize);
+						const lineHeight = Math.round((parseFloat(style.lineHeight) / size) * 100);
+						const letterSpacing = +((parseFloat(style.letterSpacing) || 0) / size * 100).toFixed(1);
+
+						output.value = `${family} ${style.fontWeight} · ${size} / ${lineHeight}% / ${letterSpacing}%`;
+					}
+				</script>
+			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-space">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Foundations</p>
+					<h2 id="styleguide-space" class="text-title-xl">Space</h2>
+					<p class="text-muted text-sm">
+						Spacing, radius and dimensions of the Figma Spacing board. Spacing variables are named
+						after the multiplier of --spacing (4 px): spacing/6 is 24 px and writes gap-6 or p-6.
+						Page gutters (rhythm) and dimensions follow the same scale. Values are read from the
+						rendered samples.
+					</p>
+				</header>
+
+				{%- for group in post.spacing -%}
+					<div class="space-y-6">
+						<h3 class="text-title-md">{{ group.title }}</h3>
+						<ul class="divide-default border-default divide-y border-t">
+							{%- for item in group.items -%}
+								<li class="layout-grid items-center gap-y-3 py-4">
+									<div class="col-span-2 space-y-1 lg:col-span-3">
+										<p class="text-button">{{ item.name }}</p>
+										<p class="text-mono text-subtle">{{ item.code }}</p>
+									</div>
+									<output class="text-mono text-muted col-span-2 lg:col-span-1"></output>
+									<div class="col-span-4 lg:col-span-8">
+										<div
+											class="{{
+												html_classes(
+													group.sample | default( '' ),
+													item.sample,
+													'border-accent bg-accent-soft border'
+												)
+											}}"
+											data-measure="{{ item.property | default( group.property ) }}"
+										></div>
+									</div>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				{%- endfor -%}
+
+				<script type="module">
+					for (const sample of document.querySelectorAll("[data-measure]")) {
+						const output = sample.closest("li").querySelector("output");
+						const value = parseFloat(getComputedStyle(sample).getPropertyValue(sample.dataset.measure));
+
+						output.value = value > 10000 ? "full" : `${value}px`;
+					}
+				</script>
+			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-grid">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Foundations</p>
+					<h2 id="styleguide-grid" class="text-title-xl">Grid</h2>
+					<p class="text-muted text-sm">
+						Grid styles of the Figma Grids board. Pages lay out with container and layout-grid:
+						Mobile/Columns below lg (1024 px), Desktop/Columns above. Values are read from the live
+						grid below and follow the window width. Press G on any page to toggle the grid overlay.
+					</p>
+				</header>
+
+				<figure class="space-y-3">
+					<div class="layout-grid h-40" data-grid>
+						{%- for column in 1..12 -%}
+							<div
+								class="{{
+									html_classes(
+										'bg-accent-soft text-mono text-accent-default flex items-end justify-center pb-2',
+										column > 4 ? 'max-lg:hidden'
+									)
+								}}"
+							>
+								{{- column -}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<figcaption class="space-y-2">
+						<p class="text-button">
+							<span class="lg:hidden">Mobile/Columns</span>
+							<span class="max-lg:hidden">Desktop/Columns</span>
+						</p>
+						<dl class="text-mono text-subtle flex flex-wrap gap-x-6 gap-y-1">
+							{%- for measure in [ 'columns', 'margin', 'gutter', 'content' ] -%}
+								<div class="flex gap-2">
+									<dt>{{ measure }}</dt>
+									<dd><output data-grid-measure="{{ measure }}"></output></dd>
+								</div>
+							{%- endfor -%}
+						</dl>
+					</figcaption>
+				</figure>
+
+				<script type="module">
+					const grid = document.querySelector("[data-grid]");
+					const container = grid.closest(".container");
+					const output = (name) => document.querySelector(`[data-grid-measure="${name}"]`);
+
+					new ResizeObserver(() => {
+						const style = getComputedStyle(grid);
+						const margin = parseFloat(getComputedStyle(container).paddingInlineStart);
+
+						output("columns").value = style.gridTemplateColumns.split(" ").length;
+						output("margin").value = `${margin}px`;
+						output("gutter").value = `${parseFloat(style.columnGap)}px`;
+						output("content").value = `${container.clientWidth - margin * 2}px`;
+					}).observe(grid);
+				</script>
+			</section>
+
+			{#- Panels: one per scheme, keyed for the ids, out of the C easter egg. -#}
+			{%- set schemes = {} -%}
+			{%- for slug in cinq_schemes() | keys -%}
+				{%- set schemes = schemes | merge( { ( slug ?: 'default' ): slug } ) -%}
+			{%- endfor -%}
+			{%- set panel = 'border-default col-span-full rounded-md border p-8 lg:col-span-6' -%}
+
+			<section class="space-y-14" aria-labelledby="styleguide-fundamentals">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Components</p>
+					<h2 id="styleguide-fundamentals" class="text-title-xl">Fundamentals</h2>
+					<p class="text-muted text-sm">
+						Logo, icons, badge and avatar of the Figma Components page. Every component renders in a
+						Dark panel, then in a Light one, set with data-scheme: colors follow the scheme.
+					</p>
+				</header>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Logo</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'svg/use.html.twig',
+										{
+											icon: 'logo',
+											classes: [ 'h-6 w-20' ],
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">Logo/CINQ · icon: 'logo'</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Icons</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<ul
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'grid grid-cols-2 gap-6 sm:grid-cols-4' ) }}"
+							>
+								{%- for name, icon in post.icons -%}
+									<li class="flex flex-col items-start gap-2 wrap-anywhere">
+										{{-
+											include(
+												'svg/use.html.twig',
+												{
+													icon: icon,
+													classes: [ 'size-6' ],
+												},
+												with_context: false
+											)
+										-}}
+										<span class="text-sm">{{ name }}</span>
+										<span class="text-mono text-subtle">'{{ icon }}'</span>
+									</li>
+								{%- endfor -%}
+							</ul>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">svg/use.html.twig · icon: '…'</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Badge</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'flex flex-wrap gap-3' ) }}"
+							>
+								{{-
+									include(
+										'components/badge.html.twig',
+										{ title: 'Client privé' },
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/badge.html.twig',
+										{
+											title: 'En ligne',
+											dot: true,
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">components/badge.html.twig · title, dot</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Avatar</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'flex items-center gap-6' ) }}"
+							>
+								{{- include( 'components/avatar.html.twig', with_context: false ) -}}
+								{{-
+									include( 'components/avatar.html.twig', { size: 'large' }, with_context: false )
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/avatar.html.twig · image, size: 'small' | 'large', alt (empty by default)
+					</p>
+				</div>
+			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-actions">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Components</p>
+					<h2 id="styleguide-actions" class="text-title-xl">Actions & navigation</h2>
+					<p class="text-muted text-sm">
+						Buttons, links and navigation entries of the Figma Components page, in a Dark panel then
+						a Light one. States follow the markup: aria-current marks the current page,
+						aria-expanded an open submenu. Hover and focus show on interaction.
+					</p>
+				</header>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Button</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'flex flex-wrap items-center gap-4' ) }}"
+							>
+								{%- for variant in [ 'primary', 'secondary', 'text' ] -%}
+									{{-
+										include(
+											'components/button.html.twig',
+											{
+												title: 'Réserver 30 minutes',
+												url: '#styleguide-actions',
+												variant: variant,
+											},
+											with_context: false
+										)
+									-}}
+								{%- endfor -%}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/button.html.twig · title, url, variant: 'primary' | 'secondary' | 'text',
+						arrow, type, disabled
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Icon button</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'flex gap-2' ) }}"
+							>
+								{{-
+									include(
+										'components/icon-button.html.twig',
+										{
+											label: 'Menu',
+											icon: 'menu',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/icon-button.html.twig',
+										{
+											label: 'Close',
+											icon: 'close',
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/icon-button.html.twig · label (required), icon, icon_html
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Link item</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/link-item.html.twig',
+										{
+											title: 'Diagnostic',
+											url: '#styleguide-actions',
+											text: '6 points vérifiés, 750 € HT, rendu en 5 jours ouvrés.',
+											classes: [ 'max-w-80' ],
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">components/link-item.html.twig · title, url, text</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Nav link and Menu link</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'space-y-4' ) }}"
+							>
+								<div class="flex flex-wrap items-center gap-6">
+									{{-
+										include(
+											'components/nav-link.html.twig',
+											{
+												title: 'Approche',
+												url: '#styleguide-actions',
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/nav-link.html.twig',
+											{
+												title: 'Réalisations',
+												url: '#styleguide-actions',
+												current: true,
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/nav-link.html.twig',
+											{
+												title: 'Offres',
+												controls: 'styleguide-submenu-' ~ scheme,
+												expanded: true,
+											},
+											with_context: false
+										)
+									-}}
+								</div>
+								<div id="styleguide-submenu-{{ scheme }}" class="max-w-80">
+									{{-
+										include(
+											'components/menu-link.html.twig',
+											{
+												title: 'Site resté à l’ancienne',
+												url: '#styleguide-actions',
+												text: 'Un site vitrine qui ne vous ressemble plus.',
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/menu-link.html.twig',
+											{
+												title: 'Boutique en panne',
+												url: '#styleguide-actions',
+											},
+											with_context: false
+										)
+									-}}
+								</div>
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/nav-link.html.twig · title, url | controls, expanded, current ·
+						components/menu-link.html.twig · title, url, text, current
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Drawer link and sublink</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/drawer-link.html.twig',
+										{
+											title: 'Approche',
+											url: '#styleguide-actions',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/drawer-link.html.twig',
+										{
+											title: 'Réalisations',
+											url: '#styleguide-actions',
+											current: true,
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/drawer-link.html.twig',
+										{
+											title: 'Offres',
+											controls: 'styleguide-sublinks-' ~ scheme,
+											expanded: true,
+										},
+										with_context: false
+									)
+								-}}
+								<div id="styleguide-sublinks-{{ scheme }}">
+									{{-
+										include(
+											'components/drawer-sublink.html.twig',
+											{
+												title: 'Création de boutique',
+												url: '#styleguide-actions',
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/drawer-sublink.html.twig',
+											{
+												title: 'Refonte de boutique',
+												url: '#styleguide-actions',
+												current: true,
+											},
+											with_context: false
+										)
+									-}}
+								</div>
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/drawer-link.html.twig · title, url | controls, expanded, current ·
+						components/drawer-sublink.html.twig · title, url, current
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Breadcrumb</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/breadcrumb.html.twig',
+										{
+											items: [
+												{
+													url: '#styleguide-actions',
+													text: 'Accueil',
+												},
+												{
+													url: '#styleguide-actions',
+													text: 'Shopify',
+												},
+												{
+													url: '#styleguide-actions',
+													text: 'Migration',
+												},
+												{
+													url: '#styleguide-actions',
+													text: 'Depuis PrestaShop',
+												},
+											],
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/breadcrumb.html.twig · items (Yoast SEO by default)
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Pagination</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/pagination.html.twig',
+										{
+											pagination: {
+												current: 2,
+												total: 3,
+												prev: { link: '#styleguide-actions' },
+												next: { link: '#styleguide-actions' },
+											},
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/pagination.html.twig · pagination (Timber), prev_title, next_title, anchor
+					</p>
+				</div>
+			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-forms">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Components</p>
+					<h2 id="styleguide-forms" class="text-title-xl">Forms</h2>
+					<p class="text-muted text-sm">
+						Fields of the Figma Components page, in a Dark panel then a Light one. States follow the
+						markup: aria-invalid marks an error, disabled fades the field, aria-checked holds the
+						state of a switch. Focus shows on interaction. Contact Form 7 fields share these styles
+						(components/wpcf7.css).
+					</p>
+				</header>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Input</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'grid gap-8 sm:grid-cols-2' ) }}"
+							>
+								{{-
+									include(
+										'components/input.html.twig',
+										{
+											id: 'styleguide-input-' ~ scheme,
+											label: 'Adresse de votre site',
+											type: 'url',
+											attributes: { placeholder: 'https://votre-site.fr' },
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/input.html.twig',
+										{
+											id: 'styleguide-input-error-' ~ scheme,
+											label: 'Adresse de votre site',
+											type: 'url',
+											error: 'Adresse incomplète : elle doit finir par .fr, .com ou une autre extension. Exemple : https://eigrene.fr',
+											attributes: { value: 'https://eigrene' },
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/input.html.twig',
+										{
+											id: 'styleguide-input-disabled-' ~ scheme,
+											label: 'Adresse de votre site',
+											type: 'url',
+											attributes: {
+												placeholder: 'https://votre-site.fr',
+												disabled: true,
+											},
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/input.html.twig · id, label, type, error, invalid, attributes
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Checkbox</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/checkbox.html.twig',
+										{
+											id: 'styleguide-checkbox-' ~ scheme,
+											label: 'Mesure d’audience',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/checkbox.html.twig',
+										{
+											id: 'styleguide-checkbox-checked-' ~ scheme,
+											label: 'Mesure d’audience',
+											attributes: { checked: true },
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/checkbox.html.twig',
+										{
+											id: 'styleguide-checkbox-disabled-' ~ scheme,
+											label: 'Mesure d’audience',
+											attributes: { disabled: true },
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">components/checkbox.html.twig · id, label, attributes</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Switch</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/switch.html.twig',
+										{ label: 'Mesure d’audience' },
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/switch.html.twig',
+										{
+											label: 'Mesure d’audience',
+											checked: true,
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/switch.html.twig',
+										{
+											label: 'Cookies nécessaires',
+											always_on: true,
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/switch.html.twig · label, checked, always_on, name, value · CINQ UI
+						&lt;cinq-switch&gt;
+					</p>
+				</div>
+			</section>
+
+			<section class="space-y-14" aria-labelledby="styleguide-content">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Components</p>
+					<h2 id="styleguide-content" class="text-title-xl">Content</h2>
+					<p class="text-muted text-sm">
+						Headings, lists, prices, contacts, diffs, log entries and media frames of the Figma
+						Components page, in a Dark panel then a Light one. Blockquote and Code block are the
+						rich text of the editor (wysiwyg.css), with the Default list item.
+					</p>
+				</header>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Section heading</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/section-heading.html.twig',
+										{
+											eyebrow: 'La méthode',
+											title: 'L’IA produit, l’équipe relit.',
+											text: 'Les maquettes et le code sont produits par des agents IA, ce qui raccourcit la production. Chaque étape qui décide est tenue par une personne de l’équipe.',
+											heading: 'h4',
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/section-heading.html.twig · title, eyebrow, text, heading ('h2'), id
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">List item</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'space-y-8' ) }}"
+							>
+								{%- for type in [ 'compact', 'default', 'divided', 'check' ] -%}
+									<ul>
+										{%- for text in [
+											'Thème construit sur notre starter',
+											'Mises à jour de WordPress et des extensions',
+										] -%}
+											{{-
+												include(
+													'components/list-item.html.twig',
+													{
+														text: text,
+														type: type,
+													},
+													with_context: false
+												)
+											-}}
+										{%- endfor -%}
+									</ul>
+								{%- endfor -%}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/list-item.html.twig · text, type: 'compact' | 'default' | 'divided' | 'check'
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Numbered item</h3>
+					<div class="space-y-3">
+						{%- for scheme in schemes | keys -%}
+							<ol
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{%- for item in [
+									{
+										title: 'Un prix fixe, pas une fourchette',
+										text: 'Le montant du socle est arrêté avant de commencer. Ce qui sort du périmètre est chiffré à part et validé par vous.',
+									},
+									{
+										title: 'Une seule équipe',
+										text: 'Celle qui conçoit le site le développe et le maintient.',
+									},
+								] -%}
+									{{-
+										include(
+											'components/numbered-item.html.twig',
+											item | merge( {
+												number: '%02d' | format( loop.index ),
+												heading: 'h4',
+											} ),
+											with_context: false
+										)
+									-}}
+								{%- endfor -%}
+							</ol>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/numbered-item.html.twig · number, title, text, heading ('h3') · in an ol
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Price line</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<dl
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/price-line.html.twig',
+										{
+											label: 'Refonte',
+											value: '4 900 € HT',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/price-line.html.twig',
+										{
+											label: 'Maintenance',
+											value: '190 € HT par mois',
+										},
+										with_context: false
+									)
+								-}}
+							</dl>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/price-line.html.twig · label, value · in a dl
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Contact item</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'grid gap-4' ) }}"
+							>
+								{{-
+									include(
+										'components/contact-item.html.twig',
+										{
+											label: 'Téléphone',
+											value: '06 73 77 86 08',
+											url: 'tel:+33673778608',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/contact-item.html.twig',
+										{
+											label: 'Rendez-vous',
+											value: '30 minutes en visio',
+											button: {
+												title: 'Réserver 30 minutes',
+												url: '#styleguide-content',
+											},
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/contact-item.html.twig · label, value, url (tel: or mailto:) | button {
+						title, url, target }
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Diff line and Diff block</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'space-y-6' ) }}"
+							>
+								<ul>
+									{{-
+										include(
+											'components/diff-line.html.twig',
+											{
+												text: 'Thème verrouillé chez le prestataire',
+												type: 'removed',
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/diff-line.html.twig',
+											{
+												text: 'Code et Figma à votre nom',
+												type: 'added',
+											},
+											with_context: false
+										)
+									-}}
+								</ul>
+								{{-
+									include(
+										'components/diff-block.html.twig',
+										{
+											address: 'votre-site.fr',
+											note: 'exemple',
+											removed: [
+												'WordPress 3 versions en retard',
+												'14 extensions, dont 6 abandonnées',
+												'4,8 s pour s’afficher sur mobile',
+											],
+											added: [
+												'WordPress à jour, vérifié chaque mois',
+												'5 extensions, toutes maintenues',
+												'1,6 s sur mobile',
+											],
+											link: {
+												title: 'Faire le diagnostic de mon site, 750 € HT',
+												url: '#styleguide-content',
+											},
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/diff-line.html.twig · text, type: 'removed' | 'added' · in a ul ·
+						components/diff-block.html.twig · address, note, removed, added, link { title, url }
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Activity entry</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<ul
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'space-y-6' ) }}"
+							>
+								{{-
+									include(
+										'components/activity-entry.html.twig',
+										{
+											project: 'Milia Matcha',
+											action: 'Thème Shopify mis à jour',
+											date: '-11 hours',
+										},
+										with_context: false
+									)
+								-}}
+								{{-
+									include(
+										'components/activity-entry.html.twig',
+										{
+											project: 'Olmagi',
+											action: 'Extensions WordPress mises à jour',
+											date: '-3 days',
+										},
+										with_context: false
+									)
+								-}}
+							</ul>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/activity-entry.html.twig · project, action, date · in a ul
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Browser frame</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/browser-frame.html.twig',
+										{
+											media: {
+												type: 'image',
+												image: 10,
+											},
+											badge: 'Après · 2026',
+											alt: '',
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/browser-frame.html.twig · media, badge, alt, sizes, loading · block screen
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Window splitter</h3>
+					<div class="space-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/window-splitter.html.twig',
+										{
+											id: 'styleguide-splitter-' ~ scheme,
+											before: {
+												image: 9,
+												label: 'Avant · 2023',
+											},
+											after: {
+												image: 10,
+												label: 'Après · 2026',
+											},
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/window-splitter.html.twig · id, before { image, label }, after { image, label
+						}, sizes · CINQ UI &lt;cinq-windowsplitter data-mode="clip"&gt;
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Logo tile</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<ul
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'grid grid-cols-2 gap-3 sm:grid-cols-4' ) }}"
+							>
+								{%- for name in [ 'L’Arbre Vert', 'Olmagi', 'Eigrene', 'Milia Matcha' ] -%}
+									{{-
+										include( 'components/logo-tile.html.twig', { name: name }, with_context: false )
+									-}}
+								{%- endfor -%}
+							</ul>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/logo-tile.html.twig · name, image · in a ul
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Accordion item</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+							>
+								{{-
+									include(
+										'components/accordion-group.html.twig',
+										{
+											id: 'styleguide-accordion-' ~ scheme,
+											items: [
+												{
+													title: 'Quelle différence avec le socle Express ?',
+													text: '<p>L’Express refait une boutique pour 14 900 € HT, sans accompagnement imposé.</p>',
+												},
+												{
+													title: 'Qui garde le code ?',
+													text: '<p>Vous. Le code et le Figma sont à votre nom dès la livraison.</p>',
+												},
+											],
+										},
+										with_context: false
+									)
+								-}}
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/accordion-item.html.twig · id, question, answer, open, heading ('h3') ·
+						components/accordion-group.html.twig · id, items · CINQ UI &lt;cinq-accordion&gt;
+					</p>
+				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Rich text: list, blockquote, code block</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'wysiwyg text-body text-lg' ) }}"
+							>
+								<p>Un thème du commerce se modifie mal, et chaque mise à jour le remet à zéro.</p>
+								<ul>
+									<li>Thème construit sur notre starter</li>
+									<li>Mises à jour de <strong>WordPress</strong> et des extensions</li>
+								</ul>
+								<blockquote>
+									<p>« Un thème modifié ne reçoit plus de mises à jour. »</p>
+								</blockquote>
+								<pre
+								><code>{% verbatim %}{% render 'product-card', product: product %}{% endverbatim %}</code></pre>
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">.wysiwyg ul, blockquote, pre (components/wysiwyg.css)</p>
+				</div>
+			</section>
+
+			{%- set article =
+				get_posts( {
+					posts_per_page: 1,
+					meta_key: '_thumbnail_id',
+				} ) | first
+			-%}
+			{%- set cards = {
+				'Article card': {
+					template: 'article-card',
+					params: {
+						post: article,
+						heading: 'h4',
+					},
+					doc: "post, heading ('h2'), sizes · one link stretched over the card",
+				},
+				'Link card': {
+					template: 'link-card',
+					params: {
+						title: 'Création de boutique',
+						url: '#styleguide-cards',
+						text: 'Socles Express, Standard et Signature, de 14 900 à 39 900 € HT.',
+						heading: 'h4',
+					},
+					doc: "title, url, text, heading ('h3') · one link stretched over the card",
+				},
+				'Action card': {
+					template: 'action-card',
+					params: {
+						title: 'Votre site vitrine est resté à l’ancienne',
+						text: 'Un site Elementor ou un CMS d’agence, des modifications facturées une par une, un référencement qui stagne.',
+						offer: 'Refonte WordPress',
+						price: 'À partir de 12 900 € HT',
+						link: {
+							title: 'Voir cette situation',
+							url: '#styleguide-cards',
+						},
+						heading: 'h4',
+					},
+					doc: "title, text, offer, price, link { title, url, target }, heading ('h3'), id",
+				},
+				'Image card': {
+					template: 'image-card',
+					params: {
+						image: 10,
+						alt: 'Le nouveau site de Nexiode',
+						badge: 'Groupe multi-marques · socle commun',
+						title: 'Nexiode',
+						text: 'Un site en 3 langues, conçu pour être repris sur les autres marques du groupe Agora Makers.',
+						link: {
+							title: 'Lire le cas Nexiode',
+							url: '#styleguide-cards',
+						},
+						heading: 'h4',
+					},
+					doc: "image, alt, badge, title, text, link { title, url }, heading ('h3'), sizes",
+				},
+				'Pricing card': {
+					template: 'pricing-card',
+					params: {
+						name: 'Express',
+						price: '14 900 € HT',
+						duration: '6 semaines',
+						items: [
+							'Thème construit sur notre starter',
+							'Redirections 301 comprises',
+							'Connexion logistique officielle comprise',
+						],
+						heading: 'h4',
+					},
+					doc: "name, price, duration, items, heading ('h3')",
+				},
+				'Feature card': {
+					template: 'feature-card',
+					params: {
+						file: 'maquettes.fig',
+						title: 'Le fichier Figma',
+						text: 'Remis à la livraison, avec toutes les pages et les composants.',
+						heading: 'h4',
+					},
+					doc: "file, title, text, heading ('h3')",
+				},
+				'Person card': {
+					template: 'person-card',
+					params: {
+						image: 11,
+						name: 'Joachim',
+						role: 'Directeur de l’agence',
+						classes: [ 'max-w-73' ],
+					},
+					doc: 'image, name, role, sizes',
+				},
+			} -%}
+
+			<section class="space-y-14" aria-labelledby="styleguide-cards">
+				<header class="max-w-180 space-y-3">
+					<p class="text-eyebrow text-muted">Components</p>
+					<h2 id="styleguide-cards" class="text-title-xl">Cards</h2>
+					<p class="text-muted text-sm">
+						Cards of the Figma Components page, in a Dark panel then a Light one. Article and Link
+						cards are one link stretched over the card: hover and focus show on interaction. The
+						others hold their own button or link, if any.
+					</p>
+				</header>
+
+				{%- for name, card in cards -%}
+					<div class="space-y-6">
+						<h3 class="text-title-md">{{- name -}}</h3>
+						<div class="layout-grid gap-y-3">
+							{%- for scheme in schemes | keys -%}
+								<div
+									data-scheme="{{ schemes[ scheme ] }}"
+									data-scheme-ignore
+									class="{{ html_classes( panel ) }}"
+								>
+									{{-
+										include(
+											'components/' ~ card.template ~ '.html.twig',
+											card.params,
+											with_context: false
+										)
+									-}}
+								</div>
+							{%- endfor -%}
+						</div>
+						<p class="text-mono text-subtle">
+							components/{{ card.template }}.html.twig · {{ card.doc }}
+						</p>
+					</div>
+				{%- endfor -%}
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Step card and Check card</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<div
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel, 'space-y-6' ) }}"
+							>
+								<ol>
+									{{-
+										include(
+											'components/step-card.html.twig',
+											{
+												number: '01',
+												who: 'Personne',
+												dot: true,
+												title: 'Cadrage',
+												text: 'On décide avec vous ce qu’on garde et ce qu’on refait.',
+												heading: 'h4',
+											},
+											with_context: false
+										)
+									-}}
+								</ol>
+								<ul>
+									{{-
+										include(
+											'components/check-card.html.twig',
+											{
+												title: '01 · Retard de versions',
+												text: 'Votre CMS et vos extensions ont-ils plus d’un an de retard sur leur dernière version ?',
+											},
+											with_context: false
+										)
+									-}}
+								</ul>
+							</div>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/step-card.html.twig · number, who, dot, title, text, heading ('h3') · in an
+						ol · components/check-card.html.twig · title, text · in a ul
+					</p>
+				</div>
+			</section>
+		</div>
+	</main>
+{%- endblock -%}

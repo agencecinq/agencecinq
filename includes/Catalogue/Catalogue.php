@@ -75,22 +75,6 @@ class Catalogue {
 	}
 
 	/**
-	 * Label of a platform, the id itself when unknown.
-	 *
-	 * @param string $id Platform id.
-	 * @return string
-	 */
-	public function platform_label( string $id ): string {
-		foreach ( $this->platforms() as $platform ) {
-			if ( $platform['id'] === $id ) {
-				return $platform['label'];
-			}
-		}
-
-		return $id;
-	}
-
-	/**
 	 * Packages (socles), in the order of the API.
 	 *
 	 * @param string|null $platform Platform id, null for all.
@@ -118,31 +102,19 @@ class Catalogue {
 	}
 
 	/**
-	 * Modules, in the order of the API.
+	 * A package or a retainer by id.
 	 *
-	 * @param string|null $platform Platform id, null for all.
-	 * @return array<int, array<string, mixed>>
+	 * @param string $id Line id.
+	 * @return array<string, mixed>|null
 	 */
-	public function modules( ?string $platform = null ): array {
-		return $this->on_platform( $this->list( 'modules' ), $platform );
-	}
+	public function line( string $id ): ?array {
+		foreach ( array( ...$this->packages(), ...$this->retainers() ) as $line ) {
+			if ( ( $line['id'] ?? '' ) === $id ) {
+				return $line;
+			}
+		}
 
-	/**
-	 * Modules a package accepts. The package decides, through its moduleIds.
-	 * An empty list means « not filled in yet », not « accepts nothing ».
-	 *
-	 * @param array<string, mixed> $package Package.
-	 * @return array<int, array<string, mixed>>
-	 */
-	public function modules_for( array $package ): array {
-		$ids = (array) ( $package['moduleIds'] ?? array() );
-
-		return array_values(
-			array_filter(
-				$this->modules(),
-				static fn( array $module ): bool => in_array( $module['id'] ?? '', $ids, true )
-			)
-		);
+		return null;
 	}
 
 	/**
@@ -156,19 +128,18 @@ class Catalogue {
 	}
 
 	/**
-	 * Pricing cards of a platform: its packages, its retainers, or a selection of its modules.
+	 * Pricing cards of a platform: its packages or its retainers.
 	 * Name, price, badge and the first four included lines come from the catalogue.
 	 * The featured card shows the badge of the block instead of its own, when there is one.
 	 *
-	 * @param string               $source   'catalogue' (packages), 'retainers' or 'modules'.
-	 * @param array<string, mixed> $settings Platform, packages, modules, featured and badge of the block.
+	 * @param string               $source   'catalogue' (packages) or 'retainers'.
+	 * @param array<string, mixed> $settings Platform, packages, featured and badge of the block.
 	 * @return array<int, array<string, mixed>>
 	 */
 	public function tiers( string $source, array $settings ): array {
 		$platform = (string) ( $settings['platform'] ?? '' );
 		$lines    = match ( $source ) {
 			'retainers' => $this->retainers( $platform ),
-			'modules'   => self::pick( $this->modules( $platform ), 'id', (array) ( $settings['modules'] ?? array() ) ),
 			default     => self::pick( $this->packages( $platform ), 'code', (array) ( $settings['packages'] ?? array() ) ),
 		};
 
@@ -181,8 +152,6 @@ class Catalogue {
 				if ( 'retainers' === $source ) {
 					$line['name'] = self::retainer_tier( $line );
 					$badge        = $badge ? $badge : self::response_time( $line );
-				} elseif ( 'modules' === $source ) {
-					array_unshift( $included, $line['benefit'] ?? '' );
 				} else {
 					$badge = $badge ? $badge : self::lead_time( $line );
 				}
@@ -197,82 +166,6 @@ class Catalogue {
 				);
 			},
 			$lines
-		);
-	}
-
-	/**
-	 * Price of an ad hoc day, outside any contract.
-	 *
-	 * @return float|null
-	 */
-	public function ad_hoc_day_rate(): ?float {
-		$rate = $this->data['adHocDayRateExclVat'] ?? null;
-
-		return is_numeric( $rate ) ? (float) $rate : null;
-	}
-
-	/**
-	 * Checks a composition against the catalogue and prices it.
-	 * Modules the package does not accept are dropped: the browser is never trusted.
-	 *
-	 * @param string            $platform   Platform id.
-	 * @param string            $code       Package code.
-	 * @param array<int, mixed> $module_ids Module ids.
-	 * @return array{package: array<string, mixed>, modules: array<int, array<string, mixed>>, total: array{amount: float, mode: string}}|null
-	 */
-	public function compose( string $platform, string $code, array $module_ids ): ?array {
-		$package = $this->package( $platform, $code );
-
-		if ( null === $package ) {
-			return null;
-		}
-
-		$module_ids = array_map( 'strval', $module_ids );
-		$modules    = array_values(
-			array_filter(
-				$this->modules_for( $package ),
-				static fn( array $module ): bool => in_array( $module['id'], $module_ids, true )
-			)
-		);
-
-		return array(
-			'package' => $package,
-			'modules' => $modules,
-			'total'   => self::total( array( $package, ...$modules ) ),
-		);
-	}
-
-	/**
-	 * Total of a composition: the sum of the prices, nothing else.
-	 * No project management line, no percentage, no cap on the number of modules.
-	 * One line « from » makes the total a floor; one line « on quote » makes it a quote.
-	 *
-	 * @param array<int, array<string, mixed>> $lines Packages and modules.
-	 * @return array{amount: float, mode: string}
-	 */
-	public static function total( array $lines ): array {
-		$amount = 0.0;
-		$mode   = self::FIRM;
-
-		foreach ( $lines as $line ) {
-			$price     = $line['priceExclVat'] ?? null;
-			$line_mode = self::mode( $line );
-
-			if ( self::QUOTE === $line_mode || null === $price ) {
-				$mode = self::QUOTE;
-				continue;
-			}
-
-			$amount += (float) $price;
-
-			if ( self::FROM === $line_mode && self::FIRM === $mode ) {
-				$mode = self::FROM;
-			}
-		}
-
-		return array(
-			'amount' => $amount,
-			'mode'   => $mode,
 		);
 	}
 
@@ -332,14 +225,27 @@ class Catalogue {
 	}
 
 	/**
-	 * Displayed total of a composition, same forms as price().
+	 * Price of an offer that starts at a package: « From €14,900 excl. VAT », or with the retainer that follows
+	 * it « €4,900 excl. VAT, then €1,200 excl. VAT per month ».
 	 *
-	 * @param array{amount: float, mode: string} $total Total from total().
-	 * @param bool                               $short Short form.
+	 * @param array<string, mixed>      $package  Package the offer starts at.
+	 * @param array<string, mixed>|null $retainer Optional. Retainer after the package.
 	 * @return string
 	 */
-	public static function total_label( array $total, bool $short = false ): string {
-		return self::label( $total['amount'], $total['mode'], $short );
+	public static function offer_price( array $package, ?array $retainer = null ): string {
+		if ( $retainer ) {
+			return sprintf(
+				/* translators: 1: price of the package, 2: monthly price of the retainer. */
+				_x( '%1$s, then %2$s', 'offer price', 'agencecinq' ),
+				self::price( $package ),
+				self::retainer_price( $retainer )
+			);
+		}
+
+		$price = $package['priceExclVat'] ?? null;
+		$mode  = self::QUOTE === self::mode( $package ) ? self::QUOTE : self::FROM;
+
+		return self::label( is_numeric( $price ) ? (float) $price : null, $mode, false );
 	}
 
 	/**

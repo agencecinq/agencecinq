@@ -1,0 +1,58 @@
+{#
+ # Blocks: Bullet list
+ #
+ # Figma Section/Bullet list, on bg/elevated: the Section heading, then a list of Divided List items at the
+ # reading width of 820 px, their « + » decorative.
+ #}
+
+{%- set items = block.items | default( [] ) | map( item => item.text ) | filter( text => text ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if items | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		class="bg-elevated"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-6 lg:gap-10">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: block.content.heading | default( 'h2' ),
+						id: title_id,
+					},
+					with_context: false
+				)
+			-}}
+			<ul class="max-w-205">
+				{%- for text in items -%}
+					{{-
+						include(
+							'components/list-item.html.twig',
+							{
+								text: text,
+								type: 'divided',
+							},
+							with_context: false
+						)
+					-}}
+				{%- endfor -%}
+			</ul>
+		</div>
+	</section>
+{%- endif -%}

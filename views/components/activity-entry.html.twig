@@ -1,0 +1,23 @@
+{#
+ # Components: Activity entry
+ #
+ # A li of a log: a decorative dot, the project, the action and how long ago, in a time.
+ #
+ # @param string project
+ # @param string action
+ # @param string date Date of the action, read by the date filter.
+ # @param array classes Optional extra classes.
+ #}
+
+<li class="{{ html_classes( 'flex items-start gap-3', classes | default( [] ) | join( ' ' ) ) }}">
+	<span class="bg-accent-default mt-2 size-2 shrink-0 rounded-full" aria-hidden="true"></span>
+	<div class="flex min-w-0 flex-1 flex-col gap-1">
+		<p class="text-button text-primary">{{- project -}}</p>
+		<p class="text-body text-sm">{{- action -}}</p>
+		<time class="text-mono text-muted" datetime="{{ date | date( 'c' ) }}">
+			{{-
+				__( '%s ago', 'agencecinq' ) | format( function( 'human_time_diff', date | date( 'U' ) ) )
+			-}}
+		</time>
+	</div>
+</li>

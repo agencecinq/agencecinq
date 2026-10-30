@@ -94,7 +94,7 @@ Exemple d'ouverture de bloc :
 
 {{- include( 'blocks/_layout.html.twig', { paddings: block.layout.paddings, id: block.id } ) -}}
 
-<div id="{{ block.id }}" class="text-cream">
+<div id="{{ block.id }}" class="text-primary">
 	<div class="container">
 		{%- if block.content.title -%}
 			<{{ block.content.heading | default('h2') }} class="text-title-xl">
@@ -111,11 +111,11 @@ Références : `views/blocks/page-hero.html.twig`, `views/blocks/services.html.t
 
 Pas de feuille `src/stylesheets/components/{name}.css`. Styler en **Tailwind v4 dans le Twig**, avec la syntaxe Tailwind (pas du CSS custom, pas de BEM).
 
-1. Lire `src/stylesheets/theme.css` (`@theme`) et mapper les couleurs Figma sur les tokens de teinte (`black`, `pistachio`, `cream`) ; typo et radius gardent le suffixe Figma.
-2. Token manquant → le déclarer dans `@theme` (couleur = teinte en anglais), puis l'utiliser (`bg-black`, `text-title-xxl`). Jamais `bg-[#…]`, `text-[22px]`, `tracking-[0.5px]`.
+1. Lire `src/stylesheets/theme.css` (`@theme`) : la syntaxe de code d'une variable Figma est la propriété du thème (`var(--background-color-default)` → `bg-default`) ; typo et radius gardent le suffixe Figma. Section en mode Light : `scheme-light bg-default text-primary`.
+2. Token manquant → l'ajouter d'abord au Figma, puis le déclarer dans `@theme` avec la même syntaxe (couleur = rôle, valeurs Light et Dark du Figma dans `light-dark()`) et l'utiliser (`bg-default`, `text-title-xxl`). Jamais `bg-[#…]`, `text-[22px]`, `tracking-[0.5px]`.
 3. Tailles : rem ou échelle spacing (`w-11.5`, `gap-6.5`). Letter-spacing : em. Détail : règle `design-tokens`.
 4. Typo responsive déjà exposée : classe publique (`text-title-xxl`), pas `-mobile` / `-desktop`.
-5. Grille de page : `container` + `layout-grid` (`grid-cols-12 gap-x-4 lg:gap-x-6`), identique à l’overlay `views/components/grid.html.twig`. Gutters des sous-grilles (2 / 3 / 4 / 6 cols) : `gap-x-4 lg:gap-x-6` pour rester sur les mêmes lignes.
+5. Grille de page : `container` + `layout-grid` (4 colonnes sous `lg`, 12 au-dessus), identique à l’overlay `views/components/grid.html.twig`. Gutters des sous-grilles : `gap-x-3 lg:gap-x-6` pour rester sur les mêmes lignes.
 6. Espacement entre siblings : `space-y-*` / `space-x-*` sur le parent, pas `mt-*` / `ml-*` sur les enfants.
 7. Décoration sans contenu (ligne, nœud, overlay) : `before:` / `after:`, pas un élément vide.
 8. Syntaxe Tailwind native : utiliser l'utilitaire officiel, pas une valeur arbitraire équivalente. Le linter Tailwind le signale. Ex. `aspect-4/5` (pas `aspect-[4/5]`), `w-11.5` (pas `w-[2.875rem]` si l'échelle le permet).

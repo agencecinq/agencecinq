@@ -1,0 +1,28 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T05 · Emergency",
+	"description": "Urgent help on a platform: the ways to reach the agency come first, no closing CTA. Example: /shopify/urgence/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=52-5658",
+	"sections": [
+		{
+			"label": "Breadcrumb",
+			"block": "breadcrumb"
+		},
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Contact details",
+			"block": "contact_details"
+		},
+		{
+			"label": "Rich text",
+			"block": "rich_text"
+		},
+		{
+			"label": "Accordion",
+			"block": "accordion"
+		}
+	]
+}

@@ -1,0 +1,48 @@
+{#
+ # Components: Toast
+ #
+ # Figma Overlay/Toast, through <cinq-toast>: a status message at the bottom of the screen that stays until it
+ # is closed. A success is a status, an error an alert (RGAA 7.5); the message is written, the color and the
+ # icon only repeat it.
+ #
+ # @param string id
+ # @param string type Optional. 'success' (default) or 'error'.
+ #}
+
+{%- set type = type | default( 'success' ) -%}
+
+<cinq-toast
+	id="{{ id }}"
+	role="{{ type == 'error' ? 'alert' : 'status' }}"
+	aria-atomic="true"
+	class="{{
+		html_classes(
+			'bg-elevated shadow-overlay pointer-events-auto flex w-full items-center gap-3 rounded-lg border py-2 pr-2 pl-4 not-open:hidden lg:w-105',
+			type == 'error' ? 'border-status-error' : 'border-accent-default'
+		)
+	}}"
+>
+	{{-
+		include(
+			'svg/use.html.twig',
+			{
+				icon: type == 'error' ? 'close' : 'check',
+				classes: [ 'text-primary size-6 shrink-0' ],
+				attributes: { 'aria-hidden': 'true' },
+			},
+			with_context: false
+		)
+	-}}
+	<p data-content class="text-primary min-w-0 flex-1 text-sm"></p>
+	{{-
+		include(
+			'components/icon-button.html.twig',
+			{
+				label: __( 'Close', 'agencecinq' ),
+				icon: 'close',
+				attributes: { 'data-dismiss': '' },
+			},
+			with_context: false
+		)
+	-}}
+</cinq-toast>

@@ -1,0 +1,37 @@
+{#
+ # Components: Feature card
+ #
+ # Something delivered: a decorative file label, the title and the text.
+ #
+ # @param string file File name, e.g. maquettes.fig.
+ # @param string title
+ # @param string text
+ # @param string heading Optional. Tag of the title, 'h3' by default.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set heading = heading | default( 'h3' ) -%}
+
+<div
+	class="{{
+		html_classes(
+			'border-default bg-surface flex flex-col items-start gap-4 rounded-lg border p-6',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	{%- if file -%}
+		<p
+			class="border-accent bg-accent-soft text-mono text-primary rounded-sm border px-3 py-2"
+			aria-hidden="true"
+		>
+			{{- file -}}
+		</p>
+	{%- endif -%}
+	<{{ heading }} class="text-title-md text-primary">
+		{{- title -}}
+	</{{ heading }}>
+	{%- if text -%}
+		<p class="text-body text-base">{{- text -}}</p>
+	{%- endif -%}
+</div>

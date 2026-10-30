@@ -1,0 +1,21 @@
+{#
+ # Components: Price line
+ #
+ # A label and its amount, as a dt/dd pair of a dl.
+ #
+ # @param string label
+ # @param string value
+ # @param array classes Optional extra classes.
+ #}
+
+<div
+	class="{{
+		html_classes(
+			'border-default text-button flex flex-col gap-1 border-b py-5',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<dt class="text-primary">{{- label -}}</dt>
+	<dd class="text-muted">{{- value -}}</dd>
+</div>

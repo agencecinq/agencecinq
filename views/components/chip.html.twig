@@ -1,26 +1,19 @@
 {#
- # Chip: pill-style control, button or link.
+ # Chip: pill-style filter, button or link (Figma Filter).
  #
  # @param string title The chip label.
  # @param string url Optional. If set, renders an <a> instead of <button>.
  # @param string target Optional. For links: '_self' or '_blank'.
+ # @param bool active Optional. Current filter: `aria-current="page"` on a link, `aria-pressed` on a button.
  # @param array classes Additional CSS classes to apply to the chip. Optional.
  #}
 
 {%- set classes =
 	[
-		active ? 'is-active',
-		'border [&.is-active]:bg-pistachio [&.is-active]:border-cream-soft [&.is-active]:text-cream',
-		mode == 'dark' ? 'text-cream bg-black/14 border-cream-soft/0' : 'text-cream border-cream-soft',
-		'[backdrop-filter:blur(10px)]',
-		'inline-flex items-center',
-		'px-2.5',
-		'py-2.25',
-		'lg:px-2.75',
-		'lg:py-[0.609375rem]',
-		'rounded-6',
-		'text-cta',
-		'border',
+		'text-button text-primary border-control inline-flex items-center rounded-full border px-4 py-2 transition-colors',
+		'hover:bg-surface-hover focus-visible:outline-focus-ring focus-visible:outline-2 focus-visible:outline-offset-2',
+		'aria-[current=page]:border-(--text-color-primary) aria-[current=page]:bg-(--text-color-primary) aria-[current=page]:text-(--background-color-default)',
+		'aria-pressed:border-(--text-color-primary) aria-pressed:bg-(--text-color-primary) aria-pressed:text-(--background-color-default)',
 	]
 		| merge( classes | default( [] ) )
 		| join( ' ' )
@@ -38,6 +31,7 @@
 						rel: 'noopener noreferrer',
 					}
 					: target ? { target: target },
+				active ? { 'aria-current': 'page' },
 				attributes | default( {} )
 			)
 		}}
@@ -45,7 +39,16 @@
 		{{- title -}}
 	</a>
 {%- else -%}
-	<button type="button" class="{{ classes }}" {{ html_attr( attributes | default( {} ) ) }}>
+	<button
+		type="button"
+		class="{{ classes }}"
+		{{
+			html_attr(
+				active is defined ? { 'aria-pressed': active ? 'true' : 'false' },
+				attributes | default( {} )
+			)
+		}}
+	>
 		{{- title -}}
 	</button>
 {%- endif -%}

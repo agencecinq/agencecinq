@@ -1,0 +1,44 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T04 · Local page",
+	"description": "A platform in a city. Example: /shopify/paris/ · /wordpress/paris/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=52-5179",
+	"sections": [
+		{
+			"label": "Breadcrumb",
+			"block": "breadcrumb"
+		},
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Rich text",
+			"block": "rich_text"
+		},
+		{
+			"label": "Action cards",
+			"block": "action_cards"
+		},
+		{
+			"label": "Image cards",
+			"block": "image_cards"
+		},
+		{
+			"label": "Quote",
+			"block": "quote"
+		},
+		{
+			"label": "Accordion",
+			"block": "accordion"
+		},
+		{
+			"label": "Link row",
+			"block": "link_row"
+		},
+		{
+			"label": "CTA",
+			"block": "cta"
+		}
+	]
+}

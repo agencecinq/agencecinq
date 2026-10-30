@@ -12,8 +12,9 @@ namespace AgenceCinq\Setup;
 use Twig\Extra\Html\{ HtmlExtension };
 use Twig\Extra\Intl\{ IntlExtension };
 use Twig\{ TwigFilter, TwigFunction };
-use AgenceCinq\{ Service, Vite };
+use AgenceCinq\Service;
 use AgenceCinq\Catalogue\{ Catalogue };
+use AgenceCinq\GitHub\{ Activity };
 
 /**
  * Twig
@@ -93,39 +94,7 @@ class Twig implements Service {
 			)
 		);
 
-		// Add get_extended function.
-		if ( function_exists( 'get_extended' ) ) {
-			$twig->addFunction(
-				new TwigFunction(
-					'get_extended',
-					function ( $content ) {
-						return get_extended( $content );
-					}
-				)
-			);
-		}
-
-		if ( function_exists( 'wp_get_document_title' ) ) {
-			$twig->addFunction(
-				new TwigFunction(
-					'wp_get_document_title',
-					function () {
-						return wp_get_document_title();
-					}
-				)
-			);
-		}
-
 		$twig->addFunction( new TwigFunction( 'uniqid', 'uniqid' ) );
-
-		$twig->addFunction(
-			new TwigFunction(
-				'asset',
-				function ( $asset ) {
-					return Vite::asset( $asset );
-				}
-			)
-		);
 
 		// Phone number of a tel: link: digits and the leading +.
 		$twig->addFilter(
@@ -147,37 +116,24 @@ class Twig implements Service {
 			)
 		);
 
+		// Colors from includes/schemes.php, for the styleguide and the scheme easter egg.
+		$twig->addFunction( new TwigFunction( 'cinq_palette', 'cinq_palette' ) );
+		$twig->addFunction( new TwigFunction( 'cinq_schemes', 'cinq_schemes' ) );
+
+		// Repositories of the organization, last pushed first, and the weeks of commits of their default branch.
+		$twig->addFunction( new TwigFunction( 'github_activity', array( Activity::class, 'get' ) ) );
+
 		// Prices of a catalogue line, or of a manual item with the same fields, even when Central is unavailable.
 		$twig->addFilter( new TwigFilter( 'price', array( Catalogue::class, 'price' ) ) );
-		$twig->addFilter( new TwigFilter( 'retainer_tier', array( Catalogue::class, 'retainer_tier' ) ) );
 		$twig->addFilter( new TwigFilter( 'retainer_price', array( Catalogue::class, 'retainer_price' ) ) );
+		$twig->addFilter( new TwigFilter( 'offer_price', array( Catalogue::class, 'offer_price' ) ) );
 
-		// Add Yoast Breadcrumbs function.
+		// Breadcrumb levels ({ url, text }) of the current page, from Yoast SEO.
 		$twig->addFunction(
 			new TwigFunction(
-				'yoast_breadcrumb',
-				function ( $before = '<div class="text-xs">', $after = '</div>', $display = false ) {
-					return function_exists( 'yoast_breadcrumb' ) ? yoast_breadcrumb( $before, $after, $display ) : '';
-				}
-			)
-		);
-
-		// @see https://developer.wordpress.org/reference/functions/get_search_form/
-		$twig->addFunction(
-			new TwigFunction(
-				'get_search_form',
-				function ( $args = array( 'echo' => false ) ) {
-					return get_search_form( $args );
-				}
-			)
-		);
-
-		// @see https://developer.wordpress.org/reference/functions/get_search_query/
-		$twig->addFunction(
-			new TwigFunction(
-				'get_search_query',
-				function () {
-					return get_search_query();
+				'breadcrumbs',
+				function (): array {
+					return function_exists( 'YoastSEO' ) ? YoastSEO()->meta->for_current_page()->breadcrumbs : array();
 				}
 			)
 		);

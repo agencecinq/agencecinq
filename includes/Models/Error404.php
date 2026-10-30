@@ -24,27 +24,32 @@ class Error404 {
 	 * @param array|null $theme_404 Theme 404 group from ACF options.
 	 *
 	 * @return array{
-	 *     overline: string,
 	 *     title: string,
 	 *     text: string,
 	 *     link: array{title: string, url: string, target: string},
-	 *     items: array
+	 *     host: string,
+	 *     removed: string,
+	 *     added: string
 	 * }
 	 */
 	public static function context( ?array $theme_404 = null ): array {
+		global $wp;
+
 		$theme_404 = $theme_404 ?? array();
 		$link      = ! empty( $theme_404['link'] ) && is_array( $theme_404['link'] ) ? $theme_404['link'] : array();
+		$url       = ! empty( $link['url'] ) ? (string) $link['url'] : '';
 
 		return array(
-			'overline' => ! empty( $theme_404['overline'] ) ? $theme_404['overline'] : __( 'Error 404', 'agencecinq' ),
-			'title'    => isset( $theme_404['title'] ) ? $theme_404['title'] : __( 'This page does not exist.', 'agencecinq' ),
-			'text'     => isset( $theme_404['text'] ) ? $theme_404['text'] : __( 'It may have been moved, or the link that brought you here was already broken. Here is where to pick up.', 'agencecinq' ),
-			'link'     => array(
-				'title'  => ! empty( $link['title'] ) ? $link['title'] : __( 'Back to home', 'agencecinq' ),
-				'url'    => ! empty( $link['url'] ) ? $link['url'] : home_url( '/' ),
+			'title'   => ! empty( $theme_404['title'] ) ? $theme_404['title'] : __( 'This page does not exist, or no longer does.', 'agencecinq' ),
+			'text'    => ! empty( $theme_404['text'] ) ? $theme_404['text'] : __( 'If you come from an old link, the page has most likely changed address. The sitemap lists them all.', 'agencecinq' ),
+			'link'    => array(
+				'title'  => ! empty( $link['title'] ) ? $link['title'] : __( 'See the sitemap', 'agencecinq' ),
+				'url'    => $url,
 				'target' => isset( $link['target'] ) ? $link['target'] : '',
 			),
-			'items'    => isset( $theme_404['items'] ) && is_array( $theme_404['items'] ) ? $theme_404['items'] : array(),
+			'host'    => (string) wp_parse_url( home_url(), PHP_URL_HOST ),
+			'removed' => esc_html( user_trailingslashit( '/' . $wp->request ) ),
+			'added'   => $url ? esc_html( wp_make_link_relative( $url ) ) : '',
 		);
 	}
 }

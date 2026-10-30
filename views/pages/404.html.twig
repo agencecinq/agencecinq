@@ -1,6 +1,10 @@
 {#
  # 404
  #
+ # Figma T20 · Not found, the Status message over the snake: the link to the sitemap, the one back to the
+ # home page, and the diff of the address that no longer exists. The snake plays behind, with a keyboard,
+ # its canvas hidden on touch screens.
+ #
  # @package WordPress
  # @subpackage AgenceCinq
  #}
@@ -13,11 +17,11 @@
 			<cinq-snake cols="39" rows="15" class="relative block">
 				<canvas
 					tabindex="0"
-					class="text-pistachio-soft absolute inset-0 z-1 block size-full touch-none outline-none pointer-coarse:hidden"
+					class="text-accent-soft absolute inset-0 z-1 block size-full touch-none outline-none pointer-coarse:hidden"
 					aria-label="{{ __( 'Snake. Arrow keys to move.', 'agencecinq' ) }}"
 				></canvas>
 				<div
-					class="text-eyebrow text-pistachio pointer-events-none absolute inset-x-0 top-6 z-5 container flex items-center gap-2 uppercase pointer-coarse:hidden"
+					class="text-eyebrow text-accent-default pointer-events-none absolute inset-x-0 top-6 z-5 container flex items-center gap-2 pointer-coarse:hidden"
 				>
 					<p class="flex items-center gap-2">
 						{{- __( 'Score', 'agencecinq' ) -}}
@@ -27,84 +31,43 @@
 						type="button"
 						hidden
 						data-replay
-						class="hover:text-light-pistachio focus-visible:text-light-pistachio pointer-events-auto uppercase transition-colors hover:underline focus-visible:underline"
+						class="hover:text-accent-hover focus-visible:text-accent-hover pointer-events-auto transition-colors hover:underline focus-visible:underline"
 					>
 						{{- __( 'Replay', 'agencecinq' ) -}}
 					</button>
 				</div>
-				<div
-					class="pointer-events-none relative z-2 container flex flex-col items-center space-y-8 py-31.5 text-center lg:py-42"
-				>
-					<div class="flex w-full flex-col items-center space-y-8">
-						{{-
-							include(
-								'svg/use.html.twig',
+				{{-
+					include(
+						'components/status-message.html.twig',
+						{
+							id: 'error-title',
+							title: post.title,
+							text: post.text,
+							links: [
+								post.link.url
+									? post.link | merge( {
+										variant: 'primary',
+										classes: [ 'pointer-events-auto' ],
+									} ),
 								{
-									icon: 'mark',
-									classes: [ 'text-pistachio h-[1.959rem] w-14' ],
-									attributes: { 'aria-hidden': 'true' },
+									title: __( 'Back to home', 'agencecinq' ),
+									url: home_url,
+									variant: 'text',
+									arrow: false,
+									classes: [ 'pointer-events-auto' ],
 								},
-								with_context: false
-							)
-						-}}
-
-						<div class="flex w-full flex-col items-center space-y-12">
-							<div class="flex w-full flex-col items-center space-y-6">
-								<header class="flex flex-col items-center space-y-5">
-									{%- if post.overline -%}
-										<p class="text-eyebrow text-stone">{{- post.overline -}}</p>
-									{%- endif -%}
-
-									{%- if post.title -%}
-										<h1 id="error-title" class="text-title-xxl text-balance">{{- post.title -}}</h1>
-									{%- endif -%}
-								</header>
-
-								{%- if post.text -%}
-									<p class="text-taupe max-w-130 text-lg">{{- post.text | raw -}}</p>
-								{%- endif -%}
-							</div>
-
-							{{-
-								include(
-									'components/button.html.twig',
-									post.link
-										| default( {} )
-										| merge( {
-											variant: 'primary',
-											classes: 'pointer-events-auto',
-										} ),
-									with_context: false
-								)
-							-}}
-						</div>
-					</div>
-
-					{%- set items =
-						post.items | default( [] ) | filter( item => item.link.url and item.link.title )
-					-%}
-					{%- if items | length -%}
-						<nav aria-label="{{ __( 'Related links', 'agencecinq' ) }}">
-							<ul
-								class="text-label text-taupe flex flex-wrap items-start justify-center gap-x-6 gap-y-3"
-							>
-								{%- for item in items -%}
-									<li itemscope itemtype="https://schema.org/SiteNavigationElement">
-										<a
-											href="{{ item.link.url }}"
-											itemprop="url"
-											class="hover:text-pistachio transition-colors"
-											{{ item.link.target == '_blank'
-												? 'target="_blank" rel="noopener noreferrer"' }}
-										>
-											<span itemprop="name">{{- item.link.title -}}</span>
-										</a>
-									</li>
-								{%- endfor -%}
-							</ul>
-						</nav>
-					{%- endif -%}
-				</div>
+							] | filter( link => link ),
+							diff: {
+								address: post.host,
+								note: __( 'error 404', 'agencecinq' ),
+								removed: [ post.removed ],
+								added: post.added ? [ post.added ] : [],
+							},
+							classes: [ 'pointer-events-none relative z-2' ],
+						},
+						with_context: false
+					)
+				-}}
 			</cinq-snake>
 		</section>
 	</main>

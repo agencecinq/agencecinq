@@ -1,0 +1,35 @@
+{#
+ # Blocks: Page header
+ #
+ # Figma Section/Page header, through components/page-header.html.twig, its title in H1.
+ #}
+
+{%- if block.content.title -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	{{-
+		include(
+			'components/page-header.html.twig',
+			{
+				id: block.id,
+				eyebrow: block.content.eyebrow,
+				title: block.content.title,
+				text: block.content.text,
+				meta: block.content.meta,
+				links: block.content.links,
+				before: block.before,
+				after: block.after,
+				scheme: block.layout.color_scheme,
+			},
+			with_context: false
+		)
+	-}}
+{%- endif -%}

@@ -1,0 +1,100 @@
+{#
+ # Blocks: Contact details
+ #
+ # Figma Section/Contact details: the Section heading, then the ways to reach us of the theme options as
+ # Contact items side by side from lg, the 30-minute call first, and a note such as the address. No form:
+ # the conversions are the clicks on the call, the phone and the email.
+ #}
+
+{%- set contact = theme.contact | default( {} ) -%}
+{%- set channels = [] -%}
+{%- if block.booking and ( contact.link.url | default( false ) ) -%}
+	{%- set channels =
+		channels | merge(
+			[
+				{
+					label: __( 'Appointment', 'agencecinq' ),
+					value: __( '30 minutes by video', 'agencecinq' ),
+					button: contact.link,
+				},
+			]
+		)
+	-%}
+{%- endif -%}
+{%- if contact.phone | default( false ) -%}
+	{%- set channels =
+		channels | merge(
+			[
+				{
+					label: __( 'Phone', 'agencecinq' ),
+					value: contact.phone,
+					url: 'tel:' ~ ( contact.phone | tel ),
+				},
+			]
+		)
+	-%}
+{%- endif -%}
+{%- if contact.email | default( false ) -%}
+	{%- set channels =
+		channels | merge(
+			[
+				{
+					label: __( 'Email', 'agencecinq' ),
+					value: contact.email,
+					url: 'mailto:' ~ contact.email,
+				},
+			]
+		)
+	-%}
+{%- endif -%}
+{%- set span =
+	{
+		2: 'lg:col-span-6',
+		3: 'lg:col-span-4',
+	}[ channels | length ] | default( 'lg:col-span-6' )
+-%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if channels | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-6 lg:gap-10">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: block.content.heading | default( 'h2' ),
+						id: title_id,
+					},
+					with_context: false
+				)
+			-}}
+			<ul class="layout-grid items-start gap-y-4">
+				{%- for channel in channels -%}
+					<li class="{{ html_classes( 'col-span-full', span ) }}">
+						{{- include( 'components/contact-item.html.twig', channel, with_context: false ) -}}
+					</li>
+				{%- endfor -%}
+			</ul>
+			{%- if block.note -%}
+				<p class="text-muted text-sm">{{- block.note -}}</p>
+			{%- endif -%}
+		</div>
+	</section>
+{%- endif -%}

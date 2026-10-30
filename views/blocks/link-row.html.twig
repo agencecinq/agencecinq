@@ -1,0 +1,57 @@
+{#
+ # Blocks: Link row
+ #
+ # Figma Section/Link row, under a rule: its title, then up to four Link items, in a row from lg on three
+ # columns each, each underlined label reading on its own.
+ #}
+
+{%- set items =
+	block.items | default( [] ) | filter( item => item.link.url | default( false ) ) | slice( 0, 4 )
+-%}
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if items | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		class="border-default border-t"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-8">
+			{%- if block.content.title -%}
+				<{{ heading }} id="{{ title_id }}" class="text-title-lg text-primary">
+					{{- block.content.title -}}
+				</{{ heading }}>
+			{%- endif -%}
+			<ul class="layout-grid gap-y-4">
+				{%- for item in items -%}
+					<li class="col-span-full lg:col-span-3">
+						{{-
+							include(
+								'components/link-item.html.twig',
+								{
+									title: item.link.title,
+									url: item.link.url,
+									target: item.link.target,
+									text: item.text,
+								},
+								with_context: false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+		</div>
+	</section>
+{%- endif -%}

@@ -1,0 +1,66 @@
+{#
+ # Blocks: Numbered list
+ #
+ # Figma Section/Numbered list, on bg/elevated to pace the page without changing the scheme: the Section
+ # heading, then an ordered list of Numbered items. The order is the list's; the numbers are decorative.
+ #}
+
+{%- set items = block.items | default( [] ) | filter( item => item.title ) -%}
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if items | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		class="bg-elevated"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-8 lg:gap-14">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: heading,
+						id: title_id,
+					},
+					with_context: false
+				)
+			-}}
+
+			<ol>
+				{%- for item in items -%}
+					{{-
+						include(
+							'components/numbered-item.html.twig',
+							{
+								number: '%02d' | format( loop.index ),
+								title: item.title,
+								text: item.text,
+								heading: {
+									h1: 'h2',
+									h2: 'h3',
+									h3: 'h4',
+								}[ heading ],
+							},
+							with_context: false
+						)
+					-}}
+				{%- endfor -%}
+			</ol>
+		</div>
+	</section>
+{%- endif -%}

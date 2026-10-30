@@ -1,0 +1,90 @@
+{#
+ # Blocks: Image cards
+ #
+ # Figma Section/Image cards: the Section heading, then one Image card per case study, three per row from lg
+ # on four columns each: the screenshot of its hero, the situation the client started from, the client,
+ # the summary and its link. Without a choice, the three latest case studies other than the current page.
+ #}
+
+{%- set cases = block.cases | default( [] ) -%}
+{%- set posts =
+	get_posts(
+		cases | length
+			? {
+				post_type: 'case-study',
+				post__in: cases,
+				orderby: 'post__in',
+				posts_per_page: -1,
+			}
+			: {
+				post_type: 'case-study',
+				posts_per_page: 3,
+				post__not_in: [ post.id | default( 0 ) ],
+			}
+	)
+-%}
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if posts | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-8 lg:gap-14">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: heading,
+						id: title_id,
+					},
+					with_context: false
+				)
+			-}}
+
+			<ul class="layout-grid gap-y-6">
+				{%- for study in posts -%}
+					<li class="col-span-full lg:col-span-4">
+						{{-
+							include(
+								'components/image-card.html.twig',
+								{
+									image: study.screenshot,
+									badge: study.situation,
+									title: study.client,
+									text: study.summary,
+									link: {
+										title: __( 'Read the %s case', 'agencecinq' ) | format( study.client ),
+										url: study.link,
+									},
+									heading: {
+										h1: 'h2',
+										h2: 'h3',
+										h3: 'h4',
+									}[ heading ],
+									sizes: '(min-width: 90rem) 25rem, (min-width: 64rem) calc((100vw - 15.5rem) / 3), calc(100vw - 2.5rem)',
+								},
+								with_context: false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+		</div>
+	</section>
+{%- endif -%}

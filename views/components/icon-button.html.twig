@@ -1,0 +1,39 @@
+{#
+ # Components: Icon button
+ #
+ # Icon-only button with a 44 × 44 px target. Its label is required: it names the button.
+ #
+ # @param string label The accessible name (aria-label), e.g. "Close".
+ # @param string icon Sprite icon name. Ignored when icon_html is given.
+ # @param string icon_html Optional raw icon markup, e.g. two icons switched by aria-expanded.
+ # @param object attributes Optional extra HTML attributes.
+ # @param array classes Optional extra classes.
+ #}
+
+<button
+	type="button"
+	class="{{
+		html_classes(
+			'hover:bg-surface-hover focus-visible:outline-focus-ring inline-flex size-11 shrink-0 items-center justify-center rounded-full transition-colors',
+			'focus-visible:outline-2 focus-visible:outline-offset-2',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+	{{ html_attr( { 'aria-label': label }, attributes | default( {} ) ) }}
+>
+	{%- if icon_html -%}
+		{{- icon_html -}}
+	{%- else -%}
+		{{-
+			include(
+				'svg/use.html.twig',
+				{
+					icon: icon,
+					classes: [ 'size-6 pointer-events-none' ],
+					attributes: { 'aria-hidden': 'true' },
+				},
+				with_context: false
+			)
+		-}}
+	{%- endif -%}
+</button>

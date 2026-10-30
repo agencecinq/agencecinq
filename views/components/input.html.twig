@@ -1,0 +1,60 @@
+{#
+ # Components: Input
+ #
+ # Text field under its visible label. The placeholder is an example, never the label. An invalid field
+ # is aria-invalid and described by its error, which says how to fix the value. Focus wins over error.
+ #
+ # @param string id Ties the label and the error to the field.
+ # @param string label Add « (obligatoire) » when required.
+ # @param string type Optional. Defaults to "text".
+ # @param string error Optional. Rendered as {id}-error.
+ # @param bool invalid Optional. Shows the error, true by default when there is one. False keeps it hidden
+ #   for a script to show, which then sets aria-invalid and aria-describedby.
+ # @param object attributes Optional field attributes: name, placeholder, autocomplete, required, disabled…
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set error_id = id ~ '-error' -%}
+{%- set invalid = error and ( invalid ?? true ) -%}
+
+<div
+	class="{{
+		html_classes(
+			'flex flex-col gap-2 has-disabled:opacity-50',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<label for="{{ id }}" class="text-button text-primary">{{- label -}}</label>
+	<input
+		id="{{ id }}"
+		type="{{ type | default( 'text' ) }}"
+		class="{{
+			html_classes(
+				'border-control bg-surface text-primary placeholder:text-muted w-full rounded-sm border px-4 py-3.5 text-base',
+				'aria-invalid:border-status-error aria-invalid:inset-ring-status-error aria-invalid:inset-ring',
+				'focus:outline-focus-ring focus:outline-2 focus:-outline-offset-2'
+			)
+		}}"
+		{{
+			html_attr(
+				invalid
+					? {
+						'aria-invalid': 'true',
+						'aria-describedby': error_id,
+					},
+				attributes | default( {} )
+			)
+		}}
+	/>
+	{%- if error -%}
+		<p
+			id="{{ error_id }}"
+			class="text-status-error flex gap-2 text-sm"
+			{{ invalid ? '' : 'hidden' }}
+		>
+			<span class="text-button" aria-hidden="true">!</span>
+			<span>{{- error -}}</span>
+		</p>
+	{%- endif -%}
+</div>

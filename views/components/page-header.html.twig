@@ -1,0 +1,121 @@
+{#
+ # Components: Page header
+ #
+ # Figma Section/Page header, the top of a situation, an offer or a case study: the eyebrow, the title, the
+ # text, a meta line and two buttons on seven columns, then an optional before and after, the site before
+ # in greys above the site after, on the last five.
+ #
+ # @param string title
+ # @param string id Optional. Id of the section, the title taking id ~ '-title'.
+ # @param string eyebrow Optional.
+ # @param string text Optional.
+ # @param string meta Optional, e.g. « Client: Eigrene · Platform: WordPress ».
+ # @param array links Optional. Links { title, url, target }: the first is the primary button, the second the
+ # secondary one.
+ # @param object before Optional. { image } of the site before.
+ # @param object after Optional. { image } of the site after.
+ # @param string heading Optional. Tag of the title, 'h1' by default.
+ # @param string scheme Optional. Color scheme of the section (includes/schemes.php), the page's by default.
+ # @param array classes Optional extra classes, e.g. the paddings.
+ #}
+
+{%- set id = id | default( 'page-header' ) -%}
+{%- set heading = heading | default( 'h1' ) -%}
+{%- set links = links | default( [] ) | filter( link => link.title | default( false ) ) -%}
+{%- set captures =
+	[
+		{
+			image: before.image | default( null ),
+			label: __( 'Before', 'agencecinq' ),
+			dot: false,
+			classes: 'bg-media grayscale',
+		},
+		{
+			image: after.image | default( null ),
+			label: __( 'After', 'agencecinq' ),
+			dot: true,
+			classes: 'bg-elevated',
+		},
+	] | filter( capture => capture.image )
+-%}
+
+<section
+	id="{{ id }}"
+	data-scheme="{{ scheme | default( '' ) }}"
+	class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}"
+	aria-labelledby="{{ id }}-title"
+>
+	<div class="layout-grid container items-start gap-y-8">
+		<div class="col-span-full flex flex-col items-start gap-5 lg:col-span-7 lg:gap-6">
+			{%- if eyebrow -%}
+				<p class="text-eyebrow text-muted">{{- eyebrow -}}</p>
+			{%- endif -%}
+			<{{ heading }} id="{{ id }}-title" class="text-title-xxl text-primary">
+				{{- title -}}
+			</{{ heading }}>
+			{%- if text -%}
+				<p class="text-body text-xl">{{- text -}}</p>
+			{%- endif -%}
+			{%- if meta -%}
+				<p class="text-muted text-sm">{{- meta -}}</p>
+			{%- endif -%}
+			{%- if links | length -%}
+				<div class="flex flex-wrap gap-4">
+					{%- for link in links -%}
+						{{-
+							include(
+								'components/button.html.twig',
+								link | merge( {
+									variant: loop.first ? 'primary' : 'secondary',
+									arrow: loop.first,
+								} ),
+								with_context: false
+							)
+						-}}
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+		</div>
+
+		{%- if captures | length -%}
+			<div class="col-span-full flex flex-col gap-2 lg:col-span-5">
+				{%- for capture in captures -%}
+					<figure
+						class="{{
+							html_classes(
+								'border-default relative aspect-30/11 overflow-hidden rounded-md border',
+								capture.classes
+							)
+						}}"
+					>
+						{{-
+							include(
+								'components/image.html.twig',
+								{
+									image: capture.image,
+									sizes: '(min-width: 90rem) 31.5rem, (min-width: 64rem) calc((100vw - 12.5rem) * 5 / 12), calc(100vw - 2.5rem)',
+									loading: 'eager',
+									classes: [ 'size-full object-cover object-top' ],
+								},
+								with_context: false
+							)
+						-}}
+						<figcaption class="absolute top-3 left-3">
+							{{-
+								include(
+									'components/badge.html.twig',
+									{
+										title: capture.label,
+										dot: capture.dot,
+										classes: [ 'bg-default' ],
+									},
+									with_context: false
+								)
+							-}}
+						</figcaption>
+					</figure>
+				{%- endfor -%}
+			</div>
+		{%- endif -%}
+	</div>
+</section>

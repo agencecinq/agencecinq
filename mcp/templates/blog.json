@@ -1,0 +1,20 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T12 · Blog",
+	"description": "The page for posts. Its categories and authors reuse these blocks with their own name and description. Example: /blog/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=53-6276",
+	"sections": [
+		{
+			"label": "Listing header",
+			"block": "listing_header"
+		},
+		{
+			"label": "Post grid",
+			"block": "post_grid"
+		},
+		{
+			"label": "Signup form",
+			"block": "signup_form"
+		}
+	]
+}

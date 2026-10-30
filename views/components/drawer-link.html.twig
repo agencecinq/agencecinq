@@ -1,0 +1,56 @@
+{#
+ # Components: Drawer link
+ #
+ # Mobile menu entry. With `controls`, a disclosure button (aria-expanded) that unfolds the level 2
+ # links, to wrap in <cinq-disclosure-button>; otherwise a link. A bar marks the current page.
+ #
+ # @param string title The entry text.
+ # @param string url Optional. Link URL, without `controls`.
+ # @param string controls Optional. Id of the level 2 list the button unfolds.
+ # @param bool expanded Optional. Level 2 list open on load.
+ # @param bool current Optional. Current page.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set classes =
+	[
+		'text-title-md text-primary border-default flex w-full items-center gap-3 border-b py-4 text-start',
+		'focus-visible:outline-focus-ring focus-visible:outline-2 focus-visible:-outline-offset-2',
+		'aria-[current=page]:before:bg-accent-default aria-[current=page]:before:h-6 aria-[current=page]:before:w-0.75 aria-[current=page]:before:shrink-0 aria-[current=page]:before:rounded-xs',
+	]
+		| merge( classes | default( [] ) )
+		| join( ' ' )
+-%}
+
+{%- if controls -%}
+	<button
+		type="button"
+		class="{{ classes }} group/drawer-link"
+		{{
+			html_attr(
+				{
+					'aria-expanded': expanded ? 'true' : 'false',
+					'aria-controls': controls,
+				},
+				current ? { 'aria-current': 'page' }
+			)
+		}}
+	>
+		<span class="flex-1">{{- title -}}</span>
+		{{-
+			include(
+				'svg/use.html.twig',
+				{
+					icon: 'chevron-down',
+					classes: [ 'size-6 shrink-0 group-aria-expanded/drawer-link:rotate-180' ],
+					attributes: { 'aria-hidden': 'true' },
+				},
+				with_context: false
+			)
+		-}}
+	</button>
+{%- elseif url -%}
+	<a class="{{ classes }}" {{ html_attr( { href: url }, current ? { 'aria-current': 'page' } ) }}>
+		<span class="flex-1">{{- title -}}</span>
+	</a>
+{%- endif -%}

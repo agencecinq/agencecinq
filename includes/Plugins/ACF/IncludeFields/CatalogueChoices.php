@@ -55,6 +55,21 @@ class CatalogueChoices {
 	}
 
 	/**
+	 * Package ids, labelled with their platform, name and price, for a choice across platforms.
+	 *
+	 * @return array<string, string>
+	 */
+	public static function package_ids(): array {
+		$choices = array();
+
+		foreach ( self::catalogue()?->packages() ?? array() as $package ) {
+			$choices[ $package['id'] ] = sprintf( '%s · %s · %s', $package['category']['label'] ?? '', $package['name'] ?? '', Catalogue::price( $package, true ) );
+		}
+
+		return $choices;
+	}
+
+	/**
 	 * Retainer ids, labelled with their range and tier.
 	 *
 	 * @return array<string, string>
@@ -67,49 +82,6 @@ class CatalogueChoices {
 		}
 
 		return $choices;
-	}
-
-	/**
-	 * Module ids, labelled with their platform and price.
-	 *
-	 * @return array<string, string>
-	 */
-	public static function modules(): array {
-		$choices = array();
-
-		foreach ( self::catalogue()?->modules() ?? array() as $module ) {
-			$choices[ $module['id'] ] = sprintf( '%s · %s · %s', $module['category']['label'] ?? '', $module['name'] ?? '', Catalogue::price( $module, true ) );
-		}
-
-		return $choices;
-	}
-
-	/**
-	 * Packages (by code), retainers and modules (by id), grouped, for the featured card of a block.
-	 *
-	 * @return array<string, array<string, string>>
-	 */
-	public static function lines(): array {
-		return array_filter(
-			array(
-				__( 'Packages', 'agencecinq' )  => self::packages(),
-				__( 'Retainers', 'agencecinq' ) => self::retainers(),
-				__( 'Modules', 'agencecinq' )   => self::modules(),
-			)
-		);
-	}
-
-	/**
-	 * Price modes, for the prices typed in a block.
-	 *
-	 * @return array<string, string>
-	 */
-	public static function price_modes(): array {
-		return array(
-			Catalogue::FIRM  => __( 'Fixed price', 'agencecinq' ),
-			Catalogue::FROM  => __( 'Starting price', 'agencecinq' ),
-			Catalogue::QUOTE => __( 'On quote', 'agencecinq' ),
-		);
 	}
 
 	/**

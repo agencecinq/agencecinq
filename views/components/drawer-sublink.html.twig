@@ -1,0 +1,26 @@
+{#
+ # Components: Drawer sublink
+ #
+ # Level 2 link of the mobile menu. A bar marks the current page.
+ #
+ # @param string title The link text.
+ # @param string url The link URL.
+ # @param bool current Optional. Current page.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- if title and url -%}
+	<a
+		class="{{
+			html_classes(
+				'text-body aria-[current=page]:text-primary flex items-center gap-2 rounded-sm py-3 ps-4 text-base',
+				'focus-visible:outline-focus-ring focus-visible:outline-2 focus-visible:-outline-offset-2',
+				'aria-[current=page]:before:bg-accent-default aria-[current=page]:before:h-5 aria-[current=page]:before:w-0.75 aria-[current=page]:before:shrink-0 aria-[current=page]:before:rounded-xs',
+				classes | default( [] ) | join( ' ' )
+			)
+		}}"
+		{{ html_attr( { href: url }, current ? { 'aria-current': 'page' } ) }}
+	>
+		{{- title -}}
+	</a>
+{%- endif -%}

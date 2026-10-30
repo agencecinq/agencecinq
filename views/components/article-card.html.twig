@@ -1,0 +1,73 @@
+{#
+ # Components: Article card
+ #
+ # A blog post as one link: the title holds it and stretches it over the card. Hover and focus turn the
+ # title to the accent and dim the image, and focus rings the card. The image is decorative, the title
+ # says it all.
+ #
+ # @param object post Timber post.
+ # @param string heading Optional. 'h2' on a list (default), 'h3' among related posts.
+ # @param string sizes Optional. Sizes attribute of the image.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set heading = heading | default( 'h2' ) -%}
+{%- set excerpt =
+	post.excerpt( {
+		words: 24,
+		read_more: false,
+	} ) | trim
+-%}
+
+<article
+	class="{{
+		html_classes(
+			'group relative flex flex-col gap-4 rounded-md pb-2',
+			'has-focus-visible:outline-focus-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<div
+		class="bg-media aspect-5/3 overflow-hidden rounded-md transition-opacity group-hover:opacity-85 group-has-focus-visible:opacity-85"
+	>
+		{%- if post.thumbnail -%}
+			{{-
+				include(
+					'components/image.html.twig',
+					{
+						image: post.thumbnail,
+						alt: '',
+						sizes: sizes | default( null ),
+						classes: [ 'size-full object-cover' ],
+					},
+					with_context: false
+				)
+			-}}
+		{%- endif -%}
+	</div>
+
+	<p class="flex flex-wrap items-center gap-x-3 text-sm">
+		{%- if post.category -%}
+			<span class="text-button text-accent-default">{{- post.category.name -}}</span>
+		{%- endif -%}
+		<span class="text-muted">
+			<time datetime="{{ post.date( 'c' ) }}">{{- post.date -}}</time>
+			{%- if post.reading_time -%}
+				{{- ' · ' ~ ( __( '%d min read', 'agencecinq' ) | format( post.reading_time ) ) -}}
+			{%- endif -%}
+		</span>
+	</p>
+
+	<{{ heading }}
+		class="text-title-md text-primary group-hover:text-accent-default group-has-focus-visible:text-accent-default transition-colors"
+	>
+		<a href="{{ post.link }}" class="outline-none after:absolute after:inset-0">
+			{{- post.title -}}
+		</a>
+	</{{ heading }}>
+
+	{%- if excerpt -%}
+		<p class="text-body text-sm">{{- excerpt -}}</p>
+	{%- endif -%}
+</article>

@@ -1,0 +1,33 @@
+{#
+ # Components: Section heading
+ #
+ # Eyebrow, title and introduction of a section, at a reading width of 820 px. The eyebrow and the
+ # text are optional.
+ #
+ # @param string title
+ # @param string eyebrow Optional.
+ # @param string text Optional.
+ # @param string heading Optional. Tag of the title, 'h2' by default.
+ # @param string id Optional. Id of the title, for the aria-labelledby of its section.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set heading = heading | default( 'h2' ) -%}
+
+{%- if title -%}
+	<header
+		class="{{
+			html_classes( 'flex max-w-205 flex-col gap-4', classes | default( [] ) | join( ' ' ) )
+		}}"
+	>
+		{%- if eyebrow -%}
+			<p class="text-eyebrow text-muted">{{- eyebrow -}}</p>
+		{%- endif -%}
+		<{{ heading }} class="text-title-xl text-primary" {{ html_attr( id ? { id: id } ) }}>
+			{{- title -}}
+		</{{ heading }}>
+		{%- if text -%}
+			<p class="text-body text-lg">{{- text -}}</p>
+		{%- endif -%}
+	</header>
+{%- endif -%}

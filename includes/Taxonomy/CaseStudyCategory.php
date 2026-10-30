@@ -10,12 +10,12 @@
 namespace AgenceCinq\Taxonomy;
 
 use AgenceCinq\Service;
-use Timber\Timber;
 
 /**
  * CaseStudyCategory class
  *
- * Hierarchical taxonomy for the Case study post type (category-like).
+ * Hierarchical taxonomy for the Case study post type (category-like), to sort them in the admin only:
+ * it has no public pages.
  */
 class CaseStudyCategory implements Service {
 
@@ -35,21 +35,6 @@ class CaseStudyCategory implements Service {
 	 */
 	public function run(): void {
 		add_action( 'init', array( $this, 'register_taxonomy' ) );
-	}
-
-	/**
-	 * Returns case study category terms.
-	 *
-	 * @param bool $hide_empty Whether to hide empty terms.
-	 * @return mixed Term collection.
-	 */
-	public static function terms( bool $hide_empty = true ) {
-		return Timber::get_terms(
-			array(
-				'taxonomy'   => self::TAXONOMY,
-				'hide_empty' => $hide_empty,
-			)
-		);
 	}
 
 	/**
@@ -92,22 +77,18 @@ class CaseStudyCategory implements Service {
 			array(
 				'labels'             => $labels,
 				'description'        => __( 'Categories for case studies.', 'agencecinq' ),
-				'public'             => true,
-				'publicly_queryable' => true,
+				'public'             => false,
+				'publicly_queryable' => false,
 				'hierarchical'       => true,
 				'show_ui'            => true,
 				'show_in_menu'       => true,
-				'show_in_nav_menus'  => true,
+				'show_in_nav_menus'  => false,
 				'show_in_rest'       => true,
 				'show_admin_column'  => true,
 				'show_tagcloud'      => false,
 				'show_in_quick_edit' => true,
-				'query_var'          => true,
-				'rewrite'            => array(
-					'slug'         => 'case-study-category',
-					'with_front'   => false,
-					'hierarchical' => true,
-				),
+				'query_var'          => false,
+				'rewrite'            => false,
 			)
 		);
 	}

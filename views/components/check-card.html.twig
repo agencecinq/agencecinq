@@ -1,0 +1,38 @@
+{#
+ # Components: Check card
+ #
+ # A li of a checklist: a decorative box on the first line, the point to check and the question to ask.
+ #
+ # @param string title
+ # @param string text
+ # @param array classes Optional extra classes.
+ #}
+
+<li
+	class="{{
+		html_classes(
+			'border-default bg-surface flex items-start gap-4 rounded-lg border p-6 text-sm',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<span class="text-button grid h-lh shrink-0 place-items-center">
+		{{-
+			include(
+				'svg/use.html.twig',
+				{
+					icon: 'box',
+					classes: [ 'text-accent-default size-5' ],
+					attributes: { 'aria-hidden': 'true' },
+				},
+				with_context: false
+			)
+		-}}
+	</span>
+	<div class="flex min-w-0 flex-1 flex-col gap-2">
+		<p class="text-button text-primary">{{- title -}}</p>
+		{%- if text -%}
+			<p class="text-body">{{- text -}}</p>
+		{%- endif -%}
+	</div>
+</li>

@@ -1,0 +1,68 @@
+{#
+ # Blocks: Feature cards
+ #
+ # Figma Section/Feature cards: the Section heading, then one Feature card per thing handed over, four per
+ # row from lg on three columns each.
+ #}
+
+{%- set cards = block.cards | default( [] ) | filter( card => card.title ) -%}
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if cards | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
+	>
+		<div class="container flex flex-col gap-8 lg:gap-14">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						eyebrow: block.content.eyebrow,
+						title: block.content.title,
+						text: block.content.text,
+						heading: heading,
+						id: title_id,
+					},
+					with_context: false
+				)
+			-}}
+
+			<ul class="layout-grid gap-y-6">
+				{%- for card in cards -%}
+					<li class="col-span-full flex lg:col-span-3">
+						{{-
+							include(
+								'components/feature-card.html.twig',
+								{
+									file: card.file,
+									title: card.title,
+									text: card.text,
+									heading: {
+										h1: 'h2',
+										h2: 'h3',
+										h3: 'h4',
+									}[ heading ],
+									classes: [ 'w-full' ],
+								},
+								with_context: false
+							)
+						-}}
+					</li>
+				{%- endfor -%}
+			</ul>
+		</div>
+	</section>
+{%- endif -%}

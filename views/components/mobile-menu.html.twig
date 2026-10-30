@@ -1,135 +1,172 @@
 {#
- # Mobile menu content: main panel and sub panels (drill-down).
- # Used inside the drawer. JS (cinq-mobile-menu) toggles [data-panel="main"] vs [data-panel="sub"].
+ # Components: Mobile menu
  #
- # @param array items Main menu items (from nav_menus.main.get_items()).
+ # Figma Overlay/Drawer: a bar with the logo and « Close », which takes the focus on open, the Drawer links,
+ # whose level 2 a <cinq-disclosure-button> unfolds, then the actions and the phone. When level 2 holds
+ # groups, each one keeps its name above its links, as in the Submenu.
+ #
+ # @param array items Main menu items.
+ # @param array secondary Optional. Secondary menu items.
+ # @param object contact Contact options: link, phone.
  #}
 
-{% macro cta( link ) %}
-	{%- if link -%}
-		<div class="mt-auto">
+<div class="container flex min-h-full flex-col">
+	<div class="flex items-center justify-between py-3.75">
+		<a
+			href="{{ function( 'home_url', '/' ) }}"
+			class="focus-visible:outline-focus-ring block h-6 w-20 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2"
+			aria-label="{{ __( 'CINQ, home', 'agencecinq' ) }}"
+		>
 			{{-
 				include(
-					'components/button.html.twig',
-					link
-						| default( {} )
-						| merge( {
-							variant: 'primary',
-							classes: [ 'w-full justify-center' ],
-						} ),
+					'svg/use.html.twig',
+					{
+						icon: 'logo',
+						classes: [ 'size-full' ],
+						attributes: { 'aria-hidden': 'true' },
+					},
 					with_context: false
 				)
 			-}}
-		</div>
-	{%- endif -%}
-{% endmacro %}
+		</a>
+		<cinq-drawer-button class="block">
+			{{-
+				include(
+					'components/icon-button.html.twig',
+					{
+						label: __( 'Close', 'agencecinq' ),
+						icon: 'close',
+						attributes: {
+							'aria-controls': 'menu-drawer',
+							'aria-expanded': 'false',
+							autofocus: true,
+						},
+					},
+					with_context: false
+				)
+			-}}
+		</cinq-drawer-button>
+	</div>
 
-<div data-dom="main" data-panel="main" class="relative flex min-h-full flex-col space-y-8">
 	{%- if items | length -%}
-		<nav
-			aria-label="{{ __( 'Mobile navigation', 'agencecinq' ) }}"
-			class="w-full flex-1 overflow-y-auto"
-		>
+		<nav aria-label="{{ __( 'Mobile navigation', 'agencecinq' ) }}">
 			<ul>
-				{% for item in items %}
-					<li
-						class="border-cream-faint border-b"
-						itemscope
-						itemtype="https://schema.org/SiteNavigationElement"
-					>
-						{% if item.children | length %}
-							<button
-								type="button"
-								data-dom="open-sub"
-								data-open-sub="{{ item.id }}"
-								class="text-title-md text-cream flex w-full items-center justify-between py-4.5 text-left"
-								aria-expanded="false"
-								aria-controls="mobile-sub-{{ item.id }}"
-							>
-								<span itemprop="name">{{- item.title -}}</span>
-								<span class="text-pistachio text-lg" aria-hidden="true">→</span>
-							</button>
-						{% else %}
-							<a
-								class="text-title-md text-cream block py-4.5"
-								href="{{ item.url }}"
-								itemprop="url"
-								{{ item.is_target_blank or item.is_external
-									? 'target="' ~ item.target ~ '" rel="noopener noreferrer"' }}
-							>
-								<span itemprop="name">{{- item.title -}}</span>
-							</a>
-						{% endif %}
+				{%- for item in items -%}
+					<li>
+						{%- if item.children | length -%}
+							<cinq-disclosure-button class="block">
+								{{-
+									include(
+										'components/drawer-link.html.twig',
+										{
+											title: item.title,
+											controls: 'drawer-sublinks-' ~ item.id,
+											current: item.current or item.current_item_ancestor,
+										},
+										with_context: false
+									)
+								-}}
+							</cinq-disclosure-button>
+							<div id="drawer-sublinks-{{ item.id }}" hidden>
+								{%- for group in item.children | filter( child => child.children | length ) -%}
+									<p
+										id="drawer-group-{{ group.id }}"
+										class="text-eyebrow text-muted ps-4 pt-4 pb-1"
+									>
+										{{- group.title -}}
+									</p>
+									<ul aria-labelledby="drawer-group-{{ group.id }}">
+										{%- for link in group.children -%}
+											<li>
+												{{-
+													include(
+														'components/drawer-sublink.html.twig',
+														{
+															title: link.title,
+															url: link.url,
+															current: link.current,
+														},
+														with_context: false
+													)
+												-}}
+											</li>
+										{%- endfor -%}
+									</ul>
+								{%- else -%}
+									<ul>
+										{%- for link in item.children -%}
+											<li>
+												{{-
+													include(
+														'components/drawer-sublink.html.twig',
+														{
+															title: link.title,
+															url: link.url,
+															current: link.current,
+														},
+														with_context: false
+													)
+												-}}
+											</li>
+										{%- endfor -%}
+									</ul>
+								{%- endfor -%}
+							</div>
+						{%- else -%}
+							{{-
+								include(
+									'components/drawer-link.html.twig',
+									{
+										title: item.title,
+										url: item.url,
+										current: item.current,
+									},
+									with_context: false
+								)
+							-}}
+						{%- endif -%}
 					</li>
-				{% endfor %}
+				{%- endfor -%}
 			</ul>
 		</nav>
 	{%- endif -%}
 
-	{{- _self.cta( theme.contact.link | default( null ) ) -}}
+	<div class="mt-auto flex flex-col items-start gap-3 pt-8">
+		{%- if contact.link | default( false ) -%}
+			{{-
+				include(
+					'components/button.html.twig',
+					contact.link | merge( {
+						arrow: false,
+						classes: [ 'w-full justify-center' ],
+					} ),
+					with_context: false
+				)
+			-}}
+		{%- endif -%}
+		{%- for item in secondary | default( [] ) -%}
+			{{-
+				include(
+					'components/button.html.twig',
+					{
+						title: item.title,
+						url: item.url,
+						target: item.is_target_blank ? '_blank',
+						variant: 'secondary',
+						arrow: false,
+						classes: [ 'w-full justify-center' ],
+					},
+					with_context: false
+				)
+			-}}
+		{%- endfor -%}
+		{%- if contact.phone | default( false ) -%}
+			<a
+				href="tel:{{ contact.phone | tel }}"
+				class="text-primary focus-visible:outline-focus-ring text-base underline focus-visible:outline-2 focus-visible:outline-offset-2"
+			>
+				{{- contact.phone -}}
+			</a>
+		{%- endif -%}
+	</div>
 </div>
-
-{% for item in items %}
-	{%- if item.children | length -%}
-		<div
-			data-dom="sub"
-			data-panel="sub"
-			data-sub-id="{{ item.id }}"
-			id="mobile-sub-{{ item.id }}"
-			class="absolute inset-0 flex min-h-full flex-col"
-			aria-hidden="true"
-			style="display: none;"
-		>
-			<div class="border-cream/11 flex h-16 shrink-0 items-center justify-between border-b">
-				<button
-					type="button"
-					data-dom="back-to-main"
-					class="text-title-md text-cream flex items-center gap-2.5"
-					aria-label="{{ __( 'Back to menu', 'agencecinq' ) }}"
-				>
-					<span class="text-pistachio text-lg" aria-hidden="true">←</span>
-					{{- __( 'Back', 'agencecinq' ) -}}
-				</button>
-			</div>
-
-			<nav class="w-full flex-1 overflow-y-auto" aria-label="{{ item.title }}">
-				<ul>
-					{%- for child in item.children -%}
-						<li
-							class="border-cream-faint border-b"
-							itemscope
-							itemtype="https://schema.org/SiteNavigationElement"
-						>
-							{%- if child.url != '#' -%}
-								<a
-									href="{{ child.url }}"
-									itemprop="url"
-									class="text-title-md text-cream block py-4.5"
-									{{ child.is_target_blank or child.is_external
-										? 'target="' ~ child.target ~ '" rel="noopener noreferrer"' }}
-								>
-									<span itemprop="name">{{- child.title -}}</span>
-								</a>
-							{%- else -%}
-								<span class="text-title-md text-cream block py-4.5" itemprop="name">
-									{{- child.title -}}
-								</span>
-							{%- endif -%}
-						</li>
-					{%- endfor -%}
-
-					<li>
-						<a
-							href="{{ item.url }}"
-							class="text-title-md text-cream border-cream-faint block border-b py-4.5"
-						>
-							{{- __( 'See all', 'agencecinq' ) -}}
-						</a>
-					</li>
-				</ul>
-			</nav>
-
-			{{- _self.cta( theme.contact.link | default( null ) ) -}}
-		</div>
-	{%- endif -%}
-{% endfor %}

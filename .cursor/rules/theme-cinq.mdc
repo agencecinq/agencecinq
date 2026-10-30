@@ -44,7 +44,7 @@ acf-json/           Sync JSON ACF (si présent)
 - Pas de logique métier dans les `*.php` racine : ils chargent le contexte et rendent un Twig.
 - Nouvelle classe PHP : respecter PSR-4 et le rangement par fichier de core WP, et reprendre le docblock d'en-tête existant (`@package`, `@author CINQ <contact@agencecinq.com> (https://agencecinq.com)`). Faire passer phpcs.
 - Nouveau bloc ACF : créer le layout dans `includes/Plugins/ACF/IncludeFields/Layouts/`, le template Twig correspondant dans `views/blocks/`, et le cas échéant le composant TS dans `src/scripts/components/`.
-- Nouveau token de design (couleur, typo, radius) : le déclarer dans `@theme` de `src/stylesheets/theme.css`, jamais en dur dans les classes utilitaires. Couleurs nommées par la teinte en anglais (`black`, `pistachio`) ; typo et radius identiques au Figma (voir `design-tokens`).
+- Nouveau token de design (couleur, typo, radius) : le déclarer dans `@theme` de `src/stylesheets/theme.css`, jamais en dur dans les classes utilitaires. Couleurs = rôles du Figma dans les namespaces Tailwind (`bg-default`, `text-muted`, `border-default`) ; typo et radius identiques au Figma (voir `design-tokens`).
 - Nouvelle icône : ajouter le SVG dans `src/icons/`, puis `pnpm build` pour régénérer `public/sprite.svg`. L'utiliser via `views/svg/use.html.twig`.
 - Images responsive : composant `views/components/image.html.twig` (srcset, WebP, lazy). Images statiques : `assets('src/img/...')`.
 - Cache Twig en prod : vider `vendor/timber/timber/cache/*` après modif d'un `.twig` si `WP_DEBUG` est à false.
@@ -74,7 +74,7 @@ DO :
 - Onglets ACF d'un layout flexible : Content en premier, Settings en dernier.
 - Espacer les filtres Twig via Prettier : `twigFollowOfficialCodingStandards: false` (voir `twig-wpcs`).
 - Styler header, footer, blocs et composants avec Tailwind directement dans les `.twig` (voir `tailwind-twig`).
-- Grille de page : `container` + `layout-grid` (`grid-cols-12 gap-x-4 lg:gap-x-6`), comme l’overlay `views/components/grid.html.twig`.
+- Grille de page : `container` + `layout-grid` (4 colonnes sous `lg`, 12 au-dessus), comme l’overlay `views/components/grid.html.twig`.
 - Espacer les enfants d'un même parent avec `space-y-*` / `space-x-*`, pas avec des `mt-*` / `ml-*` sur chaque enfant.
 - Décoration sans contenu (lignes, nœuds, overlays) : pseudo-élément `before:` / `after:` plutôt qu'un élément vide, quand c'est possible.
 - Enrichir le markup avec schema.org quand un type correspond (voir `schema-org`).

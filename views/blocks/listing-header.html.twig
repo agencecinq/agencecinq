@@ -1,0 +1,80 @@
+{#
+ # Blocks: Listing header
+ #
+ # Figma Section/Listing header, on the blog, its categories and its authors: the title in H1 and the text,
+ # the name and description of the category or of the author on their archive, then the categories as
+ # filters, links in a nav, the current one with aria-current. They wrap on mobile rather than scroll sideways.
+ #}
+
+{%- set category = term | default( null ) -%}
+{%- set subject = category ?: author | default( null ) -%}
+{%- set title = subject ? subject.name : block.content.title -%}
+{%- set text = subject ? subject.description : block.content.text -%}
+{%- set categories =
+	get_terms( {
+		taxonomy: 'category',
+		hide_empty: true,
+	} )
+-%}
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if title -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		aria-labelledby="{{ title_id }}"
+	>
+		<div class="container flex flex-col gap-6 lg:gap-8">
+			<div class="flex max-w-205 flex-col gap-4">
+				<h1 id="{{ title_id }}" class="text-title-xxl text-primary">{{- title -}}</h1>
+				{%- if text -%}
+					<p class="text-body text-lg">{{- text -}}</p>
+				{%- endif -%}
+			</div>
+			{%- if categories | length -%}
+				<nav aria-label="{{ __( 'Categories', 'agencecinq' ) }}">
+					<ul class="flex flex-wrap gap-2">
+						<li>
+							{{-
+								include(
+									'components/chip.html.twig',
+									{
+										title: __( 'All posts', 'agencecinq' ),
+										url: posts_url,
+										active: not subject,
+									},
+									with_context: false
+								)
+							-}}
+						</li>
+						{%- for item in categories -%}
+							<li>
+								{{-
+									include(
+										'components/chip.html.twig',
+										{
+											title: item.name,
+											url: item.link,
+											active: category and category.id == item.id,
+										},
+										with_context: false
+									)
+								-}}
+							</li>
+						{%- endfor -%}
+					</ul>
+				</nav>
+			{%- endif -%}
+		</div>
+	</section>
+{%- endif -%}

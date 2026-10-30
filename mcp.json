@@ -1,0 +1,111 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json",
+	"version": 1,
+	"settings": {
+		"server": {
+			"toolPrefix": "cinq",
+			"instructions": "agencecinq.com, the site of the CINQ web agency: pages, blog posts and case studies. Write all copy in French, addressing the reader as « vous ». No emoji, no em dash. Create and update content as drafts unless asked to publish. Before writing to a page, a post or a case study, read its lock_content field: when it is true, do not write nor change its content, and never change lock_content unless asked. Never invent a client, a figure, a quote or a finding: client names, logos, screenshots and verbatims appear only with the written consent of the client. Write real alternative text in the media library: the theme follows RGAA. Follow the page template that fits the page, and say so when a section has no block rather than approximating it. The front page and case studies open with their own hero fields, not with blocks. Blog posts have no blocks: their body is the post content. The primary call to action is « Réserver 30 minutes »: the diagnostic is never a first click."
+		}
+	},
+	"blocks": {
+		"accordion": {
+			"description": "Questions and answers: the section heading on the left, the questions on the right, the first one open."
+		},
+		"action_cards": {
+			"description": "One card per situation of a visitor, with the offer that answers it and its price, read from the CINQ Central catalogue.",
+			"guidance": "Do not write prices: they come from Central."
+		},
+		"activity_log": {
+			"description": "The latest repositories of the agency and their commits over six months, read from GitHub.",
+			"guidance": "Name a private repository only with the written consent of its client."
+		},
+		"breadcrumb": {
+			"description": "Breadcrumb of the page, from Yoast SEO.",
+			"guidance": "First block of a page below a silo (service, local, emergency or offer page), right above the Page header. Not on top-level pages, nor on case studies, which render their own."
+		},
+		"bullet_list": {
+			"description": "Short list of rules or principles, one per row, on the elevated background."
+		},
+		"checklist": {
+			"description": "Numbered points to check, each with the question to ask, then a call to action."
+		},
+		"comparison": {
+			"description": "Before and after of a redesigned site in a window splitter, with the findings written with the client.",
+			"guidance": "Mostly on case studies. Findings come from the client interview: nothing invented."
+		},
+		"contact_details": {
+			"description": "The ways to reach the agency: the 30-minute call first, then the phone and the email, read from the theme options.",
+			"guidance": "No form: the conversions are the clicks on the call, the phone and the email."
+		},
+		"cta": {
+			"description": "Centred closing call to action: title, text, primary button and what the click leads to.",
+			"guidance": "Usually the last block. Write its title and text for the page: the same call everywhere reads as if the page had not changed."
+		},
+		"diff_columns": {
+			"description": "Two columns side by side: the lines that go today, then the lines that come in after the redesign."
+		},
+		"feature_cards": {
+			"description": "One card per deliverable handed over to the client: the file name in monospace, then what it is."
+		},
+		"image_cards": {
+			"description": "Case study cards: screenshot, client, situation and summary, taken from the case studies themselves.",
+			"guidance": "Pick existing case studies, or leave the selection empty for the three latest. Do not create case studies from page copy."
+		},
+		"link_columns": {
+			"description": "The sitemap, built from the Sitemap Menu.",
+			"guidance": "Only on the sitemap page. Edit the Sitemap Menu, not the block, to change its links."
+		},
+		"link_grid": {
+			"description": "Hub of a silo: one card per child page.",
+			"guidance": "On a parent page, after its Page header."
+		},
+		"link_row": {
+			"description": "Up to four links to sibling pages at the end of a page.",
+			"guidance": "Near the end of a page, before the CTA."
+		},
+		"listing_header": {
+			"description": "Header of the blog: title in H1, text, then the categories as filters.",
+			"guidance": "Only on the page for posts, first block."
+		},
+		"logo_wall": {
+			"description": "Wall of client logos, all the same size.",
+			"guidance": "Only clients who gave their written consent."
+		},
+		"numbered_list": {
+			"description": "Ordered list of items, numbered from 01, on the elevated background."
+		},
+		"page_header": {
+			"description": "Top of a situation, an offer or a silo page: title in H1, text, buttons and an optional before and after.",
+			"guidance": "Once per page, first or right after the Breadcrumb. Not on the front page nor on case studies, which open with their hero fields."
+		},
+		"portrait_grid": {
+			"description": "The team: square black and white portraits with first names, over a scrolling CINQ band."
+		},
+		"post_grid": {
+			"description": "The posts of the blog as article cards, with pagination.",
+			"guidance": "Only on the page for posts, after the Listing header: elsewhere it shows nothing."
+		},
+		"price_breakdown": {
+			"description": "The price of one offer: what it includes on the left, the price card on the right.",
+			"guidance": "One offer per block: on a page of several offers, such as the pricing page, one block each."
+		},
+		"pricing_table": {
+			"description": "One card per package or retainer of a platform, read from the CINQ Central catalogue.",
+			"guidance": "Do not write prices: Central is authoritative. Without Central, the section is not shown."
+		},
+		"quote": {
+			"description": "One sentence of a client, then their name, role and company.",
+			"guidance": "Real verbatim only, never anonymous nor invented."
+		},
+		"rich_text": {
+			"description": "Free text in a reading column of 720 px: headings, lists, quotes and code."
+		},
+		"signup_form": {
+			"description": "Newsletter signup: title and text, then a Contact Form 7 form with the email field.",
+			"guidance": "Pick an existing Contact Form 7 form. At most one per page."
+		},
+		"steps": {
+			"description": "Numbered steps of a process, each with who holds it in a badge."
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{#
+ # Components: Numbered item
+ #
+ # A li of an ol: the number is decorative since the list already counts. On the layout grid, the
+ # number takes 2 columns on desktop and the title and text the 10 others; mobile stacks them.
+ #
+ # @param string number Two digits, e.g. '%02d' | format( loop.index ).
+ # @param string title
+ # @param string text
+ # @param string heading Optional. Tag of the title, 'h3' by default.
+ # @param array classes Optional extra classes.
+ #}
+
+{%- set heading = heading | default( 'h3' ) -%}
+
+<li
+	class="{{
+		html_classes(
+			'border-default layout-grid gap-y-3 border-t py-6 lg:py-8',
+			classes | default( [] ) | join( ' ' )
+		)
+	}}"
+>
+	<span class="text-number-lg text-primary col-span-full lg:col-span-2" aria-hidden="true">
+		{{- number -}}
+	</span>
+	<div class="col-span-full flex flex-col gap-2 lg:col-span-10">
+		<{{ heading }} class="text-title-lg text-primary">
+			{{- title -}}
+		</{{ heading }}>
+		{%- if text -%}
+			<p class="text-body text-lg">{{- text -}}</p>
+		{%- endif -%}
+	</div>
+</li>

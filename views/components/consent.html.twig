@@ -1,0 +1,147 @@
+{#
+ # Components: Consent
+ #
+ # Figma Overlay/Banner and the cookie choices of Overlay/Dialog, through <cinq-consent>. The banner, fixed at
+ # the bottom and never modal, shows until a choice is kept, « Reject all » as visible as « Accept all »;
+ # « Customise » and the Cookies link of the footer open the choices. The choice is kept 6 months in the
+ # cinq_consent cookie and announced by a consent event on the document ({ analytics }), for the audience
+ # measurement to come.
+ #
+ # @param string privacy_policy_url Optional. Linked from the banner.
+ #}
+
+<cinq-consent>
+	<section
+		class="pointer-events-none fixed inset-x-4 bottom-4 z-30 lg:inset-x-0 lg:bottom-6"
+		aria-labelledby="cookie-banner-title"
+		data-dom="banner"
+		hidden
+	>
+		<div class="lg:container">
+			<div
+				class="bg-elevated border-default shadow-overlay pointer-events-auto flex flex-col gap-5 rounded-lg border px-5 py-6 lg:flex-row lg:items-center lg:gap-10 lg:px-8"
+			>
+				<div class="flex flex-1 flex-col items-start gap-1.5">
+					<p id="cookie-banner-title" class="text-button text-primary">
+						{{- __( 'Cookies', 'agencecinq' ) -}}
+					</p>
+					<p class="text-body text-sm">
+						{{-
+							__(
+								'We measure the audience of the site to know which pages are useful. Nothing is set without your consent.',
+								'agencecinq'
+							)
+						-}}
+					</p>
+					{%- if privacy_policy_url -%}
+						<a
+							href="{{ privacy_policy_url }}"
+							class="text-primary focus-visible:outline-focus-ring text-sm underline focus-visible:outline-2 focus-visible:outline-offset-2"
+						>
+							{{- __( 'Privacy policy', 'agencecinq' ) -}}
+						</a>
+					{%- endif -%}
+				</div>
+				<div class="flex flex-col items-start gap-3 lg:flex-row lg:items-center">
+					{{-
+						include(
+							'components/button.html.twig',
+							{
+								title: __( 'Customise', 'agencecinq' ),
+								variant: 'text',
+								arrow: false,
+								attributes: {
+									commandfor: 'cookie-preferences',
+									command: 'show-modal',
+								},
+							},
+							with_context: false
+						)
+					-}}
+					{%- for choice, title in {
+						reject: __( 'Reject all', 'agencecinq' ),
+						accept: __( 'Accept all', 'agencecinq' ),
+					} -%}
+						{{-
+							include(
+								'components/button.html.twig',
+								{
+									title: title,
+									variant: 'secondary',
+									arrow: false,
+									attributes: { 'data-consent': choice },
+									classes: [ 'w-full justify-center lg:w-auto' ],
+								},
+								with_context: false
+							)
+						-}}
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{%- embed 'components/modal.html.twig'
+		with {
+			id: 'cookie-preferences',
+			title: __( 'Your cookie choices', 'agencecinq' ),
+		} only
+	-%}
+		{%- block content -%}
+			<p class="text-body text-sm">
+				{{-
+					__(
+						'You can change your mind at any time from the Cookies link of the footer.',
+						'agencecinq'
+					)
+				-}}
+			</p>
+			<div class="flex flex-col">
+				{{-
+					include(
+						'components/switch.html.twig',
+						{
+							label: __( 'Necessary to run the site', 'agencecinq' ),
+							always_on: true,
+						},
+						with_context: false
+					)
+				-}}
+				{{-
+					include(
+						'components/switch.html.twig',
+						{
+							label: __( 'Audience measurement', 'agencecinq' ),
+							name: 'analytics',
+						},
+						with_context: false
+					)
+				-}}
+			</div>
+			<div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
+				{%- for choice, button in {
+					reject: {
+						title: __( 'Reject all', 'agencecinq' ),
+						variant: 'secondary',
+					},
+					save: {
+						title: __( 'Save my choices', 'agencecinq' ),
+						variant: 'primary',
+					},
+				} -%}
+					{{-
+						include(
+							'components/button.html.twig',
+							button | merge( {
+								arrow: false,
+								attributes: { 'data-consent': choice },
+								classes: [ 'w-full justify-center sm:w-auto' ],
+							} ),
+							with_context: false
+						)
+					-}}
+				{%- endfor -%}
+			</div>
+		{%- endblock -%}
+	{%- endembed -%}
+</cinq-consent>

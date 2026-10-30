@@ -1,0 +1,48 @@
+{#
+ # Blocks: Logo wall
+ #
+ # Figma Section/Logo wall: the eyebrow, which names the list, then one Logo tile per client, all the
+ # same size, two per row on mobile and eight on desktop.
+ #}
+
+{%- set logos = block.logos | default( [] ) | filter( logo => logo.name ) -%}
+
+{%- if logos | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section id="{{ block.id }}" data-scheme="{{ block.layout.color_scheme | default( '' ) }}">
+		<div class="container flex flex-col gap-6">
+			{%- if block.content.eyebrow -%}
+				<p id="{{ block.id }}-eyebrow" class="text-eyebrow text-muted">
+					{{- block.content.eyebrow -}}
+				</p>
+			{%- endif -%}
+
+			<ul
+				class="grid grid-cols-2 gap-3 lg:grid-cols-8 lg:gap-4"
+				{{ html_attr( block.content.eyebrow ? { 'aria-labelledby': block.id ~ '-eyebrow' } ) }}
+			>
+				{%- for logo in logos -%}
+					{{-
+						include(
+							'components/logo-tile.html.twig',
+							{
+								name: logo.name,
+								image: logo.image,
+							},
+							with_context: false
+						)
+					-}}
+				{%- endfor -%}
+			</ul>
+		</div>
+	</section>
+{%- endif -%}

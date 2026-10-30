@@ -27,14 +27,10 @@ class Init {
 	 */
 	public static function get_services(): array {
 		return array(
-			// Admin.
-			Admin\Init::class,
-			Admin\Menu::class,
 			// Setup.
 			Setup\Enqueue::class,
 			Setup\Context::class,
 			Setup\Twig::class,
-			Setup\QueryVars::class,
 			// WordPress integration.
 			WPImageEditor::class,
 			WPSettings::class,
@@ -49,22 +45,19 @@ class Init {
 			Vite::class,
 			// ACF.
 			Plugins\ACF\Init::class,
-			Plugins\ACF\SavePost::class,
 			Plugins\ACF\FormatValue::class,
-			Plugins\ACF\IncludeFields\ArchivePostsFields::class,
+			Plugins\ACF\Input\AdminEnqueueScripts::class,
 			Plugins\ACF\IncludeFields\BlocksFields::class,
 			Plugins\ACF\IncludeFields\PageFields::class,
 			Plugins\ACF\IncludeFields\FrontPageFields::class,
 			Plugins\ACF\IncludeFields\CaseStudyFields::class,
 			Plugins\ACF\IncludeFields\ClonesFields::class,
 			Plugins\ACF\IncludeFields\ThemeFields::class,
-			Plugins\ACF\IncludeFields\PostFields::class,
+			Plugins\ACF\IncludeFields\UserFields::class,
 			Plugins\ACF\IncludeFields\LockContentFields::class,
 			Plugins\ContactForm7\FormTag::class,
-			Plugins\ContactForm7\Estimation::class,
-			// Catalogue.
-			Catalogue\QuoteRequest::class,
-			Catalogue\Central::class,
+			// GitHub.
+			GitHub\Activity::class,
 			// Yoast.
 			Plugins\WordpressSeo\AdminInit::class,
 			Post\CaseStudy::class,

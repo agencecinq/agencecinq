@@ -1,0 +1,68 @@
+{#
+ # Blocks: Signup form
+ #
+ # Figma Section/Signup form, on bg/elevated: the title and the text on six columns, then on the last six the
+ # Contact Form 7 form, the email with its visible label and the submit, and the note followed by the link to
+ # the privacy policy. Contact Form 7 announces the result.
+ #}
+
+{%- set title_id = block.id ~ '-title' -%}
+
+{%- if block.content.title and block.form -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		class="block-signup bg-elevated"
+		aria-labelledby="{{ title_id }}"
+	>
+		<div class="layout-grid container items-start gap-y-8">
+			{{-
+				include(
+					'components/section-heading.html.twig',
+					{
+						title: block.content.title,
+						text: block.content.text,
+						heading: block.content.heading | default( 'h2' ),
+						id: title_id,
+						classes: [ 'col-span-full lg:col-span-6' ],
+					},
+					with_context: false
+				)
+			-}}
+			<div class="col-span-full flex flex-col gap-4 lg:col-span-6">
+				{{-
+					include(
+						'components/form-contact.html.twig',
+						{ form_id: block.form },
+						with_context: false
+					)
+				-}}
+				{%- if block.note or privacy_policy_url -%}
+					<p class="text-muted text-sm">
+						{{- block.note -}}
+						{%- if privacy_policy_url -%}
+							{{- block.note ? ' ' -}}
+							<a
+								href="{{ privacy_policy_url }}"
+								class="focus-visible:outline-focus-ring underline focus-visible:outline-2 focus-visible:outline-offset-2"
+							>
+								{{- __( 'See the privacy policy', 'agencecinq' ) -}}
+							</a>
+							{{- '.' -}}
+						{%- endif -%}
+					</p>
+				{%- endif -%}
+			</div>
+		</div>
+	</section>
+{%- endif -%}

@@ -1,0 +1,103 @@
+{#
+ # Blocks: Activity log
+ #
+ # Figma Section/Activity log: the three repositories pushed last on eight columns, then the commits of the
+ # default branches per day over 26 weeks, a decorative grid that its legend names, right-aligned on the
+ # last four. A private repository shows its client only when the block names it.
+ #}
+
+{%- set activity = github_activity() -%}
+{%- set names = {} -%}
+{%- for project in block.projects
+	| default( [] )
+	| filter( project => project.repository and project.name ) -%}
+	{%- set names = names | merge( { ( project.repository ): project.name } ) -%}
+{%- endfor -%}
+{%- set actions = {
+	'wordpress-plugin': __( 'WordPress plugin updated', 'agencecinq' ),
+	'wordpress-theme': __( 'WordPress theme updated', 'agencecinq' ),
+	shopify: __( 'Shopify theme updated', 'agencecinq' ),
+} -%}
+{%- set levels = [
+	'bg-(--text-color-primary)/6',
+	'bg-(--text-color-primary)/18',
+	'bg-accent-default/90',
+] -%}
+{%- set heading = block.content.heading | default( 'h2' ) -%}
+
+{%- if activity.repositories | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		class="border-default border-t"
+		{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
+	>
+		<div class="layout-grid container items-start gap-y-8">
+			<div class="col-span-full flex flex-col gap-6 lg:col-span-8">
+				{%- if block.content.title or block.content.text -%}
+					<header class="flex flex-col gap-2">
+						{%- if block.content.title -%}
+							<{{ heading }} id="{{ block.id }}-title" class="text-title-md text-primary">
+								{{- block.content.title -}}
+							</{{ heading }}>
+						{%- endif -%}
+						{%- if block.content.text -%}
+							<p class="text-muted text-sm">{{- block.content.text -}}</p>
+						{%- endif -%}
+					</header>
+				{%- endif -%}
+
+				<ul class="flex flex-col gap-4 lg:flex-row lg:gap-8">
+					{%- for repository in activity.repositories | slice( 0, 3 ) -%}
+						{%- set type =
+							repository.topics | filter( topic => actions[ topic ] is defined ) | first
+						-%}
+						{{-
+							include(
+								'components/activity-entry.html.twig',
+								{
+									project: names[ repository.name ] | default(
+										repository.private ? __( 'Private client', 'agencecinq' ) : repository.name
+									),
+									action: repository.private
+										? actions[ type ] | default( __( 'Code updated', 'agencecinq' ) )
+										: __( 'Open source code updated', 'agencecinq' ),
+									date: repository.pushed_at,
+									classes: [ 'lg:min-w-0 lg:flex-1' ],
+								},
+								with_context: false
+							)
+						-}}
+					{%- endfor -%}
+				</ul>
+			</div>
+
+			{%- if activity.weeks | length -%}
+				<figure class="col-span-full flex flex-col gap-3 lg:col-span-4 lg:justify-self-end">
+					<div class="flex gap-0.75" aria-hidden="true">
+						{%- for week in activity.weeks -%}
+							<div class="flex w-2.75 min-w-0 flex-col gap-0.75">
+								{%- for level in week -%}
+									<span class="{{ levels[ level ] }} aspect-square rounded-xs"></span>
+								{%- endfor -%}
+							</div>
+						{%- endfor -%}
+					</div>
+					<figcaption class="text-muted text-sm">
+						{{- __( 'Releases, last 6 months', 'agencecinq' ) -}}
+					</figcaption>
+				</figure>
+			{%- endif -%}
+		</div>
+	</section>
+{%- endif -%}

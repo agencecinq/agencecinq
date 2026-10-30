@@ -1,0 +1,57 @@
+{#
+ # Components: Accordion item
+ #
+ # A panel of a CINQ UI <cinq-accordion>: the question is a heading holding the button (aria-expanded),
+ # the + or − sign is decorative, and the answer is a region named by the question.
+ #
+ # @param string id Prefix of the ids.
+ # @param string question
+ # @param string answer HTML.
+ # @param bool open Optional.
+ # @param string heading Optional. Tag of the question, 'h3' by default.
+ #}
+
+{%- set heading = heading | default( 'h3' ) -%}
+{%- set expanded = open ? 'true' : 'false' -%}
+
+<div
+	class="border-default border-t py-6"
+	data-panel
+	data-open="{{ expanded }}"
+	data-deselectable="true"
+>
+	<{{ heading }} class="text-title-md text-primary">
+		<button
+			type="button"
+			id="{{ id }}-header"
+			class="group/question focus-visible:outline-focus-ring flex w-full cursor-pointer items-center gap-4 text-left focus-visible:outline-2 focus-visible:outline-offset-2"
+			aria-expanded="{{ expanded }}"
+			aria-controls="{{ id }}-panel"
+			data-header
+		>
+			<span class="min-w-0 flex-1">{{- question -}}</span>
+			<span
+				class="text-title-lg text-muted shrink-0 group-aria-expanded/question:hidden"
+				aria-hidden="true"
+			>+</span>
+			<span
+				class="text-title-lg text-muted hidden shrink-0 group-aria-expanded/question:inline"
+				aria-hidden="true"
+			>
+				{{- '−' -}}
+			</span>
+		</button>
+	</{{ heading }}>
+
+	<div
+		id="{{ id }}-panel"
+		class="transition-[max-height] duration-300 ease-out"
+		role="region"
+		aria-labelledby="{{ id }}-header"
+		{{ html_attr( { hidden: not open } ) }}
+	>
+		<div class="wysiwyg text-body pt-3 text-base" data-inner>
+			{{- answer | raw -}}
+		</div>
+	</div>
+</div>
