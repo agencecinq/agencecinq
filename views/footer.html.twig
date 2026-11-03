@@ -13,16 +13,13 @@
  #}
 
 {%- set navigation = navigation ?? true -%}
-{%- set contact = theme.contact | default( {} ) -%}
+{%- set contact = theme.contact -%}
 {%- set locations = contact.locations | default( [] ) | filter( location => location.title ) -%}
-{%- set columns = navigation and nav_menus.footer is defined
+{%- set columns = navigation and nav_menus.footer
 	? nav_menus.footer.get_items() | filter( item => item.children | length )
 	: []
 -%}
-{%- set legals = navigation and nav_menus.legals is defined
-	? nav_menus.legals.get_items() | default( [] )
-	: []
--%}
+{%- set legals = navigation and nav_menus.legals ? nav_menus.legals.get_items() : [] -%}
 {%- set link =
 	'text-primary focus-visible:outline-focus-ring hover:underline focus-visible:underline focus-visible:outline-2 focus-visible:outline-offset-2'
 -%}
@@ -48,7 +45,7 @@
 						)
 					-}}
 				</a>
-				{%- if theme.footer.text | default( false ) -%}
+				{%- if theme.footer.text -%}
 					<p class="text-body text-lg">{{- theme.footer.text -}}</p>
 				{%- endif -%}
 			</div>
@@ -105,7 +102,7 @@
 							{%- for location in locations -%}
 								<li class="text-primary">{{- location.title -}}</li>
 							{%- endfor -%}
-							{%- if contact.link.url | default( false ) -%}
+							{%- if contact.link.url -%}
 								<li>
 									<a
 										class="{{ link }}"

@@ -10,12 +10,10 @@
 {% extends 'index.html.twig' %}
 
 {%- block content -%}
-	{%- set hero = post.meta( 'hero' ) | default( {} ) -%}
-	{%- set content = hero.content | default( {} ) -%}
-	{%- set links =
-		content.links | default( [] ) | filter( link => link.title | default( false ) )
-	-%}
-	{%- set diff = hero.diff | default( {} ) -%}
+	{%- set hero = post.meta( 'hero' ) -%}
+	{%- set content = hero.content -%}
+	{%- set links = content.links | default( [] ) | filter( link => link.title ) -%}
+	{%- set diff = hero.diff -%}
 	{%- set removed =
 		diff.removed | default( [] ) | map( line => line.text ) | filter( text => text )
 	-%}

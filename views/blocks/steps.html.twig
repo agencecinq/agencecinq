@@ -24,9 +24,9 @@
 	},
 } -%}
 {%- set steps = block.steps | default( [] ) | filter( step => step.title ) -%}
-{%- set used = steps | map( step => step.who | default( 'person' ) ) -%}
+{%- set used = steps | map( step => step.who ) -%}
 {%- set legend = actors | filter( ( actor, key ) => key in used ) -%}
-{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set heading = block.content.heading -%}
 {%- set title_id = block.id ~ '-title' -%}
 
 {%- if steps | length -%}
@@ -42,7 +42,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		class="bg-elevated"
 		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
 	>
@@ -78,7 +78,7 @@
 			</ul>
 			<ol class="layout-grid gap-y-4">
 				{%- for step in steps -%}
-					{%- set actor = actors[ step.who | default( 'person' ) ] | default( actors.person ) -%}
+					{%- set actor = actors[ step.who ] | default( actors.person ) -%}
 					{{-
 						include(
 							'components/step-card.html.twig',

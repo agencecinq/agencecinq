@@ -15,7 +15,7 @@
 
 {%- if image is mapping and image.placeholder -%}
 	<img
-		class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}"
+		class="{{ html_classes( classes | join( ' ' ) ) }}"
 		loading="{{ loading | default( 'lazy' ) }}"
 		src="{{ image.src | e }}"
 		alt="{{ ( alt ?? image.alt ) | e }}"
@@ -87,7 +87,7 @@
 		{%- endif -%}
 
 		<img
-			class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}"
+			class="{{ html_classes( classes | join( ' ' ) ) }}"
 			loading="{{ loading | default( 'lazy' ) }}"
 			src="{{ image.src( size ) | e }}"
 			alt="{{ ( alt ?? ( image.alt ? image.alt : image.title ) ) | e }}"
@@ -104,7 +104,7 @@
 									? image.img_sizes( size )
 									: fn( 'wp_get_attachment_image_sizes', image.id, size ),
 						},
-					attributes | default( {} )
+					attributes
 				)
 			}}
 		/>

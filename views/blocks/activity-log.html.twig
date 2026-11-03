@@ -23,7 +23,7 @@
 	'bg-(--text-color-primary)/18',
 	'bg-accent-default/90',
 ] -%}
-{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set heading = block.content.heading -%}
 
 {%- if activity.repositories | length -%}
 	{{-
@@ -38,7 +38,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		class="border-default border-t"
 		{{ block.content.title ? 'aria-labelledby="' ~ block.id ~ '-title"' }}
 	>

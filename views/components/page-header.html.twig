@@ -21,17 +21,17 @@
 
 {%- set id = id | default( 'page-header' ) -%}
 {%- set heading = heading | default( 'h1' ) -%}
-{%- set links = links | default( [] ) | filter( link => link.title | default( false ) ) -%}
+{%- set links = links | default( [] ) | filter( link => link.title ) -%}
 {%- set captures =
 	[
 		{
-			image: before.image | default( null ),
+			image: before.image,
 			label: __( 'Before', 'agencecinq' ),
 			dot: false,
 			classes: 'bg-media grayscale',
 		},
 		{
-			image: after.image | default( null ),
+			image: after.image,
 			label: __( 'After', 'agencecinq' ),
 			dot: true,
 			classes: 'bg-elevated',
@@ -41,8 +41,8 @@
 
 <section
 	id="{{ id }}"
-	data-scheme="{{ scheme | default( '' ) }}"
-	class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}"
+	data-scheme="{{ scheme }}"
+	class="{{ html_classes( classes | join( ' ' ) ) }}"
 	aria-labelledby="{{ id }}-title"
 >
 	<div class="layout-grid container items-start gap-y-8">

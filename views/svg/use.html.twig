@@ -14,7 +14,7 @@
 	class="{{
 		html_classes(
 			icon,
-			classes | default( [] ) | join( ' ' ),
+			classes | join( ' ' ),
 			( classes | default( [] ) | filter( class => class starts with 'fill-' ) | length ) == 0
 				? 'fill-current'
 		)

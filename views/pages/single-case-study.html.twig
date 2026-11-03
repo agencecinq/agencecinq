@@ -10,7 +10,7 @@
 {% extends 'index.html.twig' %}
 
 {%- block content -%}
-	{%- set hero = post.meta( 'hero' ).content | default( {} ) -%}
+	{%- set hero = post.meta( 'hero' ).content -%}
 	{%- set meta =
 		[
 			__( 'Client: %s', 'agencecinq' ) | format( post.client ),

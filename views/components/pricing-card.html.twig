@@ -17,7 +17,7 @@
 	class="{{
 		html_classes(
 			'border-default bg-surface flex flex-col gap-4 rounded-md border p-6 lg:p-8',
-			classes | default( [] ) | join( ' ' )
+			classes | join( ' ' )
 		)
 	}}"
 >
@@ -28,7 +28,7 @@
 	{%- if duration -%}
 		<p class="text-muted text-sm">{{- duration -}}</p>
 	{%- endif -%}
-	{%- if items | default( [] ) | length -%}
+	{%- if items | length -%}
 		<ul class="border-default flex flex-col gap-2 border-t pt-4">
 			{%- for item in items -%}
 				{{-

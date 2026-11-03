@@ -29,7 +29,7 @@
 					? 'text-primary hover:bg-surface rounded-full border border-(--text-color-subtle) px-6 py-3.5',
 				variant == 'text' ? 'text-primary py-1 underline',
 				disabled ? 'pointer-events-none opacity-50',
-				classes | default( [] ) | join( ' ' )
+				classes | join( ' ' )
 			)
 		}}"
 		{{
@@ -38,7 +38,7 @@
 				url and target ? { target: target },
 				url and target == '_blank' ? { rel: 'noopener noreferrer' },
 				disabled and not url ? { disabled: true },
-				attributes | default( {} )
+				attributes
 			)
 		}}
 	>

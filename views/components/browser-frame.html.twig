@@ -19,9 +19,8 @@
  # @param {bool} [autoplay] Whether the video autoplays. Defaults to true.
  #}
 
-{%- set media = media | default( {} ) -%}
-{%- set video_url = media.video.url | default( null ) -%}
-{%- set poster_id = media.poster.ID | default( media.poster.id | default( null ) ) -%}
+{%- set video_url = media.video.url -%}
+{%- set poster_id = media.poster.ID | default( media.poster.id ) -%}
 {%- set image = media.image | default( video_url ? poster_id : null ) -%}
 {%- set autoplay = autoplay is not defined ? true : autoplay -%}
 
@@ -29,7 +28,7 @@
 	class="{{
 		html_classes(
 			'border-default bg-surface overflow-hidden rounded-md border',
-			classes | default( [] ) | join( ' ' )
+			classes | join( ' ' )
 		)
 	}}"
 >
@@ -41,7 +40,7 @@
 			include(
 				'components/badge.html.twig',
 				{
-					title: badge | default( '' ),
+					title: badge,
 					classes: [ 'ms-auto' ],
 				},
 				with_context: false
@@ -59,10 +58,10 @@
 							image: image,
 							classes: [ 'size-full object-cover object-top' ],
 							loading: loading | default( 'lazy' ),
-							sizes: sizes | default( null ),
-							alt: video_url ? '' : alt ?? null,
+							sizes: sizes,
+							alt: video_url ? '' : alt,
 							attributes: ( video_url ? {} : attributes | default( {} ) ) | merge(
-								fetchpriority | default( false ) ? { fetchpriority: fetchpriority } : {}
+								fetchpriority ? { fetchpriority: fetchpriority } : {}
 							),
 						},
 						with_context: false
@@ -81,10 +80,10 @@
 					{{
 						html_attr(
 							{
-								poster: poster_id ? null : media.poster.url | default( null ),
+								poster: poster_id ? null : media.poster.url,
 								autoplay: autoplay ? true : false,
 							},
-							attributes | default( {} )
+							attributes
 						)
 					}}
 				></video>

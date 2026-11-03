@@ -16,11 +16,11 @@
 
 {% embed 'components/browser-frame.html.twig'
 	with {
-		classes: classes | default( [] ),
+		classes: classes,
 		id: id,
 		before: before,
 		after: after,
-		sizes: sizes | default( null ),
+		sizes: sizes,
 		aspect: aspect | default( 'aspect-16/10' ),
 	} only
 %}
@@ -30,7 +30,7 @@
 			class="{{ html_classes( 'bg-media relative block overflow-hidden', aspect ) }}"
 		>
 			<div class="absolute inset-0">
-				{%- if after.image | default( false ) -%}
+				{%- if after.image -%}
 					{{-
 						include(
 							'components/image.html.twig',
@@ -49,7 +49,7 @@
 				id="{{ id }}-before"
 				class="absolute inset-0 grayscale [cinq-windowsplitter:not(:defined)_&]:[clip-path:inset(0_50%_0_0)]"
 			>
-				{%- if before.image | default( false ) -%}
+				{%- if before.image -%}
 					{{-
 						include(
 							'components/image.html.twig',
@@ -68,7 +68,7 @@
 				include(
 					'components/badge.html.twig',
 					{
-						title: before.label | default( '' ),
+						title: before.label,
 						classes: [ 'bg-default absolute top-4 left-4' ],
 					},
 					with_context: false
@@ -78,7 +78,7 @@
 				include(
 					'components/badge.html.twig',
 					{
-						title: after.label | default( '' ),
+						title: after.label,
 						classes: [ 'bg-default absolute top-4 right-4' ],
 					},
 					with_context: false

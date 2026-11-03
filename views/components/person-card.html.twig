@@ -12,7 +12,7 @@
  # @param array classes Optional extra classes.
  #}
 
-<figure class="{{ html_classes( 'flex flex-col gap-2', classes | default( [] ) | join( ' ' ) ) }}">
+<figure class="{{ html_classes( 'flex flex-col gap-2', classes | join( ' ' ) ) }}">
 	<div
 		class="{{ html_classes( 'aspect-square overflow-hidden rounded-md', not image ? 'bg-media' ) }}"
 	>
@@ -23,7 +23,7 @@
 					{
 						image: image,
 						alt: '',
-						sizes: sizes | default( null ),
+						sizes: sizes,
 						classes: [ 'size-full object-cover grayscale' ],
 					},
 					with_context: false

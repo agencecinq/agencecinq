@@ -13,20 +13,12 @@
  #}
 
 {%- set navigation = navigation ?? true -%}
-{%- set items = navigation and nav_menus.main is defined
-	? nav_menus.main.get_items() | default( [] )
-	: []
--%}
-{%- set secondary = navigation and nav_menus.secondary is defined
-	? nav_menus.secondary.get_items() | default( [] )
-	: []
--%}
+{%- set items = navigation and nav_menus.main ? nav_menus.main.get_items() : [] -%}
+{%- set secondary = navigation and nav_menus.secondary ? nav_menus.secondary.get_items() : [] -%}
 
 <header
 	role="banner"
-	class="{{
-		html_classes( 'border-default bg-default border-b', classes | default( [] ) | join( ' ' ) )
-	}}"
+	class="{{ html_classes( 'border-default bg-default border-b', classes | join( ' ' ) ) }}"
 >
 	<div class="container flex items-center justify-between gap-6 py-3 xl:py-4">
 		<a
@@ -112,7 +104,7 @@
 					)
 				-}}
 			{%- endfor -%}
-			{%- if theme.contact.link | default( false ) -%}
+			{%- if theme.contact.link -%}
 				{{-
 					include(
 						'components/button.html.twig',
@@ -161,7 +153,7 @@
 					{
 						items: items,
 						secondary: secondary,
-						contact: theme.contact | default( {} ),
+						contact: theme.contact,
 					},
 					with_context: false
 				)

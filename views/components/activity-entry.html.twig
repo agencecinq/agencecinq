@@ -9,7 +9,7 @@
  # @param array classes Optional extra classes.
  #}
 
-<li class="{{ html_classes( 'flex items-start gap-3', classes | default( [] ) | join( ' ' ) ) }}">
+<li class="{{ html_classes( 'flex items-start gap-3', classes | join( ' ' ) ) }}">
 	<span class="bg-accent-default mt-2 size-2 shrink-0 rounded-full" aria-hidden="true"></span>
 	<div class="flex min-w-0 flex-1 flex-col gap-1">
 		<p class="text-button text-primary">{{- project -}}</p>

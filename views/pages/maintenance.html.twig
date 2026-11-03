@@ -24,7 +24,7 @@
 {%- endblock -%}
 
 {%- block content -%}
-	{%- set contact = theme.contact | default( {} ) -%}
+	{%- set contact = theme.contact -%}
 	{%- set text = __( 'A new version of %s is going live.', 'agencecinq' ) | format( host ) -%}
 	{%- if contact.phone and contact.email -%}
 		{%- set reach =
@@ -46,7 +46,7 @@
 						title: __( 'The site is under construction.', 'agencecinq' ),
 						text: text,
 						links: [
-							contact.link.url | default( false ) ? contact.link | merge( { variant: 'primary' } ),
+							contact.link.url ? contact.link | merge( { variant: 'primary' } ),
 							contact.email
 								? {
 									title: __( 'Write to %s', 'agencecinq' ) | format( contact.email ),

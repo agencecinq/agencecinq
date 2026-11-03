@@ -6,8 +6,7 @@
  # filters, links in a nav, the current one with aria-current. They wrap on mobile rather than scroll sideways.
  #}
 
-{%- set category = term | default( null ) -%}
-{%- set subject = category ?: author | default( null ) -%}
+{%- set subject = term ?: author -%}
 {%- set title = subject ? subject.name : block.content.title -%}
 {%- set text = subject ? subject.description : block.content.text -%}
 {%- set categories =
@@ -31,7 +30,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		aria-labelledby="{{ title_id }}"
 	>
 		<div class="container flex flex-col gap-6 lg:gap-8">
@@ -65,7 +64,7 @@
 										{
 											title: item.name,
 											url: item.link,
-											active: category and category.id == item.id,
+											active: term and term.id == item.id,
 										},
 										with_context: false
 									)

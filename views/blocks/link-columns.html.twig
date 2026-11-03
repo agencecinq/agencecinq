@@ -5,7 +5,7 @@
  # top-level items as rubrics in H2 and their children as underlined links, the rubrics side by side from lg.
  #}
 
-{%- set rubrics = nav_menus.sitemap is defined
+{%- set rubrics = nav_menus.sitemap
 	? nav_menus.sitemap.get_items() | filter( item => item.children | length )
 	: []
 -%}
@@ -23,7 +23,7 @@
 
 	<nav
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		aria-label="{{ __( 'Sitemap', 'agencecinq' ) }}"
 	>
 		<div class="container grid gap-10 lg:auto-cols-fr lg:grid-flow-col lg:gap-x-8">

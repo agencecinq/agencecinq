@@ -27,7 +27,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
 	>
 		<div class="layout-grid container items-start gap-y-4">
@@ -38,7 +38,7 @@
 						eyebrow: block.content.eyebrow,
 						title: block.content.title,
 						text: block.content.text,
-						heading: block.content.heading | default( 'h2' ),
+						heading: block.content.heading,
 						id: title_id,
 						classes: [ 'col-span-full mb-4 lg:mb-10' ],
 					},

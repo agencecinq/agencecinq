@@ -21,7 +21,7 @@
 	class="{{
 		html_classes(
 			'border-default bg-surface flex flex-col items-start gap-4 rounded-lg border p-6 lg:p-8',
-			classes | default( [] ) | join( ' ' )
+			classes | join( ' ' )
 		)
 	}}"
 >
@@ -37,14 +37,14 @@
 			<span class="text-muted">{{- price -}}</span>
 		</p>
 	{%- endif -%}
-	{%- if link.url | default( false ) -%}
+	{%- if link.url -%}
 		{{-
 			include(
 				'components/button.html.twig',
 				{
 					title: link.title,
 					url: link.url,
-					target: link.target | default( null ),
+					target: link.target,
 					variant: 'text',
 					attributes: {
 						id: id ~ '-link',

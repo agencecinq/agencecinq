@@ -8,7 +8,7 @@
 
 {%- set cards = block.cards | default( [] ) | filter( card => card.title ) -%}
 {%- set catalogue = cards | length ? catalogue() -%}
-{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set heading = block.content.heading -%}
 {%- set title_id = block.id ~ '-title' -%}
 
 {%- if cards | length -%}
@@ -24,7 +24,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
 	>
 		<div class="container flex flex-col gap-8 lg:gap-14">

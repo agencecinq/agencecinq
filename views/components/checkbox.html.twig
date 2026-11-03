@@ -14,7 +14,7 @@
 	class="{{
 		html_classes(
 			'flex items-start gap-3 py-2.5 text-base has-disabled:opacity-50',
-			classes | default( [] ) | join( ' ' )
+			classes | join( ' ' )
 		)
 	}}"
 >
@@ -29,7 +29,7 @@
 					'focus-visible:outline-focus-ring focus-visible:outline-2 focus-visible:outline-offset-2'
 				)
 			}}"
-			{{ html_attr( attributes | default( {} ) ) }}
+			{{ html_attr( attributes ) }}
 		/>
 		{{-
 			include(

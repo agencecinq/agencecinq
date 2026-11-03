@@ -6,9 +6,9 @@
  # the conversions are the clicks on the call, the phone and the email.
  #}
 
-{%- set contact = theme.contact | default( {} ) -%}
+{%- set contact = theme.contact -%}
 {%- set channels = [] -%}
-{%- if block.booking and ( contact.link.url | default( false ) ) -%}
+{%- if block.booking and contact.link.url -%}
 	{%- set channels =
 		channels | merge(
 			[
@@ -21,7 +21,7 @@
 		)
 	-%}
 {%- endif -%}
-{%- if contact.phone | default( false ) -%}
+{%- if contact.phone -%}
 	{%- set channels =
 		channels | merge(
 			[
@@ -34,7 +34,7 @@
 		)
 	-%}
 {%- endif -%}
-{%- if contact.email | default( false ) -%}
+{%- if contact.email -%}
 	{%- set channels =
 		channels | merge(
 			[
@@ -68,7 +68,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
 	>
 		<div class="container flex flex-col gap-6 lg:gap-10">
@@ -79,7 +79,7 @@
 						eyebrow: block.content.eyebrow,
 						title: block.content.title,
 						text: block.content.text,
-						heading: block.content.heading | default( 'h2' ),
+						heading: block.content.heading,
 						id: title_id,
 					},
 					with_context: false

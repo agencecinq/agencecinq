@@ -5,7 +5,7 @@
  # button, then what the click leads to.
  #}
 
-{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set heading = block.content.heading -%}
 {%- set title_id = block.id ~ '-title' -%}
 
 {%- if block.content.title -%}
@@ -21,7 +21,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		aria-labelledby="{{ title_id }}"
 	>
 		<div class="container flex flex-col items-center gap-6 text-center">

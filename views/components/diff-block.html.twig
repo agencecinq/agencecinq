@@ -17,7 +17,7 @@
 	class="{{
 		html_classes(
 			'border-default bg-surface overflow-hidden rounded-md border',
-			classes | default( [] ) | join( ' ' )
+			classes | join( ' ' )
 		)
 	}}"
 >
@@ -31,7 +31,7 @@
 	</div>
 
 	<ul>
-		{%- for text in removed | default( [] ) -%}
+		{%- for text in removed -%}
 			{{-
 				include(
 					'components/diff-line.html.twig',
@@ -43,7 +43,7 @@
 				)
 			-}}
 		{%- endfor -%}
-		{%- for text in added | default( [] ) -%}
+		{%- for text in added -%}
 			{{-
 				include(
 					'components/diff-line.html.twig',
@@ -57,14 +57,14 @@
 		{%- endfor -%}
 	</ul>
 
-	{%- if link.url | default( false ) -%}
+	{%- if link.url -%}
 		<p class="px-4.5 py-3.5">
 			<a
 				class="text-button text-accent-default focus-visible:outline-focus-ring underline focus-visible:outline-2 focus-visible:outline-offset-2"
 				{{
 					html_attr(
 						{ href: link.url },
-						( link.target | default( false ) ) == '_blank'
+						link.target == '_blank'
 							? {
 								target: '_blank',
 								rel: 'noopener noreferrer',

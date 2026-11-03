@@ -16,7 +16,7 @@
 			html_classes(
 				'hover:bg-surface-hover focus-visible:outline-focus-ring block space-y-1 rounded-md px-4 py-3 transition-colors',
 				'focus-visible:outline-2 focus-visible:outline-offset-2',
-				classes | default( [] ) | join( ' ' )
+				classes | join( ' ' )
 			)
 		}}"
 		{{ html_attr( { href: url }, current ? { 'aria-current': 'page' } ) }}

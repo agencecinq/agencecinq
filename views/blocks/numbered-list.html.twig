@@ -6,7 +6,7 @@
  #}
 
 {%- set items = block.items | default( [] ) | filter( item => item.title ) -%}
-{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set heading = block.content.heading -%}
 {%- set title_id = block.id ~ '-title' -%}
 
 {%- if items | length -%}
@@ -22,7 +22,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		class="bg-elevated"
 		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
 	>
