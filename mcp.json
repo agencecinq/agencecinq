@@ -33,6 +33,10 @@
 			"description": "Before and after of a redesigned site in a window splitter, with the findings written with the client.",
 			"guidance": "Mostly on case studies. Findings come from the client interview: nothing invented."
 		},
+		"configurator": {
+			"description": "The estimator: the visitor checks a platform, a package and modules of the CINQ Central catalogue, the estimate adds up and leaves by e-mail.",
+			"guidance": "Do not write prices nor list the offers: they come from Central. Only the texts of the steps, the estimate and the confirmation are written here."
+		},
 		"contact_details": {
 			"description": "The ways to reach the agency: the 30-minute call first, then the phone and the email, read from the theme options.",
 			"guidance": "No form: the conversions are the clicks on the call, the phone and the email."

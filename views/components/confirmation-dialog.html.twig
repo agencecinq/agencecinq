@@ -1,0 +1,55 @@
+{#
+ # Components: Confirmation dialog
+ #
+ # Figma Overlay/Confirmation dialog: the Modal that confirms a request has left, then offers the next step.
+ # It only informs, so its title takes the focus. A script opens it and writes the message from its
+ # data-template once it is open, in a status region, so that it is announced (RGAA 7.5).
+ #
+ # @param string id Id of the <dialog>.
+ # @param string title
+ # @param string message Optional. Template of the message, its placeholders replaced by the script.
+ # @param string help Optional.
+ # @param object next Optional. The next step: eyebrow, title, text, link ({ title, url, target }), note.
+ #}
+
+{%- embed 'components/modal.html.twig'
+	with {
+		id: id,
+		title: title,
+		focus_title: true,
+		message: message | default( '' ),
+		help: help | default( '' ),
+		next: next | default( {} ),
+	} only
+-%}
+	{%- block content -%}
+		<div class="space-y-2">
+			<p class="text-body text-base" role="status" data-template="{{ message }}"></p>
+			{%- if help -%}
+				<p class="text-muted text-sm">{{- help -}}</p>
+			{%- endif -%}
+		</div>
+
+		{%- if next.title | default( false ) -%}
+			<div class="border-default flex flex-col items-start gap-3 border-t pt-6">
+				{%- if next.eyebrow | default( false ) -%}
+					<p class="text-eyebrow text-muted">{{- next.eyebrow -}}</p>
+				{%- endif -%}
+				<h3 class="text-title-md text-primary">{{- next.title -}}</h3>
+				{%- if next.text | default( false ) -%}
+					<p class="text-body text-base">{{- next.text -}}</p>
+				{%- endif -%}
+				{{-
+					include(
+						'components/button.html.twig',
+						next.link | default( {} ) | merge( { classes: [ 'w-full justify-center sm:w-auto' ] } ),
+						with_context: false
+					)
+				-}}
+				{%- if next.note | default( false ) -%}
+					<p class="text-muted text-sm">{{- next.note -}}</p>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+	{%- endblock -%}
+{%- endembed -%}

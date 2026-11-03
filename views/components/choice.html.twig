@@ -1,0 +1,71 @@
+{#
+ # Components: Choice
+ #
+ # Figma Choice: a radio or a checkbox drawn as a pill, its label and an optional price. The input is visually
+ # hidden in the label; the checked pill is filled and a checkbox shows a check instead of its plus, so the
+ # choice never rests on the colour alone (RGAA 3.1). A long label wraps inside the pill.
+ #
+ # @param string type Optional. 'radio' (default) or 'checkbox'.
+ # @param string name
+ # @param string value
+ # @param string title The label.
+ # @param string price Optional.
+ # @param bool checked Optional.
+ # @param object attributes Optional input attributes.
+ # @param object label_attributes Optional attributes of the pill.
+ #}
+
+{%- set type = type | default( 'radio' ) -%}
+
+{%- if title -%}
+	<label
+		class="{{
+			html_classes(
+				'group border-control text-button text-primary inline-flex max-w-full cursor-pointer items-center gap-2 rounded-full border px-4 py-2 transition-colors',
+				'hover:bg-surface-hover has-focus-visible:outline-focus-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
+				'has-checked:border-(--text-color-primary) has-checked:bg-(--text-color-primary) has-checked:text-(--background-color-default)'
+			)
+		}}"
+		{{ html_attr( label_attributes | default( {} ) ) }}
+	>
+		<input
+			type="{{ type }}"
+			name="{{ name }}"
+			value="{{ value }}"
+			class="sr-only"
+			{{ html_attr( checked ?? false ? { checked: true }, attributes | default( {} ) ) }}
+		/>
+		{%- if type == 'checkbox' -%}
+			{{-
+				include(
+					'svg/use.html.twig',
+					{
+						icon: 'plus',
+						classes: [ 'size-4 shrink-0 group-has-checked:hidden' ],
+						attributes: { 'aria-hidden': 'true' },
+					},
+					with_context: false
+				)
+			-}}
+			{{-
+				include(
+					'svg/use.html.twig',
+					{
+						icon: 'check',
+						classes: [ 'hidden size-4 shrink-0 group-has-checked:block' ],
+						attributes: { 'aria-hidden': 'true' },
+					},
+					with_context: false
+				)
+			-}}
+		{%- endif -%}
+		<span class="min-w-0">{{- title -}}</span>
+		{%- if price -%}
+			<span
+				class="text-muted shrink-0 text-sm whitespace-nowrap group-has-checked:text-(--background-color-default)"
+			>
+				{{- price -}}
+			</span>
+		{%- endif -%}
+	</label>
+{%- endif -%}

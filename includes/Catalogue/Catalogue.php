@@ -128,6 +128,47 @@ class Catalogue {
 	}
 
 	/**
+	 * Modules a package accepts, in the order of the API. The package decides, through its moduleIds.
+	 *
+	 * @param array<string, mixed> $package Package.
+	 * @return array<int, array<string, mixed>>
+	 */
+	public function modules( array $package ): array {
+		$ids = array_map( 'strval', (array) ( $package['moduleIds'] ?? array() ) );
+
+		return array_values(
+			array_filter(
+				$this->list( 'modules' ),
+				static fn( array $module ): bool => in_array( (string) ( $module['id'] ?? '' ), $ids, true )
+			)
+		);
+	}
+
+	/**
+	 * Modules that at least one package of a platform accepts, in the order of the API, each with the codes of
+	 * those packages under packageCodes.
+	 *
+	 * @param string $platform Platform id.
+	 * @return array<int, array<string, mixed>>
+	 */
+	public function platform_modules( string $platform ): array {
+		$modules = array();
+
+		foreach ( $this->packages( $platform ) as $package ) {
+			foreach ( $this->modules( $package ) as $module ) {
+				$modules[ $module['id'] ]                 ??= $module;
+				$modules[ $module['id'] ]['packageCodes'][] = (string) ( $package['code'] ?? '' );
+			}
+		}
+
+		$order = array_flip( array_column( $this->list( 'modules' ), 'id' ) );
+
+		uksort( $modules, static fn( $a, $b ): int => $order[ $a ] <=> $order[ $b ] );
+
+		return array_values( $modules );
+	}
+
+	/**
 	 * Pricing cards of a platform: its packages or its retainers.
 	 * Name, price, badge and the first four included lines come from the catalogue.
 	 * The featured card shows the badge of the block instead of its own, when there is one.

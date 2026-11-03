@@ -380,10 +380,23 @@
 										with_context: false
 									)
 								-}}
+								{{-
+									include(
+										'components/badge.html.twig',
+										{
+											title: 'Une partie se chiffre en rendez-vous',
+											dot: true,
+											tone: 'neutral',
+										},
+										with_context: false
+									)
+								-}}
 							</div>
 						{%- endfor -%}
 					</div>
-					<p class="text-mono text-subtle">components/badge.html.twig · title, dot</p>
+					<p class="text-mono text-subtle">
+						components/badge.html.twig · title, dot, tone: 'accent' | 'neutral'
+					</p>
 				</div>
 
 				<div class="space-y-6">
@@ -441,12 +454,26 @@
 										)
 									-}}
 								{%- endfor -%}
+								{{-
+									include(
+										'components/button.html.twig',
+										{
+											title: 'Recevoir mon estimation',
+											busy: 'Envoi en cours…',
+											attributes: {
+												'aria-busy': 'true',
+												disabled: true,
+											},
+										},
+										with_context: false
+									)
+								-}}
 							</div>
 						{%- endfor -%}
 					</div>
 					<p class="text-mono text-subtle">
 						components/button.html.twig · title, url, variant: 'primary' | 'secondary' | 'text',
-						arrow, type, disabled
+						arrow, type, disabled, busy (shown while aria-busy)
 					</p>
 				</div>
 
@@ -897,6 +924,90 @@
 						&lt;cinq-switch&gt;
 					</p>
 				</div>
+
+				<div class="space-y-6">
+					<h3 class="text-title-md">Choice and Step heading</h3>
+					<div class="layout-grid gap-y-3">
+						{%- for scheme in schemes | keys -%}
+							<fieldset
+								data-scheme="{{ schemes[ scheme ] }}"
+								data-scheme-ignore
+								class="{{ html_classes( panel ) }}"
+								aria-describedby="styleguide-step-{{ scheme }}"
+							>
+								{{-
+									include(
+										'components/step-heading.html.twig',
+										{
+											step: 'Étape 03',
+											title: 'Vos modules',
+											text: 'Chaque prix s’ajoute tel quel, sans majoration ni plafond.',
+											id: 'styleguide-step-' ~ scheme,
+										},
+										with_context: false
+									)
+								-}}
+								<div class="clear-left flex flex-wrap gap-3 pt-6">
+									{{-
+										include(
+											'components/choice.html.twig',
+											{
+												type: 'checkbox',
+												name: 'styleguide-modules-' ~ scheme ~ '[]',
+												value: 'klaviyo',
+												title: 'Klaviyo',
+												price: '3 500 €',
+												checked: true,
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/choice.html.twig',
+											{
+												type: 'checkbox',
+												name: 'styleguide-modules-' ~ scheme ~ '[]',
+												value: 'store-locator',
+												title: 'Store locator',
+												price: '1 000 €',
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/choice.html.twig',
+											{
+												name: 'styleguide-platform-' ~ scheme,
+												value: 'shopify',
+												title: 'Shopify',
+												checked: true,
+											},
+											with_context: false
+										)
+									-}}
+									{{-
+										include(
+											'components/choice.html.twig',
+											{
+												name: 'styleguide-platform-' ~ scheme,
+												value: 'wordpress',
+												title: 'WordPress',
+											},
+											with_context: false
+										)
+									-}}
+								</div>
+							</fieldset>
+						{%- endfor -%}
+					</div>
+					<p class="text-mono text-subtle">
+						components/choice.html.twig · type: 'radio' | 'checkbox', name, value, title, price,
+						checked, attributes, label_attributes · components/step-heading.html.twig · step, title,
+						text, id · in a fieldset
+					</p>
+				</div>
 			</section>
 
 			<section class="space-y-14" aria-labelledby="styleguide-content">
@@ -1042,11 +1153,22 @@
 										with_context: false
 									)
 								-}}
+								{{-
+									include(
+										'components/price-line.html.twig',
+										{
+											label: 'Total estimé, HT',
+											value: '5 090 €',
+											total: true,
+										},
+										with_context: false
+									)
+								-}}
 							</dl>
 						{%- endfor -%}
 					</div>
 					<p class="text-mono text-subtle">
-						components/price-line.html.twig · label, value · in a dl
+						components/price-line.html.twig · label, value, total · in a dl
 					</p>
 				</div>
 

@@ -5,17 +5,21 @@
  #
  # @param string label
  # @param string value
+ # @param bool total Optional. Last line of an estimate: the label in title-md, the amount in title-lg.
  # @param array classes Optional extra classes.
  #}
+
+{%- set total = total | default( false ) -%}
 
 <div
 	class="{{
 		html_classes(
-			'border-default text-button flex flex-col gap-1 border-b py-5',
+			'border-default flex flex-col gap-1 border-b py-5',
+			not total ? 'text-button',
 			classes | default( [] ) | join( ' ' )
 		)
 	}}"
 >
-	<dt class="text-primary">{{- label -}}</dt>
-	<dd class="text-muted">{{- value -}}</dd>
+	<dt class="{{ html_classes( 'text-primary', total ? 'text-title-md' ) }}">{{- label -}}</dt>
+	<dd class="{{ total ? 'text-title-lg text-primary' : 'text-muted' }}">{{- value -}}</dd>
 </div>

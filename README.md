@@ -38,6 +38,7 @@ Layouts are registered in `BlocksFields` and rendered via `views/blocks/blocks.h
 | Bullet list     | `bullet-list.html.twig`     |
 | Checklist       | `checklist.html.twig`       |
 | Comparison      | `comparison.html.twig`      |
+| Configurator    | `configurator.html.twig`    |
 | Contact details | `contact-details.html.twig` |
 | CTA             | `cta.html.twig`             |
 | Diff columns    | `diff-columns.html.twig`    |
@@ -59,7 +60,7 @@ Layouts are registered in `BlocksFields` and rendered via `views/blocks/blocks.h
 | Signup form     | `signup-form.html.twig`     |
 | Steps           | `steps.html.twig`           |
 
-Paddings default to 104 px top and bottom, ×0.75 on mobile; the color scheme of a block is set under **Settings**. The Pricing table and the Action cards read their prices from the public catalogue served by Central (`includes/Catalogue/`).
+Paddings default to 104 px top and bottom, ×0.75 on mobile; the color scheme of a block is set under **Settings**. The Pricing table, the Action cards and the Configurator read their prices from the public catalogue served by Central (`includes/Catalogue/`). The Configurator sends its estimate by e-mail through `POST /wp-json/cinq/v1/estimate` (`Catalogue/EstimateRequest.php`), to the visitor and to the e-mail of the theme options.
 
 ### Other page types
 

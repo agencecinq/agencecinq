@@ -1,0 +1,22 @@
+{#
+ # Components: Step heading
+ #
+ # Figma Step heading: the legend of a fieldset, its step number and its title, then an optional help that
+ # the fieldset references with aria-describedby. Not a heading: the legend names the group (RGAA 11.5).
+ # The legend floats so that the fieldset lays it out like its other children.
+ #
+ # @param string step « Step 01 ».
+ # @param string title
+ # @param string text Optional. The help, rendered as {id}.
+ # @param string id Optional. Id of the help.
+ #}
+
+{%- if title -%}
+	<legend class="float-left w-full space-y-2">
+		<span class="text-eyebrow text-muted block">{{- step -}}</span>
+		<span class="text-title-md text-primary block">{{- title -}}</span>
+	</legend>
+	{%- if text -%}
+		<p id="{{ id }}" class="text-muted clear-left pt-2 text-sm">{{- text -}}</p>
+	{%- endif -%}
+{%- endif -%}

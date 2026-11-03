@@ -1,0 +1,383 @@
+{#
+ # Blocks: Configurator
+ #
+ # Figma Section/Configurator, the estimator of the CINQ Central catalogue: the platform, the package and the
+ # modules on seven columns, the estimate on the last five, sticky from lg. Every platform, package and module
+ # is rendered, each platform keeping its own checked package; CSS shows the packages of the checked platform
+ # and the modules its package accepts. cinq-configurator sums the estimate and sends the form.
+ #
+ # The form posts to /wp-json/cinq/v1/estimate (Catalogue/EstimateRequest.php). With JavaScript, the answer
+ # opens the confirmation dialog or the error toast of the page; without it, the route sends the page back to
+ # {id}-sent or {id}-failed, which :target shows.
+ #}
+
+{%- set catalogue = catalogue() -%}
+{%- set platforms = catalogue
+	? catalogue.platforms() | filter( item => catalogue.packages( item.id ) | length )
+	: []
+-%}
+
+{%- if platforms | length -%}
+	{{-
+		include(
+			'blocks/_layout.html.twig',
+			{
+				paddings: block.layout.paddings,
+				id: block.id,
+			}
+		)
+	-}}
+
+	{%- set ids = platforms | map( item => item.id ) -%}
+	{%- set platform = block.catalogue.platform in ids ? block.catalogue.platform : ids | first -%}
+	{%- set checked = {} -%}
+	{%- for item in platforms -%}
+		{%- set chosen = item.id == platform
+			? catalogue.package( item.id, block.catalogue.package | default( '' ) )
+			: null
+		-%}
+		{%- set checked =
+			checked | merge( { ( item.id ): chosen ?? ( catalogue.packages( item.id ) | first ) } )
+		-%}
+	{%- endfor -%}
+	{%- set package = checked[ platform ] -%}
+	{%- set firm = catalogue.mode( package ) == constant( 'FIRM', catalogue ) -%}
+	{%- set title_id = block.id ~ '-title' -%}
+	{%- set help_id = block.id ~ '-package-help' -%}
+	{%- set modules_help_id = block.id ~ '-modules-help' -%}
+
+	{# prettier-ignore-start #}
+	<style>
+		{%- for item in platforms %}
+			#{{ block.id }}:has([name="platform"][value="{{ item.id | e( 'css' ) }}"]:checked) [data-platform]:not([data-platform="{{ item.id | e( 'css' ) }}"]) { display: none; }
+			{%- for option in catalogue.packages( item.id ) %}
+				{%- set when %}#{{ block.id }}:has([name="platform"][value="{{ item.id | e( 'css' ) }}"]:checked):has([name="package[{{ item.id | e( 'css' ) }}]"][value="{{ option.code | e( 'css' ) }}"]:checked){% endset %}
+				{{ when }} [data-packages]:not([data-packages~="{{ item.id | e( 'css' ) }}:{{ option.code | e( 'css' ) }}"]) { display: none; }
+				{%- if not ( catalogue.modules( option ) | length ) %}
+					{{ when }} :is(#{{ block.id }}-modules, #{{ modules_help_id }}) { display: none; }
+					{{ when }} #{{ block.id }}-modules-empty { display: block; }
+				{%- endif %}
+			{%- endfor %}
+		{%- endfor %}
+	</style>
+	{# prettier-ignore-end #}
+
+	<section
+		id="{{ block.id }}"
+		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		aria-labelledby="{{ title_id }}"
+	>
+		<div class="container">
+			<cinq-configurator
+				class="block"
+				data-package="{{ __( 'Package %s', 'agencecinq' ) }}"
+				data-from="{{ _x( 'From %s', 'price short label', 'agencecinq' ) }}"
+				data-quote="{{ __( 'On quote', 'agencecinq' ) }}"
+				data-error="{{
+					__( 'The sending failed. Please check your connection and try again.', 'agencecinq' )
+				}}"
+			>
+				<form
+					method="post"
+					action="{{ function( 'rest_url', 'cinq/v1/estimate' ) }}"
+					class="layout-grid items-start gap-y-8"
+				>
+					<div class="col-span-full space-y-8 lg:col-span-7 lg:space-y-14">
+						<fieldset class="min-w-0">
+							{{-
+								include(
+									'components/step-heading.html.twig',
+									{
+										step: __( 'Step %02d', 'agencecinq' ) | format( 1 ),
+										title: block.steps.platform_title,
+									},
+									with_context: false
+								)
+							-}}
+							<div class="clear-left flex flex-wrap gap-3 pt-6">
+								{%- for item in platforms -%}
+									{{-
+										include(
+											'components/choice.html.twig',
+											{
+												name: 'platform',
+												value: item.id,
+												title: item.label,
+												checked: item.id == platform,
+											},
+											with_context: false
+										)
+									-}}
+								{%- endfor -%}
+							</div>
+						</fieldset>
+
+						<fieldset
+							class="min-w-0"
+							{{ html_attr( block.steps.package_text ? { 'aria-describedby': help_id } ) }}
+						>
+							{{-
+								include(
+									'components/step-heading.html.twig',
+									{
+										step: __( 'Step %02d', 'agencecinq' ) | format( 2 ),
+										title: block.steps.package_title,
+										text: block.steps.package_text,
+										id: help_id,
+									},
+									with_context: false
+								)
+							-}}
+							<div class="clear-left flex flex-wrap gap-3 pt-6">
+								{%- for item in platforms -%}
+									{%- for option in catalogue.packages( item.id ) -%}
+										{{-
+											include(
+												'components/choice.html.twig',
+												{
+													name: 'package[' ~ item.id ~ ']',
+													value: option.code,
+													title: option.name,
+													price: option | price( true ),
+													checked: option.id == checked[ item.id ].id,
+													attributes: {
+														'data-name': option.name,
+														'data-label': option | price( true ),
+														'data-price': option.priceExclVat ?? '',
+														'data-mode': catalogue.mode( option ),
+													},
+													label_attributes: { 'data-platform': item.id },
+												},
+												with_context: false
+											)
+										-}}
+									{%- endfor -%}
+								{%- endfor -%}
+							</div>
+						</fieldset>
+
+						<fieldset
+							class="min-w-0"
+							{{ html_attr( block.steps.modules_text ? { 'aria-describedby': modules_help_id } ) }}
+						>
+							{{-
+								include(
+									'components/step-heading.html.twig',
+									{
+										step: __( 'Step %02d', 'agencecinq' ) | format( 3 ),
+										title: block.steps.modules_title,
+										text: block.steps.modules_text,
+										id: modules_help_id,
+									},
+									with_context: false
+								)
+							-}}
+							<div id="{{ block.id }}-modules" class="clear-left flex flex-wrap gap-3 pt-6">
+								{%- for item in platforms -%}
+									{%- for module in catalogue.platform_modules( item.id ) -%}
+										{{-
+											include(
+												'components/choice.html.twig',
+												{
+													type: 'checkbox',
+													name: 'modules[]',
+													value: module.id,
+													title: module.name,
+													price: module | price( true ),
+													attributes: {
+														'data-name': module.name,
+														'data-label': module | price( true ),
+														'data-price': module.priceExclVat ?? '',
+														'data-mode': catalogue.mode( module ),
+													},
+													label_attributes: {
+														'data-packages': module.packageCodes
+															| map( code => item.id ~ ':' ~ code )
+															| join( ' ' ),
+													},
+												},
+												with_context: false
+											)
+										-}}
+									{%- endfor -%}
+								{%- endfor -%}
+							</div>
+							{%- if block.steps.modules_empty -%}
+								<p
+									id="{{ block.id }}-modules-empty"
+									class="text-muted clear-left hidden pt-2 text-sm"
+								>
+									{{- block.steps.modules_empty -}}
+								</p>
+							{%- endif -%}
+						</fieldset>
+					</div>
+
+					<div
+						class="border-accent bg-surface col-span-full flex flex-col items-start gap-4 rounded-lg border p-6 lg:sticky lg:top-[calc(var(--header-height)+(--spacing(6)))] lg:col-span-5 lg:p-8"
+					>
+						<h2 id="{{ title_id }}" class="text-title-md text-primary">
+							{{- block.estimate.title -}}
+						</h2>
+
+						<div class="self-stretch">
+							<dl data-dom="lines">
+								{{-
+									include(
+										'components/price-line.html.twig',
+										{
+											label: __( 'Package %s', 'agencecinq' ) | format( package.name ),
+											value: package | price( true ),
+										},
+										with_context: false
+									)
+								-}}
+							</dl>
+							<template data-dom="line">
+								{{-
+									include(
+										'components/price-line.html.twig',
+										{
+											label: '',
+											value: '',
+										},
+										with_context: false
+									)
+								-}}
+							</template>
+							<dl data-dom="total" aria-live="polite">
+								{{-
+									include(
+										'components/price-line.html.twig',
+										{
+											label: block.estimate.total,
+											value: package | price( true ),
+											total: true,
+										},
+										with_context: false
+									)
+								-}}
+							</dl>
+						</div>
+
+						<div data-dom="firm" {{ not firm ? 'hidden' }}>
+							{{-
+								include(
+									'components/badge.html.twig',
+									{
+										title: block.estimate.firm,
+										dot: true,
+									},
+									with_context: false
+								)
+							-}}
+						</div>
+						<div data-dom="open" {{ firm ? 'hidden' }}>
+							{{-
+								include(
+									'components/badge.html.twig',
+									{
+										title: block.estimate.open,
+										dot: true,
+										tone: 'neutral',
+									},
+									with_context: false
+								)
+							-}}
+						</div>
+
+						<p id="{{ block.id }}-sent" class="text-primary hidden text-sm target:block">
+							{{- block.confirmation.title }} {{ block.confirmation.help -}}
+						</p>
+						<p id="{{ block.id }}-failed" class="text-status-error hidden text-sm target:block">
+							{{-
+								__( 'The sending failed. Please check the address and try again.', 'agencecinq' )
+							-}}
+						</p>
+
+						<div class="flex flex-col items-start gap-3 self-stretch pt-2">
+							{{-
+								include(
+									'components/input.html.twig',
+									{
+										id: block.id ~ '-email',
+										label: block.estimate.email_label,
+										type: 'email',
+										error: block.estimate.email_error,
+										invalid: false,
+										attributes: {
+											name: 'email',
+											required: true,
+											pattern: '[^@\\s]+@[^@\\s]+\\.[^@\\s]{2,}',
+											autocomplete: 'email',
+											inputmode: 'email',
+											placeholder: block.estimate.email_placeholder,
+											'data-dom': 'email',
+										},
+										classes: [ 'self-stretch' ],
+									},
+									with_context: false
+								)
+							-}}
+							<div class="sr-only" aria-hidden="true">
+								<input type="text" name="website" tabindex="-1" autocomplete="off" />
+							</div>
+							<input type="hidden" name="source" value="{{ current_url }}" />
+							<input type="hidden" name="block" value="{{ block.id }}" />
+							{{-
+								include(
+									'components/button.html.twig',
+									{
+										title: block.estimate.button,
+										type: 'submit',
+										busy: __( 'Sending…', 'agencecinq' ),
+										classes: [ 'w-full justify-center lg:w-auto' ],
+										attributes: { 'data-dom': 'submit' },
+									},
+									with_context: false
+								)
+							-}}
+							{%- if block.estimate.privacy -%}
+								<p class="text-muted text-sm">
+									{{- block.estimate.privacy -}}
+									{%- if privacy_policy_url %}
+										<a
+											href="{{ privacy_policy_url }}"
+											class="text-primary underline underline-offset-2"
+										>
+											{{- __( 'Privacy policy', 'agencecinq' ) -}}
+										</a>
+									{%- endif -%}
+								</p>
+							{%- endif -%}
+						</div>
+
+						{%- if block.estimate.notice -%}
+							<p class="text-muted text-sm">{{- block.estimate.notice -}}</p>
+						{%- endif -%}
+					</div>
+				</form>
+
+				{{-
+					include(
+						'components/confirmation-dialog.html.twig',
+						{
+							id: block.id ~ '-dialog',
+							title: block.confirmation.title,
+							message: block.confirmation.message,
+							help: block.confirmation.help,
+							next: {
+								eyebrow: block.confirmation.eyebrow,
+								title: block.confirmation.next_title,
+								text: block.confirmation.next_text,
+								link: theme.contact.link | default( {} ),
+								note: block.confirmation.note,
+							},
+						},
+						with_context: false
+					)
+				-}}
+			</cinq-configurator>
+		</div>
+	</section>
+{%- endif -%}

@@ -56,6 +56,8 @@ class Init {
 			Plugins\ACF\IncludeFields\UserFields::class,
 			Plugins\ACF\IncludeFields\LockContentFields::class,
 			Plugins\ContactForm7\FormTag::class,
+			// Catalogue.
+			Catalogue\EstimateRequest::class,
 			// GitHub.
 			GitHub\Activity::class,
 			// Yoast.
