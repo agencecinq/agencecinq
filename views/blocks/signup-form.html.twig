@@ -21,7 +21,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		class="block-signup bg-elevated"
 		aria-labelledby="{{ title_id }}"
 	>
@@ -32,7 +32,7 @@
 					{
 						title: block.content.title,
 						text: block.content.text,
-						heading: block.content.heading | default( 'h2' ),
+						heading: block.content.heading,
 						id: title_id,
 						classes: [ 'col-span-full lg:col-span-6' ],
 					},

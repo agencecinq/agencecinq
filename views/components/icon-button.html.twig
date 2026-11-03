@@ -16,10 +16,10 @@
 		html_classes(
 			'hover:bg-surface-hover focus-visible:outline-focus-ring inline-flex size-11 shrink-0 items-center justify-center rounded-full transition-colors',
 			'focus-visible:outline-2 focus-visible:outline-offset-2',
-			classes | default( [] ) | join( ' ' )
+			classes | join( ' ' )
 		)
 	}}"
-	{{ html_attr( { 'aria-label': label }, attributes | default( {} ) ) }}
+	{{ html_attr( { 'aria-label': label }, attributes ) }}
 >
 	{%- if icon_html -%}
 		{{- icon_html -}}

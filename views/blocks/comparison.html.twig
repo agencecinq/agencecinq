@@ -11,11 +11,11 @@
 		blocked: __( 'What was blocking', 'agencecinq' ),
 		done: __( 'What we did', 'agencecinq' ),
 		regained: __( 'What the client took back in hand', 'agencecinq' ),
-	} | filter( ( label, key ) => block.findings[ key ] | default( false ) )
+	} | filter( ( label, key ) => block.findings[ key ] )
 -%}
 {%- set title_id = block.id ~ '-title' -%}
 
-{%- if ( block.before.image | default( false ) ) or ( block.after.image | default( false ) ) -%}
+{%- if block.before.image or block.after.image -%}
 	{{-
 		include(
 			'blocks/_layout.html.twig',
@@ -28,7 +28,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
 	>
 		<div class="container flex flex-col gap-8 lg:gap-14">
@@ -39,7 +39,7 @@
 						eyebrow: block.content.eyebrow,
 						title: block.content.title,
 						text: block.content.text,
-						heading: block.content.heading | default( 'h2' ),
+						heading: block.content.heading,
 						id: title_id,
 					},
 					with_context: false

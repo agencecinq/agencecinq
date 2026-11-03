@@ -8,7 +8,6 @@
  #}
 
 {%- set people = block.people | default( [] ) | filter( person => person.name ) -%}
-{%- set heading = block.content.heading | default( 'h2' ) -%}
 {%- set title_id = block.id ~ '-title' -%}
 
 {%- if people | length -%}
@@ -24,7 +23,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		class="group/portraits"
 		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
 	>
@@ -37,7 +36,7 @@
 							eyebrow: block.content.eyebrow,
 							title: block.content.title,
 							text: block.content.text,
-							heading: heading,
+							heading: block.content.heading,
 							id: title_id,
 							classes: [ 'lg:max-w-none' ],
 						},

@@ -32,7 +32,7 @@
 					}
 					: target ? { target: target },
 				active ? { 'aria-current': 'page' },
-				attributes | default( {} )
+				attributes
 			)
 		}}
 	>
@@ -42,12 +42,7 @@
 	<button
 		type="button"
 		class="{{ classes }}"
-		{{
-			html_attr(
-				active is defined ? { 'aria-pressed': active ? 'true' : 'false' },
-				attributes | default( {} )
-			)
-		}}
+		{{ html_attr( active is defined ? { 'aria-pressed': active ? 'true' : 'false' }, attributes ) }}
 	>
 		{{- title -}}
 	</button>

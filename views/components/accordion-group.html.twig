@@ -13,7 +13,7 @@
 -%}
 
 {%- if items | length -%}
-	<cinq-accordion class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}">
+	<cinq-accordion class="{{ html_classes( classes | join( ' ' ) ) }}">
 		{%- for item in items -%}
 			{{-
 				include(

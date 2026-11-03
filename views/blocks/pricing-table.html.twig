@@ -9,9 +9,9 @@
 
 {%- set catalogue = catalogue() -%}
 {%- set settings = block.catalogue | default( {} ) -%}
-{%- set source = settings.source | default( 'catalogue' ) -%}
+{%- set source = settings.source -%}
 {%- set lines = catalogue ? catalogue.tiers( source, settings ) : [] -%}
-{%- set heading = block.content.heading | default( 'h2' ) -%}
+{%- set heading = block.content.heading -%}
 {%- set title_id = block.id ~ '-title' -%}
 
 {%- if lines | length -%}
@@ -27,7 +27,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
 	>
 		<div class="container flex flex-col items-start gap-8 lg:gap-14">

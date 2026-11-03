@@ -13,7 +13,7 @@
 {%- if ( items | length ) > 1 -%}
 	<nav
 		aria-label="{{ __( 'Breadcrumb', 'agencecinq' ) }}"
-		class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}"
+		class="{{ html_classes( classes | join( ' ' ) ) }}"
 	>
 		<ol class="flex flex-wrap gap-x-2 gap-y-1 text-sm">
 			{%- for item in items -%}

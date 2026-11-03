@@ -13,7 +13,7 @@
  #}
 
 {%- if blocks -%}
-	<div class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) | trim }}">
+	<div class="{{ html_classes( classes | join( ' ' ) ) | trim }}">
 		{%- block prepend -%}{%- endblock -%}
 
 		{%- block body -%}

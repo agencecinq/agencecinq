@@ -13,9 +13,7 @@
 {%- if pagination.total > 1 -%}
 	<nav
 		aria-label="{{ __( 'Pagination', 'agencecinq' ) }}"
-		class="{{
-			html_classes( 'flex flex-wrap items-center gap-4', classes | default( [] ) | join( ' ' ) )
-		}}"
+		class="{{ html_classes( 'flex flex-wrap items-center gap-4', classes | join( ' ' ) ) }}"
 	>
 		{%- if pagination.prev -%}
 			{{-
@@ -23,7 +21,7 @@
 					'components/button.html.twig',
 					{
 						title: prev_title | default( __( 'Newer posts', 'agencecinq' ) ),
-						url: pagination.prev.link ~ ( anchor | default( '' ) ),
+						url: pagination.prev.link ~ anchor,
 						variant: 'text',
 						arrow: false,
 					},
@@ -38,7 +36,7 @@
 					'components/button.html.twig',
 					{
 						title: next_title | default( __( 'Older posts', 'agencecinq' ) ),
-						url: pagination.next.link ~ ( anchor | default( '' ) ),
+						url: pagination.next.link ~ anchor,
 						variant: 'secondary',
 					},
 					with_context: false

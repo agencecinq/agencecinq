@@ -17,7 +17,7 @@
 	class="{{
 		html_classes(
 			'layout-grid container items-start gap-y-10 py-20 lg:py-34',
-			classes | default( [] ) | join( ' ' )
+			classes | join( ' ' )
 		)
 	}}"
 >
@@ -26,7 +26,7 @@
 		{%- if text -%}
 			<p class="text-body text-lg">{{- text -}}</p>
 		{%- endif -%}
-		{%- if links | default( [] ) | length -%}
+		{%- if links | length -%}
 			<div class="flex flex-wrap items-center gap-x-4 gap-y-3">
 				{%- for link in links -%}
 					{{- include( 'components/button.html.twig', link, with_context: false ) -}}

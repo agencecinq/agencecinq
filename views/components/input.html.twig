@@ -18,12 +18,7 @@
 {%- set invalid = error and ( invalid ?? true ) -%}
 
 <div
-	class="{{
-		html_classes(
-			'flex flex-col gap-2 has-disabled:opacity-50',
-			classes | default( [] ) | join( ' ' )
-		)
-	}}"
+	class="{{ html_classes( 'flex flex-col gap-2 has-disabled:opacity-50', classes | join( ' ' ) ) }}"
 >
 	<label for="{{ id }}" class="text-button text-primary">{{- label -}}</label>
 	<input
@@ -43,7 +38,7 @@
 						'aria-invalid': 'true',
 						'aria-describedby': error_id,
 					},
-				attributes | default( {} )
+				attributes
 			)
 		}}
 	/>

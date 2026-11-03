@@ -6,7 +6,7 @@
  #}
 
 {%- set points = block.points | default( [] ) | filter( point => point.title ) -%}
-{%- set links = block.links | default( [] ) | filter( link => link.title | default( false ) ) -%}
+{%- set links = block.links | default( [] ) | filter( link => link.title ) -%}
 {%- set title_id = block.id ~ '-title' -%}
 
 {%- if points | length -%}
@@ -22,7 +22,7 @@
 
 	<section
 		id="{{ block.id }}"
-		data-scheme="{{ block.layout.color_scheme | default( '' ) }}"
+		data-scheme="{{ block.layout.color_scheme }}"
 		{{ html_attr( block.content.title ? { 'aria-labelledby': title_id } ) }}
 	>
 		<div class="container flex flex-col gap-8 lg:gap-14">
@@ -33,7 +33,7 @@
 						eyebrow: block.content.eyebrow,
 						title: block.content.title,
 						text: block.content.text,
-						heading: block.content.heading | default( 'h2' ),
+						heading: block.content.heading,
 						id: title_id,
 					},
 					with_context: false

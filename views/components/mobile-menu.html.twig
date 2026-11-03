@@ -132,7 +132,7 @@
 	{%- endif -%}
 
 	<div class="mt-auto flex flex-col items-start gap-3 pt-8">
-		{%- if contact.link | default( false ) -%}
+		{%- if contact.link -%}
 			{{-
 				include(
 					'components/button.html.twig',
@@ -144,7 +144,7 @@
 				)
 			-}}
 		{%- endif -%}
-		{%- for item in secondary | default( [] ) -%}
+		{%- for item in secondary -%}
 			{{-
 				include(
 					'components/button.html.twig',
@@ -160,7 +160,7 @@
 				)
 			-}}
 		{%- endfor -%}
-		{%- if contact.phone | default( false ) -%}
+		{%- if contact.phone -%}
 			<a
 				href="tel:{{ contact.phone | tel }}"
 				class="text-primary focus-visible:outline-focus-ring text-base underline focus-visible:outline-2 focus-visible:outline-offset-2"

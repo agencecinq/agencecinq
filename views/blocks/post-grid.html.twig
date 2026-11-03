@@ -5,9 +5,7 @@
  # titles in H2, three per row from lg on four columns each, then the pagination. Elsewhere it shows nothing.
  #}
 
-{%- set items = posts | default( [] ) -%}
-
-{%- if items | length -%}
+{%- if posts | length -%}
 	{{-
 		include(
 			'blocks/_layout.html.twig',
@@ -18,10 +16,10 @@
 		)
 	-}}
 
-	<div id="{{ block.id }}" data-scheme="{{ block.layout.color_scheme | default( '' ) }}">
+	<div id="{{ block.id }}" data-scheme="{{ block.layout.color_scheme }}">
 		<div class="container flex flex-col items-start gap-8 lg:gap-14">
 			<ul class="layout-grid w-full gap-y-8 lg:gap-y-14">
-				{%- for item in items -%}
+				{%- for item in posts -%}
 					<li class="col-span-full lg:col-span-4">
 						{{-
 							include(
@@ -40,7 +38,7 @@
 			{{-
 				include(
 					'components/pagination.html.twig',
-					{ pagination: items.pagination() },
+					{ pagination: posts.pagination() },
 					with_context: false
 				)
 			-}}

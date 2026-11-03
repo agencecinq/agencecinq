@@ -15,11 +15,7 @@
 {%- set heading = heading | default( 'h2' ) -%}
 
 {%- if title -%}
-	<header
-		class="{{
-			html_classes( 'flex max-w-205 flex-col gap-4', classes | default( [] ) | join( ' ' ) )
-		}}"
-	>
+	<header class="{{ html_classes( 'flex max-w-205 flex-col gap-4', classes | join( ' ' ) ) }}">
 		{%- if eyebrow -%}
 			<p class="text-eyebrow text-muted">{{- eyebrow -}}</p>
 		{%- endif -%}

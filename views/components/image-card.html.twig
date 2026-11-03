@@ -17,11 +17,7 @@
 
 {%- set heading = heading | default( 'h3' ) -%}
 
-<div
-	class="{{
-		html_classes( 'flex flex-col items-start gap-4', classes | default( [] ) | join( ' ' ) )
-	}}"
->
+<div class="{{ html_classes( 'flex flex-col items-start gap-4', classes | join( ' ' ) ) }}">
 	<div class="bg-media aspect-16/10 w-full overflow-hidden rounded-md">
 		{%- if image -%}
 			{{-
@@ -29,8 +25,8 @@
 					'components/image.html.twig',
 					{
 						image: image,
-						alt: alt ?? null,
-						sizes: sizes | default( null ),
+						alt: alt,
+						sizes: sizes,
 						classes: [ 'size-full object-cover' ],
 					},
 					with_context: false
@@ -38,16 +34,14 @@
 			-}}
 		{%- endif -%}
 	</div>
-	{{-
-		include( 'components/badge.html.twig', { title: badge | default( '' ) }, with_context: false )
-	-}}
+	{{- include( 'components/badge.html.twig', { title: badge }, with_context: false ) -}}
 	<{{ heading }} class="text-title-lg text-primary">
 		{{- title -}}
 	</{{ heading }}>
 	{%- if text -%}
 		<p class="text-body text-base">{{- text -}}</p>
 	{%- endif -%}
-	{%- if link.url | default( false ) -%}
+	{%- if link.url -%}
 		{{-
 			include(
 				'components/button.html.twig',

@@ -24,7 +24,7 @@
 		html_classes(
 			'group relative flex flex-col gap-4 rounded-md pb-2',
 			'has-focus-visible:outline-focus-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-2',
-			classes | default( [] ) | join( ' ' )
+			classes | join( ' ' )
 		)
 	}}"
 >
@@ -38,7 +38,7 @@
 					{
 						image: post.thumbnail,
 						alt: '',
-						sizes: sizes | default( null ),
+						sizes: sizes,
 						classes: [ 'size-full object-cover' ],
 					},
 					with_context: false
