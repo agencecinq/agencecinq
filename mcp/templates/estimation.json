@@ -1,0 +1,20 @@
+{
+	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
+	"title": "T22 · Estimation",
+	"description": "The estimator, then the questions on the estimate. No closing CTA: the confirmation offers the 30-minute call. Example: /estimation/.",
+	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=381-11704",
+	"sections": [
+		{
+			"label": "Page header",
+			"block": "page_header"
+		},
+		{
+			"label": "Configurator",
+			"block": "configurator"
+		},
+		{
+			"label": "Accordion",
+			"block": "accordion"
+		}
+	]
+}

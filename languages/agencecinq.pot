@@ -27,7 +27,7 @@ msgctxt "price long label"
 msgid "%s excl. VAT"
 msgstr ""
 
-#: includes/Catalogue/Catalogue.php:278 includes/Catalogue/Catalogue.php:336
+#: includes/Catalogue/Catalogue.php:278 includes/Catalogue/Catalogue.php:336 views/blocks/configurator.html.twig:75
 msgid "On quote"
 msgstr ""
 
@@ -46,7 +46,7 @@ msgid "%s excl. VAT per month"
 msgstr ""
 
 #. translators: %s: amount, e.g. « €6,000 ».
-#: includes/Catalogue/Catalogue.php:344
+#: includes/Catalogue/Catalogue.php:344 views/blocks/configurator.html.twig:74
 #, php-format
 msgctxt "price short label"
 msgid "From %s"
@@ -451,13 +451,13 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:95
 #: includes/Plugins/ACF/IncludeFields/Layouts/ContactDetails.php:97
 #: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:91
-#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:93
+#: includes/Plugins/ACF/IncludeFields/Layouts/SignupForm.php:93 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:144
 msgid "Note"
 msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:29
 #: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:85
-#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:87
+#: includes/Plugins/ACF/IncludeFields/Layouts/Steps.php:87 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:47
 msgid "Steps"
 msgstr ""
 
@@ -472,6 +472,7 @@ msgstr ""
 msgid "Eyebrow"
 msgstr ""
 
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:149 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:150 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:156
 msgid "Catalogue"
 msgstr ""
 
@@ -960,7 +961,7 @@ msgstr ""
 msgid "Package"
 msgstr ""
 
-#: views/components/consent.html.twig:41
+#: views/components/consent.html.twig:41 views/blocks/configurator.html.twig:348
 msgid "Privacy policy"
 msgstr ""
 
@@ -2324,4 +2325,354 @@ msgstr ""
 #: views/pages/single-post.html.twig:46
 #, php-format
 msgid "Updated on %s"
+msgstr ""
+
+#. translators: 1: platform, 2: package name, 3: price.
+#: includes/Catalogue/Estimate.php:113
+#, php-format
+msgctxt "estimate package line"
+msgid "%1$s · Package %2$s: %3$s"
+msgstr ""
+
+#. translators: 1: module name, 2: price.
+#: includes/Catalogue/Estimate.php:123
+#, php-format
+msgctxt "estimate module line"
+msgid "%1$s: %2$s"
+msgstr ""
+
+#. translators: %s: total price.
+#: includes/Catalogue/Estimate.php:131
+#, php-format
+msgctxt "estimate total line"
+msgid "Total: %s"
+msgstr ""
+
+#: includes/Catalogue/EstimateRequest.php:125 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:96
+msgctxt "estimate error"
+msgid "This e-mail address looks incomplete. Example: name@company.com"
+msgstr ""
+
+#: includes/Catalogue/EstimateRequest.php:129
+msgctxt "estimate error"
+msgid "Too many estimates from this connection. Please try again in an hour."
+msgstr ""
+
+#: includes/Catalogue/EstimateRequest.php:141
+msgctxt "estimate error"
+msgid "This offer is no longer in the catalogue. Please reload the page."
+msgstr ""
+
+#. translators: %s: contact e-mail address.
+#: includes/Catalogue/EstimateRequest.php:152
+#, php-format
+msgctxt "estimate error"
+msgid "The sending failed on our side. Please try again, or write to us at %s."
+msgstr ""
+
+#: includes/Catalogue/EstimateRequest.php:183
+msgctxt "estimate email"
+msgid "Hello,"
+msgstr ""
+
+#. translators: %s: site name.
+#: includes/Catalogue/EstimateRequest.php:186
+#, php-format
+msgctxt "estimate email"
+msgid "Here is your %s estimate, as you put it together on our website."
+msgstr ""
+
+#: includes/Catalogue/EstimateRequest.php:190
+msgctxt "estimate email"
+msgid "This estimate lists your configuration line by line. The firm price is set after the diagnosis, on a written scope."
+msgstr ""
+
+#: includes/Catalogue/EstimateRequest.php:191
+msgctxt "estimate email"
+msgid "Lines marked “From” or “On quote” are priced during a meeting."
+msgstr ""
+
+#: includes/Catalogue/EstimateRequest.php:192
+msgctxt "estimate email"
+msgid "To talk it over, book a 30-minute call:"
+msgstr ""
+
+#. translators: 1: site name, 2: estimate total.
+#: includes/Catalogue/EstimateRequest.php:200
+#, php-format
+msgctxt "estimate email subject"
+msgid "Your %1$s estimate: %2$s"
+msgstr ""
+
+#. translators: 1: visitor e-mail address, 2: estimate total.
+#: includes/Catalogue/EstimateRequest.php:213
+#, php-format
+msgctxt "estimate copy subject"
+msgid "Estimate from the configurator: %1$s, %2$s"
+msgstr ""
+
+#. translators: %s: visitor e-mail address.
+#: includes/Catalogue/EstimateRequest.php:221
+#, php-format
+msgctxt "estimate copy"
+msgid "E-mail: %s"
+msgstr ""
+
+#. translators: %s: page URL.
+#: includes/Catalogue/EstimateRequest.php:224
+#, php-format
+msgctxt "estimate copy"
+msgid "Page: %s"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:35
+msgid "Configurator"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:49
+msgid "Platform title"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:49
+msgid "Your platform"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:50
+msgid "Package title"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:50
+msgid "Your package"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:51
+msgid "Package help"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:51
+msgid "The package sets the base price and the scope."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:52
+msgid "Modules title"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:52
+msgid "Your modules"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:53
+msgid "Modules help"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:53
+msgid "The modules your package accepts. Each price is added as is, with no markup and no cap."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:57
+msgid "No modules"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:58
+msgid "The modules of this package are chosen with us, during the call."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:59
+msgid "Shown instead of the modules when the catalogue lists none for the package."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:65 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:66 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:72
+msgid "Estimate"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:74
+msgid "Your estimate"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:75
+msgid "Total label"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:75
+msgid "Estimated total, excl. VAT"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:79
+msgid "Firm price mention"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:80
+msgid "Firm price, written scope"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:81
+msgid "Shown while every line has a firm price."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:86
+msgid "Open price mention"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:87
+msgid "Some items are priced in a meeting"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:88
+msgid "Shown when a line is « from » or « on quote »: the total is then a floor or a quote."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:90
+msgid "E-mail label"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:90
+msgid "Your e-mail"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:91
+msgid "E-mail example"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:91
+msgid "name@company.com"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:95
+msgid "E-mail error"
+msgstr ""
+
+#: includes/Catalogue/EstimateRequest.php:125 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:96
+msgid "This e-mail address looks incomplete. Example: name@company.com"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:97
+msgid "Name the field and say how to fix it, with an example (RGAA 11.11)."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:99
+msgid "Button label"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:99
+msgid "Get my estimate"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:103
+msgid "Privacy notice"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:104
+msgid "Your e-mail is used to send you this estimate and to get back to you about your project. No newsletter, no resale. Kept for 3 years, deleted on request."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:105
+msgid "Followed by a link to the privacy policy page (Settings › Privacy). Say every use of the address: no checkbox is needed while it only serves this estimate and the follow-up on the project."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:110
+msgid "Notice"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:111
+msgid "This is an estimate, not a quote. The firm price is set after the diagnosis, on a written scope."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:117 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:118 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:124
+msgid "Confirmation"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:126
+msgid "It is in your inbox."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:130
+msgid "Message"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:131
+msgid "Your estimate of {total} has just been sent to {email}. Keep it: it lists every line of your configuration and is the basis of our discussion."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:132
+msgid "{total} is replaced by the total, {email} by the address typed."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:134
+msgid "Help"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:134
+msgid "Nothing within 5 minutes? Check your spam folder."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:135
+msgid "Next step eyebrow"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:135
+msgid "What comes next, if you like"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:136
+msgid "Next step title"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:136
+msgid "30 minutes, on the clock."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:140
+msgid "Next step text"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:141
+msgid "We look at your site live, tell you whether we are the right people for it, and start from your estimate: nothing to explain twice."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:142
+msgid "Followed by the booking link of the theme options (Contact)."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:144
+msgid "No agency pitch: we talk about your project."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:160 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:162
+msgid "Platform checked on load"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:167
+msgid "Defaults to the first platform of the catalogue."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:172 includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:174
+msgid "Package checked on load"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/Layouts/Configurator.php:179
+msgid "Defaults to the first package of the platform."
+msgstr ""
+
+#. translators: %s: package name.
+#: views/blocks/configurator.html.twig:73 views/blocks/configurator.html.twig:229
+#, php-format
+msgid "Package %s"
+msgstr ""
+
+#: views/blocks/configurator.html.twig:77
+msgid "The sending failed. Please check your connection and try again."
+msgstr ""
+
+#. translators: %02d: step number.
+#: views/blocks/configurator.html.twig:91 views/blocks/configurator.html.twig:123 views/blocks/configurator.html.twig:167
+#, php-format
+msgid "Step %02d"
+msgstr ""
+
+#: views/blocks/configurator.html.twig:294
+msgid "The sending failed. Please check the address and try again."
+msgstr ""
+
+#: views/blocks/configurator.html.twig:333
+msgid "Sending…"
 msgstr ""

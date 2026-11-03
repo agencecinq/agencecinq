@@ -17,6 +17,7 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Breadcrumb;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\BulletList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Checklist;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Comparison;
+use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Configurator;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ContactDetails;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Cta;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\DiffColumns;
@@ -60,6 +61,7 @@ class BlocksFields implements Service {
 		BulletList::class,
 		Checklist::class,
 		Comparison::class,
+		Configurator::class,
 		ContactDetails::class,
 		Cta::class,
 		DiffColumns::class,

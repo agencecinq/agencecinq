@@ -11,6 +11,7 @@
  # @param string variant Optional. 'primary' (default), 'secondary' or 'text'.
  # @param bool arrow Optional. Trailing arrow, true by default.
  # @param bool disabled Optional.
+ # @param string busy Optional. Label while a script keeps the button aria-busy, a spinner instead of the arrow.
  # @param object attributes Optional extra HTML attributes.
  # @param array classes Optional extra classes.
  #}
@@ -29,6 +30,7 @@
 					? 'text-primary hover:bg-surface rounded-full border border-(--text-color-subtle) px-6 py-3.5',
 				variant == 'text' ? 'text-primary py-1 underline',
 				disabled ? 'pointer-events-none opacity-50',
+				busy ? 'group',
 				classes | default( [] ) | join( ' ' )
 			)
 		}}"
@@ -42,14 +44,23 @@
 			)
 		}}
 	>
-		{{- title -}}
+		{%- if busy -%}
+			<span
+				class="hidden size-4 shrink-0 animate-spin rounded-full border-2 border-current border-r-transparent group-aria-busy:block motion-reduce:animate-none"
+				aria-hidden="true"
+			></span>
+			<span class="group-aria-busy:hidden">{{- title -}}</span>
+			<span class="hidden group-aria-busy:inline">{{- busy -}}</span>
+		{%- else -%}
+			{{- title -}}
+		{%- endif -%}
 		{%- if arrow ?? true -%}
 			{{-
 				include(
 					'svg/use.html.twig',
 					{
 						icon: 'arrow',
-						classes: [ 'size-4 shrink-0' ],
+						classes: [ html_classes( 'size-4 shrink-0', busy ? 'group-aria-busy:hidden' ) ],
 						attributes: { 'aria-hidden': 'true' },
 					},
 					with_context: false
