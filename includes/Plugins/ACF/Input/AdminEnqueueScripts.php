@@ -47,7 +47,7 @@ class AdminEnqueueScripts implements Service {
 	private function swatches_css(): string {
 		$labels = ".acf-field[data-name='color_scheme'] .acf-button-group label";
 		$css    = $labels . '{display:inline-flex;align-items:center;gap:.4em}'
-			. $labels . "::before{content:'A';width:1.25rem;height:1.25rem;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(0,0,0,.2);box-sizing:border-box;font:700 .6875rem/1 ui-sans-serif,system-ui,sans-serif}";
+			. $labels . "::before{content:'A' / '';width:1.25rem;height:1.25rem;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(0,0,0,.2);box-sizing:border-box;font:700 .6875rem/1 ui-sans-serif,system-ui,sans-serif}";
 
 		foreach ( array_keys( cinq_schemes() ) as $slug ) {
 			$css .= sprintf(
