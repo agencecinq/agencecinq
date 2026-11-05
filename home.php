@@ -13,12 +13,18 @@
 
 use Timber\{ Timber };
 
-$page_id                  = absint( get_option( 'page_for_posts' ) );
-$templates                = array( 'pages/archive-page.html.twig' );
-$data                     = Timber::context();
-$data['title']            = $page_id ? get_the_title( $page_id ) : '';
-$data['text']             = get_field( 'text', 'archive_posts' );
-$data['blocks']           = get_field( 'blocks', 'archive_posts' );
-$data['current_category'] = null;
+$page_id   = absint( get_option( 'page_for_posts' ) );
+$archive   = (array) get_field( 'archive_posts', 'option' );
+$templates = array( 'pages/archive-page.html.twig' );
+$data      = Timber::context();
+
+$data['post']->description = $archive['description'] ?? '';
+$data['post']->blocks      = $archive['blocks'] ?? array();
+$data['categories']        = Timber::get_terms(
+	array(
+		'taxonomy'   => 'category',
+		'hide_empty' => true,
+	)
+);
 
 Timber::render( $templates, $data );

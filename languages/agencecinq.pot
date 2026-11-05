@@ -2327,7 +2327,8 @@ msgid "Updated on %s"
 msgstr ""
 
 #: includes/Plugins/ACF/Init.php:83
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:67
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:53
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:87
 msgid "Posts archive"
 msgstr ""
 
@@ -2335,6 +2336,19 @@ msgstr ""
 msgid "Archive"
 msgstr ""
 
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:59
-msgid "Under the title of the blog and of its categories. An author has their biography instead."
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:67
+msgid "Under the title of the blog, and of the categories without a description. An author has their biography instead."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:75
+msgid "After the posts of the blog, of its categories and of its authors. The Signup form also closes every post."
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:61
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:63
+msgid "Description"
+msgstr ""
+
+#: views/pages/archive-page.html.twig:108
+msgid "No posts found."
 msgstr ""

@@ -7,7 +7,7 @@
 		{
 			"label": "Listing header",
 			"status": "theme",
-			"note": "The title of the page for posts, the name of the category or of the author in H1; the text field of the options page archive-posts, or the biography of the author; then the categories as filters."
+			"note": "The title of the page for posts, the name of the category or of the author in H1; the description of the group archive_posts on the options page archive-posts, or the biography of the author; then the categories as filters."
 		},
 		{
 			"label": "Post grid",

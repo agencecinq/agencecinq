@@ -7,11 +7,13 @@
  # posts as Article cards, their titles in H2, three per row from lg on four columns each, then the
  # pagination. Then the blocks of Posts › Archive, such as the Signup form.
  #
- # @param string title The name of the blog, of the category or of the author.
- # @param string text Optional. The text of Posts › Archive, or the biography of the author.
- # @param Timber\Term current_category Optional. The category of the archive; without it, all the posts.
+ # @param object|array post The title of the page for posts, of the category or of the author; its description,
+ #                         the one of the category, of Posts › Archive or the biography of the author; and the
+ #                         blocks of Posts › Archive.
+ # @param iterable posts The posts of the archive, from the Timber context.
+ # @param iterable categories Optional. The categories as filters; not shown on an author.
+ # @param Timber\Term category Optional. The category of the archive; without it, All posts is current.
  # @param Timber\User author Optional. The author of the archive.
- # @param array blocks Optional. The blocks of Posts › Archive.
  #}
 
 {% extends 'index.html.twig' %}
@@ -21,13 +23,6 @@
 	{%- set author = author | default( null ) -%}
 	{%- set portrait = author ? author.meta( 'portrait' ) : null -%}
 	{%- set job = author ? author.meta( 'job' ) : null -%}
-	{%- set items = posts | default( [] ) -%}
-	{%- set categories =
-		get_terms( {
-			taxonomy: 'category',
-			hide_empty: true,
-		} )
-	-%}
 
 	<main id="content" role="main">
 		<section class="pt-19.5 pb-10.5 lg:pt-26 lg:pb-14" aria-labelledby="archive-title">
@@ -45,15 +40,15 @@
 							)
 						-}}
 					{%- endif -%}
-					<h1 id="archive-title" class="text-title-xxl text-primary">{{- title -}}</h1>
+					<h1 id="archive-title" class="text-title-xxl text-primary">{{- post.title -}}</h1>
 					{%- if job -%}
 						<p class="text-eyebrow text-muted">{{- job -}}</p>
 					{%- endif -%}
-					{%- if text -%}
-						<p class="text-body text-lg">{{- text -}}</p>
+					{%- if post.description -%}
+						<p class="text-body text-lg">{{- post.description -}}</p>
 					{%- endif -%}
 				</div>
-				{%- if categories | length -%}
+				{%- if ( categories | length ) and not author -%}
 					<nav aria-label="{{ __( 'Categories', 'agencecinq' ) }}">
 						<ul class="flex flex-wrap gap-2">
 							<li>
@@ -63,21 +58,21 @@
 										{
 											title: __( 'All posts', 'agencecinq' ),
 											url: posts_url,
-											active: not current_category and not author,
+											active: not category,
 										},
 										with_context: false
 									)
 								-}}
 							</li>
-							{%- for item in categories -%}
+							{%- for c in categories -%}
 								<li>
 									{{-
 										include(
 											'components/chip.html.twig',
 											{
-												title: item.name,
-												url: item.link,
-												active: current_category and current_category.id == item.id,
+												title: c.name,
+												url: c.link,
+												active: category and category.id == c.id,
 											},
 											with_context: false
 										)
@@ -90,17 +85,17 @@
 			</div>
 		</section>
 
-		{%- if items | length -%}
+		{%- if posts | length -%}
 			<div class="pt-4.5 pb-19.5 lg:pt-6 lg:pb-26">
 				<div class="container flex flex-col items-start gap-8 lg:gap-14">
 					<ul class="layout-grid w-full gap-y-8 lg:gap-y-14">
-						{%- for item in items -%}
+						{%- for post in posts -%}
 							<li class="col-span-full lg:col-span-4">
 								{{-
 									include(
 										'components/article-card.html.twig',
 										{
-											post: item,
+											post: post,
 											heading: 'h2',
 											sizes: '(min-width: 90rem) 24.8rem, (min-width: 64rem) calc((100vw - 15.5rem) / 3), calc(100vw - 2.5rem)',
 										},
@@ -108,12 +103,16 @@
 									)
 								-}}
 							</li>
+						{% else %}
+							<li class="col-span-full">
+								<p class="text-body text-lg">{{ __( 'No posts found.', 'agencecinq' ) }}</p>
+							</li>
 						{%- endfor -%}
 					</ul>
 					{{-
 						include(
 							'components/pagination.html.twig',
-							{ pagination: items.pagination() },
+							{ pagination: posts.pagination() },
 							with_context: false
 						)
 					-}}
@@ -121,6 +120,6 @@
 			</div>
 		{%- endif -%}
 
-		{{- include( 'blocks/blocks.html.twig', { blocks: blocks | default( [] ) } ) -}}
+		{{- include( 'blocks/blocks.html.twig', { blocks: post.blocks | default( [] ) } ) -}}
 	</main>
 {%- endblock -%}

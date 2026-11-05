@@ -13,12 +13,18 @@
 
 use Timber\{ Timber };
 
-$author_id      = get_queried_object_id();
-$templates      = array( 'pages/archive-page.html.twig' );
-$data           = Timber::context();
-$data['title']  = get_the_author_meta( 'display_name', $author_id );
-$data['text']   = get_the_author_meta( 'description', $author_id );
-$data['blocks'] = get_field( 'blocks', 'archive_posts' );
-$data['author'] = Timber::get_user( $author_id );
+$author_id = get_queried_object_id();
+$archive   = (array) get_field( 'archive_posts', 'option' );
+$templates = array( 'pages/archive-page.html.twig' );
+$data      = Timber::context(
+	array(
+		'post'   => array(
+			'title'       => get_the_author_meta( 'display_name', $author_id ),
+			'description' => get_the_author_meta( 'description', $author_id ),
+			'blocks'      => $archive['blocks'] ?? array(),
+		),
+		'author' => Timber::get_user( $author_id ),
+	)
+);
 
 Timber::render( $templates, $data );

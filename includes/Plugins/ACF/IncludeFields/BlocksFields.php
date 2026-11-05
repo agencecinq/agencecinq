@@ -79,6 +79,15 @@ class BlocksFields implements Service {
 	);
 
 	/**
+	 * Returns the layout classes of the blocks field, for the block zones of other field groups.
+	 *
+	 * @return array<int, class-string>
+	 */
+	public static function get_layout_classes(): array {
+		return self::$layouts;
+	}
+
+	/**
 	 * Runs initialization tasks.
 	 *
 	 * @return void
@@ -110,13 +119,6 @@ class BlocksFields implements Service {
 					'param'    => 'page_template',
 					'operator' => '==',
 					'value'    => 'page-templates/blocks-page.php',
-				),
-			),
-			array(
-				array(
-					'param'    => 'options_page',
-					'operator' => '==',
-					'value'    => 'archive-posts',
 				),
 			),
 			array(

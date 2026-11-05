@@ -245,7 +245,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:194
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:196
 msgid "Text"
-msgstr "Texte"
+msgstr ""
 
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:126
 msgid "Enter the lead of the case study"
@@ -2448,7 +2448,8 @@ msgid "Updated on %s"
 msgstr "Mis à jour le %s"
 
 #: includes/Plugins/ACF/Init.php:83
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:67
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:53
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:87
 msgid "Posts archive"
 msgstr "Archive des articles"
 
@@ -2456,6 +2457,19 @@ msgstr "Archive des articles"
 msgid "Archive"
 msgstr "Archive"
 
-#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:59
-msgid "Under the title of the blog and of its categories. An author has their biography instead."
-msgstr "Sous le titre du blog et de ses catégories. Sur un auteur, sa biographie le remplace."
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:67
+msgid "Under the title of the blog, and of the categories without a description. An author has their biography instead."
+msgstr "Sous le titre du blog, et des catégories sans description. Sur un auteur, sa biographie le remplace."
+
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:75
+msgid "After the posts of the blog, of its categories and of its authors. The Signup form also closes every post."
+msgstr "Après les articles du blog, de ses catégories et de ses auteurs. Le formulaire d’inscription clôt aussi chaque article."
+
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:61
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:63
+msgid "Description"
+msgstr "Description"
+
+#: views/pages/archive-page.html.twig:108
+msgid "No posts found."
+msgstr "Aucun article trouvé."

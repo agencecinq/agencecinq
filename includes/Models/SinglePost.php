@@ -53,9 +53,9 @@ class SinglePost extends Post {
 	 * @return array<string, mixed>|null
 	 */
 	public function signup_form(): ?array {
-		$blocks = get_field( 'blocks', 'archive_posts' );
+		$archive = (array) get_field( 'archive_posts', 'option' );
 
-		foreach ( (array) $blocks as $block ) {
+		foreach ( (array) ( $archive['blocks'] ?? array() ) as $block ) {
 			if ( 'signup_form' === ( $block['acf_fc_layout'] ?? '' ) ) {
 				return $block;
 			}

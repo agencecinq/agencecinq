@@ -84,7 +84,6 @@ class Init implements Service {
 				'menu_title'  => __( 'Archive', 'agencecinq' ),
 				'menu_slug'   => 'archive-posts',
 				'parent_slug' => 'edit.php',
-				'post_id'     => 'archive_posts',
 				'redirect'    => false,
 			)
 		);
