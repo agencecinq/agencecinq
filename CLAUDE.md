@@ -1,8 +1,3 @@
----
-description: Contexte et conventions du thème WordPress Agence Cinq (Timber/Twig + Vite + Tailwind v4 + TypeScript).
-alwaysApply: true
----
-
 # Thème WordPress Agence Cinq
 
 Ce dépôt est le thème WordPress de [agencecinq.com](https://agencecinq.com).
@@ -69,7 +64,7 @@ DO :
 - Coder et commenter en anglais.
 - Déclarer les tokens de design dans `@theme` de `theme.css` (noms identiques au Figma, sizes en rem, letter-spacing en em, voir `design-tokens`).
 - Passer les chaînes utilisateur par les fonctions i18n.
-- Commits en anglais avec gitmoji (voir la règle `git-commits`).
+- Commits en anglais avec gitmoji (voir la skill `git-commits`).
 - Encapsuler les gardes d'affichage dans les composants Twig inclus (voir `twig-components`).
 - Onglets ACF d'un layout flexible : Content en premier, Settings en dernier.
 - Espacer les filtres Twig via Prettier : `twigFollowOfficialCodingStandards: false` (voir `twig-wpcs`).
@@ -104,10 +99,11 @@ DONT :
 Ce fichier est la base de vérité du thème et doit évoluer avec le projet.
 
 - Quand Jérémy (ou un autre membre de l'équipe) demande d'ajouter un DO ou un DONT, mets ce fichier à jour : ajoute la règle dans la section DO / DONT si elle est générale et transverse, ou complète la section pertinente.
-- Si le DO ou le DONT concerne une tâche ou un workflow spécifique (ex : un type de bloc, une intégration, une procédure), ne surcharge pas ce fichier : crée un fichier de règle dédié dans `.cursor/rules/` (avec une `description` claire, et `globs` ou `alwaysApply` adaptés à la portée), puis ajoute ici un pointeur d'une ligne vers cette règle.
+- Si le DO ou le DONT concerne des fichiers précis (Twig, CSS, champs ACF, …), ne surcharge pas ce fichier : crée une règle dédiée dans `.claude/rules/<nom>.md`, avec en frontmatter `paths:` les globs des fichiers concernés (elle se charge quand on travaille sur ces fichiers), puis ajoute ici un pointeur d'une ligne vers cette règle.
+- Si c'est une procédure à déclencher à la demande (init, remontée, commit, …), crée une skill dans `.claude/skills/<nom>/SKILL.md`, avec une `description` qui dit quand l'appliquer.
 - Garde ce fichier concis : les détails longs vivent dans des règles dédiées, ce fichier reste la vue d'ensemble.
 
-Règles dédiées existantes :
+Règles (`.claude/rules/`) et skills (`.claude/skills/`) dédiées :
 
 - `git-commits` : messages de commit en anglais avec gitmoji.
 - `design-tokens` : couleurs par teinte en anglais, typo aux noms Figma, sizes en rem, letter-spacing en em, pas de valeurs en dur.
@@ -119,7 +115,6 @@ Règles dédiées existantes :
 - `lock-content` : booléen ACF `lock_content` ; si Locked, Claude ne contribue pas le contenu éditorial.
 - `timber-twig` : extraits Timber 2 (`post.excerpt`, pas `post.preview`).
 
-Skills dédiés :
+Skills :
 
 - `figma-section` : implémenter une sélection Figma en bloc Twig + layout ACF PHP + tokens Tailwind (± CPT / TS).
-- `timber-twig` : API Timber 2 pour les excerpts Twig (doc officielle + anti-`preview`).

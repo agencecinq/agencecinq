@@ -1,7 +1,6 @@
 ---
-description: Marquage schema.org (microdata) dans les templates Twig quand le contenu correspond à un type connu.
-globs: views/**/*.twig
-alwaysApply: false
+paths:
+  - "views/**/*.twig"
 ---
 
 # Schema.org dans Twig

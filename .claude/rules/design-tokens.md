@@ -1,7 +1,7 @@
 ---
-description: Conventions pour les tokens de design Tailwind v4 dans theme.css (rôles de couleur du Figma en namespaces Tailwind, modes Dark et Light, typo aux noms Figma, espacements sur le multiplicateur, sizes en rem, pas de valeurs en dur).
-globs: src/stylesheets/theme.css,**/*.twig
-alwaysApply: false
+paths:
+  - "src/stylesheets/theme.css"
+  - "**/*.twig"
 ---
 
 # Design tokens (`theme.css`)

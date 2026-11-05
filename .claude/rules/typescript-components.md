@@ -1,7 +1,6 @@
 ---
-description: Conventions TypeScript des composants piecesjs (champs privés natifs #).
-globs: src/scripts/**/*.ts
-alwaysApply: false
+paths:
+  - "src/scripts/**/*.ts"
 ---
 
 # TypeScript (composants)

@@ -1,6 +1,6 @@
 ---
-description: Conventions de messages de commit (anglais + gitmoji). À appliquer quand l'utilisateur demande de committer, d'amender un commit, ou de rédiger un message de commit.
-alwaysApply: false
+name: git-commits
+description: "Conventions de messages de commit (anglais + gitmoji). À appliquer quand l'utilisateur demande de committer, d'amender un commit, ou de rédiger un message de commit."
 ---
 
 # Git commits (English + gitmoji)
@@ -30,7 +30,7 @@ Common gitmoji for this stack:
 | `:recycle:` | Refactor without behavior change |
 | `:fire:` | Remove code, assets, or dead files |
 | `:globe_with_meridians:` | i18n, translations, `.pot` |
-| `:wrench:` | Config, tooling, Cursor rules, CI, build scripts |
+| `:wrench:` | Config, tooling, Claude rules and skills, CI, build scripts |
 | `:arrow_up:` | Dependency upgrade |
 | `:memo:` | README or documentation only |
 | `:art:` | Code structure / formatting without logic change |

@@ -1,7 +1,6 @@
 ---
-description: API Timber 2 pour les extraits de posts (post.excerpt, pas post.preview). À appliquer quand on écrit ou modifie des Twig qui affichent un excerpt.
-globs: views/**/*.twig
-alwaysApply: false
+paths:
+  - "views/**/*.twig"
 ---
 
 # Timber 2 — excerpts

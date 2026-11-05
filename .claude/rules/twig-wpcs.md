@@ -1,7 +1,6 @@
 ---
-description: Formatage Twig aligné sur les WordPress Coding Standards (espacement des filtres et des appels).
-globs: views/**/*.twig
-alwaysApply: false
+paths:
+  - "views/**/*.twig"
 ---
 
 # Twig et WordPress Coding Standards

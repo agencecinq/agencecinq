@@ -1,7 +1,6 @@
 ---
-description: Conventions pour les composants Twig réutilisables (includes, params, gardes).
-globs: views/**/*.twig
-alwaysApply: false
+paths:
+  - "views/**/*.twig"
 ---
 
 # Composants Twig

@@ -72,9 +72,9 @@ Paddings default to 104 px top and bottom, ×0.75 on mobile; the color scheme of
 
 ## Workflows (AI-assisted)
 
-Cursor rules in `.cursor/rules/`:
+Claude Code instructions (`CLAUDE.md`, `.claude/rules/`, `.claude/skills/`):
 
-- `theme-cinq` (always on): stack, conventions, WPCS, living DO/DONT list.
+- `CLAUDE.md` (always loaded): stack, conventions, WPCS, living DO/DONT list.
 - `design-tokens`: colors, typography, rem/em — no hardcoded values.
 - `twig-components`: guards and param naming in reusable Twig components.
 - `twig-wpcs`: Twig filter spacing compatible with Prettier.
@@ -167,7 +167,7 @@ rm -rf vendor/timber/timber/cache/*
 
 ```
 agencecinq/
-├── .cursor/             # Rules + skills
+├── .claude/             # Rules + skills
 ├── .github/workflows/   # Release on tag v*
 ├── includes/            # PHP (Setup/, GitHub/, Models/, Plugins/ACF/, Post/, …)
 ├── languages/           # i18n
