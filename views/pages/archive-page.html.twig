@@ -19,21 +19,16 @@
 {% extends 'index.html.twig' %}
 
 {%- block content -%}
-	{%- set current_category = current_category | default( null ) -%}
-	{%- set author = author | default( null ) -%}
-	{%- set portrait = author ? author.meta( 'portrait' ) : null -%}
-	{%- set job = author ? author.meta( 'job' ) : null -%}
-
 	<main id="content" role="main">
 		<section class="pt-19.5 pb-10.5 lg:pt-26 lg:pb-14" aria-labelledby="archive-title">
 			<div class="container flex flex-col gap-6 lg:gap-8">
 				<div class="flex max-w-205 flex-col gap-4">
-					{%- if portrait -%}
+					{%- if author.meta( 'portrait' ) -%}
 						{{-
 							include(
 								'components/avatar.html.twig',
 								{
-									image: portrait,
+									image: author.meta( 'portrait' ),
 									size: 'large',
 								},
 								with_context: false
@@ -41,8 +36,8 @@
 						-}}
 					{%- endif -%}
 					<h1 id="archive-title" class="text-title-xxl text-primary">{{- post.title -}}</h1>
-					{%- if job -%}
-						<p class="text-eyebrow text-muted">{{- job -}}</p>
+					{%- if author.meta( 'job' ) -%}
+						<p class="text-eyebrow text-muted">{{- author.meta( 'job' ) -}}</p>
 					{%- endif -%}
 					{%- if post.description -%}
 						<p class="text-body text-lg">{{- post.description -}}</p>
