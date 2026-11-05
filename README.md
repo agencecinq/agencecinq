@@ -46,12 +46,10 @@ Layouts are registered in `BlocksFields` and rendered via `views/blocks/blocks.h
 | Link columns    | `link-columns.html.twig`    |
 | Link grid       | `link-grid.html.twig`       |
 | Link row        | `link-row.html.twig`        |
-| Listing header  | `listing-header.html.twig`  |
 | Logo wall       | `logo-wall.html.twig`       |
 | Numbered list   | `numbered-list.html.twig`   |
 | Page header     | `page-header.html.twig`     |
 | Portrait grid   | `portrait-grid.html.twig`   |
-| Post grid       | `post-grid.html.twig`       |
 | Price breakdown | `price-breakdown.html.twig` |
 | Pricing table   | `pricing-table.html.twig`   |
 | Quote           | `quote.html.twig`           |
@@ -65,7 +63,7 @@ Paddings default to 104 px top and bottom, ×0.75 on mobile; the color scheme of
 
 - **Default pages** (legal pages): `components/page-header.html.twig` (eyebrow, title, excerpt and links via `PageFields`), then the WordPress editor as Rich text, then optional flexible blocks. Richer layouts use the **Blocks** page template.
 - **Case studies**: the archive shows the blocks of the page set in **Settings › Reading › Case studies page**; a case study opens with the Page header from its hero fields (`CaseStudyFields`), then its blocks. Case study categories only sort them in the admin.
-- **Blog**: the blog, its categories and its authors show the blocks of the page for posts (Listing header, Post grid, Signup form). A post (`views/pages/single-post.html.twig`) ends with its author, the posts to read next and the Signup form of the page for posts. Authors have a Job and a Portrait (`UserFields`).
+- **Blog**: `home.php`, `category.php` and `author.php` render `views/pages/archive-page.html.twig`: the Listing header, the Post grid, then the blocks of **Posts › Archive** (`ArchivePostsFields`: one group, `get_field( 'archive_posts', 'option' )`, with its `description` and its `blocks`), such as the Signup form. Each entry point passes them as `post`: the title of the page for posts, the name of the category or of the author; the description of the category or else of Posts › Archive, or the biography of the author, with their Job and their Portrait (`UserFields`). `home.php` and `category.php` pass the `categories` as filters, and `category.php` the `category` to mark its own; without it, All posts is current. A post (`views/pages/single-post.html.twig`) ends with its author, the posts to read next and the Signup form of Posts › Archive.
 - **404**: the Status message over the snake, its texts in the theme options.
 - **Maintenance**: while the [CINQ Maintenance](https://github.com/agencecinq/cinq-wp-maintenance) mu-plugin answers visitors with a 503, `maintenance.php` renders the Status message between the header and the footer without navigation (`navigation: false`).
 - **Sitemap**: the Link columns block shows the Sitemap Menu location.

@@ -2,7 +2,8 @@
 /**
  * Author template file
  *
- * Shows the blocks of the page for posts, which list the posts of the author.
+ * The name, the portrait, the job and the biography of the author, their posts, then the blocks of
+ * Posts > Archive.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -12,10 +13,18 @@
 
 use Timber\{ Timber };
 
-$page_id        = absint( get_option( 'page_for_posts' ) );
-$templates      = array( 'pages/blocks-page.html.twig' );
-$data           = Timber::context();
-$data['post']   = $page_id ? Timber::get_post( $page_id ) : null;
-$data['author'] = Timber::get_user( get_queried_object_id() );
+$author_id = get_queried_object_id();
+$archive   = (array) get_field( 'archive_posts', 'option' );
+$templates = array( 'pages/archive-page.html.twig' );
+$data      = Timber::context(
+	array(
+		'post'   => array(
+			'title'       => get_the_author_meta( 'display_name', $author_id ),
+			'description' => get_the_author_meta( 'description', $author_id ),
+			'blocks'      => $archive['blocks'] ?? array(),
+		),
+		'author' => Timber::get_user( $author_id ),
+	)
+);
 
 Timber::render( $templates, $data );

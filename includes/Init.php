@@ -53,6 +53,7 @@ class Init {
 			Plugins\ACF\IncludeFields\CaseStudyFields::class,
 			Plugins\ACF\IncludeFields\ClonesFields::class,
 			Plugins\ACF\IncludeFields\ThemeFields::class,
+			Plugins\ACF\IncludeFields\ArchivePostsFields::class,
 			Plugins\ACF\IncludeFields\UserFields::class,
 			Plugins\ACF\IncludeFields\LockContentFields::class,
 			Plugins\ContactForm7\FormTag::class,

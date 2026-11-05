@@ -1,20 +1,23 @@
 {
 	"$schema": "https://raw.githubusercontent.com/agencecinq/cinq-wp-mcp/main/schemas/mcp.schema.json#/definitions/template",
 	"title": "T12 · Blog",
-	"description": "The page for posts. Its categories and authors reuse these blocks with their own name and description. Example: /blog/.",
+	"description": "The blog, its categories and its authors. Their header and their posts are rendered by the theme; the blocks after the posts are those of the options page archive-posts (Posts › Archive), not of the page for posts. Example: /blog/.",
 	"source": "https://www.figma.com/design/sPavzSjbYYNaw7ev0hdqLK?node-id=53-6276",
 	"sections": [
 		{
 			"label": "Listing header",
-			"block": "listing_header"
+			"status": "theme",
+			"note": "The title of the page for posts, the name of the category or of the author in H1; the description of the group archive_posts on the options page archive-posts, or the biography of the author; then the categories as filters."
 		},
 		{
 			"label": "Post grid",
-			"block": "post_grid"
+			"status": "theme",
+			"note": "The posts of the archive, as many per page as set in Settings › Reading."
 		},
 		{
 			"label": "Signup form",
-			"block": "signup_form"
+			"block": "signup_form",
+			"note": "In the blocks of the options page archive-posts, which also close every post."
 		}
 	]
 }

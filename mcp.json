@@ -63,10 +63,6 @@
 			"description": "Up to four links to sibling pages at the end of a page.",
 			"guidance": "Near the end of a page, before the CTA."
 		},
-		"listing_header": {
-			"description": "Header of the blog: title in H1, text, then the categories as filters.",
-			"guidance": "Only on the page for posts, first block."
-		},
 		"logo_wall": {
 			"description": "Wall of client logos, all the same size.",
 			"guidance": "Only clients who gave their written consent."
@@ -80,10 +76,6 @@
 		},
 		"portrait_grid": {
 			"description": "The team: square black and white portraits with first names, over a scrolling CINQ band."
-		},
-		"post_grid": {
-			"description": "The posts of the blog as article cards, with pagination.",
-			"guidance": "Only on the page for posts, after the Listing header: elsewhere it shows nothing."
 		},
 		"price_breakdown": {
 			"description": "The price of one offer: what it includes on the left, the price card on the right.",

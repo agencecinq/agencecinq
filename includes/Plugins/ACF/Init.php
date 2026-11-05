@@ -77,5 +77,15 @@ class Init implements Service {
 				'redirect'    => false,
 			)
 		);
+
+		acf_add_options_page(
+			array(
+				'page_title'  => __( 'Posts archive', 'agencecinq' ),
+				'menu_title'  => __( 'Archive', 'agencecinq' ),
+				'menu_slug'   => 'archive-posts',
+				'parent_slug' => 'edit.php',
+				'redirect'    => false,
+			)
+		);
 	}
 }

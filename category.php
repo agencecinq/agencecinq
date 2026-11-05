@@ -2,7 +2,7 @@
 /**
  * Category template file
  *
- * Shows the blocks of the page for posts, which list the posts of the category.
+ * The name of the category, the text and the blocks of Posts > Archive, and the posts of the category.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -13,9 +13,25 @@
 
 use Timber\{ Timber };
 
-$page_id      = absint( get_option( 'page_for_posts' ) );
-$templates    = array( 'pages/blocks-page.html.twig' );
-$data         = Timber::context();
-$data['post'] = $page_id ? Timber::get_post( $page_id ) : null;
+$archive  = (array) get_field( 'archive_posts', 'option' );
+$category = Timber::get_term();
+
+$templates = array( 'pages/archive-page.html.twig' );
+$data      = Timber::context(
+	array(
+		'post'       => array(
+			'title'       => $category->name,
+			'description' => $category->description ? $category->description : ( $archive['description'] ?? '' ),
+			'blocks'      => $archive['blocks'] ?? array(),
+		),
+		'category'   => $category,
+		'categories' => Timber::get_terms(
+			array(
+				'taxonomy'   => 'category',
+				'hide_empty' => true,
+			)
+		),
+	)
+);
 
 Timber::render( $templates, $data );

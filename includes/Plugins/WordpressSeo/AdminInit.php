@@ -25,6 +25,22 @@ class AdminInit implements Service {
 	 */
 	public function run(): void {
 		add_filter( 'wpseo_breadcrumb_links', array( $this, 'breadcrumb_links' ) );
+		add_filter( 'wpseo_metadesc', array( $this, 'author_description' ) );
+	}
+
+	/**
+	 * Describes an author archive by the biography of the author, unless Yoast has a description for it.
+	 *
+	 * @param string $description Meta description from Yoast.
+	 *
+	 * @return string
+	 */
+	public function author_description( $description ): string {
+		if ( $description || ! is_author() ) {
+			return (string) $description;
+		}
+
+		return wp_strip_all_tags( get_the_author_meta( 'description', get_queried_object_id() ) );
 	}
 
 	/**

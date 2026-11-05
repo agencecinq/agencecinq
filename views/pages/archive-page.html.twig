@@ -1,0 +1,114 @@
+{#
+ # Archive page
+ #
+ # @param object|array post The title of the page for posts, of the category or of the author; its description,
+ #                         the one of the category, of Posts › Archive or the biography of the author; and the
+ #                         blocks of Posts › Archive.
+ # @param iterable posts The posts of the archive, from the Timber context.
+ # @param iterable categories Optional. The categories as filters; not shown on an author.
+ # @param Timber\Term category Optional. The category of the archive; without it, All posts is current.
+ # @param Timber\User author Optional. The author of the archive.
+ #}
+
+{% extends 'index.html.twig' %}
+
+{%- block content -%}
+	<main id="content" role="main">
+		<section class="pt-19.5 pb-10.5 lg:pt-26 lg:pb-14" aria-labelledby="archive-title">
+			<div class="container flex flex-col gap-6 lg:gap-8">
+				<div class="flex max-w-205 flex-col gap-4">
+					{%- if author.meta( 'portrait' ) -%}
+						{{-
+							include(
+								'components/avatar.html.twig',
+								{
+									image: author.meta( 'portrait' ),
+									size: 'large',
+								},
+								with_context: false
+							)
+						-}}
+					{%- endif -%}
+					<h1 id="archive-title" class="text-title-xxl text-primary">{{- post.title -}}</h1>
+					{%- if author.meta( 'job' ) -%}
+						<p class="text-eyebrow text-muted">{{- author.meta( 'job' ) -}}</p>
+					{%- endif -%}
+					{%- if post.description -%}
+						<p class="text-body text-lg">{{- post.description -}}</p>
+					{%- endif -%}
+				</div>
+				{%- if ( categories | length ) and not author -%}
+					<nav aria-label="{{ __( 'Categories', 'agencecinq' ) }}">
+						<ul class="flex flex-wrap gap-2">
+							<li>
+								{{-
+									include(
+										'components/chip.html.twig',
+										{
+											title: __( 'All posts', 'agencecinq' ),
+											url: posts_url,
+											active: not category,
+										},
+										with_context: false
+									)
+								-}}
+							</li>
+							{%- for c in categories -%}
+								<li>
+									{{-
+										include(
+											'components/chip.html.twig',
+											{
+												title: c.name,
+												url: c.link,
+												active: category and category.id == c.id,
+											},
+											with_context: false
+										)
+									-}}
+								</li>
+							{%- endfor -%}
+						</ul>
+					</nav>
+				{%- endif -%}
+			</div>
+		</section>
+
+		{%- if posts | length -%}
+			<div class="pt-4.5 pb-19.5 lg:pt-6 lg:pb-26">
+				<div class="container flex flex-col items-start gap-8 lg:gap-14">
+					<ul class="layout-grid w-full gap-y-8 lg:gap-y-14">
+						{%- for post in posts -%}
+							<li class="col-span-full lg:col-span-4">
+								{{-
+									include(
+										'components/article-card.html.twig',
+										{
+											post: post,
+											heading: 'h2',
+											sizes: '(min-width: 90rem) 24.8rem, (min-width: 64rem) calc((100vw - 15.5rem) / 3), calc(100vw - 2.5rem)',
+										},
+										with_context: false
+									)
+								-}}
+							</li>
+						{% else %}
+							<li class="col-span-full">
+								<p class="text-body text-lg">{{ __( 'No posts found.', 'agencecinq' ) }}</p>
+							</li>
+						{%- endfor -%}
+					</ul>
+					{{-
+						include(
+							'components/pagination.html.twig',
+							{ pagination: posts.pagination() },
+							with_context: false
+						)
+					-}}
+				</div>
+			</div>
+		{%- endif -%}
+
+		{{- include( 'blocks/blocks.html.twig', { blocks: post.blocks | default( [] ) } ) -}}
+	</main>
+{%- endblock -%}

@@ -48,15 +48,14 @@ class SinglePost extends Post {
 	}
 
 	/**
-	 * Returns the Signup form block of the page for posts, which also closes every post.
+	 * Returns the Signup form block of Posts › Archive, which also closes every post.
 	 *
 	 * @return array<string, mixed>|null
 	 */
 	public function signup_form(): ?array {
-		$page_id = absint( get_option( 'page_for_posts' ) );
-		$blocks  = $page_id ? get_field( 'blocks', $page_id ) : array();
+		$archive = (array) get_field( 'archive_posts', 'option' );
 
-		foreach ( (array) $blocks as $block ) {
+		foreach ( (array) ( $archive['blocks'] ?? array() ) as $block ) {
 			if ( 'signup_form' === ( $block['acf_fc_layout'] ?? '' ) ) {
 				return $block;
 			}
