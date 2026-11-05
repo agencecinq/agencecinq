@@ -25,12 +25,10 @@ use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ImageCards;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkColumns;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LinkRow;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\ListingHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\LogoWall;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\NumberedList;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PageHeader;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PortraitGrid;
-use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PostGrid;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PriceBreakdown;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\PricingTable;
 use AgenceCinq\Plugins\ACF\IncludeFields\Layouts\Quote;
@@ -47,7 +45,7 @@ use AgenceCinq\Service;
 class BlocksFields implements Service {
 
 	/**
-	 * Layout classes used for the blocks field (pages and case studies). Order = display order.
+	 * Layout classes used for the blocks field (pages, case studies and the posts archive). Order = display order.
 	 * Layouts that implement get_post_types() are hidden on other post types.
 	 *
 	 * @var array<int, class-string>
@@ -68,12 +66,10 @@ class BlocksFields implements Service {
 		LinkColumns::class,
 		LinkGrid::class,
 		LinkRow::class,
-		ListingHeader::class,
 		LogoWall::class,
 		NumberedList::class,
 		PageHeader::class,
 		PortraitGrid::class,
-		PostGrid::class,
 		PriceBreakdown::class,
 		PricingTable::class,
 		Quote::class,
@@ -118,9 +114,9 @@ class BlocksFields implements Service {
 			),
 			array(
 				array(
-					'param'    => 'page_type',
+					'param'    => 'options_page',
 					'operator' => '==',
-					'value'    => 'posts_page',
+					'value'    => 'archive-posts',
 				),
 			),
 			array(

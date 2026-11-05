@@ -1,0 +1,126 @@
+{#
+ # Archive page
+ #
+ # Figma T12 · Blog, for the blog, its categories and its authors. The Listing header: the title in H1 and
+ # the text, the author with their portrait and their job, then the categories as filters, links in a nav,
+ # the current one with aria-current, wrapping on mobile rather than scrolling sideways. The Post grid: the
+ # posts as Article cards, their titles in H2, three per row from lg on four columns each, then the
+ # pagination. Then the blocks of Posts › Archive, such as the Signup form.
+ #
+ # @param string title The name of the blog, of the category or of the author.
+ # @param string text Optional. The text of Posts › Archive, or the biography of the author.
+ # @param Timber\Term current_category Optional. The category of the archive; without it, all the posts.
+ # @param Timber\User author Optional. The author of the archive.
+ # @param array blocks Optional. The blocks of Posts › Archive.
+ #}
+
+{% extends 'index.html.twig' %}
+
+{%- block content -%}
+	{%- set current_category = current_category | default( null ) -%}
+	{%- set author = author | default( null ) -%}
+	{%- set portrait = author ? author.meta( 'portrait' ) : null -%}
+	{%- set job = author ? author.meta( 'job' ) : null -%}
+	{%- set items = posts | default( [] ) -%}
+	{%- set categories =
+		get_terms( {
+			taxonomy: 'category',
+			hide_empty: true,
+		} )
+	-%}
+
+	<main id="content" role="main">
+		<section class="pt-19.5 pb-10.5 lg:pt-26 lg:pb-14" aria-labelledby="archive-title">
+			<div class="container flex flex-col gap-6 lg:gap-8">
+				<div class="flex max-w-205 flex-col gap-4">
+					{%- if portrait -%}
+						{{-
+							include(
+								'components/avatar.html.twig',
+								{
+									image: portrait,
+									size: 'large',
+								},
+								with_context: false
+							)
+						-}}
+					{%- endif -%}
+					<h1 id="archive-title" class="text-title-xxl text-primary">{{- title -}}</h1>
+					{%- if job -%}
+						<p class="text-eyebrow text-muted">{{- job -}}</p>
+					{%- endif -%}
+					{%- if text -%}
+						<p class="text-body text-lg">{{- text -}}</p>
+					{%- endif -%}
+				</div>
+				{%- if categories | length -%}
+					<nav aria-label="{{ __( 'Categories', 'agencecinq' ) }}">
+						<ul class="flex flex-wrap gap-2">
+							<li>
+								{{-
+									include(
+										'components/chip.html.twig',
+										{
+											title: __( 'All posts', 'agencecinq' ),
+											url: posts_url,
+											active: not current_category and not author,
+										},
+										with_context: false
+									)
+								-}}
+							</li>
+							{%- for item in categories -%}
+								<li>
+									{{-
+										include(
+											'components/chip.html.twig',
+											{
+												title: item.name,
+												url: item.link,
+												active: current_category and current_category.id == item.id,
+											},
+											with_context: false
+										)
+									-}}
+								</li>
+							{%- endfor -%}
+						</ul>
+					</nav>
+				{%- endif -%}
+			</div>
+		</section>
+
+		{%- if items | length -%}
+			<div class="pt-4.5 pb-19.5 lg:pt-6 lg:pb-26">
+				<div class="container flex flex-col items-start gap-8 lg:gap-14">
+					<ul class="layout-grid w-full gap-y-8 lg:gap-y-14">
+						{%- for item in items -%}
+							<li class="col-span-full lg:col-span-4">
+								{{-
+									include(
+										'components/article-card.html.twig',
+										{
+											post: item,
+											heading: 'h2',
+											sizes: '(min-width: 90rem) 24.8rem, (min-width: 64rem) calc((100vw - 15.5rem) / 3), calc(100vw - 2.5rem)',
+										},
+										with_context: false
+									)
+								-}}
+							</li>
+						{%- endfor -%}
+					</ul>
+					{{-
+						include(
+							'components/pagination.html.twig',
+							{ pagination: items.pagination() },
+							with_context: false
+						)
+					-}}
+				</div>
+			</div>
+		{%- endif -%}
+
+		{{- include( 'blocks/blocks.html.twig', { blocks: blocks | default( [] ) } ) -}}
+	</main>
+{%- endblock -%}

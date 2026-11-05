@@ -2325,3 +2325,16 @@ msgstr ""
 #, php-format
 msgid "Updated on %s"
 msgstr ""
+
+#: includes/Plugins/ACF/Init.php:83
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:67
+msgid "Posts archive"
+msgstr ""
+
+#: includes/Plugins/ACF/Init.php:84
+msgid "Archive"
+msgstr ""
+
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:59
+msgid "Under the title of the blog and of its categories. An author has their biography instead."
+msgstr ""

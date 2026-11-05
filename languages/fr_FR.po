@@ -245,7 +245,7 @@ msgstr ""
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:194
 #: includes/Plugins/ACF/IncludeFields/ThemeFields.php:196
 msgid "Text"
-msgstr ""
+msgstr "Texte"
 
 #: includes/Plugins/ACF/IncludeFields/CaseStudyFields.php:126
 msgid "Enter the lead of the case study"
@@ -2446,3 +2446,16 @@ msgstr "nouvelle version, bientôt en ligne"
 #, php-format
 msgid "Updated on %s"
 msgstr "Mis à jour le %s"
+
+#: includes/Plugins/ACF/Init.php:83
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:67
+msgid "Posts archive"
+msgstr "Archive des articles"
+
+#: includes/Plugins/ACF/Init.php:84
+msgid "Archive"
+msgstr "Archive"
+
+#: includes/Plugins/ACF/IncludeFields/ArchivePostsFields.php:59
+msgid "Under the title of the blog and of its categories. An author has their biography instead."
+msgstr "Sous le titre du blog et de ses catégories. Sur un auteur, sa biographie le remplace."
