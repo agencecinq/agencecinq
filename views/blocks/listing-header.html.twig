@@ -2,14 +2,18 @@
  # Blocks: Listing header
  #
  # Figma Section/Listing header, on the blog, its categories and its authors: the title in H1 and the text,
- # the name and description of the category or of the author on their archive, then the categories as
- # filters, links in a nav, the current one with aria-current. They wrap on mobile rather than scroll sideways.
+ # the name and description of the category or of the author on their archive, the author with their portrait
+ # and their job, then the categories as filters, links in a nav, the current one with aria-current. They wrap
+ # on mobile rather than scroll sideways.
  #}
 
 {%- set category = term | default( null ) -%}
-{%- set subject = category ?: author | default( null ) -%}
+{%- set person = category ? null : author | default( null ) -%}
+{%- set subject = category ?: person -%}
 {%- set title = subject ? subject.name : block.content.title -%}
 {%- set text = subject ? subject.description : block.content.text -%}
+{%- set portrait = person ? person.meta( 'portrait' ) : null -%}
+{%- set job = person ? person.meta( 'job' ) : null -%}
 {%- set categories =
 	get_terms( {
 		taxonomy: 'category',
@@ -36,7 +40,22 @@
 	>
 		<div class="container flex flex-col gap-6 lg:gap-8">
 			<div class="flex max-w-205 flex-col gap-4">
+				{%- if portrait -%}
+					{{-
+						include(
+							'components/avatar.html.twig',
+							{
+								image: portrait,
+								size: 'large',
+							},
+							with_context: false
+						)
+					-}}
+				{%- endif -%}
 				<h1 id="{{ title_id }}" class="text-title-xxl text-primary">{{- title -}}</h1>
+				{%- if job -%}
+					<p class="text-eyebrow text-muted">{{- job -}}</p>
+				{%- endif -%}
 				{%- if text -%}
 					<p class="text-body text-lg">{{- text -}}</p>
 				{%- endif -%}
