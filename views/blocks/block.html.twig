@@ -1,0 +1,37 @@
+{#
+ # Block
+ #
+ # Renders one ACF flexible layout with its template. The only place that
+ # knows how a layout is included: the stack of blocks.html.twig goes through
+ # it, and so does CINQ WP Editor when it renders a block alone.
+ #
+ # In the editor's preview (`cinq_wp_editor`), the block sits in a marker
+ # carrying its index; `display: contents` keeps it out of the layout. The
+ # public page is unchanged.
+ #
+ # @param array block Flexible content row.
+ # @param int   loop  Index of the block in the stack.
+ #
+ # @package AgenceCinq
+ # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
+ #}
+
+{%- set html -%}
+	{{-
+		include(
+			"blocks/#{ block.acf_fc_layout | lower | replace( { '_': '-' } ) }.html.twig",
+			{
+				block: block,
+				loop: loop,
+				classes: [ 'block-index-' ~ loop ],
+			},
+			ignore_missing: true
+		)
+	-}}
+{%- endset -%}
+
+{%- if cinq_wp_editor | default( false ) -%}
+	<div data-cinq-block="{{ loop }}" style="display: contents">{{- html -}}</div>
+{%- else -%}
+	{{- html -}}
+{%- endif -%}

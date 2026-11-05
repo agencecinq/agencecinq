@@ -8,25 +8,29 @@
  #     {% block append %}...{% endblock %}
  # {% endembed %}
  #
+ # Each block goes through blocks/block.html.twig. In CINQ WP Editor's preview
+ # (`cinq_wp_editor`), the stack is rendered even with no block, so a first
+ # one can be added, and its container carries `data-cinq-blocks`.
+ #
  # @package AgenceCinq
  # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
  #}
 
-{%- if blocks -%}
-	<div class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) | trim }}">
+{%- set editor = cinq_wp_editor | default( false ) -%}
+
+{%- if blocks or editor -%}
+	<div class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) | trim }}"{{ editor ? ' data-cinq-blocks' }}>
 		{%- block prepend -%}{%- endblock -%}
 
 		{%- block body -%}
-			{%- for block in blocks -%}
+			{%- for block in blocks | default( [] ) -%}
 				{{-
 					include(
-						"blocks/#{ block.acf_fc_layout | lower | replace( { '_': '-' } ) }.html.twig",
+						'blocks/block.html.twig',
 						{
 							block: block,
 							loop: loop.index0,
-							classes: [ 'block-index-' ~ loop.index0 ],
-						},
-						ignore_missing: true
+						}
 					)
 				-}}
 			{%- endfor -%}
