@@ -8,9 +8,10 @@
  #     {% block append %}...{% endblock %}
  # {% endembed %}
  #
- # Each block goes through blocks/block.html.twig. In CINQ WP Editor's preview
- # (`cinq_wp_editor`), the stack is rendered even with no block, so a first
- # one can be added, and its container carries `data-cinq-blocks`.
+ # Each block goes through blocks/block.html.twig. The container carries
+ # `data-field="blocks"`, the name of the field it renders. In CINQ WP Editor's
+ # preview (`cinq_wp_editor`), the stack is rendered even with no block, so a
+ # first one can be added.
  #
  # @package AgenceCinq
  # @author CINQ <contact@agencecinq.com> (https://agencecinq.com)
@@ -19,7 +20,7 @@
 {%- set editor = cinq_wp_editor | default( false ) -%}
 
 {%- if blocks or editor -%}
-	<div class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) | trim }}"{{ editor ? ' data-cinq-blocks' }}>
+	<div class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) | trim }}" data-field="blocks">
 		{%- block prepend -%}{%- endblock -%}
 
 		{%- block body -%}
