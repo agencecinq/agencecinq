@@ -17,6 +17,7 @@
  # @param string heading Optional. Tag of the title, 'h1' by default.
  # @param string scheme Optional. Color scheme of the section (includes/schemes.php), the page's by default.
  # @param array classes Optional extra classes, e.g. the paddings.
+ # @param object attributes Optional extra HTML attributes, e.g. { 'data-field': 'hero' }.
  #}
 
 {%- set id = id | default( 'page-header' ) -%}
@@ -44,6 +45,7 @@
 	data-scheme="{{ scheme | default( '' ) }}"
 	class="{{ html_classes( classes | default( [] ) | join( ' ' ) ) }}"
 	aria-labelledby="{{ id }}-title"
+	{{ html_attr( attributes | default( {} ) ) }}
 >
 	<div class="layout-grid container items-start gap-y-8">
 		<div class="col-span-full flex flex-col items-start gap-5 lg:col-span-7 lg:gap-6">
