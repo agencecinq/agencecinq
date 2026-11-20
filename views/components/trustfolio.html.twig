@@ -2,7 +2,15 @@
  # Components: Trustfolio
  #
  # The Trustfolio reviews badge (rating and number of reviews), framed from the page Trustfolio renders
- # on its server: no embed script. The badge keeps the height of the widget.
+ # on its server: no embed script.
+ #
+ # The widget page has no background and no color-scheme: framed in a dark page, the browser paints its
+ # canvas opaque white. scheme-light gives the iframe the scheme of the page it frames, so the canvas
+ # stays transparent.
+ #
+ # The page centers a badge of about 12.25rem (2 to 99 reviews: 12.25 to 12.6rem) in an 0.5rem padding.
+ # The iframe is cut to that size, so the badge sits at its own place instead of in the middle of the
+ # column; it still starts about 0.75rem in, which the parent can take back with -ml-3.
  #
  # @param string id The Trustfolio widget id (data-config-id of the embed code).
  # @param array classes Optional extra classes.
@@ -15,7 +23,7 @@
 		src="https://share.trustfolio.co/widgets/{{ id | url_encode }}"
 		title="{{ __( 'Customer reviews on Trustfolio', 'agencecinq' ) }}"
 		class="{{
-			html_classes( 'block h-19 w-full border-0', classes | default( [] ) | join( ' ' ) )
+			html_classes( 'block h-18 w-55 border-0 scheme-light', classes | default( [] ) | join( ' ' ) )
 		}}"
 	></iframe>
 {%- endif -%}
