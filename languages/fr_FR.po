@@ -2473,3 +2473,7 @@ msgstr "Description"
 #: views/pages/archive-page.html.twig:108
 msgid "No posts found."
 msgstr "Aucun article trouvé."
+
+#: views/components/trustfolio.html.twig:16
+msgid "Customer reviews on Trustfolio"
+msgstr "Avis clients sur Trustfolio"
