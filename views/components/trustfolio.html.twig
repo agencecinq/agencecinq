@@ -1,0 +1,21 @@
+{#
+ # Components: Trustfolio
+ #
+ # The Trustfolio reviews badge (rating and number of reviews), framed from the page Trustfolio renders
+ # on its server: no embed script. The badge keeps the height of the widget.
+ #
+ # @param string id The Trustfolio widget id (data-config-id of the embed code).
+ # @param array classes Optional extra classes.
+ #
+ # @package AgenceCinq
+ #}
+
+{%- if id -%}
+	<iframe
+		src="https://share.trustfolio.co/widgets/{{ id | url_encode }}"
+		title="{{ __( 'Customer reviews on Trustfolio', 'agencecinq' ) }}"
+		class="{{
+			html_classes( 'block h-19 w-full border-0', classes | default( [] ) | join( ' ' ) )
+		}}"
+	></iframe>
+{%- endif -%}

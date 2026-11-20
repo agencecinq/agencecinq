@@ -2,7 +2,8 @@
  # Front page
  #
  # Figma Section/Hero, Visual=Diff: the text and its two buttons on eight columns, the paragraph on seven,
- # the diff of a site on the last four.
+ # the diff of a site on the last four. The Trustfolio badge closes the text, as high in the page as the
+ # proof can stand next to the calls to action.
  #
  # @package AgenceCinq
  #}
@@ -53,6 +54,17 @@
 							{%- endfor -%}
 						</div>
 					{%- endif -%}
+
+					{{-
+						include(
+							'components/trustfolio.html.twig',
+							{
+								id: '4M7TXdFxRbe',
+								classes: [ 'col-span-full' ],
+							},
+							with_context: false
+						)
+					-}}
 				</div>
 
 				{%- if ( removed | length ) or ( added | length ) -%}
