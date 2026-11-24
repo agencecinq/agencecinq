@@ -5,6 +5,9 @@
 		"server": {
 			"toolPrefix": "cinq",
 			"instructions": "agencecinq.com, the site of the CINQ web agency: pages, blog posts and case studies. Write all copy in French, addressing the reader as « vous ». No emoji, no em dash. Create and update content as drafts unless asked to publish. Before writing to a page, a post or a case study, read its lock_content field: when it is true, do not write nor change its content, and never change lock_content unless asked. Never invent a client, a figure, a quote or a finding: client names, logos, screenshots and verbatims appear only with the written consent of the client. Write real alternative text in the media library: the theme follows RGAA. Follow the page template that fits the page, and say so when a section has no block rather than approximating it. The front page and case studies open with their own hero fields, not with blocks. Blog posts have no blocks: their body is the post content. The primary call to action is « Réserver 30 minutes »: the diagnostic is never a first click."
+		},
+		"registeredSettings": {
+			"include": ["title", "description", "timezone", "date_format", "time_format", "start_of_week"]
 		}
 	},
 	"blocks": {
