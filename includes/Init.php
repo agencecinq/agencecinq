@@ -56,11 +56,13 @@ class Init {
 			Plugins\ACF\IncludeFields\ArchivePostsFields::class,
 			Plugins\ACF\IncludeFields\UserFields::class,
 			Plugins\ACF\IncludeFields\LockContentFields::class,
+			Plugins\ACF\IncludeFields\ServiceFields::class,
 			Plugins\ContactForm7\FormTag::class,
 			// GitHub.
 			GitHub\Activity::class,
 			// Yoast.
 			Plugins\WordpressSeo\AdminInit::class,
+			Plugins\WordpressSeo\SchemaGraph::class,
 			Post\CaseStudy::class,
 			Taxonomy\CaseStudyCategory::class,
 		);
