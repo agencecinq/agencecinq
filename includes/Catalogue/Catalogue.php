@@ -128,6 +128,23 @@ class Catalogue {
 	}
 
 	/**
+	 * Lines a pricing table shows, as the catalogue holds them: the packages ticked on a platform, or its
+	 * retainers.
+	 *
+	 * @param string               $source   'catalogue' (packages) or 'retainers'.
+	 * @param array<string, mixed> $settings Platform and packages of the block.
+	 * @return array<int, array<string, mixed>>
+	 */
+	public function lines( string $source, array $settings ): array {
+		$platform = (string) ( $settings['platform'] ?? '' );
+
+		return match ( $source ) {
+			'retainers' => $this->retainers( $platform ),
+			default     => self::pick( $this->packages( $platform ), 'code', (array) ( $settings['packages'] ?? array() ) ),
+		};
+	}
+
+	/**
 	 * Pricing cards of a platform: its packages or its retainers.
 	 * Name, price, badge and the first four included lines come from the catalogue.
 	 * The featured card shows the badge of the block instead of its own, when there is one.
@@ -137,11 +154,7 @@ class Catalogue {
 	 * @return array<int, array<string, mixed>>
 	 */
 	public function tiers( string $source, array $settings ): array {
-		$platform = (string) ( $settings['platform'] ?? '' );
-		$lines    = match ( $source ) {
-			'retainers' => $this->retainers( $platform ),
-			default     => self::pick( $this->packages( $platform ), 'code', (array) ( $settings['packages'] ?? array() ) ),
-		};
+		$lines = $this->lines( $source, $settings );
 
 		return array_map(
 			static function ( array $line ) use ( $source, $settings ): array {
